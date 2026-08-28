@@ -226,7 +226,7 @@ const LeagueCalendar = ({ schedule, selectedWeek, onWeekChange, highlightTeams =
                                 }
 
                                 if (match.status === 'FINISHED') {
-                                    displayScore = `${match.score.home}-${match.score.away}`;
+                                    displayScore = match.score ? `${match.score.home}-${match.score.away}` : `${match.homeScore ?? 0}-${match.awayScore ?? 0}`;
                                 } else if (match.status === 'POSTPONED') {
                                     displayScore = '?-?';
                                 }

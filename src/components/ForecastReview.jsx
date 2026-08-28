@@ -4,6 +4,15 @@ import predictionsHistory from '../data/predictions_history.json';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import TeamLogo from './ui/TeamLogo';
 
+const findRealMatch = (scheduleList, pred) => {
+    if (!scheduleList || !pred) return null;
+    return scheduleList.find(m =>
+        m.id === pred.id ||
+        (m.week === pred.week && m.homeTeam === pred.home && m.awayTeam === pred.away) ||
+        (m.homeTeam === pred.home && m.awayTeam === pred.away)
+    );
+};
+
 const ForecastReview = ({ schedule, currentWeek }) => {
     // 1. Sort History by sourceWeek descending (newest first)
     const sortedHistory = useMemo(() => {
@@ -27,7 +36,7 @@ const ForecastReview = ({ schedule, currentWeek }) => {
         snapshot.predictions.forEach(pred => {
             if (!weeks[pred.week]) weeks[pred.week] = { week: pred.week, total: 0, winner: 0, score: 0, goals: 0, red_card: 0 };
 
-            const realMatch = schedule.find(m => m.id === pred.id);
+            const realMatch = findRealMatch(schedule, pred);
             if (realMatch && realMatch.status === 'FINISHED' && realMatch.score) {
                 weeks[pred.week].total++;
 
@@ -90,7 +99,7 @@ const ForecastReview = ({ schedule, currentWeek }) => {
         return snapshot.predictions
             .filter(p => p.week === parseInt(selectedTargetWeek))
             .map(pred => {
-                const realMatch = schedule.find(m => m.id === pred.id);
+                const realMatch = findRealMatch(schedule, pred);
                 // Calculate comparison details
                 let comparison = {
                     winner: 'pending',
@@ -146,7 +155,7 @@ const ForecastReview = ({ schedule, currentWeek }) => {
             let goals = 0;
 
             hist.predictions.forEach(pred => {
-                const realMatch = schedule.find(m => m.id === pred.id);
+                const realMatch = findRealMatch(schedule, pred);
                 if (realMatch && realMatch.status === 'FINISHED' && realMatch.score) {
                     total++;
 

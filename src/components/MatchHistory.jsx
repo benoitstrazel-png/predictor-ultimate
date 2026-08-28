@@ -1,48 +1,53 @@
 import React, { useMemo } from 'react';
-import MATCHES_LEGACY from '../data/matches_legacy.json';
+import UNIFIED_HISTORY from '../data/unified_history.json';
 
 const MatchHistory = ({ match }) => {
     const { homeTeam, awayTeam } = match;
 
-    // Compute history dynamically
+    // Compute history dynamically across all 5 leagues
     const history = useMemo(() => {
         // 1. Last Home games for Home Team
-        const lastHome = MATCHES_LEGACY
-            .filter(m => m.home_team === homeTeam)
+        const lastHome = UNIFIED_HISTORY
+            .filter(m => (m.homeTeam === homeTeam || m.home_team === homeTeam))
             .slice(-5)
             .map(m => {
-                const hg = m.full_time_home_goals;
-                const ag = m.full_time_away_goals;
-                const opponent = m.away_team;
+                const scoreStr = m.score || '0-0';
+                const [hg, ag] = scoreStr.split('-').map(Number);
+                const opponent = m.awayTeam || m.away_team;
                 let res = 'N';
                 if (hg > ag) res = 'V';
                 if (ag > hg) res = 'D';
-                return { res, score: `${hg}-${ag}`, opponent };
+                return { res, score: `${hg}-${ag}`, opponent, goals: m.goals || [] };
             }).reverse();
 
         // 2. Last Away games for Away Team
-        const lastAway = MATCHES_LEGACY
-            .filter(m => m.away_team === awayTeam)
+        const lastAway = UNIFIED_HISTORY
+            .filter(m => (m.awayTeam === awayTeam || m.away_team === awayTeam))
             .slice(-5)
             .map(m => {
-                const hg = m.full_time_home_goals;
-                const ag = m.full_time_away_goals;
-                const opponent = m.home_team;
+                const scoreStr = m.score || '0-0';
+                const [hg, ag] = scoreStr.split('-').map(Number);
+                const opponent = m.homeTeam || m.home_team;
                 let res = 'N';
                 if (ag > hg) res = 'V';
                 if (hg > ag) res = 'D';
-                return { res, score: `${ag}-${hg}`, opponent }; // Score from away perspective
+                return { res, score: `${ag}-${hg}`, opponent, goals: m.goals || [] }; // Score from away perspective
             }).reverse();
 
         // 3. H2H
-        const h2h = MATCHES_LEGACY
-            .filter(m => (m.home_team === homeTeam && m.away_team === awayTeam) || (m.home_team === awayTeam && m.away_team === homeTeam))
+        const h2h = UNIFIED_HISTORY
+            .filter(m => {
+                const h = m.homeTeam || m.home_team;
+                const a = m.awayTeam || m.away_team;
+                return (h === homeTeam && a === awayTeam) || (h === awayTeam && a === homeTeam);
+            })
             .slice(-5)
             .map(m => ({
                 date: m.date,
-                home: m.home_team,
-                away: m.away_team,
-                score: `${m.full_time_home_goals}-${m.full_time_away_goals}`
+                home: m.homeTeam || m.home_team,
+                away: m.awayTeam || m.away_team,
+                score: m.score || '0-0',
+                goals: m.goals || []
             }))
             .reverse();
 

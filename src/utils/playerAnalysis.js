@@ -101,11 +101,13 @@ export const getPlayerGoalStats = (playerFull, clubName, allMatches) => {
 
         if (home !== targetClub && away !== targetClub) return;
 
-        match.events.forEach(e => {
-            if (e.type === 'Goal' && isPlayerMatch(playerFull, e.player)) {
+        const rawGoals = match.goals || (match.events || []).filter(e => e.type === 'Goal');
+        
+        rawGoals.forEach(e => {
+            if (isPlayerMatch(playerFull, e.player)) {
                 totalGoals++;
 
-                const minStr = e.time.replace("'", "");
+                const minStr = String(e.time || '45').replace("'", "");
                 const minute = parseInt(minStr) || 0;
 
                 let bucket = '76-90+';

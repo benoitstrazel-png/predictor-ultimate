@@ -1,12 +1,15 @@
 {
-  "name": "ligue1-predictor",
+  "name": "predictor-ultimate",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "data:pipeline": "node scripts/pipeline/run_pipeline.cjs --full",
+    "data:sync": "node scripts/pipeline/run_pipeline.cjs --sync",
+    "data:validate": "node scripts/pipeline/run_pipeline.cjs --validate"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

@@ -74,11 +74,19 @@ export const analyzeClubEvents = (clubName, allMatches) => {
         let hasScored = false;
         let hasConceded = false;
 
-        // Sort events by time just in case, though they usually come sorted
-        // Time format is "40'" or "90+3'"
-        const sortedEvents = [...(match.events || [])].sort((a, b) => {
-            const tA = parseInt(a.time.replace('+', '')) || 0; // Simple sort
-            const tB = parseInt(b.time.replace('+', '')) || 0;
+        // Support both match.events and match.goals natively
+        const rawEvents = match.events || (match.goals || []).map(g => ({
+            time: g.time ? (String(g.time).includes("'") ? String(g.time) : `${g.time}'`) : "45'",
+            type: 'Goal',
+            team: g.team || (isHome ? match.homeTeam : match.awayTeam),
+            player: g.player,
+            detail: g.detail || ''
+        }));
+
+        // Sort events by time
+        const sortedEvents = [...rawEvents].sort((a, b) => {
+            const tA = parseInt(String(a.time).replace('+', '')) || 0;
+            const tB = parseInt(String(b.time).replace('+', '')) || 0;
             return tA - tB;
         });
 

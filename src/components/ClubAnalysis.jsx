@@ -340,8 +340,11 @@ class ErrorBoundary extends React.Component {
     }
 }
 
-export default (props) => (
+const ClubAnalysisWithErrorBoundary = (props) => (
     <ErrorBoundary>
         <ClubAnalysis {...props} />
     </ErrorBoundary>
 );
+
+export default ClubAnalysisWithErrorBoundary;
+

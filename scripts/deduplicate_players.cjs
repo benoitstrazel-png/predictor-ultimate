@@ -135,10 +135,17 @@ function deduplicate() {
     keys2.forEach(shortKey => {
         const parts = shortKey.split(' ');
         if (parts.length === 2 && parts[1].length === 2 && parts[1].endsWith('.')) {
-            // It's "Name I."
+            // It's "Lastname I." (e.g. "Silva B.")
             const lastname = parts[0];
-            // Find "Firstname Name"
-            const match = keys2.find(k => k.endsWith(lastname) && k !== shortKey && k.length > shortKey.length);
+            const initial = parts[1].charAt(0).toLowerCase();
+            // Find "Firstname Lastname" where Firstname starts with initial
+            const match = keys2.find(k => {
+                if (k === shortKey || k.length <= shortKey.length) return false;
+                const kParts = k.split(' ');
+                const kLastName = kParts[kParts.length - 1];
+                const kFirstName = kParts[0];
+                return kLastName.toLowerCase() === lastname.toLowerCase() && kFirstName.toLowerCase().startsWith(initial);
+            });
             if (match) {
                 console.log(`Detected duplicate: ${shortKey} -> ${match}`);
                 // Merge data into the long key

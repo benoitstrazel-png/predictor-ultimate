@@ -326,17 +326,19 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
             return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
         };
 
-        // Helper: Strict token matching
+        // Helper: Strict token matching without false-positive collisions
         const namesMatch = (n1, n2) => {
             if (!n1 || !n2) return false;
-            if (n1 === n2) return true;
-            // Split into significant tokens (ignoring single letters like "J.")
-            const t1 = n1.split(' ').filter(x => x.length > 1);
-            const t2 = n2.split(' ').filter(x => x.length > 1);
-
-            // If one name is short (e.g. "Castillo"), check if it's contained in the other tokens
-            // Ensure we match at least one significant part (e.g. "Castillo" in "Del Castillo")
-            return t1.some(a => t2.some(b => b === a || (b.includes(a) && a.length >= 3) || (a.includes(b) && b.length >= 3)));
+            const s1 = norm(n1);
+            const s2 = norm(n2);
+            if (s1 === s2) return true;
+            const t1 = s1.split(' ').filter(x => x.length > 2);
+            const t2 = s2.split(' ').filter(x => x.length > 2);
+            if (t1.length === 0 || t2.length === 0) return false;
+            const last1 = t1[t1.length - 1];
+            const last2 = t2[t2.length - 1];
+            if (last1 === last2 && (t1.length === 1 || t2.length === 1 || t1[0] === t2[0])) return true;
+            return false;
         };
 
         // A. ANALYZE LINEUPS (Starts Count & Formation)
