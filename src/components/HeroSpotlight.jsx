@@ -28,7 +28,9 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
   };
 
   const hasValueBet = match.valueBets && match.valueBets.length > 0;
-  const valueEdge = hasValueBet ? match.valueBets[0].edge_percentage : null;
+  const firstVb = hasValueBet ? match.valueBets[0] : null;
+  const valueEdge = firstVb ? (firstVb.edge_percentage || firstVb.edge) : null;
+  const valueLabel = firstVb ? (firstVb.selection_label || firstVb.side || (firstVb.selection === '1' ? `Victoire ${match.homeTeam}` : firstVb.selection === '2' ? `Victoire ${match.awayTeam}` : 'Match Nul')) : '';
 
   const cycleImg = (dir) => {
     setImgIdx(i => (i + dir + HERO_IMAGES.length) % HERO_IMAGES.length);
@@ -144,7 +146,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
               <span>{match.weather.wind_speed_kmh} km/h</span>
             </div>
           )}
-          {match.betclicOdds && (
+          {match.betclicOdds && match.betclicOdds.home ? (
             <div className="hero-badge">
               <span>Cotes Betclic :</span>
               <strong style={{ color: 'var(--positive)' }}>{match.betclicOdds.home}</strong>
@@ -153,10 +155,14 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
               <span>·</span>
               <strong style={{ color: 'var(--danger)' }}>{match.betclicOdds.away}</strong>
             </div>
+          ) : (
+            <div className="hero-badge" style={{ borderColor: 'rgba(245, 158, 11, 0.3)', color: '#f59e0b' }}>
+              <span>⏳ Cotes en attente d'ouverture</span>
+            </div>
           )}
           {hasValueBet && (
             <div className="hero-badge" style={{ borderColor: 'var(--positive-border)', background: 'var(--positive-muted)' }}>
-              <span style={{ color: 'var(--positive)', fontWeight: 700 }}>✓ Value Bet · Edge {valueEdge}</span>
+              <span style={{ color: 'var(--positive)', fontWeight: 800 }}>★ Value Bet : {valueLabel} · Edge {valueEdge}</span>
             </div>
           )}
         </div>

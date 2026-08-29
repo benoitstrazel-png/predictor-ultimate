@@ -4,17 +4,26 @@ import { PLAYERS_DB } from '../data/players_static';
 import ALL_LINEUPS from '../data/lineups_2025_2026.json';
 import TM_POSITIONS from '../data/player_positions_tm.json';
 import CALCULATED_STATS from '../data/player_stats_calculated.json';
+import PLAYERS_REGISTRY from '../data/compiled/players_master_registry.json';
 
-// Helper: Map TM Position to G/D/M/A
+// Helper: Map Position to G/D/M/A with Master Registry priority
 const getTmRole = (name) => {
+    if (!name) return null;
     const norm = (str) => {
         if (typeof str !== 'string') return "";
         return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, "").trim();
     };
     const n = norm(name);
 
+    // 0. Check Master Registry first
+    for (const p of Object.values(PLAYERS_REGISTRY || {})) {
+        if (norm(p.name) === n || norm(p.displayName) === n || norm(p.shortName) === n) {
+            return p.role;
+        }
+    }
+
     let found = null;
-    // 1. Exact Match
+    // 1. Exact Match in TM_POSITIONS
     for (const [key, val] of Object.entries(TM_POSITIONS || {})) {
         if (norm(key) === n) { found = val; break; }
     }
@@ -260,13 +269,38 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
     };
 
 
-    // Helper: Map TM Position to Side/Role
+    // Helper: Map TM Position to Side/Role with Master Registry Priority
     const getDetailedRole = (name) => {
+        if (!name) return null;
         const norm = (str) => {
             if (typeof str !== 'string') return "";
             return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, "").trim();
         };
         const n = norm(name);
+
+        // 0. Check Master Registry Priority
+        for (const p of Object.values(PLAYERS_REGISTRY || {})) {
+            if (norm(p.name) === n || norm(p.displayName) === n || norm(p.shortName) === n) {
+                const pos = p.position || '';
+                const role = p.role || 'M';
+                if (role === 'G' || pos === 'GK') return { role: 'G', side: 'center', sort: 0 };
+                if (role === 'D') {
+                    if (pos === 'LB') return { role: 'D', side: 'left', sort: 0 };
+                    if (pos === 'RB') return { role: 'D', side: 'right', sort: 2 };
+                    return { role: 'D', side: 'center', sort: 1 };
+                }
+                if (role === 'M') {
+                    if (pos === 'LM' || pos === 'LW') return { role: 'M', side: 'left', sort: 0 };
+                    if (pos === 'RM' || pos === 'RW') return { role: 'M', side: 'right', sort: 2 };
+                    return { role: 'M', side: 'center', sort: 1 };
+                }
+                if (role === 'A') {
+                    if (pos === 'LW' || pos === 'LM') return { role: 'A', side: 'left', sort: 0 };
+                    if (pos === 'RW' || pos === 'RM') return { role: 'A', side: 'right', sort: 2 };
+                    return { role: 'A', side: 'center', sort: 1 };
+                }
+            }
+        }
 
         // 1. Exact/Fuzzy Match from JSON
         let found = null;
@@ -677,7 +711,9 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         const { goals, assists } = getPlayerStatsLocal(player.name);
         const starts = getStartsLocal(player.name);
         const hasStats = goals > 0 || assists > 0;
-        const photoUrl = getPlayerPhoto(clubName, player.name);
+        const roleCode = String(player?.position || player?.role || 'M').charAt(0).toLowerCase();
+        const fallbackRoleAvatar = `/assets/players/defaults/${roleCode === 'g' ? 'g' : roleCode === 'd' ? 'd' : roleCode === 'a' ? 'a' : 'm'}_default.webp`;
+        const photoUrl = player?.photo || getPlayerPhoto(clubName, player.name, player);
 
         // NEW STATS: Last Match & Next Opponent
         const nextOpponent = getNextMatch(clubName);
@@ -779,7 +815,11 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                             alt={player.name}
                             className="w-full h-full"
                             style={{ objectFit: 'cover', objectPosition: 'top' }}
-                            onError={(e) => { e.target.style.display = 'none'; }}
+                            onError={(e) => {
+                                if (e.target.src !== fallbackRoleAvatar) {
+                                    e.target.src = fallbackRoleAvatar;
+                                }
+                            }}
                         />
                     ) : (
                         <span className={`text-[10px] font-bold ${hasStats ? 'text-accent' : 'text-slate-400'}`}>
@@ -961,8 +1001,8 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                                 return (
                                     <tr key={i} className="hover:bg-white/5 transition-colors">
                                         <td className="p-2 font-bold text-white flex items-center gap-2">
-                                            {getPlayerPhoto(clubName, p.name) && (
-                                                <img src={getPlayerPhoto(clubName, p.name)} alt="" className="w-6 h-6 rounded-full border border-slate-600 object-cover" />
+                                            {getPlayerPhoto(clubName, p.name, p) && (
+                                                <img src={getPlayerPhoto(clubName, p.name, p)} alt="" className="w-6 h-6 rounded-full border border-slate-600 object-cover" />
                                             )}
                                             {p.name}
                                         </td>

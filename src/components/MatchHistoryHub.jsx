@@ -2,7 +2,8 @@ import React, { useState, useMemo } from 'react';
 import UNIFIED_HISTORY from '../data/unified_history.json';
 import APP_DATA from '../data/app_data.json';
 import TeamLogo from './ui/TeamLogo';
-import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp } from 'lucide-react';
+import MatchDetailsModal from './MatchDetailsModal';
+import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw } from 'lucide-react';
 
 const parseRoundNumber = (val) => {
   if (!val || val === 'ALL') return null;
@@ -44,6 +45,7 @@ export default function MatchHistoryHub() {
         // Fusion intelligente en préservant les données les plus complètes (arbitre détaillé, cotes, logos, buteurs certifiés)
         map.set(key, {
           ...existing,
+          ...m,
           id: m.id || existing.id,
           week: m.week || existing.week,
           round: typeof m.week === 'number' ? `Journée ${m.week}` : (m.round || existing.round),
@@ -65,9 +67,15 @@ export default function MatchHistoryHub() {
           probabilities: m.probabilities || existing.probabilities,
           valueBets: m.valueBets || existing.valueBets || [],
           weather: m.weather || existing.weather,
+          lineups: existing.lineups || m.lineups,
+          formations: existing.formations || m.formations,
+          coaches: existing.coaches || m.coaches,
+          timeline: existing.timeline || m.timeline,
+          teamStats: existing.teamStats || m.teamStats,
         });
       } else {
         map.set(key, {
+          ...m,
           id: m.id,
           league: m.league,
           season: m.season || '2026-2027',
@@ -91,12 +99,51 @@ export default function MatchHistoryHub() {
           probabilities: m.probabilities,
           valueBets: m.valueBets || [],
           weather: m.weather,
+          lineups: m.lineups,
+          formations: m.formations,
+          coaches: m.coaches,
+          timeline: m.timeline,
+          teamStats: m.teamStats,
         });
       }
     });
 
-    return Array.from(map.values());
+    const baseList = Array.from(map.values());
+    return baseList;
   }, []);
+
+  const [liveOddsUpdates, setLiveOddsUpdates] = useState({});
+  const [refreshingMatchId, setRefreshingMatchId] = useState(null);
+
+  const handleRefreshOdds = async (e, match) => {
+    e.stopPropagation();
+    if (!match?.id) return;
+    setRefreshingMatchId(match.id);
+    try {
+      const res = await fetch('http://localhost:5175/api/odds/refresh', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          matchId: match.id,
+          homeTeam: match.homeTeam,
+          awayTeam: match.awayTeam
+        })
+      });
+      if (res.ok) {
+        const json = await res.json();
+        if (json.data) {
+          setLiveOddsUpdates(prev => ({
+            ...prev,
+            [match.id]: json.data
+          }));
+        }
+      }
+    } catch (err) {
+      console.warn('API refresh error:', err.message);
+    } finally {
+      setRefreshingMatchId(null);
+    }
+  };
 
   // 4-Level Contextual Selector State — Default to current season 2026-2027
   const [selectedSeason, setSelectedSeason] = useState('2026-2027');
@@ -104,6 +151,7 @@ export default function MatchHistoryHub() {
   const [selectedRound, setSelectedRound] = useState('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedMatchId, setExpandedMatchId] = useState(null);
+  const [selectedModalMatch, setSelectedModalMatch] = useState(null);
 
   // Maximum rounds depending on League (Ligue 1 & Bundesliga = 34, UEFA = 6-8, others = 38)
   const maxRoundsForLeague = useMemo(() => {
@@ -499,10 +547,34 @@ export default function MatchHistoryHub() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <div style={{ fontSize: 11, color: 'var(--neutral)' }}>
                       {m.date || m.season || '2026-2027'} · Arbitre : <strong style={{ color: 'var(--ivory)' }}>{typeof m.referee === 'object' ? m.referee.name : m.referee}</strong>
                     </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedModalMatch(m);
+                      }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        background: 'rgba(201, 169, 110, 0.15)',
+                        border: '1px solid var(--gold-border)',
+                        color: 'var(--gold)',
+                        fontSize: 11,
+                        fontWeight: 700,
+                        padding: '5px 12px',
+                        borderRadius: 8,
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
+                      }}
+                      title="Voir la chronologie et les statistiques complètes du match"
+                    >
+                      <Clock size={13} />
+                      <span>Détails & Chronologie</span>
+                    </button>
                     {isExpanded ? <ChevronUp size={18} color="var(--gold)" /> : <ChevronDown size={18} color="var(--neutral)" />}
                   </div>
                 </div>
@@ -587,36 +659,116 @@ export default function MatchHistoryHub() {
                       );
                     })}
                   </div>
-                ) : !isFinished && m.betclicOdds ? (
-                  <div style={{
-                    padding: '8px 20px',
-                    background: 'rgba(0,0,0,0.25)',
-                    borderTop: '1px solid rgba(255,255,255,0.03)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 16,
-                    flexWrap: 'wrap',
-                  }}>
-                    <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.05em' }}>🎲 COTES BETCLIC :</span>
-                    <span style={{ fontSize: 11, color: 'var(--ivory)' }}>1: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.home}</strong></span>
-                    <span style={{ fontSize: 11, color: 'var(--ivory)' }}>N: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.draw}</strong></span>
-                    <span style={{ fontSize: 11, color: 'var(--ivory)' }}>2: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.away}</strong></span>
-                    {m.valueBets && m.valueBets.length > 0 && (
-                      <span style={{
-                        fontSize: 10,
-                        padding: '2px 8px',
-                        borderRadius: 6,
-                        background: 'rgba(34,197,94,0.15)',
-                        color: '#4ade80',
-                        fontWeight: 700,
-                        display: 'inline-flex',
+                ) : !isFinished ? (
+                  (() => {
+                    const live = liveOddsUpdates[m.id];
+                    const effectiveOdds = live ? live.betclicOdds : m.betclicOdds;
+                    const effectiveMargin = live ? live.oddsMarginPct : m.oddsMarginPct;
+                    const effectiveValueBets = live ? live.valueBets : (m.valueBets || []);
+                    const isRefreshing = refreshingMatchId === m.id;
+
+                    if (effectiveOdds && effectiveOdds.home) {
+                      return (
+                        <div style={{
+                          padding: '8px 20px',
+                          background: 'rgba(0,0,0,0.25)',
+                          borderTop: '1px solid rgba(255,255,255,0.03)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: 12,
+                          flexWrap: 'wrap',
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                            <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.05em' }}>🎲 COTES BETCLIC :</span>
+                            <span style={{ fontSize: 11, color: 'var(--ivory)' }}>1: <strong style={{ color: 'var(--gold)' }}>{effectiveOdds.home}</strong></span>
+                            <span style={{ fontSize: 11, color: 'var(--ivory)' }}>N: <strong style={{ color: 'var(--gold)' }}>{effectiveOdds.draw}</strong></span>
+                            <span style={{ fontSize: 11, color: 'var(--ivory)' }}>2: <strong style={{ color: 'var(--gold)' }}>{effectiveOdds.away}</strong></span>
+                            {effectiveMargin && (
+                              <span style={{ fontSize: 9, color: 'var(--neutral)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>
+                                Marge: {effectiveMargin}%
+                              </span>
+                            )}
+                            {effectiveValueBets && effectiveValueBets.length > 0 && (
+                              <span style={{
+                                fontSize: 10,
+                                padding: '2px 8px',
+                                borderRadius: 6,
+                                background: 'rgba(34,197,94,0.15)',
+                                color: '#4ade80',
+                                fontWeight: 700,
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 4
+                              }}>
+                                <TrendingUp size={12} /> {effectiveValueBets[0].side} ({effectiveValueBets[0].edge_percentage || effectiveValueBets[0].edge})
+                              </span>
+                            )}
+                          </div>
+                          <button
+                            onClick={(e) => handleRefreshOdds(e, m)}
+                            disabled={isRefreshing}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 4,
+                              background: 'rgba(206, 240, 2, 0.12)',
+                              border: '1px solid rgba(206, 240, 2, 0.4)',
+                              color: '#CEF002',
+                              borderRadius: 6,
+                              padding: '3px 8px',
+                              fontSize: 10,
+                              fontWeight: 700,
+                              cursor: isRefreshing ? 'not-allowed' : 'pointer',
+                              transition: 'all 0.2s ease'
+                            }}
+                          >
+                            <RefreshCw size={11} style={{ animation: isRefreshing ? 'spin 1s linear infinite' : 'none' }} />
+                            {isRefreshing ? 'Vérification...' : 'Actualiser'}
+                          </button>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div style={{
+                        padding: '8px 20px',
+                        background: 'rgba(245, 158, 11, 0.06)',
+                        borderTop: '1px dashed rgba(245, 158, 11, 0.25)',
+                        display: 'flex',
                         alignItems: 'center',
-                        gap: 4
+                        justifyContent: 'space-between',
+                        gap: 12,
+                        flexWrap: 'wrap',
                       }}>
-                        <TrendingUp size={12} /> {m.valueBets[0].side} ({m.valueBets[0].edge_percentage})
-                      </span>
-                    )}
-                  </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#f59e0b', fontSize: 11, fontWeight: 600 }}>
+                          <span>⏳ Cotes non encore ouvertes par Betclic</span>
+                        </div>
+                        <button
+                          onClick={(e) => handleRefreshOdds(e, m)}
+                          disabled={isRefreshing}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            background: 'linear-gradient(135deg, #CEF002 0%, #a3c200 100%)',
+                            color: '#000',
+                            border: 'none',
+                            padding: '4px 10px',
+                            borderRadius: 6,
+                            fontSize: 11,
+                            fontWeight: 800,
+                            cursor: isRefreshing ? 'not-allowed' : 'pointer',
+                            boxShadow: '0 2px 8px rgba(206, 240, 2, 0.2)',
+                            transition: 'all 0.2s ease'
+                          }}
+                        >
+                          <RefreshCw size={12} style={{ animation: isRefreshing ? 'spin 1s linear infinite' : 'none' }} />
+                          {isRefreshing ? 'Recherche en cours...' : '⚡ Actualiser la cote Betclic'}
+                        </button>
+                      </div>
+                    );
+                  })()
                 ) : null}
 
                 {/* Expanded Drawer Details */}
@@ -632,6 +784,31 @@ export default function MatchHistoryHub() {
                     <div style={{ fontSize: 12, color: 'var(--ivory-dim)', lineHeight: 1.6 }}>
                       🤖 <strong style={{ color: 'var(--ivory)' }}>{m.aiSummary}</strong>
                     </div>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 6 }}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedModalMatch(m);
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 6,
+                          background: 'rgba(201, 169, 110, 0.15)',
+                          border: '1px solid var(--gold-border)',
+                          color: 'var(--gold)',
+                          fontSize: 11,
+                          fontWeight: 700,
+                          padding: '6px 14px',
+                          borderRadius: 8,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Clock size={13} />
+                        <span>Ouvrir la Chronologie & Stats Détaillées</span>
+                        <ExternalLink size={12} />
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -639,6 +816,13 @@ export default function MatchHistoryHub() {
           })
         )}
       </section>
+
+      {/* Match Details Modal (Chronologie format PJ + Statistiques) */}
+      <MatchDetailsModal
+        match={selectedModalMatch}
+        isOpen={Boolean(selectedModalMatch)}
+        onClose={() => setSelectedModalMatch(null)}
+      />
     </div>
   );
 }

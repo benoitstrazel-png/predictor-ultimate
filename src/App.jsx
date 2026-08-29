@@ -8,6 +8,7 @@ import DynamicIsland from './components/DynamicIsland';
 
 import DailyBettingHub from './components/DailyBettingHub';
 import MatchDeepDive from './components/MatchDeepDive';
+import LeagueFocusHub from './components/LeagueFocusHub';
 import MatchHistoryHub from './components/MatchHistoryHub';
 import SquadsMercatoProps from './components/SquadsMercatoProps';
 import CopilotView from './components/CopilotView';
@@ -32,7 +33,17 @@ function AppContent() {
   // Prochains matchs pour le carrousel Spotlight
   const upcomingMatches = allMatches.filter(m => m.status === 'LIVE' || m.status === 'SCHEDULED');
   const [heroIdx, setHeroIdx] = useState(0);
-  const heroMatch = upcomingMatches[heroIdx] || selectedMatch;
+  const heroMatch = selectedMatch || upcomingMatches[heroIdx];
+
+  // Synchroniser l'index du carrousel avec le match sélectionné
+  useEffect(() => {
+    if (selectedMatch && upcomingMatches.length > 0) {
+      const idx = upcomingMatches.findIndex(m => m.id === selectedMatch.id);
+      if (idx !== -1 && idx !== heroIdx) {
+        setHeroIdx(idx);
+      }
+    }
+  }, [selectedMatch?.id, upcomingMatches]);
 
   useEffect(() => {
     if (allMatches && allMatches.length > 0) {
@@ -111,10 +122,13 @@ function AppContent() {
                 }
               />
 
-              {/* Tab 3: Historique & Résumés IA (Moteur Buteurs) */}
+              {/* Tab 3: Focus Championnat & Stats */}
+              <Route path="/league-focus" element={<LeagueFocusHub />} />
+
+              {/* Tab 4: Historique & Résumés IA (Moteur Buteurs) */}
               <Route path="/history" element={<MatchHistoryHub />} />
 
-              {/* Tab 4: Squads, Mercato & Player Props */}
+              {/* Tab 5: Squads, Mercato & Player Props */}
               <Route
                 path="/squads-mercato"
                 element={
@@ -125,10 +139,10 @@ function AppContent() {
                 }
               />
 
-              {/* Tab 5: AI Predictor Copilot */}
+              {/* Tab 6: AI Predictor Copilot */}
               <Route path="/copilot" element={<CopilotView />} />
 
-              {/* Tab 6: Bankroll & Model Performance */}
+              {/* Tab 7: Bankroll & Model Performance */}
               <Route path="/bankroll" element={<BankrollTracking APP_DATA={appData} />} />
 
               {/* Legacy route fallbacks & Catch-all */}

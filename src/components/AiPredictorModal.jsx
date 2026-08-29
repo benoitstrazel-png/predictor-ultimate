@@ -42,13 +42,13 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
   const generateRagAnalysis = (targetMatch, question) => {
     const home = targetMatch.homeTeam;
     const away = targetMatch.awayTeam;
-    const odds = targetMatch.betclicOdds || { home: 1.50, draw: 3.50, away: 5.00 };
+    const odds = targetMatch.betclicOdds;
     const pred = targetMatch.prediction || {
-      probabilities: { home: '60%', draw: '25%', away: '15%' },
-      expectedGoals: { home: 1.80, away: 0.85 },
+      probabilities: { home: '50%', draw: '25%', away: '25%' },
+      expectedGoals: { home: 1.50, away: 1.10 },
       winner: home,
-      confidence: 65,
-      advice: `Victoire ${home}`
+      confidence: 50,
+      advice: `Match équilibré ${home} vs ${away}`
     };
     const weather = targetMatch.weather || { condition: 'Ciel Dégagé', temp_avg_c: 20, wind_speed_kmh: 12, city: `${home} Stadium` };
     const referee = targetMatch.referee || { name: 'Corps Arbitral UEFA' };
@@ -68,13 +68,15 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
     const totalXgLoss = Math.abs(homeLineup.aggregatedSquadImpact?.netXgOffensePenalty || 0) + Math.abs(awayLineup.aggregatedSquadImpact?.netXgOffensePenalty || 0);
     const netXgImpact = totalXgLoss > 0 ? `-${totalXgLoss.toFixed(2)}` : '0.0';
 
-    const isHomeFavori = parseFloat(pred.probabilities.home) > parseFloat(pred.probabilities.away);
-    const topProb = isHomeFavori ? pred.probabilities.home : pred.probabilities.away;
+    const isHomeFavori = parseFloat(pred.probabilities?.home || 50) > parseFloat(pred.probabilities?.away || 25);
+    const topProb = isHomeFavori ? pred.probabilities?.home : pred.probabilities?.away;
     const favoriTeam = isHomeFavori ? home : away;
 
-    const vbSummary = valueBets.length > 0
-      ? `${valueBets[0].selection} @ ${valueBets[0].bookmaker_odds || odds.home} (Edge : ${valueBets[0].edge_percentage})`
-      : `Ligne Betclic équilibrée (${odds.home} / ${odds.draw} / ${odds.away})`;
+    const firstVb = valueBets.length > 0 ? valueBets[0] : null;
+    const vbLabel = firstVb ? (firstVb.selection_label || firstVb.side || (firstVb.selection === '1' ? `Victoire ${home}` : firstVb.selection === '2' ? `Victoire ${away}` : 'Match Nul')) : '';
+    const vbSummary = firstVb
+      ? `${vbLabel} @ ${firstVb.betclic_odd || firstVb.odd || firstVb.bookmaker_odds || odds?.home} (Edge : ${firstVb.edge_percentage || firstVb.edge})`
+      : (odds && odds.home ? `Ligne Betclic équilibrée (1: ${odds.home} / N: ${odds.draw} / 2: ${odds.away})` : 'Cotes Betclic en attente d\'ouverture');
 
     // Tactical Absence Reasoning
     let tacticalSquadNotes = '';
@@ -94,7 +96,7 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
     const justification = `D'après notre modèle Dixon-Coles calibré sur les données officielles Betclic : **${favoriTeam}** est favori avec **${topProb}** de chances de victoire (xG projeté : **${pred.expectedGoals?.home || 1.8}** pour ${home} vs **${pred.expectedGoals?.away || 0.9}** pour ${away}). ` +
       `${tacticalSquadNotes}` +
       `Au stade de ${weather.city || home} (${weather.condition}, ${weather.temp_avg_c}°C), ${referee.name} assurera la tenue du match. ` +
-      (valueBets.length > 0 ? `Une opportunité de Value Bet est identifiée sur **${valueBets[0].selection}** avec un Edge de **${valueBets[0].edge_percentage}**.` : `Le pronostic préférentiel est : **${pred.advice || 'Victoire Domicile'}**.`);
+      (firstVb ? `Une opportunité de Value Bet est identifiée sur **${vbLabel}** à une cote de **${firstVb.betclic_odd || firstVb.odd || firstVb.bookmaker_odds}** avec un Edge de **${firstVb.edge_percentage || firstVb.edge}**.` : `Le pronostic préférentiel est : **${pred.advice || 'Victoire Domicile'}**.`);
 
     return {
       match: `${home} vs ${away}`,

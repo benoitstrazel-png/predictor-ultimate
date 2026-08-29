@@ -9,7 +9,12 @@
     "preview": "vite preview",
     "data:pipeline": "node scripts/pipeline/run_pipeline.cjs --full",
     "data:sync": "node scripts/pipeline/run_pipeline.cjs --sync",
-    "data:validate": "node scripts/pipeline/run_pipeline.cjs --validate"
+    "data:validate": "node scripts/pipeline/run_pipeline.cjs --validate",
+    "data:ingest:backfill": "python scripts/pipeline/ingest_historical_and_live_matches.py --season all && python scripts/pipeline/compile_unified_history_and_app_data.py",
+    "data:ingest:live": "python scripts/pipeline/ingest_historical_and_live_matches.py --live-only && python scripts/pipeline/compile_unified_history_and_app_data.py",
+    "data:compile": "python scripts/pipeline/compile_unified_history_and_app_data.py",
+    "data:squads:init": "python scripts/db/init_squads_schema.py && python scripts/db/init_transfers_schema.py && python scripts/db/init_coaches_schema.py && python scripts/pipeline/sync_transfers_and_deduplicate_rosters.py && python scripts/pipeline/ingest_master_squads.py && python scripts/pipeline/ingest_master_coaches.py && python scripts/pipeline/normalize_match_lineups.py && python scripts/pipeline/build_transfers_database.py",
+    "data:squads:compile": "node scripts/pipeline/compile_client_rosters.cjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

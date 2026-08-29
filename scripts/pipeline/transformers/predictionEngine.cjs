@@ -123,18 +123,51 @@ function getLogoUrl(teamName) {
   return '';
 }
 
+function generateScoreProbabilities(lambdaH, lambdaA, isHalfTime = false) {
+  const maxGoals = isHalfTime ? 3 : 5;
+  const lH = isHalfTime ? Math.max(0.10, lambdaH * 0.43) : lambdaH;
+  const lA = isHalfTime ? Math.max(0.08, lambdaA * 0.43) : lambdaA;
+
+  const poisson = (k, lambda) => {
+    let p = Math.exp(-lambda);
+    for (let i = 1; i <= k; i++) p *= lambda / i;
+    return p;
+  };
+
+  const scores = [];
+  let totalP = 0;
+
+  for (let h = 0; h <= maxGoals; h++) {
+    for (let a = 0; a <= maxGoals; a++) {
+      const p = poisson(h, lH) * poisson(a, lA);
+      scores.push({ score: `${h}-${a}`, rawP: p });
+      totalP += p;
+    }
+  }
+
+  return scores
+    .map(s => ({ score: s.score, prob: parseFloat(((s.rawP / (totalP || 1)) * 100).toFixed(1)) }))
+    .sort((a, b) => b.prob - a.prob)
+    .slice(0, isHalfTime ? 5 : 6);
+}
+
 function dixonColesPredict(homeTeam, awayTeam, odds) {
-  const homeProb = Math.min(88, Math.max(12, Math.round((1 / odds.home) * 88)));
-  const awayProb = Math.min(88, Math.max(8, Math.round((1 / odds.away) * 88)));
+  const oddH = odds?.home || 2.15;
+  const oddA = odds?.away || 3.40;
+  const homeProb = Math.min(88, Math.max(12, Math.round((1 / oddH) * 88)));
+  const awayProb = Math.min(88, Math.max(8, Math.round((1 / oddA) * 88)));
   const drawProb = Math.max(8, 100 - homeProb - awayProb);
 
-  const lambdaH = (homeProb / 30).toFixed(2);
-  const lambdaA = (awayProb / 30).toFixed(2);
+  const lambdaH = parseFloat((homeProb / 30).toFixed(2));
+  const lambdaA = parseFloat((awayProb / 30).toFixed(2));
 
   let advice = "Les deux marquent (BTTS)";
   if (homeProb > 55) advice = `Victoire ${homeTeam}`;
   else if (awayProb > 55) advice = `Victoire ${awayTeam}`;
   else if (drawProb > 32) advice = "Match Nul ou Double Chance";
+
+  const topExactScores = generateScoreProbabilities(lambdaH, lambdaA, false);
+  const topHalfTimeScores = generateScoreProbabilities(lambdaH, lambdaA, true);
 
   return {
     home: homeProb,
@@ -146,9 +179,11 @@ function dixonColesPredict(homeTeam, awayTeam, odds) {
       away: `${awayProb}%`
     },
     expectedGoals: {
-      home: parseFloat(lambdaH),
-      away: parseFloat(lambdaA)
+      home: lambdaH,
+      away: lambdaA
     },
+    topExactScores,
+    topHalfTimeScores,
     winner: homeProb > awayProb ? (homeProb > drawProb ? homeTeam : 'Nul') : (awayProb > drawProb ? awayTeam : 'Nul'),
     confidence: Math.max(homeProb, drawProb, awayProb),
     advice,
@@ -156,29 +191,38 @@ function dixonColesPredict(homeTeam, awayTeam, odds) {
   };
 }
 
-function detectValueBets(odds, pred) {
+function detectValueBets(homeTeam, awayTeam, odds, pred) {
   const bets = [];
+  if (!odds) return bets;
 
-  const checkEdge = (marketName, selection, bookmakerOdds, modelProbPercent) => {
+  const checkEdge = (marketName, selCode, selLabel, bookmakerOdds, modelProbPercent, teamName) => {
+    if (!bookmakerOdds || bookmakerOdds <= 1.0) return;
     const impliedProb = 1 / bookmakerOdds;
     const modelProb = modelProbPercent / 100;
     const edge = ((modelProb - impliedProb) / impliedProb) * 100;
-    if (edge >= 1.5) {
+    if (edge >= 2.0) {
       bets.push({
         market: marketName,
-        selection: selection,
-        side: selection,
+        selection: selCode,
+        selection_label: selLabel,
+        side: `${selCode} (${selLabel})`,
+        team: teamName,
         bookmaker_odds: bookmakerOdds,
+        odd: bookmakerOdds,
+        betclic_odd: bookmakerOdds,
         model_probability: (modelProb * 100).toFixed(1) + '%',
+        model_prob: (modelProb * 100).toFixed(1) + '%',
         edge_percentage: '+' + edge.toFixed(1) + '%',
-        stake_recommendation: (1.5 + edge * 0.35).toFixed(1) + '%'
+        edge: '+' + edge.toFixed(1) + '%',
+        stake_recommendation: (1.0 + edge * 0.25).toFixed(1) + '%',
+        is_value: true
       });
     }
   };
 
-  checkEdge('Résultat 1N2', 'Victoire Domicile', odds.home, pred.home);
-  checkEdge('Résultat 1N2', 'Match Nul', odds.draw, pred.draw);
-  checkEdge('Résultat 1N2', 'Victoire Extérieur', odds.away, pred.away);
+  checkEdge('1N2', '1', `Victoire ${homeTeam}`, odds.home, pred.home, homeTeam);
+  checkEdge('1N2', 'N', 'Match Nul', odds.draw, pred.draw, 'Match Nul');
+  checkEdge('1N2', '2', `Victoire ${awayTeam}`, odds.away, pred.away, awayTeam);
 
   return bets;
 }
@@ -297,7 +341,7 @@ function transformMatches(extractedData) {
     pred.expectedGoals.home = Math.max(0.15, +(pred.expectedGoals.home * homeLineup.aggregatedSquadImpact.xiStrengthRatio + awayLineup.aggregatedSquadImpact.netXgDefensePenalty).toFixed(2));
     pred.expectedGoals.away = Math.max(0.10, +(pred.expectedGoals.away * awayLineup.aggregatedSquadImpact.xiStrengthRatio + homeLineup.aggregatedSquadImpact.netXgDefensePenalty).toFixed(2));
 
-    const valueBets = detectValueBets(m.odds, pred);
+    const valueBets = detectValueBets(m.homeTeam, m.awayTeam, m.odds, pred);
     const ref = OFFICIAL_UEFA_REFEREES[idx % OFFICIAL_UEFA_REFEREES.length];
 
     // Stadium Weather Enrichment

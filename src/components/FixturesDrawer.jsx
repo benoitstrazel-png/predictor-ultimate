@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { SlidersHorizontal, TrendingUp } from 'lucide-react';
+import { SlidersHorizontal, TrendingUp, Clock } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
+import MatchDetailsModal from './MatchDetailsModal';
 import APP_DATA from '../data/app_data.json';
 
 const LEAGUE_FLAGS = {
@@ -30,6 +31,7 @@ const LEAGUE_SHORT = {
 export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelectMatch }) {
   const [showFilter, setShowFilter] = useState(false);
   const [filterValueBet, setFilterValueBet] = useState(false);
+  const [detailsModalMatch, setDetailsModalMatch] = useState(null);
 
   const leagues = APP_DATA.supportedLeagues || [];
 
@@ -182,8 +184,10 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
                   <div className="fixture-meta">{formatDate(fixture.matchDate)}</div>
                   {hasVB && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: 3, marginTop: 3 }}>
-                      <TrendingUp size={9} color="var(--positive)" />
-                      <span className="value-badge">value</span>
+                      <TrendingUp size={9} color="var(--gold)" />
+                      <span className="value-badge" style={{ fontSize: 8, padding: '1px 5px' }}>
+                        {fixture.valueBets[0].selection === '1' ? `1 (${fixture.homeTeam.slice(0, 4)}.)` : fixture.valueBets[0].selection === '2' ? `2 (${fixture.awayTeam.slice(0, 4)}.)` : 'N'} {fixture.valueBets[0].edge_percentage || fixture.valueBets[0].edge}
+                      </span>
                     </div>
                   )}
                   {fixture.rating && (
@@ -203,6 +207,13 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
           })
         )}
       </div>
+
+      {/* Match Details Modal for Fixtures */}
+      <MatchDetailsModal
+        match={detailsModalMatch}
+        isOpen={Boolean(detailsModalMatch)}
+        onClose={() => setDetailsModalMatch(null)}
+      />
     </div>
   );
 }

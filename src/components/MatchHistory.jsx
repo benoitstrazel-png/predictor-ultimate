@@ -1,8 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import UNIFIED_HISTORY from '../data/unified_history.json';
+import MatchDetailsModal from './MatchDetailsModal';
 
 const MatchHistory = ({ match }) => {
     const { homeTeam, awayTeam } = match;
+    const [selectedModalMatch, setSelectedModalMatch] = useState(null);
 
     // Compute history dynamically across all 5 leagues
     const history = useMemo(() => {
@@ -17,7 +19,7 @@ const MatchHistory = ({ match }) => {
                 let res = 'N';
                 if (hg > ag) res = 'V';
                 if (ag > hg) res = 'D';
-                return { res, score: `${hg}-${ag}`, opponent, goals: m.goals || [] };
+                return { res, score: `${hg}-${ag}`, opponent, goals: m.goals || [], fullMatch: m };
             }).reverse();
 
         // 2. Last Away games for Away Team
@@ -31,7 +33,7 @@ const MatchHistory = ({ match }) => {
                 let res = 'N';
                 if (ag > hg) res = 'V';
                 if (hg > ag) res = 'D';
-                return { res, score: `${ag}-${hg}`, opponent, goals: m.goals || [] }; // Score from away perspective
+                return { res, score: `${ag}-${hg}`, opponent, goals: m.goals || [], fullMatch: m }; // Score from away perspective
             }).reverse();
 
         // 3. H2H
@@ -47,7 +49,8 @@ const MatchHistory = ({ match }) => {
                 home: m.homeTeam || m.home_team,
                 away: m.awayTeam || m.away_team,
                 score: m.score || '0-0',
-                goals: m.goals || []
+                goals: m.goals || [],
+                fullMatch: m
             }))
             .reverse();
 
@@ -56,7 +59,7 @@ const MatchHistory = ({ match }) => {
 
     // Render a single match result row (vertical layout)
     const renderMatchRow = (item, index) => {
-        const { res, score, opponent } = item;
+        const { res, score, opponent, fullMatch } = item;
         let bgClass = "bg-gray-700 border-gray-600";
         let textClass = "text-gray-300";
 
@@ -65,7 +68,12 @@ const MatchHistory = ({ match }) => {
         if (res === 'D') { bgClass = "bg-red-500/20 border-red-500/50"; textClass = "text-red-400"; }
 
         return (
-            <div key={index} className="flex items-center justify-between w-full p-3 bg-black/20 hover:bg-white/5 rounded-lg border border-white/5 transition-colors group">
+            <div
+                key={index}
+                onClick={() => fullMatch && setSelectedModalMatch(fullMatch)}
+                className="flex items-center justify-between w-full p-3 bg-black/20 hover:bg-white/10 rounded-lg border border-white/5 transition-colors group cursor-pointer"
+                title="Cliquer pour voir la chronologie et les statistiques du match"
+            >
                 <div className="flex items-center gap-3">
                     {/* Bubble */}
                     <div className={`w-8 h-8 flex items-center justify-center rounded-full border ${bgClass} ${textClass} font-black text-xs shadow-lg`}>
@@ -120,7 +128,12 @@ const MatchHistory = ({ match }) => {
                 <table className="w-full text-sm text-left border-collapse">
                     <tbody className="divide-y divide-white/5">
                         {history.h2h.map((h, i) => (
-                            <tr key={i} className="hover:bg-white/5 transition-colors group">
+                            <tr
+                                key={i}
+                                onClick={() => h.fullMatch && setSelectedModalMatch(h.fullMatch)}
+                                className="hover:bg-white/10 transition-colors group cursor-pointer"
+                                title="Cliquer pour voir la chronologie et les statistiques du match"
+                            >
                                 <td className="p-3 text-secondary text-xs w-32 font-mono">{h.date}</td>
                                 <td className="p-3">
                                     <div className="flex items-center gap-3">
@@ -140,7 +153,14 @@ const MatchHistory = ({ match }) => {
                     </tbody>
                 </table>
             </div>
-        </div >
+
+            {/* Match Details Modal */}
+            <MatchDetailsModal
+                match={selectedModalMatch}
+                isOpen={Boolean(selectedModalMatch)}
+                onClose={() => setSelectedModalMatch(null)}
+            />
+        </div>
     );
 };
 

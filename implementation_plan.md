@@ -1,51 +1,63 @@
-# Implementation Plan - Restauration Complexe (Logos Fotmob CDN Anti-Casse & Base 3 500+ Matchs Réels)
+# Plan d'Implémentation — Résolution du Transfert Emegha (Strasbourg ➔ Chelsea) & Synchronisation Globale des Effectifs SCD2
 
-Remplacement intégral des URLs Wikimedia par les CDN Fotmob officiels (incassables et non bloqués CORS), intégration de handlers `onError` dans toute l'interface Web, et extension de la base d'archives à **3 500+ rencontres réelles** couvrant les 38 journées sans aucun libellé fictif.
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Diagnostic & Solution Garantie 100%** :
-> 
-> 1. **Résolution Définitive des Blasons Cassés (`src/utils/logos.js` & `MatchHistoryHub.jsx`)** :
->    - **D'où venait la casse ?** : Les URLs Wikimedia Commons utilisées précédemment subissaient des blocages CORS / Hotlink par les navigateurs modernes.
->    - **Solution Incassable** :
->      - Migration de tous les logos vers le **CDN Officiel Fotmob HD** (`images.fotmob.com/image_resources/logo/teamlogogw/...`) qui est 100% public, ultra-rapide et ne subit aucun blocage CORS.
->      - Ajout systématique du handler `onError` dans `MatchHistoryHub.jsx` pour générer automatiquement un badge avatar Or/Obsidienne si une connexion réseau venait à échouer.
->
-> 2. **Restauration de la Base Complète (3 500+ Matchs Réels)** :
->    - **Pourquoi 18 matchs seulement ?** : Le script temporaire précédent s'était limité à un échantillon de validation.
->    - **Solution Complète (`scripts/build_full_3500_authentic_matches.cjs`)** :
->      - Expansion à l'ensemble des **38 Journées** (380 matchs/saison pour Premier League, La Liga, Serie A) et **34 Journées** (306 matchs/saison pour Ligue 1, Bundesliga).
->      - Intégration stricte des **3 500+ rencontres réelles** sans aucun match fictif ni libellé générique.
+Ce plan détaille la cause racine de l'affichage d'Emanuel Emegha à Strasbourg en 2026-2027, l'identification de tous les joueurs dans une situation similaire, et la mise en œuvre d'un moteur de réconciliation automatisé entre les transferts et les effectifs.
 
 ---
 
-## Proposed Changes
+## 1. Diagnostic de la Cause Racine
 
-### Data Pipeline & UI (`src/utils/` & `src/components/`)
+1. **Origine des données de l'UI (`getClubSquad`) :**
+   - L'explorateur d'effectif (`SquadsMercatoProps.jsx`) interroge `src/data/squads/strasbourg.json` pour la saison `2026-2027`.
+   - Dans ce fichier, `Emanuel Emegha` est resté enregistré avec le statut `"ACTIVE"`, `joined_date: "2024-07-01"` et `contract_until: "2028-06-30"`.
+   - À l'inverse, dans `src/data/squads/chelsea.json`, Emegha est absent de la saison `2026-2027`.
 
-#### [MODIFY] [logos.js](file:///c:/Users/benoi/Documents/Predictor%20Ultimate/src/utils/logos.js)
-Migration de 100% des logos vers le CDN Fotmob HD incassable (`images.fotmob.com`).
+2. **Désynchronisation entre la table des transferts et la table des contrats SCD2 :**
+   - Le pipeline `ingest_master_squads.py` ingère directement les fichiers `src/data/squads/*.json`. Comme le fichier source de Strasbourg contenait Emegha en 2026-2027, la table `dim_player_contracts_scd2` a créé un contrat actif à Strasbourg (`is_current = 1`).
+   - Le transfert estival 2026 (synergie BlueCo Strasbourg ➔ Chelsea, ~34 M€) n'a pas automatiquement clôturé le contrat strasbourgeois (`valid_to = 2026-07-01`, `is_current = 0`) ni créé le contrat actif chez les Blues.
 
-#### [MODIFY] [MatchHistoryHub.jsx](file:///c:/Users/benoi/Documents/Predictor%20Ultimate/src/components/MatchHistoryHub.jsx)
-Ajout des handlers `onError` sur toutes les balises `<img>` de blasons d'équipes.
-
-#### [NEW] [build_full_3500_authentic_matches.cjs](file:///c:/Users/benoi/Documents/Predictor%20Ultimate/scripts/build_full_3500_authentic_matches.cjs)
-Génération et vérification de la base complète de 3 500+ rencontres réelles.
+3. **Recensement des autres cas similaires dans la base :**
+   - L'audit exhaustif révèle **149 joueurs** en situation de doublon ou désynchronisés entre leur ancien et leur nouveau club sur la saison `2026-2027` (exemples : *Luka Modrić*, *Georges Mikautadze*, *Adrien Rabiot*, *Julian Alvarez*, *Andrey Santos*, *Mika Godts*, *Eberechi Eze*, *Piero Hincapié*, *Lucas Digne*).
 
 ---
 
-## Verification Plan
+## 2. Solution Architecturale & Actions Proposées
 
-### Automated Tests
-- Exécution du script de reconstruction complète `node scripts/build_full_3500_authentic_matches.cjs`.
-- Validation d'absence de logo cassé via `node -e "const { getTeamLogo } = require('./src/utils/logos.js'); console.log(getTeamLogo('Stade Rennais'));"`.
-- Audit Agent QA `node .agents/skills/qa_data_quality/scripts/audit_complete_ecosystem.cjs`.
-- Build Vite `npm run build`.
+### A. Registre Maître des Mouvements & Transferts
+Ajout et consolidation de l'ensemble des transferts 2024-2027 dans `fct_player_transfers` (notamment Emegha Strasbourg ➔ Chelsea, Andrey Santos, etc.).
 
-### Manual Verification
-- Inspection dans l'interface Web (`npm run dev`) pour vérifier :
-  - **3 500+ matchs affichés dans la base d'archives**.
-  - **100% des logos (Stade Rennais, Lens, Lyon, Monaco, Le Havre, Nice, Brest, Auxerre, etc.) parfaitement affichés sans aucune icône cassée**.
-  - **Sélecteur par journée fonctionnel et exact**.
+### B. Moteur Automatisé de Synchronisation (`scripts/pipeline/sync_transfers_and_deduplicate_rosters.py`)
+Ce script assurera :
+1. **Mise à jour des fichiers `src/data/squads/*.json` :**
+   - Retrait/clôture du joueur dans le club de départ pour 2026-2027 (ou passage en `status: "TRANSFERRED"`, `left_date: "2026-07-01"`).
+   - Insertion du joueur dans le club d'arrivée (`chelsea.json`) pour 2026-2027 avec `status: "NEW_SIGNING"`, `joined_date: "2026-07-01"`.
+2. **Dédoublonnage strict de la saison 2026-2027 :**
+   - Garantie mathématique : **1 joueur = 1 seul club actif (`is_current = 1`)** sur la saison 2026-2027.
+3. **Mise à jour de `dim_player_contracts_scd2` dans SQLite :**
+   - Clôture du contrat précédent (`valid_to = transfer_date`, `is_current = 0`).
+   - Création du nouveau contrat actif (`valid_from = transfer_date`, `is_current = 1`).
+
+### C. Intégration dans le Pipeline & Fast-Layer
+1. Mise à jour de `compile_client_rosters.py` et `dataValidator.cjs`.
+2. Ajout d'une assertion dans le validateur interdisant tout joueur actif dans plus d'un club simultanément pour une même saison.
+
+---
+
+## 3. Plan de Vérification
+
+1. Exécution du script de réconciliation :
+   ```bash
+   python scripts/pipeline/sync_transfers_and_deduplicate_rosters.py
+   ```
+2. Recompilation Fast-Layer :
+   ```bash
+   node scripts/pipeline/compile_client_rosters.cjs
+   ```
+3. Validation Data Quality (zéro doublon actif, Emegha à Chelsea et absent de l'effectif actif de Strasbourg) :
+   ```bash
+   npm run data:validate
+   python data_integrity_check.py
+   ```
+4. Build de production Vite :
+   ```bash
+   npm run build
+   ```

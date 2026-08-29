@@ -2,9 +2,13 @@ import React, { useState, useMemo } from 'react';
 import PassingNetwork from './PassingNetwork';
 import PLAYERS_DATA from '../data/players.json';
 import SCD2_MERCATO from '../data/squads_mercato_scd2.json';
+import TRANSFERS_ENRICHED from '../data/compiled/transfers_enriched_master.json';
+import COACHES_SCD2 from '../data/compiled/coaches_unified_scd2.json';
 import { SQUADS_MANIFEST, getClubSquad } from '../data/squads_index';
 import { getTeamLogo } from '../utils/logos';
+import TeamLogo from './ui/TeamLogo';
 import PlayerAvatar from './ui/PlayerAvatar';
+import TransferCard from './ui/TransferCard';
 import {
   Users, Filter, Search, ShieldCheck, AlertTriangle, ArrowRight,
   TrendingUp, DollarSign, ArrowUpRight, ArrowDownRight, Calendar,
@@ -21,11 +25,13 @@ export default function SquadsMercatoProps({ targetMatch }) {
   const [rosterPosition, setRosterPosition] = useState('ALL');
   const [rosterSearch, setRosterSearch] = useState('');
 
-  // ── MERCATO SCD TYPE 2 STATE ──
-  const [mercatoSeason, setMercatoSeason] = useState('ALL');
-  const [mercatoLeague, setMercatoLeague] = useState('ALL');
-  const [mercatoStatusFilter, setMercatoStatusFilter] = useState('ALL');
-  const [mercatoSearch, setMercatoSearch] = useState('');
+  // ── ENRICHED FOCUS TRANSFERTS STATE ──
+  const [transferSeason, setTransferSeason] = useState('ALL');
+  const [transferRole, setTransferRole] = useState('ALL');
+  const [transferTypeFilter, setTransferTypeFilter] = useState('ALL');
+  const [transferFeeRange, setTransferFeeRange] = useState('ALL');
+  const [transferSearch, setTransferSearch] = useState('');
+  const [transferSort, setTransferSort] = useState('DATE_DESC');
 
   // ── PROPS TAB STATE ──
   const [propsLeague, setPropsLeague] = useState(targetMatch?.league || 'ALL');
@@ -122,27 +128,77 @@ export default function SquadsMercatoProps({ targetMatch }) {
     });
   }, [currentClubSquad, rosterPosition, rosterSearch]);
 
-  // Filtered Mercato SCD2 Records
-  const filteredSCD2 = useMemo(() => {
-    return (SCD2_MERCATO || []).filter(item => {
-      if (mercatoSeason !== 'ALL') {
-        const hasSeason = (item.seasons || []).some(s => s.includes(mercatoSeason));
-        if (!hasSeason) return false;
-      }
-      if (mercatoLeague !== 'ALL' && item.league !== mercatoLeague) return false;
-      if (mercatoStatusFilter === 'ACTIVE' && !item.is_current) return false;
-      if (mercatoStatusFilter === 'DEPARTED' && item.is_current) return false;
+  // ── HEAD COACH RESOLUTION (SCD Type 2) ──
+  const currentClubCoach = useMemo(() => {
+    if (!selectedClub) return null;
+    const clubNorm = selectedClub.toLowerCase().trim();
+    return (COACHES_SCD2 || []).find(c => {
+      const nameMatch = (c.team_name || '').toLowerCase().includes(clubNorm) ||
+                        clubNorm.includes((c.team_name || '').toLowerCase());
+      if (!nameMatch) return false;
+      if (selectedSeason === 'ALL') return c.is_current;
+      return (c.seasons_covered || []).includes(selectedSeason);
+    }) || (COACHES_SCD2 || []).find(c => {
+      return (c.team_name || '').toLowerCase().includes(clubNorm) ||
+             clubNorm.includes((c.team_name || '').toLowerCase());
+    });
+  }, [selectedClub, selectedSeason]);
 
-      if (mercatoSearch.trim()) {
-        const t = mercatoSearch.toLowerCase().trim();
-        return item.player_name.toLowerCase().includes(t) ||
-               item.club.toLowerCase().includes(t) ||
-               (item.note && item.note.toLowerCase().includes(t)) ||
-               item.position.toLowerCase().includes(t);
+  // ── ENRICHED FOCUS TRANSFERTS FILTERED DATA ──
+  const filteredTransfers = useMemo(() => {
+    return (TRANSFERS_ENRICHED || []).filter(item => {
+      // Season filter
+      if (transferSeason !== 'ALL' && item.season !== transferSeason) return false;
+      // Role filter
+      if (transferRole !== 'ALL' && item.player_role !== transferRole) return false;
+      // Type filter
+      if (transferTypeFilter !== 'ALL' && item.transfer_type !== transferTypeFilter) return false;
+      // Fee Range filter
+      if (transferFeeRange === 'HIGH' && item.fee_numeric_eur < 50000000) return false;
+      if (transferFeeRange === 'MID' && (item.fee_numeric_eur < 15000000 || item.fee_numeric_eur >= 50000000)) return false;
+      if (transferFeeRange === 'LOW' && (item.fee_numeric_eur <= 0 || item.fee_numeric_eur >= 15000000)) return false;
+      if (transferFeeRange === 'FREE' && item.fee_numeric_eur !== 0) return false;
+
+      // Text search
+      if (transferSearch.trim()) {
+        const q = transferSearch.toLowerCase().trim();
+        const matchPlayer = (item.player_name || '').toLowerCase().includes(q);
+        const matchFrom = (item.from_team_name || '').toLowerCase().includes(q);
+        const matchTo = (item.to_team_name || '').toLowerCase().includes(q);
+        const matchNat = (item.player_nationality || '').toLowerCase().includes(q);
+        const matchPos = (item.player_position || '').toLowerCase().includes(q);
+        const matchNotes = (item.transfer_notes || '').toLowerCase().includes(q);
+        return matchPlayer || matchFrom || matchTo || matchNat || matchPos || matchNotes;
       }
       return true;
+    }).sort((a, b) => {
+      if (transferSort === 'FEE_DESC') return b.fee_numeric_eur - a.fee_numeric_eur;
+      if (transferSort === 'VALUE_DESC') return b.market_value_eur - a.market_value_eur;
+      return new Date(b.transfer_date) - new Date(a.transfer_date);
     });
-  }, [mercatoSeason, mercatoLeague, mercatoStatusFilter, mercatoSearch]);
+  }, [transferSeason, transferRole, transferTypeFilter, transferFeeRange, transferSearch, transferSort]);
+
+  // Transfer KPI Metrics
+  const transferStats = useMemo(() => {
+    const list = filteredTransfers;
+    const total = list.length;
+    if (total === 0) return { total: 0, totalFeeM: '0.0 M€', avgAge: '0 ans', recordFee: '0 M€', recordPlayer: 'N/A' };
+    
+    const totalFee = list.reduce((sum, t) => sum + (t.fee_numeric_eur || 0), 0) / 1000000;
+    const totalAge = list.reduce((sum, t) => sum + (t.age_at_transfer || 25), 0);
+    const avgAge = (totalAge / total).toFixed(1);
+    
+    const sortedByFee = [...list].sort((a, b) => b.fee_numeric_eur - a.fee_numeric_eur);
+    const record = sortedByFee[0];
+    
+    return {
+      total,
+      totalFeeM: `${totalFee.toFixed(1)} M€`,
+      avgAge: `${avgAge} ans`,
+      recordFee: record ? record.fee_display : '0 M€',
+      recordPlayer: record ? `${record.player_name} (${record.to_team_name})` : 'N/A'
+    };
+  }, [filteredTransfers]);
 
   const getRoleCategoryBadge = (roleCat) => {
     switch (roleCat) {
@@ -234,8 +290,8 @@ export default function SquadsMercatoProps({ targetMatch }) {
               transition: 'all 0.2s',
             }}
           >
-            <Clock size={15} />
-            <span>Traçabilité Mercato (SCD Type 2)</span>
+            <TrendingUp size={15} />
+            <span>Focus Transferts ({filteredTransfers.length})</span>
           </button>
 
           <button
@@ -365,7 +421,7 @@ export default function SquadsMercatoProps({ targetMatch }) {
                         transition: 'all 0.2s'
                       }}
                     >
-                      <img src={getTeamLogo(c.club_name)} alt={c.club_name} style={{ width: 20, height: 20, objectFit: 'contain' }} />
+                      <TeamLogo teamName={c.club_name} size="xs" />
                       <span>{c.club_name}</span>
                     </button>
                   );
@@ -388,11 +444,7 @@ export default function SquadsMercatoProps({ targetMatch }) {
               gap: 20,
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <img
-                  src={getTeamLogo(currentClubSquad.club_name)}
-                  alt={currentClubSquad.club_name}
-                  style={{ width: 56, height: 56, objectFit: 'contain', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }}
-                />
+                <TeamLogo teamName={currentClubSquad.club_name} size="lg" />
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <h2 style={{ fontSize: '1.6rem', color: 'var(--ivory)', margin: 0, fontFamily: 'var(--font-serif)' }}>
@@ -443,6 +495,64 @@ export default function SquadsMercatoProps({ targetMatch }) {
                     <div style={{ fontSize: 18, fontWeight: 700, color: '#f87171', marginTop: 2 }}>-{squadStats.departures}</div>
                   </div>
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* Head Coach / Staff Technique Card */}
+          {currentClubCoach && (
+            <div style={{
+              background: 'var(--glass-primary)',
+              border: '1px solid var(--ivory-border)',
+              borderRadius: 14,
+              padding: '14px 18px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 14,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <PlayerAvatar name={currentClubCoach.coach_name} photoUrl={currentClubCoach.photo_url} size={46} />
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>
+                      {currentClubCoach.coach_name}
+                    </span>
+                    <span style={{ fontSize: 13 }} title={currentClubCoach.nationality}>
+                      {currentClubCoach.nationality_flag || '🌍'}
+                    </span>
+                    <span style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      padding: '2px 8px',
+                      borderRadius: 6,
+                      background: currentClubCoach.is_current ? 'rgba(34, 197, 94, 0.15)' : 'rgba(239, 68, 68, 0.15)',
+                      color: currentClubCoach.is_current ? '#4ade80' : '#f87171',
+                      border: `1px solid ${currentClubCoach.is_current ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`
+                    }}>
+                      {currentClubCoach.is_current ? '👔 En Poste (Actuel)' : '👔 Ancien Mandat'}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 3, fontSize: 11, color: 'var(--neutral)', flexWrap: 'wrap' }}>
+                    <span>{currentClubCoach.nationality} · <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.age} ans</strong></span>
+                    <span>·</span>
+                    <span>Schéma type : <strong style={{ color: 'var(--gold)' }}>{currentClubCoach.preferred_formation}</strong></span>
+                    <span>·</span>
+                    <span>Mandat : <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.valid_from}</strong> ➔ <strong style={{ color: currentClubCoach.valid_to ? '#f87171' : '#4ade80' }}>{currentClubCoach.valid_to || 'Présent'}</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Coach Stats */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, background: 'var(--obsidian-2)', padding: '8px 14px', borderRadius: 10, border: '1px solid var(--ivory-border)', flexWrap: 'wrap' }}>
+                <span>🏟️ <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.matches_count}</strong> matchs</span>
+                <span>·</span>
+                <span>🏆 <strong style={{ color: '#4ade80' }}>{currentClubCoach.wins}V</strong> - {currentClubCoach.draws}N - {currentClubCoach.losses}D</span>
+                <span>·</span>
+                <span>📈 <strong style={{ color: 'var(--gold)' }}>{currentClubCoach.win_rate_pct}%</strong> victoires</span>
+                <span>·</span>
+                <span>⚡ <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.points_per_match}</strong> PPM</span>
               </div>
             </div>
           )}
@@ -630,11 +740,54 @@ export default function SquadsMercatoProps({ targetMatch }) {
       )}
 
       {/* ═════════════════════════════════════════════════════════════════════════ */}
-      {/* ── TAB 2 : MERCATO SCD TYPE 2 (3 SAISONS) ── */}
+      {/* ── TAB 2 : FOCUS TRANSFERTS & MOUVEMENTS ENRICHIS (3 SAISONS) ── */}
       {/* ═════════════════════════════════════════════════════════════════════════ */}
       {activeSubTab === 'mercato' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          {/* Controls Bar */}
+
+          {/* ── 1. KPI SUMMARY BAR ── */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(20,20,20,0.6) 100%)',
+            border: '1px solid var(--gold-border)',
+            borderRadius: 16,
+            padding: 20,
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: 16,
+          }}>
+            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mouvements Suivis</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--ivory)', marginTop: 4 }}>
+                {transferStats.total} <span style={{ fontSize: 12, color: 'var(--gold)' }}>transferts</span>
+              </div>
+            </div>
+
+            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Volume Financier Total</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: '#4ade80', marginTop: 4 }}>
+                {transferStats.totalFeeM}
+              </div>
+            </div>
+
+            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Âge Moyen au Transfert</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>
+                {transferStats.avgAge}
+              </div>
+            </div>
+
+            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Transfert Record</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--gold)', marginTop: 4, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {transferStats.recordFee}
+              </div>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {transferStats.recordPlayer}
+              </div>
+            </div>
+          </div>
+
+          {/* ── 2. MULTI-DIMENSIONAL CONTROLS & FILTER BAR ── */}
           <div style={{
             background: 'var(--glass-primary)',
             border: '1px solid var(--ivory-border)',
@@ -642,188 +795,167 @@ export default function SquadsMercatoProps({ targetMatch }) {
             padding: 18,
             display: 'flex',
             flexDirection: 'column',
-            gap: 14,
-          }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              🔍 Filtres & Traçabilité Temporelle (Dates d'Entrée & Sortie d'Effectif)
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 1.2fr 2fr', gap: 14 }}>
-              {/* Season filter */}
-              <div>
-                <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Saison Historique</label>
-                <select
-                  value={mercatoSeason}
-                  onChange={e => setMercatoSeason(e.target.value)}
-                  style={{ width: '100%', background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 10, color: 'var(--ivory)', padding: '8px 12px', fontSize: 12, outline: 'none' }}
-                >
-                  <option value="ALL">Toutes les Saisons (3 ans)</option>
-                  <option value="2026-2027">Saison 2026-2027</option>
-                  <option value="2025-2026">Saison 2025-2026</option>
-                  <option value="2024-2025">Saison 2024-2025</option>
-                </select>
-              </div>
-
-              {/* League filter */}
-              <div>
-                <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Championnat</label>
-                <select
-                  value={mercatoLeague}
-                  onChange={e => setMercatoLeague(e.target.value)}
-                  style={{ width: '100%', background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 10, color: 'var(--ivory)', padding: '8px 12px', fontSize: 12, outline: 'none' }}
-                >
-                  <option value="ALL">Tous les Championnats</option>
-                  <option value="FRA-L1">🇫🇷 Ligue 1</option>
-                  <option value="ENG-PL">🇬🇧 Premier League</option>
-                  <option value="ESP-LL">🇪🇸 La Liga</option>
-                  <option value="ITA-SA">🇮🇹 Serie A</option>
-                  <option value="GER-BL">🇩🇪 Bundesliga</option>
-                </select>
-              </div>
-
-              {/* Status filter */}
-              <div>
-                <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Statut dans l'Effectif</label>
-                <select
-                  value={mercatoStatusFilter}
-                  onChange={e => setMercatoStatusFilter(e.target.value)}
-                  style={{ width: '100%', background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 10, color: 'var(--ivory)', padding: '8px 12px', fontSize: 12, outline: 'none' }}
-                >
-                  <option value="ALL">Tous les Statuts</option>
-                  <option value="ACTIVE">✅ Actifs dans le Club (2026-2027)</option>
-                  <option value="DEPARTED">🚪 Joueurs Partis / Transférés</option>
-                </select>
-              </div>
-
-              {/* Search */}
-              <div>
-                <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Recherche Joueur ou Club</label>
-                <div style={{ position: 'relative' }}>
-                  <Search size={14} color="var(--neutral)" style={{ position: 'absolute', left: 12, top: 11 }} />
-                  <input
-                    type="text"
-                    value={mercatoSearch}
-                    onChange={e => setMercatoSearch(e.target.value)}
-                    placeholder="Ex: Greenwood, Rulli, Mbappé..."
-                    style={{
-                      width: '100%',
-                      background: 'var(--obsidian-2)',
-                      border: '1px solid var(--ivory-border)',
-                      borderRadius: 10,
-                      color: 'var(--ivory)',
-                      padding: '8px 12px 8px 34px',
-                      fontSize: 12,
-                      outline: 'none',
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* SCD2 Timeline Cards */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
             gap: 16,
           }}>
-            {filteredSCD2.map((item, idx) => {
-              const isActive = item.is_current;
-              return (
-                <div
-                  key={idx}
+            {/* Top row: Seasons & Sort */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+              {/* Season Pills */}
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {[
+                  { id: 'ALL', label: 'Toutes les Saisons (3 ans)' },
+                  { id: '2026-2027', label: '⚡ 2026-2027 (En cours)' },
+                  { id: '2025-2026', label: '2025-2026' },
+                  { id: '2024-2025', label: '2024-2025' },
+                ].map(s => (
+                  <button
+                    key={s.id}
+                    onClick={() => setTransferSeason(s.id)}
+                    style={{
+                      padding: '7px 14px',
+                      borderRadius: 10,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      border: `1px solid ${transferSeason === s.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
+                      background: transferSeason === s.id ? 'var(--gold-muted)' : 'var(--obsidian-2)',
+                      color: transferSeason === s.id ? 'var(--gold)' : 'var(--neutral)',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Sort Selector */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: 11, color: 'var(--neutral)' }}>Trier par :</span>
+                <select
+                  value={transferSort}
+                  onChange={e => setTransferSort(e.target.value)}
                   style={{
-                    background: 'var(--glass-primary)',
-                    border: `1px solid ${isActive ? 'var(--ivory-border)' : 'rgba(239, 68, 68, 0.3)'}`,
-                    borderRadius: 16,
-                    padding: 16,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 12,
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <PlayerAvatar name={item.player_name} photoUrl={item.photoUrl} size={42} />
-                      <div>
-                        <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>
-                          {item.player_name}
-                        </div>
-                        <div style={{ fontSize: 11, color: 'var(--neutral)' }}>
-                          {item.position} · <strong style={{ color: 'var(--gold)' }}>{item.club}</strong>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 4,
-                      fontSize: 10,
-                      fontWeight: 700,
-                      padding: '4px 8px',
-                      borderRadius: 8,
-                      background: isActive ? 'rgba(34, 197, 94, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-                      color: isActive ? '#4ade80' : '#f87171',
-                      border: `1px solid ${isActive ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
-                    }}>
-                      {isActive ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
-                      <span>{isActive ? 'ACTIF 2026-2027' : 'ANCIEN JOUEUR'}</span>
-                    </div>
-                  </div>
-
-                  <div style={{
                     background: 'var(--obsidian-2)',
                     border: '1px solid var(--ivory-border)',
-                    borderRadius: 12,
-                    padding: 10,
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: 8,
+                    borderRadius: 10,
+                    color: 'var(--ivory)',
+                    padding: '6px 12px',
                     fontSize: 11,
-                  }}>
-                    <div>
-                      <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>Date d'entrée (Valid From)</span>
-                      <strong style={{ color: 'var(--ivory)' }}>{item.valid_from}</strong>
-                    </div>
+                    outline: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <option value="DATE_DESC">Plus Récents (Date)</option>
+                  <option value="FEE_DESC">Montant Décroissant (€)</option>
+                  <option value="VALUE_DESC">Valeur Marchande (€)</option>
+                </select>
+              </div>
+            </div>
 
-                    <div>
-                      <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>Date de sortie (Valid To)</span>
-                      <strong style={{ color: item.valid_to ? '#f87171' : '#4ade80' }}>
-                        {item.valid_to ? item.valid_to : 'Toujours au club'}
-                      </strong>
-                    </div>
-                  </div>
+            {/* Middle row: Role, Operation Type & Fee range */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+              {/* Position / Role Pills */}
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {[
+                  { id: 'ALL', label: 'Tous Postes' },
+                  { id: 'G', label: '🧤 Gardiens' },
+                  { id: 'D', label: '🛡️ Défenseurs' },
+                  { id: 'M', label: '⚙️ Milieux' },
+                  { id: 'A', label: '⚡ Attaquants' },
+                ].map(r => (
+                  <button
+                    key={r.id}
+                    onClick={() => setTransferRole(r.id)}
+                    style={{
+                      padding: '5px 12px',
+                      borderRadius: 8,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      border: `1px solid ${transferRole === r.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
+                      background: transferRole === r.id ? 'var(--gold-muted)' : 'rgba(255,255,255,0.02)',
+                      color: transferRole === r.id ? 'var(--gold)' : 'var(--neutral)',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {r.label}
+                  </button>
+                ))}
+              </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-                    <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
-                      {(item.seasons || []).map(s => (
-                        <span
-                          key={s}
-                          style={{
-                            fontSize: 10,
-                            padding: '2px 6px',
-                            borderRadius: 6,
-                            background: s.includes('2026') ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                            color: s.includes('2026') ? 'var(--gold)' : 'var(--neutral)',
-                            border: '1px solid var(--ivory-border)',
-                          }}
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
+              {/* Fee Range Pills */}
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {[
+                  { id: 'ALL', label: 'Tous Montants' },
+                  { id: 'HIGH', label: '💎 > 50 M€' },
+                  { id: 'MID', label: '15 - 50 M€' },
+                  { id: 'LOW', label: '< 15 M€' },
+                  { id: 'FREE', label: '🆓 Libres' },
+                ].map(f => (
+                  <button
+                    key={f.id}
+                    onClick={() => setTransferFeeRange(f.id)}
+                    style={{
+                      padding: '5px 10px',
+                      borderRadius: 8,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      border: `1px solid ${transferFeeRange === f.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
+                      background: transferFeeRange === f.id ? 'rgba(74, 222, 128, 0.15)' : 'rgba(255,255,255,0.02)',
+                      color: transferFeeRange === f.id ? '#4ade80' : 'var(--neutral)',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-                    {item.note && (
-                      <span style={{ fontSize: 10, color: 'var(--gold)', fontStyle: 'italic' }}>
-                        ℹ️ {item.note}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            {/* Bottom row: Instant Search */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              background: 'var(--obsidian-2)',
+              border: '1px solid var(--ivory-border)',
+              borderRadius: 10,
+              padding: '8px 14px',
+            }}>
+              <Search size={14} color="var(--gold)" style={{ marginRight: 10 }} />
+              <input
+                type="text"
+                value={transferSearch}
+                onChange={e => setTransferSearch(e.target.value)}
+                placeholder="Rechercher joueur, club vendeur/acheteur, nationalité (ex: Mbappé, PSG, Man City, France)..."
+                style={{ width: '100%', background: 'transparent', border: 'none', fontSize: 12, color: 'var(--ivory)', outline: 'none' }}
+              />
+              {transferSearch && (
+                <button
+                  onClick={() => setTransferSearch('')}
+                  style={{ background: 'transparent', border: 'none', color: 'var(--neutral)', cursor: 'pointer', fontSize: 11 }}
+                >
+                  Effacer
+                </button>
+              )}
+            </div>
           </div>
+
+          {/* ── 3. ENRICHED TRANSFER CARDS GRID ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(420px, 1fr))',
+            gap: 16,
+          }}>
+            {filteredTransfers.map((item) => (
+              <TransferCard key={item.transfer_id} transfer={item} />
+            ))}
+          </div>
+
+          {filteredTransfers.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '40px 20px', background: 'var(--glass-primary)', borderRadius: 16, border: '1px solid var(--ivory-border)' }}>
+              <Users size={32} color="var(--neutral)" style={{ margin: '0 auto 12px' }} />
+              <div style={{ fontSize: 14, color: 'var(--ivory)', fontWeight: 600 }}>Aucun mouvement trouvé pour ces critères</div>
+              <div style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>Modifiez les filtres de saison, de poste ou la recherche pour explorer les transferts.</div>
+            </div>
+          )}
         </div>
       )}
 

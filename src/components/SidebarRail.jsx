@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   Swords,
+  Trophy,
   Users,
   Sparkles,
   TrendingUp,
@@ -13,10 +14,11 @@ import {
 const navItems = [
   { to: '/main',            icon: LayoutDashboard, label: '1. Daily Betting Hub & Value Bets' },
   { to: '/match-deep-dive', icon: Swords,           label: '2. Match Deep Dive & H2H' },
-  { to: '/history',         icon: History,          label: '3. Historique & Résumés IA' },
-  { to: '/squads-mercato',  icon: Users,            label: '4. Effectifs & Mercato Multi-Saisons (Transfermarkt)' },
-  { to: '/copilot',         icon: Sparkles,         label: '5. AI Predictor Copilot' },
-  { to: '/bankroll',        icon: TrendingUp,        label: '6. Bankroll & Model Tracking' },
+  { to: '/league-focus',    icon: Trophy,           label: '3. Focus Championnat & Stats' },
+  { to: '/history',         icon: History,          label: '4. Historique & Résumés IA' },
+  { to: '/squads-mercato',  icon: Users,            label: '5. Effectifs & Mercato Multi-Saisons (Transfermarkt)' },
+  { to: '/copilot',         icon: Sparkles,         label: '6. AI Predictor Copilot' },
+  { to: '/bankroll',        icon: TrendingUp,        label: '7. Bankroll & Model Tracking' },
 ];
 
 export default function SidebarRail({ onOpenAiModal }) {

@@ -88,19 +88,22 @@ export default function DynamicIsland() {
             </div>
           </div>
           <div style={{ display: 'flex', gap: 10 }}>
-            {valueMatch.valueBets?.map((vb, i) => (
-              <div key={i} style={{
-                padding: '6px 12px',
-                borderRadius: 8,
-                background: 'var(--positive-muted)',
-                border: '1px solid var(--positive-border)',
-                fontSize: 11,
-                fontWeight: 700,
-                color: 'var(--positive)',
-              }}>
-                {vb.side} · Edge {vb.edge_percentage}
-              </div>
-            ))}
+            {valueMatch.valueBets?.map((vb, i) => {
+              const label = vb.selection_label || vb.side || (vb.selection === '1' ? `Victoire ${valueMatch.homeTeam}` : vb.selection === '2' ? `Victoire ${valueMatch.awayTeam}` : 'Match Nul');
+              return (
+                <div key={i} style={{
+                  padding: '6px 12px',
+                  borderRadius: 8,
+                  background: 'var(--positive-muted)',
+                  border: '1px solid var(--positive-border)',
+                  fontSize: 11,
+                  fontWeight: 800,
+                  color: 'var(--positive)',
+                }}>
+                  ★ {label} @ {vb.betclic_odd || vb.odd} · Edge {vb.edge_percentage || vb.edge}
+                </div>
+              );
+            })}
             <div style={{ padding: '6px 12px', borderRadius: 8, background: 'var(--ivory-ghost)', border: '1px solid var(--ivory-border)', fontSize: 11, color: 'var(--ivory-dim)' }}>
               {valueMatch.league}
             </div>

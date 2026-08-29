@@ -19,8 +19,13 @@ export default function PlayerAvatar({
   border = true,
   borderColor = 'var(--gold-border)'
 }) {
-  const defaultFallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'Player')}&background=0D1220&color=C9A96E&bold=true`;
-  const resolvedUrl = photoUrl || getPlayerPhoto(clubName, name) || defaultFallback;
+  // Ignore broken legacy URLs from third-party CDNs
+  const isValidPhotoUrl = photoUrl && 
+    typeof photoUrl === 'string' && 
+    !photoUrl.includes('images.fotmob.com') && 
+    !photoUrl.includes('api-sports.io');
+
+  const resolvedUrl = (isValidPhotoUrl ? photoUrl : null) || getPlayerPhoto(clubName, name) || defaultFallback;
 
   const [currentSrc, setCurrentSrc] = useState(resolvedUrl);
   const [hasFailed, setHasFailed] = useState(false);
@@ -33,7 +38,13 @@ export default function PlayerAvatar({
   const handleError = () => {
     if (!hasFailed) {
       setHasFailed(true);
-      setCurrentSrc(defaultFallback);
+      // Try getPlayerPhoto fallback first if not already tried, otherwise UI initials avatar
+      const fallback = getPlayerPhoto(clubName, name);
+      if (fallback && fallback !== currentSrc) {
+        setCurrentSrc(fallback);
+      } else {
+        setCurrentSrc(defaultFallback);
+      }
     }
   };
 
