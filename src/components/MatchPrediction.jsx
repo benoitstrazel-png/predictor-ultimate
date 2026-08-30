@@ -505,16 +505,28 @@ const MatchPrediction = ({ match }) => {
                     }}>
                       {p.position || 'FW'}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {p.name}
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {p.name}
+                      </span>
+                      {playerViewMode === 'SCORERS' && (p.seasonGoals !== undefined && p.seasonGoals > 0) && (
+                        <span style={{ fontSize: 8, color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {p.seasonGoals} but{p.seasonGoals > 1 ? 's' : ''} (xG: {p.xGMatch || p.xg90 || '—'})
+                        </span>
+                      )}
+                      {playerViewMode === 'ASSISTS' && (p.seasonAssists !== undefined && p.seasonAssists > 0) && (
+                        <span style={{ fontSize: 8, color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {p.seasonAssists} pass{p.seasonAssists > 1 ? 'es' : 'e'}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                     <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--gold)' }}>
                       {playerViewMode === 'SCORERS' ? (p.goalProb || `${p.goalProbVal}%`) : (p.assistProb || `${p.assistProbVal}%`)}
                     </div>
-                    <div style={{ fontSize: 8, color: 'var(--neutral)' }}>
-                      {playerViewMode === 'SCORERS' ? `@ ${p.oddScorer || '2.20'}` : `@ ${p.oddAssist || '2.80'}`}
+                    <div style={{ fontSize: 8, color: 'var(--neutral)' }} title="Cote théorique calculée par le modèle">
+                      {playerViewMode === 'SCORERS' ? `Cote est. @ ${p.oddScorer || '2.20'}` : `Cote est. @ ${p.oddAssist || '2.80'}`}
                     </div>
                   </div>
                 </div>
@@ -551,16 +563,28 @@ const MatchPrediction = ({ match }) => {
                     }}>
                       {p.position || 'FW'}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {p.name}
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {p.name}
+                      </span>
+                      {playerViewMode === 'SCORERS' && (p.seasonGoals !== undefined && p.seasonGoals > 0) && (
+                        <span style={{ fontSize: 8, color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {p.seasonGoals} but{p.seasonGoals > 1 ? 's' : ''} (xG: {p.xGMatch || p.xg90 || '—'})
+                        </span>
+                      )}
+                      {playerViewMode === 'ASSISTS' && (p.seasonAssists !== undefined && p.seasonAssists > 0) && (
+                        <span style={{ fontSize: 8, color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {p.seasonAssists} pass{p.seasonAssists > 1 ? 'es' : 'e'}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                     <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--gold)' }}>
                       {playerViewMode === 'SCORERS' ? (p.goalProb || `${p.goalProbVal}%`) : (p.assistProb || `${p.assistProbVal}%`)}
                     </div>
-                    <div style={{ fontSize: 8, color: 'var(--neutral)' }}>
-                      {playerViewMode === 'SCORERS' ? `@ ${p.oddScorer || '2.20'}` : `@ ${p.oddAssist || '2.80'}`}
+                    <div style={{ fontSize: 8, color: 'var(--neutral)' }} title="Cote théorique calculée par le modèle">
+                      {playerViewMode === 'SCORERS' ? `Cote est. @ ${p.oddScorer || '2.20'}` : `Cote est. @ ${p.oddAssist || '2.80'}`}
                     </div>
                   </div>
                 </div>
