@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/164739_xsmall.png",
-            "linkToMatch": "/matches/schalke-04-vs-fagiano-okayama-fc/711bezv#5958635",
-            "date": {
-              "utcTime": "2026-07-25T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/164739/overview/fagiano-okayama-fc",
-            "tooltipText": {
-              "utcTime": "2026-07-25T14:00:00.000Z",
-              "homeTeam": "Schalke 04",
-              "homeTeamId": 10189,
-              "homeScore": "3",
-              "awayTeam": "Fagiano Okayama FC",
-              "awayTeamId": 164739,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "10189",
-              "name": "Schalke 04",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "164739",
-              "name": "Fagiano Okayama FC",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8253_xsmall.png",
             "linkToMatch": "/matches/hessen-kassel-vs-schalke-04/2t97qs#5765865",
             "date": {
@@ -416,6 +386,36 @@
             "home": {
               "id": "7761",
               "name": "Hallescher FC",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10189",
+              "name": "Schalke 04",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8406_xsmall.png",
+            "linkToMatch": "/matches/augsburg-vs-schalke-04/2uxy4s#5881144",
+            "date": {
+              "utcTime": "2026-08-30T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8406/overview/augsburg",
+            "tooltipText": {
+              "utcTime": "2026-08-30T15:30:00.000Z",
+              "homeTeam": "Augsburg",
+              "homeTeamId": 8406,
+              "homeScore": "3",
+              "awayTeam": "Schalke 04",
+              "awayTeamId": 10189,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8406",
+              "name": "Augsburg",
               "isOurTeam": false
             },
             "away": {
@@ -564,13 +564,67 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 8149,
+          "priority": 9,
+          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+          "localizedTextId": "h2h_undefeated",
+          "statValues": [
+            {
+              "value": 8149,
+              "name": "Union Berlin",
+              "type": "team"
+            },
+            {
+              "value": 10189,
+              "name": "Schalke 04",
+              "type": "team"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 4,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Union Berlin haven't lost to Schalke 04 in their last 5 meetings (1W, 4D).",
+          "color": "#E30613"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8149,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 10 matches",
+          "color": "#E30613"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 10189,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -580,7 +634,61 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
+          "color": "#083890"
+        },
+        {
+          "type": "player",
+          "playerId": 287894,
+          "teamId": 10189,
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "statValues": [
+            {
+              "value": 287894,
+              "name": "Loris Karius",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 10,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Loris Karius is ranked 1 in saves per match in the competition (10)",
+          "color": "#083890"
+        },
+        {
+          "type": "player",
+          "playerId": 860056,
+          "teamId": 10189,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 860056,
+              "name": "Moussa Sylla",
+              "type": "player"
+            },
+            {
+              "value": 10189,
+              "name": "Schalke 04",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Moussa Sylla has the most shots on target per match for Schalke 04 (2)",
           "color": "#083890"
         }
       ],

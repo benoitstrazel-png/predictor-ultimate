@@ -469,7 +469,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Arsenal have scored in their last 12 matches and Chelsea have scored in their last 5 matches."
+              "defaultText": "Arsenal have scored in their last 12 matches and Chelsea have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +490,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "8",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,17 +502,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have scored 8 goals in their last 3 matches."
+              "defaultText": "Chelsea have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Arsenal haven't drawn in their last 12 matches."
+              "defaultText": "Arsenal haven't drawn in their last 12 matches and Chelsea in their last 4."
             }
           ]
         },
@@ -704,35 +706,39 @@
     "weather": {
       "temperature": 24,
       "windSpeed": 5,
-      "windDirectionCardinal": "SW",
-      "iconCode": 30,
-      "relativeHumidity": 56,
-      "precipChance": 6,
+      "windDirectionCardinal": "SSW",
+      "iconCode": 28,
+      "relativeHumidity": 61,
+      "precipChance": 11,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 45,
-      "description": "Partly Cloudy",
+      "cloudCover": 64,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-30T06:00:12Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-08-30T18:00:08Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795435,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9825,
         "name": "Arsenal",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 850354,
+            "age": 28,
             "name": "Bruno Guimarães",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 56752301,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-27T15:39:40Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -741,10 +747,13 @@
           },
           {
             "id": 942381,
+            "age": 25,
             "name": "Jurriën Timber",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 63981582,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-08-27T15:38:59Z",
               "type": "injury",
               "expectedReturn": "Early September 2026"
             },
@@ -753,10 +762,13 @@
           },
           {
             "id": 955406,
+            "age": 25,
             "name": "William Saliba",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 91180122,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-08-28T17:58:02Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
@@ -768,13 +780,18 @@
       "awayTeam": {
         "id": 8455,
         "name": "Chelsea",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1473806,
+            "age": 21,
             "name": "Marco Palestra",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 12431941,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-08-28T17:35:27Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -783,10 +800,13 @@
           },
           {
             "id": 1137668,
+            "age": 24,
             "name": "Moisés Caicedo",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
+            "marketValue": 108900932,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-08-30T13:50:52Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -795,10 +815,13 @@
           },
           {
             "id": 1137705,
+            "age": 25,
             "name": "Enzo Fernández",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 92583755,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-08-28T17:33:00Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -807,10 +830,13 @@
           },
           {
             "id": 156008,
+            "age": 36,
             "name": "Jordan Henderson",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 1602436,
             "unavailability": {
               "injuryId": 34,
-              "lastUpdated": "2026-08-10T16:33:49Z",
               "type": "injury",
               "expectedReturn": "Early September 2026"
             },

@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6488_xsmall.png",
-            "linkToMatch": "/matches/carrarese-vs-napoli/27prol#5968149",
-            "date": {
-              "utcTime": "2026-07-26T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6488/overview/carrarese",
-            "tooltipText": {
-              "utcTime": "2026-07-26T16:00:00.000Z",
-              "homeTeam": "Napoli",
-              "homeTeamId": 9875,
-              "homeScore": "2",
-              "awayTeam": "Carrarese",
-              "awayTeamId": 6488,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6488",
-              "name": "Carrarese",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8371_xsmall.png",
             "linkToMatch": "/matches/osasuna-vs-napoli/2r46o8#5987734",
             "date": {
@@ -270,6 +240,36 @@
               "id": "9875",
               "name": "Napoli",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171_xsmall.png",
+            "linkToMatch": "/matches/napoli-vs-como/3bmv18#5749658",
+            "date": {
+              "utcTime": "2026-08-30T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10171/overview/como",
+            "tooltipText": {
+              "utcTime": "2026-08-30T16:30:00.000Z",
+              "homeTeam": "Napoli",
+              "homeTeamId": 9875,
+              "homeScore": "1",
+              "awayTeam": "Como",
+              "awayTeamId": 10171,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "9875",
+              "name": "Napoli",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": false
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Napoli haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Napoli have 3W, 1D, 1L in five matches while Arsenal have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -466,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "9",
+                "10",
                 "away_team",
                 "12"
               ],
@@ -479,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Napoli have scored in their last 9 matches and Arsenal have scored in their last 12 matches."
+              "defaultText": "Napoli have scored in their last 10 matches and Arsenal have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -538,25 +544,8 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 9875,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#12A0D7"
-        },
-        {
-          "type": "team",
-          "playerId": null,
           "teamId": 9825,
-          "priority": 1345,
+          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8637_xsmall.png",
-            "linkToMatch": "/matches/galatasaray-vs-rennes/2trgdz#5981399",
-            "date": {
-              "utcTime": "2026-08-02T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8637/overview/galatasaray",
-            "tooltipText": {
-              "utcTime": "2026-08-02T18:00:00.000Z",
-              "homeTeam": "Galatasaray",
-              "homeTeamId": 8637,
-              "homeScore": "3",
-              "awayTeam": "Rennes",
-              "awayTeamId": 9851,
-              "awayScore": "3"
-            },
-            "score": "3 - 3",
-            "home": {
-              "id": "8637",
-              "name": "Galatasaray",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2054260_xsmall.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "9847",
               "name": "Paris Saint-Germain",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8682_xsmall.png",
+            "linkToMatch": "/matches/le-mans-vs-rennes/2u9b4q#5802916",
+            "date": {
+              "utcTime": "2026-08-30T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/8682/overview/le-mans",
+            "tooltipText": {
+              "utcTime": "2026-08-30T15:15:00.000Z",
+              "homeTeam": "Rennes",
+              "homeTeamId": 9851,
+              "homeScore": "3",
+              "awayTeam": "Le Mans",
+              "awayTeamId": 8682,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "9851",
+              "name": "Rennes",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8682",
+              "name": "Le Mans",
               "isOurTeam": false
             }
           }
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "1",
+                "3",
+                "away_team",
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Rennes haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Rennes have 1W, 1D, 3L in five matches while Marseille have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -507,11 +513,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "5"
+                "away_team",
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Rennes haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Marseille haven't drawn in their last 10 matches."
             }
           ]
         },
@@ -562,33 +568,38 @@
           "playerId": null,
           "teamId": 9851,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
-          "color": "#E13327"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9851,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 12,
+              "value": 13,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 12 matches",
+          "text": "Haven't kept a clean sheet in 13 matches",
+          "color": "#E13327"
+        },
+        {
+          "type": "player",
+          "playerId": 1280225,
+          "teamId": 9851,
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
+          "statValues": [
+            {
+              "value": 1280225,
+              "name": "Estéban Lepaul",
+              "type": "player"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Estéban Lepaul is the competition's top scorer (3)",
           "color": "#E13327"
         },
         {
@@ -617,23 +628,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 8592,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have kept the most clean sheets in the competition (1)",
-          "color": "#0A60A8"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8592,
           "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
@@ -655,6 +649,23 @@
             }
           ],
           "text": "Marseille have won the previous 2 matches against Rennes.",
+          "color": "#0A60A8"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8592,
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
+          "statValues": [
+            {
+              "value": 4,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Average 4 goals per match",
           "color": "#0A60A8"
         }
       ],

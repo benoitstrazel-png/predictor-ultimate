@@ -443,7 +443,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,16 +456,16 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Paris FC haven't lost in 4 matches."
+              "defaultText": "Paris FC haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
-                "away_team",
+                "home_team",
                 "3"
               ],
               "DefaultLabels": [
@@ -477,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored in their last 3 away matches."
+              "defaultText": "Paris FC have scored in their last 3 home matches."
             },
             {
               "OddsType": "ou",
@@ -489,7 +489,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "4",
+                "5",
                 "4"
               ],
               "DefaultLabels": [
@@ -501,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris FC have scored 4 goals in their last 3 matches, while Lyon have scored 4."
+              "defaultText": "Paris FC have scored 5 goals in their last 3 matches, while Lyon have scored 4."
             },
             {
               "OddsType": "dc",
@@ -511,9 +511,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "1",
+                "2",
                 "3",
-                "1",
+                "0",
                 "away_team",
                 "2",
                 "2",
@@ -530,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris FC have 1W, 3D, 1L in five matches while Lyon have 2W, 2D, 1L."
+              "defaultText": "Paris FC have 2W, 3D, 0L in five matches while Lyon have 2W, 2D, 1L."
             }
           ]
         },
@@ -567,6 +567,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 6379,
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have kept the most clean sheets in the competition (2)",
+          "color": "#0C1C3D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 6379,
           "priority": 7,
           "defaultText": "{0} and {1} have drawn their last {2} matches against each other.",
           "localizedTextId": "h2h_draw_streak_v2",
@@ -588,23 +605,6 @@
             }
           ],
           "text": "Paris FC and Lyon have drawn their last 3 matches against each other.",
-          "color": "#0C1C3D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 6379,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
           "color": "#0C1C3D"
         },
         {

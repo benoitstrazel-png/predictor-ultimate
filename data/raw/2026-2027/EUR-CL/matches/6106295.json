@@ -466,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "8"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,20 +477,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Club Brugge have scored in their last 8 home matches."
+              "defaultText": "Club Brugge have scored in their last 7 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "7",
-                "2"
+                "1.67",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Club Brugge have scored 7 goals in their last 3 matches, while Aston Villa have scored 2."
+              "defaultText": "Club Brugge have an average of 1.67 goals in their last three matches and Aston Villa have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -557,6 +556,23 @@
           "playerId": null,
           "teamId": 10252,
           "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 7 matches",
+          "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10252,
+          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -577,23 +593,6 @@
             }
           ],
           "text": "Aston Villa have won the previous 2 matches against Club Brugge.",
-          "color": "#7D1142"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10252,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#7D1142"
         }
       ],

@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8149_xsmall.png",
-            "linkToMatch": "/matches/union-berlin-vs-augsburg/29lgzs#4829619",
-            "date": {
-              "utcTime": "2026-05-16T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8149/overview/union-berlin",
-            "tooltipText": {
-              "utcTime": "2026-05-16T13:30:00.000Z",
-              "homeTeam": "Union Berlin",
-              "homeTeamId": 8149,
-              "homeScore": "4",
-              "awayTeam": "Augsburg",
-              "awayTeamId": 8406,
-              "awayScore": "0"
-            },
-            "score": "4 - 0",
-            "home": {
-              "id": "8149",
-              "name": "Union Berlin",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8406",
-              "name": "Augsburg",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8271_xsmall.png",
@@ -422,6 +392,36 @@
               "id": "8406",
               "name": "Augsburg",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10189_xsmall.png",
+            "linkToMatch": "/matches/augsburg-vs-schalke-04/2uxy4s#5881144",
+            "date": {
+              "utcTime": "2026-08-30T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10189/overview/schalke-04",
+            "tooltipText": {
+              "utcTime": "2026-08-30T15:30:00.000Z",
+              "homeTeam": "Augsburg",
+              "homeTeamId": 8406,
+              "homeScore": "3",
+              "awayTeam": "Schalke 04",
+              "awayTeamId": 10189,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8406",
+              "name": "Augsburg",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10189",
+              "name": "Schalke 04",
+              "isOurTeam": false
             }
           }
         ]
@@ -564,13 +564,72 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 9810,
+          "priority": 9,
+          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+          "localizedTextId": "h2h_undefeated",
+          "statValues": [
+            {
+              "value": 9810,
+              "name": "Eintracht Frankfurt",
+              "type": "team"
+            },
+            {
+              "value": 8406,
+              "name": "Augsburg",
+              "type": "team"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Eintracht Frankfurt haven't lost to Augsburg in their last 5 meetings (2W, 3D).",
+          "color": "#000000"
+        },
+        {
+          "type": "player",
+          "playerId": 1447050,
+          "teamId": 9810,
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
+          "statValues": [
+            {
+              "value": 1447050,
+              "name": "Younes Ebnoutalib",
+              "type": "player"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Younes Ebnoutalib is the competition's top scorer (3)",
+          "color": "#000000"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 8406,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 18,
+              "value": 21,
               "name": null,
               "type": "integer"
             },
@@ -580,7 +639,61 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 18 goals in their last 5 matches",
+          "text": "Have scored 21 goals in their last 5 matches",
+          "color": "#B93733"
+        },
+        {
+          "type": "player",
+          "playerId": 556029,
+          "teamId": 8406,
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "statValues": [
+            {
+              "value": 556029,
+              "name": "Marius Wolf",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Marius Wolf is ranked 1 in big chances created in the competition (5)",
+          "color": "#B93733"
+        },
+        {
+          "type": "player",
+          "playerId": 556029,
+          "teamId": 8406,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 556029,
+              "name": "Marius Wolf",
+              "type": "player"
+            },
+            {
+              "value": 8406,
+              "name": "Augsburg",
+              "type": "team"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Marius Wolf has created the most big chances for Augsburg (5)",
           "color": "#B93733"
         }
       ],
@@ -602,37 +715,41 @@
       }
     },
     "weather": {
-      "temperature": 28,
+      "temperature": 29,
       "windSpeed": 3,
-      "windDirectionCardinal": "SSW",
+      "windDirectionCardinal": "SW",
       "iconCode": 30,
-      "relativeHumidity": 33,
-      "precipChance": 2,
+      "relativeHumidity": 34,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 48,
+      "cloudCover": 47,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-30T06:00:15Z",
+      "lastUpdated": "2026-08-30T18:00:11Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5881154,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9810,
         "name": "Eintracht Frankfurt",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1175708,
+            "age": 24,
             "name": "Ansgar Knauff",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 15182104,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-27T14:57:50Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -641,10 +758,13 @@
           },
           {
             "id": 1339269,
+            "age": 22,
             "name": "Hugo Larsson",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 24825025,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-27T17:17:41Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -653,10 +773,13 @@
           },
           {
             "id": 629805,
+            "age": 28,
             "name": "Ritsu Doan",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 17546343,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-27T17:06:57Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -665,10 +788,13 @@
           },
           {
             "id": 1083717,
+            "age": 26,
             "name": "Jessic Ngankam",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 697372,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-18T12:52:26Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -677,10 +803,13 @@
           },
           {
             "id": 1176780,
+            "age": 22,
             "name": "Nnamdi Collins",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 19246953,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-08-18T11:37:00Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -692,13 +821,18 @@
       "awayTeam": {
         "id": 8406,
         "name": "Augsburg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1201713,
+            "age": 24,
             "name": "Tim Breithaupt",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 984838,
             "unavailability": {
               "injuryId": 29,
-              "lastUpdated": "2026-08-20T19:29:33Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -707,10 +841,13 @@
           },
           {
             "id": 1561984,
+            "age": 21,
             "name": "Klaus Sima Suso",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1770768,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-20T19:29:00Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },

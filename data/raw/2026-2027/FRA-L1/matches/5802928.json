@@ -447,9 +447,9 @@
                 "1",
                 "3",
                 "away_team",
+                "1",
                 "2",
-                "2",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,38 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Auxerre have 1W, 1D, 3L in five matches while Nice have 2W, 2D, 1L."
+              "defaultText": "Auxerre have 1W, 1D, 3L in five matches while Nice have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
-              "StatValues": [
-                "home_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored in their last 5 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
               "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
               "TextTemplateId": "goalless_team",
               "StatValues": [
                 "away_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +483,28 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Nice haven't scored in their last 3 matches."
+              "defaultText": "Nice haven't scored in their last 4 matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
+              "StatValues": [
+                "away_team",
+                "4"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_glove",
+              "defaultText": "Nice haven't scored in their last 4 matches."
             },
             {
               "OddsType": "dc",
@@ -580,6 +580,23 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 8583,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#055DC6"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 9831,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
@@ -614,6 +631,33 @@
             }
           ],
           "text": "Haven't scored in their last 4 matches",
+          "color": "#181818"
+        },
+        {
+          "type": "player",
+          "playerId": 953812,
+          "teamId": 9831,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 953812,
+              "name": "Sofiane Diop",
+              "type": "player"
+            },
+            {
+              "value": 9831,
+              "name": "Nice",
+              "type": "team"
+            },
+            {
+              "value": 1.1,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Sofiane Diop has the most shots on target per match for Nice (1.1)",
           "color": "#181818"
         }
       ],
