@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686_xsmall.png",
-            "linkToMatch": "/matches/roma-vs-brighton-hove-albion/2y8gp1#5874662",
-            "date": {
-              "utcTime": "2026-08-08T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8686/overview/roma",
-            "tooltipText": {
-              "utcTime": "2026-08-08T14:00:00.000Z",
-              "homeTeam": "Brighton & Hove Albion",
-              "homeTeamId": 10204,
-              "homeScore": "3",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "10204",
-              "name": "Brighton & Hove Albion",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9857_xsmall.png",
             "linkToMatch": "/matches/bologna-vs-brighton-hove-albion/3btb4k#5899065",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Tromsø",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455_xsmall.png",
+            "linkToMatch": "/matches/chelsea-vs-brighton-hove-albion/2vni1p#5795427",
+            "date": {
+              "utcTime": "2026-08-30T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8455/overview/chelsea",
+            "tooltipText": {
+              "utcTime": "2026-08-30T13:00:00.000Z",
+              "homeTeam": "Chelsea",
+              "homeTeamId": 8455,
+              "homeScore": "4",
+              "awayTeam": "Brighton & Hove Albion",
+              "awayTeamId": 10204,
+              "awayScore": "3"
+            },
+            "score": "4 - 3",
+            "home": {
+              "id": "8455",
+              "name": "Chelsea",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475_xsmall.png",
-            "linkToMatch": "/matches/leeds-united-vs-rb-leipzig/80yz8ou#5847099",
-            "date": {
-              "utcTime": "2026-08-08T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
-            "tooltipText": {
-              "utcTime": "2026-08-08T13:00:00.000Z",
-              "homeTeam": "Leeds United",
-              "homeTeamId": 8463,
-              "homeScore": "2",
-              "awayTeam": "RB Leipzig",
-              "awayTeamId": 178475,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8463",
-              "name": "Leeds United",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -422,6 +392,36 @@
               "id": "8463",
               "name": "Leeds United",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937_xsmall.png",
+            "linkToMatch": "/matches/leeds-united-vs-brentford/2sso1t#5795430",
+            "date": {
+              "utcTime": "2026-08-30T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9937/overview/brentford",
+            "tooltipText": {
+              "utcTime": "2026-08-30T13:00:00.000Z",
+              "homeTeam": "Leeds United",
+              "homeTeamId": 8463,
+              "homeScore": "1",
+              "awayTeam": "Brentford",
+              "awayTeamId": 9937,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8463",
+              "name": "Leeds United",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9937",
+              "name": "Brentford",
+              "isOurTeam": false
             }
           }
         ]
@@ -556,25 +556,47 @@
           "color": "#0850A0"
         },
         {
-          "type": "player",
-          "playerId": 1251334,
+          "type": "team",
+          "playerId": null,
           "teamId": 10204,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 1251334,
-              "name": "Jack Hinshelwood",
+              "value": 3.5,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Average 3.5 goals per match",
+          "color": "#0850A0"
+        },
+        {
+          "type": "player",
+          "playerId": 613715,
+          "teamId": 10204,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 613715,
+              "name": "Olivier Boscagli",
               "type": "player"
             },
             {
-              "value": 2,
+              "value": 10204,
+              "name": "Brighton & Hove Albion",
+              "type": "team"
+            },
+            {
+              "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Jack Hinshelwood is the competition's top scorer (2)",
+          "text": "Olivier Boscagli has the most shots on target per match for Brighton & Hove Albion (1)",
           "color": "#0850A0"
         },
         {
@@ -586,7 +608,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -596,20 +618,20 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#0060AA"
         },
         {
           "type": "player",
-          "playerId": 1250485,
+          "playerId": 861197,
           "teamId": 8463,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1250485,
-              "name": "Tarik Muharemovic",
+              "value": 861197,
+              "name": "Lukas Nmecha",
               "type": "player"
             },
             {
@@ -620,10 +642,37 @@
             {
               "value": 1,
               "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Lukas Nmecha has created the most big chances for Leeds United (1)",
+          "color": "#0060AA"
+        },
+        {
+          "type": "player",
+          "playerId": 952322,
+          "teamId": 8463,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 952322,
+              "name": "Brenden Aaronson",
+              "type": "player"
+            },
+            {
+              "value": 8463,
+              "name": "Leeds United",
+              "type": "team"
+            },
+            {
+              "value": 0.7,
+              "name": null,
               "type": "double"
             }
           ],
-          "text": "Tarik Muharemovic has the most shots on target per match for Leeds United (1)",
+          "text": "Brenden Aaronson has the most shots on target per match for Leeds United (0.7)",
           "color": "#0060AA"
         }
       ],
