@@ -126,39 +126,64 @@ h3 { font-size: clamp(1rem, 1.5vw, 1.375rem); font-weight: 400; }
 /* ── DYNAMIC ISLAND ─────────────────────────────────── */
 .dynamic-island {
   position: fixed;
-  top: 16px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
-  background: var(--island-bg);
-  border: 1px solid var(--island-border);
+  background: var(--island-bg, rgba(8, 11, 20, 0.95));
+  border: 1px solid var(--island-border, rgba(245, 240, 232, 0.12));
   border-radius: 100px;
-  backdrop-filter: var(--island-blur);
-  -webkit-backdrop-filter: var(--island-blur);
-  box-shadow: var(--shadow-float);
+  backdrop-filter: var(--island-blur, blur(24px) saturate(2));
+  -webkit-backdrop-filter: var(--island-blur, blur(24px) saturate(2));
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(245, 240, 232, 0.08);
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.5s var(--ease-spring);
-  will-change: width, height, border-radius;
+  transition: opacity 0.25s ease, transform 0.25s ease, width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.35s ease, background 0.25s ease, box-shadow 0.25s ease;
+  will-change: width, height, transform, border-radius;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+/* Hover: micro-interaction mise en avant */
+.dynamic-island:hover {
+  border-color: rgba(201, 169, 110, 0.3);
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.9), 0 0 24px rgba(201, 169, 110, 0.12);
+}
+
+/* Click: iOS Press effect */
+.dynamic-island:active {
+  transform: translateX(-50%) scale(0.97);
+  transition: transform 0.1s ease;
 }
 
 .dynamic-island.pill {
-  width: 160px;
-  height: 36px;
+  width: auto;
+  min-width: 190px;
+  max-width: 320px;
+  height: 38px;
 }
 
 .dynamic-island.expanded {
-  width: 420px;
+  width: min(440px, 94vw);
+  max-height: 85vh;
   height: auto;
-  border-radius: 24px;
+  border-radius: 22px;
+  cursor: default;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 240, 232, 0.2) transparent;
 }
 
+.dynamic-island.expanded:active {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Pill Content */
 .island-pill-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  height: 36px;
+  height: 38px;
   padding: 0 14px;
   white-space: nowrap;
   font-size: 12px;
@@ -166,21 +191,46 @@ h3 { font-size: clamp(1rem, 1.5vw, 1.375rem); font-weight: 400; }
   letter-spacing: 0.02em;
   color: var(--ivory);
   opacity: 1;
-  transition: opacity 0.2s;
+  transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
+.island-pill-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.island-pill-teams {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.island-pill-badge-score {
+  background: rgba(245, 240, 232, 0.08);
+  border: 1px solid rgba(245, 240, 232, 0.12);
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: monospace;
+  color: var(--gold);
+}
+
+/* Expanded Content */
 .island-expanded-content {
-  padding: 16px 20px 18px;
+  padding: 14px 16px 18px;
   opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
 }
 
 .dynamic-island.expanded .island-pill-content {
+  display: none;
   opacity: 0;
   pointer-events: none;
-  position: absolute;
 }
 
 .dynamic-island.expanded .island-expanded-content {
@@ -189,9 +239,329 @@ h3 { font-size: clamp(1rem, 1.5vw, 1.375rem); font-weight: 400; }
   pointer-events: auto;
 }
 
+/* Animations */
+.island-fade-in {
+  animation: islandFadeIn 0.25s ease forwards;
+}
+
+@keyframes islandFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header bar */
+.island-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.island-feedback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--neutral);
+  background: rgba(245, 240, 232, 0.04);
+  border: 1px solid rgba(245, 240, 232, 0.06);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.island-refresh-btn {
+  background: transparent;
+  border: none;
+  color: var(--neutral);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 2px;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+
+.island-refresh-btn:hover {
+  color: var(--gold);
+}
+
+.island-refresh-btn.spinning {
+  animation: islandSpin 0.6s linear infinite;
+}
+
+@keyframes islandSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.island-confidence-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  font-family: var(--font-ui);
+}
+
+.island-close-btn {
+  background: rgba(245, 240, 232, 0.06);
+  border: 1px solid rgba(245, 240, 232, 0.1);
+  border-radius: 8px;
+  color: var(--neutral);
+  font-size: 11px;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.island-close-btn:hover {
+  background: rgba(245, 240, 232, 0.12);
+  color: var(--ivory);
+}
+
+/* Alert Banner */
+.island-alert-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(201, 169, 110, 0.08);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  margin-bottom: 10px;
+}
+
+/* Matches Strip */
+.island-matches-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+.island-matches-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.island-match-pill-btn {
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  background: rgba(245, 240, 232, 0.04);
+  border: 1px solid rgba(245, 240, 232, 0.08);
+  color: var(--neutral);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.island-match-pill-btn:hover {
+  color: var(--ivory);
+  background: rgba(245, 240, 232, 0.08);
+}
+
+.island-match-pill-btn.active {
+  background: var(--gold-muted);
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+/* Tabs Nav */
+.island-tabs-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.island-tabs-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.island-tab-btn {
+  padding: 4px 9px;
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--neutral);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  font-family: var(--font-ui);
+}
+
+.island-tab-btn:hover {
+  color: var(--ivory);
+}
+
+.island-tab-btn.active {
+  background: rgba(245, 240, 232, 0.08);
+  border-color: rgba(245, 240, 232, 0.15);
+  color: var(--ivory);
+}
+
+/* Tab Panes */
+.island-tab-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Match Row */
+.island-match-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.island-team-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.island-team-col.away {
+  justify-content: flex-end;
+}
+
+.island-team-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+.island-team-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ivory);
+  line-height: 1.2;
+}
+
+.island-center-score-col {
+  text-align: center;
+  padding: 0 8px;
+}
+
+.island-score-display {
+  font-family: monospace;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.island-score-caption {
+  font-size: 9px;
+  color: var(--neutral);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.island-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--neutral);
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(245, 240, 232, 0.05);
+}
+
+.island-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.island-ou-block {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(245, 240, 232, 0.03);
+  border: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+/* Odds Grid */
+.island-odds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.island-odd-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 6px;
+  border-radius: 8px;
+  background: rgba(245, 240, 232, 0.03);
+  border: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.island-odd-card .odd-label {
+  font-size: 9px;
+  color: var(--neutral);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.island-odd-card .odd-value {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gold);
+  font-family: monospace;
+}
+
+.island-drop-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.island-value-card {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(74, 222, 128, 0.06);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+/* Status Dots */
 .island-live-dot {
   width: 7px;
   height: 7px;
+  border-radius: 50%;
+  background: var(--positive);
+  animation: islandPulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.island-live-dot-small {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--positive);
   animation: islandPulse 1.5s ease-in-out infinite;
@@ -204,6 +574,14 @@ h3 { font-size: clamp(1rem, 1.5vw, 1.375rem); font-weight: 400; }
   border-radius: 50%;
   background: var(--gold);
   animation: islandPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.island-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neutral);
   flex-shrink: 0;
 }
 
