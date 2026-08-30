@@ -121,6 +121,17 @@ def compile_data():
         except Exception as e:
             print(f"⚠️ [Compiler] Impossible de charger l'historique app_data.json : {e}")
 
+    # 1. Verification de la couverture des matchs terminés
+    c.execute("SELECT COUNT(*) as cnt FROM fact_matches WHERE status = 'FINISHED';")
+    fin_count = c.fetchone()['cnt']
+    if fin_count < 1000 and os.path.exists(RAW_DIR):
+        print(f"⚠️ [Compiler] Seulement {fin_count} matchs terminés en base. Rechargement automatique depuis {RAW_DIR}...")
+        from scripts.pipeline.reload_all_raw_to_sqlite import reload_all
+        reload_all()
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        c = conn.cursor()
+
     # 1. Extraction de tous les matchs terminés pour unified_history.json
     c.execute("""
     SELECT 
@@ -631,6 +642,12 @@ def compile_data():
                 target_odd = h_odd if vb.get('selection') == '1' else (a_odd if vb.get('selection') == '2' else d_odd)
                 if vb.get('betclic_odd') == target_odd or vb.get('bookmaker_odds') == target_odd:
                     value_bets.append(vb)
+        elif old_val.get('betclicOdds') and old_val['betclicOdds'].get('home') and float(old_val['betclicOdds']['home']) > 1.0:
+            # Preservation non-destructive des cotes réelles deja presentes (ex: run GitHub Actions)
+            betclic_odds = old_val['betclicOdds']
+            odds_status = old_val.get('oddsStatus', 'ACTIVE')
+            odds_margin_pct = old_val.get('oddsMarginPct')
+            value_bets = old_val.get('valueBets', [])
         else:
             betclic_odds = None
             odds_status = 'NOT_OPEN'

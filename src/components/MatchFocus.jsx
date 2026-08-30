@@ -220,21 +220,14 @@ const PlayerPicker = ({ isOpen, onClose, team, roleFilter, onSelect, currentLine
         // 3. Role Suggestion from JSON
         const detectedRole = getPlayerRole(p.name);
 
-        // Strategy: 
-        // If roleFilter is set, we prefer players of that role.
-        // However, if we do rigorous filtering we might hide valid players who just have missing data or weird role names.
-        // Let's doing STRICT filtering if search is empty, but LOOSE if search is active.
-
         if (search) return true; // Show all matches if searching
 
-        if (roleFilter === 'G') return detectedRole === 'G' || p.position === 'G';
-
-        if (roleFilter && detectedRole) {
-            return detectedRole === roleFilter;
+        if (roleFilter) {
+            if (detectedRole) return detectedRole === roleFilter;
+            if (p.position) return p.position === roleFilter;
+            return false;
         }
 
-        // Fallback to minimal heuristic if detailed role not found
-        // (Should rarely happen if TM_POSITIONS is complete)
         return true;
     });
 
