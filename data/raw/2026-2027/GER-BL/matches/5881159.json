@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/94937_xsmall.png",
-            "linkToMatch": "/matches/1-fc-koln-vs-fc-heidenheim/2gushez#4829605",
-            "date": {
-              "utcTime": "2026-05-10T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/94937/overview/fc-heidenheim",
-            "tooltipText": {
-              "utcTime": "2026-05-10T15:30:00.000Z",
-              "homeTeam": "1. FC Köln",
-              "homeTeamId": 8722,
-              "homeScore": "1",
-              "awayTeam": "FC Heidenheim",
-              "awayTeamId": 94937,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8722",
-              "name": "1. FC Köln",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "94937",
-              "name": "FC Heidenheim",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823_xsmall.png",
             "linkToMatch": "/matches/1-fc-koln-vs-bayern-munchen/2ue2rs#4829613",
             "date": {
@@ -423,6 +393,36 @@
               "name": "1. FC Köln",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226_xsmall.png",
+            "linkToMatch": "/matches/hoffenheim-vs-1-fc-koln/2dil4k#5881147",
+            "date": {
+              "utcTime": "2026-08-29T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8226/overview/hoffenheim",
+            "tooltipText": {
+              "utcTime": "2026-08-29T13:30:00.000Z",
+              "homeTeam": "1. FC Köln",
+              "homeTeamId": 8722,
+              "homeScore": "3",
+              "awayTeam": "Hoffenheim",
+              "awayTeamId": 8226,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "8722",
+              "name": "1. FC Köln",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8226",
+              "name": "Hoffenheim",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -486,12 +486,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "12",
-                "3"
+                "3",
+                "5",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "1. FC Köln have scored 12 goals in their last 3 matches."
+              "defaultText": "VfB Stuttgart have scored 5 goals in their last 3 matches, while 1. FC Köln have scored 7."
             },
             {
               "OddsType": "dc",
@@ -514,7 +516,7 @@
                 "home_team",
                 "away_team",
                 "4",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 4 matches and 1. FC Köln in their last 5."
+              "defaultText": "VfB Stuttgart haven't drawn in their last 4 matches and 1. FC Köln in their last 6."
             }
           ]
         },
@@ -563,13 +565,77 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 10269,
+          "priority": 9,
+          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+          "localizedTextId": "h2h_undefeated",
+          "statValues": [
+            {
+              "value": 10269,
+              "name": "VfB Stuttgart",
+              "type": "team"
+            },
+            {
+              "value": 8722,
+              "name": "1. FC Köln",
+              "type": "team"
+            },
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "VfB Stuttgart haven't lost to 1. FC Köln in their last 8 meetings (6W, 2D).",
+          "color": "#D30029"
+        },
+        {
+          "type": "player",
+          "playerId": 614384,
+          "teamId": 10269,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 614384,
+              "name": "Maximilian Mittelstädt",
+              "type": "player"
+            },
+            {
+              "value": 10269,
+              "name": "VfB Stuttgart",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Maximilian Mittelstädt has created the most big chances for VfB Stuttgart (1)",
+          "color": "#D30029"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 8722,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 16,
               "name": null,
               "type": "integer"
             },
@@ -579,12 +645,84 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
+          "text": "Have scored 16 goals in their last 5 matches",
+          "color": "#E21718"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8722,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (1)",
+          "color": "#E21718"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8722,
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Average 3 goals per match",
           "color": "#E21718"
         }
       ],
       "countryCode": "GER",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881159/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -601,18 +739,18 @@
       }
     },
     "weather": {
-      "temperature": 25,
+      "temperature": 26,
       "windSpeed": 3,
       "windDirectionCardinal": "WNW",
-      "iconCode": 33,
-      "relativeHumidity": 46,
-      "precipChance": 3,
+      "iconCode": 31,
+      "relativeHumidity": 45,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 29,
-      "description": "Mostly Clear",
+      "cloudCover": 10,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-29T09:00:24Z",
+      "lastUpdated": "2026-08-30T09:00:16Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
@@ -770,21 +908,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 930035,
-            "age": 27,
-            "name": "Linton Maina",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 1743782,
-            "unavailability": {
-              "injuryId": 30,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Linton",
-            "lastName": "Maina"
-          },
           {
             "id": 540073,
             "age": 30,

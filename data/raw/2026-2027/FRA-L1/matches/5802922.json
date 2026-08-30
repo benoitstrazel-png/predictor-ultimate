@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10247_xsmall.png",
-            "linkToMatch": "/matches/lyon-vs-sparta-prague/3b0z2m#5954871",
-            "date": {
-              "utcTime": "2026-08-04T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10247/overview/sparta-prague",
-            "tooltipText": {
-              "utcTime": "2026-08-04T18:00:00.000Z",
-              "homeTeam": "Sparta Prague",
-              "homeTeamId": 10247,
-              "homeScore": "2",
-              "awayTeam": "Lyon",
-              "awayTeamId": 9748,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "10247",
-              "name": "Sparta Prague",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9748",
-              "name": "Lyon",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10247_xsmall.png",
@@ -271,39 +241,39 @@
               "name": "Fenerbahçe",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9746_xsmall.png",
+            "linkToMatch": "/matches/le-havre-vs-lyon/354y61#5802913",
+            "date": {
+              "utcTime": "2026-08-29T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9746/overview/le-havre",
+            "tooltipText": {
+              "utcTime": "2026-08-29T18:45:00.000Z",
+              "homeTeam": "Lyon",
+              "homeTeamId": 9748,
+              "homeScore": "1",
+              "awayTeam": "Le Havre",
+              "awayTeamId": 9746,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9748",
+              "name": "Lyon",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9746",
+              "name": "Le Havre",
+              "isOurTeam": false
+            }
           }
         ],
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639_xsmall.png",
-            "linkToMatch": "/matches/auxerre-vs-lille/2gax9w#4830756",
-            "date": {
-              "utcTime": "2026-05-17T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8639/overview/lille",
-            "tooltipText": {
-              "utcTime": "2026-05-17T19:00:00.000Z",
-              "homeTeam": "Lille",
-              "homeTeamId": 8639,
-              "homeScore": "0",
-              "awayTeam": "Auxerre",
-              "awayTeamId": 8583,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "8639",
-              "name": "Lille",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8583",
-              "name": "Auxerre",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Auxerre",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8121_xsmall.png",
+            "linkToMatch": "/matches/angers-vs-auxerre/2b2l2f#5802910",
+            "date": {
+              "utcTime": "2026-08-29T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8121/overview/angers",
+            "tooltipText": {
+              "utcTime": "2026-08-29T18:45:00.000Z",
+              "homeTeam": "Auxerre",
+              "homeTeamId": 8583,
+              "homeScore": "1",
+              "awayTeam": "Angers",
+              "awayTeamId": 8121,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "8583",
+              "name": "Auxerre",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8121",
+              "name": "Angers",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -469,9 +469,9 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "5",
+                "6",
                 "away_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored in their last 5 matches and Auxerre have scored in their last 9 matches."
+              "defaultText": "Lyon have scored in their last 6 matches and Auxerre have scored in their last 10 matches."
             },
             {
               "OddsType": "ou",
@@ -512,14 +512,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "4",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,8 +528,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Lyon haven't lost to Auxerre in their last 4 meetings (2W, 2D)."
+              "Icon": "poll_stat_down",
+              "defaultText": "Auxerre haven't won a match in 4 attempts."
             }
           ]
         },
@@ -566,33 +563,16 @@
           "color": "#0160A0"
         },
         {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9748,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have kept the most clean sheets in the competition (1)",
-          "color": "#0160A0"
-        },
-        {
           "type": "player",
-          "playerId": 473852,
+          "playerId": 747767,
           "teamId": 9748,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 473852,
-              "name": "Corentin Tolisso",
+              "value": 747767,
+              "name": "Loïs Openda",
               "type": "player"
             },
             {
@@ -601,12 +581,39 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 2,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Loïs Openda has the most shots on target per match for Lyon (2)",
+          "color": "#0160A0"
+        },
+        {
+          "type": "player",
+          "playerId": 1338390,
+          "teamId": 9748,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1338390,
+              "name": "Ernest Nuamah",
+              "type": "player"
+            },
+            {
+              "value": 9748,
+              "name": "Lyon",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Corentin Tolisso has created the most big chances for Lyon (1)",
+          "text": "Ernest Nuamah has created the most big chances for Lyon (2)",
           "color": "#0160A0"
         },
         {
@@ -618,7 +625,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -628,7 +635,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#055DC6"
         },
         {
@@ -649,30 +656,20 @@
           "color": "#055DC6"
         },
         {
-          "type": "player",
-          "playerId": 1810011,
+          "type": "team",
+          "playerId": null,
           "teamId": 8583,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 1810011,
-              "name": "Rayan Mandengue",
-              "type": "player"
-            },
-            {
-              "value": 8583,
-              "name": "Auxerre",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Rayan Mandengue has created the most big chances for Auxerre (1)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#055DC6"
         }
       ],
@@ -694,18 +691,18 @@
       }
     },
     "weather": {
-      "temperature": 31,
+      "temperature": 33,
       "windSpeed": 3,
-      "windDirectionCardinal": "NNE",
+      "windDirectionCardinal": "E",
       "iconCode": 32,
-      "relativeHumidity": 33,
+      "relativeHumidity": 26,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 17,
+      "cloudCover": 5,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-29T07:00:23Z",
+      "lastUpdated": "2026-08-30T07:00:20Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },

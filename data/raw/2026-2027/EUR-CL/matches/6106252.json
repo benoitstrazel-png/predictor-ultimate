@@ -72,7 +72,8 @@
   "nav": [
     "matchfacts",
     "table",
-    "head to head"
+    "head to head",
+    "injured"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -84,7 +85,9 @@
       "events": {
         "ongoing": true,
         "events": [],
-        "eventTypes": [],
+        "eventTypes": [
+          "Injuries"
+        ],
         "penaltyShootoutEvents": null
       },
       "infoBox": {
@@ -102,8 +105,13 @@
           "round": "3"
         },
         "Stadium": {
-          "name": "Giuseppe Meazza",
-          "country": ""
+          "name": "Stadio Giuseppe Meazza",
+          "city": "Milano",
+          "country": "Italy",
+          "lat": 45.478083998,
+          "long": 9.123979211,
+          "capacity": 75817,
+          "surface": "grass"
         },
         "Referee": {
           "text": "",
@@ -292,7 +300,36 @@
         "All": []
       }
     },
-    "lineup": null,
+    "lineup": {
+      "matchId": 6106252,
+      "lineupType": "standard",
+      "availableFilters": [
+        "match"
+      ],
+      "homeTeam": {
+        "id": 8636,
+        "name": "Inter",
+        "unavailable": [
+          {
+            "id": 894803,
+            "name": "Djed Spence",
+            "unavailability": {
+              "injuryId": 101,
+              "lastUpdated": "2026-08-29T20:55:34Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Djed",
+            "lastName": "Spence"
+          }
+        ]
+      },
+      "awayTeam": {
+        "id": 9728,
+        "name": "Shakhtar Donetsk",
+        "unavailable": []
+      }
+    },
     "hasPlayoff": false,
     "table": {
       "leagueId": "943230",
@@ -521,11 +558,13 @@
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": {
         "@type": "Place",
-        "name": "Giuseppe Meazza",
+        "name": "Stadio Giuseppe Meazza",
+        "latitude": 45.478083998,
+        "longitude": 9.123979211,
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "Unknown country",
-          "addressLocality": "Unknown city"
+          "addressCountry": "Italy",
+          "addressLocality": "Milano"
         }
       },
       "image": [

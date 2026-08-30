@@ -106,7 +106,12 @@
         },
         "Stadium": {
           "name": "Anfield",
-          "country": ""
+          "city": "Liverpool",
+          "country": "England",
+          "lat": 53.430827885,
+          "long": -2.960852981,
+          "capacity": 61276,
+          "surface": "grass"
         },
         "Referee": {
           "text": "",
@@ -272,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260_xsmall.png",
-            "linkToMatch": "/matches/atletico-madrid-vs-manchester-united/3d2krr#5449683",
-            "date": {
-              "utcTime": "2026-08-01T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10260/overview/manchester-united",
-            "tooltipText": {
-              "utcTime": "2026-08-01T13:00:00.000Z",
-              "homeTeam": "Manchester United",
-              "homeTeamId": 10260,
-              "homeScore": "2",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456_xsmall.png",
             "linkToMatch": "/matches/manchester-city-vs-atletico-madrid/2sdp29#5862945",
             "date": {
@@ -418,6 +393,36 @@
               "name": "Villarreal",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302_xsmall.png",
+            "linkToMatch": "/matches/sevilla-vs-atletico-madrid/2qpc8y#5868040",
+            "date": {
+              "utcTime": "2026-08-29T19:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8302/overview/sevilla",
+            "tooltipText": {
+              "utcTime": "2026-08-29T19:30:00.000Z",
+              "homeTeam": "Sevilla",
+              "homeTeamId": 8302,
+              "homeScore": "1",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "8302",
+              "name": "Sevilla",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -434,17 +439,12 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} and {1} haven't lost their {2} last games.",
+              "TextTemplateId": "undefeated_both_equal",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
                 "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,8 +456,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Liverpool have 1W, 2D, 2L in five matches while Atlético Madrid have 2W, 1D, 2L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Liverpool and Atlético Madrid haven't lost their 4 last games."
             },
             {
               "OddsType": "bts",
@@ -467,30 +467,6 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored in their last 5 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -502,7 +478,31 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while Atlético Madrid have scored 6."
+              "defaultText": "Atlético Madrid have scored in their last 6 away matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "6",
+                "7"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Liverpool have scored 6 goals in their last 3 matches, while Atlético Madrid have scored 7."
             },
             {
               "OddsType": "dc",
@@ -513,12 +513,12 @@
               "StatValues": [
                 "home_team",
                 "1",
-                "2",
-                "2",
-                "away_team",
-                "2",
+                "3",
                 "1",
-                "2"
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool have 1W, 2D, 2L in five matches while Atlético Madrid have 2W, 1D, 2L."
+              "defaultText": "Liverpool have 1W, 3D, 1L in five matches while Atlético Madrid have 3W, 1D, 1L."
             }
           ]
         },
@@ -586,6 +586,22 @@
       "Periods": {
         "All": []
       }
+    },
+    "weather": {
+      "temperature": 15,
+      "windSpeed": 5,
+      "windDirectionCardinal": "WNW",
+      "iconCode": 27,
+      "relativeHumidity": 69,
+      "precipChance": 24,
+      "precipitation": 0,
+      "snow": 0,
+      "cloudCover": 69,
+      "description": "Mostly Cloudy",
+      "apiUsed": "forecast",
+      "lastUpdated": "2026-08-30T08:00:27Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 6106246,
@@ -675,18 +691,6 @@
         "id": 9906,
         "name": "Atlético Madrid",
         "unavailable": [
-          {
-            "id": 950199,
-            "name": "Morten Hjulmand",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-08-29T12:16:02Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Morten",
-            "lastName": "Hjulmand"
-          },
           {
             "id": 440330,
             "name": "Alexander Sørloth",
@@ -969,10 +973,12 @@
       "location": {
         "@type": "Place",
         "name": "Anfield",
+        "latitude": 53.430827885,
+        "longitude": -2.960852981,
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "Unknown country",
-          "addressLocality": "Unknown city"
+          "addressCountry": "England",
+          "addressLocality": "Liverpool"
         }
       },
       "image": [

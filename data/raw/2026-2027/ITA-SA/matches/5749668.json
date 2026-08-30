@@ -125,36 +125,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9849_xsmall.png",
-            "linkToMatch": "/matches/arezzo-vs-parma/3b9zbl#5900866",
-            "date": {
-              "utcTime": "2026-07-30T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9849/overview/arezzo",
-            "tooltipText": {
-              "utcTime": "2026-07-30T15:00:00.000Z",
-              "homeTeam": "Parma",
-              "homeTeamId": 10167,
-              "homeScore": "1",
-              "awayTeam": "Arezzo",
-              "awayTeamId": 9849,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9849",
-              "name": "Arezzo",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8675_xsmall.png",
             "linkToMatch": "/matches/iraklis-vs-parma/2xp1xe#5983772",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Cagliari",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10168_xsmall.png",
-            "linkToMatch": "/matches/monza-vs-catanzaro/2ar3eg#5657236",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9885_xsmall.png",
+            "linkToMatch": "/matches/juventus-vs-parma/3bpfv3#5749654",
             "date": {
-              "utcTime": "2026-05-29T18:00:00.000Z"
+              "utcTime": "2026-08-29T18:45:00.000Z"
             },
-            "teamPageUrl": "/teams/10168/overview/catanzaro",
+            "teamPageUrl": "/teams/9885/overview/juventus",
             "tooltipText": {
-              "utcTime": "2026-05-29T18:00:00.000Z",
-              "homeTeam": "Monza",
-              "homeTeamId": 6504,
-              "homeScore": "0",
-              "awayTeam": "Catanzaro",
-              "awayTeamId": 10168,
-              "awayScore": "2"
+              "utcTime": "2026-08-29T18:45:00.000Z",
+              "homeTeam": "Juventus",
+              "homeTeamId": 9885,
+              "homeScore": "2",
+              "awayTeam": "Parma",
+              "awayTeamId": 10167,
+              "awayScore": "0"
             },
-            "score": "0 - 2",
+            "score": "2 - 0",
             "home": {
-              "id": "6504",
-              "name": "Monza",
-              "isOurTeam": true
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": false
             },
             "away": {
-              "id": "10168",
-              "name": "Catanzaro",
-              "isOurTeam": false
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Monza",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600_xsmall.png",
+            "linkToMatch": "/matches/monza-vs-udinese/1vx5w8#5749657",
+            "date": {
+              "utcTime": "2026-08-29T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8600/overview/udinese",
+            "tooltipText": {
+              "utcTime": "2026-08-29T16:30:00.000Z",
+              "homeTeam": "Monza",
+              "homeTeamId": 6504,
+              "homeScore": "2",
+              "awayTeam": "Udinese",
+              "awayTeamId": 8600,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "1",
-                "2",
-                "2",
+                "1",
+                "3",
                 "away_team",
                 "2",
                 "0",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Parma have 1W, 2D, 2L in five matches while Monza have 2W, 0D, 3L."
+              "defaultText": "Parma have 1W, 1D, 3L in five matches while Monza have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -472,6 +472,30 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
+                "5"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Monza have scored in their last 5 away matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "2",
                 "6"
               ],
               "DefaultLabels": [
@@ -483,40 +507,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored in their last 6 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "0.67",
-                "1.67"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Parma have an average of 0.67 goals in their last three matches and Monza have an average of 1.67."
+              "defaultText": "Parma have scored 2 goals in their last 3 matches, while Monza have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "7"
+                "4",
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Monza haven't drawn in their last 7 matches."
+              "defaultText": "Parma haven't drawn in their last 4 matches and Monza in their last 8."
             }
           ]
         },
@@ -549,7 +552,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -559,7 +562,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
+          "color": "#000000"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10167,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#000000"
         },
         {
@@ -590,33 +610,6 @@
           "color": "#000000"
         },
         {
-          "type": "player",
-          "playerId": 1054114,
-          "teamId": 10167,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1054114,
-              "name": "El Bilal Touré",
-              "type": "player"
-            },
-            {
-              "value": 10167,
-              "name": "Parma",
-              "type": "team"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "El Bilal Touré has the most shots on target per match for Parma (1)",
-          "color": "#000000"
-        },
-        {
           "type": "team",
           "playerId": null,
           "teamId": 6504,
@@ -625,7 +618,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -635,20 +628,20 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#e10032"
         },
         {
           "type": "player",
-          "playerId": 824655,
+          "playerId": 799497,
           "teamId": 6504,
           "priority": 1,
           "defaultText": "{0} has the most shots on target per match for {1} ({2})",
           "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 824655,
-              "name": "Ricardo Mangas",
+              "value": 799497,
+              "name": "Samuele Birindelli",
               "type": "player"
             },
             {
@@ -662,20 +655,20 @@
               "type": "double"
             }
           ],
-          "text": "Ricardo Mangas has the most shots on target per match for Monza (1)",
+          "text": "Samuele Birindelli has the most shots on target per match for Monza (1)",
           "color": "#e10032"
         },
         {
           "type": "player",
-          "playerId": 1123969,
+          "playerId": 1481909,
           "teamId": 6504,
           "priority": 1,
           "defaultText": "{0} has created the most big chances for {1} ({2})",
           "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1123969,
-              "name": "Andrea Carboni",
+              "value": 1481909,
+              "name": "Ebenezer Akinsanmiro",
               "type": "player"
             },
             {
@@ -689,7 +682,7 @@
               "type": "integer"
             }
           ],
-          "text": "Andrea Carboni has created the most big chances for Monza (1)",
+          "text": "Ebenezer Akinsanmiro has created the most big chances for Monza (1)",
           "color": "#e10032"
         }
       ],
@@ -712,17 +705,17 @@
     },
     "weather": {
       "temperature": 34,
-      "windSpeed": 2,
+      "windSpeed": 3,
       "windDirectionCardinal": "E",
       "iconCode": 32,
-      "relativeHumidity": 41,
+      "relativeHumidity": 36,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 6,
+      "cloudCover": 16,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-29T03:00:17Z",
+      "lastUpdated": "2026-08-30T03:00:14Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -777,18 +770,6 @@
             },
             "firstName": "Patrick",
             "lastName": "Ciurria"
-          },
-          {
-            "id": 1415623,
-            "name": "Leonardo Colombo",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-08-29T12:03:41Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Leonardo",
-            "lastName": "Colombo"
           },
           {
             "id": 731600,

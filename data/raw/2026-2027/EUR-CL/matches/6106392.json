@@ -105,7 +105,12 @@
         },
         "Stadium": {
           "name": "Fortuna Arena",
-          "country": ""
+          "city": "Praha",
+          "country": "Czech Republic",
+          "lat": 50.067525002,
+          "long": 14.471139908,
+          "capacity": 19370,
+          "surface": "grass"
         },
         "Referee": {
           "text": "",
@@ -269,36 +274,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/4170_xsmall.png",
-            "linkToMatch": "/matches/boulogne-vs-lens/1cgnah#5944342",
-            "date": {
-              "utcTime": "2026-07-18T10:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/4170/overview/boulogne",
-            "tooltipText": {
-              "utcTime": "2026-07-18T10:00:00.000Z",
-              "homeTeam": "Lens",
-              "homeTeamId": 8588,
-              "homeScore": "4",
-              "awayTeam": "Boulogne",
-              "awayTeamId": 4170,
-              "awayScore": "1"
-            },
-            "score": "4 - 1",
-            "home": {
-              "id": "8588",
-              "name": "Lens",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "4170",
-              "name": "Boulogne",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9986_xsmall.png",
@@ -417,6 +392,36 @@
               "name": "Auxerre",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9848_xsmall.png",
+            "linkToMatch": "/matches/lens-vs-strasbourg/2t6vlu#5802917",
+            "date": {
+              "utcTime": "2026-08-29T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9848/overview/strasbourg",
+            "tooltipText": {
+              "utcTime": "2026-08-29T15:15:00.000Z",
+              "homeTeam": "Strasbourg",
+              "homeTeamId": 9848,
+              "homeScore": "2",
+              "awayTeam": "Lens",
+              "awayTeamId": 8588,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "9848",
+              "name": "Strasbourg",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8588",
+              "name": "Lens",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -484,7 +489,7 @@
                 "away_team",
                 "3",
                 "5",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -495,23 +500,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Slavia Prague have scored 5 goals in their last 3 matches, while Lens have scored 6."
+              "defaultText": "Slavia Prague have scored 5 goals in their last 3 matches, while Lens have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "3",
-                "2",
-                "0",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Slavia Prague have 3W, 2D, 0L in five matches while Lens have 3W, 1D, 1L."
+              "defaultText": "Lens haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -569,6 +568,22 @@
       "Periods": {
         "All": []
       }
+    },
+    "weather": {
+      "temperature": 17,
+      "windSpeed": 3,
+      "windDirectionCardinal": "NNW",
+      "iconCode": 29,
+      "relativeHumidity": 65,
+      "precipChance": 7,
+      "precipitation": 0,
+      "snow": 0,
+      "cloudCover": 57,
+      "description": "Partly Cloudy",
+      "apiUsed": "forecast",
+      "lastUpdated": "2026-08-30T08:00:28Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106392,
@@ -651,9 +666,9 @@
             "name": "Saud Abdulhamid",
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-08-28T18:51:38Z",
+              "lastUpdated": "2026-08-30T10:15:05Z",
               "type": "injury",
-              "expectedReturn": "About a week"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Saud",
             "lastName": "Abdulhamid"
@@ -748,10 +763,12 @@
       "location": {
         "@type": "Place",
         "name": "Fortuna Arena",
+        "latitude": 50.067525002,
+        "longitude": 14.471139908,
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "Unknown country",
-          "addressLocality": "Unknown city"
+          "addressCountry": "Czech Republic",
+          "addressLocality": "Praha"
         }
       },
       "image": [

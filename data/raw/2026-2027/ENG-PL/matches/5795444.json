@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10164_xsmall.png",
-            "linkToMatch": "/matches/tottenham-hotspur-vs-sydney-fc/2wnzjf#5199447",
-            "date": {
-              "utcTime": "2026-07-29T09:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10164/overview/sydney-fc",
-            "tooltipText": {
-              "utcTime": "2026-07-29T09:45:00.000Z",
-              "homeTeam": "Sydney FC",
-              "homeTeamId": 10164,
-              "homeScore": "1",
-              "awayTeam": "Tottenham Hotspur",
-              "awayTeamId": 8586,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "10164",
-              "name": "Sydney FC",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8586",
-              "name": "Tottenham Hotspur",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Charlton Athletic",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261_xsmall.png",
+            "linkToMatch": "/matches/tottenham-hotspur-vs-newcastle-united/2xr2ka#5795434",
+            "date": {
+              "utcTime": "2026-08-29T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10261/overview/newcastle-united",
+            "tooltipText": {
+              "utcTime": "2026-08-29T16:30:00.000Z",
+              "homeTeam": "Tottenham Hotspur",
+              "homeTeamId": 8586,
+              "homeScore": "0",
+              "awayTeam": "Newcastle United",
+              "awayTeamId": 10261,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8586",
+              "name": "Tottenham Hotspur",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10261",
+              "name": "Newcastle United",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -463,14 +463,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "8"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,18 +480,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Nottingham Forest have scored 2 goals in their last 3 matches, while Tottenham Hotspur have scored 8."
+              "defaultText": "Nottingham Forest have an average of 0.67 goals in their last three matches and Tottenham Hotspur have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,19 +503,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have scored 8 goals in their last 3 matches."
+              "defaultText": "Nottingham Forest have an average of 0.67 goals in their last three matches and Tottenham Hotspur have an average of 1.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "9",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Nottingham Forest haven't drawn in their last 9 matches and Tottenham Hotspur in their last 9."
+              "defaultText": "Tottenham Hotspur haven't drawn in their last 10 matches."
             }
           ]
         },
@@ -614,7 +612,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -624,20 +622,20 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#132257"
         },
         {
           "type": "player",
-          "playerId": 357880,
+          "playerId": 1356312,
           "teamId": 8586,
           "priority": 1,
           "defaultText": "{0} has created the most big chances for {1} ({2})",
           "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 357880,
-              "name": "Andrew Robertson",
+              "value": 1356312,
+              "name": "Mateus Fernandes",
               "type": "player"
             },
             {
@@ -646,44 +644,82 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Andrew Robertson has created the most big chances for Tottenham Hotspur (1)",
+          "text": "Mateus Fernandes has created the most big chances for Tottenham Hotspur (2)",
           "color": "#132257"
         },
         {
           "type": "player",
-          "playerId": 1341475,
+          "playerId": 1407250,
           "teamId": 8586,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1341475,
-              "name": "Antonín Kinsky",
+              "value": 1407250,
+              "name": "Mikey Moore",
               "type": "player"
             },
             {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
+              "value": 8586,
+              "name": "Tottenham Hotspur",
+              "type": "team"
             },
             {
-              "value": 5,
+              "value": 3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Antonín Kinsky is ranked 1 in saves per match in the competition (5)",
+          "text": "Mikey Moore has the most shots on target per match for Tottenham Hotspur (3)",
           "color": "#132257"
         }
       ],
       "countryCode": "ENG",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795444/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -702,35 +738,39 @@
     "weather": {
       "temperature": 19,
       "windSpeed": 4,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 28,
-      "relativeHumidity": 64,
-      "precipChance": 17,
+      "windDirectionCardinal": "S",
+      "iconCode": 30,
+      "relativeHumidity": 67,
+      "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 67,
-      "description": "Mostly Cloudy",
+      "cloudCover": 49,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-29T04:00:11Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-08-30T04:00:13Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795444,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10203,
         "name": "Nottingham Forest",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 795371,
+            "age": 28,
             "name": "Ibrahim Sangaré",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 20407091,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-08-28T16:58:23Z",
               "type": "injury",
               "expectedReturn": "Early September 2026"
             },
@@ -738,47 +778,14 @@
             "lastName": "Sangaré"
           },
           {
-            "id": 789502,
-            "name": "Morgan Gibbs-White",
-            "unavailability": {
-              "injuryId": 130,
-              "lastUpdated": "2026-08-29T12:18:16Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Morgan",
-            "lastName": "Gibbs-White"
-          },
-          {
-            "id": 1078788,
-            "name": "Neco Williams",
-            "unavailability": {
-              "injuryId": 85,
-              "lastUpdated": "2026-08-29T12:18:16Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Neco",
-            "lastName": "Williams"
-          },
-          {
-            "id": 775614,
-            "name": "Ryan Yates",
-            "unavailability": {
-              "injuryId": 137,
-              "lastUpdated": "2026-08-29T12:18:49Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ryan",
-            "lastName": "Yates"
-          },
-          {
             "id": 1622290,
+            "age": 23,
             "name": "Nicolò Savona",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 16471324,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-21T14:38:27Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -790,13 +797,18 @@
       "awayTeam": {
         "id": 8586,
         "name": "Tottenham Hotspur",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 493165,
+            "age": 29,
             "name": "James Maddison",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 30222669,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-08-28T17:26:13Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -805,10 +817,13 @@
           },
           {
             "id": 1107280,
+            "age": 23,
             "name": "Pape Sarr",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 35344129,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-08-28T17:26:21Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -816,23 +831,14 @@
             "lastName": "Sarr"
           },
           {
-            "id": 891743,
-            "name": "Mohammed Kudus",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-08-28T17:26:08Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Mohammed",
-            "lastName": "Kudus"
-          },
-          {
             "id": 1173787,
+            "age": 23,
             "name": "Xavi Simons",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 52371165,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-10T15:42:20Z",
               "type": "injury",
               "expectedReturn": "Early February 2027"
             },
@@ -841,10 +847,13 @@
           },
           {
             "id": 1341387,
+            "age": 21,
             "name": "Wilson Odobert",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 21704789,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-10T15:41:48Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
@@ -853,10 +862,13 @@
           },
           {
             "id": 935379,
+            "age": 26,
             "name": "Dejan Kulusevski",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 40646939,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-21T16:09:57Z",
               "type": "injury",
               "expectedReturn": "Early September 2026"
             },
