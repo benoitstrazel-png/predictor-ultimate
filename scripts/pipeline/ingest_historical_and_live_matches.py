@@ -39,10 +39,282 @@ from scripts.pipeline.transformers.sportsDataNormalizer import normalize_match_p
 ALL_SEASONS = ['2024-2025', '2025-2026', '2026-2027']
 ALL_COMPETITIONS = list(COMPETITIONS_CONFIG.keys())
 
+def init_db_schema_if_needed(conn):
+    """Garantit que toutes les tables nécessaires existent dans SQLite."""
+    conn.executescript("""
+    CREATE TABLE IF NOT EXISTS dim_competitions (
+        competition_id VARCHAR(16) PRIMARY KEY,
+        name VARCHAR(64) NOT NULL,
+        country VARCHAR(32) NOT NULL,
+        category VARCHAR(16) NOT NULL,
+        external_source_id INT NOT NULL,
+        flag_emoji VARCHAR(8),
+        logo_url TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_teams (
+        team_id VARCHAR(32) PRIMARY KEY,
+        league_id VARCHAR(16) NOT NULL,
+        name VARCHAR(64) NOT NULL,
+        short_name VARCHAR(32),
+        slug VARCHAR(64) NOT NULL,
+        country VARCHAR(32),
+        stadium_name VARCHAR(64),
+        logo_url TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_players (
+        player_id VARCHAR(64) PRIMARY KEY,
+        tm_id VARCHAR(32) UNIQUE,
+        api_sports_id INT,
+        flashscore_slug VARCHAR(64),
+        full_name VARCHAR(128) NOT NULL,
+        display_name VARCHAR(64) NOT NULL,
+        short_name VARCHAR(32),
+        primary_position VARCHAR(16) NOT NULL,
+        role_category VARCHAR(4) NOT NULL,
+        birth_date DATE,
+        age INT,
+        nationality VARCHAR(64),
+        photo_url TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_player_contracts_scd2 (
+        contract_sk VARCHAR(64) PRIMARY KEY,
+        player_id VARCHAR(64) NOT NULL REFERENCES dim_players(player_id) ON DELETE CASCADE,
+        team_id VARCHAR(32) NOT NULL REFERENCES dim_teams(team_id) ON DELETE CASCADE,
+        league_id VARCHAR(16) NOT NULL,
+        valid_from DATE NOT NULL,
+        valid_to DATE,
+        is_current BOOLEAN NOT NULL DEFAULT 1,
+        squad_number INT,
+        contract_type VARCHAR(16) DEFAULT 'PERMANENT',
+        market_value_eur DECIMAL(12, 2),
+        market_value_formatted VARCHAR(32),
+        joined_date DATE,
+        contract_until DATE,
+        seasons_covered TEXT,
+        transfer_note TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_player_aliases (
+        alias_id VARCHAR(64) PRIMARY KEY,
+        player_id VARCHAR(64) NOT NULL REFERENCES dim_players(player_id) ON DELETE CASCADE,
+        source_system VARCHAR(32) NOT NULL,
+        raw_name VARCHAR(128) NOT NULL,
+        normalized_name VARCHAR(128) NOT NULL,
+        confidence_score DECIMAL(3, 2) DEFAULT 1.00,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS fact_matches (
+        match_id VARCHAR(64) PRIMARY KEY,
+        competition_id VARCHAR(16) NOT NULL,
+        season VARCHAR(16) NOT NULL,
+        round_label VARCHAR(32),
+        gameweek INT,
+        match_timestamp_utc TIMESTAMP NOT NULL,
+        match_date VARCHAR(16) NOT NULL,
+        status VARCHAR(16) NOT NULL,
+        home_team_id VARCHAR(32) NOT NULL,
+        away_team_id VARCHAR(32) NOT NULL,
+        home_team_name VARCHAR(64) NOT NULL,
+        away_team_name VARCHAR(64) NOT NULL,
+        home_score INT,
+        away_score INT,
+        home_ht_score INT,
+        away_ht_score INT,
+        home_xg DECIMAL(4, 2),
+        away_xg DECIMAL(4, 2),
+        referee_name VARCHAR(64),
+        stadium_name VARCHAR(64),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS fact_match_events (
+        event_id VARCHAR(64) PRIMARY KEY,
+        match_id VARCHAR(64) NOT NULL REFERENCES fact_matches(match_id) ON DELETE CASCADE,
+        minute INT NOT NULL,
+        added_time INT DEFAULT 0,
+        team_id VARCHAR(32),
+        team_name VARCHAR(64),
+        event_type VARCHAR(24) NOT NULL,
+        primary_player_id VARCHAR(64),
+        primary_player_name VARCHAR(64) NOT NULL,
+        secondary_player_id VARCHAR(64),
+        secondary_player_name VARCHAR(64),
+        detail_note TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS fact_match_team_stats (
+        stat_id VARCHAR(64) PRIMARY KEY,
+        match_id VARCHAR(64) NOT NULL REFERENCES fact_matches(match_id) ON DELETE CASCADE,
+        team_id VARCHAR(32),
+        team_name VARCHAR(64) NOT NULL,
+        is_home BOOLEAN NOT NULL,
+        possession_pct DECIMAL(4, 1),
+        expected_goals DECIMAL(4, 2),
+        shots_total INT,
+        shots_on_target INT,
+        shots_off_target INT,
+        shots_blocked INT,
+        big_chances_total INT,
+        big_chances_missed INT,
+        corner_kicks INT,
+        fouls_committed INT,
+        offside_count INT,
+        yellow_cards INT,
+        red_cards INT,
+        accurate_passes INT,
+        total_passes INT,
+        pass_accuracy_pct DECIMAL(4, 1),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS fct_match_lineups (
+        lineup_sk VARCHAR(64) PRIMARY KEY,
+        match_id VARCHAR(64) NOT NULL REFERENCES fact_matches(match_id) ON DELETE CASCADE,
+        competition_code VARCHAR(16) NOT NULL,
+        season VARCHAR(16) NOT NULL,
+        gameweek INT,
+        round_label VARCHAR(32),
+        team_id VARCHAR(32) NOT NULL,
+        opponent_team_id VARCHAR(32),
+        is_home BOOLEAN NOT NULL,
+        player_id VARCHAR(64),
+        player_name_match VARCHAR(64) NOT NULL,
+        lineup_type VARCHAR(16) NOT NULL,
+        pitch_position_code VARCHAR(8),
+        role_category VARCHAR(4) NOT NULL,
+        grid_row INT,
+        grid_col INT,
+        jersey_number INT,
+        captain BOOLEAN DEFAULT 0,
+        rating DECIMAL(3, 1),
+        minutes_played INT DEFAULT 0,
+        goals INT DEFAULT 0,
+        assists INT DEFAULT 0,
+        yellow_card BOOLEAN DEFAULT 0,
+        red_card BOOLEAN DEFAULT 0,
+        sub_in_minute INT,
+        sub_out_minute INT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_match_closing_odds (
+        match_id VARCHAR(64) PRIMARY KEY,
+        competition_id VARCHAR(16) NOT NULL,
+        home_team_id VARCHAR(64) NOT NULL,
+        away_team_id VARCHAR(64) NOT NULL,
+        home_team_name VARCHAR(128),
+        away_team_name VARCHAR(128),
+        opening_odd_1 REAL,
+        opening_odd_n REAL,
+        opening_odd_2 REAL,
+        opening_timestamp_utc TEXT,
+        closing_odd_1 REAL,
+        closing_odd_n REAL,
+        closing_odd_2 REAL,
+        closing_margin_pct REAL,
+        drift_home_pct REAL,
+        drift_away_pct REAL,
+        over_2_5_odd REAL,
+        under_2_5_odd REAL,
+        btts_yes_odd REAL,
+        btts_no_odd REAL,
+        closing_timestamp_utc TEXT,
+        odds_status VARCHAR(24) DEFAULT 'ACTIVE',
+        updated_at TEXT NOT NULL DEFAULT (DATETIME('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_coaches (
+        coach_id VARCHAR(64) PRIMARY KEY,
+        fotmob_id INT,
+        api_sports_id INT,
+        full_name VARCHAR(128) NOT NULL,
+        display_name VARCHAR(64) NOT NULL,
+        short_name VARCHAR(32) NOT NULL,
+        birth_date DATE,
+        age INT,
+        nationality VARCHAR(64) NOT NULL,
+        nationality_code VARCHAR(8) NOT NULL,
+        nationality_flag VARCHAR(8) NOT NULL,
+        photo_url TEXT,
+        preferred_formation VARCHAR(16) DEFAULT '4-3-3',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dim_coach_contracts_scd2 (
+        contract_sk VARCHAR(64) PRIMARY KEY,
+        coach_id VARCHAR(64) NOT NULL REFERENCES dim_coaches(coach_id) ON DELETE CASCADE,
+        team_id VARCHAR(32) NOT NULL,
+        team_name VARCHAR(64) NOT NULL,
+        team_logo TEXT,
+        league_id VARCHAR(16),
+        valid_from DATE NOT NULL,
+        valid_to DATE,
+        is_current BOOLEAN NOT NULL DEFAULT 0,
+        role_title VARCHAR(64) DEFAULT 'Entraîneur Principal',
+        contract_status VARCHAR(32) NOT NULL,
+        seasons_covered TEXT NOT NULL,
+        matches_count INT DEFAULT 0,
+        wins INT DEFAULT 0,
+        draws INT DEFAULT 0,
+        losses INT DEFAULT 0,
+        win_rate_pct DECIMAL(5, 2) DEFAULT 0.0,
+        points_per_match DECIMAL(4, 2) DEFAULT 0.0,
+        appointment_notes TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS fct_player_transfers (
+        transfer_id VARCHAR(64) PRIMARY KEY,
+        player_id VARCHAR(64) NOT NULL,
+        player_name VARCHAR(128) NOT NULL,
+        player_display_name VARCHAR(64) NOT NULL,
+        player_position VARCHAR(16) NOT NULL,
+        player_role VARCHAR(4) NOT NULL,
+        player_nationality VARCHAR(64) NOT NULL,
+        player_nationality_code VARCHAR(8) NOT NULL,
+        player_nationality_flag VARCHAR(8) NOT NULL,
+        player_photo_url TEXT,
+        from_team_id VARCHAR(32) NOT NULL,
+        from_team_name VARCHAR(64) NOT NULL,
+        from_team_logo TEXT,
+        from_team_league VARCHAR(16),
+        to_team_id VARCHAR(32) NOT NULL,
+        to_team_name VARCHAR(64) NOT NULL,
+        to_team_logo TEXT,
+        to_team_league VARCHAR(16),
+        transfer_date DATE NOT NULL,
+        season VARCHAR(16) NOT NULL,
+        mercato_window VARCHAR(16) NOT NULL,
+        transfer_type VARCHAR(32) NOT NULL,
+        transfer_type_label VARCHAR(64) NOT NULL,
+        fee_numeric_eur DECIMAL(12, 2) NOT NULL,
+        fee_display VARCHAR(32) NOT NULL,
+        market_value_eur DECIMAL(12, 2) NOT NULL,
+        market_value_display VARCHAR(32) NOT NULL,
+        fee_value_delta_eur DECIMAL(12, 2),
+        age_at_transfer INT NOT NULL,
+        preferred_foot VARCHAR(16) DEFAULT 'Droitier',
+        transfer_notes TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+    conn.commit()
+
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.execute("PRAGMA foreign_keys = OFF;") # Désactivé pendant le bulk insert pour perf
     conn.execute("PRAGMA journal_mode = WAL;")
+    init_db_schema_if_needed(conn)
     return conn
 
 def persist_normalized_matches(conn, normalized_batch):

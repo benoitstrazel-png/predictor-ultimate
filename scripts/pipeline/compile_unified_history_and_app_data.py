@@ -81,6 +81,11 @@ def compile_data():
     print("📦 [Compiler] Connexion à predictor_v2.db (Source Unique de Vérité)...")
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    
+    # Garantir que les tables de facts et dims existent
+    from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
+    init_db_schema_if_needed(conn)
+
     c = conn.cursor()
 
     team_logos = load_team_logos()

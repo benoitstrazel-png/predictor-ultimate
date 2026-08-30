@@ -45,6 +45,10 @@ print(" 🚀 COMPILATEUR FAST-LAYER : EXPORT DES ARTEFACTS CLIENTS V2")
 print("=" * 75)
 
 conn = sqlite3.connect(DB_PATH)
+
+from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
+init_db_schema_if_needed(conn)
+
 cursor = conn.cursor()
 
 # 1. Compile Players Master Registry
