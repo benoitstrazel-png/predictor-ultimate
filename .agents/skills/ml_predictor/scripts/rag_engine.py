@@ -48,6 +48,8 @@ def generate_rag_prediction(home_team, away_team, odd_home=1.65, odd_draw=4.10, 
     best_exact = probs["top_exact_scores"][0]["score"] if probs["top_exact_scores"] else "1-0"
     best_exact_prob = probs["top_exact_scores"][0]["prob"] if probs["top_exact_scores"] else 10.0
     
+    vb_text = f"Une opportunité de Value Bet est identifiée sur {value_bets[0]['side']} avec une cote Betclic de {value_bets[0]['betclic_odd']} (Edge : {value_bets[0]['edge_percentage']})." if value_bets else "Aucune anomalie de cote majeure détectée aux conditions actuelles."
+
     synthesis = {
         "query": f"Prédiction {home_team} vs {away_team}",
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -73,9 +75,9 @@ def generate_rag_prediction(home_team, away_team, odd_home=1.65, odd_draw=4.10, 
         "value_bets": value_bets,
         "natural_language_justification": (
             f"Basé sur notre modèle Dixon-Coles et l'analyse contextuelle RAG :\n"
-            f"1. **Dominance à domicile** : {home_team} affiche un xG projeté de {round(base_xg_home, 2)} contre {round(base_xg_away, 2)} pour {away_team} à {coords['stadium']}.\n"
-            f"2. **Impact Météo** : Conditions actuelles à {coords['city']} ({weather.get('condition', 'Clair')}, {weather.get('temp_avg_c', 18)}°C, Vent {weather.get('wind_speed_kmh', 10)} km/h).\n"
-            f"3. **Value Bet** : " + (f"Une opportunistic Value Bet est détectée sur {value_bets[0]['side']} avec une cote Betclic de {value_bets[0]['betclic_odd']} (Edge: {value_bets[0]['edge_percentage']})." if value_bets else "Aucune Value Bet majeure détectée aux cotes actuelles.")
+            f"1. Dominance à domicile : {home_team} affiche un xG projeté de {round(base_xg_home, 2)} contre {round(base_xg_away, 2)} pour {away_team} à {coords['stadium']}.\n"
+            f"2. Impact Météo : Conditions actuelles à {coords['city']} ({weather.get('condition', 'Clair')}, {weather.get('temp_avg_c', 18)}°C, Vent {weather.get('wind_speed_kmh', 10)} km/h).\n"
+            f"3. Value Bet : {vb_text}"
         )
     }
     

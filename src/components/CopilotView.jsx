@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
-import { queryCopilotRAG } from '../utils/ragEngine';
+import { queryCopilotRAG, rewriteQuery } from '../utils/ragEngine';
 import { calculateResilienceIndex, calculateSequelImpact } from '../utils/featureStore';
-import { Bot, Send, Sparkles, ShieldAlert, Zap, RefreshCw, MessageSquare } from 'lucide-react';
+import { Bot, Send, Sparkles, RefreshCw, UserCheck, ShieldCheck, TrendingUp, Layers, Award, Terminal } from 'lucide-react';
+
+const ANALYSIS_MODES = [
+  { id: 'MATCH_ANALYSIS', label: 'Match Preview & xG', icon: Layers },
+  { id: 'PLAYER_SCOUT', label: 'Scout Joueur', icon: UserCheck },
+  { id: 'COACH_TACTICS', label: 'Entraîneur Virtuel', icon: ShieldCheck },
+  { id: 'VALUE_BET', label: 'Value Bet Finder', icon: TrendingUp },
+  { id: 'ML_EXPLAIN', label: 'Modèle Dixon-Coles', icon: Terminal },
+  { id: 'ADVANCED_STATS', label: 'Statistiques & H2H', icon: Award },
+];
 
 export default function CopilotView() {
+  const [selectedMode, setSelectedMode] = useState('MATCH_ANALYSIS');
   const [messages, setMessages] = useState([
     {
       sender: 'ai',
-      text: 'Bonjour ! Je suis votre AI Predictor Copilot (Moteur RAG 100% Câblé). Posez-moi vos questions tactiques sur les matchs, les suspensions, la résilience des équipes ou les sévérités d\'arbitres.',
+      text: [
+        'Bonjour. Je suis votre Moteur RAG Football Predictor Ultimate.',
+        'Posez vos questions sur les matchs, les joueurs, les tactiques d entraîneurs, les xG, les projections Dixon-Coles ou les Value Bets.'
+      ].join('\n'),
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     }
   ]);
@@ -18,13 +31,17 @@ export default function CopilotView() {
   const resilience = calculateResilienceIndex(selectedTeam);
   const sequel = calculateSequelImpact(selectedTeam);
 
-  const handleSendMessage = (textToSend) => {
+  const handleSendMessage = (textToSend, modeOverride = null) => {
     const promptText = textToSend || inputPrompt;
     if (!promptText || promptText.trim().length === 0) return;
+
+    const currentMode = modeOverride || selectedMode;
+    const rewritten = rewriteQuery(promptText, currentMode);
 
     const userMsg = {
       sender: 'user',
       text: promptText,
+      rewrittenQuery: rewritten.rewrittenQuery,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
 
@@ -33,7 +50,7 @@ export default function CopilotView() {
     setIsSearching(true);
 
     setTimeout(() => {
-      const aiResponseText = queryCopilotRAG(promptText);
+      const aiResponseText = queryCopilotRAG(promptText, currentMode);
       const aiMsg = {
         sender: 'ai',
         text: aiResponseText,
@@ -41,14 +58,14 @@ export default function CopilotView() {
       };
       setMessages(prev => [...prev, aiMsg]);
       setIsSearching(false);
-    }, 600);
+    }, 450);
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
       {/* ── HEADER ── */}
-      <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
         <div>
           <h1 style={{
             fontFamily: 'var(--font-serif)',
@@ -64,7 +81,7 @@ export default function CopilotView() {
             AI Predictor Copilot (Moteur RAG Live)
           </h1>
           <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-            Assistant d'Analyse Tactique Augmentée & Consultation de la Mémoire Prédictive Long-Terme
+            Moteur RAG Hybride Multi-Index : Matchs · Joueurs · Entraîneurs · Dixon-Coles · Value Bets
           </p>
         </div>
 
@@ -81,10 +98,47 @@ export default function CopilotView() {
         </div>
       </section>
 
+      {/* ── MODE BAR SELECTOR ── */}
+      <div style={{
+        display: 'flex',
+        gap: 8,
+        overflowX: 'auto',
+        paddingBottom: 4
+      }}>
+        {ANALYSIS_MODES.map(mode => {
+          const Icon = mode.icon;
+          const isActive = selectedMode === mode.id;
+          return (
+            <button
+              key={mode.id}
+              onClick={() => setSelectedMode(mode.id)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '8px 14px',
+                borderRadius: 12,
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                background: isActive ? 'var(--gold-muted)' : 'var(--obsidian-2)',
+                color: isActive ? 'var(--gold)' : 'var(--neutral)',
+                border: isActive ? '1px solid var(--gold-border)' : '1px solid var(--ivory-border)',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              <Icon size={14} />
+              {mode.label}
+            </button>
+          );
+        })}
+      </div>
+
       {/* ── CHAT WINDOW & RAG ENGINE INTERFACE ── */}
       <section style={{
         display: 'grid',
-        gridTemplateColumns: '2fr 1fr',
+        gridTemplateColumns: '2.2fr 1fr',
         gap: 24,
       }}>
 
@@ -96,7 +150,7 @@ export default function CopilotView() {
           padding: 20,
           display: 'flex',
           flexDirection: 'column',
-          height: 520,
+          height: 560,
         }}>
           {/* Messages Area */}
           <div style={{
@@ -117,17 +171,31 @@ export default function CopilotView() {
                 }}
               >
                 <div style={{
-                  maxWidth: '85%',
+                  maxWidth: '88%',
                   background: m.sender === 'user' ? 'var(--gold-muted)' : 'var(--obsidian-2)',
                   border: `1px solid ${m.sender === 'user' ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
                   borderRadius: 16,
                   padding: '14px 18px',
                   color: 'var(--ivory)',
                   fontSize: 13,
-                  lineHeight: 1.5,
+                  lineHeight: 1.6,
                   whiteSpace: 'pre-line',
                 }}>
                   {m.text}
+                  {m.rewrittenQuery && (
+                    <div style={{
+                      marginTop: 8,
+                      paddingTop: 8,
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                      fontSize: 10,
+                      color: 'var(--gold)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 4
+                    }}>
+                      <Sparkles size={11} /> Réécriture RAG : {m.rewrittenQuery}
+                    </div>
+                  )}
                   <div style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 6, textAlign: 'right' }}>
                     {m.timestamp}
                   </div>
@@ -138,7 +206,7 @@ export default function CopilotView() {
             {isSearching && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 12 }}>
                 <RefreshCw className="animate-spin" size={14} />
-                <span>Interrogation RAG de la Base de Données Unifiée en cours...</span>
+                <span>Interrogation et fusion contextuelle du Moteur RAG Football en cours...</span>
               </div>
             )}
           </div>
@@ -158,7 +226,7 @@ export default function CopilotView() {
               value={inputPrompt}
               onChange={e => setInputPrompt(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleSendMessage()}
-              placeholder="Posez votre question (ex: Analyse du comportement de PSG après un rouge)..."
+              placeholder="Posez votre question (ex: Paris FC va gagner ou pas, Stats Haaland, Tactique De Zerbi, Value bets)..."
               style={{
                 flex: 1,
                 background: 'transparent',
@@ -184,7 +252,7 @@ export default function CopilotView() {
                 fontSize: 12,
               }}
             >
-              <Send size={14} /> Envoyer
+              <Send size={14} /> Analyser
             </button>
           </div>
         </div>
@@ -210,7 +278,7 @@ export default function CopilotView() {
                 outline: 'none',
               }}
             >
-              {['PSG', 'Marseille', 'Lyon', 'Monaco', 'Real Madrid', 'FC Barcelona', 'Manchester City', 'Arsenal', 'Liverpool', 'Inter Milan', 'Bayern Munich'].map(t => (
+              {['PSG', 'Marseille', 'Lyon', 'Monaco', 'Nice', 'Paris FC', 'Real Madrid', 'FC Barcelona', 'Manchester City', 'Arsenal', 'Liverpool', 'Inter Milan', 'Bayern Munich'].map(t => (
                 <option key={t} value={t}>{t}</option>
               ))}
             </select>
@@ -219,19 +287,24 @@ export default function CopilotView() {
           {/* Quick Prompt Chips */}
           <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 16 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Sparkles size={16} color="var(--gold)" /> Prompts Recommandés RAG
+              <Sparkles size={16} color="var(--gold)" /> Exemples de Requêtes RAG
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
-                `Analyse le comportement de ${selectedTeam} après avoir concédé un carton rouge`,
-                `Analyse du choc ${selectedTeam} vs Arsenal`,
-                `Quel est le bilan et l'indice de résilience de ${selectedTeam} ?`,
-                `Sévérité des arbitres et fréquence de cartons pour ${selectedTeam}`,
-              ].map((pText, pIdx) => (
+                { text: `${selectedTeam} va gagner ou pas ?`, mode: 'MATCH_ANALYSIS' },
+                { text: `Analyse et métriques xG90 des buteurs de ${selectedTeam}`, mode: 'PLAYER_SCOUT' },
+                { text: `Philosophie tactique et style de jeu de ${selectedTeam}`, mode: 'COACH_TACTICS' },
+                { text: 'Y a-t-il des Value Bets détectés aujourd hui ?', mode: 'VALUE_BET' },
+                { text: 'Comment fonctionne la loi de Poisson Dixon-Coles ?', mode: 'ML_EXPLAIN' },
+                { text: `Indice de résilience et cartons H2H pour ${selectedTeam}`, mode: 'ADVANCED_STATS' },
+              ].map((pItem, pIdx) => (
                 <button
                   key={pIdx}
-                  onClick={() => handleSendMessage(pText)}
+                  onClick={() => {
+                    setSelectedMode(pItem.mode);
+                    handleSendMessage(pItem.text, pItem.mode);
+                  }}
                   style={{
                     background: 'var(--obsidian-2)',
                     border: '1px solid var(--ivory-border)',
@@ -246,7 +319,7 @@ export default function CopilotView() {
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--neutral)'}
                 >
-                  💬 {pText}
+                  💬 {pItem.text}
                 </button>
               ))}
             </div>
@@ -258,3 +331,4 @@ export default function CopilotView() {
     </div>
   );
 }
+

@@ -59,6 +59,12 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
     const homeLineup = targetMatch.homeLineup || { formation: '4-3-3', keyAbsentees: [], aggregatedSquadImpact: { xiStrengthRatio: 1.0, netXgOffensePenalty: 0.0, netXgDefensePenalty: 0.0, absenteesCount: 0 } };
     const awayLineup = targetMatch.awayLineup || { formation: '4-2-3-1', keyAbsentees: [], aggregatedSquadImpact: { xiStrengthRatio: 1.0, netXgOffensePenalty: 0.0, netXgDefensePenalty: 0.0, absenteesCount: 0 } };
 
+    const homeProb = pred.probabilities?.home || pred.homeProb || '45%';
+    const drawProb = pred.probabilities?.draw || pred.drawProb || '28%';
+    const awayProb = pred.probabilities?.away || pred.awayProb || '27%';
+    const homeXg = pred.expectedGoals?.home || pred.homeXg || targetMatch.homeXg || 1.80;
+    const awayXg = pred.expectedGoals?.away || pred.awayXg || targetMatch.awayXg || 1.10;
+
     const absenteesList = [
       ...(homeLineup.keyAbsentees || []).map(a => ({ ...a, team: home })),
       ...(awayLineup.keyAbsentees || []).map(a => ({ ...a, team: away })),
@@ -68,8 +74,10 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
     const totalXgLoss = Math.abs(homeLineup.aggregatedSquadImpact?.netXgOffensePenalty || 0) + Math.abs(awayLineup.aggregatedSquadImpact?.netXgOffensePenalty || 0);
     const netXgImpact = totalXgLoss > 0 ? `-${totalXgLoss.toFixed(2)}` : '0.0';
 
-    const isHomeFavori = parseFloat(pred.probabilities?.home || 50) > parseFloat(pred.probabilities?.away || 25);
-    const topProb = isHomeFavori ? pred.probabilities?.home : pred.probabilities?.away;
+    const pHomeNum = parseFloat(homeProb) || 45;
+    const pAwayNum = parseFloat(awayProb) || 27;
+    const isHomeFavori = pHomeNum >= pAwayNum;
+    const topProb = isHomeFavori ? homeProb : awayProb;
     const favoriTeam = isHomeFavori ? home : away;
 
     const firstVb = valueBets.length > 0 ? valueBets[0] : null;
@@ -83,20 +91,20 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
     if (absenteesList.length > 0) {
       const topAbsent = absenteesList[0];
       if (topAbsent.pos === 'FW') {
-        tacticalSquadNotes = `L'absence de **${topAbsent.name}** (${topAbsent.team}, ${topAbsent.reason}) pèse directement sur le volume offensif avec une baisse de **${Math.abs(topAbsent.deltaXg || 0.25)} xG**. `;
+        tacticalSquadNotes = `L'absence de ${topAbsent.name} (${topAbsent.team}, ${topAbsent.reason}) pèse directement sur le volume offensif avec une baisse de ${Math.abs(topAbsent.deltaXg || 0.25)} xG. `;
       } else if (topAbsent.pos === 'DF' || topAbsent.pos === 'GK') {
-        tacticalSquadNotes = `Le forfait défensif de **${topAbsent.name}** (${topAbsent.team}, ${topAbsent.reason}) fragilise l'axe central et augmente les probabilités du marché "Les deux équipes marquent (BTTS)". `;
+        tacticalSquadNotes = `Le forfait défensif de ${topAbsent.name} (${topAbsent.team}, ${topAbsent.reason}) fragilise l'axe central et augmente les probabilités du marché Les deux équipes marquent (BTTS). `;
       } else {
-        tacticalSquadNotes = `L'indisponibilité de **${topAbsent.name}** (${topAbsent.team}, ${topAbsent.reason}) impacte la maîtrise du milieu et la transition rapide. `;
+        tacticalSquadNotes = `L'indisponibilité de ${topAbsent.name} (${topAbsent.team}, ${topAbsent.reason}) impacte la maîtrise du milieu et la transition rapide. `;
       }
     } else {
-      tacticalSquadNotes = `Les deux effectifs se présentent au complet avec une force de onze de départ optimale (100% de disponibilité). `;
+      tacticalSquadNotes = 'Les deux effectifs se présentent au complet avec une force de onze de départ optimale (100% de disponibilité). ';
     }
 
-    const justification = `D'après notre modèle Dixon-Coles calibré sur les données officielles Betclic : **${favoriTeam}** est favori avec **${topProb}** de chances de victoire (xG projeté : **${pred.expectedGoals?.home || 1.8}** pour ${home} vs **${pred.expectedGoals?.away || 0.9}** pour ${away}). ` +
+    const justification = `D'après notre modèle Dixon-Coles calibré sur les données officielles Betclic : ${favoriTeam} est favori avec ${topProb} de chances de victoire (xG projeté : ${homeXg} pour ${home} vs ${awayXg} pour ${away}). ` +
       `${tacticalSquadNotes}` +
       `Au stade de ${weather.city || home} (${weather.condition}, ${weather.temp_avg_c}°C), ${referee.name} assurera la tenue du match. ` +
-      (firstVb ? `Une opportunité de Value Bet est identifiée sur **${vbLabel}** à une cote de **${firstVb.betclic_odd || firstVb.odd || firstVb.bookmaker_odds}** avec un Edge de **${firstVb.edge_percentage || firstVb.edge}**.` : `Le pronostic préférentiel est : **${pred.advice || 'Victoire Domicile'}**.`);
+      (firstVb ? `Une opportunité de Value Bet est identifiée sur ${vbLabel} à une cote de ${firstVb.betclic_odd || firstVb.odd || firstVb.bookmaker_odds} avec un Edge de ${firstVb.edge_percentage || firstVb.edge}.` : `Le pronostic préférentiel est : ${pred.advice || `Victoire ${favoriTeam}`}.`);
 
     return {
       match: `${home} vs ${away}`,
@@ -108,7 +116,7 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
       absenteesCount,
       netXgImpact,
       absenteesList,
-      probabilities: pred.probabilities,
+      probabilities: { home: homeProb, draw: drawProb, away: awayProb },
       weather: `${weather.condition} · ${weather.temp_avg_c}°C`,
       valueBet: vbSummary,
       justification
