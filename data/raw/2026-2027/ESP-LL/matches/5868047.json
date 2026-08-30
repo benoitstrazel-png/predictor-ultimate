@@ -486,14 +486,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} haven't scored away for {1} matches.",
+              "TextTemplateId": "goalless_away",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,21 +500,18 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Málaga have scored 3 goals in their last 3 matches, while Levante have scored 5."
+              "Icon": "poll_glove",
+              "defaultText": "Levante haven't scored away for 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "away_team",
                 "home_team",
-                "4",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,8 +523,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Levante haven't lost to Málaga in their last 4 meetings (2W, 2D)."
+              "Icon": "poll_stat_down",
+              "defaultText": "Málaga haven't won a match in 4 attempts."
             }
           ]
         },
@@ -582,29 +576,29 @@
         },
         {
           "type": "player",
-          "playerId": 616538,
+          "playerId": 1108863,
           "teamId": 9864,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 616538,
-              "name": "Alfonso Herrero",
+              "value": 1108863,
+              "name": "David Larrubia",
               "type": "player"
             },
             {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
+              "value": 9864,
+              "name": "Málaga",
+              "type": "team"
             },
             {
-              "value": 5.5,
+              "value": 0.8,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Alfonso Herrero is ranked 1 in saves per match in the competition (5.5)",
+          "text": "David Larrubia has the most shots on target per match for Málaga (0.8)",
           "color": "#518EC7"
         },
         {

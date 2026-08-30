@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
-                "away_team",
-                "6"
+                "home_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Ipswich Town have won their last 6 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Crystal Palace have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -483,12 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "1",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ipswich Town have scored 9 goals in their last 3 matches."
+              "defaultText": "Crystal Palace have scored 1 goals in their last 3 matches, while Ipswich Town have scored 7."
             },
             {
               "OddsType": "dc",

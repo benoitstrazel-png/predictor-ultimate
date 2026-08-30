@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10279_xsmall.png",
-            "linkToMatch": "/matches/valencia-vs-castellon/3hodsa#5900433",
-            "date": {
-              "utcTime": "2026-07-25T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10279/overview/castellon",
-            "tooltipText": {
-              "utcTime": "2026-07-25T18:00:00.000Z",
-              "homeTeam": "Valencia",
-              "homeTeamId": 10267,
-              "homeScore": "1",
-              "awayTeam": "Castellón",
-              "awayTeamId": 10279,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "10267",
-              "name": "Valencia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10279",
-              "name": "Castellón",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10194_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8603",
               "name": "Real Betis",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783_xsmall.png",
+            "linkToMatch": "/matches/deportivo-coruna-vs-valencia/3bokua#5868033",
+            "date": {
+              "utcTime": "2026-08-30T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
+            "tooltipText": {
+              "utcTime": "2026-08-30T17:30:00.000Z",
+              "homeTeam": "Deportivo A Coruña",
+              "homeTeamId": 9783,
+              "homeScore": "3",
+              "awayTeam": "Valencia",
+              "awayTeamId": 10267,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "9783",
+              "name": "Deportivo A Coruña",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10267",
+              "name": "Valencia",
+              "isOurTeam": true
             }
           }
         ],
@@ -512,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Valencia haven't won a match in 5 attempts."
+              "defaultText": "Valencia haven't won a match in 6 attempts."
             }
           ]
         },
@@ -562,34 +562,44 @@
           "type": "team",
           "playerId": null,
           "teamId": 10267,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't won a match in 6 attempts",
           "color": "#ff671f"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10267,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 6,
+          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+          "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
             {
-              "value": 5,
+              "value": 10267,
+              "name": "Valencia",
+              "type": "team"
+            },
+            {
+              "value": 8634,
+              "name": "Barcelona",
+              "type": "team"
+            },
+            {
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Valencia and Barcelona have not drawn any of their last 6 matches against each other.",
           "color": "#ff671f"
         },
         {
@@ -632,30 +642,20 @@
           "color": "#971e48"
         },
         {
-          "type": "player",
-          "playerId": 906937,
+          "type": "team",
+          "playerId": null,
           "teamId": 8634,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 906937,
-              "name": "Anthony Gordon",
-              "type": "player"
-            },
-            {
-              "value": 3,
+              "value": 3.5,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Anthony Gordon is ranked 3 in big chances created in the competition (2)",
+          "text": "Average 3.5 goals per match",
           "color": "#971e48"
         }
       ],

@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Le Mans haven't lost in 12 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Le Mans have 3W, 1D, 1L in five matches while Lens have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "7",
                 "7"
               ],
               "DefaultLabels": [
@@ -501,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Le Mans have scored 6 goals in their last 3 matches, while Lens have scored 7."
+              "defaultText": "Le Mans have scored 7 goals in their last 3 matches, while Lens have scored 7."
             },
             {
               "OddsType": "dc",
@@ -559,33 +565,6 @@
         },
         {
           "type": "player",
-          "playerId": 722531,
-          "teamId": 8682,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 722531,
-              "name": "Nicolas Kocik",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 9,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Nicolas Kocik is ranked 1 in saves per match in the competition (9)",
-          "color": "#D60000"
-        },
-        {
-          "type": "player",
           "playerId": 807955,
           "teamId": 8682,
           "priority": 10,
@@ -604,6 +583,33 @@
             }
           ],
           "text": "Louis Mafouta is the competition's top scorer (3)",
+          "color": "#D60000"
+        },
+        {
+          "type": "player",
+          "playerId": 807955,
+          "teamId": 8682,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 807955,
+              "name": "Louis Mafouta",
+              "type": "player"
+            },
+            {
+              "value": 8682,
+              "name": "Le Mans",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Louis Mafouta has created the most big chances for Le Mans (2)",
           "color": "#D60000"
         },
         {

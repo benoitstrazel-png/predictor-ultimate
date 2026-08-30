@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
+                "3",
                 "1",
-                "2",
+                "1",
                 "away_team",
                 "3",
                 "0",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Augsburg have 2W, 1D, 2L in five matches while Bayer Leverkusen have 3W, 0D, 2L."
+              "defaultText": "Augsburg have 3W, 1D, 1L in five matches while Bayer Leverkusen have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -492,8 +492,8 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
-                "17",
+                "away_team",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -505,16 +505,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Augsburg have scored 17 goals in their last 3 matches."
+              "defaultText": "Bayer Leverkusen have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "9"
               ],
               "DefaultLabels": [
@@ -528,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayer Leverkusen haven't drawn in their last 9 matches."
+              "defaultText": "Augsburg haven't drawn in their last 4 matches and Bayer Leverkusen in their last 9."
             }
           ]
         },
@@ -565,27 +567,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 8406,
-          "priority": 8,
-          "defaultText": "{0} have won the previous {2} matches against {1}.",
-          "localizedTextId": "h2h_winstreak",
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
           "statValues": [
             {
-              "value": 8406,
-              "name": "Augsburg",
-              "type": "team"
-            },
-            {
-              "value": 8178,
-              "name": "Bayer Leverkusen",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 1,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Augsburg have won the previous 2 matches against Bayer Leverkusen.",
+          "text": "Have kept the most clean sheets in the competition (1)",
           "color": "#B93733"
         },
         {
@@ -607,12 +599,12 @@
               "type": "ordinal"
             },
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Marius Wolf is ranked 1 in big chances created in the competition (5)",
+          "text": "Marius Wolf is ranked 1 in big chances created in the competition (6)",
           "color": "#B93733"
         },
         {
