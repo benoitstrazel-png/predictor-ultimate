@@ -116,9 +116,11 @@ export const rewriteQuery = (rawQuery, explicitMode = null) => {
 
   // Classification automatique de l'intention si non forcée
   if (!explicitMode) {
-    if (norm.includes('value bet') || norm.includes('cote') || norm.includes('edge') || norm.includes('bankroll') || norm.includes('rentabilite') || norm.includes('pari')) {
+    if (norm.includes('buteur') || norm.includes('buteurs') || norm.includes('marquer') || norm.includes('marquera') || norm.includes('scorer') || norm.includes('passeur') || norm.includes('passeurs')) {
+      detectedIntent = teams.length >= 1 ? 'MATCH_SCORERS' : 'PLAYER_SCOUT';
+    } else if (norm.includes('value bet') || norm.includes('cote') || norm.includes('edge') || norm.includes('bankroll') || norm.includes('rentabilite') || norm.includes('pari')) {
       detectedIntent = 'VALUE_BET';
-    } else if (norm.includes('joueur') || norm.includes('buteur') || norm.includes('passeur') || norm.includes('xg90') || norm.includes('xa90') || detectedPlayer) {
+    } else if (norm.includes('joueur') || norm.includes('xg90') || norm.includes('xa90') || detectedPlayer) {
       detectedIntent = 'PLAYER_SCOUT';
     } else if (norm.includes('entraineur') || norm.includes('coach') || norm.includes('tactique') || norm.includes('formation') || norm.includes('style') || detectedCoach) {
       detectedIntent = 'COACH_TACTICS';
@@ -132,7 +134,11 @@ export const rewriteQuery = (rawQuery, explicitMode = null) => {
   }
 
   // Construction de la requête réécrite enrichie
-  if (detectedIntent === 'MATCH_ANALYSIS' && teams.length >= 1) {
+  if (detectedIntent === 'MATCH_SCORERS' && teams.length >= 1) {
+    const tHome = teams[0];
+    const tAway = teams[1] || 'adversaire';
+    rewrittenQuery = `Identifier les buteurs et passeurs potentiels pour ${tHome} vs ${tAway} : probabilités de but calculées par le modèle, cotes buteurs Betclic, xG individuels et dynamiques de forme.`;
+  } else if (detectedIntent === 'MATCH_ANALYSIS' && teams.length >= 1) {
     const tHome = teams[0];
     const tAway = teams[1] || 'adversaire';
     rewrittenQuery = `Analyser la rencontre ${tHome} vs ${tAway} : xG projetés Dixon-Coles, cotes Betclic, impact des forfaits et absences, conditions météo du stade, historique H2H et détection de Value Bet.`;
@@ -245,6 +251,51 @@ export const synthesizeFootballAnalysis = (queryContext, searchResults) => {
   const coach = searchResults.matchedCoach;
   const comp = searchResults.matchedCompetition;
   const ml = searchResults.mlModel;
+
+  // ── MODE 1 BIS : BUTEURS & PASSEURS DU MATCH ──
+  if (intent === 'MATCH_SCORERS' && match) {
+    const h = match.homeTeam;
+    const a = match.awayTeam;
+    const homeScorers = match.topScorers?.home || [];
+    const awayScorers = match.topScorers?.away || [];
+    const homeAssists = match.potentialAssists?.home || [];
+    const awayAssists = match.potentialAssists?.away || [];
+
+    const formatScorerLine = (p) => {
+      const prob = p.goalProb || `${Math.round((p.goalProbVal || 20))}%`;
+      const odd = p.oddScorer ? `@ ${p.oddScorer}` : '';
+      const xg = p.xGMatch ? `(xG projeté : ${p.xGMatch})` : '';
+      const goals = p.seasonGoals ? `[${p.seasonGoals} buts cette saison]` : '';
+      return `- ${p.name} (${p.position || 'A'}) : Probabilité de but ${prob} ${odd} ${xg} ${goals}`.trim();
+    };
+
+    const formatAssistLine = (p) => {
+      const prob = p.assistProb || `${Math.round((p.assistProbVal || 15))}%`;
+      const odd = p.oddAssist ? `@ ${p.oddAssist}` : '';
+      const xa = p.xAMatch ? `(xA projeté : ${p.xAMatch})` : '';
+      return `- ${p.name} (${p.position || 'M'}) : Probabilité de passe ${prob} ${odd} ${xa}`.trim();
+    };
+
+    const hScorersTxt = homeScorers.length > 0 ? homeScorers.map(formatScorerLine).join('\n') : `- Buteurs prioritaires de ${h} selon xG d équipe.`;
+    const aScorersTxt = awayScorers.length > 0 ? awayScorers.map(formatScorerLine).join('\n') : `- Buteurs prioritaires de ${a} selon xG d équipe.`;
+    const hAssistsTxt = homeAssists.length > 0 ? homeAssists.map(formatAssistLine).join('\n') : '';
+    const aAssistsTxt = awayAssists.length > 0 ? awayAssists.map(formatAssistLine).join('\n') : '';
+
+    return [
+      `ANALYSE DES BUTEURS ET PASSEURS : ${h} vs ${a}`,
+      `Projections quantitatives xG & Cotes Betclic officielles`,
+      '',
+      `1. TOP BUTEURS PROBABLES - ${h.toUpperCase()}`,
+      hScorersTxt,
+      '',
+      `2. TOP BUTEURS PROBABLES - ${a.toUpperCase()}`,
+      aScorersTxt,
+      '',
+      (hAssistsTxt || aAssistsTxt) ? `3. CRÉATEURS ET PASSEURS DÉCISIFS CLÉS\n${hAssistsTxt}\n${aAssistsTxt}\n` : '',
+      `4. RECOMMANDATION ANALYTIQUE JOUEURS`,
+      `Le modèle identifie une valeur intéressante sur les attaquants dont la probabilité réelle de marquer est supérieure à la probabilité implicite de la cote bookmaker. Privilégier les joueurs tirant les penalties ou monopolisant plus de 30% des xG de l équipe.`
+    ].filter(Boolean).join('\n');
+  }
 
   // ── MODE 1 : ANALYSE DE MATCH & PREVIEW ──
   if (intent === 'MATCH_ANALYSIS' && match) {
