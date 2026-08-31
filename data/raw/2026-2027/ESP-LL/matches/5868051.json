@@ -105,8 +105,13 @@
           "round": "5"
         },
         "Stadium": {
-          "name": "San Mames",
-          "country": ""
+          "name": "Estadio de San Mamés",
+          "city": "Bilbao",
+          "country": "Spain",
+          "lat": 43.264172789,
+          "long": -2.949383125,
+          "capacity": 53289,
+          "surface": "grass"
         },
         "Referee": {
           "text": "",
@@ -434,10 +439,10 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
+                "away_team",
                 "5"
               ],
               "DefaultLabels": [
@@ -451,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Athletic Club have lost their last 5 matches."
+              "defaultText": "Elche haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -483,7 +488,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
+                "1",
                 "1"
               ],
               "DefaultLabels": [
@@ -495,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Athletic Club have an average of 0.67 goals in their last three matches and Elche have an average of 1."
+              "defaultText": "Athletic Club have an average of 1 goals in their last three matches and Elche have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -504,7 +509,7 @@
               "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
               "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
+                "away_team",
                 "5"
               ],
               "DefaultLabels": [
@@ -518,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Athletic Club haven't won a match in 5 attempts."
+              "defaultText": "Elche haven't won a match in 5 attempts."
             }
           ]
         },
@@ -553,6 +558,33 @@
         },
         {
           "type": "player",
+          "playerId": 282462,
+          "teamId": 8315,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 282462,
+              "name": "Íñigo Ruiz de Galarreta",
+              "type": "player"
+            },
+            {
+              "value": 8315,
+              "name": "Athletic Club",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Íñigo Ruiz de Galarreta has created the most big chances for Athletic Club (1)",
+          "color": "#E2001A"
+        },
+        {
+          "type": "player",
           "playerId": 604105,
           "teamId": 8315,
           "priority": 1,
@@ -576,33 +608,6 @@
             }
           ],
           "text": "Iñaki Williams has the most shots on target per match for Athletic Club (2)",
-          "color": "#E2001A"
-        },
-        {
-          "type": "player",
-          "playerId": 660625,
-          "teamId": 8315,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 660625,
-              "name": "Unai Simón",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 6,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Unai Simón is ranked 1 in saves per match in the competition (6)",
           "color": "#E2001A"
         },
         {
@@ -689,6 +694,22 @@
         "All": []
       }
     },
+    "weather": {
+      "temperature": 24,
+      "windSpeed": 4,
+      "windDirectionCardinal": "NNW",
+      "iconCode": 30,
+      "relativeHumidity": 64,
+      "precipChance": 19,
+      "precipitation": 0,
+      "snow": 0,
+      "cloudCover": 57,
+      "description": "Partly Cloudy",
+      "apiUsed": "forecast",
+      "lastUpdated": "2026-08-31T08:00:18Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
+    },
     "lineup": {
       "matchId": 5868051,
       "lineupType": "standard",
@@ -699,18 +720,6 @@
         "id": 8315,
         "name": "Athletic Club",
         "unavailable": [
-          {
-            "id": 1327006,
-            "name": "Johaneko Louisjean",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-08-30T20:24:20Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Johaneko",
-            "lastName": "Louisjean"
-          },
           {
             "id": 839893,
             "name": "Andoni Gorosabel",
@@ -1322,11 +1331,13 @@
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": {
         "@type": "Place",
-        "name": "San Mames",
+        "name": "Estadio de San Mamés",
+        "latitude": 43.264172789,
+        "longitude": -2.949383125,
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "Unknown country",
-          "addressLocality": "Unknown city"
+          "addressCountry": "Spain",
+          "addressLocality": "Bilbao"
         }
       },
       "image": [

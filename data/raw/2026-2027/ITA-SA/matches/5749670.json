@@ -439,13 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
-              "TextTemplateId": "undefeated_both_unequal",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "5",
-                "7"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -458,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Atalanta haven't lost in their last 5 matches, and Cagliari in their last 7."
+              "defaultText": "Atalanta haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
@@ -491,7 +489,7 @@
                 "home_team",
                 "away_team",
                 "1",
-                "1.33"
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atalanta have an average of 1 goals in their last three matches and Cagliari have an average of 1.33."
+              "defaultText": "Atalanta have an average of 1 goals in their last three matches and Cagliari have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -517,8 +515,8 @@
                 "0",
                 "away_team",
                 "3",
-                "2",
-                "0"
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atalanta have 4W, 1D, 0L in five matches while Cagliari have 3W, 2D, 0L."
+              "defaultText": "Atalanta have 4W, 1D, 0L in five matches while Cagliari have 3W, 1D, 1L."
             }
           ]
         },
@@ -632,33 +630,6 @@
         },
         {
           "type": "player",
-          "playerId": 958422,
-          "teamId": 8529,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 958422,
-              "name": "Elia Caprile",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 7,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Elia Caprile is ranked 1 in saves per match in the competition (7)",
-          "color": "#B51F2B"
-        },
-        {
-          "type": "player",
           "playerId": 1705649,
           "teamId": 8529,
           "priority": 1,
@@ -676,12 +647,39 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Alessandro Romano has the most shots on target per match for Cagliari (2)",
+          "text": "Alessandro Romano has the most shots on target per match for Cagliari (1)",
+          "color": "#B51F2B"
+        },
+        {
+          "type": "player",
+          "playerId": 1705649,
+          "teamId": 8529,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1705649,
+              "name": "Alessandro Romano",
+              "type": "player"
+            },
+            {
+              "value": 8529,
+              "name": "Cagliari",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Alessandro Romano has created the most big chances for Cagliari (1)",
           "color": "#B51F2B"
         }
       ],
@@ -703,18 +701,18 @@
       }
     },
     "weather": {
-      "temperature": 24,
+      "temperature": 23,
       "windSpeed": 2,
-      "windDirectionCardinal": "ENE",
+      "windDirectionCardinal": "NE",
       "iconCode": 11,
       "relativeHumidity": 62,
-      "precipChance": 54,
-      "precipitation": 0.3,
+      "precipChance": 50,
+      "precipitation": 0.7,
       "snow": 0,
       "cloudCover": 60,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-30T21:00:21Z",
+      "lastUpdated": "2026-08-31T09:00:17Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
