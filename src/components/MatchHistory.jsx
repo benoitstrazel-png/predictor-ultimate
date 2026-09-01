@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import UNIFIED_HISTORY from '../data/unified_history.json';
 import MatchDetailsModal from './MatchDetailsModal';
+import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 const MatchHistory = ({ match }) => {
     const { homeTeam, awayTeam } = match;
@@ -67,6 +69,8 @@ const MatchHistory = ({ match }) => {
         if (res === 'N') { bgClass = "bg-orange-400/20 border-orange-400/50"; textClass = "text-orange-400"; }
         if (res === 'D') { bgClass = "bg-red-500/20 border-red-500/50"; textClass = "text-red-400"; }
 
+        const evalRes = fullMatch ? evaluateMatchPrediction(fullMatch) : null;
+
         return (
             <div
                 key={index}
@@ -82,8 +86,24 @@ const MatchHistory = ({ match }) => {
                     {/* Opponent */}
                     <span className="text-xs text-secondary font-bold uppercase tracking-wider">vs <span className="text-white ml-1">{opponent}</span></span>
                 </div>
-                {/* Score */}
-                <span className="text-xs font-mono text-white/70 tracking-widest">{score}</span>
+                <div className="flex items-center gap-3">
+                    {/* Algo Prediction Badge */}
+                    {evalRes && evalRes.isCorrect !== null && (
+                        <div
+                            className={`flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded border ${
+                                evalRes.isCorrect
+                                    ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-400'
+                                    : 'bg-red-500/15 border-red-500/40 text-red-400'
+                            }`}
+                            title={`Prédiction Algo : ${evalRes.predictedLabel}`}
+                        >
+                            {evalRes.isCorrect ? <CheckCircle2 size={11} /> : <XCircle size={11} />}
+                            <span>{evalRes.isCorrect ? 'Algo ✔' : 'Algo ✖'}</span>
+                        </div>
+                    )}
+                    {/* Score */}
+                    <span className="text-xs font-mono text-white/70 tracking-widest">{score}</span>
+                </div>
             </div>
         );
     };

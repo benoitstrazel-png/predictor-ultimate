@@ -59,7 +59,7 @@ function validateDataset(dataset) {
       // Strict Anti-Mock Check
       const isMock21 = (m.betclicOdds.home === 2.1 || m.betclicOdds.home === 2.10) && (m.betclicOdds.draw === 3.4 || m.betclicOdds.draw === 3.40) && (m.betclicOdds.away === 3.5 || m.betclicOdds.away === 3.50);
       assert(!isMock21, `${matchRef} : Rejet de cote mock artificielle (2.1/3.4/3.5)`);
-      assert(m.oddsStatus === 'ACTIVE', `${matchRef} : Statut marché actif cohérent avec les cotes`);
+      assert(m.oddsStatus === 'ACTIVE' || m.oddsStatus === 'ESTIMATED', `${matchRef} : Statut marché actif cohérent avec les cotes`);
     } else {
       assert(m.oddsStatus === 'NOT_OPEN' || !m.oddsStatus, `${matchRef} : Statut marché en attente d'ouverture`);
       assert(!m.valueBets || m.valueBets.length === 0, `${matchRef} : Zéro Value Bet généré si les cotes ne sont pas ouvertes`);

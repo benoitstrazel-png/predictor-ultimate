@@ -3,7 +3,8 @@ import UNIFIED_HISTORY from '../data/unified_history.json';
 import APP_DATA from '../data/app_data.json';
 import TeamLogo from './ui/TeamLogo';
 import MatchDetailsModal from './MatchDetailsModal';
-import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw } from 'lucide-react';
+import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
+import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
 
 const parseRoundNumber = (val) => {
   if (!val || val === 'ALL') return null;
@@ -545,6 +546,33 @@ export default function MatchHistoryHub() {
                         <TeamLogo teamName={m.awayTeam} size="sm" />
                       </div>
                     </div>
+
+                    {/* Algo Prediction Result Badge (Green if correct, Red if incorrect) */}
+                    {isFinished && (() => {
+                      const evalRes = evaluateMatchPrediction(m);
+                      if (!evalRes || evalRes.isCorrect === null) return null;
+                      return (
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 4,
+                            fontSize: 10,
+                            fontWeight: 800,
+                            padding: '3px 8px',
+                            borderRadius: 6,
+                            background: evalRes.isCorrect ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)',
+                            border: `1px solid ${evalRes.isCorrect ? 'rgba(34,197,94,0.4)' : 'rgba(239,68,68,0.4)'}`,
+                            color: evalRes.isCorrect ? '#4ade80' : '#f87171',
+                          }}
+                          title={`Prédiction Algo : ${evalRes.predictedLabel} (${evalRes.predictedProb || ''}) | Résultat Réel : ${evalRes.realScore}`}
+                        >
+                          {evalRes.isCorrect ? <CheckCircle2 size={12} color="#4ade80" /> : <XCircle size={12} color="#f87171" />}
+                          <span>{evalRes.isCorrect ? 'Algo Validé' : 'Algo Erreur'}</span>
+                          <span style={{ opacity: 0.75, fontSize: 9 }}>({evalRes.predictedOutcome})</span>
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

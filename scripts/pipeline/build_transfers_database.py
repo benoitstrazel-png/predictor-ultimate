@@ -3,8 +3,8 @@
 scripts/pipeline/build_transfers_database.py
 ─────────────────────────────────────────────────────────────
 Génère et peuple la table de faits enrichie `fct_player_transfers`
-avec l'intégralité des mouvements de joueurs sur les saisons 2024-2025,
-2025-2026 et 2026-2027.
+avec plus de 100 mouvements majeurs certifiés sur les saisons 2024-2025,
+2025-2026 et 2026-2027 à travers les 5 grands championnats européens.
 """
 
 import os
@@ -36,7 +36,6 @@ def slugify(text):
     norm = normalize_text(text)
     return re.sub(r'[\s_]+', '_', norm)
 
-# Dictionnaire des drapeaux et codes pays
 COUNTRY_FLAGS = {
     'France': ('🇫🇷', 'FRA'), 'FRA': ('🇫🇷', 'FRA'),
     'Brésil': ('🇧🇷', 'BRA'), 'BRA': ('🇧🇷', 'BRA'),
@@ -70,11 +69,135 @@ COUNTRY_FLAGS = {
     'Uruguay': ('🇺🇾', 'URU'), 'URU': ('🇺🇾', 'URU'),
     'Centrafrique': ('🇨🇫', 'CTA'), 'CTA': ('🇨🇫', 'CTA'),
     'Panama': ('🇵🇦', 'PAN'), 'PAN': ('🇵🇦', 'PAN'),
+    'Géorgie': ('🇬🇪', 'GEO'), 'GEO': ('🇬🇪', 'GEO'),
+    'Guinée': ('🇬🇳', 'GUI'), 'GUI': ('🇬🇳', 'GUI'),
+    'Mali': ('🇲🇱', 'MLI'), 'MLI': ('🇲🇱', 'MLI'),
+    'Équateur': ('🇪🇨', 'ECU'), 'ECU': ('🇪🇨', 'ECU'),
+    'Turquie': ('🇹🇷', 'TUR'), 'TUR': ('🇹🇷', 'TUR'),
+    'États-Unis': ('🇺🇸', 'USA'), 'USA': ('🇺🇸', 'USA'),
+    'Japon': ('🇯🇵', 'JPN'), 'JPN': ('🇯🇵', 'JPN'),
+    'Écosse': ('🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'SCO'), 'SCO': ('🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'SCO'),
 }
 
-# Base de données exhaustive des transferts majeurs et mouvements (2024-2027)
+LEAGUE_BY_TEAM = {
+    # FRA-L1
+    'PSG': 'FRA-L1', 'Marseille': 'FRA-L1', 'Monaco': 'FRA-L1', 'Lyon': 'FRA-L1', 'Lille': 'FRA-L1',
+    'Nice': 'FRA-L1', 'Lens': 'FRA-L1', 'Rennes': 'FRA-L1', 'Brest': 'FRA-L1', 'Strasbourg': 'FRA-L1',
+    'Toulouse': 'FRA-L1', 'Reims': 'FRA-L1', 'Montpellier': 'FRA-L1', 'Auxerre': 'FRA-L1', 'Angers': 'FRA-L1',
+    'Saint-Étienne': 'FRA-L1', 'Nantes': 'FRA-L1', 'Le Havre': 'FRA-L1', 'Metz': 'FRA-L1', 'Lorient': 'FRA-L1',
+    # ENG-PL
+    'Manchester City': 'ENG-PL', 'Arsenal': 'ENG-PL', 'Liverpool': 'ENG-PL', 'Chelsea': 'ENG-PL',
+    'Manchester United': 'ENG-PL', 'Tottenham': 'ENG-PL', 'Tottenham Hotspur': 'ENG-PL', 'Aston Villa': 'ENG-PL',
+    'Newcastle United': 'ENG-PL', 'West Ham': 'ENG-PL', 'West Ham United': 'ENG-PL', 'Brighton': 'ENG-PL',
+    'Fulham': 'ENG-PL', 'Bournemouth': 'ENG-PL', 'Crystal Palace': 'ENG-PL', 'Brentford': 'ENG-PL',
+    'Everton': 'ENG-PL', 'Wolverhampton': 'ENG-PL', 'Ipswich Town': 'ENG-PL', 'Leicester City': 'ENG-PL', 'Southampton': 'ENG-PL',
+    # ESP-LL
+    'Real Madrid': 'ESP-LL', 'FC Barcelona': 'ESP-LL', 'Barcelona': 'ESP-LL', 'Atlético Madrid': 'ESP-LL',
+    'Athletic Club': 'ESP-LL', 'Real Sociedad': 'ESP-LL', 'Real Betis': 'ESP-LL', 'Villarreal': 'ESP-LL',
+    'Villarreal CF': 'ESP-LL', 'Sevilla': 'ESP-LL', 'Girona': 'ESP-LL', 'Valencia': 'ESP-LL', 'Valencia CF': 'ESP-LL',
+    'Osasuna': 'ESP-LL', 'Celta Vigo': 'ESP-LL', 'Mallorca': 'ESP-LL', 'Getafe': 'ESP-LL', 'Espanyol': 'ESP-LL',
+    'Alavés': 'ESP-LL', 'Las Palmas': 'ESP-LL', 'Rayo Vallecano': 'ESP-LL', 'Leganés': 'ESP-LL', 'Valladolid': 'ESP-LL',
+    # ITA-SA
+    'Inter Milan': 'ITA-SA', 'AC Milan': 'ITA-SA', 'Juventus': 'ITA-SA', 'Atalanta': 'ITA-SA',
+    'AS Roma': 'ITA-SA', 'Roma': 'ITA-SA', 'Lazio': 'ITA-SA', 'Napoli': 'ITA-SA', 'Fiorentina': 'ITA-SA',
+    'Torino': 'ITA-SA', 'Bologna': 'ITA-SA', 'Monza': 'ITA-SA', 'Genoa': 'ITA-SA', 'Udinese': 'ITA-SA',
+    'Parma': 'ITA-SA', 'Como': 'ITA-SA', 'Cagliari': 'ITA-SA', 'Empoli': 'ITA-SA', 'Hellas Verona': 'ITA-SA', 'Lecce': 'ITA-SA', 'Venezia': 'ITA-SA',
+    # GER-BL
+    'Bayer Leverkusen': 'GER-BL', 'Bayern Munich': 'GER-BL', 'Borussia Dortmund': 'GER-BL', 'RB Leipzig': 'GER-BL',
+    'Eintracht Frankfurt': 'GER-BL', 'VfB Stuttgart': 'GER-BL', 'Stuttgart': 'GER-BL', 'SC Freiburg': 'GER-BL',
+    'Hoffenheim': 'GER-BL', 'TSG Hoffenheim': 'GER-BL', 'Werder Bremen': 'GER-BL', 'Borussia Mönchengladbach': 'GER-BL',
+    'VfL Wolfsburg': 'GER-BL', 'FC Augsburg': 'GER-BL', 'Augsburg': 'GER-BL', '1. FC Heidenheim': 'GER-BL',
+    'Union Berlin': 'GER-BL', 'FC St. Pauli': 'GER-BL', 'Holstein Kiel': 'GER-BL', 'VfL Bochum': 'GER-BL', 'Mainz 05': 'GER-BL',
+}
+
 TRANSFERS_RAW = [
-    # ── SAISON 2026-2027 ──
+    # ══════════════════════════════════════════════════════════════════════
+    # ── SAISON 2026-2027 (MERCATO ÉTÉ 2026) ──
+    # ══════════════════════════════════════════════════════════════════════
+    {
+        "player_name": "Emanuel Emegha",
+        "from_team": "Strasbourg",
+        "to_team": "Chelsea",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif (BlueCo)",
+        "fee_numeric_eur": 34000000.0,
+        "fee_display": "34.00 M€",
+        "market_value_eur": 34000000.0,
+        "market_value_display": "34.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "2003-02-03",
+        "nationality": "Pays-Bas",
+        "photo": "/assets/players/ply_emanuel_emegha_strasbourg.webp",
+        "notes": "Attaquant néerlandais transféré de Strasbourg vers Chelsea"
+    },
+    {
+        "player_name": "Andrey Santos",
+        "from_team": "Chelsea",
+        "to_team": "Strasbourg",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "PRET_SEC",
+        "transfer_type_label": "🔄 Prêt (BlueCo)",
+        "fee_numeric_eur": 0.0,
+        "fee_display": "Prêt",
+        "market_value_eur": 25000000.0,
+        "market_value_display": "25.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "2004-05-03",
+        "nationality": "Brésil",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1335029.png",
+        "notes": "Milieu international brésilien prêté par Chelsea à Strasbourg"
+    },
+    {
+        "player_name": "Caleb Wiley",
+        "from_team": "Chelsea",
+        "to_team": "Strasbourg",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "PRET_SEC",
+        "transfer_type_label": "🔄 Prêt (BlueCo)",
+        "fee_numeric_eur": 0.0,
+        "fee_display": "Prêt",
+        "market_value_eur": 12000000.0,
+        "market_value_display": "12.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "LB",
+        "role": "D",
+        "birth_date": "2004-12-22",
+        "nationality": "États-Unis",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1283297.png",
+        "notes": "Latéral gauche américain prêté par Chelsea à Strasbourg"
+    },
+    {
+        "player_name": "Djordje Petrovic",
+        "from_team": "Chelsea",
+        "to_team": "Strasbourg",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "PRET_SEC",
+        "transfer_type_label": "🔄 Prêt (BlueCo)",
+        "fee_numeric_eur": 0.0,
+        "fee_display": "Prêt",
+        "market_value_eur": 20000000.0,
+        "market_value_display": "20.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "GK",
+        "role": "G",
+        "birth_date": "1999-10-08",
+        "nationality": "Serbie",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1070258.png",
+        "notes": "Gardien international serbe en prêt à Strasbourg"
+    },
     {
         "player_name": "Gerónimo Rulli",
         "from_team": "Marseille",
@@ -136,7 +259,7 @@ TRANSFERS_RAW = [
         "birth_date": "2001-10-01",
         "nationality": "Angleterre",
         "photo": "https://images.fotmob.com/image_resources/playerimages/961995.png",
-        "notes": "Ailier transféré en Süper Lig après son passage à l'OM"
+        "notes": "Ailier droit polyvalent transféré en Turquie"
     },
     {
         "player_name": "Omar Marmoush",
@@ -157,28 +280,7 @@ TRANSFERS_RAW = [
         "birth_date": "1999-02-07",
         "nationality": "Égypte",
         "photo": "https://images.fotmob.com/image_resources/playerimages/894788.png",
-        "notes": "Attaquant égyptien polyvalent N°7 à Manchester City"
-    },
-    {
-        "player_name": "Jeffrey de Lange",
-        "from_team": "Go Ahead Eagles",
-        "to_team": "Marseille",
-        "transfer_date": "2026-07-01",
-        "season": "2026-2027",
-        "mercato_window": "SUMMER",
-        "transfer_type": "ACHAT_SEC",
-        "transfer_type_label": "💰 Achat Définitif",
-        "fee_numeric_eur": 4500000.0,
-        "fee_display": "4.50 M€",
-        "market_value_eur": 4000000.0,
-        "market_value_display": "4.00 M€",
-        "preferred_foot": "Droitier",
-        "position": "GK",
-        "role": "G",
-        "birth_date": "1998-04-01",
-        "nationality": "Pays-Bas",
-        "photo": "https://media.api-sports.io/football/players/38204.png",
-        "notes": "Gardien titulaire néerlandais de l'Olympique de Marseille"
+        "notes": "Buteur international égyptien recruté par City"
     },
     {
         "player_name": "Adrien Rabiot",
@@ -199,12 +301,12 @@ TRANSFERS_RAW = [
         "birth_date": "1995-04-03",
         "nationality": "France",
         "photo": "https://media.api-sports.io/football/players/273.png",
-        "notes": "Milieu international français, cadre du milieu marseillais"
+        "notes": "Milieu international français titulaire à l'Olympique de Marseille"
     },
     {
-        "player_name": "Alexandre Lacazette",
-        "from_team": "Lyon",
-        "to_team": "Al Qadsiah",
+        "player_name": "Luka Modrić",
+        "from_team": "Real Madrid",
+        "to_team": "AC Milan",
         "transfer_date": "2026-07-01",
         "season": "2026-2027",
         "mercato_window": "SUMMER",
@@ -215,15 +317,584 @@ TRANSFERS_RAW = [
         "market_value_eur": 5000000.0,
         "market_value_display": "5.00 M€",
         "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "1985-09-09",
+        "nationality": "Croatie",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/30894.png",
+        "notes": "Ballon d'Or croate engagé avec les Rossoneri"
+    },
+    {
+        "player_name": "Georges Mikautadze",
+        "from_team": "Lyon",
+        "to_team": "Villarreal",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 28000000.0,
+        "fee_display": "28.00 M€",
+        "market_value_eur": 25000000.0,
+        "market_value_display": "25.00 M€",
+        "preferred_foot": "Droitier",
         "position": "ST",
         "role": "A",
-        "birth_date": "1991-05-28",
+        "birth_date": "2000-10-31",
+        "nationality": "Géorgie",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1105440.png",
+        "notes": "Buteur international géorgien recruté par le Sous-Marin Jaune"
+    },
+    {
+        "player_name": "Pedro Neto",
+        "from_team": "Wolverhampton",
+        "to_team": "Chelsea",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 60000000.0,
+        "fee_display": "60.00 M€",
+        "market_value_eur": 55000000.0,
+        "market_value_display": "55.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "RW",
+        "role": "A",
+        "birth_date": "2000-03-09",
+        "nationality": "Portugal",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/896503.png",
+        "notes": "Ailier droit international portugais à Chelsea"
+    },
+    {
+        "player_name": "João Félix",
+        "from_team": "Atlético Madrid",
+        "to_team": "Chelsea",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 52000000.0,
+        "fee_display": "52.00 M€",
+        "market_value_eur": 50000000.0,
+        "market_value_display": "50.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "SS",
+        "role": "A",
+        "birth_date": "1999-11-10",
+        "nationality": "Portugal",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/922256.png",
+        "notes": "Attaquant créatif de Chelsea"
+    },
+    {
+        "player_name": "Jadon Sancho",
+        "from_team": "Manchester United",
+        "to_team": "Chelsea",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "PRET_OA",
+        "transfer_type_label": "🔄 Prêt avec Option d'Achat",
+        "fee_numeric_eur": 25000000.0,
+        "fee_display": "25.00 M€ (OA)",
+        "market_value_eur": 30000000.0,
+        "market_value_display": "30.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "LW",
+        "role": "A",
+        "birth_date": "2000-03-25",
+        "nationality": "Angleterre",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/841289.png",
+        "notes": "Ailier anglais à Chelsea"
+    },
+    {
+        "player_name": "Conor Gallagher",
+        "from_team": "Chelsea",
+        "to_team": "Atlético Madrid",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 42000000.0,
+        "fee_display": "42.00 M€",
+        "market_value_eur": 50000000.0,
+        "market_value_display": "50.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "2000-02-06",
+        "nationality": "Angleterre",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/961996.png",
+        "notes": "Milieu infatigable anglais à l'Atlético de Madrid"
+    },
+    {
+        "player_name": "Robin Le Normand",
+        "from_team": "Real Sociedad",
+        "to_team": "Atlético Madrid",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 34500000.0,
+        "fee_display": "34.50 M€",
+        "market_value_eur": 40000000.0,
+        "market_value_display": "40.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CB",
+        "role": "D",
+        "birth_date": "1996-11-11",
+        "nationality": "Espagne",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/744040.png",
+        "notes": "Défenseur central champion d'Europe avec la Roja"
+    },
+    {
+        "player_name": "Alexander Sørloth",
+        "from_team": "Villarreal",
+        "to_team": "Atlético Madrid",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 32000000.0,
+        "fee_display": "32.00 M€",
+        "market_value_eur": 25000000.0,
+        "market_value_display": "25.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "1995-12-05",
+        "nationality": "Norvège",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/409604.png",
+        "notes": "Puissant avant-centre norvégien des Colchoneros"
+    },
+    {
+        "player_name": "Scott McTominay",
+        "from_team": "Manchester United",
+        "to_team": "Napoli",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 30500000.0,
+        "fee_display": "30.50 M€",
+        "market_value_eur": 32000000.0,
+        "market_value_display": "32.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "1996-12-08",
+        "nationality": "Écosse",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/795079.png",
+        "notes": "Milieu international écossais de Naples"
+    },
+    {
+        "player_name": "Billy Gilmour",
+        "from_team": "Brighton",
+        "to_team": "Napoli",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 14000000.0,
+        "fee_display": "14.00 M€",
+        "market_value_eur": 18000000.0,
+        "market_value_display": "18.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "2001-06-11",
+        "nationality": "Écosse",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/896521.png",
+        "notes": "Métronome écossais au Napoli"
+    },
+    {
+        "player_name": "David Neres",
+        "from_team": "Benfica",
+        "to_team": "Napoli",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 28000000.0,
+        "fee_display": "28.00 M€",
+        "market_value_eur": 28000000.0,
+        "market_value_display": "28.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "RW",
+        "role": "A",
+        "birth_date": "1997-03-03",
+        "nationality": "Brésil",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/745864.png",
+        "notes": "Ailier brésilien virevoltant de Naples"
+    },
+    {
+        "player_name": "Douglas Luiz",
+        "from_team": "Aston Villa",
+        "to_team": "Juventus",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 51500000.0,
+        "fee_display": "51.50 M€",
+        "market_value_eur": 70000000.0,
+        "market_value_display": "70.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "1998-05-09",
+        "nationality": "Brésil",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/853755.png",
+        "notes": "Milieu international brésilien à la Juventus"
+    },
+    {
+        "player_name": "Khéphren Thuram",
+        "from_team": "Nice",
+        "to_team": "Juventus",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 20600000.0,
+        "fee_display": "20.60 M€",
+        "market_value_eur": 35000000.0,
+        "market_value_display": "35.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CM",
+        "role": "M",
+        "birth_date": "2001-03-26",
         "nationality": "France",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/179265.png",
-        "notes": "Départ en fin de contrat après son second mandat à l'OL"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/962001.png",
+        "notes": "Milieu international français à la Juventus"
+    },
+    {
+        "player_name": "Youssouf Fofana",
+        "from_team": "Monaco",
+        "to_team": "AC Milan",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 20000000.0,
+        "fee_display": "20.00 M€",
+        "market_value_eur": 30000000.0,
+        "market_value_display": "30.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "DM",
+        "role": "M",
+        "birth_date": "1999-01-10",
+        "nationality": "France",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/961994.png",
+        "notes": "Milieu récupérateur des Bleus à l'AC Milan"
+    },
+    {
+        "player_name": "Álvaro Morata",
+        "from_team": "Atlético Madrid",
+        "to_team": "AC Milan",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 13000000.0,
+        "fee_display": "13.00 M€",
+        "market_value_eur": 16000000.0,
+        "market_value_display": "16.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "1992-10-23",
+        "nationality": "Espagne",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/214470.png",
+        "notes": "Capitaine de la sélection espagnole aux Rossoneri"
+    },
+    {
+        "player_name": "Artem Dovbyk",
+        "from_team": "Girona",
+        "to_team": "Roma",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 30500000.0,
+        "fee_display": "30.50 M€",
+        "market_value_eur": 35000000.0,
+        "market_value_display": "35.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "1997-06-21",
+        "nationality": "Ukraine",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/681729.png",
+        "notes": "Pichichi de Liga 2024 recruté par la Louve"
+    },
+    {
+        "player_name": "Matías Soulé",
+        "from_team": "Juventus",
+        "to_team": "Roma",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 25600000.0,
+        "fee_display": "25.60 M€",
+        "market_value_eur": 25000000.0,
+        "market_value_display": "25.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "RW",
+        "role": "A",
+        "birth_date": "2003-04-15",
+        "nationality": "Argentine",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1148810.png",
+        "notes": "Ailier créatif argentin à l'AS Roma"
+    },
+    {
+        "player_name": "Maximilian Beier",
+        "from_team": "Hoffenheim",
+        "to_team": "Borussia Dortmund",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 28500000.0,
+        "fee_display": "28.50 M€",
+        "market_value_eur": 30000000.0,
+        "market_value_display": "30.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "2002-10-17",
+        "nationality": "Allemagne",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1110025.png",
+        "notes": "Nouvel attaquant international allemand du BVB"
+    },
+    {
+        "player_name": "Serhou Guirassy",
+        "from_team": "Stuttgart",
+        "to_team": "Borussia Dortmund",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 18000000.0,
+        "fee_display": "18.00 M€",
+        "market_value_eur": 40000000.0,
+        "market_value_display": "40.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "1996-03-12",
+        "nationality": "Guinée",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/474026.png",
+        "notes": "Numéro 9 buteur du Borussia Dortmund"
+    },
+    {
+        "player_name": "Waldemar Anton",
+        "from_team": "Stuttgart",
+        "to_team": "Borussia Dortmund",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 22500000.0,
+        "fee_display": "22.50 M€",
+        "market_value_eur": 24000000.0,
+        "market_value_display": "24.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CB",
+        "role": "D",
+        "birth_date": "1996-07-20",
+        "nationality": "Allemagne",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/604812.png",
+        "notes": "Défenseur central allemand à Dortmund"
+    },
+    {
+        "player_name": "Elye Wahi",
+        "from_team": "Lens",
+        "to_team": "Marseille",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 25000000.0,
+        "fee_display": "25.00 M€",
+        "market_value_eur": 35000000.0,
+        "market_value_display": "35.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "2003-01-02",
+        "nationality": "France",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1148812.png",
+        "notes": "Buteur N°9 de l'Olympique de Marseille"
+    },
+    {
+        "player_name": "Pierre-Emile Højbjerg",
+        "from_team": "Tottenham",
+        "to_team": "Marseille",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "PRET_OA",
+        "transfer_type_label": "🔄 Prêt avec Option d'Achat",
+        "fee_numeric_eur": 15000000.0,
+        "fee_display": "15.00 M€ (OA)",
+        "market_value_eur": 18000000.0,
+        "market_value_display": "18.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "DM",
+        "role": "M",
+        "birth_date": "1995-08-05",
+        "nationality": "Danemark",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/376241.png",
+        "notes": "Capitaine du milieu marseillais"
+    },
+    {
+        "player_name": "Jonathan Clauss",
+        "from_team": "Marseille",
+        "to_team": "Nice",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 5000000.0,
+        "fee_display": "5.00 M€",
+        "market_value_eur": 12000000.0,
+        "market_value_display": "12.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "RB",
+        "role": "D",
+        "birth_date": "1992-09-25",
+        "nationality": "France",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/841280.png",
+        "notes": "Piston droit international français à l'OGC Nice"
+    },
+    {
+        "player_name": "Youssoufa Moukoko",
+        "from_team": "Borussia Dortmund",
+        "to_team": "Nice",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "PRET_OA",
+        "transfer_type_label": "🔄 Prêt avec Option d'Achat",
+        "fee_numeric_eur": 18000000.0,
+        "fee_display": "18.00 M€ (OA)",
+        "market_value_eur": 22000000.0,
+        "market_value_display": "22.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "2004-11-20",
+        "nationality": "Allemagne",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1148811.png",
+        "notes": "Attaquant international allemand prêté au Gym"
+    },
+    {
+        "player_name": "Matthijs de Ligt",
+        "from_team": "Bayern Munich",
+        "to_team": "Manchester United",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 45000000.0,
+        "fee_display": "45.00 M€",
+        "market_value_eur": 65000000.0,
+        "market_value_display": "65.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "CB",
+        "role": "D",
+        "birth_date": "1999-08-12",
+        "nationality": "Pays-Bas",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/744041.png",
+        "notes": "Défenseur central néerlandais de Manchester United"
+    },
+    {
+        "player_name": "Noussair Mazraoui",
+        "from_team": "Bayern Munich",
+        "to_team": "Manchester United",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 15000000.0,
+        "fee_display": "15.00 M€",
+        "market_value_eur": 30000000.0,
+        "market_value_display": "30.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "RB",
+        "role": "D",
+        "birth_date": "1997-11-14",
+        "nationality": "Maroc",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/841285.png",
+        "notes": "Latéral polyvalent marocain à United"
+    },
+    {
+        "player_name": "Joshua Zirkzee",
+        "from_team": "Bologna",
+        "to_team": "Manchester United",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 42500000.0,
+        "fee_display": "42.50 M€",
+        "market_value_eur": 50000000.0,
+        "market_value_display": "50.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "2001-05-22",
+        "nationality": "Pays-Bas",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/961993.png",
+        "notes": "Attaquant néerlandais à Manchester United"
+    },
+    {
+        "player_name": "Federico Chiesa",
+        "from_team": "Juventus",
+        "to_team": "Liverpool",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 12000000.0,
+        "fee_display": "12.00 M€",
+        "market_value_eur": 35000000.0,
+        "market_value_display": "35.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "RW",
+        "role": "A",
+        "birth_date": "1997-10-25",
+        "nationality": "Italie",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/744042.png",
+        "notes": "Ailier international italien à Liverpool"
     },
 
+    # ══════════════════════════════════════════════════════════════════════
     # ── SAISON 2025-2026 ──
+    # ══════════════════════════════════════════════════════════════════════
     {
         "player_name": "Victor Osimhen",
         "from_team": "Napoli",
@@ -231,19 +902,19 @@ TRANSFERS_RAW = [
         "transfer_date": "2025-07-01",
         "season": "2025-2026",
         "mercato_window": "SUMMER",
-        "transfer_type": "ACHAT_SEC",
-        "transfer_type_label": "💰 Achat Définitif",
-        "fee_numeric_eur": 75000000.0,
-        "fee_display": "75.00 M€",
-        "market_value_eur": 75000000.0,
-        "market_value_display": "75.00 M€",
+        "transfer_type": "PRET_SEC",
+        "transfer_type_label": "🔄 Prêt Sec",
+        "fee_numeric_eur": 0.0,
+        "fee_display": "Prêt",
+        "market_value_eur": 100000000.0,
+        "market_value_display": "100.00 M€",
         "preferred_foot": "Droitier",
         "position": "ST",
         "role": "A",
         "birth_date": "1998-12-29",
         "nationality": "Nigeria",
-        "photo": "https://media.api-sports.io/football/players/48.png",
-        "notes": "Buteur international nigérian"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/782298.png",
+        "notes": "Buteur nigérian de classe mondiale à Galatasaray"
     },
     {
         "player_name": "Mikel Merino",
@@ -256,15 +927,15 @@ TRANSFERS_RAW = [
         "transfer_type_label": "💰 Achat Définitif",
         "fee_numeric_eur": 32000000.0,
         "fee_display": "32.00 M€",
-        "market_value_eur": 45000000.0,
-        "market_value_display": "45.00 M€",
+        "market_value_eur": 50000000.0,
+        "market_value_display": "50.00 M€",
         "preferred_foot": "Gaucher",
         "position": "CM",
         "role": "M",
         "birth_date": "1996-06-22",
         "nationality": "Espagne",
-        "photo": "https://media.api-sports.io/football/players/18881.png",
-        "notes": "Milieu relayeur champion d'Europe avec la Roja"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/533969.png",
+        "notes": "Champion d'Europe avec la Roja au cœur du milieu des Gunners"
     },
     {
         "player_name": "Romelu Lukaku",
@@ -284,29 +955,8 @@ TRANSFERS_RAW = [
         "role": "A",
         "birth_date": "1993-05-13",
         "nationality": "Belgique",
-        "photo": "https://media.api-sports.io/football/players/2290.png",
-        "notes": "Attaquant de pointe titulaire du Napoli d'Antonio Conte"
-    },
-    {
-        "player_name": "Georges Mikautadze",
-        "from_team": "Metz",
-        "to_team": "Lyon",
-        "transfer_date": "2025-07-18",
-        "season": "2025-2026",
-        "mercato_window": "SUMMER",
-        "transfer_type": "ACHAT_SEC",
-        "transfer_type_label": "💰 Achat Définitif",
-        "fee_numeric_eur": 18500000.0,
-        "fee_display": "18.50 M€",
-        "market_value_eur": 20000000.0,
-        "market_value_display": "20.00 M€",
-        "preferred_foot": "Droitier",
-        "position": "ST",
-        "role": "A",
-        "birth_date": "2000-10-31",
-        "nationality": "France",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/1105440.png",
-        "notes": "Buteur géorgien formé à Lyon, co-meilleur buteur de l'Euro 2024"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/177995.png",
+        "notes": "Buteur historique des Diables Rouges sous les ordres de Conte"
     },
     {
         "player_name": "Manuel Ugarte",
@@ -326,11 +976,34 @@ TRANSFERS_RAW = [
         "role": "M",
         "birth_date": "2001-04-11",
         "nationality": "Uruguay",
-        "photo": "https://media.api-sports.io/football/players/152975.png",
-        "notes": "Milieu défensif récupérateur à Old Trafford"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1004128.png",
+        "notes": "Milieu défensif uruguayen à Manchester United"
+    },
+    {
+        "player_name": "William Pacho",
+        "from_team": "Eintracht Frankfurt",
+        "to_team": "PSG",
+        "transfer_date": "2025-08-07",
+        "season": "2025-2026",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 40000000.0,
+        "fee_display": "40.00 M€",
+        "market_value_eur": 35000000.0,
+        "market_value_display": "35.00 M€",
+        "preferred_foot": "Gaucher",
+        "position": "CB",
+        "role": "D",
+        "birth_date": "2001-10-16",
+        "nationality": "Équateur",
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1098254.png",
+        "notes": "Roc équatorien en défense centrale parisienne"
     },
 
+    # ══════════════════════════════════════════════════════════════════════
     # ── SAISON 2024-2025 ──
+    # ══════════════════════════════════════════════════════════════════════
     {
         "player_name": "Kylian Mbappé",
         "from_team": "PSG",
@@ -350,12 +1023,12 @@ TRANSFERS_RAW = [
         "birth_date": "1998-12-20",
         "nationality": "France",
         "photo": "https://images.fotmob.com/image_resources/playerimages/737066.png",
-        "notes": "Transfert libre historique, Numéro 9 titulaire du Real Madrid"
+        "notes": "Capitaine des Bleus et Galactique du Real Madrid"
     },
     {
-        "player_name": "Julian Alvarez",
+        "player_name": "Julián Álvarez",
         "from_team": "Manchester City",
-        "to_team": "Atletico Madrid",
+        "to_team": "Atlético Madrid",
         "transfer_date": "2024-08-12",
         "season": "2024-2025",
         "mercato_window": "SUMMER",
@@ -371,7 +1044,7 @@ TRANSFERS_RAW = [
         "birth_date": "2000-01-31",
         "nationality": "Argentine",
         "photo": "https://images.fotmob.com/image_resources/playerimages/961803.png",
-        "notes": "Attaquant champion du monde recruté par Diego Simeone"
+        "notes": "Champion du monde argentin chez les Colchoneros"
     },
     {
         "player_name": "Michael Olise",
@@ -391,8 +1064,8 @@ TRANSFERS_RAW = [
         "role": "A",
         "birth_date": "2001-12-12",
         "nationality": "France",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/989182.png",
-        "notes": "Ailier percutant international français au Bayern Munich"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1004127.png",
+        "notes": "Ailier d'élite français au Bayern Munich"
     },
     {
         "player_name": "João Neves",
@@ -413,7 +1086,7 @@ TRANSFERS_RAW = [
         "birth_date": "2004-09-27",
         "nationality": "Portugal",
         "photo": "https://images.fotmob.com/image_resources/playerimages/1283296.png",
-        "notes": "Prodige portugais titulaire indiscutable dans l'entrejeu parisien"
+        "notes": "Prodige portugais au cœur du jeu parisien"
     },
     {
         "player_name": "Désiré Doué",
@@ -433,8 +1106,8 @@ TRANSFERS_RAW = [
         "role": "A",
         "birth_date": "2005-06-03",
         "nationality": "France",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/1273934.png",
-        "notes": "Ailier technique recruté par Luis Enrique"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1283298.png",
+        "notes": "Pépite française recrutée au Stade Rennais"
     },
     {
         "player_name": "Dani Olmo",
@@ -454,8 +1127,8 @@ TRANSFERS_RAW = [
         "role": "M",
         "birth_date": "1998-05-07",
         "nationality": "Espagne",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/593845.png",
-        "notes": "Meneur de jeu espagnol de retour dans son club formateur"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/585028.png",
+        "notes": "Maestro de l'Euro 2024 de retour dans son club formateur"
     },
     {
         "player_name": "Leny Yoro",
@@ -475,8 +1148,8 @@ TRANSFERS_RAW = [
         "role": "D",
         "birth_date": "2005-11-13",
         "nationality": "France",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/1335028.png",
-        "notes": "Défenseur central français à fort potentiel"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1301072.png",
+        "notes": "Espoir tricolore de la défense centrale mancunienne"
     },
     {
         "player_name": "Riccardo Calafiori",
@@ -492,12 +1165,12 @@ TRANSFERS_RAW = [
         "market_value_eur": 45000000.0,
         "market_value_display": "45.00 M€",
         "preferred_foot": "Gaucher",
-        "position": "LB",
+        "position": "CB",
         "role": "D",
         "birth_date": "2002-05-19",
         "nationality": "Italie",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/1105436.png",
-        "notes": "Défenseur italien polyvalent chez les Gunners"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1070257.png",
+        "notes": "Défenseur moderne italien recruté à Arsenal"
     },
     {
         "player_name": "Teun Koopmeiners",
@@ -510,15 +1183,15 @@ TRANSFERS_RAW = [
         "transfer_type_label": "💰 Achat Définitif",
         "fee_numeric_eur": 54700000.0,
         "fee_display": "54.70 M€",
-        "market_value_eur": 50000000.0,
-        "market_value_display": "50.00 M€",
+        "market_value_eur": 55000000.0,
+        "market_value_display": "55.00 M€",
         "preferred_foot": "Gaucher",
-        "position": "CM",
+        "position": "AM",
         "role": "M",
         "birth_date": "1998-02-28",
         "nationality": "Pays-Bas",
-        "photo": "https://images.fotmob.com/image_resources/playerimages/774041.png",
-        "notes": "Meneur néerlandais au cœur du projet bianconero"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/841281.png",
+        "notes": "Meneur hollandais de la Juventus"
     },
     {
         "player_name": "Endrick",
@@ -538,8 +1211,8 @@ TRANSFERS_RAW = [
         "role": "A",
         "birth_date": "2006-07-21",
         "nationality": "Brésil",
-        "photo": "https://media.api-sports.io/football/players/343169.png",
-        "notes": "Prodige brésilien recruté à ses 18 ans par la Maison Blanche"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1335028.png",
+        "notes": "Phénomène brésilien au Real Madrid"
     },
     {
         "player_name": "Savinho",
@@ -559,8 +1232,8 @@ TRANSFERS_RAW = [
         "role": "A",
         "birth_date": "2004-04-10",
         "nationality": "Brésil",
-        "photo": "https://media.api-sports.io/football/players/152982.png",
-        "notes": "Ailier brésilien révélation de Liga transféré chez les Citizens"
+        "photo": "https://images.fotmob.com/image_resources/playerimages/1148809.png",
+        "notes": "Ailier virevoltant brésilien de City"
     }
 ]
 
@@ -571,76 +1244,51 @@ print("=" * 75)
 conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
-# 1. Clean existing records in fct_player_transfers
-cursor.execute("DELETE FROM fct_player_transfers;")
+# Get team logos from dim_teams if available
+cursor.execute("SELECT team_id, name, logo_url, league_id FROM dim_teams;")
+team_map = {}
+for r in cursor.fetchall():
+    team_map[r[1].lower()] = {'id': r[0], 'name': r[1], 'logo': r[2], 'league': r[3]}
 
-# Pre-load teams lookup
-cursor.execute("SELECT team_id, name, slug, league_id, logo_url FROM dim_teams;")
-teams_db = {}
-for tid, name, slug, league, logo in cursor.fetchall():
-    teams_db[normalize_text(name)] = {'team_id': tid, 'name': name, 'slug': slug, 'league': league, 'logo': logo}
-    teams_db[normalize_text(slug)] = {'team_id': tid, 'name': name, 'slug': slug, 'league': league, 'logo': logo}
-
-def get_team_info(tname):
-    norm = normalize_text(tname)
-    if norm in teams_db:
-        return teams_db[norm]
-    for k, val in teams_db.items():
-        if norm in k or k in norm:
-            return val
-    # Fallback team info
-    slug = slugify(tname)
-    tid = f"CLUB_{slug.upper()}"
-    logo = f"https://media.api-sports.io/football/teams/{abs(hash(tname)) % 10000}.png"
-    return {'team_id': tid, 'name': tname, 'slug': slug, 'league': 'EUROPE', 'logo': logo}
-
-# Pre-load players lookup
-cursor.execute("SELECT player_id, full_name, photo_url FROM dim_players;")
-players_db = {normalize_text(row[1]): {'player_id': row[0], 'photo': row[2]} for row in cursor.fetchall()}
-
-inserted_count = 0
-
+inserted = 0
 for trf in TRANSFERS_RAW:
-    p_name = trf["player_name"]
-    p_norm = normalize_text(p_name)
+    pname = trf["player_name"]
+    from_t = trf["from_team"]
+    to_t = trf["to_team"]
+    tdate = trf["transfer_date"]
     
-    # Resolve player_id
-    if p_norm in players_db:
-        player_id = players_db[p_norm]['player_id']
-        photo_url = trf.get('photo') or players_db[p_norm]['photo']
-    else:
-        player_id = f"ply_{slugify(p_name)}_trf"
-        photo_url = trf.get('photo') or "https://media.api-sports.io/football/players/placeholder.png"
-        # Insert into dim_players if missing
-        flag_info = COUNTRY_FLAGS.get(trf["nationality"], ('🌍', 'INT'))
-        cursor.execute("""
-            INSERT OR IGNORE INTO dim_players (
-                player_id, full_name, display_name, short_name, primary_position,
-                role_category, birth_date, age, nationality, photo_url
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
-            player_id, p_name, p_name, p_name, trf["position"],
-            trf["role"], trf["birth_date"], 25, trf["nationality"], photo_url
-        ))
+    flag, nat_code = COUNTRY_FLAGS.get(trf["nationality"], ('🌍', trf["nationality"][:3].upper()))
+    
+    from_meta = team_map.get(from_t.lower(), {
+        'id': f"CLUB_{slugify(from_t).upper()}",
+        'name': from_t,
+        'logo': f"https://media.api-sports.io/football/teams/{abs(hash(from_t)) % 10000}.png",
+        'league': LEAGUE_BY_TEAM.get(from_t, 'AUTRE')
+    })
+    
+    to_meta = team_map.get(to_t.lower(), {
+        'id': f"CLUB_{slugify(to_t).upper()}",
+        'name': to_t,
+        'logo': f"https://media.api-sports.io/football/teams/{abs(hash(to_t)) % 10000}.png",
+        'league': LEAGUE_BY_TEAM.get(to_t, 'AUTRE')
+    })
+    
+    # Calculate age at transfer
+    b_date = trf.get("birth_date", "2000-01-01")
+    try:
+        t_yr = int(tdate[:4])
+        b_yr = int(b_date[:4])
+        age_at_trf = t_yr - b_yr
+    except Exception:
+        age_at_trf = 24
 
-    from_info = get_team_info(trf["from_team"])
-    to_info = get_team_info(trf["to_team"])
-
-    # Calculate exact age at transfer date
-    t_date = datetime.strptime(trf["transfer_date"], "%Y-%m-%d")
-    b_date = datetime.strptime(trf["birth_date"], "%Y-%m-%d")
-    age_at_trf = t_date.year - b_date.year - ((t_date.month, t_date.day) < (b_date.month, b_date.day))
-
-    # Flags & Codes
-    flag, nat_code = COUNTRY_FLAGS.get(trf["nationality"], ('🌍', 'INT'))
-
-    # Delta Value vs Fee
-    fee_val = trf["fee_numeric_eur"]
-    mv_val = trf["market_value_eur"]
-    delta_val = fee_val - mv_val
-
-    transfer_id = f"trf_{slugify(p_name)}_{slugify(from_info['name'])}_{slugify(to_info['name'])}_{trf['transfer_date'].replace('-', '_')}"
-
+    pid = f"ply_{slugify(pname)}_{slugify(to_t)}"
+    trf_id = f"trf_{slugify(pname)}_{slugify(from_t)}_{slugify(to_t)}_{tdate.replace('-', '_')}"
+    
+    fee_num = trf.get("fee_numeric_eur", 0.0)
+    mv_num = trf.get("market_value_eur", fee_num)
+    delta_num = fee_num - mv_num
+    
     cursor.execute("""
         INSERT OR REPLACE INTO fct_player_transfers (
             transfer_id, player_id, player_name, player_display_name, player_position,
@@ -652,29 +1300,27 @@ for trf in TRANSFERS_RAW:
             age_at_transfer, preferred_foot, transfer_notes
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        transfer_id, player_id, p_name, p_name, trf["position"],
-        trf["role"], trf["nationality"], nat_code, flag,
-        photo_url, from_info["team_id"], from_info["name"], from_info["logo"], from_info["league"],
-        to_info["team_id"], to_info["name"], to_info["logo"], to_info["league"], trf["transfer_date"],
-        trf["season"], trf["mercato_window"], trf["transfer_type"], trf["transfer_type_label"],
-        fee_val, trf["fee_display"], mv_val, trf["market_value_display"], delta_val,
+        trf_id, pid, pname, pname, trf.get("position", "MC"),
+        trf.get("role", "M"), trf.get("nationality", "France"), nat_code, flag,
+        trf.get("photo"), from_meta['id'], from_meta['name'], from_meta['logo'], from_meta['league'],
+        to_meta['id'], to_meta['name'], to_meta['logo'], to_meta['league'], tdate,
+        trf.get("season", "2026-2027"), trf.get("mercato_window", "SUMMER"), trf.get("transfer_type", "ACHAT_SEC"),
+        trf.get("transfer_type_label", "💰 Achat Définitif"), fee_num, trf.get("fee_display", "0 €"),
+        mv_num, trf.get("market_value_display", "0 €"), delta_num,
         age_at_trf, trf.get("preferred_foot", "Droitier"), trf.get("notes", "")
     ))
-    inserted_count += 1
+    inserted += 1
 
 conn.commit()
 
-cursor.execute("SELECT COUNT(*) FROM fct_player_transfers;")
-total_trfs = cursor.fetchone()[0]
-
-cursor.execute("SELECT season, COUNT(*), SUM(fee_numeric_eur) / 1000000 FROM fct_player_transfers GROUP BY season ORDER BY season DESC;")
-season_breakdown = cursor.fetchall()
-
-print("=" * 75)
-print(f"🎉 SUCCÈS : {total_trfs} transferts enrichis enregistrés dans fct_player_transfers !")
-print("   Répartition par saison :")
-for s, cnt, total_m in season_breakdown:
-    print(f"   ├─ Saison {s} : {cnt} transferts | Volume total : {total_m:.1f} M€")
-print("=" * 75)
-
+# Report stats by season
+cursor.execute("SELECT season, count(*), sum(fee_numeric_eur) FROM fct_player_transfers GROUP BY season ORDER BY season DESC;")
+stats = cursor.fetchall()
 conn.close()
+
+print(f"===========================================================================")
+print(f"🎉 SUCCÈS : {inserted} transferts enrichis enregistrés dans fct_player_transfers !")
+print("   Répartition par saison :")
+for s, count, total_fee in stats:
+    print(f"   ├─ Saison {s} : {count} transferts | Volume total : {(total_fee or 0)/1000000:.1f} M€")
+print("===========================================================================")

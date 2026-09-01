@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MapPin, Shield, Trophy, Users, Activity, Sparkles, TrendingUp, Award, Clock, RefreshCw, UserCheck } from 'lucide-react';
+import { X, Calendar, MapPin, Shield, Trophy, Users, Activity, Sparkles, TrendingUp, Award, Clock, RefreshCw, UserCheck, CheckCircle2, XCircle } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 import MatchTimeline from './MatchTimeline';
 import TeamMatchStats from './TeamMatchStats';
 import MatchPrediction from './MatchPrediction';
 import UNIFIED_HISTORY from '../data/unified_history.json';
+import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
 
 /**
  * MatchDetailsModal Component
@@ -602,6 +603,63 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
             {/* TAB 4: PRONOSTICS & ANALYSE IA */}
             {activeTab === 'prediction' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {/* Finished Match Prediction Post-Mortem Audit */}
+                {isFinished && (() => {
+                  const evalRes = evaluateMatchPrediction(targetMatch);
+                  if (!evalRes || evalRes.isCorrect === null) return null;
+
+                  return (
+                    <div style={{
+                      background: evalRes.isCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+                      border: `1px solid ${evalRes.isCorrect ? 'rgba(34,197,94,0.35)' : 'rgba(239,68,68,0.35)'}`,
+                      borderRadius: 16,
+                      padding: '16px 20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: 12,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{
+                          width: 36,
+                          height: 36,
+                          borderRadius: 10,
+                          background: evalRes.isCorrect ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: evalRes.isCorrect ? '#4ade80' : '#f87171',
+                        }}>
+                          {evalRes.isCorrect ? <CheckCircle2 size={22} /> : <XCircle size={22} />}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 13, fontWeight: 800, color: evalRes.isCorrect ? '#4ade80' : '#f87171' }}>
+                            {evalRes.isCorrect ? '✔ Prédiction 1N2 Validée par le Modèle' : '✖ Prédiction 1N2 Non Confirmée'}
+                          </div>
+                          <div style={{ fontSize: 11, color: 'var(--ivory-dim)', marginTop: 2 }}>
+                            Prédit : <strong style={{ color: 'var(--ivory)' }}>{evalRes.predictedLabel} ({evalRes.predictedProb})</strong> · Résultat final officiel : <strong style={{ color: 'var(--gold)' }}>{evalRes.realScore} ({evalRes.realOutcome === '1' ? 'Victoire Dom' : evalRes.realOutcome === '2' ? 'Victoire Ext' : 'Nul'})</strong>
+                          </div>
+                        </div>
+                      </div>
+
+                      {evalRes.valueBet && (
+                        <div style={{
+                          padding: '4px 10px',
+                          borderRadius: 8,
+                          background: evalRes.valueBetWon ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)',
+                          border: `1px solid ${evalRes.valueBetWon ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)'}`,
+                          fontSize: 11,
+                          fontWeight: 700,
+                          color: evalRes.valueBetWon ? '#4ade80' : '#f87171',
+                        }}>
+                          Value Bet : {evalRes.valueBetWon ? `+${evalRes.valueBetNetProfit} U GAGNÉ` : '-1.00 U PERDU'}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
                 {/* AI Summary Card */}
                 <div style={{
                   background: 'rgba(13, 18, 32, 0.65)',

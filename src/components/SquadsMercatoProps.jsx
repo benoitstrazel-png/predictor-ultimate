@@ -74,7 +74,131 @@ export default function SquadsMercatoProps({ targetMatch }) {
     return getClubSquad(selectedClub, selectedSeason);
   }, [selectedClub, selectedSeason]);
 
-  // Calculate squad KPI statistics
+  // ── DYNAMIC ARRIVALS & DEPARTURES FOR CURRENT CLUB & SEASON ──
+  const clubTransfersIn = useMemo(() => {
+    if (!selectedClub) return [];
+    const clubNorm = selectedClub.toLowerCase().trim();
+    return (TRANSFERS_ENRICHED || []).filter(t => {
+      const toMatch = (t.to_team_name || '').toLowerCase().includes(clubNorm) ||
+                      clubNorm.includes((t.to_team_name || '').toLowerCase());
+      if (!toMatch) return false;
+      if (selectedSeason !== 'ALL' && t.season !== selectedSeason) return false;
+      return true;
+    });
+  }, [selectedClub, selectedSeason]);
+
+  const clubTransfersOut = useMemo(() => {
+    if (!selectedClub) return [];
+    const clubNorm = selectedClub.toLowerCase().trim();
+    return (TRANSFERS_ENRICHED || []).filter(t => {
+      const fromMatch = (t.from_team_name || '').toLowerCase().includes(clubNorm) ||
+                        clubNorm.includes((t.from_team_name || '').toLowerCase());
+      if (!fromMatch) return false;
+      if (selectedSeason !== 'ALL' && t.season !== selectedSeason) return false;
+      return true;
+    });
+  }, [selectedClub, selectedSeason]);
+
+  const departedPlayers = useMemo(() => {
+    const list = [];
+    const seen = new Set();
+    
+    // 1. From recorded official transfers
+    clubTransfersOut.forEach(t => {
+      const pKey = (t.player_name || '').toLowerCase().trim();
+      seen.add(pKey);
+      list.push({
+        id: `dep_${t.transfer_id}`,
+        name: t.player_name,
+        number: t.number || '-',
+        position: t.player_position || 'Joueur',
+        role_category: t.player_role || 'M',
+        nationality: t.player_nationality || 'France',
+        age: t.age_at_transfer || 24,
+        market_value: t.market_value_display || '15.00 M€',
+        joined_date: t.joined_date || '2024-07-01',
+        left_date: t.transfer_date || '2026-07-01',
+        destination_club: t.to_team_name,
+        destination_logo: t.to_team_logo,
+        fee_display: t.fee_display || 'Transfert',
+        transfer_type_label: t.transfer_type_label || '💰 Transfert',
+        status: 'TRANSFERRED',
+        photo: t.player_photo_url || '/assets/players/defaults/m_default.webp',
+        stats: { appearances: 0, goals: 0, assists: 0, yellowCards: 0, redCards: 0 }
+      });
+    });
+
+    // 2. From diff with previous season (if any)
+    const prevSquad = selectedSeason === '2026-2027' ? getClubSquad(selectedClub, '2025-2026') :
+                      (selectedSeason === '2025-2026' ? getClubSquad(selectedClub, '2024-2025') : null);
+    const currentNames = new Set((currentClubSquad?.players || []).map(p => (p.name || '').toLowerCase().trim()));
+    
+    (prevSquad?.players || []).forEach(p => {
+      const pKey = (p.name || '').toLowerCase().trim();
+      if (!currentNames.has(pKey) && !seen.has(pKey)) {
+        seen.add(pKey);
+        list.push({
+          ...p,
+          id: `dep_${p.id}`,
+          left_date: p.left_date || (selectedSeason === '2026-2027' ? '2026-07-01' : '2025-07-01'),
+          status: 'TRANSFERRED',
+          destination_club: p.destination_club || 'Nouveau Club',
+          fee_display: p.fee_display || 'Fin de contrat / Transfert',
+          transfer_type_label: '🚪 Départ'
+        });
+      }
+    });
+
+    return list;
+  }, [clubTransfersOut, currentClubSquad, selectedClub, selectedSeason]);
+
+  const newSignings = useMemo(() => {
+    const list = [];
+    const seen = new Set();
+    
+    // 1. Players in current squad with NEW_SIGNING status or joined in this season
+    (currentClubSquad?.players || []).forEach(p => {
+      const joinedYr = (p.joined_date || '').substring(0, 4);
+      const isRecrue = p.status === 'NEW_SIGNING' || 
+                       (selectedSeason === '2026-2027' && joinedYr === '2026') ||
+                       (selectedSeason === '2025-2026' && joinedYr === '2025');
+      if (isRecrue) {
+        seen.add((p.name || '').toLowerCase().trim());
+        list.push(p);
+      }
+    });
+
+    // 2. Transferred IN players from database
+    clubTransfersIn.forEach(t => {
+      const pKey = (t.player_name || '').toLowerCase().trim();
+      if (!seen.has(pKey)) {
+        seen.add(pKey);
+        list.push({
+          id: `rec_${t.transfer_id}`,
+          name: t.player_name,
+          number: t.number || 9,
+          position: t.player_position || 'Attaquant',
+          role_category: t.player_role || 'A',
+          nationality: t.player_nationality || 'France',
+          age: t.age_at_transfer || 24,
+          market_value: t.market_value_display || '20.00 M€',
+          joined_date: t.transfer_date || '2026-07-01',
+          left_date: null,
+          from_club: t.from_team_name,
+          from_logo: t.from_team_logo,
+          fee_display: t.fee_display || 'Transfert',
+          transfer_type_label: t.transfer_type_label || '✨ Recrue',
+          status: 'NEW_SIGNING',
+          photo: t.player_photo_url || '/assets/players/defaults/m_default.webp',
+          stats: { appearances: 0, goals: 0, assists: 0, yellowCards: 0, redCards: 0 }
+        });
+      }
+    });
+
+    return list;
+  }, [clubTransfersIn, currentClubSquad, selectedSeason]);
+
+  // Squad KPI Metrics
   const squadStats = useMemo(() => {
     const players = currentClubSquad?.players || [];
     const total = players.length;
@@ -91,29 +215,32 @@ export default function SquadsMercatoProps({ targetMatch }) {
       else valSum += num;
     });
 
-    const arrivals = players.filter(p => p.status === 'NEW_SIGNING').length;
-    const departures = players.filter(p => p.status === 'TRANSFERRED' || p.left_date).length;
-
     return {
       total,
       avgAge,
       totalVal: `${valSum.toFixed(1)}M €`,
-      arrivals,
-      departures
+      arrivals: newSignings.length,
+      departures: departedPlayers.length
     };
-  }, [currentClubSquad]);
+  }, [currentClubSquad, newSignings, departedPlayers]);
 
   // Filtered Roster for Card Grid
   const filteredRoster = useMemo(() => {
-    const players = currentClubSquad?.players || [];
-    return players.filter(p => {
+    let baseList = [];
+    if (rosterPosition === 'RECRUES') {
+      baseList = newSignings;
+    } else if (rosterPosition === 'DEPARTS') {
+      baseList = departedPlayers;
+    } else {
+      baseList = currentClubSquad?.players || [];
+    }
+
+    return baseList.filter(p => {
       // Position filter
       if (rosterPosition === 'G' && p.role_category !== 'G') return false;
       if (rosterPosition === 'D' && p.role_category !== 'D') return false;
       if (rosterPosition === 'M' && p.role_category !== 'M') return false;
       if (rosterPosition === 'A' && p.role_category !== 'A') return false;
-      if (rosterPosition === 'RECRUES' && p.status !== 'NEW_SIGNING') return false;
-      if (rosterPosition === 'DEPARTS' && p.status !== 'TRANSFERRED' && !p.left_date) return false;
 
       // Search filter
       if (rosterSearch.trim()) {
@@ -122,11 +249,13 @@ export default function SquadsMercatoProps({ targetMatch }) {
         const matchNat = (p.nationality || '').toLowerCase().includes(q);
         const matchPos = (p.position || '').toLowerCase().includes(q);
         const matchNum = String(p.number || '') === q;
-        return matchName || matchNat || matchPos || matchNum;
+        const matchDest = (p.destination_club || '').toLowerCase().includes(q);
+        const matchFrom = (p.from_club || '').toLowerCase().includes(q);
+        return matchName || matchNat || matchPos || matchNum || matchDest || matchFrom;
       }
       return true;
     });
-  }, [currentClubSquad, rosterPosition, rosterSearch]);
+  }, [currentClubSquad, rosterPosition, rosterSearch, newSignings, departedPlayers]);
 
   // ── HEAD COACH RESOLUTION (SCD Type 2) ──
   const currentClubCoach = useMemo(() => {
@@ -716,6 +845,20 @@ export default function SquadsMercatoProps({ targetMatch }) {
                         {player.market_value}
                       </span>
                     </div>
+
+                    {player.destination_club && (
+                      <div style={{ gridColumn: '1 / -1', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: 8, padding: '6px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ color: '#f87171', fontSize: 11, fontWeight: 600 }}>➔ Vers {player.destination_club}</span>
+                        <span style={{ color: 'var(--gold)', fontSize: 11, fontWeight: 700 }}>{player.fee_display}</span>
+                      </div>
+                    )}
+
+                    {player.from_club && (
+                      <div style={{ gridColumn: '1 / -1', background: 'rgba(34, 197, 94, 0.08)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: 8, padding: '6px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ color: '#4ade80', fontSize: 11, fontWeight: 600 }}>✨ Depuis {player.from_club}</span>
+                        <span style={{ color: 'var(--gold)', fontSize: 11, fontWeight: 700 }}>{player.fee_display}</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Season Stats mini-bar */}
