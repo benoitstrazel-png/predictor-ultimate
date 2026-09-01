@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/165250_xsmall.png",
-            "linkToMatch": "/matches/aston-villa-vs-bg-pathum-united/72p72jv#5898788",
-            "date": {
-              "utcTime": "2026-08-04T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/165250/overview/bg-pathum-united",
-            "tooltipText": {
-              "utcTime": "2026-08-04T13:00:00.000Z",
-              "homeTeam": "BG Pathum United",
-              "homeTeamId": 165250,
-              "homeScore": "1",
-              "awayTeam": "Aston Villa",
-              "awayTeamId": 10252,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "165250",
-              "name": "BG Pathum United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Aston Villa",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825_xsmall.png",
+            "linkToMatch": "/matches/arsenal-vs-aston-villa/3c06vg#5795426",
+            "date": {
+              "utcTime": "2026-08-31T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9825/overview/arsenal",
+            "tooltipText": {
+              "utcTime": "2026-08-31T19:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "0",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa have lost their last 4 matches."
+              "defaultText": "Aston Villa have lost their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -489,7 +489,7 @@
                 "home_team",
                 "away_team",
                 "1.67",
-                "0.67"
+                "0.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Club Brugge have an average of 1.67 goals in their last three matches and Aston Villa have an average of 0.67."
+              "defaultText": "Club Brugge have an average of 1.67 goals in their last three matches and Aston Villa have an average of 0.33."
             },
             {
               "OddsType": "dc",
@@ -510,7 +510,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 4 attempts."
+              "defaultText": "Aston Villa haven't won a match in 5 attempts."
             }
           ]
         },
@@ -543,12 +543,29 @@
           "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 4 matches",
+          "text": "Have lost their last 5 matches",
+          "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10252,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#7D1142"
         },
         {
@@ -556,16 +573,16 @@
           "playerId": null,
           "teamId": 10252,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#7D1142"
         },
         {
@@ -594,6 +611,23 @@
           ],
           "text": "Aston Villa have won the previous 2 matches against Club Brugge.",
           "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10252,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 8 matches",
+          "color": "#7D1142"
         }
       ],
       "countryCode": "INT-2",
@@ -614,20 +648,20 @@
       }
     },
     "weather": {
-      "temperature": 20,
-      "windSpeed": 6,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 28,
-      "relativeHumidity": 67,
-      "precipChance": 24,
-      "precipitation": 0,
+      "temperature": 18,
+      "windSpeed": 5,
+      "windDirectionCardinal": "SW",
+      "iconCode": 11,
+      "relativeHumidity": 73,
+      "precipChance": 43,
+      "precipitation": 0.3,
       "snow": 0,
-      "cloudCover": 62,
-      "description": "Mostly Cloudy",
+      "cloudCover": 65,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-31T08:00:21Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-09-01T08:00:17Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 6106295,
@@ -668,18 +702,6 @@
             },
             "firstName": "Brian",
             "lastName": "Madjo"
-          },
-          {
-            "id": 749661,
-            "name": "Tammy Abraham",
-            "unavailability": {
-              "injuryId": 130,
-              "lastUpdated": "2026-08-16T12:34:38Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Tammy",
-            "lastName": "Abraham"
           },
           {
             "id": 671331,

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/165250_xsmall.png",
-            "linkToMatch": "/matches/aston-villa-vs-bg-pathum-united/72p72jv#5898788",
-            "date": {
-              "utcTime": "2026-08-04T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/165250/overview/bg-pathum-united",
-            "tooltipText": {
-              "utcTime": "2026-08-04T13:00:00.000Z",
-              "homeTeam": "BG Pathum United",
-              "homeTeamId": 165250,
-              "homeScore": "1",
-              "awayTeam": "Aston Villa",
-              "awayTeamId": 10252,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "165250",
-              "name": "BG Pathum United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "10252",
               "name": "Aston Villa",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825_xsmall.png",
+            "linkToMatch": "/matches/arsenal-vs-aston-villa/3c06vg#5795426",
+            "date": {
+              "utcTime": "2026-08-31T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9825/overview/arsenal",
+            "tooltipText": {
+              "utcTime": "2026-08-31T19:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "0",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa have lost their last 4 matches."
+              "defaultText": "Aston Villa have lost their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -467,7 +467,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
+                "0.33",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -479,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have an average of 0.67 goals in their last three matches and Nottingham Forest have an average of 0.67."
+              "defaultText": "Aston Villa have an average of 0.33 goals in their last three matches and Nottingham Forest have an average of 0.67."
             },
             {
               "OddsType": "ou",
@@ -490,7 +490,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
+                "0.33",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -502,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have an average of 0.67 goals in their last three matches and Nottingham Forest have an average of 0.67."
+              "defaultText": "Aston Villa have an average of 0.33 goals in their last three matches and Nottingham Forest have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -512,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 4 attempts."
+              "defaultText": "Aston Villa haven't won a match in 5 attempts."
             }
           ]
         },
@@ -545,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -555,7 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
+          "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10252,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#7D1142"
         },
         {
@@ -563,33 +580,16 @@
           "playerId": null,
           "teamId": 10252,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
-          "color": "#7D1142"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10252,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
-          "statValues": [
-            {
-              "value": 4,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have lost their last 4 matches",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#7D1142"
         },
         {
@@ -633,15 +633,15 @@
         },
         {
           "type": "player",
-          "playerId": 789502,
+          "playerId": 1082102,
           "teamId": 10203,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 789502,
-              "name": "Morgan Gibbs-White",
+              "value": 1082102,
+              "name": "Igor Jesus",
               "type": "player"
             },
             {
@@ -652,10 +652,10 @@
             {
               "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Morgan Gibbs-White has created the most big chances for Nottingham Forest (1)",
+          "text": "Igor Jesus has the most shots on target per match for Nottingham Forest (1)",
           "color": "#C8102E"
         }
       ],
@@ -678,19 +678,19 @@
     },
     "weather": {
       "temperature": 20,
-      "windSpeed": 4,
-      "windDirectionCardinal": "SE",
-      "iconCode": 11,
-      "relativeHumidity": 57,
-      "precipChance": 33,
-      "precipitation": 0.3,
+      "windSpeed": 3,
+      "windDirectionCardinal": "ENE",
+      "iconCode": 28,
+      "relativeHumidity": 53,
+      "precipChance": 8,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 77,
-      "description": "Few Showers",
+      "cloudCover": 67,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-31T04:00:11Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-09-01T04:00:10Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795446,
@@ -713,18 +713,6 @@
             },
             "firstName": "Brian",
             "lastName": "Madjo"
-          },
-          {
-            "id": 749661,
-            "name": "Tammy Abraham",
-            "unavailability": {
-              "injuryId": 130,
-              "lastUpdated": "2026-08-16T12:34:38Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Tammy",
-            "lastName": "Abraham"
           },
           {
             "id": 671331,

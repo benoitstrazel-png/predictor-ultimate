@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/94937_xsmall.png",
-            "linkToMatch": "/matches/bologna-vs-fc-heidenheim/2it66tc#5900849",
-            "date": {
-              "utcTime": "2026-07-22T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/94937/overview/fc-heidenheim",
-            "tooltipText": {
-              "utcTime": "2026-07-22T14:00:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "1",
-              "awayTeam": "FC Heidenheim",
-              "awayTeamId": 94937,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "94937",
-              "name": "FC Heidenheim",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8675_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8543",
               "name": "Lazio",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524_xsmall.png",
+            "linkToMatch": "/matches/atalanta-vs-bologna/2sl6d8#5749651",
+            "date": {
+              "utcTime": "2026-08-31T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-08-31T18:45:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "1",
+              "awayTeam": "Bologna",
+              "awayTeamId": 9857,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
             }
           }
         ],
@@ -465,14 +465,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "6"
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,20 +482,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bologna have scored 3 goals in their last 3 matches, while Sassuolo have scored 6."
+              "defaultText": "Bologna have an average of 0 goals in their last three matches and Sassuolo have an average of 2."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "3",
-                "6"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,8 +502,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Bologna have scored 3 goals in their last 3 matches, while Sassuolo have scored 6."
+              "Icon": "poll_glove",
+              "defaultText": "Bologna haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -518,7 +514,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "4",
+                "5",
                 "9"
               ],
               "DefaultLabels": [
@@ -532,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bologna haven't drawn in their last 4 matches and Sassuolo in their last 9."
+              "defaultText": "Bologna haven't drawn in their last 5 matches and Sassuolo in their last 9."
             }
           ]
         },
@@ -552,7 +548,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -562,7 +558,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#102880"
         },
         {
@@ -611,12 +607,12 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#102880"
         },
         {
@@ -697,7 +693,45 @@
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749661/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -714,18 +748,18 @@
       }
     },
     "weather": {
-      "temperature": 34,
+      "temperature": 33,
       "windSpeed": 3,
       "windDirectionCardinal": "E",
       "iconCode": 32,
-      "relativeHumidity": 33,
+      "relativeHumidity": 38,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 5,
+      "cloudCover": 6,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-31T06:00:26Z",
+      "lastUpdated": "2026-09-01T06:00:16Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -741,12 +775,27 @@
         "starters": [],
         "unavailable": [
           {
+            "id": 661761,
+            "age": 29,
+            "name": "Riccardo Orsolini",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 12683610,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Riccardo",
+            "lastName": "Orsolini"
+          },
+          {
             "id": 1283469,
             "age": 25,
             "name": "Oussama El Azzouzi",
             "countryName": "Morocco",
             "countryCode": "MAR",
-            "marketValue": 1091011,
+            "marketValue": 1066243,
             "unavailability": {
               "injuryId": 69,
               "type": "injury",
@@ -769,7 +818,7 @@
             "name": "Sebastian Walukiewicz",
             "countryName": "Poland",
             "countryCode": "POL",
-            "marketValue": 2771180,
+            "marketValue": 2249861,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
@@ -784,7 +833,7 @@
             "name": "Daniel Boloca",
             "countryName": "Romania",
             "countryCode": "ROU",
-            "marketValue": 3136737,
+            "marketValue": 2509389,
             "unavailability": {
               "injuryId": 14,
               "type": "injury",
@@ -799,7 +848,7 @@
             "name": "Ismaël Koné",
             "countryName": "Canada",
             "countryCode": "CAN",
-            "marketValue": 16903439,
+            "marketValue": 15213095,
             "unavailability": {
               "injuryId": 23,
               "type": "injury",
@@ -814,7 +863,7 @@
             "name": "Fali Candé",
             "countryName": "Guinea-Bissau",
             "countryCode": "GNB",
-            "marketValue": 2111725,
+            "marketValue": 2104608,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
@@ -833,7 +882,7 @@
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "Edoardo",
             "lastName": "Pieragnolo"

@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/94937_xsmall.png",
-            "linkToMatch": "/matches/bologna-vs-fc-heidenheim/2it66tc#5900849",
-            "date": {
-              "utcTime": "2026-07-22T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/94937/overview/fc-heidenheim",
-            "tooltipText": {
-              "utcTime": "2026-07-22T14:00:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "1",
-              "awayTeam": "FC Heidenheim",
-              "awayTeamId": 94937,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "94937",
-              "name": "FC Heidenheim",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8675_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Lazio",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524_xsmall.png",
+            "linkToMatch": "/matches/atalanta-vs-bologna/2sl6d8#5749651",
+            "date": {
+              "utcTime": "2026-08-31T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-08-31T18:45:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "1",
+              "awayTeam": "Bologna",
+              "awayTeamId": 9857,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -448,8 +448,8 @@
                 "1",
                 "away_team",
                 "2",
-                "1",
-                "2"
+                "0",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Napoli have 3W, 1D, 1L in five matches while Bologna have 2W, 1D, 2L."
+              "defaultText": "Napoli have 3W, 1D, 1L in five matches while Bologna have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -515,7 +515,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bologna haven't drawn in their last 4 matches."
+              "defaultText": "Bologna haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -624,7 +624,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -634,7 +634,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#102880"
         },
         {
@@ -646,39 +646,29 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#102880"
         },
         {
-          "type": "player",
-          "playerId": 888921,
+          "type": "team",
+          "playerId": null,
           "teamId": 9857,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 888921,
-              "name": "Lewis Ferguson",
-              "type": "player"
-            },
-            {
-              "value": 9857,
-              "name": "Bologna",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Lewis Ferguson has the most shots on target per match for Bologna (1)",
+          "text": "Have lost their last 3 matches",
           "color": "#102880"
         }
       ],
@@ -701,19 +691,19 @@
     },
     "weather": {
       "temperature": 29,
-      "windSpeed": 3,
-      "windDirectionCardinal": "SSW",
-      "iconCode": 32,
-      "relativeHumidity": 55,
-      "precipChance": 5,
+      "windSpeed": 4,
+      "windDirectionCardinal": "SW",
+      "iconCode": 30,
+      "relativeHumidity": 61,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 17,
-      "description": "Sunny",
+      "cloudCover": 30,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-31T06:00:26Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-09-01T06:00:17Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749676,
@@ -730,9 +720,9 @@
             "name": "Benoît Badiashile",
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-08-30T14:12:59Z",
+              "lastUpdated": "2026-09-01T12:02:55Z",
               "type": "injury",
-              "expectedReturn": "About a week"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Benoît",
             "lastName": "Badiashile"
@@ -742,9 +732,9 @@
             "name": "Pasquale Mazzocchi",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-29T20:49:14Z",
+              "lastUpdated": "2026-09-01T09:18:41Z",
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "Pasquale",
             "lastName": "Mazzocchi"
@@ -779,6 +769,18 @@
         "id": 9857,
         "name": "Bologna",
         "unavailable": [
+          {
+            "id": 661761,
+            "name": "Riccardo Orsolini",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-08-31T23:42:33Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Riccardo",
+            "lastName": "Orsolini"
+          },
           {
             "id": 1283469,
             "name": "Oussama El Azzouzi",

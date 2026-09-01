@@ -5,16 +5,16 @@
     "matchRound": "5",
     "teamColors": {
       "darkMode": {
-        "home": "#8b7474",
-        "away": "#FFFFFF"
+        "home": "#FFFFFF",
+        "away": "#EB3A32"
       },
       "lightMode": {
         "home": "#085098",
         "away": "#EB3A32"
       },
       "fontDarkMode": {
-        "home": "rgba(255, 255, 255, 1.0)",
-        "away": "rgba(29, 29, 29, 1.0)"
+        "home": "rgba(29, 29, 29, 1.0)",
+        "away": "rgba(255, 255, 255, 1.0)"
       },
       "fontLightMode": {
         "home": "rgba(255, 255, 255, 1.0)",
@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10235_xsmall.png",
-            "linkToMatch": "/matches/rayo-vallecano-vs-feyenoord/2v1xml#5900423",
-            "date": {
-              "utcTime": "2026-07-26T12:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10235/overview/feyenoord",
-            "tooltipText": {
-              "utcTime": "2026-07-26T12:00:00.000Z",
-              "homeTeam": "Feyenoord",
-              "homeTeamId": 10235,
-              "homeScore": "2",
-              "awayTeam": "Rayo Vallecano",
-              "awayTeamId": 8370,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "10235",
-              "name": "Feyenoord",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8370",
-              "name": "Rayo Vallecano",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9986_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Deportivo Alavés",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8634_xsmall.png",
+            "linkToMatch": "/matches/rayo-vallecano-vs-barcelona/2e2ym0#5868034",
+            "date": {
+              "utcTime": "2026-08-31T19:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8634/overview/barcelona",
+            "tooltipText": {
+              "utcTime": "2026-08-31T19:30:00.000Z",
+              "homeTeam": "Barcelona",
+              "homeTeamId": 8634,
+              "homeScore": "5",
+              "awayTeam": "Rayo Vallecano",
+              "awayTeamId": 8370,
+              "awayScore": "2"
+            },
+            "score": "5 - 2",
+            "home": {
+              "id": "8634",
+              "name": "Barcelona",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8370",
+              "name": "Rayo Vallecano",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -508,11 +508,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "6"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Real Madrid haven't drawn in their last 6 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Rayo Vallecano haven't won a match in 4 attempts."
             }
           ]
         },
@@ -596,25 +596,20 @@
           "color": "#085098"
         },
         {
-          "type": "player",
-          "playerId": 701154,
+          "type": "team",
+          "playerId": null,
           "teamId": 8633,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
+          "priority": 7,
+          "defaultText": "Have won their last {0} matches",
+          "localizedTextId": "insights_good_form_team",
           "statValues": [
             {
-              "value": 701154,
-              "name": "Kylian Mbappé",
-              "type": "player"
-            },
-            {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Kylian Mbappé is the competition's top scorer (4)",
+          "text": "Have won their last 6 matches",
           "color": "#085098"
         },
         {
@@ -626,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -636,7 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#EB3A32"
         },
         {
@@ -665,12 +660,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#EB3A32"
         }
       ],
@@ -694,18 +689,18 @@
     "weather": {
       "temperature": 27,
       "windSpeed": 3,
-      "windDirectionCardinal": "SW",
-      "iconCode": 33,
-      "relativeHumidity": 29,
+      "windDirectionCardinal": "WSW",
+      "iconCode": 29,
+      "relativeHumidity": 28,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 24,
-      "description": "Mostly Clear",
+      "cloudCover": 50,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-31T08:00:18Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-09-01T08:00:14Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5868057,
@@ -722,9 +717,9 @@
             "name": "Aurélien Tchouaméni",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-29T12:24:59Z",
+              "lastUpdated": "2026-08-31T22:03:58Z",
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "Aurélien",
             "lastName": "Tchouaméni"
@@ -734,9 +729,9 @@
             "name": "Endrick",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-29T12:25:15Z",
+              "lastUpdated": "2026-08-31T22:03:51Z",
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "",
             "lastName": "Endrick"
@@ -746,9 +741,9 @@
             "name": "Thiago Pitarch",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-17T12:48:02Z",
+              "lastUpdated": "2026-08-31T22:07:30Z",
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "Thiago",
             "lastName": "Pitarch"
@@ -770,9 +765,9 @@
             "name": "Ferland Mendy",
             "unavailability": {
               "injuryId": 71,
-              "lastUpdated": "2026-08-17T12:46:59Z",
+              "lastUpdated": "2026-08-31T22:07:40Z",
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "Ferland",
             "lastName": "Mendy"
@@ -807,6 +802,18 @@
         "id": 8370,
         "name": "Rayo Vallecano",
         "unavailable": [
+          {
+            "id": 1255090,
+            "name": "Jozhua Vertrouwd",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-09-01T09:26:36Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Jozhua",
+            "lastName": "Vertrouwd"
+          },
           {
             "id": 621415,
             "name": "Augusto Batalla",
@@ -849,9 +856,9 @@
             "name": "Luiz Felipe",
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-08-20T12:11:01Z",
+              "lastUpdated": "2026-08-31T22:05:44Z",
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Unknown"
             },
             "firstName": "Luiz",
             "lastName": "Felipe"

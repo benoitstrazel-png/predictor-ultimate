@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600_xsmall.png",
-            "linkToMatch": "/matches/udinese-vs-barcelona/2gfcsl#5997905",
-            "date": {
-              "utcTime": "2026-08-08T20:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8600/overview/udinese",
-            "tooltipText": {
-              "utcTime": "2026-08-08T20:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "1",
-              "awayTeam": "Barcelona",
-              "awayTeamId": 8634,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8634",
-              "name": "Barcelona",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9931_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Athletic Club",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8370_xsmall.png",
+            "linkToMatch": "/matches/rayo-vallecano-vs-barcelona/2e2ym0#5868034",
+            "date": {
+              "utcTime": "2026-08-31T19:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8370/overview/rayo-vallecano",
+            "tooltipText": {
+              "utcTime": "2026-08-31T19:30:00.000Z",
+              "homeTeam": "Barcelona",
+              "homeTeamId": 8634,
+              "homeScore": "5",
+              "awayTeam": "Rayo Vallecano",
+              "awayTeamId": 8370,
+              "awayScore": "2"
+            },
+            "score": "5 - 2",
+            "home": {
+              "id": "8634",
+              "name": "Barcelona",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8370",
+              "name": "Rayo Vallecano",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Barcelona have won their last 4 matches."
+              "defaultText": "Barcelona have won their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -469,7 +469,7 @@
                 "away_team",
                 "3",
                 "1",
-                "9"
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Valencia have scored 1 goals in their last 3 matches, while Barcelona have scored 9."
+              "defaultText": "Valencia have scored 1 goals in their last 3 matches, while Barcelona have scored 12."
             },
             {
               "OddsType": "ou",
@@ -490,7 +490,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "9",
+                "12",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Barcelona have scored 9 goals in their last 3 matches."
+              "defaultText": "Barcelona have scored 12 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -611,7 +611,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 19,
               "name": null,
               "type": "integer"
             },
@@ -621,7 +621,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
+          "text": "Have scored 19 goals in their last 5 matches",
           "color": "#971e48"
         },
         {
@@ -642,20 +642,25 @@
           "color": "#971e48"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 696679,
           "teamId": 8634,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 3.5,
+              "value": 696679,
+              "name": "Raphinha",
+              "type": "player"
+            },
+            {
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Average 3.5 goals per match",
+          "text": "Raphinha is the competition's top scorer (5)",
           "color": "#971e48"
         }
       ],
@@ -677,20 +682,20 @@
       }
     },
     "weather": {
-      "temperature": 31,
-      "windSpeed": 5,
+      "temperature": 30,
+      "windSpeed": 4,
       "windDirectionCardinal": "ESE",
-      "iconCode": 32,
+      "iconCode": 30,
       "relativeHumidity": 57,
-      "precipChance": 0,
+      "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 10,
-      "description": "Sunny",
+      "cloudCover": 42,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-08-31T05:00:13Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-09-01T05:00:19Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5868049,
@@ -704,12 +709,27 @@
         "starters": [],
         "unavailable": [
           {
+            "id": 590494,
+            "age": 29,
+            "name": "Sadiq Umar",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 2540440,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "firstName": "Sadiq",
+            "lastName": "Umar"
+          },
+          {
             "id": 586768,
             "age": 32,
             "name": "Guido Rodríguez",
             "countryName": "Argentina",
             "countryCode": "ARG",
-            "marketValue": 2485154,
+            "marketValue": 2479331,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
@@ -724,7 +744,7 @@
             "name": "Pablo Maffeo",
             "countryName": "Argentina",
             "countryCode": "ARG",
-            "marketValue": 2624292,
+            "marketValue": 2342870,
             "unavailability": {
               "injuryId": 42,
               "type": "injury",
@@ -739,7 +759,7 @@
             "name": "Justin De Haas",
             "countryName": "Netherlands",
             "countryCode": "NED",
-            "marketValue": 2083858,
+            "marketValue": 1667086,
             "unavailability": {
               "injuryId": 30,
               "type": "injury",
@@ -754,11 +774,11 @@
             "name": "Alberto Marí",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 503280,
+            "marketValue": 432615,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Alberto",
             "lastName": "Marí"
@@ -769,7 +789,7 @@
             "name": "Diego López",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 13563435,
+            "marketValue": 12207091,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
@@ -784,7 +804,7 @@
             "name": "Sergi Canós",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 456025,
+            "marketValue": 364820,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
@@ -799,11 +819,11 @@
             "name": "José Copete",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 4411709,
+            "marketValue": 3529367,
             "unavailability": {
               "injuryId": 70,
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Back in training"
             },
             "firstName": "José",
             "lastName": "Copete"
@@ -822,11 +842,11 @@
             "name": "Gavi",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 32137793,
+            "marketValue": 28924013,
             "unavailability": {
               "injuryId": 14,
               "type": "injury",
-              "expectedReturn": "Early September 2026"
+              "expectedReturn": "Mid September 2026"
             },
             "firstName": "",
             "lastName": "Gavi",
@@ -838,7 +858,7 @@
             "name": "Roony Bardghji",
             "countryName": "Sweden",
             "countryCode": "SWE",
-            "marketValue": 14806241,
+            "marketValue": 13325616,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
@@ -853,7 +873,7 @@
             "name": "Frenkie De Jong",
             "countryName": "Netherlands",
             "countryCode": "NED",
-            "marketValue": 34676796,
+            "marketValue": 31209116,
             "unavailability": {
               "injuryId": 70,
               "type": "injury",
