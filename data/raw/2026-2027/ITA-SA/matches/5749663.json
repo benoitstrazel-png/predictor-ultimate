@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/655295_xsmall.png",
-            "linkToMatch": "/matches/torino-vs-alcione/2tlw2rgu#5900871",
-            "date": {
-              "utcTime": "2026-07-22T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/655295/overview/alcione",
-            "tooltipText": {
-              "utcTime": "2026-07-22T15:30:00.000Z",
-              "homeTeam": "Torino",
-              "homeTeamId": 9804,
-              "homeScore": "1",
-              "awayTeam": "Alcione",
-              "awayTeamId": 655295,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9804",
-              "name": "Torino",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "655295",
-              "name": "Alcione",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8191_xsmall.png",
             "linkToMatch": "/matches/burnley-vs-torino/2oep2m#5981397",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Torino",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6504_xsmall.png",
+            "linkToMatch": "/matches/monza-vs-torino/276icu#6003654",
+            "date": {
+              "utcTime": "2026-09-01T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/6504/overview/monza",
+            "tooltipText": {
+              "utcTime": "2026-09-01T19:00:00.000Z",
+              "homeTeam": "Torino",
+              "homeTeamId": 9804,
+              "homeScore": "0",
+              "awayTeam": "Monza",
+              "awayTeamId": 6504,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9804",
+              "name": "Torino",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -490,7 +490,7 @@
                 "home_team",
                 "away_team",
                 "1.33",
-                "1"
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have an average of 1.33 goals in their last three matches and Torino have an average of 1."
+              "defaultText": "Fiorentina have an average of 1.33 goals in their last three matches and Torino have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -511,7 +511,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Torino haven't drawn in their last 6 matches."
+              "defaultText": "Torino haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -555,6 +555,23 @@
             }
           ],
           "text": "Have scored 7 goals in their last 5 matches",
+          "color": "#5F259F"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8535,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#5F259F"
         },
         {
@@ -597,30 +614,13 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 8535,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't scored in their last 2 matches",
-          "color": "#5F259F"
-        },
-        {
-          "type": "team",
-          "playerId": null,
           "teamId": 9804,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -630,34 +630,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#80110B"
         },
         {
-          "type": "player",
-          "playerId": 599353,
+          "type": "team",
+          "playerId": null,
           "teamId": 9804,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 599353,
-              "name": "Ché Adams",
-              "type": "player"
-            },
-            {
-              "value": 9804,
-              "name": "Torino",
-              "type": "team"
-            },
-            {
-              "value": 1.7,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Ché Adams has the most shots on target per match for Torino (1.7)",
+          "text": "Have lost their last 3 matches",
           "color": "#80110B"
         },
         {
@@ -745,17 +735,17 @@
     },
     "weather": {
       "temperature": 34,
-      "windSpeed": 3,
+      "windSpeed": 4,
       "windDirectionCardinal": "WSW",
       "iconCode": 32,
-      "relativeHumidity": 30,
+      "relativeHumidity": 31,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 3,
+      "cloudCover": 2,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-01T03:00:15Z",
+      "lastUpdated": "2026-09-01T15:00:41Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -1734,6 +1724,21 @@
           }
         ],
         "unavailable": [
+          {
+            "id": 1231029,
+            "age": 24,
+            "name": "Rafik Belghali",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "marketValue": 4368150,
+            "unavailability": {
+              "injuryId": 6,
+              "type": "injury",
+              "expectedReturn": "Day to day"
+            },
+            "firstName": "Rafik",
+            "lastName": "Belghali"
+          },
           {
             "id": 1339372,
             "age": 23,

@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/655295_xsmall.png",
-            "linkToMatch": "/matches/torino-vs-alcione/2tlw2rgu#5900871",
-            "date": {
-              "utcTime": "2026-07-22T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/655295/overview/alcione",
-            "tooltipText": {
-              "utcTime": "2026-07-22T15:30:00.000Z",
-              "homeTeam": "Torino",
-              "homeTeamId": 9804,
-              "homeScore": "1",
-              "awayTeam": "Alcione",
-              "awayTeamId": 655295,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9804",
-              "name": "Torino",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "655295",
-              "name": "Alcione",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8191_xsmall.png",
             "linkToMatch": "/matches/burnley-vs-torino/2oep2m#5981397",
             "date": {
@@ -270,6 +240,36 @@
               "id": "9804",
               "name": "Torino",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6504_xsmall.png",
+            "linkToMatch": "/matches/monza-vs-torino/276icu#6003654",
+            "date": {
+              "utcTime": "2026-09-01T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/6504/overview/monza",
+            "tooltipText": {
+              "utcTime": "2026-09-01T19:00:00.000Z",
+              "homeTeam": "Torino",
+              "homeTeamId": 9804,
+              "homeScore": "0",
+              "awayTeam": "Monza",
+              "awayTeamId": 6504,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9804",
+              "name": "Torino",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
-                "0",
                 "2",
+                "0",
+                "3",
                 "away_team",
                 "3",
                 "1",
@@ -462,17 +462,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Torino have 3W, 0D, 2L in five matches while Roma have 3W, 1D, 1L."
+              "defaultText": "Torino have 2W, 0D, 3L in five matches while Roma have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "away_team",
+                "3",
+                "2",
+                "10"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Torino have scored in their last 7 home matches."
+              "defaultText": "Torino have scored 2 goals in their last 3 matches, while Roma have scored 10."
             },
             {
               "OddsType": "ou",
@@ -515,7 +518,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Torino haven't drawn in their last 6 matches."
+              "defaultText": "Torino haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -548,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +561,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
+          "color": "#80110B"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9804,
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have lost their last 3 matches",
           "color": "#80110B"
         },
         {
@@ -586,33 +606,6 @@
             }
           ],
           "text": "Torino and Roma have not drawn any of their last 6 matches against each other.",
-          "color": "#80110B"
-        },
-        {
-          "type": "player",
-          "playerId": 1218556,
-          "teamId": 9804,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1218556,
-              "name": "Kian Fitz-Jim",
-              "type": "player"
-            },
-            {
-              "value": 9804,
-              "name": "Torino",
-              "type": "team"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Kian Fitz-Jim has created the most big chances for Torino (2)",
           "color": "#80110B"
         },
         {
@@ -695,18 +688,18 @@
       }
     },
     "weather": {
-      "temperature": 25,
+      "temperature": 27,
       "windSpeed": 2,
-      "windDirectionCardinal": "N",
+      "windDirectionCardinal": "SE",
       "iconCode": 30,
-      "relativeHumidity": 57,
-      "precipChance": 9,
+      "relativeHumidity": 48,
+      "precipChance": 13,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
+      "cloudCover": 42,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-01T01:00:14Z",
+      "lastUpdated": "2026-09-01T13:00:18Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -720,6 +713,18 @@
         "id": 9804,
         "name": "Torino",
         "unavailable": [
+          {
+            "id": 1231029,
+            "name": "Rafik Belghali",
+            "unavailability": {
+              "injuryId": 6,
+              "lastUpdated": "2026-09-01T11:51:25Z",
+              "type": "injury",
+              "expectedReturn": "Day to day"
+            },
+            "firstName": "Rafik",
+            "lastName": "Belghali"
+          },
           {
             "id": 1339372,
             "name": "Cesare Casadei",

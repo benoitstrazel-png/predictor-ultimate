@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8675_xsmall.png",
-            "linkToMatch": "/matches/iraklis-vs-parma/2xp1xe#5983772",
-            "date": {
-              "utcTime": "2026-08-02T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8675/overview/iraklis",
-            "tooltipText": {
-              "utcTime": "2026-08-02T15:00:00.000Z",
-              "homeTeam": "Parma",
-              "homeTeamId": 10167,
-              "homeScore": "1",
-              "awayTeam": "Iraklis",
-              "awayTeamId": 8675,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8675",
-              "name": "Iraklis",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9882_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Parma",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7801_xsmall.png",
+            "linkToMatch": "/matches/cremonese-vs-parma/2o48wh#6003655",
+            "date": {
+              "utcTime": "2026-09-01T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/7801/overview/cremonese",
+            "tooltipText": {
+              "utcTime": "2026-09-01T16:00:00.000Z",
+              "homeTeam": "Parma",
+              "homeTeamId": 10167,
+              "homeScore": "0",
+              "awayTeam": "Cremonese",
+              "awayTeamId": 7801,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7801",
+              "name": "Cremonese",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -486,8 +486,8 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored away for {1} matches.",
-              "TextTemplateId": "goalless_away",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
                 "away_team",
                 "3"
@@ -501,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Parma haven't scored away for 3 matches."
+              "defaultText": "Parma haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -511,7 +511,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Parma haven't drawn in their last 4 matches."
+              "defaultText": "Parma haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -596,15 +596,15 @@
         },
         {
           "type": "player",
-          "playerId": 873270,
+          "playerId": 1434889,
           "teamId": 10171,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 873270,
-              "name": "Anastasios Douvikas",
+              "value": 1434889,
+              "name": "Assane Diao",
               "type": "player"
             },
             {
@@ -613,12 +613,12 @@
               "type": "team"
             },
             {
-              "value": 2.5,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Anastasios Douvikas has the most shots on target per match for Como (2.5)",
+          "text": "Assane Diao has created the most big chances for Como (1)",
           "color": "#005ea9"
         },
         {
@@ -630,7 +630,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 2,
               "name": null,
               "type": "integer"
             },
@@ -640,7 +640,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 2 goals in their last 5 matches",
           "color": "#000000"
         },
         {
@@ -652,39 +652,29 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#000000"
         },
         {
-          "type": "player",
-          "playerId": 867789,
+          "type": "team",
+          "playerId": null,
           "teamId": 10167,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 867789,
-              "name": "Emanuele Valeri",
-              "type": "player"
-            },
-            {
-              "value": 10167,
-              "name": "Parma",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Emanuele Valeri has created the most big chances for Parma (1)",
+          "text": "Have lost their last 3 matches",
           "color": "#000000"
         }
       ],
@@ -709,17 +699,17 @@
       "temperature": 26,
       "windSpeed": 2,
       "windDirectionCardinal": "S",
-      "iconCode": 30,
-      "relativeHumidity": 49,
-      "precipChance": 20,
+      "iconCode": 34,
+      "relativeHumidity": 46,
+      "precipChance": 11,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 56,
-      "description": "Partly Cloudy",
+      "cloudCover": 25,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-01T04:00:27Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-01T16:00:36Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749671,
@@ -760,18 +750,6 @@
             },
             "firstName": "Hans Nicolussi",
             "lastName": "Caviglia"
-          },
-          {
-            "id": 1117306,
-            "name": "Botond Balogh",
-            "unavailability": {
-              "injuryId": 69,
-              "lastUpdated": "2026-08-28T11:06:51Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Botond",
-            "lastName": "Balogh"
           }
         ]
       }
