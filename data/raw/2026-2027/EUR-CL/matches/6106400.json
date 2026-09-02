@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8509_xsmall.png",
-            "linkToMatch": "/matches/viking-vs-sarpsborg-08/2dwrkn#5104975",
-            "date": {
-              "utcTime": "2026-08-08T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8509/overview/sarpsborg-08",
-            "tooltipText": {
-              "utcTime": "2026-08-08T14:00:00.000Z",
-              "homeTeam": "Viking",
-              "homeTeamId": 8478,
-              "homeScore": "2",
-              "awayTeam": "Sarpsborg 08",
-              "awayTeamId": 8509,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8478",
-              "name": "Viking",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8509",
-              "name": "Sarpsborg 08",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8422_xsmall.png",
@@ -422,6 +392,36 @@
               "name": "Aalesund",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/119139_xsmall.png",
+            "linkToMatch": "/matches/viking-vs-brodd/3qo7cv3#5835906",
+            "date": {
+              "utcTime": "2026-09-02T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/119139/overview/brodd",
+            "tooltipText": {
+              "utcTime": "2026-09-02T16:00:00.000Z",
+              "homeTeam": "Brodd",
+              "homeTeamId": 119139,
+              "homeScore": "1",
+              "awayTeam": "Viking",
+              "awayTeamId": 8478,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "119139",
+              "name": "Brodd",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8478",
+              "name": "Viking",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,17 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,8 +454,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart have 2W, 1D, 2L in five matches while Viking have 3W, 1D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Viking haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -488,14 +482,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "5",
-                "7"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +498,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored 5 goals in their last 3 matches, while Viking have scored 7."
+              "defaultText": "Viking have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -549,12 +541,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#132847"
         }
       ],
@@ -578,35 +570,39 @@
     "weather": {
       "temperature": 19,
       "windSpeed": 4,
-      "windDirectionCardinal": "W",
+      "windDirectionCardinal": "WNW",
       "iconCode": 30,
-      "relativeHumidity": 49,
-      "precipChance": 24,
+      "relativeHumidity": 47,
+      "precipChance": 22,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 57,
+      "cloudCover": 36,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T08:00:18Z",
+      "lastUpdated": "2026-09-02T20:02:04Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106400,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10269,
         "name": "VfB Stuttgart",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1270002,
+            "age": 23,
             "name": "Luca Jaquez",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 9438213,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-26T18:24:03Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -615,10 +611,13 @@
           },
           {
             "id": 892679,
+            "age": 28,
             "name": "Chris Führich",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 8057239,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-22T18:54:10Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -627,10 +626,13 @@
           },
           {
             "id": 869298,
+            "age": 26,
             "name": "Nikolas Nartey",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 495070,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-22T18:54:30Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
@@ -639,10 +641,13 @@
           },
           {
             "id": 1418122,
+            "age": 21,
             "name": "Jeremy Arévalo",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
+            "marketValue": 2016918,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-08-26T18:23:04Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -651,10 +656,13 @@
           },
           {
             "id": 852347,
+            "age": 27,
             "name": "Dan-Axel Zagadou",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1249820,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-01T12:24:59Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -663,10 +671,13 @@
           },
           {
             "id": 1192406,
+            "age": 26,
             "name": "Lorenz Assignon",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 7990646,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-09-01T12:25:31Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -675,10 +686,13 @@
           },
           {
             "id": 1478098,
+            "age": 20,
             "name": "Dennis Seimen",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 9730497,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-07-22T19:06:14Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
@@ -687,10 +701,13 @@
           },
           {
             "id": 1434478,
+            "age": 21,
             "name": "Justin Diehl",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1743787,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-07-22T19:05:07Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
@@ -699,10 +716,13 @@
           },
           {
             "id": 1425998,
+            "age": 20,
             "name": "Leo Sauer",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "marketValue": 12605040,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-01T12:25:19Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -714,13 +734,18 @@
       "awayTeam": {
         "id": 8478,
         "name": "Viking",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 935392,
+            "age": 26,
             "name": "Anders Bærtelsen",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 589678,
             "unavailability": {
               "injuryId": 8,
-              "lastUpdated": "2026-08-04T09:54:25Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
@@ -729,10 +754,13 @@
           },
           {
             "id": 255626,
+            "age": 32,
             "name": "Veton Berisha",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 403969,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-01T12:25:35Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -741,10 +769,13 @@
           },
           {
             "id": 633595,
+            "age": 28,
             "name": "Martin Ove Roseth",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 666691,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-01T12:34:26Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
