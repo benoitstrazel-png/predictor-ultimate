@@ -307,6 +307,18 @@ def init_db_schema_if_needed(conn):
         transfer_notes TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+
+    CREATE TABLE IF NOT EXISTS fct_player_availability (
+        availability_id VARCHAR(64) PRIMARY KEY,
+        player_id VARCHAR(64) NOT NULL,
+        team_id VARCHAR(32) NOT NULL,
+        recorded_date DATE NOT NULL,
+        status VARCHAR(16) NOT NULL,
+        injury_nature VARCHAR(128),
+        expected_return_date DATE,
+        impact_weight DECIMAL(3, 2) DEFAULT 1.0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
     """)
     conn.commit()
 

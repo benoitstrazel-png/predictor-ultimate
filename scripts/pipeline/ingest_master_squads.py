@@ -127,6 +127,8 @@ def main():
     print("=" * 75, flush=True)
 
     conn = sqlite3.connect(DB_PATH)
+    from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
+    init_db_schema_if_needed(conn)
     cursor = conn.cursor()
 
     # 1. Clean player/contract tables only (PRESERVING dim_teams)

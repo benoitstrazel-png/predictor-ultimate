@@ -51,6 +51,13 @@ def main():
     print("╚═══════════════════════════════════════════════════════════════════════════╝")
     total_start = time.time()
 
+    # Garantir que le schéma SQLite existe avant toute opération
+    import sqlite3
+    from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
+    db_p = os.path.join(ROOT_DIR, "predictor_v2.db")
+    with sqlite3.connect(db_p) as conn:
+        init_db_schema_if_needed(conn)
+
     run_step(
         1,
         "Réconciliation temporelle multi-saisons des effectifs",

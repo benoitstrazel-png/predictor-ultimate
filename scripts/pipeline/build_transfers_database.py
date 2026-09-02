@@ -1548,6 +1548,8 @@ print(" 🚀 PEUPLEMENT DE LA TABLE DE FAITS ENRICHIE fct_player_transfers")
 print("=" * 75)
 
 conn = sqlite3.connect(DB_PATH)
+from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
+init_db_schema_if_needed(conn)
 cursor = conn.cursor()
 
 # Clean previous records to ensure fresh certified data
