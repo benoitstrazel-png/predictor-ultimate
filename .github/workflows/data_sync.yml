@@ -4,7 +4,7 @@ on:
   schedule:
     # Vendredis, Samedis et Dimanches (Top 5 Leagues) : toutes les 2h entre 12h UTC et 23h UTC
     - cron: '0 12,14,16,18,20,22 * * 5,6,0'
-    # Mardis, Mercredis et Jeudis (Coupes d\'Europe) : 19h, 21h et 23h UTC
+    # Mardis, Mercredis et Jeudis (Coupes d'Europe) : 19h, 21h et 23h UTC
     - cron: '0 19,21,23 * * 2,3,4'
     # Contrôle quotidien matinal : 06h00 UTC
     - cron: '0 6 * * *'
@@ -19,12 +19,14 @@ jobs:
     timeout-minutes: 20
     env:
       PYTHONPATH: .
+      PYTHONUNBUFFERED: "1"
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -59,9 +61,6 @@ jobs:
       - name: Synchronize Multi-Season Squads & Transfermarkt Database
         run: python scripts/pipeline/sync_full_squads_and_transfers.py
 
-      - name: Compile Fast-Layer Client Rosters
-        run: python scripts/pipeline/compile_client_rosters.py
-
       - name: Validate Frontend Production Build
         run: npm run build
 
@@ -74,6 +73,6 @@ jobs:
             echo 'Aucune nouvelle donnee a commiter.'
           else
             git commit -m 'chore(data): automated match sync and compilation [skip ci]'
-            git pull --rebase --autostash origin main || git rebase --abort
+            git pull --rebase origin main || (git rebase --abort && git pull origin main --no-rebase -X theirs)
             git push origin main
           fi

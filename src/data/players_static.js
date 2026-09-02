@@ -31073,6 +31073,22 @@ export const PLAYERS_DB = [
     "xAG": 0.6
   },
   {
+    "Player": "Pierre-Emerick Aubameyang",
+    "Nation": "fr FRA",
+    "Pos": "FW",
+    "Squad": "La Corogne",
+    "League": "fra Ligue 1",
+    "Age": 25,
+    "MP": 22,
+    "Starts": 14,
+    "Min": 1148,
+    "Gls": 0,
+    "Ast": 0,
+    "xG": 2.5,
+    "npxG": 2.2,
+    "xAG": 0.6
+  },
+  {
     "Player": "Jasper Cillessen",
     "Nation": "fr FRA",
     "Pos": "GK",
