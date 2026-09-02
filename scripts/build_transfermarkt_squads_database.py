@@ -43,14 +43,12 @@ TRANSFERMARKT_ROSTERS = {
         ("Ulisses Garcia", "D", "Défenseur", 20, "Suisse", 7.4, "https://media.api-sports.io/football/players/41132.png"),
         ("Chancel Mbemba", "D", "Défenseur", 99, "RD Congo", 7.7, "https://media.api-sports.io/football/players/1451.png"),
         ("Pierre-Emile Højbjerg", "M", "Milieu", 23, "Danemark", 8.3, "https://media.api-sports.io/football/players/164.png"),
-        ("Adrien Rabiot", "M", "Milieu", 25, "France", 8.4, "https://media.api-sports.io/football/players/273.png"),
         ("Geoffrey Kondogbia", "M", "Milieu", 19, "Centrafrique", 7.8, "https://media.api-sports.io/football/players/638.png"),
         ("Valentin Rongier", "M", "Milieu", 21, "France", 7.9, "https://media.api-sports.io/football/players/2099.png"),
         ("Ismaël Koné", "M", "Milieu", 51, "Canada", 7.7, "https://media.api-sports.io/football/players/284381.png"),
         ("Bilal Nadir", "M", "Milieu", 26, "Maroc", 7.3, "https://media.api-sports.io/football/players/328456.png"),
         ("Valentín Carboni", "M", "Milieu", 7, "Argentine", 7.9, "https://media.api-sports.io/football/players/343169.png"),
         ("Amine Harit", "M", "Milieu", 11, "Maroc", 7.9, "https://media.api-sports.io/football/players/2107.png"),
-        ("Elye Wahi", "A", "Attaquant", 9, "France", 8.1, "https://media.api-sports.io/football/players/152971.png"),
         ("Neal Maupay", "A", "Attaquant", 8, "France", 7.8, "https://media.api-sports.io/football/players/18884.png"),
         ("Jonathan Rowe", "A", "Attaquant", 17, "Angleterre", 7.8, "https://media.api-sports.io/football/players/284241.png"),
         ("Luis Henrique", "A", "Attaquant", 44, "Brésil", 8.0, "https://media.api-sports.io/football/players/162818.png"),
@@ -186,8 +184,10 @@ HISTORICAL_TRANSFERS = [
     {"player_name": "Kylian Mbappé", "position": "Attaquant", "club": "PSG", "league": "FRA-L1", "valid_from": "2018-07-01", "valid_to": "2024-06-30", "is_current": False, "seasons": ["2023-2024"], "note": "Transféré au Real Madrid", "photoUrl": "https://media.api-sports.io/football/players/278.png"},
     {"player_name": "Kylian Mbappé", "position": "Attaquant", "club": "Real Madrid", "league": "ESP-LL", "valid_from": "2024-07-01", "valid_to": None, "is_current": True, "seasons": ["2024-2025", "2025-2026", "2026-2027"], "note": "N°9 Titulaire Real Madrid", "photoUrl": "https://media.api-sports.io/football/players/278.png"},
 
-    # Omar Marmoush : Francfort ➔ Man City (01/07/2025)
-    {"player_name": "Omar Marmoush", "position": "Attaquant", "club": "Manchester City", "league": "ENG-PL", "valid_from": "2025-07-01", "valid_to": None, "is_current": True, "seasons": ["2025-2026", "2026-2027"], "note": "Buteur N°7 Manchester City", "photoUrl": "https://media.api-sports.io/football/players/70125.png"},
+    # Elye Wahi : Lens ➔ OM (2024) ➔ Francfort (Jan 2025, 26M€) ➔ Nice (Août 2026, Prêt OA 18M€)
+    {"player_name": "Elye Wahi", "position": "Attaquant", "club": "Marseille", "league": "FRA-L1", "valid_from": "2024-08-13", "valid_to": "2025-01-20", "is_current": False, "seasons": ["2024-2025"], "note": "Transféré à l'Eintracht Frankfurt en janvier 2025 (26M€)", "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1148812.png"},
+    {"player_name": "Elye Wahi", "position": "Attaquant", "club": "Eintracht Frankfurt", "league": "GER-BL", "valid_from": "2025-01-20", "valid_to": "2026-08-20", "is_current": False, "seasons": ["2024-2025", "2025-2026"], "note": "Prêté à l'OGC Nice le 20/08/2026", "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1148812.png"},
+    {"player_name": "Elye Wahi", "position": "Attaquant", "club": "Nice", "league": "FRA-L1", "valid_from": "2026-08-20", "valid_to": None, "is_current": True, "seasons": ["2026-2027"], "note": "Buteur N°9 OGC Nice (Prêt avec OA 18M€)", "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1148812.png"},
 ]
 
 def generate_all():

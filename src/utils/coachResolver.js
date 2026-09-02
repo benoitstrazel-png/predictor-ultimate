@@ -9,7 +9,7 @@
 
 import COACHES_SCD2 from '../data/compiled/coaches_unified_scd2.json';
 import COACHES_REGISTRY from '../data/compiled/coaches_master_registry.json';
-import { normalizeEntityKey } from './entityResolver';
+import { resolveTeam, normalizeEntityKey } from './entityResolver';
 
 // Styles tactiques par défaut selon le schéma préférentiel ou le profil
 const FORMATION_STYLES = {
@@ -27,6 +27,7 @@ const KNOWN_COACH_PROFILES = {
   'arne slot': { style: 'Pressing Tout-Terrain & Verticalité', winRate: '68%', nationality: 'Pays-Bas', nationalityFlag: '🇳🇱', formation: '4-3-3' },
   'andoni iraola': { style: 'Gegenpressing Agressif & Attaque Directe', winRate: '56%', nationality: 'Espagne', nationalityFlag: '🇪🇸', formation: '4-2-3-1' },
   'luis enrique': { style: 'Possession Dominante & Tiki-Taka', winRate: '71%', nationality: 'Espagne', nationalityFlag: '🇪🇸', formation: '4-3-3' },
+  'cesc fabregas': { style: 'Construction depuis l’Arrière & Contrôle', winRate: '52%', nationality: 'Espagne', nationalityFlag: '🇪🇸', formation: '4-2-3-1' },
   'roberto de zerbi': { style: 'Relance Courte & Sortie de Balle', winRate: '58%', nationality: 'Italie', nationalityFlag: '🇮🇹', formation: '4-2-3-1' },
   'xabi alonso': { style: 'Attaque Totale & Fluidité Tactique', winRate: '74%', nationality: 'Espagne', nationalityFlag: '🇪🇸', formation: '3-4-2-1' },
   'pep guardiola': { style: 'Jeu de Position & Surcharge Axiale', winRate: '75%', nationality: 'Espagne', nationalityFlag: '🇪🇸', formation: '4-3-3' },
@@ -116,20 +117,28 @@ export function resolveTeamCoach(teamName, season = '2026-2027', explicitCoachNa
     };
   }
 
+  const resolvedTeam = resolveTeam(teamName);
   const normTeam = normalizeEntityKey(teamName);
+  const targetTid = resolvedTeam?.team_id;
 
-  // 2. Chercher dans COACHES_SCD2 par équipe
-  const scdMatch = (COACHES_SCD2 || []).find(c => {
+  // 2. Chercher dans COACHES_SCD2 par équipe (par ID canonique ou nom normalisé)
+  const matchingContracts = (COACHES_SCD2 || []).filter(c => {
+    if (targetTid && (c.team_id === targetTid || c.team_id === `CLUB_${targetTid.replace(/^([A-Z]+_)/, '')}`)) {
+      return true;
+    }
     const cTeamNorm = normalizeEntityKey(c.team_name || '');
     if (!cTeamNorm) return false;
-    const isTeamMatch = cTeamNorm.includes(normTeam) || normTeam.includes(cTeamNorm);
-    if (!isTeamMatch) return false;
-    if (c.is_current) return true;
-    return (c.seasons_covered || []).includes(season);
-  }) || (COACHES_SCD2 || []).find(c => {
-    const cTeamNorm = normalizeEntityKey(c.team_name || '');
-    return cTeamNorm && (cTeamNorm.includes(normTeam) || normTeam.includes(cTeamNorm));
+    return cTeamNorm === normTeam || (normTeam.length >= 4 && (cTeamNorm.includes(normTeam) || normTeam.includes(cTeamNorm)));
   });
+
+  // Sélectionner le bon mandat selon la saison demandée ou le statut actif
+  let scdMatch = matchingContracts.find(c => (c.seasons_covered || []).includes(season));
+  if (!scdMatch && season === '2026-2027') {
+    scdMatch = matchingContracts.find(c => c.is_current);
+  }
+  if (!scdMatch && matchingContracts.length > 0) {
+    scdMatch = matchingContracts[0];
+  }
 
   if (scdMatch) {
     const coachNameNorm = normalizeEntityKey(scdMatch.coach_name || '');
@@ -150,32 +159,33 @@ export function resolveTeamCoach(teamName, season = '2026-2027', explicitCoachNa
     };
   }
 
-  // 3. Fallbacks intelligents par club Top 5
-  if (normTeam.includes('liverpool')) {
+  // 3. Fallbacks stricts par club Top 5 (sans matching partiel ambigu comme 'om')
+  const teamCanonical = resolvedTeam?.canonical_name?.toLowerCase() || normTeam;
+  if (teamCanonical.includes('liverpool')) {
     return { name: rawTargetName || 'Arne Slot', winRate: '68%', style: 'Pressing Tout-Terrain & Verticalité', formation: '4-3-3', nationality: 'Pays-Bas', nationalityFlag: '🇳🇱' };
   }
-  if (normTeam.includes('nottingham') || normTeam.includes('forest')) {
+  if (teamCanonical.includes('nottingham')) {
     return { name: rawTargetName || 'Nuno Espírito Santo', winRate: '49%', style: 'Bloc Compact & Contre-Attaques Foudroyantes', formation: '4-2-3-1', nationality: 'Portugal', nationalityFlag: '🇵🇹' };
   }
-  if (normTeam.includes('manchester city') || normTeam.includes('man city')) {
+  if (teamCanonical.includes('manchester city')) {
     return { name: 'Pep Guardiola', winRate: '75%', style: 'Jeu de Position & Surcharge Axiale', formation: '4-3-3', nationality: 'Espagne', nationalityFlag: '🇪🇸' };
   }
-  if (normTeam.includes('arsenal')) {
+  if (teamCanonical.includes('arsenal')) {
     return { name: 'Mikel Arteta', winRate: '67%', style: 'Contrôle Spatial & Pressing Synchronisé', formation: '4-3-3', nationality: 'Espagne', nationalityFlag: '🇪🇸' };
   }
-  if (normTeam.includes('real madrid')) {
+  if (teamCanonical.includes('real madrid')) {
     return { name: 'Carlo Ancelotti', winRate: '72%', style: 'Adaptabilité & Liberté Créative', formation: '4-3-3', nationality: 'Italie', nationalityFlag: '🇮🇹' };
   }
-  if (normTeam.includes('barcelona') || normTeam.includes('barca')) {
+  if (teamCanonical.includes('barcelona') || teamCanonical.includes('barcelone')) {
     return { name: 'Hansi Flick', winRate: '76%', style: 'Ligne Haute & Gegenpressing Agressif', formation: '4-2-3-1', nationality: 'Allemagne', nationalityFlag: '🇩🇪' };
   }
-  if (normTeam.includes('bayern')) {
+  if (teamCanonical.includes('bayern')) {
     return { name: 'Vincent Kompany', winRate: '69%', style: 'Possession Proactive & Largeur Maximale', formation: '4-2-3-1', nationality: 'Belgique', nationalityFlag: '🇧🇪' };
   }
-  if (normTeam.includes('paris') || normTeam.includes('psg')) {
+  if (teamCanonical.includes('paris saint-germain') || teamCanonical === 'psg') {
     return { name: 'Luis Enrique', winRate: '71%', style: 'Possession Dominante & Tiki-Taka', formation: '4-3-3', nationality: 'Espagne', nationalityFlag: '🇪🇸' };
   }
-  if (normTeam.includes('marseille') || normTeam.includes('om')) {
+  if (teamCanonical.includes('marseille') || teamCanonical === 'om') {
     return { name: 'Roberto De Zerbi', winRate: '58%', style: 'Relance Courte & Sortie de Balle', formation: '4-2-3-1', nationality: 'Italie', nationalityFlag: '🇮🇹' };
   }
 

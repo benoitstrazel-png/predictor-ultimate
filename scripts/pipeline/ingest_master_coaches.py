@@ -108,17 +108,107 @@ cursor = conn.cursor()
 # 1. Preload Dim Teams
 cursor.execute("SELECT team_id, name, slug, league_id, logo_url FROM dim_teams;")
 teams_db = {}
+teams_by_id = {}
 for tid, name, slug, league, logo in cursor.fetchall():
     t_obj = {'team_id': tid, 'name': name, 'slug': slug, 'league': league, 'logo': logo}
     teams_db[normalize_text(name)] = t_obj
     teams_db[normalize_text(slug)] = t_obj
+    teams_db[normalize_text(tid)] = t_obj
+    teams_by_id[tid] = t_obj
+
+# Alias canoniques pour matcher 100% des clubs Fotmob / ApiSports vers dim_teams
+MANUAL_INGEST_ALIASES = {
+    'como': 'CLUB_COME',
+    'come': 'CLUB_COME',
+    'côme': 'CLUB_COME',
+    'as roma': 'CLUB_AS_ROME',
+    'roma': 'CLUB_AS_ROME',
+    'as rome': 'CLUB_AS_ROME',
+    'rome': 'CLUB_AS_ROME',
+    'psg': 'CLUB_PSG',
+    'paris sg': 'CLUB_PSG',
+    'paris saint germain': 'CLUB_PSG',
+    'paris saint-germain': 'CLUB_PSG',
+    'bayern': 'CLUB_BAYERN_MUNICH',
+    'bayern munich': 'CLUB_BAYERN_MUNICH',
+    'bayern munchen': 'CLUB_BAYERN_MUNICH',
+    'fc bayern munchen': 'CLUB_BAYERN_MUNICH',
+    'sevilla': 'CLUB_FC_SEVILLE',
+    'seville': 'CLUB_FC_SEVILLE',
+    'fc seville': 'CLUB_FC_SEVILLE',
+    'venezia': 'CLUB_VENISE',
+    'venise': 'CLUB_VENISE',
+    '1 fc koln': 'CLUB_FC_COLOGNE',
+    'fc koln': 'CLUB_FC_COLOGNE',
+    'fc cologne': 'CLUB_FC_COLOGNE',
+    'cologne': 'CLUB_FC_COLOGNE',
+    'hamburger sv': 'CLUB_HAMBOURG_SV',
+    'hambourg sv': 'CLUB_HAMBOURG_SV',
+    'hambourg': 'CLUB_HAMBOURG_SV',
+    'deportivo la coruna': 'CLUB_LA_COROGNE',
+    'deportivo la corogne': 'CLUB_LA_COROGNE',
+    'deportivo a coruna': 'CLUB_LA_COROGNE',
+    'la corogne': 'CLUB_LA_COROGNE',
+    'fc kobenhavn': 'CLUB_COPENHAGUE',
+    'copenhague': 'CLUB_COPENHAGUE',
+    'inter': 'CLUB_INTER_MILAN',
+    'inter milan': 'CLUB_INTER_MILAN',
+    'milan': 'CLUB_AC_MILAN',
+    'ac milan': 'CLUB_AC_MILAN',
+    'saint etienne': 'CLUB_SAINT_ETIENNE',
+    'saint-etienne': 'CLUB_SAINT_ETIENNE',
+    'asse': 'CLUB_SAINT_ETIENNE',
+    'ol': 'CLUB_LYON',
+    'om': 'CLUB_MARSEILLE',
+    'marseille': 'CLUB_MARSEILLE',
+    'man utd': 'CLUB_MANCHESTER_UNITED',
+    'man city': 'CLUB_MANCHESTER_CITY',
+    'wolves': 'CLUB_WOLVERHAMPTON',
+    'wolverhampton': 'CLUB_WOLVERHAMPTON',
+    'gladbach': 'CLUB_BORUSSIA_MONCHENGLADBACH',
+    'monchengladbach': 'CLUB_BORUSSIA_MONCHENGLADBACH',
+    'leipzig': 'CLUB_RB_LEIPZIG',
+    'leverkusen': 'CLUB_BAYER_LEVERKUSEN',
+    'bayer leverkusen': 'CLUB_BAYER_LEVERKUSEN',
+    'dortmund': 'CLUB_BORUSSIA_DORTMUND',
+    'borussia dortmund': 'CLUB_BORUSSIA_DORTMUND',
+    'eintracht frankfurt': 'CLUB_EINTRACHT_FRANCFORT',
+    'eintracht francfort': 'CLUB_EINTRACHT_FRANCFORT',
+    'mainz': 'CLUB_MAYENCE',
+    'mainz 05': 'CLUB_MAYENCE',
+    'mayence': 'CLUB_MAYENCE',
+    'athletic bilbao': 'CLUB_ATHLETIC_CLUB',
+    'bilbao': 'CLUB_ATHLETIC_CLUB',
+    'athletic club': 'CLUB_ATHLETIC_CLUB',
+    'atletico madrid': 'CLUB_ATLETICO_MADRID',
+    'atletico': 'CLUB_ATLETICO_MADRID',
+    'real sociedad': 'CLUB_REAL_SOCIEDAD',
+    'la real': 'CLUB_REAL_SOCIEDAD',
+    'celta vigo': 'CLUB_CELTA_VIGO',
+    'celta': 'CLUB_CELTA_VIGO',
+    'alaves': 'CLUB_DEPORTIVO_ALAVES',
+    'deportivo alaves': 'CLUB_DEPORTIVO_ALAVES',
+    'betis': 'CLUB_REAL_BETIS',
+    'real betis': 'CLUB_REAL_BETIS',
+    'betis seville': 'CLUB_REAL_BETIS',
+    'tottenham': 'CLUB_TOTTENHAM_HOTSPUR',
+    'tottenham hotspur': 'CLUB_TOTTENHAM_HOTSPUR',
+    'spurs': 'CLUB_TOTTENHAM_HOTSPUR',
+    'nottingham': 'CLUB_NOTTINGHAM_FOREST',
+    'nottingham forest': 'CLUB_NOTTINGHAM_FOREST',
+    'forest': 'CLUB_NOTTINGHAM_FOREST',
+}
+
+for alias, target_tid in MANUAL_INGEST_ALIASES.items():
+    if target_tid in teams_by_id:
+        teams_db[normalize_text(alias)] = teams_by_id[target_tid]
 
 def resolve_team(t_name):
     norm = normalize_text(t_name)
     if norm in teams_db:
         return teams_db[norm]
     for k, val in teams_db.items():
-        if norm in k or k in norm:
+        if len(k) >= 4 and (norm in k or k in norm):
             return val
     # Fallback
     slug = slugify(t_name)

@@ -126,23 +126,41 @@ clubs.forEach(club => {
   });
 });
 
+function writeAtomic(filePath, content) {
+  const tmpPath = filePath + '.tmp';
+  fs.writeFileSync(tmpPath, content, 'utf8');
+  if (fs.existsSync(filePath)) {
+    try {
+      fs.unlinkSync(filePath);
+    } catch (e) {}
+  }
+  try {
+    fs.renameSync(tmpPath, filePath);
+  } catch (err) {
+    fs.writeFileSync(filePath, content, 'utf8');
+    if (fs.existsSync(tmpPath)) {
+      try { fs.unlinkSync(tmpPath); } catch (e) {}
+    }
+  }
+}
+
 // Save players_static.js
 const staticJsContent = `// Fichier généré automatiquement - Source de Vérité Officielle 2026-2027
 export const PLAYERS_DB = ${JSON.stringify(allStaticPlayers, null, 2)};
 `;
-fs.writeFileSync(PLAYERS_STATIC_FILE, staticJsContent, 'utf8');
+writeAtomic(PLAYERS_STATIC_FILE, staticJsContent);
 console.log(`✅ 'players_static.js' régénéré avec ${allStaticPlayers.length} profils officiels.`);
 
 // Save players.json
-fs.writeFileSync(PLAYERS_JSON_FILE, JSON.stringify(allFlatPlayers, null, 2), 'utf8');
+writeAtomic(PLAYERS_JSON_FILE, JSON.stringify(allFlatPlayers, null, 2));
 console.log(`✅ 'players.json' synchronisé (${allFlatPlayers.length} joueurs).`);
 
 // Save player_positions_tm.json
-fs.writeFileSync(TM_POSITIONS_FILE, JSON.stringify(tmPositions, null, 2), 'utf8');
+writeAtomic(TM_POSITIONS_FILE, JSON.stringify(tmPositions, null, 2));
 console.log(`✅ 'player_positions_tm.json' mis à jour.`);
 
 // Save player_photos.json
-fs.writeFileSync(PHOTOS_FILE, JSON.stringify(playerPhotos, null, 2), 'utf8');
+writeAtomic(PHOTOS_FILE, JSON.stringify(playerPhotos, null, 2));
 console.log(`✅ 'player_photos.json' mis à jour.`);
 
 console.log('\n═══════════════════════════════════════════════════════════════════════════');

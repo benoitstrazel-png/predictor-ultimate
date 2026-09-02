@@ -66,7 +66,7 @@ def build_coach_lookup():
         "paris saint germain": {"name": "Luis Enrique", "winRate": "71%", "style": "Possession Dominante & Tiki-Taka", "formation": "4-3-3"},
         "psg": {"name": "Luis Enrique", "winRate": "71%", "style": "Possession Dominante & Tiki-Taka", "formation": "4-3-3"},
         "marseille": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Relance Courte & Sortie de Balle", "formation": "4-2-3-1"},
-        "om": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Relance Courte & Sortie de Balle", "formation": "4-2-3-1"},
+        "olympique de marseille": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Relance Courte & Sortie de Balle", "formation": "4-2-3-1"},
         "manchester city": {"name": "Pep Guardiola", "winRate": "75%", "style": "Jeu de Position & Surcharge Axiale", "formation": "4-3-3"},
         "arsenal": {"name": "Mikel Arteta", "winRate": "67%", "style": "Contrôle Spatial & Pressing Synchronisé", "formation": "4-3-3"},
         "real madrid": {"name": "Carlo Ancelotti", "winRate": "72%", "style": "Adaptabilité & Liberté Créative", "formation": "4-3-3"},
@@ -74,7 +74,9 @@ def build_coach_lookup():
         "bayern munich": {"name": "Vincent Kompany", "winRate": "69%", "style": "Possession Proactive & Largeur Maximale", "formation": "4-2-3-1"},
         "borussia dortmund": {"name": "Nuri Sahin", "winRate": "58%", "style": "Transitions Éclair & Verticalité", "formation": "4-2-3-1"},
         "inter": {"name": "Simone Inzaghi", "winRate": "66%", "style": "3-5-2 Fluide & Attaque des Demi-Espaces", "formation": "3-5-2"},
-        "juventus": {"name": "Thiago Motta", "winRate": "60%", "style": "Jeu Combiné & Flexibilité Tactique", "formation": "4-2-3-1"}
+        "juventus": {"name": "Thiago Motta", "winRate": "60%", "style": "Jeu Combiné & Flexibilité Tactique", "formation": "4-2-3-1"},
+        "como": {"name": "Cesc Fàbregas", "winRate": "52%", "style": "Construction depuis l'Arrière & Maîtrise", "formation": "4-2-3-1"},
+        "come": {"name": "Cesc Fàbregas", "winRate": "52%", "style": "Construction depuis l'Arrière & Maîtrise", "formation": "4-2-3-1"},
     }
     for k, v in manual.items():
         coach_map[k] = v
@@ -113,7 +115,7 @@ def get_coach_for_team(team_name, coach_map):
     if k in coach_map:
         return coach_map[k]
     for ck, cv in coach_map.items():
-        if ck in k or k in ck:
+        if len(ck) >= 4 and (ck in k or k in ck):
             return cv
     return {
         "name": f"Coach {team_name}",

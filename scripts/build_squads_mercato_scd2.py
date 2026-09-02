@@ -43,6 +43,15 @@ KEY_MERCATO_TRANSFERS = [
          {"club": "Real Madrid", "league": "ESP-LL", "valid_from": "2024-07-01", "valid_to": None, "is_current": True, "seasons": ["2024-2025", "2025-2026", "2026-2027"], "note": "Numéro 9 titulaire"}
      ]},
 
+    # Pierre-Emerick Aubameyang : OM (2023-2024) -> Al-Qadsiah (2024-2025) -> OM (2025-2026) -> La Corogne (2026-2027)
+    {"name": "Pierre-Emerick Aubameyang", "pos": "Attaquant", "photo": "https://media.api-sports.io/football/players/247.png",
+     "history": [
+         {"club": "Marseille", "league": "FRA-L1", "valid_from": "2023-07-21", "valid_to": "2024-07-18", "is_current": False, "seasons": ["2023-2024", "2024-2025 (Départ)"], "note": "Transféré à Al-Qadsiah (9M€)"},
+         {"club": "Al-Qadsiah", "league": "SAU-PL", "valid_from": "2024-07-18", "valid_to": "2025-07-31", "is_current": False, "seasons": ["2024-2025"], "note": "Buteur Al-Qadsiah"},
+         {"club": "Marseille", "league": "FRA-L1", "valid_from": "2025-07-31", "valid_to": "2026-07-17", "is_current": False, "seasons": ["2025-2026"], "note": "Retour triomphal à l'OM (19 buts)"},
+         {"club": "La Corogne", "league": "ESP-LL", "valid_from": "2026-07-17", "valid_to": None, "is_current": True, "seasons": ["2026-2027"], "note": "Buteur N°10 Deportivo La Corogne"}
+     ]},
+
     # Mason Greenwood : Marseille (départ 2025)
     {"name": "Mason Greenwood", "pos": "Attaquant", "photo": "https://images.fotmob.com/image_resources/playerimages/961995.png",
      "history": [
@@ -120,7 +129,29 @@ KEY_MERCATO_TRANSFERS = [
     {"name": "Teun Koopmeiners", "pos": "Milieu", "photo": "https://images.fotmob.com/image_resources/playerimages/774041.png",
      "history": [
          {"club": "Atalanta", "league": "ITA-SA", "valid_from": "2021-08-01", "valid_to": "2024-08-15", "is_current": False, "seasons": ["2023-2024"], "note": "Transféré à la Juventus"},
-         {"club": "Juventus", "league": "ITA-SA", "valid_from": "2024-08-15", "valid_to": None, "is_current": True, "seasons": ["2024-2025", "2025-2026", "2026-2027"], "note": "Milieu Juventus"}
+         {"club": "Juventus", "league": "ITA-SA", "valid_from": "2024-08-15", "valid_to": None, "is_current": True, "seasons": ["2024-2025", "2025-2026", "2026-2027"], "note": "Milieu titulaire Juventus"}
+     ]},
+
+    # Adrien Rabiot : Juventus -> Marseille (2024) -> AC Milan (2025)
+    {"name": "Adrien Rabiot", "pos": "Milieu", "photo": "/assets/players/ply_adrien_rabiot_ac-milan.webp",
+     "history": [
+         {"club": "Marseille", "league": "FRA-L1", "valid_from": "2024-09-17", "valid_to": "2025-06-30", "is_current": False, "seasons": ["2024-2025"], "note": "Transféré à l'AC Milan"},
+         {"club": "AC Milan", "league": "ITA-SA", "valid_from": "2025-07-01", "valid_to": None, "is_current": True, "seasons": ["2025-2026", "2026-2027"], "note": "Milieu titulaire AC Milan"}
+     ]},
+
+    # Diego Moreira : Strasbourg -> AC Milan (2026)
+    {"name": "Diego Moreira", "pos": "Attaquant", "photo": "/assets/players/ply_diego_moreira_strasbourg.webp",
+     "history": [
+         {"club": "Strasbourg", "league": "FRA-L1", "valid_from": "2024-07-01", "valid_to": "2026-08-19", "is_current": False, "seasons": ["2024-2025", "2025-2026"], "note": "Transféré à l'AC Milan"},
+         {"club": "AC Milan", "league": "ITA-SA", "valid_from": "2026-08-19", "valid_to": None, "is_current": True, "seasons": ["2026-2027"], "note": "Ailier / Milieu N°22 AC Milan"}
+     ]},
+
+    # Elye Wahi : Lens -> Marseille (2024) -> Eintracht Frankfurt (Jan 2025) -> Nice (2026)
+    {"name": "Elye Wahi", "pos": "Attaquant", "photo": "https://images.fotmob.com/image_resources/playerimages/1148812.png",
+     "history": [
+         {"club": "Marseille", "league": "FRA-L1", "valid_from": "2024-08-13", "valid_to": "2025-01-20", "is_current": False, "seasons": ["2024-2025"], "note": "Transféré à l'Eintracht Frankfurt"},
+         {"club": "Eintracht Frankfurt", "league": "GER-BL", "valid_from": "2025-01-20", "valid_to": "2026-08-20", "is_current": False, "seasons": ["2024-2025", "2025-2026"], "note": "Prêté à Nice"},
+         {"club": "Nice", "league": "FRA-L1", "valid_from": "2026-08-20", "valid_to": None, "is_current": True, "seasons": ["2026-2027"], "note": "Buteur N°9 OGC Nice (Prêt avec OA)"}
      ]},
 ]
 
@@ -128,12 +159,12 @@ KEY_MERCATO_TRANSFERS = [
 OFFICIAL_2026_2027_ROSTERS = {
     "Marseille": [
         ("Amine Gouiri", "Attaquant", 8.2), ("Keyliane Abdallah", "Attaquant", 7.6), ("Pierre-Emile Højbjerg", "Milieu", 8.1),
-        ("Adrien Rabiot", "Milieu", 8.3), ("Leonardo Balerdi", "Défenseur", 8.0), ("Gerónimo Rulli", "Gardien", 7.9),
+        ("Ismaël Koné", "Milieu", 7.8), ("Leonardo Balerdi", "Défenseur", 8.0), ("Jeffrey de Lange", "Gardien", 7.8),
         ("Jonathan Rowe", "Attaquant", 7.7), ("Valentín Carboni", "Milieu", 7.8), ("Geoffrey Kondogbia", "Milieu", 7.6),
         ("Michael Murillo", "Défenseur", 7.5), ("Lilian Brassier", "Défenseur", 7.6), ("Derek Cornelius", "Défenseur", 7.5),
         ("Valentin Rongier", "Milieu", 7.7), ("Amine Harit", "Milieu", 7.8), ("Quentin Merlin", "Défenseur", 7.6),
         ("Pol Lirola", "Défenseur", 7.4), ("Faris Moumbagna", "Attaquant", 7.5), ("Bamo Meïté", "Défenseur", 7.4),
-        ("Jeffrey de Lange", "Gardien", 7.3), ("Bilal Nadir", "Milieu", 7.2)
+        ("Jelle Van Neck", "Gardien", 7.3), ("Bilal Nadir", "Milieu", 7.2)
     ],
     "Lyon": [
         ("Georges Mikautadze", "Attaquant", 8.3), ("Malick Fofana", "Attaquant", 8.1), ("Noah Nartey", "Milieu", 7.6),

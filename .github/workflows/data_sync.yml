@@ -56,6 +56,9 @@ jobs:
       - name: Enrich Matches with Quant ML and Entities
         run: python scripts/pipeline/enrich_matches_with_ml_and_entities.py
 
+      - name: Synchronize Multi-Season Squads & Transfermarkt Database
+        run: python scripts/pipeline/sync_full_squads_and_transfers.py
+
       - name: Compile Fast-Layer Client Rosters
         run: python scripts/pipeline/compile_client_rosters.py
 
@@ -66,7 +69,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -A src/ data/raw/
+          git add -A src/ data/raw/ public/
           if git diff --staged --quiet; then
             echo 'Aucune nouvelle donnee a commiter.'
           else

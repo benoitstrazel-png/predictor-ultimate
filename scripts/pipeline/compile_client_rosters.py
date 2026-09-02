@@ -43,6 +43,17 @@ PLAYERS_LEGACY = os.path.join(ROOT_DIR, "src", "data", "players.json")
 TM_POSITIONS_LEGACY = os.path.join(ROOT_DIR, "src", "data", "player_positions_tm.json")
 MERCATO_LEGACY = os.path.join(ROOT_DIR, "src", "data", "squads_mercato_scd2.json")
 
+def write_json_atomic(file_path, data):
+    tmp_path = file_path + ".tmp"
+    with open(tmp_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    if os.path.exists(file_path):
+        try:
+            os.remove(file_path)
+        except Exception:
+            pass
+    os.rename(tmp_path, file_path)
+
 print("=" * 75)
 print(" 🚀 COMPILATEUR FAST-LAYER : EXPORT DES ARTEFACTS CLIENTS V2")
 print("=" * 75)
@@ -141,41 +152,45 @@ for row in cursor.fetchall():
         "detail": "Gardien" if role_cat == 'G' else "Défenseur" if role_cat == 'D' else "Milieu" if role_cat == 'M' else "Attaquant"
     }
 
-with open(PLAYERS_MASTER_OUT, 'w', encoding='utf-8') as f:
-    json.dump(players_registry, f, ensure_ascii=False, indent=2)
+write_json_atomic(PLAYERS_MASTER_OUT, players_registry)
 
 # 2. Compile Unified SCD2 Squads (Multi-Season)
 print("📦 [Compile:2] Génération de squads_unified_scd2.json...")
 cursor.execute("""
     SELECT 
-        c.contract_sk, c.player_id, p.full_name, p.role_category, p.primary_position,
-        t.name as club_name, t.slug as club_slug, c.league_id, c.valid_from, c.valid_to,
-        c.is_current, c.squad_number, c.market_value_formatted, c.joined_date,
-        c.contract_until, c.seasons_covered, c.transfer_note, p.photo_url
+        c.contract_sk, c.player_id, p.full_name, c.team_id, t.name as team_name,
+        t.slug as team_slug, c.league_id, c.valid_from, c.valid_to, c.is_current,
+        c.squad_number, c.market_value_formatted, c.seasons_covered, c.transfer_note,
+        p.primary_position, p.role_category, p.photo_url
     FROM dim_player_contracts_scd2 c
     JOIN dim_players p ON c.player_id = p.player_id
-    JOIN dim_teams t ON c.team_id = t.team_id
-    ORDER BY t.name, c.is_current DESC, p.full_name
+    LEFT JOIN dim_teams t ON c.team_id = t.team_id
+    ORDER BY c.valid_from DESC, c.is_current DESC
 """)
 
 unified_scd2_records = []
 legacy_mercato_list = []
 
 for row in cursor.fetchall():
-    (c_sk, pid, pname, role_cat, pos_code, club_name, club_slug, league,
-     v_from, v_to, is_curr, num, m_val, joined_d, until_d, seasons_raw, note, photo) = row
+    (csk, pid, pname, tid, tname, tslug, league, v_from, v_to, is_curr,
+     num, m_val, seasons_json, note, pos_code, role_cat, photo) = row
     
-    seasons_list = json.loads(seasons_raw) if seasons_raw else ["2026-2027"]
-    
+    try:
+        seasons_list = json.loads(seasons_json) if seasons_json else ["2026-2027"]
+    except Exception:
+        seasons_list = ["2026-2027"]
+        
+    club_name = tname or "Sans Club"
+
     rec = {
-        "contract_id": c_sk,
+        "contract_sk": csk,
         "player_id": pid,
         "player_name": pname,
-        "position": "Gardien" if role_cat == 'G' else "Défenseur" if role_cat == 'D' else "Milieu" if role_cat == 'M' else "Attaquant",
-        "position_code": pos_code,
-        "role_category": role_cat,
-        "club": club_name,
-        "club_slug": club_slug,
+        "team_id": tid,
+        "team_name": club_name,
+        "team_slug": tslug or "free-agent",
+        "position": pos_code or "MC",
+        "role": role_cat or "M",
         "league": league,
         "valid_from": v_from,
         "valid_to": v_to,
@@ -191,7 +206,7 @@ for row in cursor.fetchall():
     # Legacy mercato format
     legacy_mercato_list.append({
         "player_name": pname,
-        "position": rec["position"],
+        "position": "Gardien" if role_cat == 'G' else "Défenseur" if role_cat == 'D' else "Milieu" if role_cat == 'M' else "Attaquant",
         "club": club_name,
         "league": league,
         "valid_from": v_from,
@@ -202,8 +217,7 @@ for row in cursor.fetchall():
         "photoUrl": photo
     })
 
-with open(SQUADS_SCD2_OUT, 'w', encoding='utf-8') as f:
-    json.dump(unified_scd2_records, f, ensure_ascii=False, indent=2)
+write_json_atomic(SQUADS_SCD2_OUT, unified_scd2_records)
 
 # 3. Compile Master Lineups with Grid Coordinates
 print("📦 [Compile:3] Génération de lineups_master.json...")
@@ -263,8 +277,7 @@ for row in cursor.fetchall():
             matches_lineups_dict[mid]["awaySubs"].append(player_entry)
 
 compiled_lineups_list = list(matches_lineups_dict.values())
-with open(LINEUPS_MASTER_OUT, 'w', encoding='utf-8') as f:
-    json.dump(compiled_lineups_list, f, ensure_ascii=False, indent=2)
+write_json_atomic(LINEUPS_MASTER_OUT, compiled_lineups_list)
 
 # 4. Compile Enriched Player Transfers
 print("📦 [Compile:4] Génération de transfers_enriched_master.json...")
@@ -332,8 +345,7 @@ for row in cursor.fetchall():
     }
     compiled_transfers.append(trf_obj)
 
-with open(TRANSFERS_MASTER_OUT, 'w', encoding='utf-8') as f:
-    json.dump(compiled_transfers, f, ensure_ascii=False, indent=2)
+write_json_atomic(TRANSFERS_MASTER_OUT, compiled_transfers)
 
 # 5. Compile Coaches Master Registry & SCD2 Contracts
 print("📦 [Compile:5] Génération de coaches_master_registry.json & coaches_unified_scd2.json...")
@@ -365,8 +377,7 @@ for row in cursor.fetchall():
         "preferred_formation": form or "4-3-3"
     }
 
-with open(COACHES_MASTER_OUT, 'w', encoding='utf-8') as f:
-    json.dump(coaches_registry, f, ensure_ascii=False, indent=2)
+write_json_atomic(COACHES_MASTER_OUT, coaches_registry)
 
 cursor.execute("""
     SELECT 
@@ -420,22 +431,14 @@ for row in cursor.fetchall():
     }
     compiled_coach_contracts.append(contract_obj)
 
-with open(COACHES_SCD2_OUT, 'w', encoding='utf-8') as f:
-    json.dump(compiled_coach_contracts, f, ensure_ascii=False, indent=2)
+write_json_atomic(COACHES_SCD2_OUT, compiled_coach_contracts)
 
 # 6. Export Legacy Files for 100% Backward Compatibility
 print("🔄 [Legacy:Bridge] Écriture des fichiers de rétrocompatibilité...")
-with open(REAL_PLAYERS_LEGACY, 'w', encoding='utf-8') as f:
-    json.dump(legacy_real_players_dict, f, ensure_ascii=False, indent=2)
-
-with open(PLAYERS_LEGACY, 'w', encoding='utf-8') as f:
-    json.dump(legacy_players_list, f, ensure_ascii=False, indent=2)
-
-with open(TM_POSITIONS_LEGACY, 'w', encoding='utf-8') as f:
-    json.dump(legacy_positions_dict, f, ensure_ascii=False, indent=2)
-
-with open(MERCATO_LEGACY, 'w', encoding='utf-8') as f:
-    json.dump(legacy_mercato_list, f, ensure_ascii=False, indent=2)
+write_json_atomic(REAL_PLAYERS_LEGACY, legacy_real_players_dict)
+write_json_atomic(PLAYERS_LEGACY, legacy_players_list)
+write_json_atomic(TM_POSITIONS_LEGACY, legacy_positions_dict)
+write_json_atomic(MERCATO_LEGACY, legacy_mercato_list)
 
 print("=" * 75)
 print(f"🎉 SUCCÈS : Compilation Fast-Layer V2 terminée avec succès !")

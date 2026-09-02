@@ -29,6 +29,26 @@ MERCATO_SCD2_FILE = os.path.join(ROOT_DIR, "src", "data", "squads_mercato_scd2.j
 REAL_PLAYERS_FILE = os.path.join(ROOT_DIR, "src", "data", "real_players.json")
 PLAYERS_FILE = os.path.join(ROOT_DIR, "src", "data", "players.json")
 
+def write_json_atomic(file_path, data):
+    tmp_path = file_path + ".tmp"
+    with open(tmp_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    if os.path.exists(file_path):
+        try:
+            os.remove(file_path)
+        except Exception:
+            pass
+    try:
+        os.rename(tmp_path, file_path)
+    except Exception:
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        if os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
+
 def normalize_text(text):
     if not text or not isinstance(text, str):
         return ""
@@ -166,7 +186,7 @@ def main():
 
                 tm_id = str(p.get('tm_id')) if p.get('tm_id') else None
                 p_slug = slugify(raw_name)
-                player_id = f"ply_{p_slug}_{tm_id}" if tm_id else f"ply_{p_slug}_{slugify(club_name)}"
+                player_id = f"ply_{p_slug}_{tm_id}" if tm_id else f"ply_{p_slug}"
 
                 pos_code, role_cat = map_detailed_position(p.get('role_category'), p.get('position'))
                 
@@ -377,17 +397,14 @@ def main():
     conn.commit()
 
     # 7. Update real_players.json and players.json
-    with open(REAL_PLAYERS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(real_players_dict, f, ensure_ascii=False, indent=2)
+    write_json_atomic(REAL_PLAYERS_FILE, real_players_dict)
     print(f"✅ src/data/real_players.json synchronisé ({len(real_players_dict)} clubs).", flush=True)
 
-    with open(PLAYERS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(flat_players_list, f, ensure_ascii=False, indent=2)
+    write_json_atomic(PLAYERS_FILE, flat_players_list)
     print(f"✅ src/data/players.json synchronisé ({len(flat_players_list)} joueurs).", flush=True)
 
     # 8. Update squads_mercato_scd2.json with cleaned dataset
-    with open(MERCATO_SCD2_FILE, 'w', encoding='utf-8') as f:
-        json.dump(mercato_scd2_data, f, ensure_ascii=False, indent=2)
+    write_json_atomic(MERCATO_SCD2_FILE, mercato_scd2_data)
     print(f"✅ src/data/squads_mercato_scd2.json synchronisé ({len(mercato_scd2_data)} mouvements réels).", flush=True)
 
     # 9. Stats check

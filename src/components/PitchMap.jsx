@@ -1,54 +1,165 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { getPlayerPhoto } from '../utils/playerPhotos';
 import { PLAYERS_DB } from '../data/players_static';
 import ALL_LINEUPS from '../data/lineups_2025_2026.json';
 import TM_POSITIONS from '../data/player_positions_tm.json';
 import CALCULATED_STATS from '../data/player_stats_calculated.json';
 import PLAYERS_REGISTRY from '../data/compiled/players_master_registry.json';
+import { getClubSquad } from '../data/squads_index';
 
-// Helper: Map Position to G/D/M/A with Master Registry priority
-const getTmRole = (name) => {
-    if (!name) return null;
-    const norm = (str) => {
-        if (typeof str !== 'string') return "";
-        return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, "").trim();
-    };
-    const n = norm(name);
+// Normalisation string robuste
+const normStr = (str) => {
+    if (!str || typeof str !== 'string') return "";
+    return str.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9 ]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+};
 
-    // 0. Check Master Registry first
+// Extraction de nom sécurisée (gère string ou objet {name, pos})
+const extractPlayerName = (item) => {
+    if (!item) return "";
+    if (typeof item === 'string') return item.replace(/\(.*\)/g, '').trim();
+    if (typeof item === 'object' && item.name) return String(item.name).replace(/\(.*\)/g, '').trim();
+    return "";
+};
+
+// Comparaison de noms intelligente (gère "Gouiri A." vs "Amine Gouiri", "Leali N." vs "Nicola Leali")
+const areNamesMatching = (name1, name2) => {
+    if (!name1 || !name2) return false;
+    const s1 = normStr(name1);
+    const s2 = normStr(name2);
+    if (s1 === s2) return true;
+
+    const parts1 = s1.split(' ').filter(x => x.length > 0);
+    const parts2 = s2.split(' ').filter(x => x.length > 0);
+    if (parts1.length === 0 || parts2.length === 0) return false;
+
+    // Correspondance par nom de famille
+    const last1 = parts1[parts1.length - 1];
+    const last2 = parts2[parts2.length - 1];
+    const first1 = parts1[0];
+    const first2 = parts2[0];
+
+    // Cas "Nom P." ou "P. Nom"
+    if (last1 === last2 && (parts1.length === 1 || parts2.length === 1 || first1[0] === first2[0])) {
+        return true;
+    }
+    // Inversion Nom Prénom
+    if (first1 === last2 && (parts1.length === 1 || parts2.length === 1 || last1[0] === first2[0])) {
+        return true;
+    }
+    if (last1 === first2 && (parts1.length === 1 || parts2.length === 1 || first1[0] === last2[0])) {
+        return true;
+    }
+
+    // Inclusion stricte si longueur suffisante
+    if (s1.length > 5 && s2.length > 5 && (s1.includes(s2) || s2.includes(s1))) {
+        return true;
+    }
+
+    return false;
+};
+
+// Résolution détaillée du rôle, du poste exact et de la position latérale (gauche / centre / droit)
+const getPlayerTacticalDetails = (playerOrName) => {
+    const playerName = typeof playerOrName === 'string' ? playerOrName : playerOrName?.name;
+    if (!playerName) return { role: 'M', subRole: 'CM', label: 'Milieu', side: 'center', sort: 1 };
+
+    const n = normStr(playerName);
+    const rawPos = typeof playerOrName === 'object' ? (playerOrName.position || playerOrName.pos || '') : '';
+    const rawRole = typeof playerOrName === 'object' ? (playerOrName.role_category || playerOrName.role || '') : '';
+
+    // 0. Détection prioritaire par objet direct si déjà spécifié
+    const normRawPos = normStr(rawPos);
+    if (rawRole === 'G' || normRawPos.includes('gardien') || normRawPos === 'gk') {
+        return { role: 'G', subRole: 'GK', label: 'Gardien de but', side: 'center', sort: 0 };
+    }
+
+    // 1. Recherche dans Master Registry
     for (const p of Object.values(PLAYERS_REGISTRY || {})) {
-        if (norm(p.name) === n || norm(p.displayName) === n || norm(p.shortName) === n) {
-            return p.role;
-        }
-    }
+        if (areNamesMatching(p.name, playerName) || areNamesMatching(p.displayName, playerName) || areNamesMatching(p.shortName, playerName)) {
+            const pos = (p.position || '').toUpperCase();
+            const r = p.role || 'M';
 
-    let found = null;
-    // 1. Exact Match in TM_POSITIONS
-    for (const [key, val] of Object.entries(TM_POSITIONS || {})) {
-        if (norm(key) === n) { found = val; break; }
-    }
-
-    // 2. Fuzzy
-    if (!found) {
-        const parts = n.split(' ').filter(x => x.length > 1);
-        if (parts.length > 0) {
-            for (const [key, val] of Object.entries(TM_POSITIONS || {})) {
-                const kNorm = norm(key);
-                if (kNorm.includes(parts[parts.length - 1]) && (parts.length === 1 || kNorm.includes(parts[0]))) {
-                    found = val;
-                    break;
-                }
+            if (r === 'G' || pos === 'GK') {
+                return { role: 'G', subRole: 'GK', label: 'Gardien de but', side: 'center', sort: 0, registry: p };
+            }
+            if (r === 'D' || ['CB', 'LB', 'RB', 'LWB', 'RWB', 'DF'].includes(pos)) {
+                if (['LB', 'LWB'].includes(pos)) return { role: 'D', subRole: pos, label: 'Arrière Gauche', side: 'left', sort: 0, registry: p };
+                if (['RB', 'RWB'].includes(pos)) return { role: 'D', subRole: pos, label: 'Arrière Droit', side: 'right', sort: 2, registry: p };
+                return { role: 'D', subRole: pos || 'CB', label: 'Défenseur Central', side: 'center', sort: 1, registry: p };
+            }
+            if (r === 'A' || ['ST', 'CF', 'LW', 'RW', 'FW'].includes(pos)) {
+                if (pos === 'LW') return { role: 'A', subRole: 'LW', label: 'Ailier Gauche', side: 'left', sort: 0, registry: p };
+                if (pos === 'RW') return { role: 'A', subRole: 'RW', label: 'Ailier Droit', side: 'right', sort: 2, registry: p };
+                return { role: 'A', subRole: pos || 'ST', label: 'Avant-Centre', side: 'center', sort: 1, registry: p };
+            }
+            if (r === 'M' || ['CDM', 'CM', 'CAM', 'LM', 'RM', 'MF'].includes(pos)) {
+                if (pos === 'LM') return { role: 'M', subRole: 'LM', label: 'Milieu Gauche', side: 'left', sort: 0, registry: p };
+                if (pos === 'RM') return { role: 'M', subRole: 'RM', label: 'Milieu Droit', side: 'right', sort: 2, registry: p };
+                if (pos === 'CDM') return { role: 'M', subRole: 'CDM', label: 'Milieu Défensif', side: 'center', sort: 1, registry: p };
+                if (pos === 'CAM') return { role: 'M', subRole: 'CAM', label: 'Milieu Offensif', side: 'center', sort: 1, registry: p };
+                return { role: 'M', subRole: 'CM', label: 'Milieu Central', side: 'center', sort: 1, registry: p };
             }
         }
     }
 
-    if (found && found.main) {
-        if (found.main.includes('Gardien')) return 'G';
-        if (found.main.includes('Défense')) return 'D';
-        if (found.main.includes('Milieu')) return 'M';
-        if (found.main.includes('Attaquant')) return 'A';
+    // 2. Recherche dans TM_POSITIONS
+    let tmMatch = null;
+    for (const [key, val] of Object.entries(TM_POSITIONS || {})) {
+        if (areNamesMatching(key, playerName)) {
+            tmMatch = val;
+            break;
+        }
     }
-    return null; // Fallback
+
+    if (tmMatch && tmMatch.main) {
+        const m = tmMatch.main.toLowerCase();
+        if (m.includes('gardien')) return { role: 'G', subRole: 'GK', label: 'Gardien de but', side: 'center', sort: 0 };
+        if (m.includes('défense') || m.includes('arriere') || m.includes('lateral')) {
+            if (m.includes('gauche')) return { role: 'D', subRole: 'LB', label: 'Arrière Gauche', side: 'left', sort: 0 };
+            if (m.includes('droit')) return { role: 'D', subRole: 'RB', label: 'Arrière Droit', side: 'right', sort: 2 };
+            return { role: 'D', subRole: 'CB', label: 'Défenseur Central', side: 'center', sort: 1 };
+        }
+        if (m.includes('milieu')) {
+            if (m.includes('gauche')) return { role: 'M', subRole: 'LM', label: 'Milieu Gauche', side: 'left', sort: 0 };
+            if (m.includes('droit')) return { role: 'M', subRole: 'RM', label: 'Milieu Droit', side: 'right', sort: 2 };
+            if (m.includes('défensif')) return { role: 'M', subRole: 'CDM', label: 'Milieu Défensif', side: 'center', sort: 1 };
+            if (m.includes('offensif')) return { role: 'M', subRole: 'CAM', label: 'Milieu Offensif', side: 'center', sort: 1 };
+            return { role: 'M', subRole: 'CM', label: 'Milieu Central', side: 'center', sort: 1 };
+        }
+        if (m.includes('attaquant') || m.includes('ailier') || m.includes('avant-centre') || m.includes('buteur')) {
+            if (m.includes('gauche')) return { role: 'A', subRole: 'LW', label: 'Ailier Gauche', side: 'left', sort: 0 };
+            if (m.includes('droit')) return { role: 'A', subRole: 'RW', label: 'Ailier Droit', side: 'right', sort: 2 };
+            return { role: 'A', subRole: 'ST', label: 'Avant-Centre', side: 'center', sort: 1 };
+        }
+    }
+
+    // 3. Fallback sur les propriétés de l'objet joueur
+    if (rawRole === 'D' || normRawPos.includes('defense') || normRawPos.includes('arriere')) {
+        if (normRawPos.includes('gauche')) return { role: 'D', subRole: 'LB', label: 'Arrière Gauche', side: 'left', sort: 0 };
+        if (normRawPos.includes('droit')) return { role: 'D', subRole: 'RB', label: 'Arrière Droit', side: 'right', sort: 2 };
+        return { role: 'D', subRole: 'CB', label: 'Défenseur Central', side: 'center', sort: 1 };
+    }
+    if (rawRole === 'A' || normRawPos.includes('attaquant') || normRawPos.includes('ailier') || normRawPos.includes('avant')) {
+        if (normRawPos.includes('gauche')) return { role: 'A', subRole: 'LW', label: 'Ailier Gauche', side: 'left', sort: 0 };
+        if (normRawPos.includes('droit')) return { role: 'A', subRole: 'RW', label: 'Ailier Droit', side: 'right', sort: 2 };
+        return { role: 'A', subRole: 'ST', label: 'Avant-Centre', side: 'center', sort: 1 };
+    }
+    if (rawRole === 'M' || normRawPos.includes('milieu')) {
+        if (normRawPos.includes('gauche')) return { role: 'M', subRole: 'LM', label: 'Milieu Gauche', side: 'left', sort: 0 };
+        if (normRawPos.includes('droit')) return { role: 'M', subRole: 'RM', label: 'Milieu Droit', side: 'right', sort: 2 };
+        return { role: 'M', subRole: 'CM', label: 'Milieu Central', side: 'center', sort: 1 };
+    }
+
+    return { role: 'M', subRole: 'CM', label: 'Milieu', side: 'center', sort: 1 };
+};
+
+const getTmRole = (name) => {
+    return getPlayerTacticalDetails(name).role;
 };
 
 const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory, showFullSquad }) => {
@@ -57,89 +168,81 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
     const FORMATION_COORDS = {
         "4-3-3": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 68, left: 15 }, { top: 68, left: 38 }, { top: 68, left: 62 }, { top: 68, left: 85 }],
-            M: [{ top: 48, left: 20 }, { top: 48, left: 50 }, { top: 48, left: 80 }],
+            D: [{ top: 68, left: 16 }, { top: 68, left: 38 }, { top: 68, left: 62 }, { top: 68, left: 84 }],
+            M: [{ top: 48, left: 24 }, { top: 48, left: 50 }, { top: 48, left: 76 }],
             A: [{ top: 18, left: 20 }, { top: 18, left: 50 }, { top: 18, left: 80 }]
         },
         "4-4-2": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 68, left: 15 }, { top: 68, left: 38 }, { top: 68, left: 62 }, { top: 68, left: 85 }],
-            M: [{ top: 40, left: 15 }, { top: 48, left: 38 }, { top: 48, left: 62 }, { top: 40, left: 85 }],
+            D: [{ top: 68, left: 16 }, { top: 68, left: 38 }, { top: 68, left: 62 }, { top: 68, left: 84 }],
+            M: [{ top: 44, left: 16 }, { top: 48, left: 38 }, { top: 48, left: 62 }, { top: 44, left: 84 }],
             A: [{ top: 18, left: 35 }, { top: 18, left: 65 }]
         },
         "4-2-3-1": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 68, left: 15 }, { top: 68, left: 38 }, { top: 68, left: 62 }, { top: 68, left: 85 }],
+            D: [{ top: 70, left: 16 }, { top: 70, left: 38 }, { top: 70, left: 62 }, { top: 70, left: 84 }],
             M: [
-                { top: 52, left: 35 }, { top: 52, left: 65 }, // CDMs
-                { top: 30, left: 20 }, { top: 30, left: 50 }, { top: 30, left: 80 } // AMs
+                { top: 54, left: 35 }, { top: 54, left: 65 }, // CDMs
+                { top: 34, left: 20 }, { top: 34, left: 50 }, { top: 34, left: 80 } // CAMs / Wings
             ],
-            A: [{ top: 12, left: 50 }]
+            A: [{ top: 14, left: 50 }]
         },
         "3-5-2": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 68, left: 25 }, { top: 68, left: 50 }, { top: 68, left: 75 }],
+            D: [{ top: 70, left: 25 }, { top: 70, left: 50 }, { top: 70, left: 75 }],
             M: [
-                { top: 50, left: 10 }, { top: 50, left: 90 }, // Wingbacks
-                { top: 50, left: 35 }, { top: 45, left: 50 }, { top: 50, left: 65 } // Central Mids
+                { top: 50, left: 12 }, { top: 50, left: 88 }, // Wingbacks
+                { top: 52, left: 34 }, { top: 46, left: 50 }, { top: 52, left: 66 } // Central Mids
             ],
             A: [{ top: 18, left: 35 }, { top: 18, left: 65 }]
         },
         "3-4-3": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 68, left: 25 }, { top: 68, left: 50 }, { top: 68, left: 75 }],
-            M: [{ top: 45, left: 15 }, { top: 45, left: 38 }, { top: 45, left: 62 }, { top: 45, left: 85 }],
+            D: [{ top: 70, left: 25 }, { top: 70, left: 50 }, { top: 70, left: 75 }],
+            M: [{ top: 46, left: 16 }, { top: 48, left: 38 }, { top: 48, left: 62 }, { top: 46, left: 84 }],
             A: [{ top: 18, left: 20 }, { top: 18, left: 50 }, { top: 18, left: 80 }]
         },
         "5-4-1": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 70, left: 10 }, { top: 70, left: 30 }, { top: 70, left: 50 }, { top: 70, left: 70 }, { top: 70, left: 90 }],
-            M: [{ top: 50, left: 20 }, { top: 50, left: 40 }, { top: 50, left: 60 }, { top: 50, left: 80 }],
-            A: [{ top: 15, left: 50 }]
+            D: [{ top: 72, left: 12 }, { top: 72, left: 31 }, { top: 72, left: 50 }, { top: 72, left: 69 }, { top: 72, left: 88 }],
+            M: [{ top: 48, left: 18 }, { top: 50, left: 39 }, { top: 50, left: 61 }, { top: 48, left: 82 }],
+            A: [{ top: 16, left: 50 }]
         },
-        // 4-1-4-1 (Mapped as M=5, A=1)
         "4-1-4-1": {
             G: [{ top: 88, left: 50 }],
-            D: [{ top: 70, left: 15 }, { top: 70, left: 38 }, { top: 70, left: 62 }, { top: 70, left: 85 }],
+            D: [{ top: 70, left: 16 }, { top: 70, left: 38 }, { top: 70, left: 62 }, { top: 70, left: 84 }],
             M: [
-                { top: 55, left: 50 }, // DM
-                { top: 38, left: 15 }, { top: 38, left: 38 }, { top: 38, left: 62 }, { top: 38, left: 85 } // 4 AMs
+                { top: 56, left: 50 }, // DM
+                { top: 38, left: 16 }, { top: 38, left: 38 }, { top: 38, left: 62 }, { top: 38, left: 84 } // 4 AMs / Wings
             ],
             A: [{ top: 15, left: 50 }]
         },
-        // 3-4-2-1 (Mapped as M=6, A=1)
         "3-4-2-1": {
             G: [{ top: 88, left: 50 }],
             D: [{ top: 72, left: 25 }, { top: 72, left: 50 }, { top: 72, left: 75 }],
             M: [
-                // 4 Mids (Wingbacks + CMs)
-                { top: 55, left: 10 }, { top: 55, left: 35 }, { top: 55, left: 65 }, { top: 55, left: 90 },
-                // 2 AMs (Categorized as M by parser)
-                { top: 35, left: 30 }, { top: 35, left: 70 }
+                { top: 54, left: 12 }, { top: 54, left: 37 }, { top: 54, left: 63 }, { top: 54, left: 88 },
+                { top: 34, left: 32 }, { top: 34, left: 68 }
             ],
             A: [{ top: 15, left: 50 }]
         },
-        // Fallback or mapped types
         "5-3-2": "3-5-2",
         "5-2-3": "3-4-3",
-        "3-4-1-2": "3-5-2", // M=5, A=2
-        "4-5-1": "4-1-4-1" // Use the same layout
+        "3-4-1-2": "3-5-2",
+        "4-5-1": "4-1-4-1"
     };
 
     const getCoords = (formation, pos, index, total) => {
         let layoutName = formation;
-        // Handle aliases
         if (typeof FORMATION_COORDS[formation] === 'string') {
             layoutName = FORMATION_COORDS[formation];
         }
-        // Fallback to 4-3-3 if unknown
         if (!FORMATION_COORDS[layoutName]) layoutName = "4-3-3";
 
         const scheme = FORMATION_COORDS[layoutName];
         const posGroup = scheme[pos];
         if (!posGroup) return { top: 50, left: 50 };
 
-        // Safety: if we have more players than slots (e.g. backfill), distribute evenly
         if (index >= posGroup.length) {
             const step = 100 / (total + 1);
             return {
@@ -151,9 +254,16 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         return posGroup[index];
     };
 
-    // Defined before useMemo key logic
+    // Récupération de l'historique complet du club (toutes saisons confondues)
+    const clubAllSeasonsData = useMemo(() => {
+        try {
+            return getClubSquad(clubName, 'ALL');
+        } catch (e) {
+            return null;
+        }
+    }, [clubName]);
 
-    // Next Opponent Finder
+    // Prochain adversaire
     const getNextMatch = (cName) => {
         if (!schedule || !currentWeek) return null;
         const upcoming = schedule.find(m =>
@@ -165,16 +275,14 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         return upcoming.homeTeam === cName ? upcoming.awayTeam : upcoming.homeTeam;
     };
 
-    // Last Match Stats Parser
+    // Statistiques du dernier match
     const getLastMatchStats = (playerName, cName) => {
         if (!matchHistory || matchHistory.length === 0) return null;
 
-        // 1. Find last played match for club
         const playedMatches = matchHistory
             .filter(m => (m.homeTeam === cName || m.awayTeam === cName) && (m.score && m.score !== '-'))
-            // Sort by Round Number Descending (Fix for missing dates)
             .sort((a, b) => {
-                const getR = r => r ? parseInt((r.match(/\d+/) || [0])[0], 10) : 0;
+                const getR = r => r ? parseInt((String(r).match(/\d+/) || [0])[0], 10) : 0;
                 return getR(b.round) - getR(a.round);
             });
 
@@ -182,36 +290,21 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         if (!lastMatch) return null;
 
         const opponent = lastMatch.homeTeam === cName ? lastMatch.awayTeam : lastMatch.homeTeam;
-        const score = lastMatch.score; // e.g. "2-1" or object {home: 2, away: 1} - handle format
-
-        let scoreStr = score;
-        if (typeof score === 'object') {
-            scoreStr = `${score.home}-${score.away}`;
+        let scoreStr = lastMatch.score;
+        if (typeof scoreStr === 'object') {
+            scoreStr = `${scoreStr.home}-${scoreStr.away}`;
         }
 
-        // 2. Parse Events for Player
         let goals = 0;
         let assists = 0;
-        let rating = null; // Not typically in events, maybe in future
         let yellow = false;
         let red = false;
 
         if (lastMatch.events) {
-            const norm = (str) => str?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() || "";
-            const safeMatch = (n1, n2) => {
-                if (!n1 || !n2) return false;
-                // Matches like "Gouiri A." vs "Amine Gouiri"
-                const t1 = n1.split(' ').filter(x => x.length > 1);
-                const t2 = n2.split(' ').filter(x => x.length > 1);
-                return t1.some(a => t2.some(b => b === a || (b.includes(a) && a.length > 3)));
-            };
-            const pNorm = norm(playerName);
-
             (lastMatch.events || []).forEach(e => {
-                // Check if player involved
                 let involved = false;
                 if (e.players) {
-                    involved = e.players.some(p => safeMatch(norm(p), pNorm));
+                    involved = e.players.some(p => areNamesMatching(p, playerName));
                 }
 
                 if (involved) {
@@ -220,13 +313,7 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                     if (e.type === 'Red Card') red = true;
                 }
 
-                // Assist check in detail
-                if (e.detail && e.detail.includes(playerName.split(' ').pop())) {
-                    // Very rough heuristic for assist if name in detail
-                    // Ideally parse e.detail properly
-                }
-                // Better assist check: e.detail is typically the assister name
-                if (e.type === 'Goal' && e.detail && safeMatch(norm(e.detail), pNorm)) {
+                if (e.type === 'Goal' && e.detail && areNamesMatching(e.detail, playerName)) {
                     assists++;
                 }
             });
@@ -235,211 +322,52 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         return { opponent, score: scoreStr, goals, assists, yellow, red };
     };
 
-    const getPlayerStats = (name) => {
-        let goals = 0;
-        let assists = 0;
-        const norm = (str) => str?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() || "";
-        const safeMatch = (n1, n2) => {
-            if (!n1 || !n2) return false;
-            if (n1 === n2) return true;
-            const t1 = n1.split(' ').filter(x => x.length > 1);
-            const t2 = n2.split(' ').filter(x => x.length > 1);
-            return t1.some(a => t2.some(b => b === a || (b.includes(a) && a.length > 3)));
-        };
-
-        if (stats && stats.scorers) {
-            Object.entries(stats.scorers).forEach(([sName, sCount]) => {
-                if (safeMatch(norm(sName), norm(name))) goals = sCount;
-            });
-        }
-        if (stats && stats.assisters) {
-            Object.entries(stats.assisters).forEach(([aName, aCount]) => {
-                if (safeMatch(norm(aName), norm(name))) assists = aCount;
-            });
-        }
-        return { goals, assists };
-    };
-
-    // Helper: Extract ID from URL
-    const extractId = (url) => {
-        if (!url) return "";
-        if (!url.includes("http")) return url; // Already an ID
-        const match = url.match(/match\/([^/]+)/);
-        return match ? match[1] : "";
-    };
-
-
-    // Helper: Map TM Position to Side/Role with Master Registry Priority
-    const getDetailedRole = (name) => {
-        if (!name) return null;
-        const norm = (str) => {
-            if (typeof str !== 'string') return "";
-            return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, "").trim();
-        };
-        const n = norm(name);
-
-        // 0. Check Master Registry Priority
-        for (const p of Object.values(PLAYERS_REGISTRY || {})) {
-            if (norm(p.name) === n || norm(p.displayName) === n || norm(p.shortName) === n) {
-                const pos = p.position || '';
-                const role = p.role || 'M';
-                if (role === 'G' || pos === 'GK') return { role: 'G', side: 'center', sort: 0 };
-                if (role === 'D') {
-                    if (pos === 'LB') return { role: 'D', side: 'left', sort: 0 };
-                    if (pos === 'RB') return { role: 'D', side: 'right', sort: 2 };
-                    return { role: 'D', side: 'center', sort: 1 };
-                }
-                if (role === 'M') {
-                    if (pos === 'LM' || pos === 'LW') return { role: 'M', side: 'left', sort: 0 };
-                    if (pos === 'RM' || pos === 'RW') return { role: 'M', side: 'right', sort: 2 };
-                    return { role: 'M', side: 'center', sort: 1 };
-                }
-                if (role === 'A') {
-                    if (pos === 'LW' || pos === 'LM') return { role: 'A', side: 'left', sort: 0 };
-                    if (pos === 'RW' || pos === 'RM') return { role: 'A', side: 'right', sort: 2 };
-                    return { role: 'A', side: 'center', sort: 1 };
-                }
-            }
-        }
-
-        // 1. Exact/Fuzzy Match from JSON
-        let found = null;
-        for (const [key, val] of Object.entries(TM_POSITIONS || {})) {
-            if (norm(key) === n) { found = val; break; }
-        }
-        if (!found) {
-            const parts = n.split(' ').filter(x => x.length > 1);
-            if (parts.length > 0) {
-                for (const [key, val] of Object.entries(TM_POSITIONS || {})) {
-                    const kNorm = norm(key);
-                    if (kNorm.includes(parts[parts.length - 1]) && (parts.length === 1 || kNorm.includes(parts[0]))) {
-                        found = val;
-                        break;
-                    }
-                }
-            }
-        }
-
-        // 2. Map to Role+Side
-        if (found && found.main) {
-            const m = found.main.toLowerCase();
-            // Goalkeepers
-            if (m.includes('gardien')) return { role: 'G', side: 'center', sort: 0 };
-
-            // Defenders
-            if (m.includes('défense')) {
-                if (m.includes('gauche')) return { role: 'D', side: 'left', sort: 0 };
-                if (m.includes('droit')) return { role: 'D', side: 'right', sort: 2 };
-                return { role: 'D', side: 'center', sort: 1 };
-            }
-
-            // Midfielders
-            if (m.includes('milieu')) {
-                if (m.includes('gauche') || m.includes('offensif')) return { role: 'M', side: 'left', sort: 0 }; // often AM are central/free but 'offensif' treated generic here
-                if (m.includes('droit')) return { role: 'M', side: 'right', sort: 2 };
-                if (m.includes('défensif') || m.includes('central')) return { role: 'M', side: 'center', sort: 1 };
-                return { role: 'M', side: 'center', sort: 1 };
-            }
-
-            // Attackers
-            if (m.includes('attaquant')) {
-                if (m.includes('ailier gauche')) return { role: 'A', side: 'left', sort: 0 };
-                if (m.includes('ailier droit')) return { role: 'A', side: 'right', sort: 2 };
-                if (m.includes('avant-centre')) return { role: 'A', side: 'center', sort: 1 };
-                return { role: 'A', side: 'center', sort: 1 };
-            }
-        }
-        return null;
-    };
-
-    // 1. Filter roster by position AND "Apps in Lineup" rule
-    const { team, dominantFormation, startsMap } = useMemo(() => {
+    // Sélection et composition du 11 probable
+    const { team, dominantFormation, startsMap, fullRoster } = useMemo(() => {
         const safeRoster = roster || [];
-        const norm = (str) => {
-            if (typeof str !== 'string') return "";
-            return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-        };
-
-        // Helper: Strict token matching without false-positive collisions
-        const namesMatch = (n1, n2) => {
-            if (!n1 || !n2) return false;
-            const s1 = norm(n1);
-            const s2 = norm(n2);
-            if (s1 === s2) return true;
-            const t1 = s1.split(' ').filter(x => x.length > 2);
-            const t2 = s2.split(' ').filter(x => x.length > 2);
-            if (t1.length === 0 || t2.length === 0) return false;
-            const last1 = t1[t1.length - 1];
-            const last2 = t2[t2.length - 1];
-            if (last1 === last2 && (t1.length === 1 || t2.length === 1 || t1[0] === t2[0])) return true;
-            return false;
-        };
-
-        // A. ANALYZE LINEUPS (Starts Count & Formation)
         const startsCount = new Map();
         const activePlayerNames = new Set();
         const formationFreq = {};
-        let targetMatch = null;
-        let targetSide = null; // 'home' or 'away'
 
+        // 1. Analyse de toutes les feuilles de match
         ALL_LINEUPS.forEach(match => {
-            const homeNorm = norm(match.teams.home);
-            const awayNorm = norm(match.teams.away);
-            const clubNorm = norm(clubName);
+            if (!match.teams) return;
+            const homeNorm = normStr(match.teams.home);
+            const awayNorm = normStr(match.teams.away);
+            const clubNorm = normStr(clubName);
 
-            let isHome = homeNorm.includes(clubNorm) || clubNorm.includes(homeNorm);
-            let isAway = awayNorm.includes(clubNorm) || clubNorm.includes(awayNorm);
-
-            // Special explicit aliases if normalization isn't enough
-            if (clubName === 'Rennes' && (match.teams.home.includes('Rennes') || match.teams.away.includes('Rennes'))) {
-                isHome = match.teams.home.includes('Rennes');
-                isAway = match.teams.away.includes('Rennes');
-            }
-            if (clubName === 'Auxerre' && (match.teams.home.includes('Auxerre') || match.teams.away.includes('Auxerre'))) {
-                isHome = match.teams.home.includes('Auxerre');
-                isAway = match.teams.away.includes('Auxerre');
-            }
-            if (clubName === 'Le Havre' && (match.teams.home.includes('Le Havre') || match.teams.away.includes('Le Havre'))) {
-                isHome = match.teams.home.includes('Le Havre');
-                isAway = match.teams.away.includes('Le Havre');
-            }
-
-
+            const isHome = homeNorm.includes(clubNorm) || clubNorm.includes(homeNorm);
+            const isAway = awayNorm.includes(clubNorm) || clubNorm.includes(awayNorm);
 
             if (isHome || isAway) {
-                if (!targetMatch) {
-                    targetMatch = match;
-                    targetSide = isHome ? 'home' : 'away';
-                }
-
                 const side = isHome ? 'home' : 'away';
-                const starters = side === 'home' ? match.lineups.homeStarters : match.lineups.awayStarters;
-                const formation = side === 'home' ? match.lineups.homeFormation : match.lineups.awayFormation;
+                const starters = side === 'home' ? match.lineups?.homeStarters : match.lineups?.awayStarters;
+                const subs = side === 'home' ? match.lineups?.homeSubstitutes : match.lineups?.awaySubstitutes;
+                const formation = side === 'home' ? match.lineups?.homeFormation : match.lineups?.awayFormation;
 
-                // Track Formation
                 if (formation) {
                     formationFreq[formation] = (formationFreq[formation] || 0) + 1;
                 }
 
-                // Track Starts
-                starters.forEach(name => {
-                    if (typeof name !== 'string') return;
-                    const n = norm(name.replace(/\(.*\)/g, '')).trim();
-                    activePlayerNames.add(n);
-                    startsCount.set(n, (startsCount.get(n) || 0) + 1);
+                (starters || []).forEach(rawItem => {
+                    const clean = extractPlayerName(rawItem);
+                    if (clean) {
+                        const n = normStr(clean);
+                        activePlayerNames.add(n);
+                        startsCount.set(n, (startsCount.get(n) || 0) + 1);
+                    }
                 });
 
-                // Track Subs (Active Names only)
-                const subs = side === 'home' ? match.lineups.homeSubstitutes : match.lineups.awaySubstitutes;
-                subs.forEach(name => {
-                    if (typeof name !== 'string') return;
-                    const n = norm(name.replace(/\(.*\)/g, '')).trim();
-                    activePlayerNames.add(n);
+                (subs || []).forEach(rawItem => {
+                    const clean = extractPlayerName(rawItem);
+                    if (clean) {
+                        activePlayerNames.add(normStr(clean));
+                    }
                 });
             }
         });
 
-        // Pick Dominant Formation
+        // Schéma dominant
         let topFormation = "4-3-3";
         let maxCount = 0;
         for (const [fmt, cnt] of Object.entries(formationFreq)) {
@@ -449,85 +377,9 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
             }
         }
 
-        // B. TRANSIENT PLAYER GENERATION (Only if needed)
-        const transientPlayers = [];
-        const EXCLUSIONS = {
-            'Stade Brestois 29': ['Pierre Lees-Melou', 'Lees-Melou'],
-            'Stade Rennais Fc': ['Brice Samba']
-        };
-        const ALIASES = {
-            'A. Sbai': 'Sbai', // Try to match "Sbai" broadly if "A. Sbai" fails
-            'Doumbia K.': 'Kamory Doumbia'
-        };
+        const fullRosterList = [...safeRoster];
 
-        if (targetMatch) {
-            const startersRaw = targetSide === 'home' ? targetMatch.lineups.homeStarters : targetMatch.lineups.awayStarters;
-            const formationStr = targetSide === 'home' ? targetMatch.lineups.homeFormation : targetMatch.lineups.awayFormation;
-
-            let counts = { D: 4, M: 3, A: 3 };
-            if (formationStr) {
-                const parts = formationStr.split('-').map(Number);
-                if (parts.length >= 3) {
-                    counts.D = parts[0];
-                    counts.A = parts[parts.length - 1];
-                    counts.M = parts.slice(1, parts.length - 1).reduce((a, b) => a + b, 0);
-                }
-            }
-
-            startersRaw.forEach((rawName, index) => {
-                let cleanName = typeof rawName === 'string' ? rawName.replace(/\(.*\)/g, '').trim() : "";
-
-                // 1. Check Aliases
-                if (ALIASES[cleanName]) cleanName = ALIASES[cleanName];
-
-                // 2. Check Exclusions
-                const clubExcludes = EXCLUSIONS[clubName] || [];
-                // clubName comes from props. Note: mapped name might be needed. 
-                // But EXCLUSIONS keys should match what's passed in.
-
-                // Robust exclusion check
-                const isExcluded = clubExcludes.some(ex => namesMatch(norm(ex), norm(cleanName)));
-                if (isExcluded) return;
-
-                const normName = norm(cleanName);
-
-                // Use robust matching to check if exists
-                const exists = safeRoster.some(p => namesMatch(norm(p.name), normName));
-
-                if (!exists) {
-                    let position = 'M';
-                    if (index === 0) position = 'G';
-                    else if (index <= counts.D) position = 'D';
-                    else if (index <= counts.D + counts.M) position = 'M';
-                    else position = 'A';
-                    if (typeof rawName === 'string' && rawName.includes('(G)')) position = 'G';
-
-                    transientPlayers.push({
-                        name: cleanName,
-                        position: position,
-                        rating: 6.5,
-                        mj: 1,
-                        isTransient: true
-                    });
-                }
-            });
-        }
-
-        // C. MERGE & DEDUPE ROSTER
-        // Prioritize SafeRoster (from DB/API) over Transient Players (from Lineups)
-        const mergedList = [...safeRoster];
-        transientPlayers.forEach(tp => {
-            const tpNorm = norm(tp.name);
-            // Robust check: match ANY existing roster player?
-            const isDuplicate = safeRoster.some(rp => namesMatch(norm(rp.name), tpNorm));
-            if (!isDuplicate) {
-                mergedList.push(tp);
-            }
-        });
-        const fullRoster = mergedList;
-
-
-        // D. SELECT SQUAD using Dominant Formation Counts
+        // Nombre de joueurs cibles par ligne selon le schéma
         let targetCounts = { G: 1, D: 4, M: 3, A: 3 };
         const parts = topFormation.split('-').map(Number);
         if (parts.length >= 3) {
@@ -536,262 +388,199 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
             targetCounts.M = parts.slice(1, parts.length - 1).reduce((a, b) => a + b, 0);
         }
 
-        const getStartsInternal = (name, map) => {
-            const n = norm(name);
-            if (map.has(n)) return map.get(n);
-            for (let [k, v] of map) {
-                if (namesMatch(n, k)) return v;
+        const getStartsInternal = (name) => {
+            const n = normStr(name);
+            if (startsCount.has(n)) return startsCount.get(n);
+            for (let [k, v] of startsCount) {
+                if (areNamesMatching(n, k)) return v;
             }
             return 0;
         };
 
-        const selectedNames = new Set();
+        const getMinutesInternal = (p) => {
+            // Minutes depuis stats de saison si présentes
+            if (p.stats?.minutesPlayed) return p.stats.minutesPlayed;
+            if (p.stats?.appearances) return p.stats.appearances * 75;
 
-        const getBest = (pos, count) => {
-            // FIX: If activePlayerNames is empty (no lineup data found), ALLOW ALL players to be candidates.
-            const allowAll = activePlayerNames.size === 0;
-
-            const isActive = (pName) => {
-                const normName = norm(pName);
-                if (allowAll) return true; // Fallback
-                if (activePlayerNames.has(normName)) return true;
-                for (let activeName of activePlayerNames) {
-                    if (namesMatch(normName, activeName)) return true;
-                }
-                return false;
-            };
-
-            const getMinutes = (pName) => {
-                const n = norm(pName);
-                if (!CALCULATED_STATS) return 0;
-                // Search in CALCULATED_STATS for this club
-                const teamStats = CALCULATED_STATS[clubName] || [];
-                // If team stats empty, try finding player in global values just in case? No, inaccurate.
-                // Just use the roster candidates logic if no stats.
-                if (!teamStats.length) return 0;
-
-                const found = teamStats.find(ps => namesMatch(norm(ps.name), n));
-                return found ? found.minutesPlayed : 0;
-            };
-
-            // 1. Get Strict matches (Starters or played games)
-            let candidates = fullRoster.filter(p => {
-                const n = norm(p.name);
-                if (selectedNames.has(n)) return false;
-                if (!isActive(p.name)) return false;
-
-                // Determine Position: TM > Roster > Guess
-                const tmDetails = getDetailedRole(p.name);
-                const effectivePos = tmDetails ? tmDetails.role : p.position;
-
-                let dbPlayer = PLAYERS_DB.find(db => namesMatch(norm(db.Player), n));
-                // Bonus for Starts in DB
-                // Strict pos checking
-                if (effectivePos === pos) return true;
-                return false;
-            });
-
-            // Fallback: If not enough strict matches, allow loosely matched positions
-            // e.g. A defender listed as M
-            if (candidates.length < count) {
-                const looseCandidates = fullRoster.filter(p => {
-                    const n = norm(p.name);
-                    if (selectedNames.has(n)) return false;
-                    if (!isActive(p.name)) return false;
-                    if (candidates.includes(p)) return false;
-                    return true;
-                });
-                // Sort loose candidates by rating/starts to pick best available regardless of pos
-                looseCandidates.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-
-                // Try to fill with best available
-                // But we prefer same position if possible
-                const samePosLoose = looseCandidates.filter(p => p.position === pos);
-                const otherPosLoose = looseCandidates.filter(p => p.position !== pos);
-
-                candidates = [...candidates, ...samePosLoose, ...otherPosLoose];
+            // Minutes depuis CALCULATED_STATS
+            if (CALCULATED_STATS && CALCULATED_STATS[clubName]) {
+                const found = CALCULATED_STATS[clubName].find(ps => areNamesMatching(ps.name, p.name));
+                if (found && found.minutesPlayed) return found.minutesPlayed;
             }
 
-            // Sort by: 1. Minutes (Calculated) -> 2. Starts (Lineups) → 3. Rating
-            candidates.sort((a, b) => {
-                const minA = getMinutes(a.name);
-                const minB = getMinutes(b.name);
-                if (minA !== minB) return minB - minA;
+            // Minutes depuis PLAYERS_DB
+            const dbP = PLAYERS_DB?.find(db => areNamesMatching(db.Player, p.name));
+            if (dbP && dbP.Min) return dbP.Min;
 
-                const sA = getStartsInternal(a.name, startsCount);
-                const sB = getStartsInternal(b.name, startsCount);
+            return 0;
+        };
+
+        const selectedPlayerNames = new Set();
+
+        const getBestForRole = (targetRole, count) => {
+            // Candidats strictement assignés à ce rôle
+            let candidates = fullRosterList.filter(p => {
+                const pNorm = normStr(p.name);
+                if (selectedPlayerNames.has(pNorm)) return false;
+
+                const tactical = getPlayerTacticalDetails(p);
+                return tactical.role === targetRole;
+            });
+
+            // Tri qualitatif : Titularisations -> Minutes jouées -> Note
+            candidates.sort((a, b) => {
+                const sA = getStartsInternal(a.name);
+                const sB = getStartsInternal(b.name);
                 if (sA !== sB) return sB - sA;
 
-                const ratingA = a.rating || 0;
-                const ratingB = b.rating || 0;
-                return ratingB - ratingA;
+                const minA = getMinutesInternal(a);
+                const minB = getMinutesInternal(b);
+                if (minA !== minB) return minB - minA;
+
+                return (b.rating || 6.5) - (a.rating || 6.5);
             });
 
-            // Limit and Register
-            const finalSelection = candidates.slice(0, count);
+            // Si effectif insuffisant pour ce rôle (hors Gardien qui ne doit jamais être pollué)
+            if (candidates.length < count && targetRole !== 'G') {
+                const remaining = fullRosterList.filter(p => {
+                    const pNorm = normStr(p.name);
+                    if (selectedPlayerNames.has(pNorm)) return false;
+                    if (candidates.includes(p)) return false;
+                    // Ne jamais convertir un gardien en joueur de champ !
+                    const tactical = getPlayerTacticalDetails(p);
+                    return tactical.role !== 'G';
+                });
 
-            // POST-SELECTION SORT: Optimize Left->Right placement based on detailed roles
-            // e.g. Left Wing should be index 0, Right Wing index last
-            finalSelection.sort((a, b) => {
-                const roleA = getDetailedRole(a.name);
-                const roleB = getDetailedRole(b.name);
-                const sortA = roleA ? roleA.sort : 1; // Default to Center (1)
-                const sortB = roleB ? roleB.sort : 1;
-                return sortA - sortB;
+                remaining.sort((a, b) => {
+                    const minA = getMinutesInternal(a);
+                    const minB = getMinutesInternal(b);
+                    return minB - minA;
+                });
+
+                candidates = [...candidates, ...remaining];
+            }
+
+            const selection = candidates.slice(0, count);
+
+            // Tri tactique horizontal de gauche à droite (Left -> Center -> Right)
+            selection.sort((a, b) => {
+                const tacA = getPlayerTacticalDetails(a);
+                const tacB = getPlayerTacticalDetails(b);
+                return tacA.sort - tacB.sort;
             });
 
-
-            finalSelection.forEach(p => selectedNames.add(norm(p.name)));
-            return finalSelection;
+            selection.forEach(p => selectedPlayerNames.add(normStr(p.name)));
+            return selection;
         };
 
-        // Execution Order: G -> D -> M -> A (Defensive spine first)
-        const team = {
-            G: getBest('G', targetCounts.G),
-            D: getBest('D', targetCounts.D),
-            M: getBest('M', targetCounts.M),
-            A: getBest('A', targetCounts.A),
+        const teamSquad = {
+            G: getBestForRole('G', targetCounts.G),
+            D: getBestForRole('D', targetCounts.D),
+            M: getBestForRole('M', targetCounts.M),
+            A: getBestForRole('A', targetCounts.A)
         };
 
-        return { team, dominantFormation: topFormation, startsMap: startsCount, fullRoster };
+        return { team: teamSquad, dominantFormation: topFormation, startsMap: startsCount, fullRoster: fullRosterList };
 
     }, [roster, clubName]);
 
+    // Composant Noeud Joueur avec Carte Tooltip complète au survol
+    const PlayerNode = ({ player, position, index, total, formation, startsMap }) => {
+        const [isHovered, setIsHovered] = useState(false);
 
-
-    const PlayerNode = ({ player, position, index, total, formation, stats, startsMap }) => {
-        // Local version of getPlayerStats using stats prop
-        const getPlayerStatsLocal = (name) => {
-            let goals = 0, assists = 0;
-            const norm = (str) => str?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() || "";
-            const safeMatch = (n1, n2) => {
-                if (!n1 || !n2) return false;
-                if (n1 === n2) return true;
-                const t1 = n1.split(' ').filter(x => x.length > 1);
-                const t2 = n2.split(' ').filter(x => x.length > 1);
-                return t1.some(a => t2.some(b => b === a || (b.includes(a) && a.length > 3)));
-            };
-
-            if (stats?.scorers) {
-                Object.entries(stats.scorers).forEach(([sName, sCount]) => {
-                    if (safeMatch(norm(sName), norm(name))) goals = sCount;
-                });
-            }
-            if (stats?.assisters) {
-                Object.entries(stats.assisters).forEach(([aName, aCount]) => {
-                    if (safeMatch(norm(aName), norm(name))) assists = aCount;
-                });
-            }
-            return { goals, assists };
-        };
-
-        // Local version of getStarts using startsMap prop
-        const getStartsLocal = (name) => {
-            const norm = (str) => str?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() || "";
-            const n = norm(name);
-            const val = startsMap?.get(n);
-            if (val !== undefined) return val;
-
-            const namesMatch = (n1, n2) => {
-                if (!n1 || !n2) return false;
-                if (n1 === n2) return true;
-                const t1 = n1.split(' ').filter(x => x.length > 1);
-                const t2 = n2.split(' ').filter(x => x.length > 1);
-                return t1.some(a => t2.some(b => b === a || (b.includes(a) && a.length > 3)));
-            };
-
+        const tactical = useMemo(() => getPlayerTacticalDetails(player), [player]);
+        const starts = useMemo(() => {
+            const n = normStr(player.name);
+            if (startsMap?.has(n)) return startsMap.get(n);
             if (startsMap) {
                 for (let [k, v] of startsMap) {
-                    if (namesMatch(n, k)) return v;
+                    if (areNamesMatching(n, k)) return v;
                 }
             }
-            return 0;
-        };
+            return player.stats?.appearances || 0;
+        }, [player, startsMap]);
 
-        const { goals, assists } = getPlayerStatsLocal(player.name);
-        const starts = getStartsLocal(player.name);
-        const hasStats = goals > 0 || assists > 0;
-        const roleCode = String(player?.position || player?.role || 'M').charAt(0).toLowerCase();
-        const fallbackRoleAvatar = `/assets/players/defaults/${roleCode === 'g' ? 'g' : roleCode === 'd' ? 'd' : roleCode === 'a' ? 'a' : 'm'}_default.webp`;
-        const photoUrl = player?.photo || getPlayerPhoto(clubName, player.name, player);
+        // Données du joueur issues de PLAYERS_DB (FBref)
+        const dbPlayer = useMemo(() => {
+            return PLAYERS_DB?.find(db => areNamesMatching(db.Player, player.name));
+        }, [player]);
 
-        // NEW STATS: Last Match & Next Opponent
-        const nextOpponent = getNextMatch(clubName);
-        const lastMatchStats = getLastMatchStats(player.name, clubName);
+        // Données de carrière agrégées dans le club
+        const clubStats = useMemo(() => {
+            if (!clubAllSeasonsData?.seasons) {
+                return {
+                    appearances: player.stats?.appearances || 0,
+                    goals: player.stats?.goals || 0,
+                    assists: player.stats?.assists || 0,
+                    seasonsCount: 1
+                };
+            }
 
-        const safeTotal = total || 1;
-        const coords = getCoords(formation, position, index, safeTotal);
+            let totalApps = 0;
+            let totalGls = 0;
+            let totalAst = 0;
+            let seasonsCount = 0;
 
-        // Get additional player info from DB using enhanced matching
-        const normalizeName = (name) => {
-            if (!name || typeof name !== 'string') return "";
-            return name.toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/[^a-z ]/g, "")
-                .trim();
-        };
-
-        const dbPlayer = PLAYERS_DB?.find(db => {
-            if (!db?.Player || !player?.name) return false;
-
-            const dbName = normalizeName(db.Player);
-            const playerName = normalizeName(player.name);
-
-            // Try exact match first
-            if (dbName === playerName) return true;
-
-            // Try matching by last name
-            const dbParts = db.Player.split(' ').filter(p => p.length > 1);
-            const playerParts = player.name.split(' ').filter(p => p.length > 1);
-
-            if (dbParts.length > 0 && playerParts.length > 0) {
-                const dbLastName = normalizeName(dbParts[dbParts.length - 1]);
-                const playerLastName = normalizeName(playerParts[playerParts.length - 1]);
-
-                // Match if last names are same and first name initial matches
-                if (dbLastName === playerLastName && dbParts.length > 1 && playerParts.length > 1) {
-                    const dbFirst = normalizeName(dbParts[0]);
-                    const playerFirst = normalizeName(playerParts[0]);
-                    if (dbFirst[0] === playerFirst[0]) return true;
-                }
-
-                // Fallback: just last name match for single-word names
-                if (dbLastName === playerLastName) return true;
-
-                // HANDLE "Lastname F." format (e.g. "Morton T." vs "Tyler Morton")
-                // If player name has parts and the last part is short (likely initial), try matching the first part as Last Name
-                if (playerParts.length > 1 && playerParts[playerParts.length - 1].length <= 2) {
-                    const playerPotentialLastName = normalizeName(playerParts[0]);
-                    if (dbLastName === playerPotentialLastName) {
-                        // Optional: Verify initial if possible
-                        const dbFirst = normalizeName(dbParts[0]);
-                        const playerInitial = normalizeName(playerParts[playerParts.length - 1]);
-                        // "T." -> "t" vs "Tyler" -> "t"
-                        if (dbFirst.startsWith(playerInitial.replace('.', ''))) return true;
+            Object.entries(clubAllSeasonsData.seasons).forEach(([seasonKey, pList]) => {
+                const match = (pList || []).find(p => areNamesMatching(p.name, player.name));
+                if (match) {
+                    seasonsCount++;
+                    if (match.stats) {
+                        totalApps += match.stats.appearances || 0;
+                        totalGls += match.stats.goals || 0;
+                        totalAst += match.stats.assists || 0;
                     }
                 }
-            }
+            });
 
-            return false;
-        });
+            return {
+                appearances: Math.max(totalApps, player.stats?.appearances || 0),
+                goals: Math.max(totalGls, player.stats?.goals || 0),
+                assists: Math.max(totalAst, player.stats?.assists || 0),
+                seasonsCount: Math.max(1, seasonsCount)
+            };
+        }, [clubAllSeasonsData, player]);
 
-        // Smart Label Logic
+        const coords = getCoords(formation, position, index, total || 1);
+        const photoUrl = getPlayerPhoto(clubName, player.name, player);
+        const roleCode = tactical.role.toLowerCase();
+        const fallbackRoleAvatar = `/assets/players/defaults/${roleCode === 'g' ? 'g' : roleCode === 'd' ? 'd' : roleCode === 'a' ? 'a' : 'm'}_default.webp`;
+
+        const nextOpponent = getNextMatch(clubName);
+        const lastMatch = getLastMatchStats(player.name, clubName);
+
+        // Positionnement adaptatif anti-débordement du tooltip
+        const isTopLine = coords.top < 38;
+        const isFarLeft = coords.left <= 25;
+        const isFarRight = coords.left >= 75;
+
+        const tooltipStyle = {
+            position: 'absolute',
+            ...(isTopLine ? { top: 'calc(100% + 14px)' } : { bottom: 'calc(100% + 14px)' }),
+            ...(isFarLeft ? { left: '0px', transform: 'none' } : isFarRight ? { right: '0px', left: 'auto', transform: 'none' } : { left: '50%', transform: 'translateX(-50%)' }),
+            zIndex: 9999
+        };
+
+        // Nom court élégant
         let label = player.name.split(' ').pop();
         if (label.length <= 2 && label.includes('.')) {
             label = player.name.split(' ')[0];
-            if (label.length <= 2) label = player.name;
         }
 
-        // Special case fallback: if still just initial, try to find a capitalized word > 2 chars in name
-        if (label.length <= 2) {
-            const manualParts = player.name.split(' ').filter(p => p.length > 2 && /^[A-Z]/.test(p));
-            if (manualParts.length > 0) label = manualParts[manualParts.length - 1]; // Take last significant part
-        }
+        const goals = player.stats?.goals || dbPlayer?.Gls || 0;
+        const assists = player.stats?.assists || dbPlayer?.Ast || 0;
+        const appearances = player.stats?.appearances || dbPlayer?.MP || starts || 0;
+        const minutes = dbPlayer?.Min || (appearances > 0 ? appearances * 78 : 0);
+        const xG = dbPlayer?.xG ?? '-';
+        const xAG = dbPlayer?.xAG ?? '-';
+        const rating = player.rating || (dbPlayer ? '7.1' : '6.8');
+        const age = player.age || dbPlayer?.Age || tactical.registry?.age || '-';
+        const nationality = player.nationality || tactical.registry?.nationality || (dbPlayer?.Nation ? dbPlayer.Nation.split(' ').pop() : '-');
+        const marketValue = player.market_value || tactical.registry?.marketValue || '-';
 
         return (
             <div
-                className="group cursor-pointer"
+                className="group"
                 style={{
                     position: 'absolute',
                     top: `${coords.top}%`,
@@ -801,164 +590,205 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    zIndex: 20
+                    zIndex: isHovered ? 999 : 20,
+                    cursor: 'pointer'
                 }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
             >
-                {/* Photo / Dot - Circle 80px */}
+                {/* Photo Joueur (76px) */}
                 <div
-                    className={`relative rounded-full border flex items-center justify-center shadow-lg transition-all overflow-hidden ${hasStats ? 'border-accent scale-110' : 'border-slate-400'} bg-slate-800`}
-                    style={{ width: '80px', height: '80px' }}
+                    className={`relative rounded-full border-2 flex items-center justify-center shadow-2xl transition-all duration-200 overflow-hidden bg-slate-950 ${
+                        isHovered 
+                            ? 'scale-115 border-amber-400 ring-4 ring-amber-400/30' 
+                            : (goals > 0 || assists > 0) 
+                                ? 'border-emerald-400 shadow-emerald-950/40' 
+                                : 'border-white/90'
+                    }`}
+                    style={{ width: '76px', height: '76px' }}
                 >
-                    {photoUrl ? (
-                        <img
-                            src={photoUrl}
-                            alt={player.name}
-                            className="w-full h-full"
-                            style={{ objectFit: 'cover', objectPosition: 'top' }}
-                            onError={(e) => {
-                                if (e.target.src !== fallbackRoleAvatar) {
-                                    e.target.src = fallbackRoleAvatar;
-                                }
-                            }}
-                        />
-                    ) : (
-                        <span className={`text-[10px] font-bold ${hasStats ? 'text-accent' : 'text-slate-400'}`}>
-                            {player.rating}
+                    <img
+                        src={photoUrl || fallbackRoleAvatar}
+                        alt={player.name}
+                        className="w-full h-full object-cover object-top"
+                        onError={(e) => {
+                            if (e.target.src !== fallbackRoleAvatar) {
+                                e.target.src = fallbackRoleAvatar;
+                            }
+                        }}
+                    />
+                    {/* Badge Rôle Position */}
+                    <div className={`absolute bottom-0 inset-x-0 text-center py-0.5 text-[8px] font-black uppercase text-white shadow-md tracking-wider ${
+                        tactical.role === 'G' ? 'bg-amber-600/95' :
+                        tactical.role === 'D' ? 'bg-blue-600/95' :
+                        tactical.role === 'M' ? 'bg-emerald-600/95' : 'bg-rose-600/95'
+                    }`}>
+                        {tactical.subRole || tactical.role}
+                    </div>
+                </div>
+
+                {/* Nom du Joueur */}
+                <div className="mt-1 bg-black/90 px-2.5 py-0.5 rounded-full text-[11px] text-white font-bold whitespace-nowrap backdrop-blur-md border border-white/30 shadow-lg">
+                    {label}
+                </div>
+
+                {/* Badges d'activité rapide */}
+                <div className="flex gap-1 mt-0.5 pointer-events-none">
+                    {starts > 0 && (
+                        <span className="bg-emerald-600/95 text-white px-1.5 py-0.2 rounded text-[9px] font-extrabold shadow">
+                            👕{starts}
+                        </span>
+                    )}
+                    {goals > 0 && (
+                        <span className="bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded text-[9px] font-black shadow">
+                            ⚽{goals}
+                        </span>
+                    )}
+                    {assists > 0 && (
+                        <span className="bg-sky-400 text-slate-950 px-1.5 py-0.2 rounded text-[9px] font-black shadow">
+                            🎯{assists}
                         </span>
                     )}
                 </div>
 
-                {/* Name Label */}
-                <div className="mt-1 bg-black/70 px-2 py-0.5 rounded text-[9px] text-white font-bold whitespace-nowrap backdrop-blur-sm border border-white/20 shadow-sm">
-                    {label}
-                </div>
-
-                {/* Stats Badge */}
-                <div className="flex gap-1 mt-1 pointer-events-none z-20 absolute top-full pt-1">
-                    {starts > 0 && (
-                        <div className="bg-emerald-500/90 text-white px-1.5 py-0.5 rounded text-[8px] font-black shadow-sm">
-                            👕{starts}
-                        </div>
-                    )}
-                    {goals > 0 && (
-                        <div className="bg-accent/90 text-[#0B1426] px-1.5 py-0.5 rounded text-[8px] font-black shadow-sm">
-                            ⚽{goals}
-                        </div>
-                    )}
-                    {assists > 0 && (
-                        <div className="bg-blue-400/90 text-white px-1.5 py-0.5 rounded text-[8px] font-black shadow-sm">
-                            🎯{assists}
-                        </div>
-                    )}
-                </div>
-
-                {/* Enhanced Hover Tooltip - Hidden by default with CSS */}
-                <div
-                    className="absolute bottom-full mb-2 z-50 pointer-events-none tooltip-content"
-                    style={{ display: 'none' }}
-                >
-                    <div className="bg-slate-900 border border-slate-600 rounded-lg p-3 shadow-2xl text-xs w-56">
-                        {/* Player Name */}
-                        <div className="font-bold text-white text-sm border-b border-white/10 pb-2 mb-2">
-                            {player.name}
+                {/* CARTE TOOLTIP STATISTIQUES AU SURVOL (HAUTE LISIBILITÉ & CONTRASTE) */}
+                {isHovered && (
+                    <div
+                        style={tooltipStyle}
+                        className="w-80 bg-[#0B132B] border border-amber-400/40 rounded-2xl p-4 shadow-[0_16px_50px_rgba(0,0,0,0.95)] backdrop-blur-2xl text-slate-100 pointer-events-none z-[9999] animate-fadeIn"
+                    >
+                        {/* Entête du Joueur */}
+                        <div className="flex items-center gap-3 border-b border-white/15 pb-3 mb-3">
+                            <div className="w-12 h-12 rounded-full border-2 border-amber-400/70 overflow-hidden bg-slate-900 shrink-0 shadow-md">
+                                <img
+                                    src={photoUrl || fallbackRoleAvatar}
+                                    alt=""
+                                    className="w-full h-full object-cover object-top"
+                                />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="font-extrabold text-white text-base leading-tight truncate">{player.name}</div>
+                                <div className="flex items-center gap-2 text-xs text-slate-300 mt-1">
+                                    <span className="font-bold text-amber-300 bg-amber-400/15 px-1.5 py-0.5 rounded border border-amber-400/30 text-[10px]">
+                                        {tactical.label} ({tactical.subRole})
+                                    </span>
+                                    <span>•</span>
+                                    <span className="text-slate-200 font-semibold">{clubName}</span>
+                                    {player.number && <span className="font-mono font-bold text-sky-300">#{player.number}</span>}
+                                </div>
+                            </div>
+                            <div className="text-right shrink-0">
+                                <span className="bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 px-2 py-1 rounded-lg text-xs font-black shadow">
+                                    ★ {rating}
+                                </span>
+                            </div>
                         </div>
 
-                        {/* Player Info Grid */}
-                        <div className="grid grid-cols-2 gap-2 mb-2">
-                            {dbPlayer?.Age && (
-                                <div className="flex justify-between text-slate-300">
-                                    <span>Âge:</span>
-                                    <span className="text-white font-semibold">{dbPlayer.Age} ans</span>
+                        {/* SECTION 1 : SAISON EN COURS */}
+                        <div className="mb-3">
+                            <div className="text-[10px] uppercase font-bold text-amber-300 tracking-wider mb-2 flex items-center justify-between">
+                                <span className="flex items-center gap-1">📊 Saison 2026-2027</span>
+                                <span className="text-slate-300 font-semibold bg-white/10 px-2 py-0.5 rounded-full text-[10px]">{appearances} apparitions</span>
+                            </div>
+                            <div className="grid grid-cols-3 gap-2 text-center">
+                                <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                    <div className="text-[10px] text-slate-400 font-medium">Buts / Passes</div>
+                                    <div className="font-black text-white text-sm mt-0.5">{goals} <span className="text-amber-400">/</span> {assists}</div>
+                                </div>
+                                <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                    <div className="text-[10px] text-slate-400 font-medium">Titularisations</div>
+                                    <div className="font-black text-emerald-400 text-sm mt-0.5">{starts}</div>
+                                </div>
+                                <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                    <div className="text-[10px] text-slate-400 font-medium">Temps de jeu</div>
+                                    <div className="font-black text-sky-400 text-sm mt-0.5">{minutes}'</div>
+                                </div>
+                            </div>
+                            {(xG !== '-' || xAG !== '-') && (
+                                <div className="flex justify-between text-[11px] bg-slate-900/60 rounded-lg p-1.5 mt-2 border border-white/5 text-slate-300">
+                                    <span>xG Attendus: <strong className="text-emerald-300 font-bold">{xG}</strong></span>
+                                    <span>xAG Passes clés: <strong className="text-sky-300 font-bold">{xAG}</strong></span>
                                 </div>
                             )}
-                            {dbPlayer?.Pos && (
-                                <div className="flex justify-between text-slate-300">
-                                    <span>Poste:</span>
-                                    <span className="text-cyan-400 font-semibold">{dbPlayer.Pos}</span>
+                        </div>
+
+                        {/* SECTION 2 : HISTORIQUE DANS LE CLUB */}
+                        <div className="mb-3 pt-2.5 border-t border-white/15">
+                            <div className="text-[10px] uppercase font-bold text-sky-300 tracking-wider mb-2 flex items-center justify-between">
+                                <span className="flex items-center gap-1">🏟️ Bilan au Club ({clubName})</span>
+                                <span className="text-slate-300 font-semibold">{clubStats.seasonsCount} saison{clubStats.seasonsCount > 1 ? 's' : ''}</span>
+                            </div>
+                            <div className="flex justify-between items-center text-xs bg-slate-900/80 px-2.5 py-1.5 rounded-lg border border-white/10">
+                                <span className="text-slate-300">Total Matchs / Buts :</span>
+                                <span className="font-black text-white">{clubStats.appearances} m. • {clubStats.goals} buts • {clubStats.assists} p.</span>
+                            </div>
+                            {player.joined_date && (
+                                <div className="flex justify-between text-[10px] text-slate-400 mt-1.5 px-1">
+                                    <span>Arrivée: <strong className="text-slate-200">{player.joined_date}</strong></span>
+                                    {player.contract_until && <span>Fin de contrat: <strong className="text-amber-300">{player.contract_until}</strong></span>}
                                 </div>
                             )}
-                            <div className="flex justify-between text-slate-300">
-                                <span>Note:</span>
-                                <span className="text-yellow-400 font-bold">{player.rating}</span>
+                        </div>
+
+                        {/* SECTION 3 : PROFIL & VALEUR */}
+                        <div className="pt-2.5 border-t border-white/15">
+                            <div className="text-[10px] uppercase font-bold text-emerald-300 tracking-wider mb-2">
+                                👤 Profil & Transfert
                             </div>
-                            <div className="flex justify-between text-slate-300">
-                                <span>Titularisations:</span>
-                                <span className="text-emerald-400 font-semibold">{starts}</span>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                                <div className="bg-slate-900/80 p-1.5 rounded-lg border border-white/5 flex justify-between">
+                                    <span className="text-slate-400">Âge :</span>
+                                    <span className="text-white font-bold">{age} ans</span>
+                                </div>
+                                <div className="bg-slate-900/80 p-1.5 rounded-lg border border-white/5 flex justify-between">
+                                    <span className="text-slate-400">Nationalité :</span>
+                                    <span className="text-white font-bold">{nationality}</span>
+                                </div>
+                                <div className="bg-slate-900/80 p-2 rounded-lg border border-amber-400/20 col-span-2 flex justify-between items-center">
+                                    <span className="text-slate-300 font-medium">Valeur Marchande :</span>
+                                    <span className="text-amber-300 font-black text-sm">{marketValue}</span>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Season Stats - Clean List */}
-                        <div className="space-y-1 mb-3 pt-2 border-t border-white/10">
-                            <div className="flex justify-between items-center text-slate-400">
-                                <span>Note moy.</span>
-                                <span className="text-accent font-bold text-[10px] bg-accent/10 px-1.5 rounded">{player.rating}</span>
-                            </div>
-                            <div className="flex justify-between items-center text-slate-400">
-                                <span>Titularisations</span>
-                                <span className="text-white font-bold">{starts}</span>
-                            </div>
-                            <div className="flex justify-between items-center text-slate-400">
-                                <span>Buts / Passes</span>
-                                <span className="text-white font-bold">{goals} / {assists}</span>
-                            </div>
-                        </div>
-
-                        {/* NEXT MATCH INFO */}
-                        {nextOpponent && (
-                            <div className="mt-2 pt-2 border-t border-white/10">
-                                <span className="text-[10px] uppercase text-emerald-400 font-bold tracking-wider mb-1 block">Prochain Match</span>
-                                <div className="flex items-center gap-2 text-white font-bold">
-                                    <span className="text-slate-400">vs</span> {nextOpponent}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* LAST MATCH INFO */}
-                        {lastMatchStats && (
-                            <div className="mt-2 pt-2 border-t border-white/10">
-                                <span className="text-[10px] uppercase text-sky-400 font-bold tracking-wider mb-1 block">Dernier Match</span>
-                                <div className="text-white font-bold text-xs mb-1">
-                                    vs {lastMatchStats.opponent} <span className="text-slate-400">({lastMatchStats.score})</span>
-                                </div>
-                                {(lastMatchStats.goals > 0 || lastMatchStats.assists > 0 || lastMatchStats.yellow || lastMatchStats.red) ? (
-                                    <div className="flex gap-2 text-[10px]">
-                                        {lastMatchStats.goals > 0 && <span className="bg-accent/20 text-accent px-1 rounded">⚽ {lastMatchStats.goals}</span>}
-                                        {lastMatchStats.assists > 0 && <span className="bg-blue-400/20 text-blue-400 px-1 rounded">🎯 {lastMatchStats.assists}</span>}
-                                        {lastMatchStats.yellow && <span className="bg-yellow-400/20 text-yellow-400 px-1 rounded">🟨</span>}
-                                        {lastMatchStats.red && <span className="bg-red-500/20 text-red-500 px-1 rounded">🟥</span>}
+                        {/* DERNIER / PROCHAIN MATCH INFO */}
+                        {(lastMatch || nextOpponent) && (
+                            <div className="mt-2.5 pt-2.5 border-t border-white/15 text-[10px] space-y-1">
+                                {lastMatch && (
+                                    <div className="flex justify-between items-center text-slate-300">
+                                        <span>Dernier match vs <strong className="text-white">{lastMatch.opponent}</strong> ({lastMatch.score})</span>
+                                        {(lastMatch.goals > 0 || lastMatch.assists > 0) && (
+                                            <span className="text-emerald-400 font-bold bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-500/30">
+                                                ⚽{lastMatch.goals} 🎯{lastMatch.assists}
+                                            </span>
+                                        )}
                                     </div>
-                                ) : (
-                                    <span className="text-[10px] text-slate-500 italic">Aucune action notable</span>
+                                )}
+                                {nextOpponent && (
+                                    <div className="flex justify-between items-center text-slate-400">
+                                        <span>Prochaine rencontre :</span>
+                                        <span className="font-bold text-amber-300">vs {nextOpponent}</span>
+                                    </div>
                                 )}
                             </div>
                         )}
                     </div>
-                </div>
+                )}
             </div>
         );
     };
 
-    // Conditional Render: Full Squad View
+    // Mode Effectif Complet (tableau)
     if (showFullSquad) {
-        // Sort full roster by Starts then Rating
         const sortedRoster = [...(fullRoster || [])].sort((a, b) => {
-            const getStartsLocal = (name) => {
-                const norm = (str) => str?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() || "";
-                const n = norm(name);
-
-                const val = startsMap?.get(n);
-                if (val !== undefined) return val;
-                // Fuzzy
-                if (startsMap) {
-                    for (let [k, v] of startsMap) {
-                        if (k.includes(n) || n.includes(k)) return v;
-                    }
-                }
-                return 0;
-            };
-
-            const sA = getStartsLocal(a.name);
-            const sB = getStartsLocal(b.name);
+            const tacA = getPlayerTacticalDetails(a);
+            const tacB = getPlayerTacticalDetails(b);
+            if (tacA.role !== tacB.role) {
+                const roleOrder = { G: 0, D: 1, M: 2, A: 3 };
+                return (roleOrder[tacA.role] ?? 4) - (roleOrder[tacB.role] ?? 4);
+            }
+            const sA = startsMap?.get(normStr(a.name)) || 0;
+            const sB = startsMap?.get(normStr(b.name)) || 0;
             if (sA !== sB) return sB - sA;
             return (b.rating || 0) - (a.rating || 0);
         });
@@ -977,48 +807,40 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                         <thead className="sticky top-0 bg-[#0B1426] z-10">
                             <tr className="text-slate-500 border-b border-white/10 uppercase font-bold text-[10px]">
                                 <th className="p-2">Joueur</th>
-                                <th className="p-2">Pos</th>
-                                <th className="p-2 text-right">J.</th>
+                                <th className="p-2">Poste Précis</th>
+                                <th className="p-2 text-right">Tit.</th>
                                 <th className="p-2 text-right">Note</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
                             {sortedRoster.map((p, i) => {
-                                const tmRole = getTmRole(p.name);
-                                // Find starts
-                                const norm = (str) => {
-                                    if (typeof str !== 'string') return "";
-                                    return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-                                };
-                                const n = norm(p.name);
-                                let starts = startsMap?.get(n) || 0;
-                                if (starts === 0 && startsMap) {
-                                    for (let [k, v] of startsMap) {
-                                        if (k === n || (k.includes(n) && n.length > 3) || (n.includes(k) && k.length > 3)) starts = v;
-                                    }
-                                }
+                                const tac = getPlayerTacticalDetails(p);
+                                const n = normStr(p.name);
+                                const starts = startsMap?.get(n) || 0;
+                                const pPhoto = getPlayerPhoto(clubName, p.name, p);
 
                                 return (
                                     <tr key={i} className="hover:bg-white/5 transition-colors">
                                         <td className="p-2 font-bold text-white flex items-center gap-2">
-                                            {getPlayerPhoto(clubName, p.name, p) && (
-                                                <img src={getPlayerPhoto(clubName, p.name, p)} alt="" className="w-6 h-6 rounded-full border border-slate-600 object-cover" />
+                                            {pPhoto && (
+                                                <img src={pPhoto} alt="" className="w-6 h-6 rounded-full border border-slate-600 object-cover object-top" />
                                             )}
                                             {p.name}
                                         </td>
                                         <td className="p-2">
-                                            <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${(tmRole === 'G' || p.position === 'G') ? 'bg-yellow-500/20 text-yellow-400' :
-                                                (tmRole === 'D' || p.position === 'D') ? 'bg-blue-500/20 text-blue-400' :
-                                                    (tmRole === 'M' || p.position === 'M') ? 'bg-emerald-500/20 text-emerald-400' :
-                                                        'bg-red-500/20 text-red-400'
-                                                }`}>
-                                                {tmRole || p.position || '?'}
+                                            <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
+                                                tac.role === 'G' ? 'bg-amber-500/20 text-amber-400' :
+                                                tac.role === 'D' ? 'bg-blue-500/20 text-blue-400' :
+                                                tac.role === 'M' ? 'bg-emerald-500/20 text-emerald-400' :
+                                                'bg-rose-500/20 text-rose-400'
+                                            }`}>
+                                                {tac.label} ({tac.subRole})
                                             </span>
                                         </td>
                                         <td className="p-2 text-right text-emerald-400 font-mono">{starts > 0 ? starts : '-'}</td>
-                                        <td className="p-2 text-right font-bold text-accent">{p.rating || '-'}</td>
+                                        <td className="p-2 text-right font-bold text-accent">{p.rating || '6.8'}</td>
                                     </tr>
-                                )
+                                );
                             })}
                         </tbody>
                     </table>
@@ -1028,66 +850,222 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
     }
 
     return (
-        <div className="card bg-[#0B1426] p-4 flex flex-col items-center h-full min-h-[500px]" >
+        <div className="card bg-[#0B1426] p-4 flex flex-col items-center h-full min-h-[500px]">
             {/* HEADER with Formation detected */}
-            < div className="flex justify-between w-full mb-4 items-center" >
+            <div className="flex justify-between w-full mb-4 items-center">
                 <h4 className="text-secondary text-xs uppercase font-bold">⚡ Tactique (Compo Probable)</h4>
                 <span className="text-[10px] text-slate-400 font-mono border border-slate-700 px-2 py-0.5 rounded bg-black/20">
                     {dominantFormation}
                 </span>
-            </div >
+            </div>
 
             {/* PITCH CONTAINER */}
-            < div
-                className="relative w-full rounded-xl shadow-2xl select-none"
+            <div
+                className="relative w-full rounded-2xl shadow-2xl select-none overflow-hidden"
                 style={{
                     position: 'relative',
-                    height: '800px',
+                    height: '820px',
                     width: '100%',
-                    background: 'linear-gradient(to bottom, #34D399, #059669)',
-                    border: '4px solid white',
-                    overflow: 'hidden'
+                    background: 'radial-gradient(ellipse at center, #15803d 0%, #166534 60%, #14532d 100%)',
+                    border: '3px solid rgba(255, 255, 255, 0.9)'
                 }}
             >
+                {/* SVG VECTOR FOOTBALL PITCH MARKINGS */}
+                <svg
+                    viewBox="0 0 680 1050"
+                    preserveAspectRatio="none"
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                >
+                    {/* Subtle Pitch Grass Turf Stripes */}
+                    <g opacity="0.12">
+                        <rect x="0" y="0" width="680" height="105" fill="#ffffff" />
+                        <rect x="0" y="210" width="680" height="105" fill="#ffffff" />
+                        <rect x="0" y="420" width="680" height="105" fill="#ffffff" />
+                        <rect x="0" y="630" width="680" height="105" fill="#ffffff" />
+                        <rect x="0" y="840" width="680" height="105" fill="#ffffff" />
+                    </g>
 
-                {/* PITCH MARKINGS */}
-                < div className="absolute top-6 left-0 w-full text-center pointer-events-none z-0" >
-                    <h3 className="text-white/30 font-black text-3xl uppercase tracking-[0.2em] font-mono">COMPOS</h3>
-                </div >
-                <div className="absolute inset-4 rounded-sm pointer-events-none opacity-90 z-0" style={{ position: 'absolute', border: '2px solid rgba(255,255,255,0.8)' }}>
-                    {/* Midline */}
-                    <div className="absolute top-1/2 left-0 w-full transform -translate-y-1/2" style={{ position: 'absolute', height: '2px', backgroundColor: 'rgba(255,255,255,0.8)' }}></div>
-                    {/* Center Circle */}
-                    <div className="absolute top-1/2 left-1/2 w-32 h-32 rounded-full transform -translate-x-1/2 -translate-y-1/2" style={{ position: 'absolute', border: '2px solid rgba(255,255,255,0.8)' }}></div>
-                    <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2" style={{ position: 'absolute' }}></div>
+                    {/* Watermark COMPOS */}
+                    <text
+                        x="340"
+                        y="80"
+                        textAnchor="middle"
+                        fill="rgba(255,255,255,0.25)"
+                        fontSize="32"
+                        fontWeight="900"
+                        letterSpacing="8"
+                        fontFamily="monospace"
+                    >
+                        COMPOS
+                    </text>
 
-                    {/* Top Penalty Box */}
-                    <div className="absolute top-0 left-1/2 w-64 h-32 transform -translate-x-1/2" style={{ position: 'absolute', borderBottom: '2px solid rgba(255,255,255,0.8)', borderLeft: '2px solid rgba(255,255,255,0.8)', borderRight: '2px solid rgba(255,255,255,0.8)' }}></div>
-                    <div className="absolute top-0 left-1/2 w-24 h-12 transform -translate-x-1/2" style={{ position: 'absolute', borderBottom: '2px solid rgba(255,255,255,0.8)', borderLeft: '2px solid rgba(255,255,255,0.8)', borderRight: '2px solid rgba(255,255,255,0.8)' }}></div>
-                    <div className="absolute top-24 left-1/2 w-32 h-16 rounded-full transform -translate-x-1/2 clip-top" style={{ position: 'absolute', borderBottom: '2px solid rgba(255,255,255,0.3)' }}></div>
+                    {/* Pitch Outer Boundary Line */}
+                    <rect
+                        x="30"
+                        y="30"
+                        width="620"
+                        height="990"
+                        rx="4"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
 
-                    {/* Bottom Penalty Box */}
-                    <div className="absolute bottom-0 left-1/2 w-64 h-32 transform -translate-x-1/2" style={{ position: 'absolute', borderTop: '2px solid rgba(255,255,255,0.8)', borderLeft: '2px solid rgba(255,255,255,0.8)', borderRight: '2px solid rgba(255,255,255,0.8)' }}></div>
-                    <div className="absolute bottom-0 left-1/2 w-24 h-12 transform -translate-x-1/2" style={{ position: 'absolute', borderTop: '2px solid rgba(255,255,255,0.8)', borderLeft: '2px solid rgba(255,255,255,0.8)', borderRight: '2px solid rgba(255,255,255,0.8)' }}></div>
-                    <div className="absolute bottom-24 left-1/2 w-32 h-16 rounded-full transform -translate-x-1/2 clip-bottom" style={{ position: 'absolute', borderTop: '2px solid rgba(255,255,255,0.3)' }}></div>
-                </div>
+                    {/* Halfway Line */}
+                    <line
+                        x1="30"
+                        y1="525"
+                        x2="650"
+                        y2="525"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
 
-                {/* CORNER ARCS */}
-                <div className="absolute top-4 left-4 w-6 h-6 rounded-br-full pointer-events-none z-0" style={{ position: 'absolute', borderRight: '2px solid rgba(255,255,255,0.8)', borderBottom: '2px solid rgba(255,255,255,0.8)' }}></div>
-                <div className="absolute top-4 right-4 w-6 h-6 rounded-bl-full pointer-events-none z-0" style={{ position: 'absolute', borderLeft: '2px solid rgba(255,255,255,0.8)', borderBottom: '2px solid rgba(255,255,255,0.8)' }}></div>
-                <div className="absolute bottom-4 left-4 w-6 h-6 rounded-tr-full pointer-events-none z-0" style={{ position: 'absolute', borderRight: '2px solid rgba(255,255,255,0.8)', borderTop: '2px solid rgba(255,255,255,0.8)' }}></div>
-                <div className="absolute bottom-4 right-4 w-6 h-6 rounded-tl-full pointer-events-none z-0" style={{ position: 'absolute', borderLeft: '2px solid rgba(255,255,255,0.8)', borderTop: '2px solid rgba(255,255,255,0.8)' }}></div>
+                    {/* Center Circle & Spot */}
+                    <circle
+                        cx="340"
+                        cy="525"
+                        r="85"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    <circle
+                        cx="340"
+                        cy="525"
+                        r="4.5"
+                        fill="rgba(255,255,255,0.95)"
+                    />
+
+                    {/* Top Goal Area & Penalty Box */}
+                    <rect
+                        x="150"
+                        y="30"
+                        width="380"
+                        height="160"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    <rect
+                        x="240"
+                        y="30"
+                        width="200"
+                        height="60"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    {/* Top Penalty Spot */}
+                    <circle
+                        cx="340"
+                        cy="140"
+                        r="3.5"
+                        fill="rgba(255,255,255,0.95)"
+                    />
+                    {/* Top Penalty Arc */}
+                    <path
+                        d="M 268 190 A 85 85 0 0 0 412 190"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    {/* Top Goal Net */}
+                    <rect
+                        x="290"
+                        y="15"
+                        width="100"
+                        height="15"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.5)"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 3"
+                    />
+
+                    {/* Bottom Goal Area & Penalty Box */}
+                    <rect
+                        x="150"
+                        y="860"
+                        width="380"
+                        height="160"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    <rect
+                        x="240"
+                        y="960"
+                        width="200"
+                        height="60"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    {/* Bottom Penalty Spot */}
+                    <circle
+                        cx="340"
+                        cy="910"
+                        r="3.5"
+                        fill="rgba(255,255,255,0.95)"
+                    />
+                    {/* Bottom Penalty Arc */}
+                    <path
+                        d="M 268 860 A 85 85 0 0 1 412 860"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    {/* Bottom Goal Net */}
+                    <rect
+                        x="290"
+                        y="1020"
+                        width="100"
+                        height="15"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.5)"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 3"
+                    />
+
+                    {/* Corner Arcs */}
+                    <path
+                        d="M 30 55 A 25 25 0 0 0 55 30"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    <path
+                        d="M 625 30 A 25 25 0 0 0 650 55"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    <path
+                        d="M 30 995 A 25 25 0 0 1 55 1020"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                    <path
+                        d="M 625 1020 A 25 25 0 0 1 650 995"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.85)"
+                        strokeWidth="2.5"
+                    />
+                </svg>
 
                 {/* PLAYERS LAYER */}
                 <div className="absolute inset-0 z-10" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
-                    {team.G?.map((p, i) => <PlayerNode key={`g-${i}`} player={p} position="G" index={i} total={team.G.length} formation={dominantFormation} stats={stats} startsMap={startsMap} />)}
-                    {team.D?.map((p, i) => <PlayerNode key={`d-${i}`} player={p} position="D" index={i} total={team.D.length} formation={dominantFormation} stats={stats} startsMap={startsMap} />)}
-                    {team.M?.map((p, i) => <PlayerNode key={`m-${i}`} player={p} position="M" index={i} total={team.M.length} formation={dominantFormation} stats={stats} startsMap={startsMap} />)}
-                    {team.A?.map((p, i) => <PlayerNode key={`a-${i}`} player={p} position="A" index={i} total={team.A.length} formation={dominantFormation} stats={stats} startsMap={startsMap} />)}
+                    {team.G?.map((p, i) => <PlayerNode key={`g-${i}`} player={p} position="G" index={i} total={team.G.length} formation={dominantFormation} startsMap={startsMap} />)}
+                    {team.D?.map((p, i) => <PlayerNode key={`d-${i}`} player={p} position="D" index={i} total={team.D.length} formation={dominantFormation} startsMap={startsMap} />)}
+                    {team.M?.map((p, i) => <PlayerNode key={`m-${i}`} player={p} position="M" index={i} total={team.M.length} formation={dominantFormation} startsMap={startsMap} />)}
+                    {team.A?.map((p, i) => <PlayerNode key={`a-${i}`} player={p} position="A" index={i} total={team.A.length} formation={dominantFormation} startsMap={startsMap} />)}
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 
 export default PitchMap;
+export { getTmRole, getPlayerTacticalDetails };
