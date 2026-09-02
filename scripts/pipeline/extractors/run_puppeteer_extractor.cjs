@@ -1,4 +1,4 @@
-const puppeteer = require('c:/Users/benoi/Documents/Predictor Ultimate/node_modules/puppeteer');
+const puppeteer = require('puppeteer');
 
 const COMPETITIONS = [
   { code: 'ENG-PL', name: 'Premier League', url: 'https://www.betclic.fr/football-sfootball/angl-premier-league-c3' },

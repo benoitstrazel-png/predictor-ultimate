@@ -53,6 +53,11 @@ jobs:
       - name: Ingest Live Matches & Events (2026-2027)
         run: python scripts/pipeline/ingest_historical_and_live_matches.py --live-only --force-refresh
 
+      - name: Ingest Real Betclic Odds
+        run: |
+          npx puppeteer browsers install chrome || true
+          python scripts/pipeline/extractors/betclic_collector.py || true
+
       - name: Compile Unified History and App Data
         run: python scripts/pipeline/compile_unified_history_and_app_data.py
 

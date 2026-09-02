@@ -24,6 +24,7 @@ if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 from scripts.pipeline.validators.odds_quality_gate import validate_odds_record, calculate_margin_metrics
+from scripts.db.init_odds_schema import init_odds_schema
 
 DB_PATH = os.path.join(ROOT_DIR, 'predictor_v2.db')
 APP_DATA_PATH = os.path.join(ROOT_DIR, 'src', 'data', 'app_data.json')
@@ -205,6 +206,7 @@ def extract_live_betclic_odds() -> List[Dict[str, Any]]:
         return []
 
 def ingest_betclic_odds_to_database_and_app_data():
+    init_odds_schema()
     raw_matches = extract_live_betclic_odds()
     now_utc = datetime.datetime.utcnow().isoformat() + 'Z'
     
