@@ -25,6 +25,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -73,6 +74,6 @@ jobs:
             echo 'Aucune nouvelle donnee a commiter.'
           else
             git commit -m 'chore(data): automated match sync and compilation [skip ci]'
-            git pull --rebase origin main || (git rebase --abort && git pull origin main --no-rebase -X theirs)
-            git push origin main
+            git pull --rebase origin main || (git rebase --abort && git pull origin main --no-rebase -X theirs --no-edit)
+            git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:main
           fi
