@@ -726,14 +726,28 @@ def compile_data():
     app_data['fullSchedule'] = new_schedule
     app_data['nextMatches'] = [m for m in new_schedule if m.get('status') in ['LIVE', 'SCHEDULED']][:15]
 
-    if os.path.exists(APP_DATA_FILE):
+    def write_json_safe(file_path, data):
+        tmp_path = file_path + ".tmp"
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(tmp_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+        if os.path.exists(file_path):
+            try:
+                os.remove(file_path)
+            except Exception:
+                pass
         try:
-            os.remove(APP_DATA_FILE)
+            os.replace(tmp_path, file_path)
         except Exception:
-            pass
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+            if os.path.exists(tmp_path):
+                try:
+                    os.remove(tmp_path)
+                except Exception:
+                    pass
 
-    with open(APP_DATA_FILE, 'w', encoding='utf-8') as f:
-        json.dump(app_data, f, ensure_ascii=False, indent=2)
+    write_json_safe(APP_DATA_FILE, app_data)
 
     print(f"✅ [Compiler] app_data.json synchronisé : {len(new_schedule)} rencontres 2026-2027 actives.")
     conn.close()

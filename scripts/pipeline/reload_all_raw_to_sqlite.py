@@ -31,6 +31,8 @@ from scripts.pipeline.ingest_historical_and_live_matches import persist_normaliz
 def reload_all():
     print("🔄 [Reloader] Vidage et reconstruction des tables fact_* dans SQLite...")
     conn = sqlite3.connect(DB_PATH)
+    from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
+    init_db_schema_if_needed(conn)
     c = conn.cursor()
     c.execute("PRAGMA foreign_keys = OFF;")
     c.execute("DELETE FROM fact_matches;")
