@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8024_xsmall.png",
-            "linkToMatch": "/matches/jagiellonia-biaystok-vs-widzew-odz/tnvtn#5803933",
-            "date": {
-              "utcTime": "2026-08-09T18:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8024/overview/widzew-odz",
-            "tooltipText": {
-              "utcTime": "2026-08-09T18:15:00.000Z",
-              "homeTeam": "Jagiellonia Białystok",
-              "homeTeamId": 1957,
-              "homeScore": "0",
-              "awayTeam": "Widzew Łódź",
-              "awayTeamId": 8024,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "1957",
-              "name": "Jagiellonia Białystok",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8024",
-              "name": "Widzew Łódź",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8548_xsmall.png",
@@ -422,6 +392,36 @@
               "name": "Jagiellonia Białystok",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2182_xsmall.png",
+            "linkToMatch": "/matches/jagiellonia-biaystok-vs-lech-poznan/53ol4#5803953",
+            "date": {
+              "utcTime": "2026-09-03T18:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/2182/overview/lech-poznan",
+            "tooltipText": {
+              "utcTime": "2026-09-03T18:30:00.000Z",
+              "homeTeam": "Lech Poznań",
+              "homeTeamId": 2182,
+              "homeScore": "2",
+              "awayTeam": "Jagiellonia Białystok",
+              "awayTeamId": 1957,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "2182",
+              "name": "Lech Poznań",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "1957",
+              "name": "Jagiellonia Białystok",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "4"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Jagiellonia Białystok haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Olympiacos have 3W, 1D, 1L in five matches while Jagiellonia Białystok have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -467,7 +473,7 @@
                 "home_team",
                 "4",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +484,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Olympiacos have scored in their last 4 matches and Jagiellonia Białystok have scored in their last 4 matches."
+              "defaultText": "Olympiacos have scored in their last 4 matches and Jagiellonia Białystok have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -488,7 +494,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "11",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -500,16 +506,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have scored 11 goals in their last 3 matches."
+              "defaultText": "Jagiellonia Białystok have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
+                "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -523,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Olympiacos haven't drawn in their last 4 matches."
+              "defaultText": "Olympiacos haven't drawn in their last 4 matches and Jagiellonia Białystok in their last 4."
             }
           ]
         },
@@ -552,19 +560,19 @@
     },
     "weather": {
       "temperature": 25,
-      "windSpeed": 3,
+      "windSpeed": 2,
       "windDirectionCardinal": "NNE",
-      "iconCode": 33,
-      "relativeHumidity": 57,
-      "precipChance": 1,
+      "iconCode": 29,
+      "relativeHumidity": 58,
+      "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 20,
-      "description": "Mostly Clear",
+      "cloudCover": 44,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-03T09:00:14Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-09-03T21:00:22Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112268,
