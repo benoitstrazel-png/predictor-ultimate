@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783_xsmall.png",
-            "linkToMatch": "/matches/real-madrid-vs-deportivo-coruna/2syz73#5962500",
-            "date": {
-              "utcTime": "2026-08-12T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
-            "tooltipText": {
-              "utcTime": "2026-08-12T19:00:00.000Z",
-              "homeTeam": "Deportivo A Coruña",
-              "homeTeamId": 9783,
-              "homeScore": "0",
-              "awayTeam": "Real Madrid",
-              "awayTeamId": 8633,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9783",
-              "name": "Deportivo A Coruña",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8633",
-              "name": "Real Madrid",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10189_xsmall.png",
             "linkToMatch": "/matches/real-madrid-vs-schalke-04/2xgz9q#5979020",
             "date": {
@@ -270,6 +240,36 @@
               "id": "9864",
               "name": "Málaga",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8603_xsmall.png",
+            "linkToMatch": "/matches/real-betis-vs-real-madrid/2gg3e3#5868043",
+            "date": {
+              "utcTime": "2026-09-04T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8603/overview/real-betis",
+            "tooltipText": {
+              "utcTime": "2026-09-04T19:00:00.000Z",
+              "homeTeam": "Real Betis",
+              "homeTeamId": 8603,
+              "homeScore": "1",
+              "awayTeam": "Real Madrid",
+              "awayTeamId": 8633,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8603",
+              "name": "Real Betis",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8633",
+              "name": "Real Madrid",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,12 +439,10 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {2} matches and {1} their last {3} matches.",
-              "TextTemplateId": "good_form_both",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "6",
                 "4"
               ],
               "DefaultLabels": [
@@ -458,19 +456,17 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Real Madrid have won their last 6 matches and Inter their last 4 matches."
+              "defaultText": "Inter have won their last 4 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "11",
-                "away_team",
-                "12"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Madrid have scored in their last 11 matches and Inter have scored in their last 12 matches."
+              "defaultText": "Real Madrid have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
@@ -491,7 +487,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "10",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -503,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Madrid have scored 10 goals in their last 3 matches."
+              "defaultText": "Real Madrid have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -514,7 +510,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "6",
+                "7",
                 "4"
               ],
               "DefaultLabels": [
@@ -528,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Madrid haven't drawn in their last 6 matches and Inter in their last 4."
+              "defaultText": "Real Madrid haven't drawn in their last 7 matches and Inter in their last 4."
             }
           ]
         },
@@ -543,17 +539,37 @@
           "type": "team",
           "playerId": null,
           "teamId": 8633,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 1346,
+          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+          "localizedTextId": "h2h_undefeated",
           "statValues": [
             {
-              "value": 11,
+              "value": 8633,
+              "name": "Real Madrid",
+              "type": "team"
+            },
+            {
+              "value": 8636,
+              "name": "Inter",
+              "type": "team"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 0,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 11 matches",
+          "text": "Real Madrid haven't lost to Inter in their last 5 meetings (5W, 0D).",
           "color": "#085098"
         },
         {
@@ -630,18 +646,18 @@
       }
     },
     "weather": {
-      "temperature": 30,
-      "windSpeed": 4,
+      "temperature": 31,
+      "windSpeed": 5,
       "windDirectionCardinal": "W",
       "iconCode": 29,
-      "relativeHumidity": 19,
+      "relativeHumidity": 18,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 51,
+      "cloudCover": 52,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-04T08:00:35Z",
+      "lastUpdated": "2026-09-04T20:00:28Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
