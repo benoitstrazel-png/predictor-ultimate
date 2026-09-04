@@ -489,9 +489,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "1",
                 "1",
@@ -508,7 +508,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari have 3W, 1D, 1L in five matches while Lecce have 1W, 1D, 3L."
+              "defaultText": "Cagliari have 2W, 1D, 2L in five matches while Lecce have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -560,11 +560,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -578,7 +577,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari and Lecce have not drawn any of their last 4 matches against each other."
+              "defaultText": "Cagliari haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -643,8 +642,8 @@
           "playerId": 1705649,
           "teamId": 8529,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
               "value": 1705649,
@@ -659,10 +658,10 @@
             {
               "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Alessandro Romano has the most shots on target per match for Cagliari (1)",
+          "text": "Alessandro Romano has created the most big chances for Cagliari (1)",
           "color": "#B51F2B"
         },
         {
@@ -719,8 +718,8 @@
           "playerId": 1039403,
           "teamId": 9888,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
               "value": 1039403,
@@ -733,15 +732,66 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Santiago Pierotti has created the most big chances for Lecce (2)",
+          "text": "Santiago Pierotti has the most shots on target per match for Lecce (1.1)",
           "color": "#e12300"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 1705649,
+          "position": 2,
+          "matchesWithRating": 2,
+          "lastName": "Romano",
+          "fullName": "Alessandro Romano",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 2,
+            "motm": 1,
+            "gamesPlayed": 2,
+            "minsPlayed": 180,
+            "minsPlayedGoal": 180,
+            "expectedGoals": 0.15970000624656677,
+            "playerRating": 7.66
+          }
+        },
+        "awayPlayer": {
+          "playerId": 1414124,
+          "position": 2,
+          "matchesWithRating": 2,
+          "lastName": "Gorter",
+          "fullName": "Olaf Gorter",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 0,
+            "gamesPlayed": 2,
+            "minsPlayed": 106,
+            "minsPlayedGoal": 106,
+            "expectedGoals": 0.13490000367164612,
+            "playerRating": 6.28
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ITA",
       "QAData": [],
       "matchInsightsConfig": {
