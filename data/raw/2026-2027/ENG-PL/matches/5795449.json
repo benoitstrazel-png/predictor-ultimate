@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9795_xsmall.png",
-            "linkToMatch": "/matches/swindon-town-vs-crystal-palace/36m6sh#5898863",
-            "date": {
-              "utcTime": "2026-07-18T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9795/overview/swindon-town",
-            "tooltipText": {
-              "utcTime": "2026-07-18T11:30:00.000Z",
-              "homeTeam": "Crystal Palace",
-              "homeTeamId": 9826,
-              "homeScore": "5",
-              "awayTeam": "Swindon Town",
-              "awayTeamId": 9795,
-              "awayScore": "1"
-            },
-            "score": "5 - 1",
-            "home": {
-              "id": "9826",
-              "name": "Crystal Palace",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9795",
-              "name": "Swindon Town",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/45729_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8456",
               "name": "Manchester City",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879_xsmall.png",
+            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#5795439",
+            "date": {
+              "utcTime": "2026-09-05T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9879/overview/fulham",
+            "tooltipText": {
+              "utcTime": "2026-09-05T14:00:00.000Z",
+              "homeTeam": "Fulham",
+              "homeTeamId": 9879,
+              "homeScore": "2",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "1",
+                "0",
+                "4",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace have lost their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Crystal Palace have 1W, 0D, 4L in five matches while Ipswich Town have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -483,13 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "1.67"
+                "3",
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,17 +507,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have an average of 0.33 goals in their last three matches and Ipswich Town have an average of 1.67."
+              "defaultText": "Crystal Palace have scored 4 goals in their last 3 matches, while Ipswich Town have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "away_team",
+                "8",
+                "11"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +531,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Crystal Palace haven't drawn in their last 8 matches and Ipswich Town in their last 11."
             }
           ]
         },
@@ -543,7 +552,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -553,7 +562,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#0055A5"
         },
         {
@@ -602,12 +611,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#0055A5"
         },
         {
@@ -663,7 +672,7 @@
               "type": "player"
             },
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "ordinal"
             },
@@ -673,7 +682,7 @@
               "type": "integer"
             }
           ],
-          "text": "Abdul Fatawu is ranked 2 in big chances created in the competition (3)",
+          "text": "Abdul Fatawu is ranked 3 in big chances created in the competition (3)",
           "color": "#0333A0"
         }
       ],
@@ -695,37 +704,41 @@
       }
     },
     "weather": {
-      "temperature": 19,
+      "temperature": 21,
       "windSpeed": 4,
       "windDirectionCardinal": "W",
-      "iconCode": 28,
-      "relativeHumidity": 57,
-      "precipChance": 11,
+      "iconCode": 30,
+      "relativeHumidity": 53,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 67,
-      "description": "Mostly Cloudy",
+      "cloudCover": 32,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-05T04:00:16Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-09-05T16:00:03Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795449,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9826,
         "name": "Crystal Palace",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1669629,
+            "age": 18,
             "name": "Honest Ahanor",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 21445892,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-02T21:11:50Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -734,10 +747,13 @@
           },
           {
             "id": 706297,
+            "age": 29,
             "name": "Jean-Philippe Mateta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 29184669,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-02T21:11:08Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
@@ -746,10 +762,13 @@
           },
           {
             "id": 771294,
+            "age": 28,
             "name": "Ismaïla Sarr",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 30275302,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-09-04T16:32:51Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -758,10 +777,13 @@
           },
           {
             "id": 1187506,
+            "age": 23,
             "name": "Chadi Riad",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 12251398,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-28T16:50:12Z",
               "type": "injury",
               "expectedReturn": "Late June 2027"
             },
@@ -770,10 +792,13 @@
           },
           {
             "id": 672469,
+            "age": 29,
             "name": "Ben Chilwell",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 8046894,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-05T15:10:14Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -785,13 +810,18 @@
       "awayTeam": {
         "id": 9902,
         "name": "Ipswich Town",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1089645,
+            "age": 24,
             "name": "Jaden Philogene",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 16374609,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-08-28T17:51:40Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -800,10 +830,13 @@
           },
           {
             "id": 789507,
+            "age": 28,
             "name": "Jack Taylor",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "marketValue": 1782473,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-02T14:00:25Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -812,10 +845,13 @@
           },
           {
             "id": 797594,
+            "age": 28,
             "name": "Azor Matusiwa",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 8328760,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-04T15:59:52Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },

@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9795_xsmall.png",
-            "linkToMatch": "/matches/swindon-town-vs-crystal-palace/36m6sh#5898863",
-            "date": {
-              "utcTime": "2026-07-18T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9795/overview/swindon-town",
-            "tooltipText": {
-              "utcTime": "2026-07-18T11:30:00.000Z",
-              "homeTeam": "Crystal Palace",
-              "homeTeamId": 9826,
-              "homeScore": "5",
-              "awayTeam": "Swindon Town",
-              "awayTeamId": 9795,
-              "awayScore": "1"
-            },
-            "score": "5 - 1",
-            "home": {
-              "id": "9826",
-              "name": "Crystal Palace",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9795",
-              "name": "Swindon Town",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/45729_xsmall.png",
@@ -269,6 +239,36 @@
               "id": "8456",
               "name": "Manchester City",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879_xsmall.png",
+            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#5795439",
+            "date": {
+              "utcTime": "2026-09-05T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9879/overview/fulham",
+            "tooltipText": {
+              "utcTime": "2026-09-05T14:00:00.000Z",
+              "homeTeam": "Fulham",
+              "homeTeamId": 9879,
+              "homeScore": "2",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
             }
           }
         ],
@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +454,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace have lost their last 4 matches."
+              "Icon": "poll_stat_up",
+              "defaultText": "Lech Poznań haven't lost in 8 matches."
             },
             {
               "OddsType": "bts",
@@ -488,7 +488,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "1",
+                "4",
                 "7"
               ],
               "DefaultLabels": [
@@ -500,17 +500,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have scored 1 goals in their last 3 matches, while Lech Poznań have scored 7."
+              "defaultText": "Crystal Palace have scored 4 goals in their last 3 matches, while Lech Poznań have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +522,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Crystal Palace haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -538,17 +538,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 9826,
-          "priority": 1344,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 4 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#0055A5"
         },
         {

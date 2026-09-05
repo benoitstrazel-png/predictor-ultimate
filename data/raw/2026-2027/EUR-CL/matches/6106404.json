@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10017_xsmall.png",
-            "linkToMatch": "/matches/lask-vs-ried/3b0jtk#5845963",
-            "date": {
-              "utcTime": "2026-08-14T17:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10017/overview/ried",
-            "tooltipText": {
-              "utcTime": "2026-08-14T17:30:00.000Z",
-              "homeTeam": "LASK",
-              "homeTeamId": 9977,
-              "homeScore": "4",
-              "awayTeam": "Ried",
-              "awayTeamId": 10017,
-              "awayScore": "1"
-            },
-            "score": "4 - 1",
-            "home": {
-              "id": "9977",
-              "name": "LASK",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10017",
-              "name": "Ried",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9925_xsmall.png",
@@ -422,6 +392,36 @@
               "name": "LASK",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8091_xsmall.png",
+            "linkToMatch": "/matches/deutschlandsberger-sc-vs-lask/2p6wwb#5980403",
+            "date": {
+              "utcTime": "2026-09-05T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8091/overview/deutschlandsberger-sc",
+            "tooltipText": {
+              "utcTime": "2026-09-05T13:30:00.000Z",
+              "homeTeam": "Deutschlandsberger SC",
+              "homeTeamId": 8091,
+              "homeScore": "1",
+              "awayTeam": "LASK",
+              "awayTeamId": 9977,
+              "awayScore": "6"
+            },
+            "score": "1 - 6",
+            "home": {
+              "id": "8091",
+              "name": "Deutschlandsberger SC",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9977",
+              "name": "LASK",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
-                "home_team",
-                "5"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,17 +455,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "AEK Athens haven't lost in 5 matches."
+              "defaultText": "LASK have won their last 4 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "4",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AEK Athens have scored in their last 5 home matches."
+              "defaultText": "AEK Athens have scored in their last 4 matches and LASK have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -486,7 +488,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "11",
+                "12",
                 "3"
               ],
               "DefaultLabels": [
@@ -498,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "LASK have scored 11 goals in their last 3 matches."
+              "defaultText": "LASK have scored 12 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",

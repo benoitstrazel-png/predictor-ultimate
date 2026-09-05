@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456_xsmall.png",
-            "linkToMatch": "/matches/manchester-city-vs-atletico-madrid/2sdp29#5862945",
-            "date": {
-              "utcTime": "2026-08-09T11:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8456/overview/manchester-city",
-            "tooltipText": {
-              "utcTime": "2026-08-09T11:00:00.000Z",
-              "homeTeam": "Manchester City",
-              "homeTeamId": 8456,
-              "homeScore": "3",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "8456",
-              "name": "Manchester City",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8592_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Atlético Madrid",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315_xsmall.png",
+            "linkToMatch": "/matches/athletic-club-vs-atletico-madrid/2queyl#5868042",
+            "date": {
+              "utcTime": "2026-09-05T14:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/8315/overview/athletic-club",
+            "tooltipText": {
+              "utcTime": "2026-09-05T14:15:00.000Z",
+              "homeTeam": "Athletic Club",
+              "homeTeamId": 8315,
+              "homeScore": "3",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8315",
+              "name": "Athletic Club",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
                 "away_team",
-                "4"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,18 +461,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Atlético Madrid haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Real Sociedad have 1W, 1D, 3L in five matches while Atlético Madrid have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "6"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored in their last 6 away matches."
+              "defaultText": "Real Sociedad have scored 3 goals in their last 3 matches, while Atlético Madrid have scored 5."
             },
             {
               "OddsType": "ou",
@@ -490,7 +499,7 @@
                 "away_team",
                 "3",
                 "3",
-                "7"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 3 goals in their last 3 matches, while Atlético Madrid have scored 7."
+              "defaultText": "Real Sociedad have scored 3 goals in their last 3 matches, while Atlético Madrid have scored 5."
             },
             {
               "OddsType": "dc",
@@ -565,33 +574,6 @@
         },
         {
           "type": "player",
-          "playerId": 616539,
-          "teamId": 8560,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 616539,
-              "name": "Alex Remiro",
-              "type": "player"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Alex Remiro is ranked 3 in saves per match in the competition (4.3)",
-          "color": "#0056B3"
-        },
-        {
-          "type": "player",
           "playerId": 678234,
           "teamId": 8560,
           "priority": 1,
@@ -618,6 +600,33 @@
           "color": "#0056B3"
         },
         {
+          "type": "player",
+          "playerId": 678234,
+          "teamId": 8560,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 678234,
+              "name": "Mikel Oyarzabal",
+              "type": "player"
+            },
+            {
+              "value": 8560,
+              "name": "Real Sociedad",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Mikel Oyarzabal has created the most big chances for Real Sociedad (1)",
+          "color": "#0056B3"
+        },
+        {
           "type": "team",
           "playerId": null,
           "teamId": 9906,
@@ -626,7 +635,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -636,7 +645,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#C63527"
         },
         {
@@ -657,20 +666,30 @@
           "color": "#C63527"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 940976,
           "teamId": 9906,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 2.3,
+              "value": 940976,
+              "name": "Kang-In Lee",
+              "type": "player"
+            },
+            {
+              "value": 9906,
+              "name": "Atlético Madrid",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Average 2.3 goals per match",
+          "text": "Kang-In Lee has created the most big chances for Atlético Madrid (2)",
           "color": "#C63527"
         }
       ],

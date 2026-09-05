@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455_xsmall.png",
-            "linkToMatch": "/matches/chelsea-vs-tottenham-hotspur/2eggkj#5199448",
-            "date": {
-              "utcTime": "2026-08-01T09:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8455/overview/chelsea",
-            "tooltipText": {
-              "utcTime": "2026-08-01T09:45:00.000Z",
-              "homeTeam": "Chelsea",
-              "homeTeamId": 8455,
-              "homeScore": "1",
-              "awayTeam": "Tottenham Hotspur",
-              "awayTeamId": 8586,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8455",
-              "name": "Chelsea",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8586",
-              "name": "Tottenham Hotspur",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226_xsmall.png",
             "linkToMatch": "/matches/hoffenheim-vs-tottenham-hotspur/2c5dm0#5874668",
             "date": {
@@ -270,6 +240,36 @@
               "id": "10261",
               "name": "Newcastle United",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10203_xsmall.png",
+            "linkToMatch": "/matches/tottenham-hotspur-vs-nottingham-forest/2x3odl#5795444",
+            "date": {
+              "utcTime": "2026-09-05T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10203/overview/nottingham-forest",
+            "tooltipText": {
+              "utcTime": "2026-09-05T14:00:00.000Z",
+              "homeTeam": "Nottingham Forest",
+              "homeTeamId": 10203,
+              "homeScore": "0",
+              "awayTeam": "Tottenham Hotspur",
+              "awayTeamId": 8586,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10203",
+              "name": "Nottingham Forest",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8586",
+              "name": "Tottenham Hotspur",
+              "isOurTeam": true
             }
           }
         ],
@@ -507,11 +507,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+              "TextTemplateId": "h2h_no_draws_v2",
               "StatValues": [
                 "home_team",
-                "10"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Tottenham Hotspur haven't drawn in their last 10 matches."
+              "defaultText": "Tottenham Hotspur and Everton have not drawn any of their last 4 matches against each other."
             }
           ]
         },
@@ -544,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
+          "color": "#132257"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8586,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#132257"
         },
         {
@@ -582,33 +600,6 @@
             }
           ],
           "text": "Tottenham Hotspur have won the previous 2 matches against Everton.",
-          "color": "#132257"
-        },
-        {
-          "type": "player",
-          "playerId": 1356312,
-          "teamId": 8586,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1356312,
-              "name": "Mateus Fernandes",
-              "type": "player"
-            },
-            {
-              "value": 8586,
-              "name": "Tottenham Hotspur",
-              "type": "team"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Mateus Fernandes has created the most big chances for Tottenham Hotspur (2)",
           "color": "#132257"
         },
         {
@@ -652,15 +643,15 @@
         },
         {
           "type": "player",
-          "playerId": 1559637,
+          "playerId": 1398392,
           "teamId": 8668,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1559637,
-              "name": "Harrison Armstrong",
+              "value": 1398392,
+              "name": "Thierno Barry",
               "type": "player"
             },
             {
@@ -669,12 +660,12 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 1.8,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Harrison Armstrong has created the most big chances for Everton (1)",
+          "text": "Thierno Barry has the most shots on target per match for Everton (1.8)",
           "color": "#00359C"
         }
       ],

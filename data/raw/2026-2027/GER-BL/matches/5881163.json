@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8171_xsmall.png",
-            "linkToMatch": "/matches/preussen-munster-vs-elversberg/283s2u#4829952",
-            "date": {
-              "utcTime": "2026-05-17T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8171/overview/preussen-munster",
-            "tooltipText": {
-              "utcTime": "2026-05-17T13:30:00.000Z",
-              "homeTeam": "Elversberg",
-              "homeTeamId": 8232,
-              "homeScore": "3",
-              "awayTeam": "Preussen Münster",
-              "awayTeamId": 8171,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8232",
-              "name": "Elversberg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8171",
-              "name": "Preussen Münster",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10191_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8178",
               "name": "Bayer Leverkusen",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9788_xsmall.png",
+            "linkToMatch": "/matches/elversberg-vs-borussia-monchengladbach/2oocfq#5881153",
+            "date": {
+              "utcTime": "2026-09-05T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9788/overview/borussia-monchengladbach",
+            "tooltipText": {
+              "utcTime": "2026-09-05T13:30:00.000Z",
+              "homeTeam": "Borussia Mönchengladbach",
+              "homeTeamId": 9788,
+              "homeScore": "3",
+              "awayTeam": "Elversberg",
+              "awayTeamId": 8232,
+              "awayScore": "4"
+            },
+            "score": "3 - 4",
+            "home": {
+              "id": "9788",
+              "name": "Borussia Mönchengladbach",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8232",
+              "name": "Elversberg",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,10 +439,12 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have won their last {2} matches and {1} their last {3} matches.",
+              "TextTemplateId": "good_form_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "8"
               ],
               "DefaultLabels": [
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bayern München have won their last 8 matches."
+              "defaultText": "Elversberg have won their last 4 matches and Bayern München their last 8 matches."
             },
             {
               "OddsType": "bts",
@@ -489,7 +491,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "11",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,16 +503,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Elversberg have scored 11 goals in their last 3 matches."
+              "defaultText": "Elversberg have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "12"
               ],
               "DefaultLabels": [
@@ -524,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayern München haven't drawn in their last 12 matches."
+              "defaultText": "Elversberg haven't drawn in their last 4 matches and Bayern München in their last 12."
             }
           ]
         },
@@ -544,7 +548,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 15,
+              "value": 16,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +558,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 15 goals in their last 5 matches",
+          "text": "Have scored 16 goals in their last 5 matches",
+          "color": "#141414"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8232,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#141414"
         },
         {
@@ -566,39 +587,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#141414"
-        },
-        {
-          "type": "player",
-          "playerId": 1603681,
-          "teamId": 8232,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1603681,
-              "name": "Francis Onyeka",
-              "type": "player"
-            },
-            {
-              "value": 8232,
-              "name": "Elversberg",
-              "type": "team"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Francis Onyeka has created the most big chances for Elversberg (1)",
+          "text": "Haven't lost in 6 matches",
           "color": "#141414"
         },
         {
@@ -641,30 +635,20 @@
           "color": "#C60428"
         },
         {
-          "type": "player",
-          "playerId": 1180288,
+          "type": "team",
+          "playerId": null,
           "teamId": 9823,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 7,
+          "defaultText": "Have won their last {0} matches",
+          "localizedTextId": "insights_good_form_team",
           "statValues": [
             {
-              "value": 1180288,
-              "name": "Ismael Saibari",
-              "type": "player"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 2,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Ismael Saibari is ranked 3 in big chances created in the competition (2)",
+          "text": "Have won their last 8 matches",
           "color": "#C60428"
         }
       ],

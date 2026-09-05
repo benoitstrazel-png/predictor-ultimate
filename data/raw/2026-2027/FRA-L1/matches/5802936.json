@@ -579,16 +579,26 @@
           "playerId": null,
           "teamId": 9848,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 16,
+              "value": 9848,
+              "name": "Strasbourg",
+              "type": "team"
+            },
+            {
+              "value": 9829,
+              "name": "Monaco",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 16 matches",
+          "text": "Strasbourg have won the previous 2 matches against Monaco.",
           "color": "#294A92"
         },
         {
@@ -632,15 +642,15 @@
         },
         {
           "type": "player",
-          "playerId": 1412956,
+          "playerId": 586388,
           "teamId": 9829,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1412956,
-              "name": "Paris Brunner",
+              "value": 586388,
+              "name": "Aleksandr Golovin",
               "type": "player"
             },
             {
@@ -649,12 +659,12 @@
               "type": "team"
             },
             {
-              "value": 1.7,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Paris Brunner has the most shots on target per match for Monaco (1.7)",
+          "text": "Aleksandr Golovin has created the most big chances for Monaco (1)",
           "color": "#C80C13"
         }
       ],
@@ -693,20 +703,24 @@
     },
     "lineup": {
       "matchId": 5802936,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9848,
         "name": "Strasbourg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1355526,
+            "age": 21,
             "name": "Maxi Oyedele",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 2831098,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-08-28T20:10:05Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -715,10 +729,13 @@
           },
           {
             "id": 1178332,
+            "age": 23,
             "name": "Ismaël Doukouré",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 17872775,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-08-28T20:10:12Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -727,10 +744,13 @@
           },
           {
             "id": 1302715,
+            "age": 23,
             "name": "Martial Godo",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 5860281,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-26T18:31:34Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -739,10 +759,13 @@
           },
           {
             "id": 1408580,
+            "age": 23,
             "name": "Joaquín Panichelli",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 16809886,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T13:01:41Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
@@ -754,13 +777,18 @@
       "awayTeam": {
         "id": 9829,
         "name": "Monaco",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 982677,
+            "age": 25,
             "name": "Folarin Balogun",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 20696100,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-08-22T14:12:33Z",
               "type": "injury",
               "expectedReturn": "About a week"
             },
@@ -769,10 +797,13 @@
           },
           {
             "id": 1385897,
+            "age": 22,
             "name": "Edan Diop",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1900450,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-01T12:30:03Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -781,10 +812,13 @@
           },
           {
             "id": 1086012,
+            "age": 23,
             "name": "Ansu Fati",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 12804140,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-09-01T12:32:44Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -793,10 +827,13 @@
           },
           {
             "id": 938247,
+            "age": 27,
             "name": "Mohammed Salisu",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "marketValue": 7795252,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T12:58:50Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },

@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8633_xsmall.png",
-            "linkToMatch": "/matches/fiorentina-vs-real-madrid/2fr0sh#5909892",
-            "date": {
-              "utcTime": "2026-08-01T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8633/overview/real-madrid",
-            "tooltipText": {
-              "utcTime": "2026-08-01T16:00:00.000Z",
-              "homeTeam": "Real Madrid",
-              "homeTeamId": 8633,
-              "homeScore": "2",
-              "awayTeam": "Fiorentina",
-              "awayTeamId": 8535,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8633",
-              "name": "Real Madrid",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783_xsmall.png",
             "linkToMatch": "/matches/fiorentina-vs-deportivo-coruna/2rweao#5900332",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Frosinone",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9804_xsmall.png",
+            "linkToMatch": "/matches/fiorentina-vs-torino/2s4nb6#5749663",
+            "date": {
+              "utcTime": "2026-09-05T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9804/overview/torino",
+            "tooltipText": {
+              "utcTime": "2026-09-05T13:00:00.000Z",
+              "homeTeam": "Fiorentina",
+              "homeTeamId": 8535,
+              "homeScore": "1",
+              "awayTeam": "Torino",
+              "awayTeamId": 9804,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9804",
+              "name": "Torino",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -448,8 +448,8 @@
                 "3",
                 "away_team",
                 "1",
-                "2",
-                "2"
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Venezia have 1W, 1D, 3L in five matches while Fiorentina have 1W, 2D, 2L."
+              "defaultText": "Venezia have 1W, 1D, 3L in five matches while Fiorentina have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -474,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "0.33",
-                "1.33"
+                "0.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Fiorentina have an average of 1.33."
+              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Fiorentina have an average of 0.33."
             },
             {
               "OddsType": "ou",
@@ -497,7 +497,7 @@
                 "home_team",
                 "away_team",
                 "0.33",
-                "1.33"
+                "0.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,16 +508,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Fiorentina have an average of 1.33."
+              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Fiorentina have an average of 0.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
+                "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -531,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Venezia haven't drawn in their last 4 matches."
+              "defaultText": "Venezia haven't drawn in their last 4 matches and Fiorentina in their last 4."
             }
           ]
         },
@@ -607,7 +609,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -617,24 +619,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
-          "color": "#5F259F"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8535,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#5F259F"
         },
         {
@@ -646,12 +631,29 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#5F259F"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8535,
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have lost their last 3 matches",
           "color": "#5F259F"
         }
       ],

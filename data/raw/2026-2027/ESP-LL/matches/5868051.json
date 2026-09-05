@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524_xsmall.png",
-            "linkToMatch": "/matches/athletic-club-vs-atalanta/2cf43s#5997768",
-            "date": {
-              "utcTime": "2026-08-14T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8524/overview/atalanta",
-            "tooltipText": {
-              "utcTime": "2026-08-14T18:45:00.000Z",
-              "homeTeam": "Atalanta",
-              "homeTeamId": 8524,
-              "homeScore": "1",
-              "awayTeam": "Athletic Club",
-              "awayTeamId": 8315,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8315",
-              "name": "Athletic Club",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8394_xsmall.png",
             "linkToMatch": "/matches/athletic-club-vs-real-zaragoza/2b4ddl#6000974",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8315",
               "name": "Athletic Club",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906_xsmall.png",
+            "linkToMatch": "/matches/athletic-club-vs-atletico-madrid/2queyl#5868042",
+            "date": {
+              "utcTime": "2026-09-05T14:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
+            "tooltipText": {
+              "utcTime": "2026-09-05T14:15:00.000Z",
+              "homeTeam": "Athletic Club",
+              "homeTeamId": 8315,
+              "homeScore": "3",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8315",
+              "name": "Athletic Club",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": false
             }
           }
         ],
@@ -483,13 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Athletic Club have an average of 1 goals in their last three matches and Elche have an average of 1."
+              "defaultText": "Athletic Club have scored 5 goals in their last 3 matches, while Elche have scored 3."
             },
             {
               "OddsType": "dc",
@@ -543,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -553,47 +554,47 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#E2001A"
         },
         {
           "type": "player",
-          "playerId": 282462,
+          "playerId": 660625,
           "teamId": 8315,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 282462,
-              "name": "Íñigo Ruiz de Galarreta",
+              "value": 660625,
+              "name": "Unai Simón",
               "type": "player"
-            },
-            {
-              "value": 8315,
-              "name": "Athletic Club",
-              "type": "team"
             },
             {
               "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 5.7,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Íñigo Ruiz de Galarreta has created the most big chances for Athletic Club (1)",
+          "text": "Unai Simón is ranked 1 in saves per match in the competition (5.7)",
           "color": "#E2001A"
         },
         {
           "type": "player",
-          "playerId": 604105,
+          "playerId": 1011117,
           "teamId": 8315,
           "priority": 1,
           "defaultText": "{0} has the most shots on target per match for {1} ({2})",
           "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 604105,
-              "name": "Iñaki Williams",
+              "value": 1011117,
+              "name": "Robert Navarro",
               "type": "player"
             },
             {
@@ -602,12 +603,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 2.6,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Iñaki Williams has the most shots on target per match for Athletic Club (2)",
+          "text": "Robert Navarro has the most shots on target per match for Athletic Club (2.6)",
           "color": "#E2001A"
         },
         {

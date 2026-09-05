@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1649512_xsmall.png",
-            "linkToMatch": "/matches/werder-bremen-vs-verden-04/hjl5x05m#5765876",
-            "date": {
-              "utcTime": "2026-07-18T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/1649512/overview/verden-04",
-            "tooltipText": {
-              "utcTime": "2026-07-18T13:00:00.000Z",
-              "homeTeam": "Verden 04",
-              "homeTeamId": 1649512,
-              "homeScore": "2",
-              "awayTeam": "Werder Bremen",
-              "awayTeamId": 8697,
-              "awayScore": "6"
-            },
-            "score": "2 - 6",
-            "home": {
-              "id": "1649512",
-              "name": "Verden 04",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8697",
-              "name": "Werder Bremen",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/164739_xsmall.png",
             "linkToMatch": "/matches/werder-bremen-vs-fagiano-okayama-fc/6wqhxof#5900644",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Werder Bremen",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475_xsmall.png",
+            "linkToMatch": "/matches/werder-bremen-vs-rb-leipzig/81p1es3#5881160",
+            "date": {
+              "utcTime": "2026-09-05T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
+            "tooltipText": {
+              "utcTime": "2026-09-05T13:30:00.000Z",
+              "homeTeam": "Werder Bremen",
+              "homeTeamId": 8697,
+              "homeScore": "3",
+              "awayTeam": "RB Leipzig",
+              "awayTeamId": 178475,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8697",
+              "name": "Werder Bremen",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "178475",
+              "name": "RB Leipzig",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -474,7 +474,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,18 +485,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "1. FC Köln have scored in their last 12 matches and Werder Bremen have scored in their last 5 matches."
+              "defaultText": "1. FC Köln have scored in their last 12 matches and Werder Bremen have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "6",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored 8 goals in their last 3 matches."
+              "defaultText": "1. FC Köln have scored 6 goals in their last 3 matches, while Werder Bremen have scored 7."
             },
             {
               "OddsType": "dc",
@@ -519,7 +521,7 @@
                 "home_team",
                 "away_team",
                 "7",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -532,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "1. FC Köln haven't drawn in their last 7 matches and Werder Bremen in their last 8."
+              "defaultText": "1. FC Köln haven't drawn in their last 7 matches and Werder Bremen in their last 9."
             }
           ]
         },
@@ -584,15 +586,15 @@
         },
         {
           "type": "player",
-          "playerId": 930035,
+          "playerId": 992060,
           "teamId": 8722,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 930035,
-              "name": "Linton Maina",
+              "value": 992060,
+              "name": "Tom Krauß",
               "type": "player"
             },
             {
@@ -601,12 +603,12 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 0.5,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Linton Maina has created the most big chances for 1. FC Köln (1)",
+          "text": "Tom Krauß has the most shots on target per match for 1. FC Köln (0.5)",
           "color": "#E21718"
         },
         {
@@ -618,7 +620,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 16,
+              "value": 13,
               "name": null,
               "type": "integer"
             },
@@ -628,20 +630,20 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 16 goals in their last 5 matches",
+          "text": "Have scored 13 goals in their last 5 matches",
           "color": "#007642"
         },
         {
           "type": "player",
-          "playerId": 765998,
+          "playerId": 276791,
           "teamId": 8697,
           "priority": 1,
           "defaultText": "{0} has the most shots on target per match for {1} ({2})",
           "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 765998,
-              "name": "Amos Pieper",
+              "value": 276791,
+              "name": "Niclas Füllkrug",
               "type": "player"
             },
             {
@@ -650,12 +652,12 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 1.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Amos Pieper has the most shots on target per match for Werder Bremen (1)",
+          "text": "Niclas Füllkrug has the most shots on target per match for Werder Bremen (1.3)",
           "color": "#007642"
         },
         {

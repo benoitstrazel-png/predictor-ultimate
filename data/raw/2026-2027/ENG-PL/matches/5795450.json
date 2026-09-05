@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260_xsmall.png",
-            "linkToMatch": "/matches/leeds-united-vs-manchester-united/2wd539#5449685",
-            "date": {
-              "utcTime": "2026-08-12T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10260/overview/manchester-united",
-            "tooltipText": {
-              "utcTime": "2026-08-12T18:30:00.000Z",
-              "homeTeam": "Manchester United",
-              "homeTeamId": 10260,
-              "homeScore": "1",
-              "awayTeam": "Leeds United",
-              "awayTeamId": 8463,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8463",
-              "name": "Leeds United",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8406_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "9937",
               "name": "Brentford",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204_xsmall.png",
+            "linkToMatch": "/matches/leeds-united-vs-brighton-hove-albion/2vqp9d#5795437",
+            "date": {
+              "utcTime": "2026-09-05T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "tooltipText": {
+              "utcTime": "2026-09-05T14:00:00.000Z",
+              "homeTeam": "Brighton & Hove Albion",
+              "homeTeamId": 10204,
+              "homeScore": "1",
+              "awayTeam": "Leeds United",
+              "awayTeamId": 8463,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8463",
+              "name": "Leeds United",
+              "isOurTeam": true
             }
           }
         ],
@@ -469,9 +469,9 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "9",
+                "10",
                 "away_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Leeds United have scored in their last 9 matches and Newcastle United have scored in their last 9 matches."
+              "defaultText": "Leeds United have scored in their last 10 matches and Newcastle United have scored in their last 10 matches."
             },
             {
               "OddsType": "ou",
@@ -566,16 +566,33 @@
           "color": "#0060AA"
         },
         {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8463,
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#0060AA"
+        },
+        {
           "type": "player",
-          "playerId": 861197,
+          "playerId": 517346,
           "teamId": 8463,
           "priority": 1,
           "defaultText": "{0} has created the most big chances for {1} ({2})",
           "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 861197,
-              "name": "Lukas Nmecha",
+              "value": 517346,
+              "name": "Nico Elvedi",
               "type": "player"
             },
             {
@@ -584,39 +601,12 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Lukas Nmecha has created the most big chances for Leeds United (1)",
-          "color": "#0060AA"
-        },
-        {
-          "type": "player",
-          "playerId": 952322,
-          "teamId": 8463,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 952322,
-              "name": "Brenden Aaronson",
-              "type": "player"
-            },
-            {
-              "value": 8463,
-              "name": "Leeds United",
-              "type": "team"
-            },
-            {
-              "value": 0.7,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Brenden Aaronson has the most shots on target per match for Leeds United (0.7)",
+          "text": "Nico Elvedi has created the most big chances for Leeds United (2)",
           "color": "#0060AA"
         },
         {
@@ -639,23 +629,6 @@
             }
           ],
           "text": "Have scored 10 goals in their last 5 matches",
-          "color": "#141413"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10261,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have conceded the most penalties this season (1)",
           "color": "#141413"
         },
         {
@@ -693,6 +666,33 @@
             }
           ],
           "text": "Newcastle United haven't lost to Leeds United in their last 6 meetings (2W, 4D).",
+          "color": "#141413"
+        },
+        {
+          "type": "player",
+          "playerId": 1186978,
+          "teamId": 10261,
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "statValues": [
+            {
+              "value": 1186978,
+              "name": "Lukás Hornícek",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4.3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Lukás Hornícek is ranked 1 in saves per match in the competition (4.3)",
           "color": "#141413"
         }
       ],
