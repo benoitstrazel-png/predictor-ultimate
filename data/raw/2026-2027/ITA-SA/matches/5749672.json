@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8197_xsmall.png",
-            "linkToMatch": "/matches/leicester-city-vs-genoa/2t4gzq#5959430",
-            "date": {
-              "utcTime": "2026-08-01T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8197/overview/leicester-city",
-            "tooltipText": {
-              "utcTime": "2026-08-01T18:30:00.000Z",
-              "homeTeam": "Leicester City",
-              "homeTeamId": 8197,
-              "homeScore": "0",
-              "awayTeam": "Genoa",
-              "awayTeamId": 10233,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8197",
-              "name": "Leicester City",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10233",
-              "name": "Genoa",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783_xsmall.png",
@@ -271,39 +241,39 @@
               "name": "Genoa",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9889_xsmall.png",
-            "linkToMatch": "/matches/mantova-vs-frosinone/38hbv1#4906360",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171_xsmall.png",
+            "linkToMatch": "/matches/como-vs-genoa/3fy2aj#5749665",
             "date": {
-              "utcTime": "2026-05-08T18:30:00.000Z"
+              "utcTime": "2026-09-04T18:45:00.000Z"
             },
-            "teamPageUrl": "/teams/9889/overview/mantova",
+            "teamPageUrl": "/teams/10171/overview/como",
             "tooltipText": {
-              "utcTime": "2026-05-08T18:30:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "5",
-              "awayTeam": "Mantova",
-              "awayTeamId": 9889,
-              "awayScore": "0"
+              "utcTime": "2026-09-04T18:45:00.000Z",
+              "homeTeam": "Genoa",
+              "homeTeamId": 10233,
+              "homeScore": "1",
+              "awayTeam": "Como",
+              "awayTeamId": 10171,
+              "awayScore": "4"
             },
-            "score": "5 - 0",
+            "score": "1 - 4",
             "home": {
-              "id": "9891",
-              "name": "Frosinone",
+              "id": "10233",
+              "name": "Genoa",
               "isOurTeam": true
             },
             "away": {
-              "id": "9889",
-              "name": "Mantova",
+              "id": "10171",
+              "name": "Como",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -423,6 +393,36 @@
               "name": "Frosinone",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943_xsmall.png",
+            "linkToMatch": "/matches/sassuolo-vs-frosinone/2movl6#6003657",
+            "date": {
+              "utcTime": "2026-09-02T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/7943/overview/sassuolo",
+            "tooltipText": {
+              "utcTime": "2026-09-02T13:00:00.000Z",
+              "homeTeam": "Sassuolo",
+              "homeTeamId": 7943,
+              "homeScore": "1",
+              "awayTeam": "Frosinone",
+              "awayTeamId": 9891,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "7943",
+              "name": "Sassuolo",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9891",
+              "name": "Frosinone",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -469,7 +469,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,20 +480,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Frosinone have scored in their last 4 away matches."
+              "defaultText": "Frosinone have scored in their last 5 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "7"
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +503,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Genoa have scored 4 goals in their last 3 matches, while Frosinone have scored 7."
+              "defaultText": "Genoa have an average of 0.33 goals in their last three matches and Frosinone have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -515,8 +514,8 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "5",
-                "8"
+                "6",
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Genoa haven't drawn in their last 5 matches and Frosinone in their last 8."
+              "defaultText": "Genoa haven't drawn in their last 6 matches and Frosinone in their last 9."
             }
           ]
         },
@@ -566,44 +565,34 @@
           "type": "team",
           "playerId": null,
           "teamId": 10233,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 2,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#CB1111"
         },
         {
-          "type": "player",
-          "playerId": 936603,
+          "type": "team",
+          "playerId": null,
           "teamId": 10233,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 936603,
-              "name": "Milutin Osmajic",
-              "type": "player"
-            },
-            {
-              "value": 10233,
-              "name": "Genoa",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Milutin Osmajic has created the most big chances for Genoa (1)",
+          "text": "Have lost their last 3 matches",
           "color": "#CB1111"
         },
         {
@@ -615,7 +604,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -625,7 +614,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#d5a300"
         },
         {
@@ -702,19 +691,19 @@
     },
     "weather": {
       "temperature": 25,
-      "windSpeed": 3,
+      "windSpeed": 4,
       "windDirectionCardinal": "SSE",
-      "iconCode": 30,
-      "relativeHumidity": 68,
-      "precipChance": 24,
+      "iconCode": 32,
+      "relativeHumidity": 62,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
-      "description": "Partly Cloudy",
+      "cloudCover": 14,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T03:00:06Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-05T03:00:05Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749672,
@@ -725,25 +714,37 @@
       "homeTeam": {
         "id": 10233,
         "name": "Genoa",
-        "unavailable": []
+        "unavailable": [
+          {
+            "id": 1231904,
+            "name": "Elias Havel",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-09-04T12:37:27Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Elias",
+            "lastName": "Havel"
+          },
+          {
+            "id": 1707510,
+            "name": "Lorenzo Venturino",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-09-03T14:15:28Z",
+              "type": "injury",
+              "expectedReturn": "Back in training"
+            },
+            "firstName": "Lorenzo",
+            "lastName": "Venturino"
+          }
+        ]
       },
       "awayTeam": {
         "id": 9891,
         "name": "Frosinone",
-        "unavailable": [
-          {
-            "id": 1523327,
-            "name": "Farès Ghedjemis",
-            "unavailability": {
-              "injuryId": 101,
-              "lastUpdated": "2026-08-28T21:03:03Z",
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
-            },
-            "firstName": "Farès",
-            "lastName": "Ghedjemis"
-          }
-        ]
+        "unavailable": []
       }
     },
     "hasPlayoff": false,

@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -168,36 +168,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10203_xsmall.png",
-            "linkToMatch": "/matches/udinese-vs-nottingham-forest/2x9bfq#5997903",
-            "date": {
-              "utcTime": "2026-08-08T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10203/overview/nottingham-forest",
-            "tooltipText": {
-              "utcTime": "2026-08-08T18:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "1",
-              "awayTeam": "Nottingham Forest",
-              "awayTeamId": 10203,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -316,6 +286,36 @@
               "id": "8600",
               "name": "Udinese",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881_xsmall.png",
+            "linkToMatch": "/matches/venezia-vs-udinese/28v9yh#6003658",
+            "date": {
+              "utcTime": "2026-09-02T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/7881/overview/venezia",
+            "tooltipText": {
+              "utcTime": "2026-09-02T16:00:00.000Z",
+              "homeTeam": "Udinese",
+              "homeTeamId": 8600,
+              "homeScore": "2",
+              "awayTeam": "Venezia",
+              "awayTeamId": 7881,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": false
             }
           }
         ],
@@ -513,7 +513,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -524,19 +524,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Udinese have scored in their last 6 home matches."
+              "defaultText": "Udinese have scored in their last 7 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3",
+                "6",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -547,7 +548,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Udinese have an average of 1.67 goals in their last three matches and Lazio have an average of 0.67."
+              "defaultText": "Udinese have scored 6 goals in their last 3 matches, while Lazio have scored 2."
             },
             {
               "OddsType": "dc",
@@ -590,7 +591,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -600,7 +601,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#101010"
         },
         {
@@ -649,12 +650,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't lost in 6 matches",
           "color": "#101010"
         },
         {
@@ -698,15 +699,15 @@
         },
         {
           "type": "player",
-          "playerId": 957118,
+          "playerId": 815431,
           "teamId": 8543,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 957118,
-              "name": "Nuno Tavares",
+              "value": 815431,
+              "name": "Davide Frattesi",
               "type": "player"
             },
             {
@@ -715,15 +716,66 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 1.4,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Nuno Tavares has created the most big chances for Lazio (1)",
+          "text": "Davide Frattesi has the most shots on target per match for Lazio (1.4)",
           "color": "#75acd4"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 488415,
+          "position": 2,
+          "matchesWithRating": 2,
+          "lastName": "Kamara",
+          "fullName": "Hassane Kamara",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 1,
+            "ontargetScoringAtt": 1.5,
+            "motm": 1,
+            "gamesPlayed": 2,
+            "minsPlayed": 180,
+            "minsPlayedGoal": 90,
+            "expectedGoals": 0.5889000296592712,
+            "playerRating": 8.28
+          }
+        },
+        "awayPlayer": {
+          "playerId": 815431,
+          "position": 2,
+          "matchesWithRating": 2,
+          "lastName": "Frattesi",
+          "fullName": "Davide Frattesi",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 0,
+            "gamesPlayed": 2,
+            "minsPlayed": 126,
+            "minsPlayedGoal": 63,
+            "expectedGoals": 0.6341999769210815,
+            "playerRating": 7.84
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ITA",
       "QAData": [],
       "matchInsightsConfig": {
@@ -780,36 +832,341 @@
       }
     },
     "weather": {
-      "temperature": 24,
+      "temperature": 25,
       "windSpeed": 2,
-      "windDirectionCardinal": "NNE",
-      "iconCode": 29,
-      "relativeHumidity": 67,
-      "precipChance": 13,
+      "windDirectionCardinal": "N",
+      "iconCode": 27,
+      "relativeHumidity": 66,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 47,
-      "description": "Partly Cloudy",
+      "cloudCover": 64,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T09:00:09Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-05T09:00:19Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5749669,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 8600,
         "name": "Udinese",
-        "formation": "",
-        "starters": [],
+        "formation": "3-4-2-1",
+        "starters": [
+          {
+            "id": 1091193,
+            "age": 27,
+            "name": "Maduka Okoye",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "40",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 8457028,
+            "firstName": "Maduka",
+            "lastName": "Okoye",
+            "rankings": null
+          },
+          {
+            "id": 1269329,
+            "age": 22,
+            "name": "James Abankwah",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "14",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 1492543,
+            "firstName": "James",
+            "lastName": "Abankwah",
+            "rankings": null
+          },
+          {
+            "id": 866708,
+            "age": 26,
+            "name": "Oumar Solet",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "28",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 13592997,
+            "firstName": "Oumar",
+            "lastName": "Solet",
+            "rankings": null
+          },
+          {
+            "id": 769167,
+            "age": 27,
+            "name": "Enzo Ebosse",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "77",
+            "countryName": "Cameroon",
+            "countryCode": "CMR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 1332391,
+            "firstName": "Enzo",
+            "lastName": "Ebosse",
+            "rankings": null
+          },
+          {
+            "id": 560945,
+            "age": 31,
+            "name": "Mërgim Vojvoda",
+            "positionId": 62,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "23",
+            "countryName": "Kosovo",
+            "countryCode": "KVX",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1764343,
+            "firstName": "Mërgim",
+            "lastName": "Vojvoda",
+            "rankings": null
+          },
+          {
+            "id": 689987,
+            "age": 28,
+            "name": "Jakub Piotrowski",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "24",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2583552,
+            "firstName": "Jakub",
+            "lastName": "Piotrowski",
+            "rankings": null
+          },
+          {
+            "id": 322003,
+            "age": 31,
+            "name": "Jesper Karlström",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2599021,
+            "firstName": "Jesper",
+            "lastName": "Karlström",
+            "rankings": null
+          },
+          {
+            "id": 488415,
+            "age": 32,
+            "name": "Hassane Kamara",
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2222720,
+            "firstName": "Hassane",
+            "lastName": "Kamara",
+            "rankings": null
+          },
+          {
+            "id": 1436270,
+            "age": 23,
+            "name": "Unai Gómez",
+            "positionId": 84,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "46",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 3836740,
+            "firstName": "Unai",
+            "lastName": "Gómez",
+            "rankings": null
+          },
+          {
+            "id": 934156,
+            "age": 26,
+            "name": "Jurgen Ekkelenkamp",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "32",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 5398034,
+            "firstName": "Jurgen",
+            "lastName": "Ekkelenkamp",
+            "rankings": null
+          },
+          {
+            "id": 724368,
+            "age": 28,
+            "name": "Keinan Davis",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Jamaica",
+            "countryCode": "JAM",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 4542218,
+            "firstName": "Keinan",
+            "lastName": "Davis",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 812065,
+          "age": 55,
+          "name": "Kosta Runjaic",
+          "countryName": "Germany",
+          "countryCode": "GER",
+          "firstName": "Kosta",
+          "lastName": "Runjaic",
+          "primaryTeamId": 8600,
+          "primaryTeamName": "Udinese",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
           {
             "id": 1645922,
             "age": 18,
             "name": "Matteo Palma",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 4297806,
@@ -822,24 +1179,26 @@
             "lastName": "Palma"
           },
           {
-            "id": 818893,
-            "age": 27,
-            "name": "Nicolò Zaniolo",
+            "id": 916710,
+            "age": 25,
+            "name": "Alessandro Zanoli",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 10086815,
+            "marketValue": 2982689,
             "unavailability": {
-              "injuryId": 87,
+              "injuryId": 76,
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Mid October 2026"
             },
-            "firstName": "Nicolò",
-            "lastName": "Zaniolo"
+            "firstName": "Alessandro",
+            "lastName": "Zanoli"
           },
           {
             "id": 837847,
             "age": 27,
             "name": "Giorgi Chakvetadze",
+            "positionId": 1000,
             "countryName": "Georgia",
             "countryCode": "GEO",
             "marketValue": 1764182,
@@ -852,77 +1211,336 @@
             "lastName": "Chakvetadze"
           },
           {
-            "id": 916710,
-            "age": 25,
-            "name": "Alessandro Zanoli",
+            "id": 818893,
+            "age": 27,
+            "name": "Nicolò Zaniolo",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 2982689,
+            "marketValue": 10086815,
             "unavailability": {
-              "injuryId": 76,
+              "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Mid October 2026"
+              "expectedReturn": "Late September 2026"
             },
-            "firstName": "Alessandro",
-            "lastName": "Zanoli"
+            "firstName": "Nicolò",
+            "lastName": "Zaniolo"
           }
-        ]
+        ],
+        "averageStarterAge": 27.8,
+        "totalStarterMarketValue": 47821587
       },
       "awayTeam": {
         "id": 8543,
         "name": "Lazio",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-3-3",
+        "starters": [
           {
-            "id": 362195,
-            "age": 31,
-            "name": "Alessio Romagnoli",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 2812730,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Alessio",
-            "lastName": "Romagnoli"
-          },
-          {
-            "id": 1020963,
+            "id": 915156,
             "age": 24,
-            "name": "Nicolò Rovella",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 19839006,
-            "unavailability": {
-              "injuryId": 101,
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
+            "name": "Christos Mandas",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "35",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.2
             },
-            "firstName": "Nicolò",
-            "lastName": "Rovella"
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.2,
+              "width": 1
+            },
+            "marketValue": 6468667,
+            "firstName": "Christos",
+            "lastName": "Mandas",
+            "rankings": null
           },
           {
-            "id": 1091907,
-            "age": 25,
-            "name": "Fisayo Dele-Bashiru",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
-            "marketValue": 4898412,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
+            "id": 1307957,
+            "age": 23,
+            "name": "Romano Floriani Mussolini",
+            "positionId": 32,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "15",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.257
             },
-            "firstName": "Fisayo",
-            "lastName": "Dele-Bashiru"
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 2223828,
+            "firstName": "Romano Floriani",
+            "lastName": "Mussolini",
+            "rankings": null
           },
+          {
+            "id": 724196,
+            "age": 28,
+            "name": "Danilho Doekhi",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 9656689,
+            "firstName": "Danilho",
+            "lastName": "Doekhi",
+            "rankings": null
+          },
+          {
+            "id": 1333331,
+            "age": 23,
+            "name": "Oliver Provstgaard",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "25",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 5319447,
+            "firstName": "Oliver",
+            "lastName": "Provstgaard",
+            "rankings": null
+          },
+          {
+            "id": 957118,
+            "age": 26,
+            "name": "Nuno Tavares",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "17",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 13269112,
+            "firstName": "Nuno",
+            "lastName": "Tavares",
+            "rankings": null
+          },
+          {
+            "id": 815431,
+            "age": 26,
+            "name": "Davide Frattesi",
+            "positionId": 73,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "16",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 23093006,
+            "firstName": "Davide",
+            "lastName": "Frattesi",
+            "rankings": null
+          },
+          {
+            "id": 1388071,
+            "age": 22,
+            "name": "Reda Belahyane",
+            "positionId": 75,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "21",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 9191846,
+            "firstName": "Reda",
+            "lastName": "Belahyane",
+            "rankings": null
+          },
+          {
+            "id": 970565,
+            "age": 24,
+            "name": "Kenneth Taylor",
+            "positionId": 77,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "24",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 17489297,
+            "firstName": "Kenneth",
+            "lastName": "Taylor",
+            "rankings": null
+          },
+          {
+            "id": 1146500,
+            "age": 24,
+            "name": "Matteo Cancellieri",
+            "positionId": 103,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "22",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 3199304,
+            "firstName": "Matteo",
+            "lastName": "Cancellieri",
+            "rankings": null
+          },
+          {
+            "id": 972120,
+            "age": 29,
+            "name": "Boulaye Dia",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 7148666,
+            "firstName": "Boulaye",
+            "lastName": "Dia",
+            "rankings": null
+          },
+          {
+            "id": 541555,
+            "age": 31,
+            "name": "Mattia Zaccagni",
+            "positionId": 107,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 11794278,
+            "firstName": "Mattia",
+            "lastName": "Zaccagni",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 30721,
+          "age": 48,
+          "name": "Gennaro Gattuso",
+          "countryName": "Italy",
+          "countryCode": "ITA",
+          "firstName": "Gennaro",
+          "lastName": "Gattuso",
+          "primaryTeamId": 8543,
+          "primaryTeamName": "Lazio",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 478447,
             "age": 33,
             "name": "Adam Marusic",
+            "positionId": 1000,
             "countryName": "Montenegro",
             "countryCode": "MNE",
             "marketValue": 2137959,
@@ -935,24 +1553,10 @@
             "lastName": "Marusic"
           },
           {
-            "id": 362120,
-            "age": 32,
-            "name": "Danilo Cataldi",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 2012110,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Danilo",
-            "lastName": "Cataldi"
-          },
-          {
             "id": 807148,
             "age": 27,
             "name": "Luca Pellegrini",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 2151065,
@@ -965,9 +1569,58 @@
             "lastName": "Pellegrini"
           },
           {
+            "id": 362120,
+            "age": 32,
+            "name": "Danilo Cataldi",
+            "positionId": 1000,
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2012110,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Danilo",
+            "lastName": "Cataldi"
+          },
+          {
+            "id": 1091907,
+            "age": 25,
+            "name": "Fisayo Dele-Bashiru",
+            "positionId": 1000,
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 4898412,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Fisayo",
+            "lastName": "Dele-Bashiru"
+          },
+          {
+            "id": 1020963,
+            "age": 24,
+            "name": "Nicolò Rovella",
+            "positionId": 1000,
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 19839006,
+            "unavailability": {
+              "injuryId": 101,
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Nicolò",
+            "lastName": "Rovella"
+          },
+          {
             "id": 358149,
             "age": 33,
             "name": "Patric",
+            "positionId": 1000,
             "countryName": "Spain",
             "countryCode": "ESP",
             "marketValue": 953726,
@@ -979,7 +1632,9 @@
             "firstName": "",
             "lastName": "Patric"
           }
-        ]
+        ],
+        "averageStarterAge": 26,
+        "totalStarterMarketValue": 108854140
       }
     },
     "hasPlayoff": false,

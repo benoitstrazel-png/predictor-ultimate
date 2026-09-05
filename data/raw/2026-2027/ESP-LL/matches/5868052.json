@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943_xsmall.png",
-            "linkToMatch": "/matches/sassuolo-vs-celta-vigo/2mw57d#5900325",
-            "date": {
-              "utcTime": "2026-08-05T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7943/overview/sassuolo",
-            "tooltipText": {
-              "utcTime": "2026-08-05T18:00:00.000Z",
-              "homeTeam": "Sassuolo",
-              "homeTeamId": 7943,
-              "homeScore": "1",
-              "awayTeam": "Celta Vigo",
-              "awayTeamId": 9910,
-              "awayScore": "4"
-            },
-            "score": "1 - 4",
-            "home": {
-              "id": "7943",
-              "name": "Sassuolo",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9910",
-              "name": "Celta Vigo",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8315",
               "name": "Athletic Club",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560_xsmall.png",
+            "linkToMatch": "/matches/real-sociedad-vs-celta-vigo/2tkbrv#5868070",
+            "date": {
+              "utcTime": "2026-09-03T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8560/overview/real-sociedad",
+            "tooltipText": {
+              "utcTime": "2026-09-03T19:00:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "0",
+              "awayTeam": "Celta Vigo",
+              "awayTeamId": 9910,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9910",
+              "name": "Celta Vigo",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "1",
-                "2",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Celta Vigo have 1W, 2D, 2L in five matches while Málaga have 1W, 2D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Celta Vigo haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -518,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Celta Vigo haven't won a match in 4 attempts."
+              "defaultText": "Celta Vigo haven't won a match in 5 attempts."
             }
           ]
         },
@@ -551,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 2,
               "name": null,
               "type": "integer"
             },
@@ -561,61 +555,41 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 2 goals in their last 5 matches",
           "color": "#67ade0"
         },
         {
-          "type": "player",
-          "playerId": 1272740,
+          "type": "team",
+          "playerId": null,
           "teamId": 9910,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 1272740,
-              "name": "Williot Swedberg",
-              "type": "player"
-            },
-            {
-              "value": 9910,
-              "name": "Celta Vigo",
-              "type": "team"
-            },
-            {
-              "value": 1.2,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Williot Swedberg has the most shots on target per match for Celta Vigo (1.2)",
-          "color": "#67ade0"
-        },
-        {
-          "type": "player",
-          "playerId": 1359911,
-          "teamId": 9910,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1359911,
-              "name": "Miguel Román",
-              "type": "player"
-            },
-            {
-              "value": 9910,
-              "name": "Celta Vigo",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Miguel Román has created the most big chances for Celta Vigo (1)",
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#67ade0"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9910,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 5 attempts",
           "color": "#67ade0"
         },
         {
@@ -703,18 +677,18 @@
       }
     },
     "weather": {
-      "temperature": 24,
-      "windSpeed": 3,
-      "windDirectionCardinal": "NW",
-      "iconCode": 34,
-      "relativeHumidity": 67,
-      "precipChance": 7,
+      "temperature": 27,
+      "windSpeed": 2,
+      "windDirectionCardinal": "NNW",
+      "iconCode": 32,
+      "relativeHumidity": 55,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 27,
-      "description": "Mostly Sunny",
+      "cloudCover": 9,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T08:00:14Z",
+      "lastUpdated": "2026-09-05T08:00:30Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -728,6 +702,18 @@
         "id": 9910,
         "name": "Celta Vigo",
         "unavailable": [
+          {
+            "id": 671686,
+            "name": "Aleix Febas",
+            "unavailability": {
+              "injuryId": 77,
+              "lastUpdated": "2026-09-02T17:37:02Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Aleix",
+            "lastName": "Febas"
+          },
           {
             "id": 609505,
             "name": "Borja Iglesias",
@@ -746,18 +732,6 @@
         "id": 9864,
         "name": "Málaga",
         "unavailable": [
-          {
-            "id": 1317624,
-            "name": "Dani Lorenzo",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-09-01T12:37:17Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Dani",
-            "lastName": "Lorenzo"
-          },
           {
             "id": 1288506,
             "name": "Moussa Diarra",

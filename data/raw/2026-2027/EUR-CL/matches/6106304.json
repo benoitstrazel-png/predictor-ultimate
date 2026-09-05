@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -552,7 +553,45 @@
         }
       ],
       "countryCode": "INT-2",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/42/6106304/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -571,59 +610,84 @@
     "weather": {
       "temperature": 17,
       "windSpeed": 3,
-      "windDirectionCardinal": "W",
+      "windDirectionCardinal": "SW",
       "iconCode": 28,
-      "relativeHumidity": 67,
-      "precipChance": 24,
+      "relativeHumidity": 64,
+      "precipChance": 10,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 62,
+      "cloudCover": 75,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T08:00:18Z",
+      "lastUpdated": "2026-09-05T08:00:36Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 6106304,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8640,
         "name": "PSV Eindhoven",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 873556,
+            "age": 27,
+            "name": "Mauro Júnior",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 12196668,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Early September 2026",
+              "expectedReturnDate": "2026-09-10T18:45:00Z"
+            },
+            "firstName": "Mauro",
+            "lastName": "Júnior"
+          },
+          {
             "id": 294859,
+            "age": 33,
             "name": "Alassane Pléa",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1589221,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-09-01T16:07:29Z",
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "About a week"
             },
             "firstName": "Alassane",
             "lastName": "Pléa"
           },
           {
             "id": 1393117,
+            "age": 21,
             "name": "Sami Ouaissa",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 8540500,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-01T16:06:46Z",
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "About a week"
             },
             "firstName": "Sami",
             "lastName": "Ouaissa"
           },
           {
             "id": 772104,
+            "age": 29,
             "name": "Jerdy Schouten",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 16291257,
             "unavailability": {
               "injuryId": 71,
-              "lastUpdated": "2026-08-29T10:13:52Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
@@ -635,7 +699,8 @@
       "awayTeam": {
         "id": 9728,
         "name": "Shakhtar Donetsk",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       }
     },
     "hasPlayoff": false,

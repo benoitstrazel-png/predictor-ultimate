@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6379_xsmall.png",
-            "linkToMatch": "/matches/paris-fc-vs-vfb-stuttgart/2aiirz#5900268",
-            "date": {
-              "utcTime": "2026-08-01T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6379/overview/paris-fc",
-            "tooltipText": {
-              "utcTime": "2026-08-01T13:00:00.000Z",
-              "homeTeam": "VfB Stuttgart",
-              "homeTeamId": 10269,
-              "homeScore": "2",
-              "awayTeam": "Paris FC",
-              "awayTeamId": 6379,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "10269",
-              "name": "VfB Stuttgart",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6379",
-              "name": "Paris FC",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "VfB Stuttgart",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8722_xsmall.png",
+            "linkToMatch": "/matches/1-fc-koln-vs-vfb-stuttgart/2zdgu2#5881159",
+            "date": {
+              "utcTime": "2026-09-04T18:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8722/overview/1-fc-koln",
+            "tooltipText": {
+              "utcTime": "2026-09-04T18:30:00.000Z",
+              "homeTeam": "VfB Stuttgart",
+              "homeTeamId": 10269,
+              "homeScore": "4",
+              "awayTeam": "1. FC Köln",
+              "awayTeamId": 8722,
+              "awayScore": "1"
+            },
+            "score": "4 - 1",
+            "home": {
+              "id": "10269",
+              "name": "VfB Stuttgart",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8722",
+              "name": "1. FC Köln",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -484,14 +484,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "6",
-                "5"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored 6 goals in their last 3 matches, while VfB Stuttgart have scored 5."
+              "defaultText": "VfB Stuttgart have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -514,7 +512,7 @@
                 "home_team",
                 "away_team",
                 "9",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hoffenheim haven't drawn in their last 9 matches and VfB Stuttgart in their last 4."
+              "defaultText": "Hoffenheim haven't drawn in their last 9 matches and VfB Stuttgart in their last 5."
             }
           ]
         },
@@ -613,7 +611,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -623,7 +621,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#D30029"
         },
         {
@@ -667,9 +665,9 @@
           "type": "player",
           "playerId": 614384,
           "teamId": 10269,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
               "value": 614384,
@@ -677,17 +675,17 @@
               "type": "player"
             },
             {
-              "value": 10269,
-              "name": "VfB Stuttgart",
-              "type": "team"
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 1,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Maximilian Mittelstädt has created the most big chances for VfB Stuttgart (1)",
+          "text": "Maximilian Mittelstädt is ranked 2 in big chances created in the competition (3)",
           "color": "#D30029"
         }
       ],
@@ -709,20 +707,20 @@
       }
     },
     "weather": {
-      "temperature": 21,
-      "windSpeed": 3,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 28,
-      "relativeHumidity": 49,
-      "precipChance": 20,
+      "temperature": 20,
+      "windSpeed": 5,
+      "windDirectionCardinal": "W",
+      "iconCode": 30,
+      "relativeHumidity": 56,
+      "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 69,
-      "description": "Mostly Cloudy",
+      "cloudCover": 59,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T04:00:33Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-09-05T04:00:29Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5881166,
@@ -734,6 +732,18 @@
         "id": 8226,
         "name": "Hoffenheim",
         "unavailable": [
+          {
+            "id": 637716,
+            "name": "Bernardo",
+            "unavailability": {
+              "injuryId": 6,
+              "lastUpdated": "2026-09-05T14:35:58Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "",
+            "lastName": "Bernardo"
+          },
           {
             "id": 1027194,
             "name": "Alexander Prass",
@@ -765,6 +775,18 @@
         "name": "VfB Stuttgart",
         "unavailable": [
           {
+            "id": 1164506,
+            "name": "Tiago Tomás",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-09-03T14:58:27Z",
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Tiago",
+            "lastName": "Tomás"
+          },
+          {
             "id": 1270002,
             "name": "Luca Jaquez",
             "unavailability": {
@@ -777,18 +799,6 @@
             "lastName": "Jaquez"
           },
           {
-            "id": 892679,
-            "name": "Chris Führich",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-08-22T18:54:10Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Chris",
-            "lastName": "Führich"
-          },
-          {
             "id": 869298,
             "name": "Nikolas Nartey",
             "unavailability": {
@@ -799,18 +809,6 @@
             },
             "firstName": "Nikolas",
             "lastName": "Nartey"
-          },
-          {
-            "id": 1418122,
-            "name": "Jeremy Arévalo",
-            "unavailability": {
-              "injuryId": 45,
-              "lastUpdated": "2026-08-26T18:23:04Z",
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
-            },
-            "firstName": "Jeremy",
-            "lastName": "Arévalo"
           },
           {
             "id": 852347,
@@ -859,18 +857,6 @@
             },
             "firstName": "Justin",
             "lastName": "Diehl"
-          },
-          {
-            "id": 1425998,
-            "name": "Leo Sauer",
-            "unavailability": {
-              "injuryId": 42,
-              "lastUpdated": "2026-09-01T12:25:19Z",
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
-            },
-            "firstName": "Leo",
-            "lastName": "Sauer"
           }
         ]
       }

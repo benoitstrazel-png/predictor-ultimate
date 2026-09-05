@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8722_xsmall.png",
-            "linkToMatch": "/matches/real-sociedad-vs-1-fc-koln/2gx42d#5900427",
-            "date": {
-              "utcTime": "2026-08-08T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8722/overview/1-fc-koln",
-            "tooltipText": {
-              "utcTime": "2026-08-08T13:30:00.000Z",
-              "homeTeam": "1. FC Köln",
-              "homeTeamId": 8722,
-              "homeScore": "2",
-              "awayTeam": "Real Sociedad",
-              "awayTeamId": 8560,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8722",
-              "name": "1. FC Köln",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455_xsmall.png",
             "linkToMatch": "/matches/chelsea-vs-real-sociedad/2e6yxg#5958679",
             "date": {
@@ -269,6 +239,36 @@
             "away": {
               "id": "8558",
               "name": "Espanyol",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910_xsmall.png",
+            "linkToMatch": "/matches/real-sociedad-vs-celta-vigo/2tkbrv#5868070",
+            "date": {
+              "utcTime": "2026-09-03T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9910/overview/celta-vigo",
+            "tooltipText": {
+              "utcTime": "2026-09-03T19:00:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "0",
+              "awayTeam": "Celta Vigo",
+              "awayTeamId": 9910,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9910",
+              "name": "Celta Vigo",
               "isOurTeam": false
             }
           }
@@ -462,11 +462,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "3"
+                "away_team",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored in their last 3 home matches."
+              "defaultText": "Atlético Madrid have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
@@ -507,11 +507,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "8"
+                "1",
+                "1",
+                "3",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Sociedad haven't drawn in their last 8 matches."
+              "defaultText": "Real Sociedad have 1W, 1D, 3L in five matches while Atlético Madrid have 3W, 1D, 1L."
             }
           ]
         },
@@ -544,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -554,24 +560,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
-          "color": "#0056B3"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8560,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 18,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 18 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#0056B3"
         },
         {
@@ -588,17 +577,44 @@
               "type": "player"
             },
             {
-              "value": 1,
+              "value": 3,
               "name": null,
               "type": "ordinal"
             },
             {
-              "value": 5,
+              "value": 4.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Alex Remiro is ranked 1 in saves per match in the competition (5)",
+          "text": "Alex Remiro is ranked 3 in saves per match in the competition (4.3)",
+          "color": "#0056B3"
+        },
+        {
+          "type": "player",
+          "playerId": 678234,
+          "teamId": 8560,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 678234,
+              "name": "Mikel Oyarzabal",
+              "type": "player"
+            },
+            {
+              "value": 8560,
+              "name": "Real Sociedad",
+              "type": "team"
+            },
+            {
+              "value": 1.3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Mikel Oyarzabal has the most shots on target per match for Real Sociedad (1.3)",
           "color": "#0056B3"
         },
         {
@@ -676,20 +692,20 @@
       }
     },
     "weather": {
-      "temperature": 22,
-      "windSpeed": 2,
-      "windDirectionCardinal": "NNW",
-      "iconCode": 27,
+      "temperature": 20,
+      "windSpeed": 1,
+      "windDirectionCardinal": "N",
+      "iconCode": 29,
       "relativeHumidity": 77,
-      "precipChance": 17,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 60,
-      "description": "Mostly Cloudy",
+      "cloudCover": 46,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-02T08:00:14Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-09-05T08:00:30Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5868058,
@@ -702,23 +718,23 @@
         "name": "Real Sociedad",
         "unavailable": [
           {
-            "id": 616539,
-            "name": "Alex Remiro",
+            "id": 1112072,
+            "name": "Jon Pacheco",
             "unavailability": {
-              "injuryId": 32,
-              "lastUpdated": "2026-08-31T11:25:24Z",
+              "injuryId": 6,
+              "lastUpdated": "2026-09-02T17:34:50Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Unknown"
             },
-            "firstName": "Alex",
-            "lastName": "Remiro"
+            "firstName": "Jon",
+            "lastName": "Pacheco"
           },
           {
             "id": 1293912,
             "name": "Pablo Marín",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-31T22:04:17Z",
+              "lastUpdated": "2026-09-02T17:35:40Z",
               "type": "injury",
               "expectedReturn": "Mid September 2027"
             },
