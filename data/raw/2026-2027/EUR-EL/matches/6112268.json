@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8464_xsmall.png",
-            "linkToMatch": "/matches/nec-nijmegen-vs-olympiacos/2f2s5j#5954868",
-            "date": {
-              "utcTime": "2026-08-04T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8464/overview/nec-nijmegen",
-            "tooltipText": {
-              "utcTime": "2026-08-04T18:00:00.000Z",
-              "homeTeam": "Olympiacos",
-              "homeTeamId": 8638,
-              "homeScore": "0",
-              "awayTeam": "NEC Nijmegen",
-              "awayTeamId": 8464,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8638",
-              "name": "Olympiacos",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8464",
-              "name": "NEC Nijmegen",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8464_xsmall.png",
@@ -263,6 +233,36 @@
             "home": {
               "id": "8120",
               "name": "AE Larissa",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8638",
+              "name": "Olympiacos",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/885256_xsmall.png",
+            "linkToMatch": "/matches/olympiacos-vs-nfc-volos/53jem64d#5943245",
+            "date": {
+              "utcTime": "2026-09-05T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/885256/overview/nfc-volos",
+            "tooltipText": {
+              "utcTime": "2026-09-05T16:00:00.000Z",
+              "homeTeam": "NFC Volos",
+              "homeTeamId": 885256,
+              "homeScore": "1",
+              "awayTeam": "Olympiacos",
+              "awayTeamId": 8638,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "885256",
+              "name": "NFC Volos",
               "isOurTeam": false
             },
             "away": {
@@ -438,17 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,8 +454,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Olympiacos have 3W, 1D, 1L in five matches while Jagiellonia Białystok have 3W, 1D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Olympiacos haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -471,7 +465,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4",
+                "5",
                 "away_team",
                 "5"
               ],
@@ -484,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Olympiacos have scored in their last 4 matches and Jagiellonia Białystok have scored in their last 5 matches."
+              "defaultText": "Olympiacos have scored in their last 5 matches and Jagiellonia Białystok have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -512,12 +506,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -531,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Olympiacos haven't drawn in their last 4 matches and Jagiellonia Białystok in their last 4."
+              "defaultText": "Jagiellonia Białystok haven't drawn in their last 4 matches."
             }
           ]
         },

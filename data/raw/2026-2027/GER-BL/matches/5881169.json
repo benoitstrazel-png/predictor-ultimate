@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8253_xsmall.png",
-            "linkToMatch": "/matches/hessen-kassel-vs-schalke-04/2t97qs#5765865",
-            "date": {
-              "utcTime": "2026-08-01T12:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8253/overview/hessen-kassel",
-            "tooltipText": {
-              "utcTime": "2026-08-01T12:00:00.000Z",
-              "homeTeam": "Hessen Kassel",
-              "homeTeamId": 8253,
-              "homeScore": "0",
-              "awayTeam": "Schalke 04",
-              "awayTeamId": 10189,
-              "awayScore": "5"
-            },
-            "score": "0 - 5",
-            "home": {
-              "id": "8253",
-              "name": "Hessen Kassel",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10189",
-              "name": "Schalke 04",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524_xsmall.png",
@@ -424,6 +394,36 @@
               "name": "Schalke 04",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823_xsmall.png",
+            "linkToMatch": "/matches/bayern-munchen-vs-schalke-04/3b89j1#5881158",
+            "date": {
+              "utcTime": "2026-09-05T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9823/overview/bayern-munchen",
+            "tooltipText": {
+              "utcTime": "2026-09-05T16:30:00.000Z",
+              "homeTeam": "Schalke 04",
+              "homeTeamId": 10189,
+              "homeScore": "0",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10189",
+              "name": "Schalke 04",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -490,14 +490,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "7",
-                "5"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Union Berlin have scored 7 goals in their last 3 matches, while Schalke 04 have scored 5."
+              "defaultText": "Union Berlin have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -627,7 +625,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -637,7 +635,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
+          "color": "#083890"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10189,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#083890"
         },
         {
@@ -659,39 +674,12 @@
               "type": "ordinal"
             },
             {
-              "value": 10,
+              "value": 15,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Loris Karius is ranked 1 in saves per match in the competition (10)",
-          "color": "#083890"
-        },
-        {
-          "type": "player",
-          "playerId": 860056,
-          "teamId": 10189,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 860056,
-              "name": "Moussa Sylla",
-              "type": "player"
-            },
-            {
-              "value": 10189,
-              "name": "Schalke 04",
-              "type": "team"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Moussa Sylla has the most shots on target per match for Schalke 04 (2)",
+          "text": "Loris Karius is ranked 1 in saves per match in the competition (15)",
           "color": "#083890"
         }
       ],

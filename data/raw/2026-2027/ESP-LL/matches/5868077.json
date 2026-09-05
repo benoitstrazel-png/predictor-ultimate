@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9986_xsmall.png",
-            "linkToMatch": "/matches/rayo-vallecano-vs-sporting-charleroi/2sbc4k#5900424",
-            "date": {
-              "utcTime": "2026-08-01T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9986/overview/sporting-charleroi",
-            "tooltipText": {
-              "utcTime": "2026-08-01T17:00:00.000Z",
-              "homeTeam": "Sporting Charleroi",
-              "homeTeamId": 9986,
-              "homeScore": "2",
-              "awayTeam": "Rayo Vallecano",
-              "awayTeamId": 8370,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "9986",
-              "name": "Sporting Charleroi",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8370",
-              "name": "Rayo Vallecano",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9902_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Rayo Vallecano",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8696_xsmall.png",
+            "linkToMatch": "/matches/rayo-vallecano-vs-racing-santander/2eplmn#5868048",
+            "date": {
+              "utcTime": "2026-09-05T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8696/overview/racing-santander",
+            "tooltipText": {
+              "utcTime": "2026-09-05T16:30:00.000Z",
+              "homeTeam": "Rayo Vallecano",
+              "homeTeamId": 8370,
+              "homeScore": "3",
+              "awayTeam": "Racing Santander",
+              "awayTeamId": 8696,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "8370",
+              "name": "Rayo Vallecano",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8696",
+              "name": "Racing Santander",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -465,13 +465,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,19 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Osasuna have an average of 1 goals in their last three matches and Rayo Vallecano have an average of 1.33."
+              "defaultText": "Osasuna have scored 3 goals in their last 3 matches, while Rayo Vallecano have scored 6."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,17 +507,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Osasuna have an average of 1 goals in their last three matches and Rayo Vallecano have an average of 1.33."
+              "defaultText": "Osasuna have scored 3 goals in their last 3 matches, while Rayo Vallecano have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "4"
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,8 +535,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Rayo Vallecano haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Osasuna have 3W, 1D, 1L in five matches while Rayo Vallecano have 1W, 1D, 3L."
             }
           ]
         },
@@ -645,20 +653,25 @@
           "color": "#EB3A32"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 980422,
           "teamId": 8370,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 9,
+              "value": 980422,
+              "name": "Sergio Camello",
+              "type": "player"
+            },
+            {
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Sergio Camello is the competition's top scorer (5)",
           "color": "#EB3A32"
         }
       ],

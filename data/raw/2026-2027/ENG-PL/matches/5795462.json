@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9810_xsmall.png",
-            "linkToMatch": "/matches/hull-city-vs-eintracht-frankfurt/2tn3h9#5952840",
-            "date": {
-              "utcTime": "2026-08-08T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9810/overview/eintracht-frankfurt",
-            "tooltipText": {
-              "utcTime": "2026-08-08T13:00:00.000Z",
-              "homeTeam": "Eintracht Frankfurt",
-              "homeTeamId": 9810,
-              "homeScore": "2",
-              "awayTeam": "Hull City",
-              "awayTeamId": 8667,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9810",
-              "name": "Eintracht Frankfurt",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8667",
-              "name": "Hull City",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Hull City",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252_xsmall.png",
+            "linkToMatch": "/matches/hull-city-vs-aston-villa/2yk7pj#5795440",
+            "date": {
+              "utcTime": "2026-09-05T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10252/overview/aston-villa",
+            "tooltipText": {
+              "utcTime": "2026-09-05T16:30:00.000Z",
+              "homeTeam": "Hull City",
+              "homeTeamId": 8667,
+              "homeScore": "0",
+              "awayTeam": "Aston Villa",
+              "awayTeamId": 10252,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8667",
+              "name": "Hull City",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,10 +439,9 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} and {1} haven't lost their {2} last games.",
-              "TextTemplateId": "undefeated_both_equal",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
                 "away_team",
                 "4"
               ],
@@ -457,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Newcastle United and Hull City haven't lost their 4 last games."
+              "defaultText": "Hull City haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -467,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Newcastle United have scored in their last 6 home matches."
+              "defaultText": "Newcastle United have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -513,8 +512,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "2",
                 "1",
+                "2",
                 "away_team",
                 "3",
                 "1",
@@ -531,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Newcastle United have 2W, 2D, 1L in five matches while Hull City have 3W, 1D, 1L."
+              "defaultText": "Newcastle United have 2W, 1D, 2L in five matches while Hull City have 3W, 1D, 1L."
             }
           ]
         },
@@ -593,29 +592,29 @@
         },
         {
           "type": "player",
-          "playerId": 1186978,
+          "playerId": 1197655,
           "teamId": 10261,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1186978,
-              "name": "Lukás Hornícek",
+              "value": 1197655,
+              "name": "Lewis Hall",
               "type": "player"
+            },
+            {
+              "value": 10261,
+              "name": "Newcastle United",
+              "type": "team"
             },
             {
               "value": 1,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
-              "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Lukás Hornícek is ranked 1 in saves per match in the competition (4.3)",
+          "text": "Lewis Hall has created the most big chances for Newcastle United (1)",
           "color": "#141413"
         },
         {
@@ -641,57 +640,47 @@
           "color": "#ED8B00"
         },
         {
-          "type": "player",
-          "playerId": 1231090,
+          "type": "team",
+          "playerId": null,
           "teamId": 8667,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 1231090,
-              "name": "Mohamed Belloumi",
-              "type": "player"
-            },
-            {
-              "value": 8667,
-              "name": "Hull City",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Mohamed Belloumi has created the most big chances for Hull City (1)",
+          "text": "Haven't lost in 5 matches",
           "color": "#ED8B00"
         },
         {
           "type": "player",
-          "playerId": 1428427,
+          "playerId": 1072068,
           "teamId": 8667,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 1428427,
-              "name": "Nobel Mendy",
+              "value": 1072068,
+              "name": "Konstantinos Tzolakis",
               "type": "player"
             },
             {
-              "value": 8667,
-              "name": "Hull City",
-              "type": "team"
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 1.5,
+              "value": 4.5,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Nobel Mendy has the most shots on target per match for Hull City (1.5)",
+          "text": "Konstantinos Tzolakis is ranked 2 in saves per match in the competition (4.5)",
           "color": "#ED8B00"
         }
       ],

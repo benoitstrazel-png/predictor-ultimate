@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475_xsmall.png",
-            "linkToMatch": "/matches/bayern-munchen-vs-rb-leipzig/856w9cm#5765862",
-            "date": {
-              "utcTime": "2026-08-15T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
-            "tooltipText": {
-              "utcTime": "2026-08-15T13:30:00.000Z",
-              "homeTeam": "Bayern München",
-              "homeTeamId": 9823,
-              "homeScore": "3",
-              "awayTeam": "RB Leipzig",
-              "awayTeamId": 178475,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "9823",
-              "name": "Bayern München",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/94937_xsmall.png",
             "linkToMatch": "/matches/bayern-munchen-vs-fc-heidenheim/2ir1tzv#6000509",
             "date": {
@@ -264,6 +234,36 @@
             "home": {
               "id": "9775",
               "name": "VfL Osnabrück",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10189_xsmall.png",
+            "linkToMatch": "/matches/bayern-munchen-vs-schalke-04/3b89j1#5881158",
+            "date": {
+              "utcTime": "2026-09-05T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10189/overview/schalke-04",
+            "tooltipText": {
+              "utcTime": "2026-09-05T16:30:00.000Z",
+              "homeTeam": "Schalke 04",
+              "homeTeamId": 10189,
+              "homeScore": "0",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10189",
+              "name": "Schalke 04",
               "isOurTeam": false
             },
             "away": {
@@ -465,11 +465,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "12",
+                "away_team",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayern München have scored in their last 6 home matches."
+              "defaultText": "Bayern München have scored in their last 12 matches and Union Berlin have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
@@ -545,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 18,
+              "value": 15,
               "name": null,
               "type": "integer"
             },
@@ -555,7 +557,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 18 goals in their last 5 matches",
+          "text": "Have scored 15 goals in their last 5 matches",
           "color": "#C60428"
         },
         {
@@ -596,20 +598,30 @@
           "color": "#C60428"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 460632,
           "teamId": 9823,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 7,
+              "value": 460632,
+              "name": "Joshua Kimmich",
+              "type": "player"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Joshua Kimmich is ranked 2 in big chances created in the competition (4)",
           "color": "#C60428"
         },
         {
@@ -653,15 +665,15 @@
         },
         {
           "type": "player",
-          "playerId": 622373,
+          "playerId": 1199947,
           "teamId": 8149,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 622373,
-              "name": "Josip Juranovic",
+              "value": 1199947,
+              "name": "Leopold Querfeld",
               "type": "player"
             },
             {
@@ -672,10 +684,10 @@
             {
               "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Josip Juranovic has created the most big chances for Union Berlin (1)",
+          "text": "Leopold Querfeld has the most shots on target per match for Union Berlin (1)",
           "color": "#E30613"
         }
       ],
