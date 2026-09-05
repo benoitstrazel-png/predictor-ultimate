@@ -278,36 +278,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8581_xsmall.png",
-            "linkToMatch": "/matches/levante-vs-villarreal/2x2gvs#5987732",
-            "date": {
-              "utcTime": "2026-08-05T08:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8581/overview/levante",
-            "tooltipText": {
-              "utcTime": "2026-08-05T08:00:00.000Z",
-              "homeTeam": "Villarreal",
-              "homeTeamId": 10205,
-              "homeScore": "1",
-              "awayTeam": "Levante",
-              "awayTeamId": 8581,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "10205",
-              "name": "Villarreal",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8581",
-              "name": "Levante",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8637_xsmall.png",
             "linkToMatch": "/matches/galatasaray-vs-villarreal/2xp1wc#5900327",
             "date": {
@@ -424,6 +394,36 @@
               "name": "Villarreal",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783_xsmall.png",
+            "linkToMatch": "/matches/deportivo-coruna-vs-villarreal/3axz49#5868050",
+            "date": {
+              "utcTime": "2026-09-05T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
+            "tooltipText": {
+              "utcTime": "2026-09-05T19:00:00.000Z",
+              "homeTeam": "Villarreal",
+              "homeTeamId": 10205,
+              "homeScore": "2",
+              "awayTeam": "Deportivo A Coruña",
+              "awayTeamId": 9783,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "10205",
+              "name": "Villarreal",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9783",
+              "name": "Deportivo A Coruña",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -444,9 +444,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "2",
                 "2",
@@ -463,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Borussia Dortmund have 3W, 1D, 1L in five matches while Villarreal have 2W, 2D, 1L."
+              "defaultText": "Borussia Dortmund have 2W, 1D, 2L in five matches while Villarreal have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
@@ -494,7 +494,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "10",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -506,17 +506,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Dortmund have scored 10 goals in their last 3 matches."
+              "defaultText": "Borussia Dortmund have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Borussia Dortmund haven't drawn in their last 4 matches."
+              "defaultText": "Borussia Dortmund have 2W, 1D, 2L in five matches while Villarreal have 2W, 2D, 1L."
             }
           ]
         },
@@ -539,6 +545,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#e19d00"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -595,18 +620,18 @@
       }
     },
     "weather": {
-      "temperature": 15,
+      "temperature": 16,
       "windSpeed": 3,
       "windDirectionCardinal": "SW",
       "iconCode": 11,
-      "relativeHumidity": 85,
-      "precipChance": 47,
-      "precipitation": 0.3,
+      "relativeHumidity": 81,
+      "precipChance": 37,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 81,
-      "description": "Showers",
+      "cloudCover": 98,
+      "description": "Light Rain",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-05T08:00:36Z",
+      "lastUpdated": "2026-09-05T20:00:19Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },

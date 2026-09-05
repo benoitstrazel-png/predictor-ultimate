@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "6"
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,21 +460,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Torreense haven't won a match in 6 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Lillestrøm have 3W, 1D, 1L in five matches while Torreense have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "6",
-                "4"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lillestrøm have scored 6 goals in their last 3 matches, while Torreense have scored 4."
+              "defaultText": "Torreense have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
@@ -509,11 +512,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
-                "6"
+                "home_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,8 +528,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Torreense haven't won a match in 6 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Lillestrøm haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -554,18 +557,18 @@
       }
     },
     "weather": {
-      "temperature": 12,
+      "temperature": 11,
       "windSpeed": 3,
       "windDirectionCardinal": "SW",
       "iconCode": 27,
       "relativeHumidity": 70,
-      "precipChance": 21,
+      "precipChance": 18,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 63,
+      "cloudCover": 61,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-05T09:00:30Z",
+      "lastUpdated": "2026-09-05T21:00:22Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },

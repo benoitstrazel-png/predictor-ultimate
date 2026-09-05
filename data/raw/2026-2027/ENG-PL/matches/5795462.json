@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Hull City haven't lost in 4 matches."
+              "defaultText": "Newcastle United haven't lost in their last 4 matches, and Hull City in their last 5."
             },
             {
               "OddsType": "bts",
@@ -466,7 +468,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Newcastle United have scored in their last 5 home matches."
+              "defaultText": "Newcastle United have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +492,7 @@
                 "away_team",
                 "3",
                 "7",
-                "4"
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +503,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Newcastle United have scored 7 goals in their last 3 matches, while Hull City have scored 4."
+              "defaultText": "Newcastle United have scored 7 goals in their last 3 matches, while Hull City have scored 2."
             },
             {
               "OddsType": "dc",
@@ -512,12 +514,12 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "1",
                 "2",
+                "1",
                 "away_team",
                 "3",
-                "1",
-                "1"
+                "2",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Newcastle United have 2W, 1D, 2L in five matches while Hull City have 3W, 1D, 1L."
+              "defaultText": "Newcastle United have 2W, 2D, 1L in five matches while Hull City have 3W, 2D, 0L."
             }
           ]
         },
@@ -565,29 +567,29 @@
         },
         {
           "type": "player",
-          "playerId": 1050166,
+          "playerId": 1186978,
           "teamId": 10261,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 1050166,
-              "name": "Anthony Elanga",
+              "value": 1186978,
+              "name": "Lukás Hornícek",
               "type": "player"
             },
             {
-              "value": 10261,
-              "name": "Newcastle United",
-              "type": "team"
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 1.1,
+              "value": 4.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Anthony Elanga has the most shots on target per match for Newcastle United (1.1)",
+          "text": "Lukás Hornícek is ranked 1 in saves per match in the competition (4.3)",
           "color": "#141413"
         },
         {
@@ -643,6 +645,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 8667,
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have kept the most clean sheets in the competition (3)",
+          "color": "#ED8B00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8667,
           "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
@@ -654,33 +673,6 @@
             }
           ],
           "text": "Haven't lost in 5 matches",
-          "color": "#ED8B00"
-        },
-        {
-          "type": "player",
-          "playerId": 1072068,
-          "teamId": 8667,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 1072068,
-              "name": "Konstantinos Tzolakis",
-              "type": "player"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.5,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Konstantinos Tzolakis is ranked 2 in saves per match in the competition (4.5)",
           "color": "#ED8B00"
         }
       ],

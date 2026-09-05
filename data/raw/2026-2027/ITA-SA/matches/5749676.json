@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "2",
                 "0",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Napoli have 3W, 1D, 1L in five matches while Bologna have 2W, 0D, 3L."
+              "defaultText": "Napoli have 2W, 1D, 2L in five matches while Bologna have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -472,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "9"
+                "8"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,17 +483,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Napoli have scored in their last 9 home matches."
+              "defaultText": "Napoli have scored in their last 8 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
-                "home_team",
-                "9",
+                "away_team",
                 "3"
               ],
               "DefaultLabels": [
@@ -504,17 +503,19 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Napoli have scored 9 goals in their last 3 matches."
+              "Icon": "poll_glove",
+              "defaultText": "Bologna haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -528,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bologna haven't drawn in their last 5 matches."
+              "defaultText": "Napoli haven't drawn in their last 4 matches and Bologna in their last 5."
             }
           ]
         },
@@ -590,29 +591,29 @@
         },
         {
           "type": "player",
-          "playerId": 577912,
+          "playerId": 1320863,
           "teamId": 9875,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 577912,
-              "name": "Alex Meret",
+              "value": 1320863,
+              "name": "Antonio Vergara",
               "type": "player"
+            },
+            {
+              "value": 9875,
+              "name": "Napoli",
+              "type": "team"
             },
             {
               "value": 1,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 5.5,
-              "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Alex Meret is ranked 1 in saves per match in the competition (5.5)",
+          "text": "Antonio Vergara has created the most big chances for Napoli (1)",
           "color": "#12A0D7"
         },
         {
