@@ -486,14 +486,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "4"
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +503,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Genoa have scored 4 goals in their last 3 matches, while Frosinone have scored 4."
+              "defaultText": "Genoa have an average of 0.33 goals in their last three matches and Frosinone have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -515,7 +514,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "5",
+                "6",
                 "9"
               ],
               "DefaultLabels": [
@@ -529,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Genoa haven't drawn in their last 5 matches and Frosinone in their last 9."
+              "defaultText": "Genoa haven't drawn in their last 6 matches and Frosinone in their last 9."
             }
           ]
         },
@@ -691,20 +690,20 @@
       }
     },
     "weather": {
-      "temperature": 24,
-      "windSpeed": 3,
+      "temperature": 25,
+      "windSpeed": 4,
       "windDirectionCardinal": "SSE",
-      "iconCode": 30,
-      "relativeHumidity": 67,
-      "precipChance": 1,
+      "iconCode": 32,
+      "relativeHumidity": 62,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 39,
-      "description": "Partly Cloudy",
+      "cloudCover": 14,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-04T15:00:11Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-05T03:00:05Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749672,
@@ -745,20 +744,7 @@
       "awayTeam": {
         "id": 9891,
         "name": "Frosinone",
-        "unavailable": [
-          {
-            "id": 1523327,
-            "name": "Farès Ghedjemis",
-            "unavailability": {
-              "injuryId": 101,
-              "lastUpdated": "2026-09-04T12:44:19Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Farès",
-            "lastName": "Ghedjemis"
-          }
-        ]
+        "unavailable": []
       }
     },
     "hasPlayoff": false,
