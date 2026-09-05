@@ -22,6 +22,8 @@ if sys.platform == "win32":
         pass
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 DB_PATH = os.path.join(ROOT_DIR, "predictor_v2.db")
 SQUADS_DIR = os.path.join(ROOT_DIR, "src", "data", "squads")
 MANIFEST_FILE = os.path.join(ROOT_DIR, "src", "data", "squads_manifest.json")

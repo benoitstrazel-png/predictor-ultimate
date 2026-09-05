@@ -22,6 +22,8 @@ if sys.platform == "win32":
         pass
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 DB_PATH = os.path.join(ROOT_DIR, "predictor_v2.db")
 
 def normalize_text(text):
@@ -137,6 +139,30 @@ TRANSFERS_RAW = [
         "nationality": "Belgique",
         "photo": "/assets/players/ply_diego_moreira_strasbourg.webp",
         "notes": "Ailier international belge transféré du RC Strasbourg à l'AC Milan (#22)"
+    },
+    {
+        "player_name": "Bradley Barcola",
+        "from_team": "PSG",
+        "to_team": "Liverpool",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 95000000.0,
+        "fee_display": "95.00 M€",
+        "market_value_eur": 90000000.0,
+        "market_value_display": "90.00 M€",
+        "squad_number": 11,
+        "age": 23,
+        "contract_until": "2031-06-30",
+        "preferred_foot": "Droitier",
+        "position": "LW",
+        "role": "A",
+        "birth_date": "2002-09-02",
+        "nationality": "France",
+        "photo": "/assets/players/ply_bradley_barcola_708265.webp",
+        "notes": "Ailier international français transféré du Paris Saint-Germain à Liverpool (95.00 M€)"
     },
     {
         "player_name": "Emanuel Emegha",
@@ -1630,8 +1656,12 @@ squad_files = glob.glob(os.path.join(SQUADS_DIR, "*.json"))
 
 known_keys = set()
 for t in TRANSFERS_RAW:
-    k = (normalize_text(t['player_name']), t.get('season', '2026-2027'))
-    known_keys.add(k)
+    p_norm_key = normalize_text(t['player_name'])
+    # Verrouiller le joueur pour sa saison de transfert ainsi que toutes les saisons
+    known_keys.add((p_norm_key, t.get('season', '2026-2027')))
+    # Marquer également pour les saisons suivantes afin d'éviter un faux transfert 'Club Précédent'
+    for s_item in ["2024-2025", "2025-2026", "2026-2027"]:
+        known_keys.add((p_norm_key, s_item))
 
 player_seasons = {}
 for sf in squad_files:

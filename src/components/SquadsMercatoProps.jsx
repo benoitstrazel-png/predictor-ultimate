@@ -26,12 +26,13 @@ export default function SquadsMercatoProps({ targetMatch }) {
   const [rosterSearch, setRosterSearch] = useState('');
 
   // ── ENRICHED FOCUS TRANSFERTS STATE ──
-  const [transferSeason, setTransferSeason] = useState('ALL');
+  const [transferSeason, setTransferSeason] = useState('2026-2027');
   const [transferRole, setTransferRole] = useState('ALL');
   const [transferTypeFilter, setTransferTypeFilter] = useState('ALL');
   const [transferFeeRange, setTransferFeeRange] = useState('ALL');
   const [transferSearch, setTransferSearch] = useState('');
   const [transferSort, setTransferSort] = useState('DATE_DESC');
+  const [transferDisplayLimit, setTransferDisplayLimit] = useState(36);
 
   // ── PROPS TAB STATE ──
   const [propsLeague, setPropsLeague] = useState(targetMatch?.league || 'ALL');
@@ -306,6 +307,15 @@ export default function SquadsMercatoProps({ targetMatch }) {
       return new Date(b.transfer_date) - new Date(a.transfer_date);
     });
   }, [transferSeason, transferRole, transferTypeFilter, transferFeeRange, transferSearch, transferSort]);
+
+  // Reset pagination when transfer filters change
+  React.useEffect(() => {
+    setTransferDisplayLimit(36);
+  }, [transferSeason, transferRole, transferTypeFilter, transferFeeRange, transferSearch, transferSort]);
+
+  const visibleTransfers = useMemo(() => {
+    return filteredTransfers.slice(0, transferDisplayLimit);
+  }, [filteredTransfers, transferDisplayLimit]);
 
   // Transfer KPI Metrics
   const transferStats = useMemo(() => {
@@ -1087,10 +1097,37 @@ export default function SquadsMercatoProps({ targetMatch }) {
             gridTemplateColumns: 'repeat(auto-fill, minmax(420px, 1fr))',
             gap: 16,
           }}>
-            {filteredTransfers.map((item) => (
+            {visibleTransfers.map((item) => (
               <TransferCard key={item.transfer_id} transfer={item} />
             ))}
           </div>
+
+          {/* Pagination Progressive */}
+          {visibleTransfers.length < filteredTransfers.length && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 12 }}>
+              <button
+                onClick={() => setTransferDisplayLimit(prev => prev + 36)}
+                style={{
+                  background: 'var(--obsidian-2)',
+                  border: '1px solid var(--gold-border)',
+                  color: 'var(--gold)',
+                  padding: '10px 24px',
+                  borderRadius: 12,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  transition: 'all 0.2s',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                }}
+              >
+                <span>Afficher plus de mouvements ({visibleTransfers.length} / {filteredTransfers.length})</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+          )}
 
           {filteredTransfers.length === 0 && (
             <div style={{ textAlign: 'center', padding: '40px 20px', background: 'var(--glass-primary)', borderRadius: 16, border: '1px solid var(--ivory-border)' }}>

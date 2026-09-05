@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayerAvatar from './PlayerAvatar';
+import TeamLogo from './TeamLogo';
 import { ArrowRight, DollarSign, Calendar, TrendingUp, Sparkles, CheckCircle2, Shield } from 'lucide-react';
 
 export default function TransferCard({ transfer }) {
@@ -33,7 +34,13 @@ export default function TransferCard({ transfer }) {
       {/* ── 1. EN-TÊTE : PROFIL COMPLET DU JOUEUR ── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <PlayerAvatar name={transfer.player_name} photoUrl={transfer.player_photo_url} size={48} />
+          <PlayerAvatar 
+            name={transfer.player_name} 
+            clubName={transfer.to_team_name}
+            photoUrl={transfer.player_photo_url} 
+            role={transfer.player_role}
+            size={48} 
+          />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--ivory)' }}>
@@ -89,9 +96,7 @@ export default function TransferCard({ transfer }) {
       }}>
         {/* Club Départ */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0 }}>
-          {transfer.from_team_logo && (
-            <img src={transfer.from_team_logo} alt={transfer.from_team_name} style={{ width: 34, height: 34, objectFit: 'contain' }} />
-          )}
+          <TeamLogo teamName={transfer.from_team_name} size="sm" />
           <div style={{ minWidth: 0 }}>
             <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Club Vendeur / Départ</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: '#f87171', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -118,9 +123,7 @@ export default function TransferCard({ transfer }) {
               {transfer.to_team_name}
             </div>
           </div>
-          {transfer.to_team_logo && (
-            <img src={transfer.to_team_logo} alt={transfer.to_team_name} style={{ width: 34, height: 34, objectFit: 'contain' }} />
-          )}
+          <TeamLogo teamName={transfer.to_team_name} size="sm" />
         </div>
       </div>
 
