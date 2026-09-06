@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8521_xsmall.png",
-            "linkToMatch": "/matches/venezia-vs-brest/283fn8#5900185",
-            "date": {
-              "utcTime": "2026-08-08T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8521/overview/brest",
-            "tooltipText": {
-              "utcTime": "2026-08-08T16:30:00.000Z",
-              "homeTeam": "Brest",
-              "homeTeamId": 8521,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8521",
-              "name": "Brest",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9887_xsmall.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "8600",
               "name": "Udinese",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891_xsmall.png",
+            "linkToMatch": "/matches/venezia-vs-frosinone/2m17vl#5749664",
+            "date": {
+              "utcTime": "2026-09-06T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9891/overview/frosinone",
+            "tooltipText": {
+              "utcTime": "2026-09-06T13:00:00.000Z",
+              "homeTeam": "Frosinone",
+              "homeTeamId": 9891,
+              "homeScore": "3",
+              "awayTeam": "Venezia",
+              "awayTeamId": 7881,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "9891",
+              "name": "Frosinone",
               "isOurTeam": false
             },
             "away": {
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "1",
-                "3",
-                "away_team",
-                "1",
-                "1",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Venezia have 1W, 1D, 3L in five matches while Fiorentina have 1W, 1D, 3L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Venezia have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -473,7 +467,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
+                "1",
                 "0.33"
               ],
               "DefaultLabels": [
@@ -485,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Fiorentina have an average of 0.33."
+              "defaultText": "Venezia have an average of 1 goals in their last three matches and Fiorentina have an average of 0.33."
             },
             {
               "OddsType": "ou",
@@ -496,7 +490,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
+                "1",
                 "0.33"
               ],
               "DefaultLabels": [
@@ -508,18 +502,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Fiorentina have an average of 0.33."
+              "defaultText": "Venezia have an average of 1 goals in their last three matches and Fiorentina have an average of 0.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -532,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Venezia haven't drawn in their last 4 matches and Fiorentina in their last 4."
+              "Icon": "poll_stat_down",
+              "defaultText": "Venezia haven't won a match in 4 attempts."
             }
           ]
         },
@@ -575,12 +567,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#101010"
         },
         {
@@ -592,12 +584,12 @@
           "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 3 matches",
+          "text": "Have lost their last 4 matches",
           "color": "#101010"
         },
         {

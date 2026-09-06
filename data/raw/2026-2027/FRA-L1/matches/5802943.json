@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8232_xsmall.png",
-            "linkToMatch": "/matches/elversberg-vs-strasbourg/2pbk5k#5958636",
-            "date": {
-              "utcTime": "2026-08-04T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8232/overview/elversberg",
-            "tooltipText": {
-              "utcTime": "2026-08-04T16:00:00.000Z",
-              "homeTeam": "Elversberg",
-              "homeTeamId": 8232,
-              "homeScore": "5",
-              "awayTeam": "Strasbourg",
-              "awayTeamId": 9848,
-              "awayScore": "2"
-            },
-            "score": "5 - 2",
-            "home": {
-              "id": "8232",
-              "name": "Elversberg",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9848",
-              "name": "Strasbourg",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8358_xsmall.png",
             "linkToMatch": "/matches/freiburg-vs-strasbourg/2qok3t#5974192",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Lens",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242_xsmall.png",
+            "linkToMatch": "/matches/strasbourg-vs-troyes/3c5scn#5802927",
+            "date": {
+              "utcTime": "2026-09-06T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10242/overview/troyes",
+            "tooltipText": {
+              "utcTime": "2026-09-06T13:00:00.000Z",
+              "homeTeam": "Troyes",
+              "homeTeamId": 10242,
+              "homeScore": "2",
+              "awayTeam": "Strasbourg",
+              "awayTeamId": 9848,
+              "awayScore": "6"
+            },
+            "score": "2 - 6",
+            "home": {
+              "id": "10242",
+              "name": "Troyes",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9848",
+              "name": "Strasbourg",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -483,13 +483,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "5",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris FC have scored 5 goals in their last 3 matches, while Strasbourg have scored 3."
+              "defaultText": "Strasbourg have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -511,7 +509,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Strasbourg haven't drawn in their last 9 matches."
+              "defaultText": "Strasbourg haven't drawn in their last 10 matches."
             }
           ]
         },
@@ -600,7 +598,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -610,7 +608,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#294A92"
         },
         {
@@ -631,20 +629,30 @@
           "color": "#294A92"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1603755,
           "teamId": 9848,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 16,
+              "value": 1603755,
+              "name": "Gessime Yassine",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 16 matches",
+          "text": "Gessime Yassine is ranked 1 in big chances created in the competition (4)",
           "color": "#294A92"
         }
       ],
