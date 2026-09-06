@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455_xsmall.png",
-            "linkToMatch": "/matches/chelsea-vs-juventus/2s51iv#5406268",
-            "date": {
-              "utcTime": "2026-08-05T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8455/overview/chelsea",
-            "tooltipText": {
-              "utcTime": "2026-08-05T11:30:00.000Z",
-              "homeTeam": "Chelsea",
-              "homeTeamId": 8455,
-              "homeScore": "0",
-              "awayTeam": "Juventus",
-              "awayTeamId": 9885,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8455",
-              "name": "Chelsea",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9885",
-              "name": "Juventus",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Parma",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564_xsmall.png",
+            "linkToMatch": "/matches/milan-vs-juventus/2tc0mu#5749667",
+            "date": {
+              "utcTime": "2026-09-06T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8564/overview/milan",
+            "tooltipText": {
+              "utcTime": "2026-09-06T18:45:00.000Z",
+              "homeTeam": "Juventus",
+              "homeTeamId": 9885,
+              "homeScore": "1",
+              "awayTeam": "Milan",
+              "awayTeamId": 8564,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8564",
+              "name": "Milan",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -469,7 +469,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "7",
+                "6",
                 "away_team",
                 "7"
               ],
@@ -482,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sassuolo have scored in their last 7 matches and Juventus have scored in their last 7 matches."
+              "defaultText": "Sassuolo have scored in their last 6 matches and Juventus have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
@@ -494,7 +494,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -506,16 +506,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sassuolo have scored 5 goals in their last 3 matches, while Juventus have scored 5."
+              "defaultText": "Sassuolo have scored 4 goals in their last 3 matches, while Juventus have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "10",
                 "7"
               ],
               "DefaultLabels": [
@@ -529,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Juventus haven't drawn in their last 7 matches."
+              "defaultText": "Sassuolo haven't drawn in their last 10 matches and Juventus in their last 7."
             }
           ]
         },
@@ -728,20 +730,24 @@
     },
     "lineup": {
       "matchId": 5749677,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 7943,
         "name": "Sassuolo",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1308909,
+            "age": 22,
             "name": "Cristian Volpato",
+            "countryName": "Australia",
+            "countryCode": "AUS",
+            "marketValue": 9284190,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-06T20:20:32Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -750,10 +756,13 @@
           },
           {
             "id": 1641041,
+            "age": 18,
             "name": "Darryl Bakola",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 2010099,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-06T17:29:58Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -762,10 +771,13 @@
           },
           {
             "id": 860592,
+            "age": 26,
             "name": "Sebastian Walukiewicz",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 2249861,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-28T21:00:28Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -774,10 +786,13 @@
           },
           {
             "id": 850055,
+            "age": 27,
             "name": "Daniel Boloca",
+            "countryName": "Romania",
+            "countryCode": "ROU",
+            "marketValue": 2509389,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-18T18:36:04Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -786,10 +801,13 @@
           },
           {
             "id": 1288119,
+            "age": 24,
             "name": "Ismaël Koné",
+            "countryName": "Canada",
+            "countryCode": "CAN",
+            "marketValue": 15213095,
             "unavailability": {
               "injuryId": 23,
-              "lastUpdated": "2026-08-17T00:07:41Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
@@ -798,10 +816,13 @@
           },
           {
             "id": 1041522,
+            "age": 28,
             "name": "Fali Candé",
+            "countryName": "Guinea-Bissau",
+            "countryCode": "GNB",
+            "marketValue": 2104608,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-18T18:36:36Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -810,10 +831,13 @@
           },
           {
             "id": 1329405,
+            "age": 23,
             "name": "Edoardo Pieragnolo",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2000758,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-31T22:02:34Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -825,13 +849,18 @@
       "awayTeam": {
         "id": 9885,
         "name": "Juventus",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1107280,
+            "age": 23,
             "name": "Pape Sarr",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 31809716,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-05T21:29:56Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -840,10 +869,13 @@
           },
           {
             "id": 1083562,
+            "age": 25,
             "name": "Juan Cabal",
+            "countryName": "Colombia",
+            "countryCode": "COL",
+            "marketValue": 6792260,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-03T14:29:02Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
@@ -852,10 +884,13 @@
           },
           {
             "id": 1669628,
+            "age": 19,
             "name": "Jeff Ekhator",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 12763275,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-31T17:49:31Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -864,10 +899,13 @@
           },
           {
             "id": 1078846,
+            "age": 26,
             "name": "Andrea Cambiaso",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 26496646,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-09-05T21:29:49Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -876,10 +914,13 @@
           },
           {
             "id": 848266,
+            "age": 28,
             "name": "Weston McKennie",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 17008438,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-05T21:29:23Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -888,10 +929,13 @@
           },
           {
             "id": 980793,
+            "age": 25,
             "name": "Khéphren Thuram-Ulien",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 29965777,
             "unavailability": {
               "injuryId": 140,
-              "lastUpdated": "2026-09-03T14:25:55Z",
               "type": "injury",
               "expectedReturn": "Mid February 2027"
             },
@@ -900,10 +944,13 @@
           },
           {
             "id": 1412132,
+            "age": 21,
             "name": "Kenan Yildiz",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
+            "marketValue": 60648847,
             "unavailability": {
               "injuryId": 8,
-              "lastUpdated": "2026-08-31T17:48:23Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
