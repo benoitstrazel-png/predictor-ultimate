@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910_xsmall.png",
-            "linkToMatch": "/matches/sassuolo-vs-celta-vigo/2mw57d#5900325",
-            "date": {
-              "utcTime": "2026-08-05T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9910/overview/celta-vigo",
-            "tooltipText": {
-              "utcTime": "2026-08-05T18:00:00.000Z",
-              "homeTeam": "Sassuolo",
-              "homeTeamId": 7943,
-              "homeScore": "1",
-              "awayTeam": "Celta Vigo",
-              "awayTeamId": 9910,
-              "awayScore": "4"
-            },
-            "score": "1 - 4",
-            "home": {
-              "id": "7943",
-              "name": "Sassuolo",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9910",
-              "name": "Celta Vigo",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/584022_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Frosinone",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9857_xsmall.png",
+            "linkToMatch": "/matches/sassuolo-vs-bologna/2mbw4l#5749661",
+            "date": {
+              "utcTime": "2026-09-06T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9857/overview/bologna",
+            "tooltipText": {
+              "utcTime": "2026-09-06T16:00:00.000Z",
+              "homeTeam": "Bologna",
+              "homeTeamId": 9857,
+              "homeScore": "2",
+              "awayTeam": "Sassuolo",
+              "awayTeamId": 7943,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "7943",
+              "name": "Sassuolo",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -471,7 +471,7 @@
                 "home_team",
                 "7",
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored in their last 7 matches and Sassuolo have scored in their last 6 matches."
+              "defaultText": "Monza have scored in their last 7 matches and Sassuolo have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
@@ -495,7 +495,7 @@
                 "away_team",
                 "3",
                 "4",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,17 +506,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored 4 goals in their last 3 matches, while Sassuolo have scored 4."
+              "defaultText": "Monza have scored 4 goals in their last 3 matches, while Sassuolo have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10"
+                "5",
+                "3",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sassuolo haven't drawn in their last 10 matches."
+              "defaultText": "Monza haven't lost to Sassuolo in their last 5 meetings (3W, 2D)."
             }
           ]
         },
@@ -601,15 +604,15 @@
         },
         {
           "type": "player",
-          "playerId": 824655,
+          "playerId": 1585676,
           "teamId": 6504,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 824655,
-              "name": "Ricardo Mangas",
+              "value": 1585676,
+              "name": "Gustavo Varela",
               "type": "player"
             },
             {
@@ -618,12 +621,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Ricardo Mangas has created the most big chances for Monza (2)",
+          "text": "Gustavo Varela has the most shots on target per match for Monza (1)",
           "color": "#e10032"
         },
         {
@@ -635,7 +638,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -645,7 +648,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#009A44"
         },
         {
@@ -694,12 +697,12 @@
               "type": "team"
             },
             {
-              "value": 2.4,
+              "value": 1.9,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Cristian Volpato has the most shots on target per match for Sassuolo (2.4)",
+          "text": "Cristian Volpato has the most shots on target per match for Sassuolo (1.9)",
           "color": "#009A44"
         }
       ],
@@ -824,6 +827,18 @@
         "id": 7943,
         "name": "Sassuolo",
         "unavailable": [
+          {
+            "id": 1308909,
+            "name": "Cristian Volpato",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-09-06T20:20:32Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Cristian",
+            "lastName": "Volpato"
+          },
           {
             "id": 1641041,
             "name": "Darryl Bakola",

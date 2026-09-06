@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Ferencváros have won their last 5 matches."
+              "defaultText": "Ferencváros haven't lost in 7 matches."
             },
             {
               "OddsType": "bts",
@@ -468,7 +468,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,18 +479,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Celtic have scored in their last 12 matches and Ferencváros have scored in their last 8 matches."
+              "defaultText": "Celtic have scored in their last 12 matches and Ferencváros have scored in their last 9 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "7",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,19 +503,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ferencváros have scored 9 goals in their last 3 matches."
+              "defaultText": "Celtic have scored 7 goals in their last 3 matches, while Ferencváros have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "8",
-                "5"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Celtic haven't drawn in their last 8 matches and Ferencváros in their last 5."
+              "defaultText": "Celtic haven't drawn in their last 8 matches."
             }
           ]
         },

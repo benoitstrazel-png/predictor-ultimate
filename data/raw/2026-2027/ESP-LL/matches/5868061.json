@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8372_xsmall.png",
-            "linkToMatch": "/matches/eibar-vs-deportivo-alaves/2r1223#5900298",
-            "date": {
-              "utcTime": "2026-07-18T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8372/overview/eibar",
-            "tooltipText": {
-              "utcTime": "2026-07-18T17:00:00.000Z",
-              "homeTeam": "Deportivo Alavés",
-              "homeTeamId": 9866,
-              "homeScore": "1",
-              "awayTeam": "Eibar",
-              "awayTeamId": 8372,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9866",
-              "name": "Deportivo Alavés",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8372",
-              "name": "Eibar",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10279_xsmall.png",
@@ -270,6 +240,36 @@
             "away": {
               "id": "10205",
               "name": "Villarreal",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8371_xsmall.png",
+            "linkToMatch": "/matches/osasuna-vs-deportivo-alaves/2r0nzh#5868041",
+            "date": {
+              "utcTime": "2026-09-06T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8371/overview/osasuna",
+            "tooltipText": {
+              "utcTime": "2026-09-06T16:30:00.000Z",
+              "homeTeam": "Deportivo Alavés",
+              "homeTeamId": 9866,
+              "homeScore": "5",
+              "awayTeam": "Osasuna",
+              "awayTeamId": 8371,
+              "awayScore": "2"
+            },
+            "score": "5 - 2",
+            "home": {
+              "id": "9866",
+              "name": "Deportivo Alavés",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8371",
+              "name": "Osasuna",
               "isOurTeam": false
             }
           }
@@ -444,7 +444,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -457,7 +457,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Deportivo Alavés haven't lost in 5 matches."
+              "defaultText": "Deportivo Alavés haven't lost in 6 matches."
             },
             {
               "OddsType": "bts",
@@ -467,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,19 +478,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Deportivo Alavés have scored in their last 8 home matches."
+              "defaultText": "Deportivo Alavés have scored in their last 9 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.33"
+                "3",
+                "7",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Deportivo Alavés have an average of 1.67 goals in their last three matches and Valencia have an average of 0.33."
+              "defaultText": "Deportivo Alavés have scored 7 goals in their last 3 matches, while Valencia have scored 1."
             },
             {
               "OddsType": "dc",
@@ -544,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 13,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +555,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 13 goals in their last 5 matches",
           "color": "#0351A3"
         },
         {
@@ -566,21 +567,21 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't lost in 6 matches",
           "color": "#0351A3"
         },
         {
           "type": "player",
           "playerId": 1563022,
           "teamId": 9866,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
               "value": 1563022,
@@ -588,17 +589,17 @@
               "type": "player"
             },
             {
-              "value": 9866,
-              "name": "Deportivo Alavés",
-              "type": "team"
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 2,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Ángel Pérez has created the most big chances for Deportivo Alavés (2)",
+          "text": "Ángel Pérez is ranked 1 in big chances created in the competition (4)",
           "color": "#0351A3"
         },
         {
@@ -676,20 +677,20 @@
       }
     },
     "weather": {
-      "temperature": 22,
+      "temperature": 21,
       "windSpeed": 5,
       "windDirectionCardinal": "NNE",
-      "iconCode": 34,
-      "relativeHumidity": 63,
-      "precipChance": 5,
+      "iconCode": 30,
+      "relativeHumidity": 68,
+      "precipChance": 13,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 22,
-      "description": "Mostly Sunny",
+      "cloudCover": 34,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T08:00:19Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-09-06T20:00:13Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5868061,
@@ -741,6 +742,18 @@
         "id": 10267,
         "name": "Valencia",
         "unavailable": [
+          {
+            "id": 561198,
+            "name": "Mouctar Diakhaby",
+            "unavailability": {
+              "injuryId": 42,
+              "lastUpdated": "2026-09-06T20:21:18Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Mouctar",
+            "lastName": "Diakhaby"
+          },
           {
             "id": 1348497,
             "name": "Kayne van Oevelen",

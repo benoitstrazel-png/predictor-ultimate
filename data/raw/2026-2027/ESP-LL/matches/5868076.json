@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/101899_xsmall.png",
-            "linkToMatch": "/matches/malaga-vs-al-arabi/2vaft3a#5987738",
-            "date": {
-              "utcTime": "2026-08-06T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/101899/overview/al-arabi",
-            "tooltipText": {
-              "utcTime": "2026-08-06T18:00:00.000Z",
-              "homeTeam": "Málaga",
-              "homeTeamId": 9864,
-              "homeScore": "4",
-              "awayTeam": "Al-Arabi",
-              "awayTeamId": 101899,
-              "awayScore": "2"
-            },
-            "score": "4 - 2",
-            "home": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "101899",
-              "name": "Al-Arabi",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879_xsmall.png",
@@ -423,6 +393,36 @@
               "name": "Málaga",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8581_xsmall.png",
+            "linkToMatch": "/matches/levante-vs-malaga/2tafoj#5868047",
+            "date": {
+              "utcTime": "2026-09-06T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8581/overview/levante",
+            "tooltipText": {
+              "utcTime": "2026-09-06T16:30:00.000Z",
+              "homeTeam": "Málaga",
+              "homeTeamId": 9864,
+              "homeScore": "0",
+              "awayTeam": "Levante",
+              "awayTeamId": 8581,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9864",
+              "name": "Málaga",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8581",
+              "name": "Levante",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "0",
-                "3",
                 "away_team",
-                "1",
-                "2",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Getafe have 2W, 0D, 3L in five matches while Málaga have 1W, 2D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Málaga haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -516,7 +510,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Málaga haven't won a match in 4 attempts."
+              "defaultText": "Málaga haven't won a match in 5 attempts."
             }
           ]
         },
@@ -591,15 +585,15 @@
         },
         {
           "type": "player",
-          "playerId": 1202587,
+          "playerId": 175311,
           "teamId": 8305,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1202587,
-              "name": "Ramón Terrats",
+              "value": 175311,
+              "name": "Kiko",
               "type": "player"
             },
             {
@@ -608,12 +602,12 @@
               "type": "team"
             },
             {
-              "value": 0.7,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Ramón Terrats has the most shots on target per match for Getafe (0.7)",
+          "text": "Kiko has created the most big chances for Getafe (1)",
           "color": "#084888"
         },
         {
@@ -625,7 +619,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -635,7 +629,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
+          "color": "#518EC7"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9864,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#518EC7"
         },
         {
@@ -643,43 +654,16 @@
           "playerId": null,
           "teamId": 9864,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#518EC7"
-        },
-        {
-          "type": "player",
-          "playerId": 1108863,
-          "teamId": 9864,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1108863,
-              "name": "David Larrubia",
-              "type": "player"
-            },
-            {
-              "value": 9864,
-              "name": "Málaga",
-              "type": "team"
-            },
-            {
-              "value": 0.8,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "David Larrubia has the most shots on target per match for Málaga (0.8)",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#518EC7"
         }
       ],
@@ -833,7 +817,7 @@
             "name": "Adrián Nino",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-31T22:08:26Z",
+              "lastUpdated": "2026-09-06T20:24:37Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },

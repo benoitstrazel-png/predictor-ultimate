@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Chelsea have won their last 4 matches."
+              "defaultText": "Hull City haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
@@ -483,12 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "9",
-                "3"
+                "away_team",
+                "3",
+                "7",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have scored 9 goals in their last 3 matches."
+              "defaultText": "Chelsea have scored 7 goals in their last 3 matches, while Hull City have scored 2."
             },
             {
               "OddsType": "dc",
@@ -509,7 +511,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Chelsea haven't drawn in their last 4 matches."
+              "defaultText": "Chelsea haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -593,30 +595,20 @@
           "color": "#051495"
         },
         {
-          "type": "player",
-          "playerId": 268375,
+          "type": "team",
+          "playerId": null,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 268375,
-              "name": "Emiliano Martínez",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 12,
+              "value": 2.7,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Emiliano Martínez is ranked 1 in saves per match in the competition (12)",
+          "text": "Average 2.7 goals per match",
           "color": "#051495"
         },
         {

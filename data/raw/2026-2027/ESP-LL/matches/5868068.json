@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/101899_xsmall.png",
-            "linkToMatch": "/matches/malaga-vs-al-arabi/2vaft3a#5987738",
-            "date": {
-              "utcTime": "2026-08-06T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/101899/overview/al-arabi",
-            "tooltipText": {
-              "utcTime": "2026-08-06T18:00:00.000Z",
-              "homeTeam": "Málaga",
-              "homeTeamId": 9864,
-              "homeScore": "4",
-              "awayTeam": "Al-Arabi",
-              "awayTeamId": 101899,
-              "awayScore": "2"
-            },
-            "score": "4 - 2",
-            "home": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "101899",
-              "name": "Al-Arabi",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "9864",
               "name": "Málaga",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8581_xsmall.png",
+            "linkToMatch": "/matches/levante-vs-malaga/2tafoj#5868047",
+            "date": {
+              "utcTime": "2026-09-06T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8581/overview/levante",
+            "tooltipText": {
+              "utcTime": "2026-09-06T16:30:00.000Z",
+              "homeTeam": "Málaga",
+              "homeTeamId": 9864,
+              "homeScore": "0",
+              "awayTeam": "Levante",
+              "awayTeamId": 8581,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9864",
+              "name": "Málaga",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8581",
+              "name": "Levante",
+              "isOurTeam": false
             }
           }
         ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "1",
-                "2",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,18 +455,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Málaga have 1W, 2D, 2L in five matches while Villarreal have 1W, 2D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Málaga haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "away_team",
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Málaga have scored in their last 5 home matches."
+              "defaultText": "Málaga have an average of 0.33 goals in their last three matches and Villarreal have an average of 1.33."
             },
             {
               "OddsType": "ou",
@@ -516,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Málaga haven't won a match in 4 attempts."
+              "defaultText": "Málaga haven't won a match in 5 attempts."
             }
           ]
         },
@@ -549,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -559,7 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
+          "color": "#518EC7"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9864,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#518EC7"
         },
         {
@@ -567,43 +580,16 @@
           "playerId": null,
           "teamId": 9864,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#518EC7"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9864,
-          "priority": 6,
-          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-          "localizedTextId": "h2h_no_draws_v2",
-          "statValues": [
-            {
-              "value": 9864,
-              "name": "Málaga",
-              "type": "team"
-            },
-            {
-              "value": 10205,
-              "name": "Villarreal",
-              "type": "team"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Málaga and Villarreal have not drawn any of their last 3 matches against each other.",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#518EC7"
         },
         {
@@ -632,23 +618,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 10205,
-          "priority": 10,
-          "defaultText": "Have been awarded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_awarded",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have been awarded the most penalties this season (2)",
-          "color": "#e19d00"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10205,
           "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
@@ -660,6 +629,33 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#e19d00"
+        },
+        {
+          "type": "player",
+          "playerId": 246438,
+          "teamId": 10205,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 246438,
+              "name": "Gerard Moreno",
+              "type": "player"
+            },
+            {
+              "value": 10205,
+              "name": "Villarreal",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Gerard Moreno has created the most big chances for Villarreal (2)",
           "color": "#e19d00"
         }
       ],
@@ -747,7 +743,7 @@
             "name": "Adrián Nino",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-31T22:08:26Z",
+              "lastUpdated": "2026-09-06T20:24:37Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },

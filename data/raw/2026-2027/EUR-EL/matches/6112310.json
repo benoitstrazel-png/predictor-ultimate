@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8475_xsmall.png",
-            "linkToMatch": "/matches/sk-beveren-vs-anderlecht/2f5pqw#5811724",
-            "date": {
-              "utcTime": "2026-08-16T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8475/overview/sk-beveren",
-            "tooltipText": {
-              "utcTime": "2026-08-16T11:30:00.000Z",
-              "homeTeam": "SK Beveren",
-              "homeTeamId": 8475,
-              "homeScore": "1",
-              "awayTeam": "Anderlecht",
-              "awayTeamId": 8635,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8475",
-              "name": "SK Beveren",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8635",
-              "name": "Anderlecht",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8037_xsmall.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "8571",
               "name": "Kortrijk",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9987_xsmall.png",
+            "linkToMatch": "/matches/anderlecht-vs-genk/2v8r1g#5811753",
+            "date": {
+              "utcTime": "2026-09-06T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9987/overview/genk",
+            "tooltipText": {
+              "utcTime": "2026-09-06T16:30:00.000Z",
+              "homeTeam": "Anderlecht",
+              "homeTeamId": 8635,
+              "homeScore": "0",
+              "awayTeam": "Genk",
+              "awayTeamId": 9987,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8635",
+              "name": "Anderlecht",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9987",
+              "name": "Genk",
               "isOurTeam": false
             }
           }
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "3",
-                "0",
-                "2",
+                "1",
+                "1",
                 "away_team",
                 "2",
                 "2",
@@ -462,17 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Anderlecht have 3W, 0D, 2L in five matches while Lyon have 2W, 2D, 1L."
+              "defaultText": "Anderlecht have 3W, 1D, 1L in five matches while Lyon have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "6"
+                "away_team",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,20 +483,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Anderlecht have scored in their last 6 home matches."
+              "defaultText": "Lyon have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "0.33",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,17 +506,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Anderlecht have scored 4 goals in their last 3 matches, while Lyon have scored 5."
+              "defaultText": "Anderlecht have an average of 0.33 goals in their last three matches and Lyon have an average of 1.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "9"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Anderlecht haven't drawn in their last 9 matches."
+              "defaultText": "Anderlecht have 3W, 1D, 1L in five matches while Lyon have 2W, 2D, 1L."
             }
           ]
         },
