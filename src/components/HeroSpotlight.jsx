@@ -120,7 +120,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
         </div>
 
         {/* Team logos + title */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+        <div className="hero-match-header" style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
           <TeamLogo teamName={match.homeTeam} size="lg" />
           <h1 className="hero-match-title" style={{ margin: 0 }}>
             {match.homeTeam} <em style={{ fontStyle: 'italic', color: 'var(--ivory)', opacity: 0.3, fontSize: '70%' }}>×</em>{' '}

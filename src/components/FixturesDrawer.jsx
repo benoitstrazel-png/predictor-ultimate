@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SlidersHorizontal, TrendingUp, Clock } from 'lucide-react';
+import { SlidersHorizontal, TrendingUp, Clock, X } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 import MatchDetailsModal from './MatchDetailsModal';
 import APP_DATA from '../data/app_data.json';
@@ -29,7 +29,7 @@ const LEAGUE_SHORT = {
   'FRIENDLY': 'AMI',
 };
 
-export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelectMatch }) {
+export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelectMatch, isOpen, onClose }) {
   const [showFilter, setShowFilter] = useState(false);
   const [filterValueBet, setFilterValueBet] = useState(false);
   const [detailsModalMatch, setDetailsModalMatch] = useState(null);
@@ -66,58 +66,79 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
     .filter(m => m.league === selectedLeague && m.valueBets?.length > 0).length;
 
   return (
-    <div className="fixtures-drawer">
-      {/* Header */}
-      <div className="fixtures-header">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{
-              fontSize: 10,
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              color: 'var(--gold)',
-              marginBottom: 4,
-            }}>
-              Matchs & Cotes
+    <>
+      {/* Backdrop overlay for mobile / tablet */}
+      {isOpen && (
+        <div 
+          className="fixtures-drawer-overlay"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
+      <div className={`fixtures-drawer ${isOpen ? 'mobile-open' : ''}`}>
+        {/* Header */}
+        <div className="fixtures-header">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--gold)',
+                marginBottom: 4,
+              }}>
+                Matchs & Cotes
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--ivory)' }}>
+                {filteredSchedule.length} rencontres
+                {valueBetCount > 0 && (
+                  <span style={{
+                    marginLeft: 8,
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: 'var(--positive)',
+                    background: 'var(--positive-muted)',
+                    border: '1px solid var(--positive-border)',
+                    padding: '2px 7px',
+                    borderRadius: 6,
+                  }}>
+                    {valueBetCount} value
+                  </span>
+                )}
+              </div>
             </div>
-            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--ivory)' }}>
-              {filteredSchedule.length} rencontres
-              {valueBetCount > 0 && (
-                <span style={{
-                  marginLeft: 8,
-                  fontSize: 10,
-                  fontWeight: 700,
-                  color: 'var(--positive)',
-                  background: 'var(--positive-muted)',
-                  border: '1px solid var(--positive-border)',
-                  padding: '2px 7px',
-                  borderRadius: 6,
-                }}>
-                  {valueBetCount} value
-                </span>
-              )}
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <button
+                onClick={() => setShowFilter(f => !f)}
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 9,
+                  background: showFilter ? 'var(--gold-muted)' : 'var(--ivory-ghost)',
+                  border: `1px solid ${showFilter ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
+                  color: showFilter ? 'var(--gold)' : 'var(--neutral)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                <SlidersHorizontal size={14} />
+              </button>
+
+              {/* Close button visible only on mobile/tablet */}
+              <button
+                onClick={onClose}
+                className="fixtures-mobile-close-btn"
+                title="Fermer"
+                type="button"
+              >
+                <X size={16} />
+              </button>
             </div>
           </div>
-
-          <button
-            onClick={() => setShowFilter(f => !f)}
-            style={{
-              width: 32,
-              height: 32,
-              borderRadius: 9,
-              background: showFilter ? 'var(--gold-muted)' : 'var(--ivory-ghost)',
-              border: `1px solid ${showFilter ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-              color: showFilter ? 'var(--gold)' : 'var(--neutral)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            <SlidersHorizontal size={14} />
-          </button>
-        </div>
 
         {/* Filter dropdown */}
         {showFilter && (
@@ -220,5 +241,6 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
         onClose={() => setDetailsModalMatch(null)}
       />
     </div>
+    </>
   );
 }

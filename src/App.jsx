@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import SidebarRail from './components/SidebarRail';
+import MobileNavbar from './components/MobileNavbar';
 import HeroSpotlight from './components/HeroSpotlight';
 import FixturesDrawer from './components/FixturesDrawer';
 import AiPredictorModal from './components/AiPredictorModal';
@@ -29,6 +30,7 @@ function AppContent() {
     appData?.supportedLeagues?.[0]?.code || 'FRA-L1'
   );
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [isFixturesOpen, setIsFixturesOpen] = useState(false);
 
   // Prochains matchs pour le carrousel Spotlight
   const upcomingMatches = allMatches.filter(m => m.status === 'LIVE' || m.status === 'SCHEDULED');
@@ -159,17 +161,27 @@ function AppContent() {
 
       {/* ── 4. Right Fixtures Drawer ── */}
       <FixturesDrawer
+        isOpen={isFixturesOpen}
+        onClose={() => setIsFixturesOpen(false)}
         selectedLeague={selectedLeague}
         onSelectLeague={setSelectedLeague}
         onSelectMatch={(fixture) => {
           selectMatch(fixture);
           const idx = upcomingMatches.findIndex(m => m.id === fixture.id);
           if (idx !== -1) setHeroIdx(idx);
+          setIsFixturesOpen(false);
           navigate('/match-deep-dive');
         }}
       />
 
-      {/* ── 5. RAG AI Modal ── */}
+      {/* ── 5. Mobile / Tablet Bottom Navigation Bar ── */}
+      <MobileNavbar
+        onOpenAiModal={() => setIsAiModalOpen(true)}
+        onToggleFixtures={() => setIsFixturesOpen(prev => !prev)}
+        isFixturesOpen={isFixturesOpen}
+      />
+
+      {/* ── 6. RAG AI Modal ── */}
       <AiPredictorModal
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}

@@ -2444,3 +2444,287 @@ tr:hover td { background: var(--glass-hover); }
 *::-webkit-scrollbar { width: 4px; height: 4px; }
 *::-webkit-scrollbar-track { background: transparent; }
 *::-webkit-scrollbar-thumb { background: rgba(245,240,232,0.15); border-radius: 2px; }
+
+/* =====================================================
+   RESPONSIVE DESIGN SYSTEM — MOBILE (<768px) & TABLET (768px - 1024px)
+   STRICT RULE: Desktop (min-width: 1025px) remains 100% untouched!
+   ===================================================== */
+
+/* ── DEFAULT DESKTOP VISIBILITY ── */
+.mobile-bottom-nav {
+  display: none;
+}
+.fixtures-mobile-close-btn {
+  display: none;
+}
+.fixtures-drawer-overlay {
+  display: none;
+}
+
+/* ── TABLET & MOBILE SHARED ADAPTATIONS (max-width: 1024px) ── */
+@media screen and (max-width: 1024px) {
+  /* Fixtures Drawer transforms into slide-over sheet */
+  .fixtures-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.85);
+  }
+
+  .fixtures-drawer.mobile-open {
+    transform: translateX(0);
+  }
+
+  .fixtures-mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: rgba(245, 240, 232, 0.08);
+    border: 1px solid var(--ivory-border);
+    color: var(--ivory);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .fixtures-mobile-close-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+  }
+
+  .fixtures-drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 7, 14, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9998;
+    animation: fadeInOverlay 0.2s ease-out;
+  }
+
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Cockpit container padding */
+  .main-content > .main-scroll > div[style*="padding: 28px 32px 48px"] {
+    padding: 20px 18px 40px !important;
+  }
+
+  /* Floating KPI on Hero */
+  .hero-kpi-float {
+    right: 20px;
+    bottom: 24px;
+    width: 240px;
+    padding: 16px;
+  }
+}
+
+/* ── SMARTPHONE & MOBILE ADAPTATIONS (max-width: 767px) ── */
+@media screen and (max-width: 767px) {
+  /* Prevent horizontal page overflow */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #root, .app-shell {
+    height: 100dvh;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hide vertical desktop sidebar rail on mobile */
+  .sidebar-rail {
+    display: none !important;
+  }
+
+  /* Main cockpit space reserved for bottom nav */
+  .main-content {
+    height: calc(100dvh - 64px);
+    height: calc(100vh - 64px);
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .main-scroll {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-content > .main-scroll > div[style*="padding: 28px 32px 48px"] {
+    padding: 14px 12px 32px !important;
+  }
+
+  /* ── MOBILE BOTTOM NAVIGATION BAR ── */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(8, 11, 20, 0.94);
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    border-top: 1px solid var(--ivory-border);
+    z-index: 9995;
+    padding: 0 4px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    align-items: center;
+  }
+
+  .mobile-nav-scroll {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 2px;
+  }
+
+  .mobile-nav-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 8px;
+    min-width: 44px;
+    border-radius: 10px;
+    color: rgba(245, 240, 232, 0.45);
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--gold);
+    background: rgba(201, 169, 110, 0.12);
+  }
+
+  .mobile-nav-item.ai-highlight {
+    color: var(--gold-light);
+  }
+
+  .mobile-nav-item.ai-highlight.active,
+  .mobile-nav-item.ai-highlight:hover {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.35), rgba(139, 106, 60, 0.25));
+  }
+
+  .mobile-nav-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  /* ── DYNAMIC ISLAND ON MOBILE ── */
+  .dynamic-island {
+    top: 8px;
+    max-width: calc(100vw - 16px);
+  }
+
+  .dynamic-island.pill {
+    min-width: 160px;
+    max-width: 270px;
+    height: 34px;
+  }
+
+  .island-pill-content {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .dynamic-island.expanded {
+    width: calc(100vw - 16px);
+    max-height: 80vh;
+    border-radius: 18px;
+  }
+
+  /* ── HERO CINEMATIC ON MOBILE ── */
+  .hero-cinematic {
+    height: auto;
+    min-height: 340px;
+    padding-bottom: 16px;
+  }
+
+  .hero-content {
+    padding: 56px 14px 16px;
+  }
+
+  .hero-match-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hero-match-title {
+    font-size: clamp(1.75rem, 7vw, 2.4rem);
+    line-height: 1.1;
+  }
+
+  .hero-kpi-float {
+    position: static;
+    width: 100%;
+    margin-top: 16px;
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ── RESPONSIVE GRIDS IN COCKPIT TABS ── */
+  /* Any 2-col or 3-col inline CSS grid converts cleanly to single column */
+  div[style*="grid-template-columns: repeat(2, 1fr)"],
+  div[style*="grid-template-columns: repeat(3, 1fr)"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns: 1.2fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Table / horizontal scroll containers */
+  .table-responsive-container,
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Modals on mobile */
+  .modal-container,
+  div[style*="max-width: 800px"],
+  div[style*="max-width: 900px"],
+  div[style*="max-width: 700px"] {
+    width: 95vw !important;
+    max-height: 90vh !important;
+    padding: 16px !important;
+  }
+}
