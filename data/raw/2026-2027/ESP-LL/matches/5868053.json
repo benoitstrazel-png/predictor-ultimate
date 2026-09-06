@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "0",
-                "3",
                 "away_team",
-                "2",
-                "2",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Getafe have 2W, 0D, 3L in five matches while Deportivo A Coruña have 2W, 2D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Deportivo A Coruña haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -489,13 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "2",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Getafe have an average of 0.67 goals in their last three matches and Deportivo A Coruña have an average of 1.67."
+              "defaultText": "Getafe have scored 2 goals in their last 3 matches, while Deportivo A Coruña have scored 7."
             },
             {
               "OddsType": "dc",
@@ -591,15 +586,15 @@
         },
         {
           "type": "player",
-          "playerId": 1202587,
+          "playerId": 175311,
           "teamId": 8305,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1202587,
-              "name": "Ramón Terrats",
+              "value": 175311,
+              "name": "Kiko",
               "type": "player"
             },
             {
@@ -608,12 +603,12 @@
               "type": "team"
             },
             {
-              "value": 0.7,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Ramón Terrats has the most shots on target per match for Getafe (0.7)",
+          "text": "Kiko has created the most big chances for Getafe (1)",
           "color": "#084888"
         },
         {
@@ -695,14 +690,14 @@
       "windSpeed": 2,
       "windDirectionCardinal": "SSW",
       "iconCode": 32,
-      "relativeHumidity": 19,
+      "relativeHumidity": 20,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 17,
+      "cloudCover": 6,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-05T20:00:14Z",
+      "lastUpdated": "2026-09-06T08:00:18Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -782,18 +777,6 @@
         "id": 9783,
         "name": "Deportivo A Coruña",
         "unavailable": [
-          {
-            "id": 493647,
-            "name": "Adama Traoré",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-09-05T20:00:30Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Adama",
-            "lastName": "Traoré"
-          },
           {
             "id": 1821442,
             "name": "Noé",

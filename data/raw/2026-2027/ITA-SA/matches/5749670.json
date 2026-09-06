@@ -440,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,8 +462,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Atalanta haven't lost in 6 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Atalanta have 3W, 1D, 1L in five matches while Cagliari have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,7 +495,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
+                "1",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -501,16 +507,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atalanta have an average of 1.33 goals in their last three matches and Cagliari have an average of 0.67."
+              "defaultText": "Atalanta have an average of 1 goals in their last three matches and Cagliari have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -524,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari haven't drawn in their last 4 matches."
+              "defaultText": "Atalanta haven't drawn in their last 4 matches and Cagliari in their last 4."
             }
           ]
         },
@@ -576,12 +584,12 @@
               "type": "ordinal"
             },
             {
-              "value": 9.5,
+              "value": 6.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Marco Carnesecchi is ranked 1 in saves per match in the competition (9.5)",
+          "text": "Marco Carnesecchi is ranked 1 in saves per match in the competition (6.3)",
           "color": "#004ca6"
         },
         {
@@ -706,20 +714,20 @@
       }
     },
     "weather": {
-      "temperature": 21,
+      "temperature": 22,
       "windSpeed": 2,
       "windDirectionCardinal": "NE",
-      "iconCode": 29,
-      "relativeHumidity": 64,
-      "precipChance": 22,
+      "iconCode": 33,
+      "relativeHumidity": 61,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 42,
-      "description": "Partly Cloudy",
+      "cloudCover": 29,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-05T21:00:15Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-06T09:00:13Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5749670,
@@ -785,21 +793,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 496042,
-            "age": 31,
-            "name": "Yerry Mina",
-            "countryName": "Colombia",
-            "countryCode": "COL",
-            "marketValue": 1899498,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Yerry",
-            "lastName": "Mina"
-          },
           {
             "id": 1861022,
             "age": 20,

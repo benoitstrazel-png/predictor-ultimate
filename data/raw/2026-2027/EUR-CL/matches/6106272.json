@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -444,13 +444,13 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
+                "3",
+                "1",
+                "1",
+                "away_team",
                 "1",
                 "2",
-                "away_team",
-                "2",
-                "2",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -463,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Borussia Dortmund have 2W, 1D, 2L in five matches while Villarreal have 2W, 2D, 1L."
+              "defaultText": "Borussia Dortmund have 3W, 1D, 1L in five matches while Villarreal have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -494,7 +494,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "8",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -506,23 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Dortmund have scored 8 goals in their last 3 matches."
+              "defaultText": "Borussia Dortmund have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "2",
-                "2",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -534,8 +528,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Borussia Dortmund have 2W, 1D, 2L in five matches while Villarreal have 2W, 2D, 1L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Villarreal haven't won a match in 4 attempts."
             }
           ]
         },
@@ -624,21 +618,21 @@
       "windSpeed": 3,
       "windDirectionCardinal": "SW",
       "iconCode": 11,
-      "relativeHumidity": 81,
-      "precipChance": 37,
+      "relativeHumidity": 86,
+      "precipChance": 35,
       "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 98,
+      "cloudCover": 99,
       "description": "Light Rain",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-05T20:00:19Z",
+      "lastUpdated": "2026-09-06T08:00:23Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 6106272,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -647,55 +641,131 @@
       "homeTeam": {
         "id": 9789,
         "name": "Borussia Dortmund",
-        "formation": "4-3-3",
+        "formation": "3-4-2-1",
         "starters": [
           {
-            "id": 743381,
-            "age": 35,
-            "optaId": "118451",
-            "name": "Alexander Meyer",
+            "id": 764018,
+            "age": 28,
+            "name": "Gregor Kobel",
             "positionId": 11,
             "usualPlayingPositionId": 0,
-            "shirtNumber": "33",
-            "countryName": "Germany",
-            "countryCode": "GER",
+            "shirtNumber": "1",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
               "height": 0.25,
-              "width": 0.2
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.5,
               "y": 0.1,
-              "height": 0.2,
+              "height": 0.192,
               "width": 1
             },
-            "marketValue": 293653,
-            "firstName": "Alexander",
-            "lastName": "Meyer",
+            "marketValue": 29933795,
+            "firstName": "Gregor",
+            "lastName": "Kobel",
+            "rankings": null
+          },
+          {
+            "id": 1479742,
+            "age": 19,
+            "name": "Joane Gadou",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "22",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 10966926,
+            "firstName": "Joane",
+            "lastName": "Gadou",
+            "rankings": null
+          },
+          {
+            "id": 664970,
+            "age": 30,
+            "name": "Waldemar Anton",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 14137690,
+            "firstName": "Waldemar",
+            "lastName": "Anton",
+            "rankings": null
+          },
+          {
+            "id": 1663094,
+            "age": 21,
+            "name": "Filippo Mane",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "39",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 2304286,
+            "firstName": "Filippo",
+            "lastName": "Mane",
             "rankings": null
           },
           {
             "id": 659272,
             "age": 28,
-            "optaId": "213783",
             "name": "Julian Ryerson",
-            "positionId": 32,
-            "usualPlayingPositionId": 1,
+            "positionId": 62,
+            "usualPlayingPositionId": 2,
             "shirtNumber": "26",
             "countryName": "Norway",
             "countryCode": "NOR",
             "horizontalLayout": {
-              "x": 0.357,
+              "x": 0.485,
               "y": 0.875,
               "height": 0.25,
-              "width": 0.257
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.125,
-              "y": 0.357,
-              "height": 0.2,
+              "y": 0.485,
+              "height": 0.192,
               "width": 0.25
             },
             "marketValue": 17587438,
@@ -704,80 +774,76 @@
             "rankings": null
           },
           {
-            "id": 1663094,
-            "age": 21,
-            "optaId": "571642",
-            "name": "Filippo Mane",
-            "positionId": 34,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "39",
-            "countryName": "Italy",
-            "countryCode": "ITA",
+            "id": 1287373,
+            "age": 20,
+            "name": "Jobe Bellingham",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
-              "x": 0.357,
+              "x": 0.485,
               "y": 0.625,
               "height": 0.25,
-              "width": 0.257
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.375,
-              "y": 0.357,
-              "height": 0.2,
+              "y": 0.485,
+              "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 2304286,
-            "firstName": "Filippo",
-            "lastName": "Mane",
+            "marketValue": 27601524,
+            "firstName": "Jobe",
+            "lastName": "Bellingham",
             "rankings": null
           },
           {
-            "id": 664970,
-            "age": 30,
-            "optaId": "212509",
-            "name": "Waldemar Anton",
-            "positionId": 36,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "isCaptain": true,
+            "id": 966019,
+            "age": 25,
+            "name": "Felix Nmecha",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
             "countryName": "Germany",
             "countryCode": "GER",
             "horizontalLayout": {
-              "x": 0.357,
+              "x": 0.485,
               "y": 0.375,
               "height": 0.25,
-              "width": 0.257
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.625,
-              "y": 0.357,
-              "height": 0.2,
+              "y": 0.485,
+              "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 14137690,
-            "firstName": "Waldemar",
-            "lastName": "Anton",
+            "marketValue": 40768582,
+            "firstName": "Felix",
+            "lastName": "Nmecha",
             "rankings": null
           },
           {
             "id": 1209228,
             "age": 24,
-            "optaId": "521052",
             "name": "Daniel Svensson",
-            "positionId": 38,
-            "usualPlayingPositionId": 1,
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
             "shirtNumber": "24",
             "countryName": "Sweden",
             "countryCode": "SWE",
             "horizontalLayout": {
-              "x": 0.357,
+              "x": 0.485,
               "y": 0.125,
               "height": 0.25,
-              "width": 0.257
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.875,
-              "y": 0.357,
-              "height": 0.2,
+              "y": 0.485,
+              "height": 0.192,
               "width": 0.25
             },
             "marketValue": 19663807,
@@ -786,296 +852,97 @@
             "rankings": null
           },
           {
-            "id": 215151,
-            "age": 32,
-            "optaId": "101338",
-            "name": "Marcel Sabitzer",
-            "positionId": 73,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "20",
-            "countryName": "Austria",
-            "countryCode": "AUT",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.79,
-              "height": 0.25,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.21,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 2544850,
-            "firstName": "Marcel",
-            "lastName": "Sabitzer",
-            "rankings": null
-          },
-          {
-            "id": 966019,
-            "age": 25,
-            "optaId": "219265",
-            "name": "Felix Nmecha",
-            "positionId": 75,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.5,
-              "height": 0.25,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.5,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 40768582,
-            "firstName": "Felix",
-            "lastName": "Nmecha",
-            "rankings": null
-          },
-          {
-            "id": 792429,
-            "age": 27,
-            "optaId": "231653",
-            "name": "Joey Veerman",
-            "positionId": 77,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "25",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.21,
-              "height": 0.25,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.79,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 18299923,
-            "firstName": "Joey",
-            "lastName": "Veerman",
-            "rankings": null
-          },
-          {
-            "id": 1761151,
-            "age": 18,
-            "optaId": "636717",
-            "name": "Samuele Inácio",
-            "positionId": 103,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "40",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "horizontalLayout": {
-              "x": 0.87,
-              "y": 0.79,
-              "height": 0.25,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.21,
-              "y": 0.87,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 3609294,
-            "firstName": "Samuele",
-            "lastName": "Inácio",
-            "rankings": null
-          },
-          {
-            "id": 1050158,
-            "age": 24,
-            "optaId": "449988",
-            "name": "Fábio Silva",
-            "positionId": 105,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "21",
-            "countryName": "Portugal",
-            "countryCode": "POR",
-            "horizontalLayout": {
-              "x": 0.87,
-              "y": 0.5,
-              "height": 0.25,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.5,
-              "y": 0.87,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 23452281,
-            "firstName": "Fábio",
-            "lastName": "Silva",
-            "rankings": null
-          },
-          {
-            "id": 1692797,
-            "age": 17,
-            "optaId": "609623",
-            "name": "Mathis Albert",
-            "positionId": 107,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "41",
-            "countryName": "USA",
-            "countryCode": "USA",
-            "horizontalLayout": {
-              "x": 0.87,
-              "y": 0.21,
-              "height": 0.25,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.79,
-              "y": 0.87,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 690259,
-            "firstName": "Mathis",
-            "lastName": "Albert",
-            "rankings": null
-          }
-        ],
-        "subs": [
-          {
-            "id": 359203,
-            "age": 33,
-            "optaId": "118361",
-            "name": "Patrick Drewes",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "30",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 320255,
-            "firstName": "Patrick",
-            "lastName": "Drewes",
-            "rankings": null
-          },
-          {
-            "id": 1845173,
-            "age": 18,
-            "optaId": "631121",
-            "name": "Luca Reggiani",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "49",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 5258436,
-            "firstName": "Luca",
-            "lastName": "Reggiani",
-            "rankings": null
-          },
-          {
-            "id": 1750565,
-            "age": 18,
-            "optaId": "685487",
-            "name": "Kauã Prates",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "36",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 2080378,
-            "firstName": "Kauã",
-            "lastName": "Prates",
-            "rankings": null
-          },
-          {
-            "id": 1479742,
-            "age": 19,
-            "optaId": "592891",
-            "name": "Joane Gadou",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 10966926,
-            "firstName": "Joane",
-            "lastName": "Gadou",
-            "rankings": null
-          },
-          {
-            "id": 1089685,
-            "age": 22,
-            "optaId": "478912",
-            "name": "Carney Chukwuemeka",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "17",
-            "countryName": "Austria",
-            "countryCode": "AUT",
-            "marketValue": 17432231,
-            "firstName": "Carney",
-            "lastName": "Chukwuemeka",
-            "rankings": null
-          },
-          {
-            "id": 1287373,
-            "age": 20,
-            "optaId": "519322",
-            "name": "Jobe Bellingham",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "7",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 27601524,
-            "firstName": "Jobe",
-            "lastName": "Bellingham",
-            "rankings": null
-          },
-          {
             "id": 1536436,
             "age": 18,
-            "optaId": "609068",
             "name": "Konstantinos Karetsas",
-            "usualPlayingPositionId": 2,
+            "positionId": 84,
+            "usualPlayingPositionId": 3,
             "shirtNumber": "19",
             "countryName": "Greece",
             "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
             "marketValue": 25870428,
             "firstName": "Konstantinos",
             "lastName": "Karetsas",
             "rankings": null
           },
           {
-            "id": 448540,
-            "age": 30,
-            "optaId": "162275",
-            "name": "Serhou Guirassy",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Guinea",
-            "countryCode": "GUI",
-            "marketValue": 30052476,
-            "firstName": "Serhou",
-            "lastName": "Guirassy",
-            "rankings": null
-          },
-          {
             "id": 1047667,
             "age": 23,
-            "optaId": "465859",
             "name": "Maximilian Beier",
-            "usualPlayingPositionId": 3,
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
             "shirtNumber": "14",
             "countryName": "Germany",
             "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
             "marketValue": 30819886,
             "firstName": "Maximilian",
             "lastName": "Beier",
             "rankings": null
+          },
+          {
+            "id": 448540,
+            "age": 30,
+            "name": "Serhou Guirassy",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Guinea",
+            "countryCode": "GUI",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 30052476,
+            "firstName": "Serhou",
+            "lastName": "Guirassy",
+            "rankings": null
           }
         ],
+        "coach": {
+          "id": 33072,
+          "age": 54,
+          "name": "Niko Kovac",
+          "countryName": "Croatia",
+          "countryCode": "CRO",
+          "firstName": "Niko",
+          "lastName": "Kovac",
+          "primaryTeamId": 9789,
+          "primaryTeamName": "Borussia Dortmund",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
           {
             "id": 1761151,
@@ -1091,21 +958,6 @@
             },
             "firstName": "Samuele",
             "lastName": "Inácio"
-          },
-          {
-            "id": 1663094,
-            "age": 21,
-            "name": "Filippo Mané",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 2304286,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Filippo",
-            "lastName": "Mané"
           },
           {
             "id": 1636870,
@@ -1182,18 +1034,8 @@
             "lastName": "Can"
           }
         ],
-        "averageStarterAge": 26,
-        "totalStarterMarketValue": 143352063,
-        "lastMatch": {
-          "matchId": 5750701,
-          "homeTeamId": 946303,
-          "awayTeamId": 9789,
-          "homeTeamName": "HEBC Hamburg",
-          "awayTeamName": "Borussia Dortmund",
-          "homeScore": 0,
-          "awayScore": 5,
-          "matchDate": "2026-09-01T20:45:00"
-        }
+        "averageStarterAge": 24.9,
+        "totalStarterMarketValue": 249706838
       },
       "awayTeam": {
         "id": 10205,
@@ -1203,7 +1045,7 @@
           {
             "id": 1187044,
             "age": 25,
-            "name": "Luíz Júnior",
+            "name": "Luiz Júnior",
             "positionId": 11,
             "usualPlayingPositionId": 0,
             "shirtNumber": "1",
@@ -1222,19 +1064,19 @@
               "width": 1
             },
             "marketValue": 11052788,
-            "firstName": "Luíz",
+            "firstName": "Luiz",
             "lastName": "Júnior",
             "rankings": null
           },
           {
-            "id": 1407468,
-            "age": 24,
-            "name": "Santiago Mouriño",
+            "id": 1338696,
+            "age": 22,
+            "name": "Alex Freeman",
             "positionId": 32,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "countryName": "Uruguay",
-            "countryCode": "URU",
+            "shirtNumber": "3",
+            "countryName": "USA",
+            "countryCode": "USA",
             "horizontalLayout": {
               "x": 0.357,
               "y": 0.875,
@@ -1247,20 +1089,20 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 9932210,
-            "firstName": "Santiago",
-            "lastName": "Mouriño",
+            "marketValue": 1964275,
+            "firstName": "Alex",
+            "lastName": "Freeman",
             "rankings": null
           },
           {
-            "id": 833219,
-            "age": 28,
-            "name": "Juan Foyth",
+            "id": 922877,
+            "age": 25,
+            "name": "Logan Costa",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "8",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
+            "shirtNumber": "2",
+            "countryName": "Cape Verde",
+            "countryCode": "CPV",
             "horizontalLayout": {
               "x": 0.357,
               "y": 0.625,
@@ -1273,9 +1115,9 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 9322638,
-            "firstName": "Juan",
-            "lastName": "Foyth",
+            "marketValue": 15742885,
+            "firstName": "Logan",
+            "lastName": "Costa",
             "rankings": null
           },
           {
@@ -1305,12 +1147,12 @@
             "rankings": null
           },
           {
-            "id": 1395964,
-            "age": 24,
-            "name": "Carlos Romero",
+            "id": 1059657,
+            "age": 27,
+            "name": "Sergi Cardona",
             "positionId": 38,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "20",
+            "shirtNumber": "23",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -1325,9 +1167,9 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 14067488,
-            "firstName": "Carlos",
-            "lastName": "Romero",
+            "marketValue": 6805731,
+            "firstName": "Sergi",
+            "lastName": "Cardona",
             "rankings": null
           },
           {
@@ -1357,14 +1199,14 @@
             "rankings": null
           },
           {
-            "id": 671865,
-            "age": 29,
-            "name": "Santi Comesaña",
+            "id": 1216798,
+            "age": 22,
+            "name": "Nathan Saliba",
             "positionId": 74,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "14",
-            "countryName": "Spain",
-            "countryCode": "ESP",
+            "shirtNumber": "24",
+            "countryName": "Canada",
+            "countryCode": "CAN",
             "horizontalLayout": {
               "x": 0.613,
               "y": 0.625,
@@ -1377,9 +1219,9 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 4800913,
-            "firstName": "Santi",
-            "lastName": "Comesaña",
+            "marketValue": 3695130,
+            "firstName": "Nathan",
+            "lastName": "Saliba",
             "rankings": null
           },
           {
@@ -1409,14 +1251,14 @@
             "rankings": null
           },
           {
-            "id": 1026135,
-            "age": 27,
-            "name": "Tajon Buchanan",
+            "id": 1184694,
+            "age": 22,
+            "name": "Alberto Moleiro",
             "positionId": 78,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "17",
-            "countryName": "Canada",
-            "countryCode": "CAN",
+            "shirtNumber": "10",
+            "countryName": "Spain",
+            "countryCode": "ESP",
             "horizontalLayout": {
               "x": 0.613,
               "y": 0.125,
@@ -1429,19 +1271,18 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 9337549,
-            "firstName": "Tajon",
-            "lastName": "Buchanan",
+            "marketValue": 23234734,
+            "firstName": "Alberto",
+            "lastName": "Moleiro",
             "rankings": null
           },
           {
-            "id": 246438,
-            "age": 34,
-            "name": "Gerard Moreno",
+            "id": 479020,
+            "age": 33,
+            "name": "Ayoze Pérez",
             "positionId": 104,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "isCaptain": true,
+            "shirtNumber": "22",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -1456,20 +1297,20 @@
               "height": 0.2,
               "width": 0.4
             },
-            "marketValue": 1716977,
-            "firstName": "Gerard",
-            "lastName": "Moreno",
+            "marketValue": 2802102,
+            "firstName": "Ayoze",
+            "lastName": "Pérez",
             "rankings": null
           },
           {
-            "id": 1117069,
-            "age": 25,
-            "name": "Georges Mikautadze",
+            "id": 246438,
+            "age": 34,
+            "name": "Gerard Moreno",
             "positionId": 106,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Georgia",
-            "countryCode": "GEO",
+            "shirtNumber": "7",
+            "countryName": "Spain",
+            "countryCode": "ESP",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.3,
@@ -1482,9 +1323,9 @@
               "height": 0.2,
               "width": 0.4
             },
-            "marketValue": 22702601,
-            "firstName": "Georges",
-            "lastName": "Mikautadze",
+            "marketValue": 1716977,
+            "firstName": "Gerard",
+            "lastName": "Moreno",
             "rankings": null
           }
         ],
@@ -1501,164 +1342,6 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 151001,
-            "age": 36,
-            "name": "Péter Gulácsi",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "25",
-            "countryName": "Hungary",
-            "countryCode": "HUN",
-            "marketValue": 1294704,
-            "firstName": "Péter",
-            "lastName": "Gulácsi",
-            "rankings": null
-          },
-          {
-            "id": 1338696,
-            "age": 22,
-            "name": "Alex Freeman",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "USA",
-            "countryCode": "USA",
-            "marketValue": 1964275,
-            "firstName": "Alex",
-            "lastName": "Freeman",
-            "rankings": null
-          },
-          {
-            "id": 922877,
-            "age": 25,
-            "name": "Logan Costa",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "2",
-            "countryName": "Cape Verde",
-            "countryCode": "CPV",
-            "marketValue": 15742885,
-            "firstName": "Logan",
-            "lastName": "Costa",
-            "rankings": null
-          },
-          {
-            "id": 1531887,
-            "age": 21,
-            "name": "Pau Navarro",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "6",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 9185404,
-            "firstName": "Pau",
-            "lastName": "Navarro",
-            "rankings": null
-          },
-          {
-            "id": 1059657,
-            "age": 27,
-            "name": "Sergi Cardona",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "23",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 6805731,
-            "firstName": "Sergi",
-            "lastName": "Cardona",
-            "rankings": null
-          },
-          {
-            "id": 1695966,
-            "age": 21,
-            "name": "Alassane Diatta",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "5",
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 898102,
-            "firstName": "Alassane",
-            "lastName": "Diatta",
-            "rankings": null
-          },
-          {
-            "id": 1184694,
-            "age": 22,
-            "name": "Alberto Moleiro",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "10",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 23234734,
-            "firstName": "Alberto",
-            "lastName": "Moleiro",
-            "rankings": null
-          },
-          {
-            "id": 1841906,
-            "age": 18,
-            "name": "Carlos Maciá",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "26",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2222555,
-            "firstName": "Carlos",
-            "lastName": "Maciá",
-            "rankings": null
-          },
-          {
-            "id": 1216798,
-            "age": 22,
-            "name": "Nathan Saliba",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "24",
-            "countryName": "Canada",
-            "countryCode": "CAN",
-            "marketValue": 3695130,
-            "firstName": "Nathan",
-            "lastName": "Saliba",
-            "rankings": null
-          },
-          {
-            "id": 479020,
-            "age": 33,
-            "name": "Ayoze Pérez",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "22",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2802102,
-            "firstName": "Ayoze",
-            "lastName": "Pérez",
-            "rankings": null
-          },
-          {
-            "id": 1311915,
-            "age": 22,
-            "name": "Ilias Akhomach",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 10960728,
-            "firstName": "Ilias",
-            "lastName": "Akhomach",
-            "rankings": null
-          },
-          {
-            "id": 1338740,
-            "age": 26,
-            "name": "Tani Oluwaseyi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "21",
-            "countryName": "Canada",
-            "countryCode": "CAN",
-            "marketValue": 5383565,
-            "firstName": "Tani",
-            "lastName": "Oluwaseyi",
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 833219,
@@ -1676,18 +1359,8 @@
             "lastName": "Foyth"
           }
         ],
-        "averageStarterAge": 27.6,
-        "totalStarterMarketValue": 127286638,
-        "lastMatch": {
-          "matchId": 5868031,
-          "homeTeamId": 9866,
-          "awayTeamId": 10205,
-          "homeTeamName": "Deportivo Alavés",
-          "awayTeamName": "Villarreal",
-          "homeScore": 1,
-          "awayScore": 0,
-          "matchDate": "2026-08-28T21:30:00"
-        }
+        "averageStarterAge": 26.9,
+        "totalStarterMarketValue": 111368096
       }
     },
     "hasPlayoff": false,
