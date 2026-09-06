@@ -487,9 +487,10 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
     // Composant Noeud Joueur avec Carte Tooltip complète au survol
     const PlayerNode = ({ player, position, index, total, formation, startsMap }) => {
         const [isHovered, setIsHovered] = useState(false);
+        const [activeTab, setActiveTab] = useState('season'); // 'season' | 'club' | 'career'
 
         const tactical = useMemo(() => getPlayerTacticalDetails(player), [player]);
-        const starts = useMemo(() => {
+        const rawStarts = useMemo(() => {
             const n = normStr(player.name);
             if (startsMap?.has(n)) return startsMap.get(n);
             if (startsMap) {
@@ -497,7 +498,7 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                     if (areNamesMatching(n, k)) return v;
                 }
             }
-            return player.stats?.appearances || 0;
+            return 0;
         }, [player, startsMap]);
 
         // Données du joueur issues de PLAYERS_DB (FBref)
@@ -508,10 +509,12 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         // Données de carrière agrégées dans le club
         const clubStats = useMemo(() => {
             if (!clubAllSeasonsData?.seasons) {
+                const sApps = player.stats?.appearances || 0;
                 return {
-                    appearances: player.stats?.appearances || 0,
+                    appearances: sApps,
                     goals: player.stats?.goals || 0,
                     assists: player.stats?.assists || 0,
+                    starts: Math.min(rawStarts, sApps),
                     seasonsCount: 1
                 };
             }
@@ -533,13 +536,15 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                 }
             });
 
+            const finalApps = Math.max(totalApps, player.stats?.appearances || 0);
             return {
-                appearances: Math.max(totalApps, player.stats?.appearances || 0),
+                appearances: finalApps,
                 goals: Math.max(totalGls, player.stats?.goals || 0),
                 assists: Math.max(totalAst, player.stats?.assists || 0),
+                starts: Math.min(rawStarts, finalApps),
                 seasonsCount: Math.max(1, seasonsCount)
             };
-        }, [clubAllSeasonsData, player]);
+        }, [clubAllSeasonsData, player, rawStarts]);
 
         const coords = getCoords(formation, position, index, total || 1);
         const photoUrl = getPlayerPhoto(clubName, player.name, player);
@@ -569,7 +574,12 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
 
         const goals = player.stats?.goals || dbPlayer?.Gls || 0;
         const assists = player.stats?.assists || dbPlayer?.Ast || 0;
-        const appearances = player.stats?.appearances || dbPlayer?.MP || starts || 0;
+        
+        // Règle d'intégrité stricte : Titularisations <= Apparitions
+        const appearances = player.stats?.appearances || dbPlayer?.MP || (rawStarts > 0 ? rawStarts : 0);
+        const starts = Math.min(appearances, rawStarts > 0 ? rawStarts : appearances);
+        const subIns = Math.max(0, appearances - starts);
+
         const minutes = dbPlayer?.Min || (appearances > 0 ? appearances * 78 : 0);
         const xG = dbPlayer?.xG ?? '-';
         const xAG = dbPlayer?.xAG ?? '-';
@@ -577,6 +587,11 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         const age = player.age || dbPlayer?.Age || tactical.registry?.age || '-';
         const nationality = player.nationality || tactical.registry?.nationality || (dbPlayer?.Nation ? dbPlayer.Nation.split(' ').pop() : '-');
         const marketValue = player.market_value || tactical.registry?.marketValue || '-';
+
+        // Carrière estimée (FBref DB + Club)
+        const careerAppearances = Math.max(appearances, (dbPlayer?.MP || 0) + (clubStats.appearances > appearances ? clubStats.appearances - appearances : 0));
+        const careerGoals = Math.max(goals, (dbPlayer?.Gls || 0) + (clubStats.goals > goals ? clubStats.goals - goals : 0));
+        const careerAssists = Math.max(assists, (dbPlayer?.Ast || 0) + (clubStats.assists > assists ? clubStats.assists - assists : 0));
 
         return (
             <div
@@ -635,30 +650,31 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                 {/* Badges d'activité rapide */}
                 <div className="flex gap-1 mt-0.5 pointer-events-none">
                     {starts > 0 && (
-                        <span className="bg-emerald-600/95 text-white px-1.5 py-0.2 rounded text-[9px] font-extrabold shadow">
+                        <span className="bg-emerald-600/95 text-white px-1.5 py-0.2 rounded text-[9px] font-extrabold shadow" title={`${starts} titularisation(s)`}>
                             👕{starts}
                         </span>
                     )}
                     {goals > 0 && (
-                        <span className="bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded text-[9px] font-black shadow">
+                        <span className="bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded text-[9px] font-black shadow" title={`${goals} but(s)`}>
                             ⚽{goals}
                         </span>
                     )}
                     {assists > 0 && (
-                        <span className="bg-sky-400 text-slate-950 px-1.5 py-0.2 rounded text-[9px] font-black shadow">
+                        <span className="bg-sky-400 text-slate-950 px-1.5 py-0.2 rounded text-[9px] font-black shadow" title={`${assists} passe(s) décisive(s)`}>
                             🎯{assists}
                         </span>
                     )}
                 </div>
 
-                {/* CARTE TOOLTIP STATISTIQUES AU SURVOL (HAUTE LISIBILITÉ & CONTRASTE) */}
+                {/* CARTE TOOLTIP STATISTIQUES AU SURVOL (HAUTE LISIBILITÉ & INTERACTIVITÉ) */}
                 {isHovered && (
                     <div
                         style={tooltipStyle}
-                        className="w-80 bg-[#0B132B] border border-amber-400/40 rounded-2xl p-4 shadow-[0_16px_50px_rgba(0,0,0,0.95)] backdrop-blur-2xl text-slate-100 pointer-events-none z-[9999] animate-fadeIn"
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-80 bg-[#0B132B] border border-amber-400/40 rounded-2xl p-4 shadow-[0_16px_50px_rgba(0,0,0,0.95)] backdrop-blur-2xl text-slate-100 pointer-events-auto z-[9999] animate-fadeIn cursor-default"
                     >
                         {/* Entête du Joueur */}
-                        <div className="flex items-center gap-3 border-b border-white/15 pb-3 mb-3">
+                        <div className="flex items-center gap-3 border-b border-white/15 pb-3 mb-2.5">
                             <div className="w-12 h-12 rounded-full border-2 border-amber-400/70 overflow-hidden bg-slate-900 shrink-0 shadow-md">
                                 <img
                                     src={photoUrl || fallbackRoleAvatar}
@@ -684,57 +700,147 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
                             </div>
                         </div>
 
-                        {/* SECTION 1 : SAISON EN COURS */}
-                        <div className="mb-3">
-                            <div className="text-[10px] uppercase font-bold text-amber-300 tracking-wider mb-2 flex items-center justify-between">
-                                <span className="flex items-center gap-1">📊 Saison 2026-2027</span>
-                                <span className="text-slate-300 font-semibold bg-white/10 px-2 py-0.5 rounded-full text-[10px]">{appearances} apparitions</span>
-                            </div>
-                            <div className="grid grid-cols-3 gap-2 text-center">
-                                <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
-                                    <div className="text-[10px] text-slate-400 font-medium">Buts / Passes</div>
-                                    <div className="font-black text-white text-sm mt-0.5">{goals} <span className="text-amber-400">/</span> {assists}</div>
-                                </div>
-                                <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
-                                    <div className="text-[10px] text-slate-400 font-medium">Titularisations</div>
-                                    <div className="font-black text-emerald-400 text-sm mt-0.5">{starts}</div>
-                                </div>
-                                <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
-                                    <div className="text-[10px] text-slate-400 font-medium">Temps de jeu</div>
-                                    <div className="font-black text-sky-400 text-sm mt-0.5">{minutes}'</div>
-                                </div>
-                            </div>
-                            {(xG !== '-' || xAG !== '-') && (
-                                <div className="flex justify-between text-[11px] bg-slate-900/60 rounded-lg p-1.5 mt-2 border border-white/5 text-slate-300">
-                                    <span>xG Attendus: <strong className="text-emerald-300 font-bold">{xG}</strong></span>
-                                    <span>xAG Passes clés: <strong className="text-sky-300 font-bold">{xAG}</strong></span>
-                                </div>
-                            )}
+                        {/* TOGGLE BOUTON STATS (Saison / Club / Carrière) */}
+                        <div className="flex bg-slate-950/80 p-0.5 rounded-lg border border-white/10 mb-3 text-[10px] font-bold">
+                            <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); setActiveTab('season'); }}
+                                className={`flex-1 py-1 rounded transition-all ${
+                                    activeTab === 'season'
+                                        ? 'bg-amber-400 text-slate-950 shadow font-extrabold'
+                                        : 'text-slate-400 hover:text-white'
+                                }`}
+                            >
+                                📊 Saison 26-27
+                            </button>
+                            <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); setActiveTab('club'); }}
+                                className={`flex-1 py-1 rounded transition-all ${
+                                    activeTab === 'club'
+                                        ? 'bg-sky-400 text-slate-950 shadow font-extrabold'
+                                        : 'text-slate-400 hover:text-white'
+                                }`}
+                            >
+                                🏟️ Au Club
+                            </button>
+                            <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); setActiveTab('career'); }}
+                                className={`flex-1 py-1 rounded transition-all ${
+                                    activeTab === 'career'
+                                        ? 'bg-emerald-400 text-slate-950 shadow font-extrabold'
+                                        : 'text-slate-400 hover:text-white'
+                                }`}
+                            >
+                                🌍 Carrière
+                            </button>
                         </div>
 
-                        {/* SECTION 2 : HISTORIQUE DANS LE CLUB */}
-                        <div className="mb-3 pt-2.5 border-t border-white/15">
-                            <div className="text-[10px] uppercase font-bold text-sky-300 tracking-wider mb-2 flex items-center justify-between">
-                                <span className="flex items-center gap-1">🏟️ Bilan au Club ({clubName})</span>
-                                <span className="text-slate-300 font-semibold">{clubStats.seasonsCount} saison{clubStats.seasonsCount > 1 ? 's' : ''}</span>
-                            </div>
-                            <div className="flex justify-between items-center text-xs bg-slate-900/80 px-2.5 py-1.5 rounded-lg border border-white/10">
-                                <span className="text-slate-300">Total Matchs / Buts :</span>
-                                <span className="font-black text-white">{clubStats.appearances} m. • {clubStats.goals} buts • {clubStats.assists} p.</span>
-                            </div>
-                            {player.joined_date && (
-                                <div className="flex justify-between text-[10px] text-slate-400 mt-1.5 px-1">
-                                    <span>Arrivée: <strong className="text-slate-200">{player.joined_date}</strong></span>
-                                    {player.contract_until && <span>Fin de contrat: <strong className="text-amber-300">{player.contract_until}</strong></span>}
+                        {/* VUE 1 : SAISON EN COURS (2026-2027) */}
+                        {activeTab === 'season' && (
+                            <div className="mb-3 animate-fadeIn">
+                                <div className="text-[10px] uppercase font-bold text-amber-300 tracking-wider mb-2 flex items-center justify-between">
+                                    <span className="flex items-center gap-1">📊 Saison 2026-2027</span>
+                                    <span className="text-slate-300 font-semibold bg-white/10 px-2 py-0.5 rounded-full text-[10px]">
+                                        {appearances} matchs ({starts} tit.{subIns > 0 ? ` + ${subIns} remp.` : ''})
+                                    </span>
                                 </div>
-                            )}
-                        </div>
+                                <div className="grid grid-cols-3 gap-2 text-center">
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Buts / Passes</div>
+                                        <div className="font-black text-white text-sm mt-0.5">{goals} <span className="text-amber-400">/</span> {assists}</div>
+                                    </div>
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Titularisations</div>
+                                        <div className="font-black text-emerald-400 text-sm mt-0.5">{starts} / {appearances}</div>
+                                    </div>
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Temps de jeu</div>
+                                        <div className="font-black text-sky-400 text-sm mt-0.5">{minutes}'</div>
+                                    </div>
+                                </div>
+                                {(xG !== '-' || xAG !== '-') && (
+                                    <div className="flex justify-between text-[11px] bg-slate-900/60 rounded-lg p-1.5 mt-2 border border-white/5 text-slate-300">
+                                        <span>xG Attendus: <strong className="text-emerald-300 font-bold">{xG}</strong></span>
+                                        <span>xAG Passes clés: <strong className="text-sky-300 font-bold">{xAG}</strong></span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
 
-                        {/* SECTION 3 : PROFIL & VALEUR */}
+                        {/* VUE 2 : HISTORIQUE DANS LE CLUB */}
+                        {activeTab === 'club' && (
+                            <div className="mb-3 animate-fadeIn">
+                                <div className="text-[10px] uppercase font-bold text-sky-300 tracking-wider mb-2 flex items-center justify-between">
+                                    <span className="flex items-center gap-1">🏟️ Bilan au Club ({clubName})</span>
+                                    <span className="text-slate-300 font-semibold bg-white/10 px-2 py-0.5 rounded-full text-[10px]">
+                                        {clubStats.seasonsCount} saison{clubStats.seasonsCount > 1 ? 's' : ''}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 gap-2 text-center mb-2">
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Matchs joués</div>
+                                        <div className="font-black text-white text-sm mt-0.5">{clubStats.appearances}</div>
+                                    </div>
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Buts inscrits</div>
+                                        <div className="font-black text-amber-400 text-sm mt-0.5">{clubStats.goals}</div>
+                                    </div>
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Passes déc.</div>
+                                        <div className="font-black text-sky-400 text-sm mt-0.5">{clubStats.assists}</div>
+                                    </div>
+                                </div>
+                                <div className="text-[11px] bg-slate-900/80 px-2.5 py-1.5 rounded-lg border border-white/10 text-slate-300 flex justify-between">
+                                    <span>Ratio buts / match :</span>
+                                    <strong className="text-white font-mono">
+                                        {clubStats.appearances > 0 ? (clubStats.goals / clubStats.appearances).toFixed(2) : '0.00'} b/m
+                                    </strong>
+                                </div>
+                                {player.joined_date && (
+                                    <div className="flex justify-between text-[10px] text-slate-400 mt-2 px-1">
+                                        <span>Arrivée: <strong className="text-slate-200">{player.joined_date}</strong></span>
+                                        {player.contract_until && <span>Fin de contrat: <strong className="text-amber-300">{player.contract_until}</strong></span>}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {/* VUE 3 : CARRIÈRE GLOBALE */}
+                        {activeTab === 'career' && (
+                            <div className="mb-3 animate-fadeIn">
+                                <div className="text-[10px] uppercase font-bold text-emerald-300 tracking-wider mb-2 flex items-center justify-between">
+                                    <span className="flex items-center gap-1">🌍 Historique de Carrière</span>
+                                    <span className="text-slate-300 font-semibold bg-white/10 px-2 py-0.5 rounded-full text-[10px]">
+                                        Pro
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 gap-2 text-center mb-2">
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Total Matchs</div>
+                                        <div className="font-black text-white text-sm mt-0.5">{careerAppearances}</div>
+                                    </div>
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Total Buts</div>
+                                        <div className="font-black text-emerald-400 text-sm mt-0.5">{careerGoals}</div>
+                                    </div>
+                                    <div className="bg-slate-900/90 p-2 rounded-xl border border-white/10">
+                                        <div className="text-[10px] text-slate-400 font-medium">Total Passes</div>
+                                        <div className="font-black text-sky-400 text-sm mt-0.5">{careerAssists}</div>
+                                    </div>
+                                </div>
+                                <div className="bg-slate-900/80 p-2 rounded-lg border border-white/10 text-[11px] flex justify-between items-center text-slate-300">
+                                    <span>Efficacité carrière :</span>
+                                    <span className="text-emerald-300 font-bold font-mono">
+                                        {careerAppearances > 0 ? ((careerGoals + careerAssists) / careerAppearances).toFixed(2) : '0.00'} décisif/m
+                                    </span>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* SECTION PROFIL & VALEUR */}
                         <div className="pt-2.5 border-t border-white/15">
-                            <div className="text-[10px] uppercase font-bold text-emerald-300 tracking-wider mb-2">
-                                👤 Profil & Transfert
-                            </div>
                             <div className="grid grid-cols-2 gap-2 text-xs">
                                 <div className="bg-slate-900/80 p-1.5 rounded-lg border border-white/5 flex justify-between">
                                     <span className="text-slate-400">Âge :</span>
