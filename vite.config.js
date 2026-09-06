@@ -8,12 +8,37 @@ export default defineConfig({
     stringify: true,
   },
   build: {
-    chunkSizeWarningLimit: 100000,
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          recharts: ['recharts'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-motion';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons';
+            }
+            if (id.includes('recharts')) {
+              return 'vendor-recharts';
+            }
+            return 'vendor-misc';
+          }
+          if (id.includes('src/data/app_data.json')) {
+            return 'data-app-data';
+          }
+          if (id.includes('compiled/analytics_cache.json')) {
+            return 'data-analytics';
+          }
+          if (id.includes('src/data/squads/')) {
+            return 'data-squads';
+          }
+          if (id.includes('src/data/players') || id.includes('compiled/players_master_registry.json')) {
+            return 'data-players';
+          }
         },
       },
     },

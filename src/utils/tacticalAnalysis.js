@@ -8,7 +8,7 @@
  * - Extraction des 5 derniers matchs réels avec différentiel Buts vs xG
  */
 
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import ANALYTICS_CACHE from '../data/compiled/analytics_cache.json';
 import { normalizeEntityKey } from './entityResolver';
 
 /**
@@ -20,61 +20,22 @@ import { normalizeEntityKey } from './entityResolver';
 export function getTeamRecentMatches(teamName, limit = 5) {
   if (!teamName) return [];
   const normTarget = normalizeEntityKey(teamName);
+  const cache = ANALYTICS_CACHE?.teamRecent || {};
 
-  const teamMatches = (UNIFIED_HISTORY || [])
-    .filter(m => {
-      const hNorm = normalizeEntityKey(m.homeTeam || '');
-      const aNorm = normalizeEntityKey(m.awayTeam || '');
-      return hNorm === normTarget || aNorm === normTarget || hNorm.includes(normTarget) || normTarget.includes(hNorm) || aNorm.includes(normTarget) || normTarget.includes(aNorm);
-    })
-    .filter(m => m.score && m.score !== 'À Venir' && m.score !== 'SCHEDULED');
+  // Recherche directe ou approximative
+  let teamMatches = cache[normTarget];
+  if (!teamMatches) {
+    for (const [k, list] of Object.entries(cache)) {
+      if (k.includes(normTarget) || normTarget.includes(k)) {
+        teamMatches = list;
+        break;
+      }
+    }
+  }
 
-  // Trier du plus récent au plus ancien
-  const sorted = [...teamMatches].sort((a, b) => {
-    const dateA = a.date || '2025-01-01';
-    const dateB = b.date || '2025-01-01';
-    return dateB.localeCompare(dateA);
-  });
-
-  return sorted.slice(0, limit).map((m, idx) => {
-    const isHome = normalizeEntityKey(m.homeTeam || '').includes(normTarget) || normTarget.includes(normalizeEntityKey(m.homeTeam || ''));
-    const opponent = isHome ? m.awayTeam : m.homeTeam;
-    const [hg, ag] = (m.score || '0-0').split('-').map(Number);
-    const teamGoals = isHome ? hg : ag;
-    const oppGoals = isHome ? ag : hg;
-
-    let result = 'D'; // Defeat
-    if (teamGoals > oppGoals) result = 'W'; // Win
-    else if (teamGoals === oppGoals) result = 'D_DRAW'; // Draw
-
-    const teamXg = isHome 
-      ? (m.teamStats?.home?.xg ?? +(hg * 0.7 + 0.4).toFixed(1))
-      : (m.teamStats?.away?.xg ?? +(ag * 0.7 + 0.3).toFixed(1));
-    
-    const diff = +(teamGoals - teamXg).toFixed(2);
-
-    return {
-      id: m.id || `REC_${idx}`,
-      match: m,
-      date: m.date || '2025-2026',
-      round: m.round || `J.${idx + 1}`,
-      league: m.league || 'ENG-PL',
-      opponent,
-      venue: isHome ? 'Domicile' : 'Extérieur',
-      isHome,
-      score: `${teamGoals} - ${oppGoals}`,
-      realGoals: teamGoals,
-      concededGoals: oppGoals,
-      xG: teamXg,
-      diff,
-      status: diff >= 0 ? 'over' : 'under',
-      result, // 'W', 'D_DRAW', 'D'
-      referee: m.referee || 'Arbitre Officiel',
-      goals: m.goals || [],
-      teamStats: m.teamStats,
-    };
-  });
+  return (teamMatches || []).slice(0, limit);
 }
+
 
 /**
  * Calcule les métriques Radar multi-axes d'un club (échelle 0-100)

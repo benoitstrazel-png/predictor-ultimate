@@ -1,10 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import PassingNetwork from './PassingNetwork';
-import PLAYERS_DATA from '../data/players.json';
-import SCD2_MERCATO from '../data/squads_mercato_scd2.json';
-import TRANSFERS_ENRICHED from '../data/compiled/transfers_enriched_master.json';
-import COACHES_SCD2 from '../data/compiled/coaches_unified_scd2.json';
 import { SQUADS_MANIFEST, getClubSquad } from '../data/squads_index';
+import { resolveTeamCoach } from '../utils/coachResolver';
+import { fetchTransfers } from '../services/historyService';
 import { getTeamLogo } from '../utils/logos';
 import TeamLogo from './ui/TeamLogo';
 import PlayerAvatar from './ui/PlayerAvatar';
@@ -17,6 +15,17 @@ import {
 
 export default function SquadsMercatoProps({ targetMatch }) {
   const [activeSubTab, setActiveSubTab] = useState('roster'); // 'roster', 'mercato', 'props'
+  const [transfersData, setTransfersData] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchTransfers().then(data => {
+      if (isMounted && Array.isArray(data)) {
+        setTransfersData(data);
+      }
+    });
+    return () => { isMounted = false; };
+  }, []);
 
   // ── 3-TIER MULTI-SEASON ROSTER EXPLORER STATE ──
   const [rosterLeague, setRosterLeague] = useState(targetMatch?.league || 'FRA-L1');
@@ -79,26 +88,26 @@ export default function SquadsMercatoProps({ targetMatch }) {
   const clubTransfersIn = useMemo(() => {
     if (!selectedClub) return [];
     const clubNorm = selectedClub.toLowerCase().trim();
-    return (TRANSFERS_ENRICHED || []).filter(t => {
+    return (transfersData || []).filter(t => {
       const toMatch = (t.to_team_name || '').toLowerCase().includes(clubNorm) ||
                       clubNorm.includes((t.to_team_name || '').toLowerCase());
       if (!toMatch) return false;
       if (selectedSeason !== 'ALL' && t.season !== selectedSeason) return false;
       return true;
     });
-  }, [selectedClub, selectedSeason]);
+  }, [selectedClub, selectedSeason, transfersData]);
 
   const clubTransfersOut = useMemo(() => {
     if (!selectedClub) return [];
     const clubNorm = selectedClub.toLowerCase().trim();
-    return (TRANSFERS_ENRICHED || []).filter(t => {
+    return (transfersData || []).filter(t => {
       const fromMatch = (t.from_team_name || '').toLowerCase().includes(clubNorm) ||
                         clubNorm.includes((t.from_team_name || '').toLowerCase());
       if (!fromMatch) return false;
       if (selectedSeason !== 'ALL' && t.season !== selectedSeason) return false;
       return true;
     });
-  }, [selectedClub, selectedSeason]);
+  }, [selectedClub, selectedSeason, transfersData]);
 
   const departedPlayers = useMemo(() => {
     const list = [];
@@ -258,25 +267,15 @@ export default function SquadsMercatoProps({ targetMatch }) {
     });
   }, [currentClubSquad, rosterPosition, rosterSearch, newSignings, departedPlayers]);
 
-  // ── HEAD COACH RESOLUTION (SCD Type 2) ──
+  // ── HEAD COACH RESOLUTION (SCD Type 2 & Master Profiles) ──
   const currentClubCoach = useMemo(() => {
     if (!selectedClub) return null;
-    const clubNorm = selectedClub.toLowerCase().trim();
-    return (COACHES_SCD2 || []).find(c => {
-      const nameMatch = (c.team_name || '').toLowerCase().includes(clubNorm) ||
-                        clubNorm.includes((c.team_name || '').toLowerCase());
-      if (!nameMatch) return false;
-      if (selectedSeason === 'ALL') return c.is_current;
-      return (c.seasons_covered || []).includes(selectedSeason);
-    }) || (COACHES_SCD2 || []).find(c => {
-      return (c.team_name || '').toLowerCase().includes(clubNorm) ||
-             clubNorm.includes((c.team_name || '').toLowerCase());
-    });
+    return resolveTeamCoach(selectedClub, selectedSeason);
   }, [selectedClub, selectedSeason]);
 
   // ── ENRICHED FOCUS TRANSFERTS FILTERED DATA ──
   const filteredTransfers = useMemo(() => {
-    return (TRANSFERS_ENRICHED || []).filter(item => {
+    return (transfersData || []).filter(item => {
       // Season filter
       if (transferSeason !== 'ALL' && item.season !== transferSeason) return false;
       // Role filter
@@ -1143,7 +1142,11 @@ export default function SquadsMercatoProps({ targetMatch }) {
       {/* ── TAB 3 : PROPS & PASSING NETWORK ── */}
       {/* ═════════════════════════════════════════════════════════════════════════ */}
       {activeSubTab === 'props' && (
-        <PassingNetwork />
+        <PassingNetwork
+          initialLeague={rosterLeague}
+          initialClub={selectedClub}
+          initialSeason={selectedSeason}
+        />
       )}
 
     </div>

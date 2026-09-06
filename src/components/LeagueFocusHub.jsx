@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import React, { useState, useMemo, useEffect } from 'react';
 import APP_DATA from '../data/app_data.json';
 import PLAYER_PHOTOS from '../data/player_photos.json';
 import PLAYER_REGISTRY from '../data/compiled/players_master_registry.json';
+import { fetchHistoryMatches } from '../services/historyService';
 
 import {
   buildCombinedMatches,
@@ -54,10 +54,23 @@ export default function LeagueFocusHub() {
   const [activeSubTab, setActiveSubTab] = useState('STANDINGS'); // 'STANDINGS' | 'SCORERS_ASSISTS' | 'DISCIPLINE' | 'REFEREES'
   const [viewMode, setViewMode] = useState('ALL'); // 'ALL' | 'HOME' | 'AWAY'
 
+  const [historyMatches, setHistoryMatches] = useState([]);
+
+  // Chargement asynchrone des matchs historiques pour la saison & ligue sélectionnées
+  useEffect(() => {
+    let isMounted = true;
+    fetchHistoryMatches(selectedSeason, selectedLeague).then(data => {
+      if (isMounted) {
+        setHistoryMatches(data || []);
+      }
+    });
+    return () => { isMounted = false; };
+  }, [selectedSeason, selectedLeague]);
+
   // Combinaison des données historiques et actuelles
   const allMatches = useMemo(() => {
-    return buildCombinedMatches(UNIFIED_HISTORY || [], APP_DATA?.fullSchedule || []);
-  }, []);
+    return buildCombinedMatches(historyMatches, APP_DATA?.fullSchedule || []);
+  }, [historyMatches]);
 
   // Calculs analytiques ultra-performants via le Standings Engine (mémoïsé)
   const standings = useMemo(() => {

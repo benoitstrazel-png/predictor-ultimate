@@ -263,6 +263,28 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         }
     }, [clubName]);
 
+    // Nombre réel de matchs disputés par le club sur la saison en cours (Plafond de saison)
+    const clubPlayedMatchesCount = useMemo(() => {
+        if (schedule && schedule.length > 0) {
+            const playedInSchedule = schedule.filter(m =>
+                (m.homeTeam === clubName || m.awayTeam === clubName) &&
+                (m.status === 'FINISHED' || (currentWeek && m.week < currentWeek))
+            ).length;
+            if (playedInSchedule > 0) return playedInSchedule;
+        }
+        if (matchHistory && matchHistory.length > 0) {
+            const playedInHistory = matchHistory.filter(m =>
+                (m.homeTeam === clubName || m.awayTeam === clubName) &&
+                m.score && m.score !== '-'
+            ).length;
+            if (playedInHistory > 0) return playedInHistory;
+        }
+        if (currentWeek && currentWeek > 1) {
+            return currentWeek - 1;
+        }
+        return 3; // Fallback raisonnable si J3
+    }, [schedule, matchHistory, currentWeek, clubName]);
+
     // Prochain adversaire
     const getNextMatch = (cName) => {
         if (!schedule || !currentWeek) return null;
@@ -575,9 +597,12 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
         const goals = player.stats?.goals || dbPlayer?.Gls || 0;
         const assists = player.stats?.assists || dbPlayer?.Ast || 0;
         
-        // Règle d'intégrité stricte : Titularisations <= Apparitions
-        const appearances = player.stats?.appearances || dbPlayer?.MP || (rawStarts > 0 ? rawStarts : 0);
-        const starts = Math.min(appearances, rawStarts > 0 ? rawStarts : appearances);
+        // Règle d'intégrité stricte :
+        // 1. Les apparitions 2026-2027 ne peuvent pas dépasser le nombre de matchs joués par le club
+        // 2. Les titularisations ne peuvent pas dépasser les apparitions ni le nombre de matchs joués
+        const rawApps = player.stats?.appearances ?? (rawStarts > 0 ? rawStarts : 0);
+        const appearances = Math.min(rawApps, Math.max(rawStarts, clubPlayedMatchesCount));
+        const starts = Math.min(appearances, rawStarts > 0 ? rawStarts : (appearances > 0 && player.stats?.appearances ? Math.min(appearances, Math.round(appearances * 0.7)) : 0));
         const subIns = Math.max(0, appearances - starts);
 
         const minutes = dbPlayer?.Min || (appearances > 0 ? appearances * 78 : 0);

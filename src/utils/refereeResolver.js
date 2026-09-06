@@ -8,49 +8,11 @@
  */
 
 import REFEREES_MASTER from '../data/referees_master.json';
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import ANALYTICS_CACHE from '../data/compiled/analytics_cache.json';
 import { normalizeEntityKey } from './entityResolver';
 
-// Pré-calcul des statistiques arbitres depuis UNIFIED_HISTORY
-const refereeHistoryStats = (() => {
-  const statsMap = new Map();
-
-  (UNIFIED_HISTORY || []).forEach(match => {
-    if (!match.referee || match.referee === 'Arbitre Officiel') return;
-    const refKey = normalizeEntityKey(match.referee);
-    if (!refKey) return;
-
-    if (!statsMap.has(refKey)) {
-      statsMap.set(refKey, {
-        fullName: match.referee,
-        matches: 0,
-        yellowCards: 0,
-        redCards: 0,
-        penalties: 0,
-      });
-    }
-
-    const item = statsMap.get(refKey);
-    item.matches += 1;
-
-    // Incidents / buts
-    (match.goals || []).forEach(g => {
-      if (g.isPenalty || (g.detail && g.detail.toLowerCase().includes('penalty'))) {
-        item.penalties += 1;
-      }
-    });
-
-    if (match.events && Array.isArray(match.events)) {
-      match.events.forEach(e => {
-        if (e.type === 'YELLOW_CARD') item.yellowCards += 1;
-        if (e.type === 'RED_CARD' || e.type === 'YELLOW_RED') item.redCards += 1;
-        if (e.type === 'PENALTY') item.penalties += 1;
-      });
-    }
-  });
-
-  return statsMap;
-})();
+// Statistiques arbitres pré-calculées
+const refereeHistoryStats = ANALYTICS_CACHE?.refs || {};
 
 /**
  * Résout et enrichit les informations d'un arbitre pour n'importe quel match.
@@ -107,7 +69,7 @@ export function resolveRefereeDetails(rawReferee, leagueId = '') {
   }
 
   // 2. Chercher dans les statistiques réelles d'historique
-  const histMatch = refereeHistoryStats.get(normKey);
+  const histMatch = refereeHistoryStats[normKey];
   if (histMatch && histMatch.matches > 0) {
     const yAvg = (histMatch.yellowCards > 0 ? (histMatch.yellowCards / histMatch.matches) : (3.4 + (histMatch.matches % 5) * 0.15)).toFixed(1);
     const pAvg = (histMatch.penalties > 0 ? (histMatch.penalties / histMatch.matches) : 0.28).toFixed(2);

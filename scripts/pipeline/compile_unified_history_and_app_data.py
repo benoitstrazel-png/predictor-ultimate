@@ -424,6 +424,123 @@ def compile_data():
         json.dump(unified_list, f, ensure_ascii=False, separators=(',', ':'))
     print(f"✅ [Compiler] unified_history.json régénéré : {len(unified_list)} rencontres certifiées avec Compositions, Formations et Chronologie.")
 
+    # Auto-génération du cache compact analytics_cache.json & partitionnement public/data/
+    try:
+        from collections import defaultdict
+        refs = defaultdict(lambda: {'yellowTotal': 0, 'redTotal': 0, 'penaltyTotal': 0, 'matches': 0})
+        team_recent = defaultdict(list)
+        f_store = defaultdict(lambda: {
+            'matches': 0, 'yellowTotal': 0, 'redTotal': 0,
+            'trailingMatches': 0, 'comebackWins': 0, 'comebackDraws': 0,
+            'leadingMatches': 0, 'lostLeads': 0
+        })
+        h2h_map = defaultdict(lambda: {'homeWins': 0, 'draws': 0, 'awayWins': 0, 'matches': []})
+
+        history_dir = os.path.join(ROOT_DIR, "public", "data", "history")
+        matches_dir = os.path.join(ROOT_DIR, "public", "data", "matches")
+        os.makedirs(history_dir, exist_ok=True)
+        os.makedirs(matches_dir, exist_ok=True)
+
+        grouped_history = defaultdict(list)
+        season_grouped = defaultdict(list)
+
+        for m in unified_list:
+            m_id = m['id']
+            # Match details into public/data/matches/
+            detail_obj = {
+                'id': m_id,
+                'teamStats': m.get('teamStats'),
+                'lineups': m.get('lineups'),
+                'timeline': m.get('timeline'),
+                'substitutions': m.get('substitutions'),
+                'coaches': m.get('coaches'),
+                'formations': m.get('formations')
+            }
+            with open(os.path.join(matches_dir, f"{m_id}.json"), 'w', encoding='utf-8') as mf:
+                json.dump(detail_obj, mf, ensure_ascii=False, separators=(',', ':'))
+
+            # Lightweight history summary
+            light_m = {
+                'id': m_id,
+                'league': m.get('league'),
+                'season': m.get('season'),
+                'round': m.get('round'),
+                'date': m.get('date'),
+                'homeTeam': m.get('homeTeam'),
+                'awayTeam': m.get('awayTeam'),
+                'homeScore': m.get('homeScore'),
+                'awayScore': m.get('awayScore'),
+                'homeXg': m.get('homeXg'),
+                'awayXg': m.get('awayXg'),
+                'referee': m.get('referee'),
+                'status': m.get('status'),
+                'goals': m.get('goals'),
+                'cards': m.get('cards')
+            }
+            s = m.get('season') or '2026-2027'
+            l = m.get('league') or 'FRA-L1'
+            grouped_history[f"{s}_{l}"].append(light_m)
+            season_grouped[s].append(light_m)
+
+            # Analytics Cache metrics
+            ref = m.get('referee')
+            if ref and ref != 'Arbitre Officiel':
+                r = refs[ref]
+                r['matches'] += 1
+                for c in m.get('cards', []):
+                    if c.get('type') == 'RED': r['redTotal'] += 1
+                    else: r['yellowTotal'] += 1
+                for g in m.get('goals', []):
+                    if g.get('isPenalty'): r['penaltyTotal'] += 1
+
+            ht, at = m.get('homeTeam'), m.get('awayTeam')
+            hs, as_ = m.get('homeScore'), m.get('awayScore')
+            if ht and at and hs is not None and as_ is not None:
+                pair_key = f"{ht} vs {at}"
+                h2h = h2h_map[pair_key]
+                if hs > as_: h2h['homeWins'] += 1
+                elif hs < as_: h2h['awayWins'] += 1
+                else: h2h['draws'] += 1
+                h2h['matches'].append({
+                    'id': m_id, 'date': m.get('date'), 'season': s, 'league': l,
+                    'homeTeam': ht, 'awayTeam': at, 'homeScore': hs, 'awayScore': as_,
+                    'homeXg': m.get('homeXg'), 'awayXg': m.get('awayXg')
+                })
+
+                for team_name, is_home in [(ht, True), (at, False)]:
+                    recent = team_recent[team_name]
+                    if len(recent) < 10:
+                        recent.append({
+                            'id': m_id, 'date': m.get('date'), 'isHome': is_home,
+                            'opponent': at if is_home else ht,
+                            'teamScore': hs if is_home else as_,
+                            'opponentScore': as_ if is_home else hs,
+                            'teamXg': m.get('homeXg') if is_home else m.get('awayXg'),
+                            'opponentXg': m.get('awayXg') if is_home else m.get('homeXg')
+                        })
+
+        for key, matches in grouped_history.items():
+            with open(os.path.join(history_dir, f"{key}.json"), 'w', encoding='utf-8') as hf:
+                json.dump(matches, hf, ensure_ascii=False, separators=(',', ':'))
+
+        for season, matches in season_grouped.items():
+            with open(os.path.join(history_dir, f"{season}_ALL.json"), 'w', encoding='utf-8') as hf:
+                json.dump(matches, hf, ensure_ascii=False, separators=(',', ':'))
+
+        analytics_cache = {
+            'refs': dict(refs),
+            'teamRecent': dict(team_recent),
+            'featureStore': dict(f_store),
+            'h2hMap': dict(h2h_map)
+        }
+        cache_path = os.path.join(ROOT_DIR, "src", "data", "compiled", "analytics_cache.json")
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        with open(cache_path, 'w', encoding='utf-8') as cf:
+            json.dump(analytics_cache, cf, ensure_ascii=False, separators=(',', ':'))
+        print(f"✅ [Compiler] analytics_cache.json & archives public/data régénérés avec succès.")
+    except Exception as e:
+        print(f"⚠️ [Compiler] Attention génération cache analytique : {e}")
+
     # 6. Mise à jour du calendrier 2026-2027 dans app_data.json
     c.execute("""
     SELECT 

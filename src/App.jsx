@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import SidebarRail from './components/SidebarRail';
 import MobileNavbar from './components/MobileNavbar';
@@ -7,13 +7,14 @@ import FixturesDrawer from './components/FixturesDrawer';
 import AiPredictorModal from './components/AiPredictorModal';
 import DynamicIsland from './components/DynamicIsland';
 
-import DailyBettingHub from './components/DailyBettingHub';
-import MatchDeepDive from './components/MatchDeepDive';
-import LeagueFocusHub from './components/LeagueFocusHub';
-import MatchHistoryHub from './components/MatchHistoryHub';
-import SquadsMercatoProps from './components/SquadsMercatoProps';
-import CopilotView from './components/CopilotView';
-import BankrollTracking from './components/BankrollTracking';
+// Lazy-loaded cockpit views for fast initial load
+const DailyBettingHub = lazy(() => import('./components/DailyBettingHub'));
+const MatchDeepDive = lazy(() => import('./components/MatchDeepDive'));
+const LeagueFocusHub = lazy(() => import('./components/LeagueFocusHub'));
+const MatchHistoryHub = lazy(() => import('./components/MatchHistoryHub'));
+const SquadsMercatoProps = lazy(() => import('./components/SquadsMercatoProps'));
+const CopilotView = lazy(() => import('./components/CopilotView'));
+const BankrollTracking = lazy(() => import('./components/BankrollTracking'));
 
 import { MatchProvider, useMatch } from './context/MatchContext';
 import { calculateCalibration } from './utils/calibration';
@@ -95,66 +96,98 @@ function AppContent() {
 
           {/* Cockpit Content Views */}
           <div style={{ padding: '28px 32px 48px' }}>
-            <Routes>
-              <Route path="/" element={<Navigate to="/main" replace />} />
+            <Suspense
+              fallback={
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '400px',
+                  gap: '16px',
+                  color: 'var(--cucinelli-sand, #c5a059)'
+                }}>
+                  <div style={{
+                    width: '36px',
+                    height: '36px',
+                    border: '2px solid rgba(197, 160, 89, 0.2)',
+                    borderTopColor: '#c5a059',
+                    borderRadius: '50%',
+                    animation: 'spin 0.8s linear infinite'
+                  }} />
+                  <span style={{
+                    fontSize: '11px',
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#8b8478',
+                    fontFamily: 'var(--font-mono, monospace)'
+                  }}>
+                    Chargement du cockpit...
+                  </span>
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<Navigate to="/main" replace />} />
 
-              {/* Tab 1: Daily Betting Hub & Value Bets */}
-              <Route
-                path="/main"
-                element={
-                  <DailyBettingHub
-                    key={`daily-${selectedMatch?.id}`}
-                    APP_DATA={appData}
-                    selectedMatch={selectedMatch}
-                    setSelectedMatch={selectMatch}
-                  />
-                }
-              />
+                {/* Tab 1: Daily Betting Hub & Value Bets */}
+                <Route
+                  path="/main"
+                  element={
+                    <DailyBettingHub
+                      key={`daily-${selectedMatch?.id}`}
+                      APP_DATA={appData}
+                      selectedMatch={selectedMatch}
+                      setSelectedMatch={selectMatch}
+                    />
+                  }
+                />
 
-              {/* Tab 2: Match Deep Dive & H2H */}
-              <Route
-                path="/match-deep-dive"
-                element={
-                  <MatchDeepDive
-                    key={`dive-${selectedMatch?.id}`}
-                    selectedMatch={selectedMatch}
-                    APP_DATA={appData}
-                    teams={teams}
-                  />
-                }
-              />
+                {/* Tab 2: Match Deep Dive & H2H */}
+                <Route
+                  path="/match-deep-dive"
+                  element={
+                    <MatchDeepDive
+                      key={`dive-${selectedMatch?.id}`}
+                      selectedMatch={selectedMatch}
+                      APP_DATA={appData}
+                      teams={teams}
+                    />
+                  }
+                />
 
-              {/* Tab 3: Focus Championnat & Stats */}
-              <Route path="/league-focus" element={<LeagueFocusHub />} />
+                {/* Tab 3: Focus Championnat & Stats */}
+                <Route path="/league-focus" element={<LeagueFocusHub />} />
 
-              {/* Tab 4: Historique & Résumés IA (Moteur Buteurs) */}
-              <Route path="/history" element={<MatchHistoryHub />} />
+                {/* Tab 4: Historique & Résumés IA (Moteur Buteurs) */}
+                <Route path="/history" element={<MatchHistoryHub />} />
 
-              {/* Tab 5: Squads, Mercato & Player Props */}
-              <Route
-                path="/squads-mercato"
-                element={
-                  <SquadsMercatoProps
-                    key={`squads-${selectedMatch?.id}`}
-                    targetMatch={selectedMatch}
-                  />
-                }
-              />
+                {/* Tab 5: Squads, Mercato & Player Props */}
+                <Route
+                  path="/squads-mercato"
+                  element={
+                    <SquadsMercatoProps
+                      key={`squads-${selectedMatch?.id}`}
+                      targetMatch={selectedMatch}
+                    />
+                  }
+                />
 
-              {/* Tab 6: AI Predictor Copilot */}
-              <Route path="/copilot" element={<CopilotView />} />
+                {/* Tab 6: AI Predictor Copilot */}
+                <Route path="/copilot" element={<CopilotView />} />
 
-              {/* Tab 7: Bankroll & Model Performance */}
-              <Route path="/bankroll" element={<BankrollTracking APP_DATA={appData} />} />
+                {/* Tab 7: Bankroll & Model Performance */}
+                <Route path="/bankroll" element={<BankrollTracking APP_DATA={appData} />} />
 
-              {/* Legacy route fallbacks & Catch-all */}
-              <Route path="/match-focus" element={<Navigate to="/match-deep-dive" replace />} />
-              <Route path="/players" element={<Navigate to="/squads-mercato" replace />} />
-              <Route path="/comparator" element={<Navigate to="/match-deep-dive" replace />} />
-              <Route path="/forecasts" element={<Navigate to="/main" replace />} />
-              <Route path="/tipsters" element={<Navigate to="/main" replace />} />
-              <Route path="*" element={<Navigate to="/main" replace />} />
-            </Routes>
+                {/* Legacy route fallbacks & Catch-all */}
+                <Route path="/match-focus" element={<Navigate to="/match-deep-dive" replace />} />
+                <Route path="/players" element={<Navigate to="/squads-mercato" replace />} />
+                <Route path="/comparator" element={<Navigate to="/match-deep-dive" replace />} />
+                <Route path="/forecasts" element={<Navigate to="/main" replace />} />
+                <Route path="/tipsters" element={<Navigate to="/main" replace />} />
+                <Route path="*" element={<Navigate to="/main" replace />} />
+              </Routes>
+            </Suspense>
           </div>
         </div>
       </main>

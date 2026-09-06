@@ -10,7 +10,7 @@ import {
   Users, Trophy, Zap, Wind, Droplets, ArrowUpRight, TrendingUp,
   CheckCircle2, AlertTriangle, ExternalLink, RefreshCw, Activity
 } from 'lucide-react';
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import ANALYTICS_CACHE from '../data/compiled/analytics_cache.json';
 import { resolveRefereeDetails } from '../utils/refereeResolver';
 import { resolveTeamCoach } from '../utils/coachResolver';
 import { fetchLiveMatchWeather } from '../services/weatherService';
@@ -91,62 +91,46 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
   // 7. Direct H2H History (2 Years)
   const rawH2H = useMemo(() => {
-    const directMatches = UNIFIED_HISTORY.filter(m =>
-      (m.homeTeam === home && m.awayTeam === away) || (m.homeTeam === away && m.awayTeam === home)
-    );
+    const norm1 = (home || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    const norm2 = (away || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    const pairKey = [norm1, norm2].sort().join('__');
+    const cached = ANALYTICS_CACHE?.h2hMap?.[pairKey];
 
-    if (directMatches.length > 0) {
-      return directMatches.slice(-6).map((m, idx) => {
-        const [hg, ag] = (m.score || '0-0').split('-').map(Number);
-        return {
-          id: m.id || `H2H_${idx}`,
-          rawMatch: m,
-          date: m.date || '2025-2026',
-          round: m.round,
-          league: m.league,
-          home: m.homeTeam,
-          away: m.awayTeam,
-          homeScore: hg,
-          awayScore: ag,
-          score: m.score,
-          goals: m.goals || [],
-          referee: m.referee || 'Arbitre Officiel',
-          aiSummary: m.aiSummary,
-          homeXg: m.teamStats?.home?.xg ?? +(hg * 0.75 + 0.45).toFixed(1),
-          awayXg: m.teamStats?.away?.xg ?? +(ag * 0.75 + 0.35).toFixed(1),
-          venue: m.homeTeam === home ? 'home' : 'away',
-          coachSame: idx % 2 === 0,
-        };
-      }).reverse();
+    if (cached && cached.length > 0) {
+      return cached.map((m, idx) => ({
+        ...m,
+        rawMatch: m,
+        venue: m.home === home ? 'home' : 'away',
+        coachSame: idx % 2 === 0,
+      }));
     }
 
     // Fallback: Recent matches if no direct H2H
-    const homeRecent = UNIFIED_HISTORY.filter(m => m.homeTeam === home || m.awayTeam === home).slice(-3);
-    const awayRecent = UNIFIED_HISTORY.filter(m => m.homeTeam === away || m.awayTeam === away).slice(-3);
+    const homeRecent = (ANALYTICS_CACHE?.teamRecent?.[norm1] || []).slice(0, 3);
+    const awayRecent = (ANALYTICS_CACHE?.teamRecent?.[norm2] || []).slice(0, 3);
     const combined = [...homeRecent, ...awayRecent];
 
     return combined.map((m, idx) => {
-      const [hg, ag] = (m.score || '0-0').split('-').map(Number);
       return {
         id: m.id || `RECENT_${idx}`,
         rawMatch: m,
         date: m.date || '2025-2026',
         round: m.round,
         league: m.league,
-        home: m.homeTeam,
-        away: m.awayTeam,
-        homeScore: hg,
-        awayScore: ag,
+        home: m.isHome ? home : m.opponent,
+        away: m.isHome ? m.opponent : home,
+        homeScore: m.teamGoals ?? 1,
+        awayScore: m.oppGoals ?? 0,
         score: m.score,
         goals: m.goals || [],
         referee: m.referee || 'Arbitre Officiel',
-        aiSummary: m.aiSummary,
-        homeXg: m.teamStats?.home?.xg ?? +(hg * 0.75 + 0.45).toFixed(1),
-        awayXg: m.teamStats?.away?.xg ?? +(ag * 0.75 + 0.35).toFixed(1),
-        venue: m.homeTeam === home ? 'home' : 'away',
+        aiSummary: `Rencontre récente opposant ${home} ou ${away}.`,
+        homeXg: m.teamXg ?? 1.2,
+        awayXg: 1.0,
+        venue: m.isHome ? 'home' : 'away',
         coachSame: true,
       };
-    }).reverse();
+    });
   }, [home, away]);
 
   const filteredH2H = rawH2H.filter(m => {
@@ -470,7 +454,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                 stats={{}}
                 schedule={APP_DATA?.fullSchedule || []}
                 currentWeek={APP_DATA?.currentWeek || 2}
-                matchHistory={UNIFIED_HISTORY}
+                matchHistory={APP_DATA?.fullSchedule || []}
                 showFullSquad={false}
               />
             </div>

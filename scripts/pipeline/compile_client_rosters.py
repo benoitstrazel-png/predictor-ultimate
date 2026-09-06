@@ -15,6 +15,7 @@ import os
 import sys
 import json
 import sqlite3
+from datetime import datetime
 
 if sys.platform == "win32":
     try:
@@ -346,6 +347,9 @@ for row in cursor.fetchall():
     compiled_transfers.append(trf_obj)
 
 write_json_atomic(TRANSFERS_MASTER_OUT, compiled_transfers)
+PUBLIC_TRANSFERS_OUT = os.path.join(ROOT_DIR, "public", "data", "mercato", "transfers.json")
+os.makedirs(os.path.dirname(PUBLIC_TRANSFERS_OUT), exist_ok=True)
+write_json_atomic(PUBLIC_TRANSFERS_OUT, compiled_transfers)
 
 # 5. Compile Coaches Master Registry & SCD2 Contracts
 print("📦 [Compile:5] Génération de coaches_master_registry.json & coaches_unified_scd2.json...")

@@ -11,7 +11,6 @@ import {
 import { TrendingUp, ShieldCheck, Activity, Award, CheckCircle2, XCircle, Search, Filter, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
-import UNIFIED_HISTORY from '../data/unified_history.json';
 
 export default function BankrollTracking({ APP_DATA }) {
   const [selectedLeague, setSelectedLeague] = useState('ALL');
@@ -38,10 +37,7 @@ export default function BankrollTracking({ APP_DATA }) {
       }
     };
 
-    // 1. Finished matches from UNIFIED_HISTORY
-    (UNIFIED_HISTORY || []).forEach(processMatch);
-
-    // 2. Finished matches from APP_DATA fullSchedule
+    // Finished matches from APP_DATA fullSchedule (matches terminés de la saison)
     (APP_DATA?.fullSchedule || []).forEach(processMatch);
 
     return list;

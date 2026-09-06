@@ -5,7 +5,7 @@ import TeamLogo from './ui/TeamLogo';
 import MatchTimeline from './MatchTimeline';
 import TeamMatchStats from './TeamMatchStats';
 import MatchPrediction from './MatchPrediction';
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import { fetchMatchDetails } from '../services/historyService';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
 import { formatMatchTime } from '../utils/formatMatchTime';
 
@@ -20,23 +20,32 @@ import { formatMatchTime } from '../utils/formatMatchTime';
 export default function MatchDetailsModal({ match, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState('timeline');
   const [isRefreshingOdds, setIsRefreshingOdds] = useState(false);
+  const [currentMatch, setCurrentMatch] = useState(match);
 
-  // Lookup complete match data in UNIFIED_HISTORY if partial match was passed
-  const activeMatch = useMemo(() => {
-    if (!match) return null;
-    if (match.lineups?.home?.starters?.length > 0) return match;
-    const found = (UNIFIED_HISTORY || []).find(m =>
-      m.id === match.id ||
-      (m.homeTeam === (match.homeTeam || match.home_team) && m.awayTeam === (match.awayTeam || match.away_team) && (m.date === match.date || m.round === match.round))
-    );
-    return found ? { ...found, ...match, lineups: found.lineups || match.lineups, formations: found.formations || match.formations, coaches: found.coaches || match.coaches, timeline: found.timeline || match.timeline, teamStats: found.teamStats || match.teamStats } : match;
-  }, [match]);
-
-  const [currentMatch, setCurrentMatch] = useState(activeMatch);
-
+  // Charger les détails complets (lineups, timeline, teamStats) à la demande si absents
   useEffect(() => {
-    setCurrentMatch(activeMatch);
-  }, [activeMatch]);
+    if (!match) {
+      setCurrentMatch(null);
+      return;
+    }
+    setCurrentMatch(match);
+
+    if (!match.lineups?.home?.starters?.length && match.id) {
+      fetchMatchDetails(match.id).then(details => {
+        if (details) {
+          setCurrentMatch(prev => ({
+            ...prev,
+            ...details,
+            lineups: details.lineups || prev?.lineups,
+            formations: details.formations || prev?.formations,
+            coaches: details.coaches || prev?.coaches,
+            timeline: details.timeline || prev?.timeline,
+            teamStats: details.teamStats || prev?.teamStats,
+          }));
+        }
+      });
+    }
+  }, [match]);
 
   const handleRefreshOdds = async () => {
     if (!match) return;

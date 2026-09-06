@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import React, { useState, useMemo, useEffect } from 'react';
 import APP_DATA from '../data/app_data.json';
 import TeamLogo from './ui/TeamLogo';
 import MatchDetailsModal from './MatchDetailsModal';
 import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
 import { formatMatchTime } from '../utils/formatMatchTime';
+import { fetchHistoryMatches } from '../services/historyService';
 
 const parseRoundNumber = (val) => {
   if (!val || val === 'ALL') return null;
@@ -15,7 +15,26 @@ const parseRoundNumber = (val) => {
 };
 
 export default function MatchHistoryHub() {
-  // Combine UNIFIED_HISTORY with APP_DATA fullSchedule (Saison 2026-2027 + archives)
+  const [historyArchiveMatches, setHistoryArchiveMatches] = useState([]);
+  const [selectedSeason, setSelectedSeason] = useState('2026-2027');
+  const [selectedLeague, setSelectedLeague] = useState('FRA-L1');
+  const [selectedRound, setSelectedRound] = useState('ALL');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [expandedMatchId, setExpandedMatchId] = useState(null);
+  const [selectedModalMatch, setSelectedModalMatch] = useState(null);
+
+  // Charger les archives à la demande dès que la saison ou la ligue change
+  useEffect(() => {
+    let isMounted = true;
+    fetchHistoryMatches(selectedSeason, selectedLeague).then(data => {
+      if (isMounted) {
+        setHistoryArchiveMatches(data || []);
+      }
+    });
+    return () => { isMounted = false; };
+  }, [selectedSeason, selectedLeague]);
+
+  // Combine les archives chargées avec APP_DATA fullSchedule
   const allMatchesHistory = useMemo(() => {
     const map = new Map();
 
@@ -28,12 +47,12 @@ export default function MatchHistoryHub() {
       return `${season}_${league}_${roundNum}_${home}_${away}`;
     };
 
-    // 1. Matchs historiques certifiés (2024-2025, 2025-2026, 2026-2027 joués)
-    (UNIFIED_HISTORY || []).forEach(m => {
+    // 1. Matchs historiques certifiés chargés dynamiquement
+    (historyArchiveMatches || []).forEach(m => {
       const key = getMatchKey(m);
       map.set(key, {
         ...m,
-        season: m.season || '2025-2026',
+        season: m.season || selectedSeason,
         round: m.round || (typeof m.week === 'number' ? `Journée ${m.week}` : 'Journée 1'),
         status: m.status || 'FINISHED',
       });
@@ -147,13 +166,7 @@ export default function MatchHistoryHub() {
     }
   };
 
-  // 4-Level Contextual Selector State — Default to current season 2026-2027
-  const [selectedSeason, setSelectedSeason] = useState('2026-2027');
-  const [selectedLeague, setSelectedLeague] = useState('FRA-L1');
-  const [selectedRound, setSelectedRound] = useState('ALL');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [expandedMatchId, setExpandedMatchId] = useState(null);
-  const [selectedModalMatch, setSelectedModalMatch] = useState(null);
+
 
   // Maximum rounds depending on League (Ligue 1 & Bundesliga = 34, UEFA = 6-8, others = 38)
   const maxRoundsForLeague = useMemo(() => {

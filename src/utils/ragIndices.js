@@ -10,7 +10,7 @@
  */
 
 import APP_DATA from '../data/app_data.json';
-import UNIFIED_HISTORY from '../data/unified_history.json';
+import ANALYTICS_CACHE from '../data/compiled/analytics_cache.json';
 import PLAYERS_DATA from '../data/players.json';
 
 // Dictionnaire des alias d'équipes normalisés
@@ -76,7 +76,6 @@ export const TEAM_ALIASES = {
 // ── INDEX 1: MATCHS (Actuels + Historiques) ──
 export const buildMatchesIndex = () => {
   const schedule = APP_DATA?.fullSchedule || [];
-  const history = UNIFIED_HISTORY || [];
 
   return {
     liveSchedule: schedule.map(m => {
@@ -110,8 +109,8 @@ export const buildMatchesIndex = () => {
         searchTokens: `${m.homeTeam} ${m.awayTeam} ${m.league} ${m.date}`.toLowerCase()
       };
     }),
-    historyMatchesCount: history.length,
-    historyData: history
+    historyMatchesCount: 4705,
+    historyData: null
   };
 };
 
