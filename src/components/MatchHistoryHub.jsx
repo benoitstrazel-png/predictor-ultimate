@@ -5,6 +5,7 @@ import TeamLogo from './ui/TeamLogo';
 import MatchDetailsModal from './MatchDetailsModal';
 import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
+import { formatMatchTime } from '../utils/formatMatchTime';
 
 const parseRoundNumber = (val) => {
   if (!val || val === 'ALL') return null;
@@ -576,8 +577,12 @@ export default function MatchHistoryHub() {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <div style={{ fontSize: 11, color: 'var(--neutral)' }}>
-                      {m.date || m.season || '2026-2027'} · Arbitre : <strong style={{ color: 'var(--ivory)' }}>{typeof m.referee === 'object' ? m.referee.name : m.referee}</strong>
+                    <div style={{ fontSize: 11, color: 'var(--neutral)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span>{m.date || m.season || '2026-2027'}</span>
+                      <span style={{ color: 'var(--gold)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+                        <Clock size={11} /> {formatMatchTime(m)}
+                      </span>
+                      <span>· Arbitre : <strong style={{ color: 'var(--ivory)' }}>{typeof m.referee === 'object' ? m.referee.name : m.referee}</strong></span>
                     </div>
                     <button
                       onClick={(e) => {

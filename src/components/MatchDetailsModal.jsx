@@ -7,6 +7,7 @@ import TeamMatchStats from './TeamMatchStats';
 import MatchPrediction from './MatchPrediction';
 import UNIFIED_HISTORY from '../data/unified_history.json';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
+import { formatMatchTime } from '../utils/formatMatchTime';
 
 /**
  * MatchDetailsModal Component
@@ -194,7 +195,8 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 {match.round || 'Journée 1'} · {match.season || '2026-2027'}
               </span>
               <span style={{ fontSize: 11, color: 'var(--neutral)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                <Calendar size={12} /> {match.date || match.matchDate || 'Date officielle'}
+                <Calendar size={12} /> {targetMatch.date || targetMatch.matchDate || 'Date officielle'}
+                <span style={{ color: 'var(--gold)', fontWeight: 700, marginLeft: 4 }}>• <Clock size={11} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 2 }} />{formatMatchTime(targetMatch)}</span>
               </span>
             </div>
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatMatchTime } from '../utils/formatMatchTime';
 import ValueEdgeScatter from './ValueEdgeScatter';
 import MatchPrediction from './MatchPrediction';
 import TeamLogo from './ui/TeamLogo';
@@ -317,8 +318,9 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       <RefreshCw size={11} className={refreshingMatchId === m.id ? 'animate-spin' : ''} style={{ animation: refreshingMatchId === m.id ? 'spin 1s linear infinite' : 'none' }} />
                       <span>{refreshingMatchId === m.id ? 'Calcul...' : 'Cote T'}</span>
                     </button>
-                    <span style={{ fontSize: 10, color: 'var(--neutral)' }}>
-                      {m.matchDate}
+                    <span style={{ fontSize: 10, color: 'var(--neutral)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                      <span>{m.matchDate}</span>
+                      <span style={{ color: 'var(--gold)', fontWeight: 700 }}>• {formatMatchTime(m)}</span>
                     </span>
                   </div>
                 </div>

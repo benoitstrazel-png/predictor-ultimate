@@ -3,6 +3,7 @@ import { SlidersHorizontal, TrendingUp, Clock } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 import MatchDetailsModal from './MatchDetailsModal';
 import APP_DATA from '../data/app_data.json';
+import { formatMatchTime } from '../utils/formatMatchTime';
 
 const LEAGUE_FLAGS = {
   'EUR-CL': '🇪🇺',
@@ -181,7 +182,11 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
                       : <span className="fixture-vs">vs</span>
                     }
                   </div>
-                  <div className="fixture-meta">{formatDate(fixture.matchDate)}</div>
+                  <div className="fixture-meta" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+                    <span>{formatDate(fixture.matchDate)}</span>
+                    <span style={{ opacity: 0.4 }}>•</span>
+                    <span style={{ color: 'var(--gold)', fontWeight: 700 }}>{formatMatchTime(fixture)}</span>
+                  </div>
                   {hasVB && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: 3, marginTop: 3 }}>
                       <TrendingUp size={9} color="var(--gold)" />

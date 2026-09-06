@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Flame, CloudRain, Wind, Sparkles } from 'lucide-react';
+import { formatMatchTime } from '../utils/formatMatchTime';
 import TeamLogo from './ui/TeamLogo';
 import APP_DATA from '../data/app_data.json';
 
@@ -113,7 +114,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
           {match.league || 'European Football'}
           {match.matchDate && (
             <span style={{ color: 'var(--neutral)', fontWeight: 400, letterSpacing: '0.05em' }}>
-              · {match.matchDate}
+              · {match.matchDate} <strong style={{ color: 'var(--gold)', fontWeight: 700 }}>• {formatMatchTime(match)}</strong>
             </span>
           )}
         </div>
