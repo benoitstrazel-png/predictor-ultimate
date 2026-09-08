@@ -120,6 +120,26 @@ export const STADIA_COORDINATES = {
   "Leipzig": { lat: 51.3458, lon: 12.3483, city: "Leipzig", stadium: "Red Bull Arena" },
   "Eintracht Frankfurt": { lat: 50.0686, lon: 8.6455, city: "Francfort", stadium: "Deutsche Bank Park" },
   "Stuttgart": { lat: 48.7922, lon: 9.2322, city: "Stuttgart", stadium: "MHPArena" },
+
+  // ── European Competitions (UEFA) ──
+  "AEK Athens": { lat: 38.0375, lon: 23.7431, city: "Athènes", stadium: "OPAP Arena" },
+  "LASK": { lat: 48.2936, lon: 14.2831, city: "Linz", stadium: "Raiffeisen Arena" },
+  "Benfica": { lat: 38.7527, lon: -9.1847, city: "Lisbonne", stadium: "Estádio da Luz" },
+  "Sporting CP": { lat: 38.7612, lon: -9.1606, city: "Lisbonne", stadium: "Estádio José Alvalade" },
+  "Porto": { lat: 41.1618, lon: -8.5836, city: "Porto", stadium: "Estádio do Dragão" },
+  "FC Porto": { lat: 41.1618, lon: -8.5836, city: "Porto", stadium: "Estádio do Dragão" },
+  "Ajax": { lat: 52.3144, lon: 4.9419, city: "Amsterdam", stadium: "Johan Cruijff ArenA" },
+  "PSV": { lat: 51.4417, lon: 5.4674, city: "Eindhoven", stadium: "Philips Stadion" },
+  "PSV Eindhoven": { lat: 51.4417, lon: 5.4674, city: "Eindhoven", stadium: "Philips Stadion" },
+  "Feyenoord": { lat: 51.8939, lon: 4.5231, city: "Rotterdam", stadium: "De Kuip" },
+  "Celtic": { lat: 55.8497, lon: -4.2055, city: "Glasgow", stadium: "Celtic Park" },
+  "Rangers": { lat: 55.8532, lon: -4.3093, city: "Glasgow", stadium: "Ibrox Stadium" },
+  "Galatasaray": { lat: 41.1034, lon: 28.9912, city: "Istanbul", stadium: "RAMS Park" },
+  "Fenerbahce": { lat: 40.9880, lon: 29.0370, city: "Istanbul", stadium: "Şükrü Saracoğlu" },
+  "Fenerbahçe": { lat: 40.9880, lon: 29.0370, city: "Istanbul", stadium: "Şükrü Saracoğlu" },
+  "Besiktas": { lat: 41.0394, lon: 29.0016, city: "Istanbul", stadium: "Tüpraş Stadyumu" },
+  "Olympiacos": { lat: 37.9464, lon: 23.6644, city: "Le Pirée", stadium: "Stade Karaïskakis" },
+  "Panathinaikos": { lat: 37.9872, lon: 23.7542, city: "Athènes", stadium: "Apostolos Nikolaidis" },
 };
 
 export const WMO_FR_CONDITIONS = {
