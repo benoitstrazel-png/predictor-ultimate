@@ -178,8 +178,9 @@ function AppContent() {
                 {/* Tab 6: AI Predictor Copilot */}
                 <Route path="/copilot" element={<CopilotView />} />
 
-                {/* Tab 7: Bankroll & Model Performance */}
-                <Route path="/bankroll" element={<BankrollTracking APP_DATA={appData} />} />
+                {/* Tab 7: Model Tracking & Viability */}
+                <Route path="/model-tracking" element={<BankrollTracking APP_DATA={appData} />} />
+                <Route path="/bankroll" element={<Navigate to="/model-tracking" replace />} />
 
                 {/* Legacy route fallbacks & Catch-all */}
                 <Route path="/match-focus" element={<Navigate to="/match-deep-dive" replace />} />

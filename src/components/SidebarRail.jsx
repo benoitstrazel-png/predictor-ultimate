@@ -18,7 +18,7 @@ const navItems = [
   { to: '/history',         icon: History,          label: '4. Historique & Résumés IA' },
   { to: '/squads-mercato',  icon: Users,            label: '5. Effectifs & Mercato Multi-Saisons (Transfermarkt)' },
   { to: '/copilot',         icon: Sparkles,         label: '6. AI Predictor Copilot' },
-  { to: '/bankroll',        icon: TrendingUp,        label: '7. Bankroll & Model Tracking' },
+  { to: '/model-tracking',  icon: TrendingUp,        label: '7. Model Tracking' },
 ];
 
 export default function SidebarRail({ onOpenAiModal }) {

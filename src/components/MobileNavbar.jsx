@@ -18,7 +18,7 @@ const mobileNavItems = [
   { to: '/history', icon: History, label: 'Historique' },
   { to: '/squads-mercato', icon: Users, label: 'Mercato' },
   { to: '/copilot', icon: Sparkles, label: 'Copilot' },
-  { to: '/bankroll', icon: TrendingUp, label: 'Bankroll' },
+  { to: '/model-tracking', icon: TrendingUp, label: 'Tracking' },
 ];
 
 export default function MobileNavbar({ onOpenAiModal, onToggleFixtures, isFixturesOpen }) {
