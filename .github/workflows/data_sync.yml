@@ -4,8 +4,8 @@ on:
   schedule:
     # Vendredis, Samedis et Dimanches (Top 5 Leagues) : toutes les 2h entre 12h UTC et 23h UTC
     - cron: '0 12,14,16,18,20,22 * * 5,6,0'
-    # Mardis, Mercredis et Jeudis (Coupes d'Europe) : 19h, 21h et 23h UTC
-    - cron: '0 19,21,23 * * 2,3,4'
+    # Mardis, Mercredis et Jeudis (Coupes d'Europe) : 12h, 17h, 19h, 21h et 23h UTC
+    - cron: '0 12,17,19,21,23 * * 2,3,4'
     # Contrôle quotidien matinal : 06h00 UTC
     - cron: '0 6 * * *'
   workflow_dispatch: # Permet de déclencher la mise à jour manuellement en 1 clic sur GitHub
@@ -66,6 +66,9 @@ jobs:
 
       - name: Synchronize Multi-Season Squads & Transfermarkt Database
         run: python scripts/pipeline/sync_full_squads_and_transfers.py
+
+      - name: Validate Data Quality Contract
+        run: npm run data:validate
 
       - name: Validate Frontend Production Build
         run: npm run build

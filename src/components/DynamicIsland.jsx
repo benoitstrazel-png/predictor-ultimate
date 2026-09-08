@@ -5,6 +5,7 @@ import IslandSparkline from './dynamic_island/IslandSparkline';
 import IslandProbChart from './dynamic_island/IslandProbChart';
 import IslandXgGauge from './dynamic_island/IslandXgGauge';
 import IslandScorersList from './dynamic_island/IslandScorersList';
+import { AlertCircle } from 'lucide-react';
 
 /**
  * DynamicIsland — Floating interactive pill at the top of the screen
@@ -37,7 +38,7 @@ export default function DynamicIsland() {
 
   const valueMatches = useMemo(() => {
     const list = (allMatches.length > 0 ? allMatches : APP_DATA?.fullSchedule) || [];
-    return list.filter(m => m.valueBets && m.valueBets.length > 0).slice(0, 8);
+    return list.filter(m => m.betclicOdds?.home && m.valueBets && m.valueBets.length > 0).slice(0, 8);
   }, [allMatches]);
 
   // Current active match (either selected or first scheduled)
@@ -47,10 +48,10 @@ export default function DynamicIsland() {
 
   // Primary Value Bet of current match
   const primaryValueBet = useMemo(() => {
-    if (currentMatch?.valueBets && currentMatch.valueBets.length > 0) {
+    if (currentMatch?.betclicOdds?.home && currentMatch?.valueBets && currentMatch.valueBets.length > 0) {
       return currentMatch.valueBets[0];
     }
-    if (valueMatches.length > 0 && valueMatches[0]?.valueBets?.[0]) {
+    if (valueMatches.length > 0 && valueMatches[0]?.betclicOdds?.home && valueMatches[0]?.valueBets?.[0]) {
       return valueMatches[0].valueBets[0];
     }
     return null;
@@ -422,20 +423,27 @@ export default function DynamicIsland() {
         {activeTab === 'odds' && (
           <div className="island-tab-pane island-fade-in">
             {/* Betclic Odds Cards */}
-            <div className="island-odds-grid">
-              <div className="island-odd-card">
-                <span className="odd-label">1 ({currentMatch?.homeTeam?.split(' ').pop()})</span>
-                <span className="odd-value">{currentMatch?.betclicOdds?.home ?? 2.10}</span>
+            {currentMatch?.betclicOdds?.home ? (
+              <div className="island-odds-grid">
+                <div className="island-odd-card">
+                  <span className="odd-label">1 ({currentMatch?.homeTeam?.split(' ').pop()})</span>
+                  <span className="odd-value">{currentMatch.betclicOdds.home}</span>
+                </div>
+                <div className="island-odd-card">
+                  <span className="odd-label">N (Nul)</span>
+                  <span className="odd-value">{currentMatch.betclicOdds.draw}</span>
+                </div>
+                <div className="island-odd-card">
+                  <span className="odd-label">2 ({currentMatch?.awayTeam?.split(' ').pop()})</span>
+                  <span className="odd-value">{currentMatch.betclicOdds.away}</span>
+                </div>
               </div>
-              <div className="island-odd-card">
-                <span className="odd-label">N (Nul)</span>
-                <span className="odd-value">{currentMatch?.betclicOdds?.draw ?? 3.40}</span>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '16px 12px', background: 'rgba(245, 158, 11, 0.08)', borderRadius: '10px', border: '1px dashed rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: '12px', fontWeight: 600 }}>
+                <AlertCircle size={15} color="#f59e0b" />
+                <span>Cote absente pour l'instant</span>
               </div>
-              <div className="island-odd-card">
-                <span className="odd-label">2 ({currentMatch?.awayTeam?.split(' ').pop()})</span>
-                <span className="odd-value">{currentMatch?.betclicOdds?.away ?? 3.80}</span>
-              </div>
-            </div>
+            )}
 
             {/* Dropped Odds Alert */}
             {oddsDrop && (

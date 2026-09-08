@@ -3,7 +3,7 @@ import { formatMatchTime } from '../utils/formatMatchTime';
 import ValueEdgeScatter from './ValueEdgeScatter';
 import MatchPrediction from './MatchPrediction';
 import TeamLogo from './ui/TeamLogo';
-import { ShieldAlert, TrendingDown, CloudRain, Star, Filter, Check, RefreshCw } from 'lucide-react';
+import { ShieldAlert, TrendingDown, CloudRain, Star, Filter, Check, RefreshCw, AlertCircle } from 'lucide-react';
 
 const ALL_LEAGUES = [
   { code: 'EUR-CL', name: 'Champions League 🇪🇺' },
@@ -37,12 +37,12 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
       });
       if (res.ok) {
         const json = await res.json();
-        if (json.data && json.data.betclicOdds) {
-          match.betclicOdds = json.data.betclicOdds;
-          match.probabilities = json.data.probabilities;
-          match.valueBets = json.data.valueBets;
-          match.oddsStatus = json.data.oddsStatus;
-          match.oddsMarginPct = json.data.oddsMarginPct;
+        if (json.data) {
+          match.betclicOdds = json.data.betclicOdds || null;
+          match.probabilities = json.data.probabilities || match.probabilities;
+          match.valueBets = json.data.valueBets || [];
+          match.oddsStatus = json.data.oddsStatus || (match.betclicOdds ? 'ACTIVE' : 'NOT_OPEN');
+          match.oddsMarginPct = json.data.oddsMarginPct || null;
         }
       }
     } catch (err) {
@@ -350,12 +350,13 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       <span style={{ fontSize: 11, color: 'var(--ivory)', background: 'var(--obsidian-3)', padding: '2px 6px', borderRadius: 4 }}>2: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.away}</strong></span>
                     </div>
                   ) : (
-                    <span style={{ fontSize: 10, color: '#f59e0b', fontWeight: 600 }}>
-                      ⏳ Cotes non encore ouvertes
-                    </span>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', borderRadius: 6, background: 'rgba(245, 158, 11, 0.12)', border: '1px solid rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: 11, fontWeight: 600 }}>
+                      <AlertCircle size={13} color="#f59e0b" />
+                      <span>Cote absente pour l'instant</span>
+                    </div>
                   )}
 
-                  {m.valueBets && m.valueBets.length > 0 && (
+                  {m.betclicOdds?.home && m.valueBets && m.valueBets.length > 0 && (
                     <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                       {m.valueBets.map((vb, idx) => {
                         const label = vb.selection_label || vb.side || (vb.selection === '1' ? `Victoire ${m.homeTeam}` : vb.selection === '2' ? `Victoire ${m.awayTeam}` : 'Match Nul');

@@ -1,13 +1,15 @@
 const puppeteer = require('puppeteer');
 
 const COMPETITIONS = [
+  { code: 'EUR-CL', name: 'Ligue des Champions', url: 'https://www.betclic.fr/football-sfootball/ligue-des-champions-c8' },
+  { code: 'EUR-EL', name: 'Ligue Europa', url: 'https://www.betclic.fr/football-sfootball/ligue-europa-c3453' },
+  { code: 'EUR-ECL', name: 'Ligue Conférence', url: 'https://www.betclic.fr/football-sfootball/ligue-conference-c28946' },
+  { code: 'FRA-L1', name: 'Ligue 1', url: 'https://www.betclic.fr/football-sfootball/ligue-1-mcdonald-s-c4' },
   { code: 'ENG-PL', name: 'Premier League', url: 'https://www.betclic.fr/football-sfootball/angl-premier-league-c3' },
   { code: 'ESP-LL', name: 'La Liga', url: 'https://www.betclic.fr/football-sfootball/espagne-laliga-c7' },
   { code: 'ITA-SA', name: 'Serie A', url: 'https://www.betclic.fr/football-sfootball/italie-serie-a-c6' },
   { code: 'GER-BL', name: 'Bundesliga', url: 'https://www.betclic.fr/football-sfootball/allemagne-bundesliga-c5' },
-  { code: 'FRA-L1', name: 'Ligue 1', url: 'https://www.betclic.fr/football-sfootball/ligue-1-mcdonald-s-c4' },
-  { code: 'TOP-EU', name: 'Top Football', url: 'https://www.betclic.fr/football-sfootball/top-football-europeen-p0' },
-  { code: 'ALL-FOOT', name: 'Football Home', url: 'https://www.betclic.fr/football-sfootball' }
+  { code: 'TOP-EU', name: 'Top Football', url: 'https://www.betclic.fr/football-sfootball/top-football-europeen-p0' }
 ];
 
 async function runCleanScraper() {

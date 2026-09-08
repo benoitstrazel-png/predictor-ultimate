@@ -97,7 +97,7 @@ def get_club_players(team_name):
 
     return []
 
-def generate_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=6):
+def generate_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=6, probs_1n2=None):
     def tau(x, y):
         if x == 0 and y == 0: return max(1e-5, 1.0 - lambda_h * lambda_a * rho)
         elif x == 0 and y == 1: return max(1e-5, 1.0 + lambda_h * rho)
@@ -105,24 +105,48 @@ def generate_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=6):
         elif x == 1 and y == 1: return max(1e-5, 1.0 - rho)
         return 1.0
 
-    scores = []
-    matrix = np.zeros((max_goals + 1, max_goals + 1))
+    raw_matrix = np.zeros((max_goals + 1, max_goals + 1))
     for x in range(max_goals + 1):
         for y in range(max_goals + 1):
             p_base = poisson.pmf(x, lambda_h) * poisson.pmf(y, lambda_a)
-            p_adj = max(0.0, p_base * tau(x, y))
-            matrix[x, y] = p_adj
-            scores.append({"score": f"{x}-{y}", "prob": p_adj})
+            raw_matrix[x, y] = max(0.0, p_base * tau(x, y))
 
-    total_p = matrix.sum()
+    adj_matrix = np.copy(raw_matrix)
+    if probs_1n2 is not None and len(probs_1n2) == 3:
+        p_lgb_h = max(0.01, float(probs_1n2[0]))
+        p_lgb_d = max(0.01, float(probs_1n2[1]))
+        p_lgb_a = max(0.01, float(probs_1n2[2]))
+
+        p_pois_h = float(np.sum(np.tril(raw_matrix, -1)))
+        p_pois_d = float(np.sum(np.diag(raw_matrix)))
+        p_pois_a = float(np.sum(np.triu(raw_matrix, 1)))
+
+        ratio_h = p_lgb_h / max(1e-4, p_pois_h)
+        ratio_d = p_lgb_d / max(1e-4, p_pois_d)
+        ratio_a = p_lgb_a / max(1e-4, p_pois_a)
+
+        for x in range(max_goals + 1):
+            for y in range(max_goals + 1):
+                if x > y:
+                    adj_matrix[x, y] = raw_matrix[x, y] * ratio_h
+                elif x == y:
+                    adj_matrix[x, y] = raw_matrix[x, y] * ratio_d
+                else:
+                    adj_matrix[x, y] = raw_matrix[x, y] * ratio_a
+
+    total_p = adj_matrix.sum()
     if total_p > 0:
-        for s in scores:
-            s["prob"] = round(float(s["prob"] / total_p * 100), 1)
+        adj_matrix /= total_p
+
+    scores = []
+    for x in range(max_goals + 1):
+        for y in range(max_goals + 1):
+            scores.append({"score": f"{x}-{y}", "prob": round(float(adj_matrix[x, y] * 100), 1)})
 
     scores.sort(key=lambda s: s["prob"], reverse=True)
     return scores[:6]
 
-def generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=4):
+def generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=4, probs_1n2=None):
     ht_lambda_h = round(float(max(0.10, lambda_h * 0.43)), 2)
     ht_lambda_a = round(float(max(0.08, lambda_a * 0.43)), 2)
 
@@ -133,19 +157,44 @@ def generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goa
         elif x == 1 and y == 1: return max(1e-5, 1.0 - rho)
         return 1.0
 
-    scores = []
-    matrix = np.zeros((max_goals + 1, max_goals + 1))
+    raw_matrix = np.zeros((max_goals + 1, max_goals + 1))
     for x in range(max_goals + 1):
         for y in range(max_goals + 1):
             p_base = poisson.pmf(x, ht_lambda_h) * poisson.pmf(y, ht_lambda_a)
-            p_adj = max(0.0, p_base * tau(x, y))
-            matrix[x, y] = p_adj
-            scores.append({"score": f"{x}-{y}", "prob": p_adj})
+            raw_matrix[x, y] = max(0.0, p_base * tau(x, y))
 
-    total_p = matrix.sum()
+    adj_matrix = np.copy(raw_matrix)
+    if probs_1n2 is not None and len(probs_1n2) == 3:
+        p_lgb_h = max(0.01, float(probs_1n2[0]))
+        p_lgb_d = max(0.01, float(probs_1n2[1]))
+        p_lgb_a = max(0.01, float(probs_1n2[2]))
+
+        # Half time weights draw slightly more, but scale towards full time 1n2 direction
+        p_pois_h = float(np.sum(np.tril(raw_matrix, -1)))
+        p_pois_d = float(np.sum(np.diag(raw_matrix)))
+        p_pois_a = float(np.sum(np.triu(raw_matrix, 1)))
+
+        ratio_h = (p_lgb_h * 0.7 + p_pois_h * 0.3) / max(1e-4, p_pois_h)
+        ratio_d = (p_lgb_d * 0.7 + p_pois_d * 0.3) / max(1e-4, p_pois_d)
+        ratio_a = (p_lgb_a * 0.7 + p_pois_a * 0.3) / max(1e-4, p_pois_a)
+
+        for x in range(max_goals + 1):
+            for y in range(max_goals + 1):
+                if x > y:
+                    adj_matrix[x, y] = raw_matrix[x, y] * ratio_h
+                elif x == y:
+                    adj_matrix[x, y] = raw_matrix[x, y] * ratio_d
+                else:
+                    adj_matrix[x, y] = raw_matrix[x, y] * ratio_a
+
+    total_p = adj_matrix.sum()
     if total_p > 0:
-        for s in scores:
-            s["prob"] = round(float(s["prob"] / total_p * 100), 1)
+        adj_matrix /= total_p
+
+    scores = []
+    for x in range(max_goals + 1):
+        for y in range(max_goals + 1):
+            scores.append({"score": f"{x}-{y}", "prob": round(float(adj_matrix[x, y] * 100), 1)})
 
     scores.sort(key=lambda s: s["prob"], reverse=True)
     return scores[:5]
@@ -378,8 +427,26 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
     p_over25 = round(float(clf_over25.predict_proba(X)[0, 1] * 100), 1)
     p_under25 = round(100.0 - p_over25, 1)
 
-    top_ft_scores = generate_exact_score_matrix(lambda_h, lambda_a, rho=dc_model.rho)
-    top_ht_scores = generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=dc_model.rho)
+    top_ft_scores = generate_exact_score_matrix(lambda_h, lambda_a, rho=dc_model.rho, probs_1n2=probs_1n2)
+    top_ht_scores = generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=dc_model.rho, probs_1n2=probs_1n2)
+
+    # Calculate most probable score conditional on predicted winner
+    top_conditional_score = None
+    if p_h >= p_a and p_h >= p_d:
+        # Most likely score if Home wins
+        home_win_scores = [s for s in top_ft_scores if int(s['score'].split('-')[0]) > int(s['score'].split('-')[1])]
+        if home_win_scores:
+            top_conditional_score = {"scenario": f"Victoire {home_team}", "score": home_win_scores[0]['score'], "prob": home_win_scores[0]['prob']}
+    elif p_a >= p_h and p_a >= p_d:
+        # Most likely score if Away wins
+        away_win_scores = [s for s in top_ft_scores if int(s['score'].split('-')[0]) < int(s['score'].split('-')[1])]
+        if away_win_scores:
+            top_conditional_score = {"scenario": f"Victoire {away_team}", "score": away_win_scores[0]['score'], "prob": away_win_scores[0]['prob']}
+    else:
+        # Most likely score if Draw
+        draw_scores = [s for s in top_ft_scores if int(s['score'].split('-')[0]) == int(s['score'].split('-')[1])]
+        if draw_scores:
+            top_conditional_score = {"scenario": "Match Nul", "score": draw_scores[0]['score'], "prob": draw_scores[0]['prob']}
 
     home_scorers, home_assists = predict_team_scorers_and_assists(home_team, lambda_h, is_home=True)
     away_scorers, away_assists = predict_team_scorers_and_assists(away_team, lambda_a, is_home=False)
@@ -507,6 +574,7 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
         },
         "top_exact_scores": top_ft_scores,
         "top_half_time_scores": top_ht_scores,
+        "top_conditional_score": top_conditional_score,
         "potential_scorers": {
             "home": home_scorers,
             "away": away_scorers

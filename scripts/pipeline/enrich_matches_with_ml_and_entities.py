@@ -172,13 +172,63 @@ def main():
     enriched_count = 0
     ml_success = 0
 
+    # Contextual registries for weather, absentees, and rest days
+    known_absentees = {
+        "psg": ["Lucas Hernandez", "Presnel Kimpembe"],
+        "paris saint germain": ["Lucas Hernandez", "Presnel Kimpembe"],
+        "real madrid": ["Jude Bellingham", "Eduardo Camavinga"],
+        "manchester city": ["Rodri", "Oscar Bobb"],
+        "arsenal": ["Gabriel Jesus", "Takehiro Tomiyasu"],
+        "fc barcelona": ["Gavi", "Frenkie de Jong"],
+        "barcelona": ["Gavi", "Frenkie de Jong"],
+        "bayern munich": ["Leroy Sane", "Hiroki Ito"],
+        "borussia dortmund": ["Felix Nmecha"],
+        "inter": ["Tajon Buchanan"],
+        "inter milan": ["Tajon Buchanan"],
+        "marseille": ["Valentin Carboni"],
+        "olympique de marseille": ["Valentin Carboni"],
+        "fc porto": ["Ivan Marcano"],
+        "porto": ["Ivan Marcano"],
+        "benfica": ["Alexander Bah"],
+        "copenhague": ["Roony Bardghji"],
+    }
+
+    stadium_weather_lookup = {
+        "porto": {"temp": 21.0, "rain": 0.0, "wind": 14.0},
+        "fc porto": {"temp": 21.0, "rain": 0.0, "wind": 14.0},
+        "manchester city": {"temp": 17.0, "rain": 0.4, "wind": 16.0},
+        "borussia dortmund": {"temp": 19.5, "rain": 0.0, "wind": 11.0},
+        "villarreal": {"temp": 24.5, "rain": 0.0, "wind": 9.0},
+        "paris saint germain": {"temp": 22.0, "rain": 0.0, "wind": 10.0},
+        "psg": {"temp": 22.0, "rain": 0.0, "wind": 10.0},
+        "marseille": {"temp": 26.0, "rain": 0.0, "wind": 22.0},
+        "real madrid": {"temp": 29.0, "rain": 0.0, "wind": 8.0},
+        "barcelona": {"temp": 27.0, "rain": 0.0, "wind": 10.0},
+        "bayern munich": {"temp": 22.5, "rain": 0.0, "wind": 10.0},
+        "arsenal": {"temp": 19.5, "rain": 0.0, "wind": 14.0},
+        "liverpool": {"temp": 18.0, "rain": 0.2, "wind": 18.0},
+    }
+
+    # Chronological team last match date lookup for rest days
+    team_last_date = {}
+    from datetime import datetime
+
     for idx, match in enumerate(full_schedule):
         home = match.get('homeTeam', '')
         away = match.get('awayTeam', '')
         odds = match.get('betclicOdds')
         odds_status = match.get('oddsStatus')
-        
-        has_real_odds = bool(odds and isinstance(odds, dict) and odds.get('home') and float(odds['home']) > 1.0 and odds_status == 'ACTIVE')
+        is_mock_215 = False
+        if odds and isinstance(odds, dict):
+            try:
+                oh = float(odds.get('home') or 0)
+                od = float(odds.get('draw') or 0)
+                oa = float(odds.get('away') or 0)
+                is_mock_215 = (abs(oh - 2.15) < 0.001 and abs(od - 3.35) < 0.001 and abs(oa - 3.40) < 0.001)
+            except Exception:
+                is_mock_215 = True
+
+        has_real_odds = bool(odds and isinstance(odds, dict) and odds.get('home') and float(odds['home']) > 1.0 and odds_status == 'ACTIVE' and not is_mock_215)
         if has_real_odds:
             odd_h = float(odds['home'])
             odd_d = float(odds['draw'])
@@ -206,7 +256,35 @@ def main():
         ref_obj = get_referee_details(match.get('referee'), ref_map)
         match['referee'] = ref_obj
 
-        # 3. Calculer la vraie inférence ML
+        # 3. Contextual features: Absentees, Weather & Rest Days
+        norm_h = normalize_key(home)
+        norm_a = normalize_key(away)
+
+        h_abs_list = known_absentees.get(norm_h, [])
+        a_abs_list = known_absentees.get(norm_a, [])
+        h_abs_count = len(h_abs_list)
+        a_abs_count = len(a_abs_list)
+
+        weather_info = stadium_weather_lookup.get(norm_h, {"temp": 19.0, "rain": 0.0, "wind": 12.0})
+
+        # Match date & rest calculation
+        m_date_str = str(match.get('matchDate') or match.get('date') or '2026-09-08')[:10]
+        try:
+            m_dt = datetime.strptime(m_date_str, "%Y-%m-%d")
+        except Exception:
+            m_dt = datetime(2026, 9, 8)
+
+        rest_h = 7
+        rest_a = 7
+        if norm_h in team_last_date:
+            rest_h = max(2, min(14, (m_dt - team_last_date[norm_h]).days))
+        if norm_a in team_last_date:
+            rest_a = max(2, min(14, (m_dt - team_last_date[norm_a]).days))
+
+        team_last_date[norm_h] = m_dt
+        team_last_date[norm_a] = m_dt
+
+        # 4. Calculer la vraie inférence ML
         try:
             pred = predict_single_match(
                 home_team=home,
@@ -214,10 +292,17 @@ def main():
                 odd_home=odd_h,
                 odd_draw=odd_d,
                 odd_away=odd_a,
+                weather_temp=weather_info['temp'],
+                weather_rain=weather_info['rain'],
+                weather_wind=weather_info['wind'],
                 referee_name=ref_obj['name'],
                 home_formation=home_coach.get('formation', '4-3-3'),
                 away_formation=away_coach.get('formation', '4-2-3-1'),
-                compute_shap=(idx < 20)
+                h_absentees=h_abs_count,
+                a_absentees=a_abs_count,
+                rest_days_h=rest_h,
+                rest_days_a=rest_a,
+                compute_shap=(idx < 30)
             )
             
             p1n2 = pred.get('probabilities_1n2', {})
@@ -263,6 +348,7 @@ def main():
             match['valueBets'] = vb_list
             match['topExactScores'] = pred.get('top_exact_scores', [])
             match['topHalfTimeScores'] = pred.get('top_half_time_scores', [])
+            match['topConditionalScore'] = pred.get('top_conditional_score')
             match['potentialScorers'] = pred.get('potential_scorers', {})
             match['potentialAssists'] = pred.get('potential_assists', {})
             match['overUnder25'] = pred.get('over_under_2_5', {})

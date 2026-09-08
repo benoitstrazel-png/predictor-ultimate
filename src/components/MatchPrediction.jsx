@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TrendingUp, TrendingDown, Minus, Star, RefreshCw, Target, Flame, ShieldCheck } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Star, RefreshCw, Target, Flame, ShieldCheck, AlertCircle } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 
 const ProbBar = ({ home, draw, away }) => {
@@ -79,12 +79,12 @@ const MatchPrediction = ({ match }) => {
       });
       if (res.ok) {
         const json = await res.json();
-        if (json.data && json.data.betclicOdds) {
-          match.betclicOdds = json.data.betclicOdds;
-          match.probabilities = json.data.probabilities;
-          match.valueBets = json.data.valueBets;
-          match.oddsStatus = json.data.oddsStatus;
-          match.oddsMarginPct = json.data.oddsMarginPct;
+        if (json.data) {
+          match.betclicOdds = json.data.betclicOdds || null;
+          match.probabilities = json.data.probabilities || match.probabilities;
+          match.valueBets = json.data.valueBets || [];
+          match.oddsStatus = json.data.oddsStatus || (match.betclicOdds ? 'ACTIVE' : 'NOT_OPEN');
+          match.oddsMarginPct = json.data.oddsMarginPct || null;
         }
       }
     } catch (e) {
@@ -292,12 +292,13 @@ const MatchPrediction = ({ match }) => {
           </div>
         </div>
       ) : (
-        <div style={{ background: 'var(--glass-primary)', border: '1px dashed rgba(255, 215, 0, 0.3)', borderRadius: 14, padding: '12px 16px', textAlign: 'center' }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: '#f59e0b', marginBottom: 4 }}>
-            ⏳ Cotes en attente d'ouverture
+        <div style={{ background: 'var(--glass-primary)', border: '1px dashed rgba(245, 158, 11, 0.3)', borderRadius: 14, padding: '14px 16px', textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f59e0b', fontSize: 12, fontWeight: 700, marginBottom: 6 }}>
+            <AlertCircle size={15} color="#f59e0b" />
+            <span>Cote absente pour l'instant</span>
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 8 }}>
-            Marché Betclic non encore publié
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 10 }}>
+            Marché Betclic non encore ouvert pour cette rencontre
           </div>
           <button
             onClick={handleManualRefresh}
@@ -307,7 +308,7 @@ const MatchPrediction = ({ match }) => {
               border: '1px solid #CEF002',
               color: '#CEF002',
               borderRadius: 6,
-              padding: '4px 12px',
+              padding: '5px 14px',
               fontSize: 11,
               fontWeight: 700,
               cursor: isRefreshing ? 'not-allowed' : 'pointer'
@@ -319,7 +320,7 @@ const MatchPrediction = ({ match }) => {
       )}
 
       {/* ── SECTION VALUE BET (Clarifiée & Précise) ── */}
-      {bestValueBet ? (
+      {odds.home && bestValueBet ? (
         <div style={{
           background: 'linear-gradient(135deg, rgba(201, 169, 110, 0.15) 0%, rgba(139, 106, 60, 0.1) 100%)',
           border: '1px solid var(--gold-border)',
@@ -363,9 +364,24 @@ const MatchPrediction = ({ match }) => {
 
       {/* ── SCORES EXACTS PROBABLES (Mi-temps & Fin de Match) ── */}
       <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: '16px 18px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>
-            Scores les plus probables
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>
+              Scores les plus probables
+            </div>
+            {match?.topConditionalScore && (
+              <span style={{
+                fontSize: 9,
+                fontWeight: 700,
+                color: 'var(--positive)',
+                background: 'rgba(34, 197, 94, 0.12)',
+                border: '1px solid rgba(34, 197, 94, 0.25)',
+                padding: '2px 8px',
+                borderRadius: 6,
+              }}>
+                Scénario Algo : {match.topConditionalScore.score} ({match.topConditionalScore.scenario})
+              </span>
+            )}
           </div>
 
           {/* Toggle FT / HT */}

@@ -149,8 +149,31 @@ TEAM_CANONICAL_MAP = {
     'elversberg': 'Elversberg',
     'hamburger sv': 'Hambourg SV', 'hambourg': 'Hambourg SV', 'hambourg sv': 'Hambourg SV', 'hamburger': 'Hambourg SV',
     'paderborn': 'Paderborn',
-    'werder bremen': 'Werder Bremen', 'werder': 'Werder Bremen', 'bremen': 'Werder Bremen',
     'schalke 04': 'Schalke 04', 'schalke': 'Schalke 04',
+
+    # Coupes d'Europe & Variantes Betclic
+    'manchester utd': 'Manchester United',
+    'club bruges': 'Club Brugge', 'club brugge': 'Club Brugge', 'bruges': 'Club Brugge',
+    'aek athenes': 'AEK Athens', 'aek athens': 'AEK Athens', 'aek': 'AEK Athens',
+    'lask linz': 'LASK', 'lask': 'LASK',
+    'porto': 'FC Porto', 'fc porto': 'FC Porto',
+    'werder breme': 'Werder Bremen', 'werder bremen': 'Werder Bremen',
+    'b. leverkusen': 'Bayer Leverkusen',
+    'b. m\'gladbach': 'B. Monchengladbach', "b. m'gladbach": 'B. Monchengladbach',
+    'francfort': 'Eintracht Frankfurt',
+    'valence': 'Valencia',
+    'seville': 'Sevilla',
+    'hull': 'Hull City',
+    'feyenoord': 'Feyenoord', 'feyenoord rotterdam': 'Feyenoord',
+    'galatasaray': 'Galatasaray',
+    'shakhtar': 'Shakhtar Donetsk', 'shakhtar donetsk': 'Shakhtar Donetsk',
+    'sporting': 'Sporting CP', 'sporting cp': 'Sporting CP', 'sporting lisbonne': 'Sporting CP',
+    'slavia prague': 'Slavia Prague', 'slavia': 'Slavia Prague',
+    'bodø/glimt': 'Bodø/Glimt', 'bodo/glimt': 'Bodø/Glimt', 'bodo glimt': 'Bodø/Glimt',
+    'fenerbahce': 'Fenerbahçe', 'fenerbahçe': 'Fenerbahçe',
+    'slovan bratislava': 'Slovan Bratislava', 'slovan': 'Slovan Bratislava',
+    'viking': 'Viking',
+    'sabah fk': 'Sabah FK', 'sabah': 'Sabah FK',
 }
 
 def clean_team_str(raw: str) -> str:
@@ -315,27 +338,38 @@ def ingest_betclic_odds_to_database_and_app_data():
                 updated_at = excluded.updated_at
         """, (match_id, comp_id, h_id, a_id, db_home_name, db_away_name, h_odd, d_odd, a_odd, now_utc, h_odd, d_odd, a_odd, margin_pct, now_utc, now_utc))
 
+        found_m = None
         for m in schedule:
             if m.get('id') == match_id:
-                m['betclicOdds'] = { 'home': h_odd, 'draw': d_odd, 'away': a_odd }
-                m['oddsStatus'] = 'ACTIVE'
-                m['oddsMarginPct'] = margin_pct
-                m['oddsTrjPct'] = payout_trj
-                m['lastOddsRefresh'] = now_utc
-                updated_in_app += 1
+                found_m = m
                 break
-            else:
-                m_h_clean = clean_team_str(m.get('homeTeam', ''))
-                m_a_clean = clean_team_str(m.get('awayTeam', ''))
+
+        if not found_m:
+            candidates = []
+            for m in schedule:
+                m_h_clean = clean_team_str(normalize_team_name(m.get('homeTeam', '')))
+                m_a_clean = clean_team_str(normalize_team_name(m.get('awayTeam', '')))
                 if (m_h_clean == clean_nh or clean_nh in m_h_clean or m_h_clean in clean_nh) and \
                    (m_a_clean == clean_na or clean_na in m_a_clean or m_a_clean in clean_na):
-                    m['betclicOdds'] = { 'home': h_odd, 'draw': d_odd, 'away': a_odd }
-                    m['oddsStatus'] = 'ACTIVE'
-                    m['oddsMarginPct'] = margin_pct
-                    m['oddsTrjPct'] = payout_trj
-                    m['lastOddsRefresh'] = now_utc
-                    updated_in_app += 1
-                    break
+                    candidates.append(m)
+            if candidates:
+                # Prioritiser les matchs proches d'aujourd'hui
+                def date_dist(item):
+                    try:
+                        d_str = (item.get('matchDate') or item.get('date') or '2026-09-08')[:10]
+                        return abs((datetime.datetime.strptime(d_str, '%Y-%m-%d') - datetime.datetime(2026, 9, 8)).days)
+                    except Exception:
+                        return 999
+                candidates.sort(key=date_dist)
+                found_m = candidates[0]
+
+        if found_m:
+            found_m['betclicOdds'] = { 'home': h_odd, 'draw': d_odd, 'away': a_odd }
+            found_m['oddsStatus'] = 'ACTIVE'
+            found_m['oddsMarginPct'] = margin_pct
+            found_m['oddsTrjPct'] = payout_trj
+            found_m['lastOddsRefresh'] = now_utc
+            updated_in_app += 1
 
     conn.commit()
     conn.close()

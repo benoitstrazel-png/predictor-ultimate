@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Flame, CloudRain, Wind, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Flame, CloudRain, Wind, Sparkles, AlertCircle } from 'lucide-react';
 import { formatMatchTime } from '../utils/formatMatchTime';
 import TeamLogo from './ui/TeamLogo';
 import APP_DATA from '../data/app_data.json';
@@ -157,11 +157,12 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
               <strong style={{ color: 'var(--danger)' }}>{match.betclicOdds.away}</strong>
             </div>
           ) : (
-            <div className="hero-badge" style={{ borderColor: 'rgba(245, 158, 11, 0.3)', color: '#f59e0b' }}>
-              <span>⏳ Cotes en attente d'ouverture</span>
+            <div className="hero-badge" style={{ borderColor: 'rgba(245, 158, 11, 0.3)', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: 5 }}>
+              <AlertCircle size={12} color="#f59e0b" />
+              <span>Cote absente pour l'instant</span>
             </div>
           )}
-          {hasValueBet && (
+          {match.betclicOdds?.home && hasValueBet && (
             <div className="hero-badge" style={{ borderColor: 'var(--positive-border)', background: 'var(--positive-muted)' }}>
               <span style={{ color: 'var(--positive)', fontWeight: 800 }}>★ Value Bet : {valueLabel} · Edge {valueEdge}</span>
             </div>

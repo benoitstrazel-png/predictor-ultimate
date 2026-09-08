@@ -487,8 +487,8 @@ def compile_data():
             if ref and ref != 'Arbitre Officiel':
                 r = refs[ref]
                 r['matches'] += 1
-                for c in m.get('cards', []):
-                    if c.get('type') == 'RED': r['redTotal'] += 1
+                for card_item in m.get('cards', []):
+                    if card_item.get('type') == 'RED': r['redTotal'] += 1
                     else: r['yellowTotal'] += 1
                 for g in m.get('goals', []):
                     if g.get('isPenalty'): r['penaltyTotal'] += 1
@@ -745,33 +745,46 @@ def compile_data():
             h_odd = float(closing_odd_row['closing_odd_1'])
             d_odd = float(closing_odd_row['closing_odd_n'])
             a_odd = float(closing_odd_row['closing_odd_2'])
-            betclic_odds = {
-                "home": h_odd,
-                "draw": d_odd,
-                "away": a_odd
-            }
-            odds_status = closing_odd_row['odds_status'] or 'ACTIVE'
-            odds_margin_pct = closing_odd_row['closing_margin_pct']
-            
-            # Filtre strict des value bets pour ne garder que ceux cohérents avec la vraie cote
-            value_bets = []
-            for vb in old_val.get('valueBets', []):
-                target_odd = h_odd if vb.get('selection') == '1' else (a_odd if vb.get('selection') == '2' else d_odd)
-                if vb.get('betclic_odd') == target_odd or vb.get('bookmaker_odds') == target_odd:
-                    value_bets.append(vb)
+            is_mock_215 = (abs(h_odd - 2.15) < 0.001 and abs(d_odd - 3.35) < 0.001 and abs(a_odd - 3.40) < 0.001)
+            if not is_mock_215:
+                betclic_odds = {
+                    "home": h_odd,
+                    "draw": d_odd,
+                    "away": a_odd
+                }
+                odds_status = closing_odd_row['odds_status'] or 'ACTIVE'
+                odds_margin_pct = closing_odd_row['closing_margin_pct']
+                
+                # Filtre strict des value bets pour ne garder que ceux cohérents avec la vraie cote
+                value_bets = []
+                for vb in old_val.get('valueBets', []):
+                    target_odd = h_odd if vb.get('selection') == '1' else (a_odd if vb.get('selection') == '2' else d_odd)
+                    if vb.get('betclic_odd') == target_odd or vb.get('bookmaker_odds') == target_odd:
+                        value_bets.append(vb)
+            else:
+                betclic_odds = None
+                odds_status = 'NOT_OPEN'
+                odds_margin_pct = None
+                value_bets = []
         elif isinstance(old_val.get('betclicOdds'), dict) and old_val.get('betclicOdds', {}).get('home') and float(old_val.get('betclicOdds', {}).get('home') or 0) > 1.0:
-            betclic_odds = old_val.get('betclicOdds')
-            odds_status = old_val.get('oddsStatus', 'ACTIVE')
-            odds_margin_pct = old_val.get('oddsMarginPct')
-            value_bets = old_val.get('valueBets', [])
+            h_cand = float(old_val['betclicOdds'].get('home') or 0)
+            d_cand = float(old_val['betclicOdds'].get('draw') or 0)
+            a_cand = float(old_val['betclicOdds'].get('away') or 0)
+            is_mock_215 = (abs(h_cand - 2.15) < 0.001 and abs(d_cand - 3.35) < 0.001 and abs(a_cand - 3.40) < 0.001)
+            if not is_mock_215 and old_val.get('oddsStatus') == 'ACTIVE':
+                betclic_odds = old_val.get('betclicOdds')
+                odds_status = 'ACTIVE'
+                odds_margin_pct = old_val.get('oddsMarginPct')
+                value_bets = old_val.get('valueBets', [])
+            else:
+                betclic_odds = None
+                odds_status = 'NOT_OPEN'
+                odds_margin_pct = None
+                value_bets = []
         else:
-            betclic_odds = {
-                "home": 2.15,
-                "draw": 3.35,
-                "away": 3.40
-            }
-            odds_status = 'ESTIMATED'
-            odds_margin_pct = 5.8
+            betclic_odds = None
+            odds_status = 'NOT_OPEN'
+            odds_margin_pct = None
             value_bets = []
         
         probabilities = old_val.get('probabilities') or {"home": "45%", "draw": "28%", "away": "27%"}

@@ -114,6 +114,7 @@ def refresh_single_match(
                 'awayTeam': a_name,
                 'betclicOdds': None,
                 'oddsStatus': 'NOT_OPEN',
+                'valueBets': [],
                 'message': "Cotes non encore ouvertes par Betclic pour cette rencontre."
             }
 

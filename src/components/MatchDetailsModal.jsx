@@ -62,12 +62,12 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
       });
       if (res.ok) {
         const json = await res.json();
-        if (json.data && json.data.betclicOdds) {
-          match.betclicOdds = json.data.betclicOdds;
-          match.oddsStatus = json.data.oddsStatus;
-          match.oddsMarginPct = json.data.oddsMarginPct;
-          match.probabilities = json.data.probabilities;
-          match.valueBets = json.data.valueBets;
+        if (json.data) {
+          match.betclicOdds = json.data.betclicOdds || null;
+          match.oddsStatus = json.data.oddsStatus || (match.betclicOdds ? 'ACTIVE' : 'NOT_OPEN');
+          match.oddsMarginPct = json.data.oddsMarginPct || null;
+          match.probabilities = json.data.probabilities || match.probabilities;
+          match.valueBets = json.data.valueBets || [];
           setCurrentMatch({ ...match });
         }
       }

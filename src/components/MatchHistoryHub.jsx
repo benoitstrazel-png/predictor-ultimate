@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import APP_DATA from '../data/app_data.json';
 import TeamLogo from './ui/TeamLogo';
 import MatchDetailsModal from './MatchDetailsModal';
-import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
+import { Search, Calendar, Tv, ShieldAlert, Award, ChevronDown, ChevronUp, Play, Users, Trophy, TrendingUp, Clock, ExternalLink, RefreshCw, CheckCircle2, XCircle, Sparkles, AlertCircle } from 'lucide-react';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
 import { formatMatchTime } from '../utils/formatMatchTime';
 import { fetchHistoryMatches } from '../services/historyService';
@@ -788,7 +788,8 @@ export default function MatchHistoryHub() {
                         flexWrap: 'wrap',
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#f59e0b', fontSize: 11, fontWeight: 600 }}>
-                          <span>⏳ Cotes non encore ouvertes par Betclic</span>
+                          <AlertCircle size={14} color="#f59e0b" />
+                          <span>Cote absente pour l'instant</span>
                         </div>
                         <button
                           onClick={(e) => handleRefreshOdds(e, m)}
