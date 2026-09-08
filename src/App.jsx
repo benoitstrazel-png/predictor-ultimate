@@ -6,6 +6,8 @@ import HeroSpotlight from './components/HeroSpotlight';
 import FixturesDrawer from './components/FixturesDrawer';
 import AiPredictorModal from './components/AiPredictorModal';
 import DynamicIsland from './components/DynamicIsland';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Lazy-loaded cockpit views for fast initial load
 const DailyBettingHub = lazy(() => import('./components/DailyBettingHub'));
@@ -229,6 +231,8 @@ function App() {
   return (
     <MatchProvider>
       <AppContent />
+      <Analytics />
+      <SpeedInsights />
     </MatchProvider>
   );
 }
