@@ -4,11 +4,15 @@
  * Extracteur Haute Résilience pour les Cotes et Matchs Betclic Réels
  * - 0% de données factices / Zéro mock fallback
  * - Support complet des 8 compétitions
+ * - Puppeteer Stealth & Scroller Virtuel Angular CDK
  */
 
 'use strict';
 const path = require('path');
-const puppeteer = require('puppeteer');
+const puppeteerExtra = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+
+puppeteerExtra.use(StealthPlugin());
 
 const COMPETITIONS = [
   { code: 'EUR-CL', name: 'Ligue des Champions', flag: '🇪🇺', country: 'Europe', url: 'https://www.betclic.fr/football-sfootball/ligue-des-champions-c8' },
@@ -23,15 +27,21 @@ const COMPETITIONS = [
 ];
 
 async function extractBetclicMatches() {
-  console.log('[Extractor:Betclic] Ingestion des cotes réelles Betclic (Zero Mock)...');
+  console.log('[Extractor:Betclic] Ingestion des cotes réelles Betclic (Zero Mock & Stealth)...');
   const extracted = [];
   const seen = new Set();
 
   let browser;
   try {
-    browser = await puppeteer.launch({
+    browser = await puppeteerExtra.launch({
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-blink-features=AutomationControlled',
+        '--window-size=1366,900'
+      ]
     });
 
     const page = await browser.newPage();
@@ -41,69 +51,70 @@ async function extractBetclicMatches() {
     for (const comp of COMPETITIONS) {
       try {
         console.log(`[Extractor:Betclic] Ingestion de ${comp.name}...`);
-        await page.goto(comp.url, { waitUntil: 'networkidle2', timeout: 25000 });
-        await new Promise(r => setTimeout(r, 1200));
+        await page.goto(comp.url, { waitUntil: 'networkidle2', timeout: 35000 });
+        await new Promise(r => setTimeout(r, 2000));
 
-        await page.evaluate(async () => {
-          window.scrollBy(0, 600);
-          await new Promise(r => setTimeout(r, 300));
-          window.scrollBy(0, 600);
-          await new Promise(r => setTimeout(r, 300));
-        });
+        const harvestBatch = async () => {
+          return await page.evaluate((compCode) => {
+            const results = [];
+            const cards = document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card');
 
-        const pageMatches = await page.evaluate((compCode) => {
-          const results = [];
-          const cards = document.querySelectorAll('sports-events-event, sports-event-card, [class*="matchCard"], [class*="eventCard"], .cardEvent');
+            cards.forEach(card => {
+              const aria = card.getAttribute('aria-label') || '';
+              const hEl = card.querySelector('[data-qa="contestant-1-label"], .scoreboard_contestant-1 .scoreboard_contestantLabel');
+              const aEl = card.querySelector('[data-qa="contestant-2-label"], .scoreboard_contestant-2 .scoreboard_contestantLabel');
+              
+              let home = hEl ? hEl.innerText.trim() : '';
+              let away = aEl ? aEl.innerText.trim() : '';
 
-          cards.forEach(card => {
-            const rawText = card.innerText || '';
-            const lines = rawText.split('\n').map(l => l.trim()).filter(Boolean);
-
-            let dateStr = "Prochainement";
-            let isLive = false;
-
-            lines.forEach(l => {
-              if (l.includes("Aujourd'hui") || l.includes('Demain') || l.includes('Ven.') || l.includes('Sam.') || l.includes('Dim.') || l.includes('Lun.') || l.includes('Mar.') || l.includes('Mer.') || l.includes('Jeu.') || l.match(/^\d{2}\/\d{2}/)) {
-                dateStr = l;
+              if (!home || !away) {
+                if (aria.includes(' - ')) {
+                  const parts = aria.split(' - ');
+                  home = parts[0].trim();
+                  away = parts[1].trim();
+                }
               }
-              if (l.includes("En direct") || l.includes("MT") || l.includes("'")) {
-                isLive = true;
+
+              const rawText = card.innerText || '';
+              const lines = rawText.split('\n').map(l => l.trim()).filter(Boolean);
+
+              if (!home || !away) {
+                const blacklist = ['Nul', 'paris', '+', '•', 'Direct', 'Live', 'Match', 'Football'];
+                const teamCandidates = lines.filter(l => {
+                  if (blacklist.some(b => l.includes(b))) return false;
+                  if (l.match(/^\d+,\d{2}$/)) return false;
+                  if (l.match(/^\d{1,2}:\d{2}$/)) return false;
+                  if (l.match(/^\d+$/)) return false;
+                  if (l.includes("Aujourd'hui") || l.includes('Demain') || l.includes('Ven.') || l.includes('Sam.') || l.includes('Dim.')) return false;
+                  return l.length >= 2;
+                });
+                if (teamCandidates.length >= 2) {
+                  home = teamCandidates[0];
+                  away = teamCandidates[1] !== home ? teamCandidates[1] : (teamCandidates[2] || '');
+                }
               }
-            });
 
-            const oddsAnimated = card.querySelectorAll('bcdk-bet-button-odds-animated, .oddValue, [class*="betButton"]');
-            const oddsList = [];
-            oddsAnimated.forEach(el => {
-              const v = parseFloat(el.innerText.trim().replace(',', '.'));
-              if (!isNaN(v) && v >= 1.015 && v <= 80) oddsList.push(v);
-            });
-
-            if (oddsList.length < 3) {
+              let dateStr = "Prochainement";
+              let isLive = false;
               lines.forEach(l => {
-                if (l.match(/^\d+,\d{2}$/)) {
-                  const v = parseFloat(l.replace(',', '.'));
-                  if (!isNaN(v) && v >= 1.015 && v <= 80) oddsList.push(v);
+                if (l.includes("Aujourd'hui") || l.includes('Demain') || l.includes('Ven.') || l.includes('Sam.') || l.includes('Dim.') || l.includes('Lun.') || l.includes('Mar.') || l.includes('Mer.') || l.includes('Jeu.') || l.match(/^\d{2}\/\d{2}/)) {
+                  dateStr = l;
+                }
+                if (l.includes("En direct") || l.includes("MT") || l.includes("'")) {
+                  isLive = true;
                 }
               });
-            }
 
-            const blacklist = ['Nul', 'paris', '+', '•', 'Direct', 'Live', 'Match', 'Football'];
-            const teamCandidates = lines.filter(l => {
-              if (blacklist.some(b => l.includes(b))) return false;
-              if (l.match(/^\d+,\d{2}$/)) return false;
-              if (l.match(/^\d{1,2}:\d{2}$/)) return false;
-              if (l.match(/^\d+$/)) return false;
-              if (l.includes("Aujourd'hui") || l.includes('Demain') || l.includes('Ven.') || l.includes('Sam.') || l.includes('Dim.')) return false;
-              return l.length >= 2;
-            });
+              const oddsAnimated = card.querySelectorAll('bcdk-bet-button-odds-animated, .oddValue, [class*="betButton"]');
+              const oddsList = [];
+              oddsAnimated.forEach(el => {
+                const v = parseFloat(el.innerText.trim().replace(',', '.'));
+                if (!isNaN(v) && v >= 1.015 && v <= 80) oddsList.push(v);
+              });
 
-            if (teamCandidates.length >= 2 && oddsList.length >= 3) {
-              const home = teamCandidates[0];
-              const away = teamCandidates[1] !== home ? teamCandidates[1] : (teamCandidates[2] || '');
-              if (home && away && home !== away) {
-                // Calculation of margin
+              if (home && away && home !== away && oddsList.length >= 3) {
                 const invSum = (1 / oddsList[0]) + (1 / oddsList[1]) + (1 / oddsList[2]);
-                if (invSum >= 1.025 && invSum <= 1.15) {
+                if (invSum >= 1.025 && invSum <= 1.16) {
                   results.push({
                     league: compCode,
                     homeTeam: home,
@@ -119,19 +130,65 @@ async function extractBetclicMatches() {
                   });
                 }
               }
-            }
-          });
+            });
 
-          return results;
-        }, comp.code);
+            return results;
+          }, comp.code);
+        };
 
-        pageMatches.forEach(item => {
+        let batch = await harvestBatch();
+        batch.forEach(item => {
           const k = `${item.homeTeam}_vs_${item.awayTeam}`;
           if (!seen.has(k)) {
             seen.add(k);
             extracted.push(item);
           }
         });
+
+        // Défilement progressif robuste sur le scroller virtuel Angular
+        let cardIdx = 0;
+        let endOfPageTries = 0;
+
+        while (cardIdx < 45 && endOfPageTries < 3) {
+          const totalCards = await page.evaluate(() => document.querySelectorAll('a.cardEvent').length);
+
+          if (cardIdx < totalCards) {
+            await page.evaluate((idx) => {
+              const cards = document.querySelectorAll('a.cardEvent');
+              if (cards[idx]) cards[idx].scrollIntoView({ behavior: 'instant', block: 'center' });
+            }, cardIdx);
+
+            await new Promise(r => setTimeout(r, 450));
+            batch = await harvestBatch();
+            batch.forEach(item => {
+              const k = `${item.homeTeam}_vs_${item.awayTeam}`;
+              if (!seen.has(k)) {
+                seen.add(k);
+                extracted.push(item);
+              }
+            });
+            cardIdx++;
+            endOfPageTries = 0;
+          } else {
+            // Au bout des cartes rendues : scroll container pour déclencher le chargement des jours suivants
+            await page.evaluate(() => window.scrollBy(0, 800));
+            await new Promise(r => setTimeout(r, 600));
+            batch = await harvestBatch();
+            batch.forEach(item => {
+              const k = `${item.homeTeam}_vs_${item.awayTeam}`;
+              if (!seen.has(k)) {
+                seen.add(k);
+                extracted.push(item);
+              }
+            });
+            const newTotal = await page.evaluate(() => document.querySelectorAll('a.cardEvent').length);
+            if (newTotal > totalCards) {
+              endOfPageTries = 0;
+            } else {
+              endOfPageTries++;
+            }
+          }
+        }
 
       } catch (err) {
         console.warn(`[Extractor:Betclic] Ingestion partielle ${comp.name}: ${err.message}`);

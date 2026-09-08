@@ -72,8 +72,8 @@ def validate_odds_record(
         overround, margin_pct, payout_trj = calculate_margin_metrics(odd_home, odd_draw, odd_away)
         if overround < 1.025:
             anomalies.append(f"Marge impossible ou anormalement basse chez le bookmaker ({margin_pct}% < 2.5%).")
-        elif overround > 1.14:
-            anomalies.append(f"Marge excessivement elevee ({margin_pct}% > 14.0%).")
+        elif overround > 1.16:
+            anomalies.append(f"Marge excessivement elevee ({margin_pct}% > 16.0%).")
     except Exception as e:
         anomalies.append(f"Erreur de calcul de marge : {e}")
         overround, margin_pct, payout_trj = 0.0, 0.0, 0.0

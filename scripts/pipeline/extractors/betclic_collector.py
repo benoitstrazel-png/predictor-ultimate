@@ -12,6 +12,7 @@ import os
 import sys
 import json
 import re
+import unicodedata
 import sqlite3
 import subprocess
 import datetime
@@ -167,49 +168,66 @@ TEAM_CANONICAL_MAP = {
     'feyenoord': 'Feyenoord', 'feyenoord rotterdam': 'Feyenoord',
     'galatasaray': 'Galatasaray',
     'shakhtar': 'Shakhtar Donetsk', 'shakhtar donetsk': 'Shakhtar Donetsk',
-    'sporting': 'Sporting CP', 'sporting cp': 'Sporting CP', 'sporting lisbonne': 'Sporting CP',
+    'sporting': 'Sporting CP', 'sporting cp': 'Sporting CP', 'sporting lisbonne': 'Sporting CP', 'sporting portugal': 'Sporting CP',
     'slavia prague': 'Slavia Prague', 'slavia': 'Slavia Prague',
-    'bodø/glimt': 'Bodø/Glimt', 'bodo/glimt': 'Bodø/Glimt', 'bodo glimt': 'Bodø/Glimt',
-    'fenerbahce': 'Fenerbahçe', 'fenerbahçe': 'Fenerbahçe',
+    'bodø/glimt': 'Bodø/Glimt', 'bodo/glimt': 'Bodø/Glimt', 'bodo glimt': 'Bodø/Glimt', 'bod glimt': 'Bodø/Glimt',
+    'fenerbahce': 'Fenerbahçe', 'fenerbahçe': 'Fenerbahçe', 'fenerbah e': 'Fenerbahçe',
     'slovan bratislava': 'Slovan Bratislava', 'slovan': 'Slovan Bratislava',
-    'viking': 'Viking',
+    'viking': 'Viking', 'viking fk': 'Viking',
     'sabah fk': 'Sabah FK', 'sabah': 'Sabah FK',
+    'come': 'Como', 'côme': 'Como',
+    'psv': 'PSV Eindhoven', 'psv eindhoven': 'PSV Eindhoven',
+    'sturm graz': 'Sturm Graz',
+    'dinamo zagreb': 'Dinamo Zagreb',
+    'olympiakos': 'Olympiakos', 'olympiacos': 'Olympiakos',
+    'sparta prague': 'Sparta Prague',
+    'ararat-armenia': 'Ararat-Armenia',
+    'az': 'AZ Alkmaar', 'az alkmaar': 'AZ Alkmaar',
+    'hapoel beer sheva': 'Hapoel Beer Sheva',
+    'omonia nicosie': 'Omonia Nicosie',
+    'la gantoise': 'La Gantoise',
+    'agf aarhus': 'AGF Aarhus',
+    'cska sofia': 'CSKA Sofia',
+    'jagiellonia bialystok': 'Jagiellonia Bialystok',
+    'nk celje': 'NK Celje',
+    'atltico madrid': 'Atlético Madrid',
 }
 
 def clean_team_str(raw: str) -> str:
     if not raw:
         return ""
-    clean = raw.strip().lower()
-    clean = re.sub(r'[éèêë]', 'e', clean)
-    clean = re.sub(r'[àâä]', 'a', clean)
-    clean = re.sub(r'[ôö]', 'o', clean)
-    clean = re.sub(r'[îï]', 'i', clean)
-    clean = re.sub(r'[ûüù]', 'u', clean)
-    clean = re.sub(r'[ç]', 'c', clean)
-    clean = re.sub(r'[\'’\-\.\,\(\)]', ' ', clean)
-    return re.sub(r'\s+', ' ', clean).strip()
+    replacements = {
+        'ø': 'o', 'Ø': 'o',
+        'æ': 'ae', 'Æ': 'ae',
+        'œ': 'oe', 'Œ': 'oe',
+        'ß': 'ss',
+        'ð': 'd', 'Ð': 'd',
+        'þ': 'th', 'Þ': 'th',
+        'ł': 'l', 'Ł': 'l',
+    }
+    s = raw
+    for k, v in replacements.items():
+        s = s.replace(k, v)
+    s = s.replace('\ufffd', '').replace('\xa0', ' ')
+    nfkd = unicodedata.normalize('NFKD', s)
+    stripped = "".join([c for c in nfkd if not unicodedata.combining(c)])
+    cleaned = re.sub(r"[\'’\-\.\,\(\)\/\\\_]", " ", stripped.lower())
+    cleaned = re.sub(r"[^a-z0-9\s]", "", cleaned)
+    return re.sub(r"\s+", " ", cleaned).strip()
 
 def normalize_team_name(raw_name: str) -> str:
     if not raw_name:
         return ""
-    clean = raw_name.strip().lower()
-    clean = re.sub(r'[\'’\-\.\,\(\)]', ' ', clean)
-    clean = re.sub(r'\s+', ' ', clean).strip()
-    
+    clean = clean_team_str(raw_name)
     if clean in TEAM_CANONICAL_MAP:
         return TEAM_CANONICAL_MAP[clean]
-    
-    clean_no_accent = clean_team_str(raw_name)
-    if clean_no_accent in TEAM_CANONICAL_MAP:
-        return TEAM_CANONICAL_MAP[clean_no_accent]
-        
     return TEAM_CANONICAL_MAP.get(clean, raw_name.strip())
 
 def extract_live_betclic_odds() -> List[Dict[str, Any]]:
     script_path = os.path.join(ROOT_DIR, 'scripts', 'pipeline', 'extractors', 'run_puppeteer_extractor.cjs')
     print(f"[BetclicCollector] Lancement du scraping haute performance multi-ligues...")
     try:
-        proc = subprocess.run(['node', script_path], capture_output=True, text=True, timeout=90, check=True)
+        proc = subprocess.run(['node', script_path], capture_output=True, text=True, encoding='utf-8', timeout=300, check=True)
         raw_output = proc.stdout.strip()
         lines = raw_output.split('\n')
         json_line = None
@@ -271,12 +289,40 @@ def ingest_betclic_odds_to_database_and_app_data():
         margin_pct = validation['margin_pct']
         payout_trj = validation['payout_rate_trj']
 
-        # Recherche prioritaire dans fact_matches 2026-2027
         clean_nh = clean_team_str(norm_home)
         clean_na = clean_team_str(norm_away)
-        
+
+        # 1. Recherche prioritaire dans app_data.json fullSchedule (priorité aux matchs dans les 5 jours)
+        found_m = None
+        candidates_schedule = []
+        for m in schedule:
+            m_h_clean = clean_team_str(normalize_team_name(m.get('homeTeam', '')))
+            m_a_clean = clean_team_str(normalize_team_name(m.get('awayTeam', '')))
+            if (m_h_clean == clean_nh or clean_nh in m_h_clean or m_h_clean in clean_nh) and \
+               (m_a_clean == clean_na or clean_na in m_a_clean or m_a_clean in clean_na):
+                candidates_schedule.append(m)
+
+        if candidates_schedule:
+            def date_dist(item):
+                try:
+                    d_str = (item.get('matchDate') or item.get('date') or datetime.date.today().strftime('%Y-%m-%d'))[:10]
+                    target_dt = datetime.datetime.strptime(d_str, '%Y-%m-%d').date()
+                    delta = (target_dt - datetime.date.today()).days
+                    # Privilégier les matchs à venir entre 0 et 5 jours
+                    if 0 <= delta <= 5:
+                        return delta
+                    elif delta < 0:
+                        return 100 + abs(delta)
+                    else:
+                        return 20 + delta
+                except Exception:
+                    return 999
+            candidates_schedule.sort(key=date_dist)
+            found_m = candidates_schedule[0]
+
+        # 2. Recherche dans SQLite fact_matches
         cursor.execute("""
-            SELECT match_id, competition_id, home_team_id, away_team_id, home_team_name, away_team_name 
+            SELECT match_id, competition_id, home_team_id, away_team_id, home_team_name, away_team_name, match_date 
             FROM fact_matches 
             WHERE season = '2026-2027'
             ORDER BY match_date ASC
@@ -284,38 +330,55 @@ def ingest_betclic_odds_to_database_and_app_data():
         all_season_matches = cursor.fetchall()
         
         matched_row = None
+        candidates_db = []
         for r in all_season_matches:
-            r_mid, r_cid, r_hid, r_aid, r_hname, r_aname = r
-            cr_h = clean_team_str(r_hname)
-            cr_a = clean_team_str(r_aname)
+            r_mid, r_cid, r_hid, r_aid, r_hname, r_aname, r_mdate = r
+            cr_h = clean_team_str(normalize_team_name(r_hname))
+            cr_a = clean_team_str(normalize_team_name(r_aname))
             
             if (cr_h == clean_nh or clean_nh in cr_h or cr_h in clean_nh) and \
                (cr_a == clean_na or clean_na in cr_a or cr_a in clean_na):
-                matched_row = r
-                break
+                candidates_db.append(r)
 
-        if not matched_row:
+        if candidates_db:
+            def db_dist(item):
+                try:
+                    d_str = (item[6] or datetime.date.today().strftime('%Y-%m-%d'))[:10]
+                    target_dt = datetime.datetime.strptime(d_str, '%Y-%m-%d').date()
+                    delta = (target_dt - datetime.date.today()).days
+                    if 0 <= delta <= 5:
+                        return delta
+                    elif delta < 0:
+                        return 100 + abs(delta)
+                    else:
+                        return 20 + delta
+                except Exception:
+                    return 999
+            candidates_db.sort(key=db_dist)
+            matched_row = candidates_db[0]
+
+        # Harmonisation de l'identifiant de match
+        if found_m:
+            match_id = found_m['id']
+            comp_id = found_m.get('league') or comp_code
+        elif matched_row:
+            match_id = matched_row[0]
+            comp_id = matched_row[1] or comp_code
+        else:
+            match_id = f"betclic_{clean_nh[:3].upper()}_{clean_na[:3].upper()}_{datetime.date.today().strftime('%Y%m%d')}"
+            comp_id = comp_code
+
+        h_id = matched_row[2] if matched_row else (found_m.get('homeTeamId') if found_m else f"CLUB_{norm_home.upper().replace(' ', '_')}")
+        a_id = matched_row[3] if matched_row else (found_m.get('awayTeamId') if found_m else f"CLUB_{norm_away.upper().replace(' ', '_')}")
+        db_home_name = matched_row[4] if matched_row else (found_m.get('homeTeam') if found_m else norm_home)
+        db_away_name = matched_row[5] if matched_row else (found_m.get('awayTeam') if found_m else norm_away)
+
+        if found_m or matched_row:
             cursor.execute("""
-                SELECT match_id, competition_id, home_team_id, away_team_id, home_team_name, away_team_name 
-                FROM fact_matches 
-                WHERE season != '2026-2027'
-                ORDER BY season DESC, match_date DESC
-            """)
-            for r in cursor.fetchall():
-                r_mid, r_cid, r_hid, r_aid, r_hname, r_aname = r
-                cr_h = clean_team_str(r_hname)
-                cr_a = clean_team_str(r_aname)
-                if (cr_h == clean_nh or clean_nh in cr_h or cr_h in clean_nh) and \
-                   (cr_a == clean_na or clean_na in cr_a or cr_a in clean_na):
-                    matched_row = r
-                    break
-
-        match_id = matched_row[0] if matched_row else f"betclic_{clean_nh[:3].upper()}_{clean_na[:3].upper()}_{datetime.date.today().strftime('%Y%m%d')}"
-        comp_id = matched_row[1] if matched_row else comp_code
-        h_id = matched_row[2] if matched_row else f"CLUB_{norm_home.upper().replace(' ', '_')}"
-        a_id = matched_row[3] if matched_row else f"CLUB_{norm_away.upper().replace(' ', '_')}"
-        db_home_name = matched_row[4] if matched_row else norm_home
-        db_away_name = matched_row[5] if matched_row else norm_away
+                DELETE FROM dim_match_closing_odds 
+                WHERE match_id LIKE 'betclic_%' 
+                AND home_team_name IN (?, ?, ?, ?) AND away_team_name IN (?, ?, ?, ?)
+            """, (norm_home, raw_home, db_home_name, clean_nh, norm_away, raw_away, db_away_name, clean_na))
 
         snap_id = f"snap_{match_id}_{int(datetime.datetime.utcnow().timestamp())}"
         cursor.execute("""
@@ -338,37 +401,57 @@ def ingest_betclic_odds_to_database_and_app_data():
                 updated_at = excluded.updated_at
         """, (match_id, comp_id, h_id, a_id, db_home_name, db_away_name, h_odd, d_odd, a_odd, now_utc, h_odd, d_odd, a_odd, margin_pct, now_utc, now_utc))
 
-        found_m = None
-        for m in schedule:
-            if m.get('id') == match_id:
-                found_m = m
-                break
-
-        if not found_m:
-            candidates = []
-            for m in schedule:
-                m_h_clean = clean_team_str(normalize_team_name(m.get('homeTeam', '')))
-                m_a_clean = clean_team_str(normalize_team_name(m.get('awayTeam', '')))
-                if (m_h_clean == clean_nh or clean_nh in m_h_clean or m_h_clean in clean_nh) and \
-                   (m_a_clean == clean_na or clean_na in m_a_clean or m_a_clean in clean_na):
-                    candidates.append(m)
-            if candidates:
-                # Prioritiser les matchs proches d'aujourd'hui
-                def date_dist(item):
-                    try:
-                        d_str = (item.get('matchDate') or item.get('date') or '2026-09-08')[:10]
-                        return abs((datetime.datetime.strptime(d_str, '%Y-%m-%d') - datetime.datetime(2026, 9, 8)).days)
-                    except Exception:
-                        return 999
-                candidates.sort(key=date_dist)
-                found_m = candidates[0]
-
         if found_m:
-            found_m['betclicOdds'] = { 'home': h_odd, 'draw': d_odd, 'away': a_odd }
+            odds_obj = { 'home': h_odd, 'draw': d_odd, 'away': a_odd }
+            found_m['betclicOdds'] = odds_obj
             found_m['oddsStatus'] = 'ACTIVE'
             found_m['oddsMarginPct'] = margin_pct
             found_m['oddsTrjPct'] = payout_trj
             found_m['lastOddsRefresh'] = now_utc
+
+            # Recalcul dynamique des Value Bets si probabilités présentes
+            probs = found_m.get('probabilities')
+            if probs and isinstance(probs, dict):
+                def parse_prob(val):
+                    if isinstance(val, (int, float)):
+                        return float(val)
+                    if isinstance(val, str):
+                        return float(val.replace('%', '').strip())
+                    return 0.0
+
+                p_h = parse_prob(probs.get('home', 0))
+                p_d = parse_prob(probs.get('draw', 0))
+                p_a = parse_prob(probs.get('away', 0))
+
+                v_bets = []
+                for mkt, code, label, b_odd, m_prob, t_name in [
+                    ('Résultat 1N2', '1', 'Victoire Domicile', h_odd, p_h, found_m.get('homeTeam', norm_home)),
+                    ('Résultat 1N2', 'N', 'Match Nul', d_odd, p_d, 'Nul'),
+                    ('Résultat 1N2', '2', 'Victoire Extérieur', a_odd, p_a, found_m.get('awayTeam', norm_away)),
+                ]:
+                    if b_odd > 1.0 and m_prob > 0:
+                        implied = 1.0 / b_odd
+                        model_dec = m_prob / 100.0
+                        edge = ((model_dec - implied) / implied) * 100.0
+                        if edge >= 2.0:
+                            v_bets.append({
+                                'market': mkt,
+                                'selection': code,
+                                'selection_label': label,
+                                'side': f"{code} ({label})",
+                                'team': t_name,
+                                'bookmaker_odds': round(b_odd, 2),
+                                'odd': round(b_odd, 2),
+                                'betclic_odd': round(b_odd, 2),
+                                'model_probability': f"{m_prob:.1f}%",
+                                'model_prob': f"{m_prob:.1f}%",
+                                'edge_percentage': f"+{edge:.1f}%",
+                                'edge': f"+{edge:.1f}%",
+                                'stake_recommendation': f"{(1.0 + edge * 0.25):.1f}%",
+                                'is_value': True
+                            })
+                found_m['valueBets'] = v_bets
+
             updated_in_app += 1
 
     conn.commit()
@@ -383,6 +466,54 @@ def ingest_betclic_odds_to_database_and_app_data():
     print(f"   - Cotes rejetées / mises en quarantaine : {quarantine_count}")
     print(f"   - Matchs mis à jour dans app_data.json   : {updated_in_app}")
     print(f"=======================================================\n")
+
+    # 🛡️ Contrôle de qualité récolte : Règle des 5 jours (Horizon J0 à J+5)
+    today_dt = datetime.date.today()
+    horizon_dt = today_dt + datetime.timedelta(days=5)
+    supported_codes = {'EUR-CL', 'EUR-EL', 'EUR-ECL', 'FRA-L1', 'ENG-PL', 'ESP-LL', 'ITA-SA', 'GER-BL'}
+    
+    print("-------------------------------------------------------")
+    print(f" 🛡️  CONTRÔLE RÉCOLTE HORIZON 5 JOURS ({today_dt} au {horizon_dt})")
+    print("-------------------------------------------------------")
+    
+    near_matches = []
+    for m in schedule:
+        if m.get('league') in supported_codes and m.get('status') == 'SCHEDULED':
+            d_str = (m.get('matchDate') or m.get('date') or '')[:10]
+            try:
+                m_dt = datetime.datetime.strptime(d_str, '%Y-%m-%d').date()
+                if today_dt <= m_dt <= horizon_dt:
+                    near_matches.append((m_dt, m))
+            except Exception:
+                pass
+    
+    near_matches.sort(key=lambda x: (x[0], x[1].get('league', '')))
+    
+    has_odds = []
+    missing_odds = []
+    for m_dt, m in near_matches:
+        h = m.get('homeTeam')
+        a = m.get('awayTeam')
+        l = m.get('league')
+        odds = m.get('betclicOdds')
+        if odds:
+            has_odds.append(f"  [COTE ACTIVE] {m_dt} ({l}) {h} vs {a} -> {odds.get('home')} / {odds.get('draw')} / {odds.get('away')}")
+        else:
+            missing_odds.append(f"  [COTE ABSENTE] {m_dt} ({l}) {h} vs {a}")
+
+    print(f"Total rencontres programmées sous 5 jours : {len(near_matches)}")
+    print(f"  - Avec cotes Betclic certifiées : {len(has_odds)}")
+    print(f"  - Sans cote Betclic disponible  : {len(missing_odds)}")
+
+    print("\nÉchantillon des rencontres couvertes avec cotes réelles :")
+    for l in has_odds[:15]:
+        print(l)
+
+    if missing_odds:
+        print("\nRencontres sous 5 jours sans cote Betclic (hors offre bookmaker) :")
+        for l in missing_odds[:10]:
+            print(l)
+    print("-------------------------------------------------------\n")
 
 if __name__ == '__main__':
     ingest_betclic_odds_to_database_and_app_data()
