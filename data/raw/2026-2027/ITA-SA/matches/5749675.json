@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/779488_xsmall.png",
-            "linkToMatch": "/matches/lecce-vs-asu-politehnica-timisoara/3z4ldh0g#5950030",
-            "date": {
-              "utcTime": "2026-07-22T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/779488/overview/asu-politehnica-timisoara",
-            "tooltipText": {
-              "utcTime": "2026-07-22T15:30:00.000Z",
-              "homeTeam": "Lecce",
-              "homeTeamId": 9888,
-              "homeScore": "0",
-              "awayTeam": "ASU Politehnica Timișoara",
-              "awayTeamId": 779488,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9888",
-              "name": "Lecce",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "779488",
-              "name": "ASU Politehnica Timișoara",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6038_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8686",
               "name": "Roma",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529_xsmall.png",
+            "linkToMatch": "/matches/cagliari-vs-lecce/2szdhl#5749662",
+            "date": {
+              "utcTime": "2026-09-07T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8529/overview/cagliari",
+            "tooltipText": {
+              "utcTime": "2026-09-07T16:30:00.000Z",
+              "homeTeam": "Cagliari",
+              "homeTeamId": 8529,
+              "homeScore": "1",
+              "awayTeam": "Lecce",
+              "awayTeamId": 9888,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8529",
+              "name": "Cagliari",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": true
             }
           }
         ],
@@ -509,13 +509,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "6",
-                "2",
                 "4"
               ],
               "DefaultLabels": [
@@ -529,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lecce haven't lost to Monza in their last 6 meetings (2W, 4D)."
+              "defaultText": "Lecce haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -567,6 +564,23 @@
           "playerId": null,
           "teamId": 9888,
           "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#e12300"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9888,
+          "priority": 9,
           "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
           "localizedTextId": "h2h_undefeated",
           "statValues": [
@@ -597,33 +611,6 @@
             }
           ],
           "text": "Lecce haven't lost to Monza in their last 8 meetings (4W, 4D).",
-          "color": "#e12300"
-        },
-        {
-          "type": "player",
-          "playerId": 362200,
-          "teamId": 9888,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 362200,
-              "name": "Wladimiro Falcone",
-              "type": "player"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 5,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Wladimiro Falcone is ranked 2 in saves per match in the competition (5)",
           "color": "#e12300"
         },
         {
@@ -704,7 +691,45 @@
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749675/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -721,18 +746,18 @@
       }
     },
     "weather": {
-      "temperature": 26,
-      "windSpeed": 6,
+      "temperature": 25,
+      "windSpeed": 4,
       "windDirectionCardinal": "N",
-      "iconCode": 37,
-      "relativeHumidity": 63,
-      "precipChance": 34,
-      "precipitation": 0.3,
+      "iconCode": 4,
+      "relativeHumidity": 72,
+      "precipChance": 76,
+      "precipitation": 1.03,
       "snow": 0,
-      "cloudCover": 39,
-      "description": "Isolated Thunderstorms",
+      "cloudCover": 75,
+      "description": "Thunderstorms",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T15:00:09Z",
+      "lastUpdated": "2026-09-08T03:00:11Z",
       "localizedKey": "weather_condition_thunderstorms",
       "defaultTitle": "Thunderstorms"
     },
@@ -771,6 +796,21 @@
         "starters": [],
         "unavailable": [
           {
+            "id": 639671,
+            "age": 28,
+            "name": "Patrick Cutrone",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2428249,
+            "unavailability": {
+              "injuryId": 121,
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Patrick",
+            "lastName": "Cutrone"
+          },
+          {
             "id": 994403,
             "age": 26,
             "name": "Cyril Ngonge",
@@ -795,7 +835,7 @@
             "unavailability": {
               "injuryId": 21,
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Mid October 2026"
             },
             "firstName": "Jan",
             "lastName": "Ziólkowski"
@@ -840,7 +880,7 @@
             "unavailability": {
               "injuryId": 14,
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Early October 2026"
             },
             "firstName": "Idrissa",
             "lastName": "Touré"

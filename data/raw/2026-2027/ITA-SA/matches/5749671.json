@@ -638,33 +638,6 @@
         },
         {
           "type": "player",
-          "playerId": 867789,
-          "teamId": 10167,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 867789,
-              "name": "Emanuele Valeri",
-              "type": "player"
-            },
-            {
-              "value": 10167,
-              "name": "Parma",
-              "type": "team"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Emanuele Valeri has created the most big chances for Parma (2)",
-          "color": "#000000"
-        },
-        {
-          "type": "player",
           "playerId": 1117310,
           "teamId": 10167,
           "priority": 4,
@@ -689,10 +662,75 @@
           ],
           "text": "Edoardo Corvi is ranked 3 in saves per match in the competition (4)",
           "color": "#000000"
+        },
+        {
+          "type": "player",
+          "playerId": 1843609,
+          "teamId": 10167,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1843609,
+              "name": "Simone Lontani",
+              "type": "player"
+            },
+            {
+              "value": 10167,
+              "name": "Parma",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Simone Lontani has the most shots on target per match for Parma (1)",
+          "color": "#000000"
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749671/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -709,37 +747,41 @@
       }
     },
     "weather": {
-      "temperature": 25,
+      "temperature": 26,
       "windSpeed": 2,
-      "windDirectionCardinal": "SSW",
-      "iconCode": 34,
-      "relativeHumidity": 49,
-      "precipChance": 1,
+      "windDirectionCardinal": "S",
+      "iconCode": 32,
+      "relativeHumidity": 50,
+      "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 22,
-      "description": "Mostly Sunny",
+      "cloudCover": 6,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T16:00:15Z",
+      "lastUpdated": "2026-09-08T04:00:30Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749671,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10171,
         "name": "Como",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1347241,
+            "age": 21,
             "name": "Jayden Addai",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 14629059,
             "unavailability": {
               "injuryId": 73,
-              "lastUpdated": "2026-08-31T22:02:52Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -751,13 +793,33 @@
       "awayTeam": {
         "id": 10167,
         "name": "Parma",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 1693531,
+            "age": 20,
+            "name": "Sascha Britschgi",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 10023028,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Sascha",
+            "lastName": "Britschgi"
+          },
+          {
             "id": 1684415,
+            "age": 19,
             "name": "Ousmane Diallo",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1568973,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-09-05T21:27:03Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -766,10 +828,13 @@
           },
           {
             "id": 951714,
+            "age": 25,
             "name": "Adrián Bernabé",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 11124395,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-09-05T21:27:32Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -778,10 +843,13 @@
           },
           {
             "id": 845994,
+            "age": 26,
             "name": "Hans Nicolussi Caviglia",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 4412961,
             "unavailability": {
               "injuryId": 51,
-              "lastUpdated": "2026-08-27T10:15:45Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },

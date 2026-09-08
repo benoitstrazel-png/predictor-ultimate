@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "4",
-                "0",
-                "1",
-                "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Juventus have 4W, 0D, 1L in five matches while Atalanta have 3W, 1D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Juventus haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -472,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "7",
+                "8",
                 "away_team",
                 "4"
               ],
@@ -485,20 +479,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored in their last 7 matches and Atalanta have scored in their last 4 matches."
+              "defaultText": "Juventus have scored in their last 8 matches and Atalanta have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "3"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -509,18 +502,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 5 goals in their last 3 matches, while Atalanta have scored 3."
+              "defaultText": "Juventus have an average of 1.33 goals in their last three matches and Atalanta have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "7",
                 "4"
               ],
               "DefaultLabels": [
@@ -534,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Juventus haven't drawn in their last 7 matches and Atalanta in their last 4."
+              "defaultText": "Atalanta haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -568,57 +559,47 @@
           "color": "#000001"
         },
         {
-          "type": "player",
-          "playerId": 1185336,
+          "type": "team",
+          "playerId": null,
           "teamId": 9885,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
           "statValues": [
-            {
-              "value": 1185336,
-              "name": "Francisco Conceição",
-              "type": "player"
-            },
-            {
-              "value": 9885,
-              "name": "Juventus",
-              "type": "team"
-            },
-            {
-              "value": 1.9,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Francisco Conceição has the most shots on target per match for Juventus (1.9)",
-          "color": "#000001"
-        },
-        {
-          "type": "player",
-          "playerId": 1185336,
-          "teamId": 9885,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1185336,
-              "name": "Francisco Conceição",
-              "type": "player"
-            },
-            {
-              "value": 9885,
-              "name": "Juventus",
-              "type": "team"
-            },
             {
               "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Francisco Conceição has created the most big chances for Juventus (2)",
+          "text": "Have kept the most clean sheets in the competition (2)",
+          "color": "#000001"
+        },
+        {
+          "type": "player",
+          "playerId": 841672,
+          "teamId": 9885,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 841672,
+              "name": "Nicolás González",
+              "type": "player"
+            },
+            {
+              "value": 9885,
+              "name": "Juventus",
+              "type": "team"
+            },
+            {
+              "value": 2.8,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Nicolás González has the most shots on target per match for Juventus (2.8)",
           "color": "#000001"
         },
         {
@@ -641,33 +622,6 @@
             }
           ],
           "text": "Have scored 5 goals in their last 5 matches",
-          "color": "#004ca6"
-        },
-        {
-          "type": "player",
-          "playerId": 833638,
-          "teamId": 8524,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 833638,
-              "name": "Nikola Krstovic",
-              "type": "player"
-            },
-            {
-              "value": 8524,
-              "name": "Atalanta",
-              "type": "team"
-            },
-            {
-              "value": 1.9,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Nikola Krstovic has the most shots on target per match for Atalanta (1.9)",
           "color": "#004ca6"
         },
         {
@@ -696,6 +650,33 @@
           ],
           "text": "Marco Carnesecchi is ranked 1 in saves per match in the competition (6.3)",
           "color": "#004ca6"
+        },
+        {
+          "type": "player",
+          "playerId": 1095432,
+          "teamId": 8524,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1095432,
+              "name": "Charles De Ketelaere",
+              "type": "player"
+            },
+            {
+              "value": 8524,
+              "name": "Atalanta",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Charles De Ketelaere has created the most big chances for Atalanta (1)",
+          "color": "#004ca6"
         }
       ],
       "countryCode": "ITA",
@@ -716,20 +697,20 @@
       }
     },
     "weather": {
-      "temperature": 26,
+      "temperature": 27,
       "windSpeed": 2,
-      "windDirectionCardinal": "E",
-      "iconCode": 34,
-      "relativeHumidity": 50,
-      "precipChance": 18,
+      "windDirectionCardinal": "ESE",
+      "iconCode": 30,
+      "relativeHumidity": 54,
+      "precipChance": 19,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 22,
-      "description": "Mostly Sunny",
+      "cloudCover": 32,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T18:00:11Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-09-08T06:00:12Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749685,
@@ -741,6 +722,30 @@
         "id": 9885,
         "name": "Juventus",
         "unavailable": [
+          {
+            "id": 643229,
+            "name": "Jérémie Boga",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-09-08T11:50:38Z",
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Jérémie",
+            "lastName": "Boga"
+          },
+          {
+            "id": 624166,
+            "name": "Manuel Locatelli",
+            "unavailability": {
+              "injuryId": 70,
+              "lastUpdated": "2026-09-08T11:49:30Z",
+              "type": "injury",
+              "expectedReturn": "Early January 2027"
+            },
+            "firstName": "Manuel",
+            "lastName": "Locatelli"
+          },
           {
             "id": 1107280,
             "name": "Pape Sarr",
@@ -815,7 +820,7 @@
           },
           {
             "id": 1412132,
-            "name": "Kenan Yildiz",
+            "name": "Kenan Yıldız",
             "unavailability": {
               "injuryId": 8,
               "lastUpdated": "2026-08-31T17:48:23Z",
@@ -823,7 +828,7 @@
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Kenan",
-            "lastName": "Yildiz"
+            "lastName": "Yıldız"
           }
         ]
       },

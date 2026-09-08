@@ -462,11 +462,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "4",
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have scored in their last 4 home matches."
+              "defaultText": "Milan have scored in their last 4 matches and Benfica have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -486,7 +488,7 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
+                "away_team",
                 "8",
                 "3"
               ],
@@ -499,18 +501,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have scored 8 goals in their last 3 matches."
+              "defaultText": "Benfica have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Milan haven't drawn in their last 4 matches and Benfica in their last 5."
+              "defaultText": "Benfica haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -571,20 +571,20 @@
       }
     },
     "weather": {
-      "temperature": 23,
+      "temperature": 22,
       "windSpeed": 2,
       "windDirectionCardinal": "NE",
-      "iconCode": 11,
-      "relativeHumidity": 68,
-      "precipChance": 38,
-      "precipitation": 0.2,
+      "iconCode": 31,
+      "relativeHumidity": 67,
+      "precipChance": 18,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 50,
-      "description": "Showers",
+      "cloudCover": 14,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T21:00:17Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-09-08T09:00:16Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 6112254,
@@ -596,6 +596,18 @@
         "id": 8564,
         "name": "Milan",
         "unavailable": [
+          {
+            "id": 1106074,
+            "name": "Mario Gila",
+            "unavailability": {
+              "injuryId": 42,
+              "lastUpdated": "2026-09-07T12:02:40Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Mario",
+            "lastName": "Gila"
+          },
           {
             "id": 844996,
             "name": "Matteo Gabbia",
@@ -613,7 +625,20 @@
       "awayTeam": {
         "id": 9772,
         "name": "Benfica",
-        "unavailable": []
+        "unavailable": [
+          {
+            "id": 734287,
+            "name": "Alexander Bah",
+            "unavailability": {
+              "injuryId": 32,
+              "lastUpdated": "2026-09-07T10:13:25Z",
+              "type": "injury",
+              "expectedReturn": "Mid October 2026"
+            },
+            "firstName": "Alexander",
+            "lastName": "Bah"
+          }
+        ]
       }
     },
     "hasPlayoff": false,

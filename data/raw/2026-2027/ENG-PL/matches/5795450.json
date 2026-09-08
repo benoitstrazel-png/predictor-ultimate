@@ -114,9 +114,55 @@
           "surface": "grass"
         },
         "Referee": {
-          "text": "",
-          "countryCode": "",
-          "country": ""
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/eng.png",
+          "text": "Michael Salisbury",
+          "countryCode": "ENG",
+          "country": "England",
+          "id": 1001077540,
+          "leagueId": 47,
+          "leagueName": "Premier League",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 27,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 3.63,
+              "valueType": "perMatch",
+              "average": 3.99,
+              "total": 98,
+              "averageType": "below",
+              "fillPercentage": 36.29,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 2,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 1,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 9,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 22.26,
+              "valueType": "perMatch",
+              "average": 21.86,
+              "total": 601,
+              "averageType": "average",
+              "fillPercentage": 59.57,
+              "averagePercentage": 50
+            }
+          ]
         },
         "Attendance": null
       },
@@ -584,15 +630,15 @@
         },
         {
           "type": "player",
-          "playerId": 612150,
+          "playerId": 517346,
           "teamId": 8463,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 612150,
-              "name": "Dominic Calvert-Lewin",
+              "value": 517346,
+              "name": "Nico Elvedi",
               "type": "player"
             },
             {
@@ -601,12 +647,12 @@
               "type": "team"
             },
             {
-              "value": 1.1,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Dominic Calvert-Lewin has the most shots on target per match for Leeds United (1.1)",
+          "text": "Nico Elvedi has created the most big chances for Leeds United (2)",
           "color": "#0060AA"
         },
         {
@@ -697,7 +743,45 @@
         }
       ],
       "countryCode": "ENG",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795450/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -714,37 +798,41 @@
       }
     },
     "weather": {
-      "temperature": 17,
+      "temperature": 18,
       "windSpeed": 4,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 27,
+      "windDirectionCardinal": "SW",
+      "iconCode": 29,
       "relativeHumidity": 79,
-      "precipChance": 13,
+      "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 69,
-      "description": "Mostly Cloudy",
+      "cloudCover": 40,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T10:00:03Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-09-08T10:00:01Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795450,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8463,
         "name": "Leeds United",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 717174,
+            "age": 28,
             "name": "Joe Rodon",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "marketValue": 13500534,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-08-30T22:32:42Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -753,10 +841,13 @@
           },
           {
             "id": 1344677,
+            "age": 22,
             "name": "Mateo Joseph",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 3962023,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-10T15:31:05Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
@@ -765,10 +856,13 @@
           },
           {
             "id": 1080983,
+            "age": 26,
             "name": "Ilia Gruev",
+            "countryName": "Bulgaria",
+            "countryCode": "BUL",
+            "marketValue": 10678364,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-08-28T16:48:16Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -780,13 +874,18 @@
       "awayTeam": {
         "id": 10261,
         "name": "Newcastle United",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1258092,
+            "age": 23,
             "name": "William Osula",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 14425495,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-08-28T17:29:19Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },
@@ -795,10 +894,13 @@
           },
           {
             "id": 188058,
+            "age": 34,
             "name": "Dan Burn",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 4412704,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-08-28T17:28:32Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -807,10 +909,13 @@
           },
           {
             "id": 535936,
+            "age": 30,
             "name": "Joelinton",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 25571842,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-02T13:50:03Z",
               "type": "injury",
               "expectedReturn": "Mid September 2026"
             },

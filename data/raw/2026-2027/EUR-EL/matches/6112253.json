@@ -438,17 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "4",
-                "0",
-                "1",
-                "away_team",
-                "2",
-                "0",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,8 +454,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Juventus have 4W, 0D, 1L in five matches while NEC Nijmegen have 2W, 0D, 3L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Juventus haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -471,7 +465,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +476,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored in their last 4 home matches."
+              "defaultText": "Juventus have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -494,7 +488,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -506,18 +500,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 5 goals in their last 3 matches, while NEC Nijmegen have scored 4."
+              "defaultText": "Juventus have scored 4 goals in their last 3 matches, while NEC Nijmegen have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "7",
                 "7"
               ],
               "DefaultLabels": [
@@ -531,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Juventus haven't drawn in their last 7 matches and NEC Nijmegen in their last 7."
+              "defaultText": "NEC Nijmegen haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -578,20 +570,20 @@
       }
     },
     "weather": {
-      "temperature": 22,
+      "temperature": 21,
       "windSpeed": 2,
       "windDirectionCardinal": "NE",
-      "iconCode": 11,
-      "relativeHumidity": 65,
-      "precipChance": 32,
-      "precipitation": 0.2,
+      "iconCode": 29,
+      "relativeHumidity": 68,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 40,
-      "description": "Few Showers",
+      "cloudCover": 48,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-06T21:00:17Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-09-08T09:00:17Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112253,
@@ -603,6 +595,30 @@
         "id": 9885,
         "name": "Juventus",
         "unavailable": [
+          {
+            "id": 643229,
+            "name": "Jérémie Boga",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-09-08T11:50:38Z",
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Jérémie",
+            "lastName": "Boga"
+          },
+          {
+            "id": 624166,
+            "name": "Manuel Locatelli",
+            "unavailability": {
+              "injuryId": 70,
+              "lastUpdated": "2026-09-08T11:49:30Z",
+              "type": "injury",
+              "expectedReturn": "Early January 2027"
+            },
+            "firstName": "Manuel",
+            "lastName": "Locatelli"
+          },
           {
             "id": 1107280,
             "name": "Pape Sarr",
@@ -677,7 +693,7 @@
           },
           {
             "id": 1412132,
-            "name": "Kenan Yildiz",
+            "name": "Kenan Yıldız",
             "unavailability": {
               "injuryId": 8,
               "lastUpdated": "2026-08-31T17:48:23Z",
@@ -685,7 +701,7 @@
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Kenan",
-            "lastName": "Yildiz"
+            "lastName": "Yıldız"
           }
         ]
       },
@@ -694,13 +710,37 @@
         "name": "NEC Nijmegen",
         "unavailable": [
           {
+            "id": 683333,
+            "name": "Emre Mor",
+            "unavailability": {
+              "injuryId": 130,
+              "lastUpdated": "2026-09-08T10:26:18Z",
+              "type": "injury",
+              "expectedReturn": "Mid September 2026"
+            },
+            "firstName": "Emre",
+            "lastName": "Mor"
+          },
+          {
+            "id": 1335315,
+            "name": "Deveron Fonville",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-09-08T10:24:18Z",
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Deveron",
+            "lastName": "Fonville"
+          },
+          {
             "id": 773831,
             "name": "Philippe Sandler",
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-09-04T12:15:54Z",
+              "lastUpdated": "2026-09-08T10:12:29Z",
               "type": "injury",
-              "expectedReturn": "A few days"
+              "expectedReturn": "Day to day"
             },
             "firstName": "Philippe",
             "lastName": "Sandler"
@@ -710,7 +750,7 @@
             "name": "Yassin Moslih",
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-09-04T12:16:13Z",
+              "lastUpdated": "2026-09-08T10:12:05Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
@@ -722,9 +762,9 @@
             "name": "Ahmetcan Kaplan",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-04T12:16:22Z",
+              "lastUpdated": "2026-09-08T10:11:45Z",
               "type": "injury",
-              "expectedReturn": "A few days"
+              "expectedReturn": "Day to day"
             },
             "firstName": "Ahmetcan",
             "lastName": "Kaplan"
