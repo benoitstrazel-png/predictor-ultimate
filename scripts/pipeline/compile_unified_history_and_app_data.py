@@ -89,7 +89,7 @@ def compile_data():
     from scripts.pipeline.ingest_historical_and_live_matches import init_db_schema_if_needed
     init_db_schema_if_needed(conn)
 
-    c = conn.cursor()
+    cursor = conn.cursor()
 
     team_logos = load_team_logos()
     raw_meta = load_raw_match_meta()
@@ -122,18 +122,18 @@ def compile_data():
             print(f"⚠️ [Compiler] Impossible de charger l'historique app_data.json : {e}")
 
     # 1. Verification de la couverture des matchs terminés
-    c.execute("SELECT COUNT(*) as cnt FROM fact_matches WHERE status = 'FINISHED';")
-    fin_count = c.fetchone()['cnt']
+    cursor.execute("SELECT COUNT(*) as cnt FROM fact_matches WHERE status = 'FINISHED';")
+    fin_count = cursor.fetchone()['cnt']
     if fin_count < 1000 and os.path.exists(RAW_DIR):
         print(f"⚠️ [Compiler] Seulement {fin_count} matchs terminés en base. Rechargement automatique depuis {RAW_DIR}...")
         from scripts.pipeline.reload_all_raw_to_sqlite import reload_all
         reload_all()
         conn = sqlite3.connect(DB_PATH)
         conn.row_factory = sqlite3.Row
-        c = conn.cursor()
+        cursor = conn.cursor()
 
     # 1. Extraction de tous les matchs terminés pour unified_history.json
-    c.execute("""
+    cursor.execute("""
     SELECT 
         match_id, competition_id, season, round_label, gameweek,
         match_timestamp_utc, match_date, status,
@@ -144,11 +144,11 @@ def compile_data():
     WHERE status = 'FINISHED' AND home_score IS NOT NULL AND away_score IS NOT NULL
     ORDER BY match_date ASC, match_timestamp_utc ASC;
     """)
-    finished_rows = c.fetchall()
+    finished_rows = cursor.fetchall()
     print(f"📊 [Compiler] {len(finished_rows)} rencontres officielles terminées trouvées dans la base.")
 
     # 2. Récupération des statistiques d'équipes groupées par match
-    c.execute("""
+    cursor.execute("""
     SELECT 
         match_id, is_home, possession_pct, expected_goals,
         shots_total, shots_on_target, shots_off_target, shots_blocked,
@@ -157,7 +157,7 @@ def compile_data():
         accurate_passes, total_passes, pass_accuracy_pct
     FROM fact_match_team_stats;
     """)
-    all_team_stats = c.fetchall()
+    all_team_stats = cursor.fetchall()
     stats_by_match = {}
     for st in all_team_stats:
         m_id = st['match_id']
@@ -184,7 +184,7 @@ def compile_data():
         }
 
     # 3. Récupération des compositions (Lineups) groupées par match
-    c.execute("""
+    cursor.execute("""
     SELECT 
         match_id, is_home, player_name_match,
         lineup_type, role_category, jersey_number, captain,
@@ -192,7 +192,7 @@ def compile_data():
     FROM fct_match_lineups
     ORDER BY is_home DESC, lineup_type DESC, jersey_number ASC;
     """)
-    all_lineups = c.fetchall()
+    all_lineups = cursor.fetchall()
     lineups_by_match = {}
     for lp in all_lineups:
         m_id = lp['match_id']
@@ -228,14 +228,14 @@ def compile_data():
             lu['away']['coach'] = rm['awayCoach']
 
     # 4. Récupération des événements groupés par match
-    c.execute("""
+    cursor.execute("""
     SELECT 
         match_id, minute, added_time, team_name, event_type,
         primary_player_name, secondary_player_name, detail_note
     FROM fact_match_events
     ORDER BY minute ASC, added_time ASC;
     """)
-    all_events = c.fetchall()
+    all_events = cursor.fetchall()
     events_by_match = {}
     for ev in all_events:
         m_id = ev['match_id']
@@ -542,7 +542,7 @@ def compile_data():
         print(f"⚠️ [Compiler] Attention génération cache analytique : {e}")
 
     # 6. Mise à jour du calendrier 2026-2027 dans app_data.json
-    c.execute("""
+    cursor.execute("""
     SELECT 
         match_id, competition_id, season, round_label, gameweek,
         match_timestamp_utc, match_date, status,
@@ -553,15 +553,15 @@ def compile_data():
     WHERE season = '2026-2027'
     ORDER BY match_date ASC, match_timestamp_utc ASC;
     """)
-    season_26_27_matches = c.fetchall()
+    season_26_27_matches = cursor.fetchall()
 
     # 6.1 Chargement des cotes certifiées depuis dim_match_closing_odds
-    c.execute("""
+    cursor.execute("""
     SELECT match_id, competition_id, home_team_name, away_team_name, 
            closing_odd_1, closing_odd_n, closing_odd_2, closing_margin_pct, odds_status
     FROM dim_match_closing_odds
     """)
-    all_closing_odds = c.fetchall()
+    all_closing_odds = cursor.fetchall()
     closing_odds_by_id = {row['match_id']: row for row in all_closing_odds}
 
     def clean_team_norm(raw: str) -> str:
