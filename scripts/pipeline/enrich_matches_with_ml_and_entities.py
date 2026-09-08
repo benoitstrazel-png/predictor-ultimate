@@ -13,6 +13,7 @@ Enrichit 100% des matchs de app_data.json (fullSchedule et nextMatches) avec :
 import os
 import sys
 import json
+import datetime
 import numpy as np
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -228,7 +229,7 @@ def main():
             except Exception:
                 is_mock_215 = True
 
-        has_real_odds = bool(odds and isinstance(odds, dict) and odds.get('home') and float(odds['home']) > 1.0 and odds_status == 'ACTIVE' and not is_mock_215)
+        has_real_odds = bool(odds and isinstance(odds, dict) and odds.get('home') and float(odds['home']) > 1.0 and not is_mock_215)
         if has_real_odds:
             odd_h = float(odds['home'])
             odd_d = float(odds['draw'])
@@ -389,7 +390,9 @@ def main():
 
     # Mettre à jour nextMatches et seasonStats avec les versions fraîchement enrichies
     app_data['fullSchedule'] = full_schedule
-    app_data['nextMatches'] = [m for m in full_schedule if m.get('status') in ['LIVE', 'SCHEDULED']][:15]
+    today_str = datetime.now().strftime('%Y-%m-%d')
+    upcoming_from_today = [m for m in full_schedule if (m.get('matchDate') or m.get('date') or '') >= today_str and m.get('status') in ['LIVE', 'SCHEDULED']]
+    app_data['nextMatches'] = upcoming_from_today[:15] if upcoming_from_today else [m for m in full_schedule if m.get('status') in ['LIVE', 'SCHEDULED']][:15]
     def write_json_safe(file_path, data):
         tmp_path = file_path + ".tmp"
         os.makedirs(os.path.dirname(file_path), exist_ok=True)

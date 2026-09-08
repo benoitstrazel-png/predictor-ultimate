@@ -457,8 +457,13 @@ def ingest_betclic_odds_to_database_and_app_data():
     conn.commit()
     conn.close()
 
+    # Synchroniser également nextMatches avec le fullSchedule fraîchement mis à jour
+    today_str = datetime.date.today().strftime('%Y-%m-%d')
+    upcoming_from_today = [m for m in schedule if (m.get('matchDate') or m.get('date') or '') >= today_str and m.get('status') in ['LIVE', 'SCHEDULED']]
+    app_data['nextMatches'] = upcoming_from_today[:15] if upcoming_from_today else [m for m in schedule if m.get('status') in ['LIVE', 'SCHEDULED']][:15]
+
     with open(APP_DATA_PATH, 'w', encoding='utf-8') as f:
-        json.dump(app_data, f, ensure_ascii=False, indent=2)
+        json.dump(app_data, f, ensure_ascii=False, separators=(',', ':'))
 
     print(f"\n=======================================================")
     print(f" [INGESTION REPORT] Synchronisation Cotes Betclic Réelles")

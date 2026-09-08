@@ -15,6 +15,7 @@ import os
 import sys
 import json
 import sqlite3
+import datetime
 
 if sys.platform == "win32":
     try:
@@ -109,6 +110,8 @@ def compile_data():
                             "expectedGoals": item.get('expectedGoals'),
                             "betclicOdds": item.get('betclicOdds'),
                             "valueBets": item.get('valueBets'),
+                            "oddsStatus": item.get('oddsStatus'),
+                            "oddsMarginPct": item.get('oddsMarginPct'),
                             "topExactScores": item.get('topExactScores'),
                             "topHalfTimeScores": item.get('topHalfTimeScores'),
                             "potentialScorers": item.get('potentialScorers'),
@@ -771,7 +774,7 @@ def compile_data():
             d_cand = float(old_val['betclicOdds'].get('draw') or 0)
             a_cand = float(old_val['betclicOdds'].get('away') or 0)
             is_mock_215 = (abs(h_cand - 2.15) < 0.001 and abs(d_cand - 3.35) < 0.001 and abs(a_cand - 3.40) < 0.001)
-            if not is_mock_215 and old_val.get('oddsStatus') == 'ACTIVE':
+            if not is_mock_215 and (old_val.get('oddsStatus') == 'ACTIVE' or old_val.get('betclicOdds')):
                 betclic_odds = old_val.get('betclicOdds')
                 odds_status = 'ACTIVE'
                 odds_margin_pct = old_val.get('oddsMarginPct')
@@ -854,7 +857,9 @@ def compile_data():
         new_schedule.append(match_obj)
 
     app_data['fullSchedule'] = new_schedule
-    app_data['nextMatches'] = [m for m in new_schedule if m.get('status') in ['LIVE', 'SCHEDULED']][:15]
+    today_str = datetime.date.today().strftime('%Y-%m-%d')
+    upcoming_from_today = [m for m in new_schedule if (m.get('matchDate') or m.get('date') or '') >= today_str and m.get('status') in ['LIVE', 'SCHEDULED']]
+    app_data['nextMatches'] = upcoming_from_today[:15] if upcoming_from_today else [m for m in new_schedule if m.get('status') in ['LIVE', 'SCHEDULED']][:15]
 
     def write_json_safe(file_path, data):
         tmp_path = file_path + ".tmp"

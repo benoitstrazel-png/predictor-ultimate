@@ -67,6 +67,10 @@ jobs:
       - name: Synchronize Multi-Season Squads & Transfermarkt Database
         run: python scripts/pipeline/sync_full_squads_and_transfers.py
 
+      - name: Assert Odds Retention
+        run: |
+          python -c "import json; d = json.load(open('src/data/app_data.json', encoding='utf-8')); active = [m for m in d.get('fullSchedule', []) if m.get('oddsStatus') == 'ACTIVE' and m.get('betclicOdds')]; print(f'Active certified odds in app_data.json: {len(active)}'); assert len(active) >= 10, f'CRITICAL: Odds regression! Only {len(active)} active odds found.'"
+
       - name: Validate Data Quality Contract
         run: npm run data:validate
 
