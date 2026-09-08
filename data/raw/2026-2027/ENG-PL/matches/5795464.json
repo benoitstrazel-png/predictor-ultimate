@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "1",
+                "2",
                 "away_team",
-                "6"
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,40 +461,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 6 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Tottenham Hotspur have 2W, 1D, 2L in five matches while Aston Villa have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have an average of 1.67 goals in their last three matches and Aston Villa have an average of 0."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
-              "TextTemplateId": "goalless_team",
-              "StatValues": [
-                "away_team",
+                "3",
+                "5",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,18 +485,43 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Aston Villa haven't scored in their last 3 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Tottenham Hotspur have scored 5 goals in their last 3 matches, while Aston Villa have scored 3."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "5",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Tottenham Hotspur have scored 5 goals in their last 3 matches, while Aston Villa have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+              "TextTemplateId": "h2h_no_draws_v2",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "6"
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +533,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 6 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Tottenham Hotspur and Aston Villa have not drawn any of their last 10 matches against each other."
             }
           ]
         },
@@ -627,33 +638,6 @@
           "playerId": 1607333,
           "teamId": 10252,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1607333,
-              "name": "George Hemmings",
-              "type": "player"
-            },
-            {
-              "value": 10252,
-              "name": "Aston Villa",
-              "type": "team"
-            },
-            {
-              "value": 0.4,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "George Hemmings has the most shots on target per match for Aston Villa (0.4)",
-          "color": "#7D1142"
-        },
-        {
-          "type": "player",
-          "playerId": 1607333,
-          "teamId": 10252,
-          "priority": 1,
           "defaultText": "{0} has created the most big chances for {1} ({2})",
           "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
@@ -674,6 +658,33 @@
             }
           ],
           "text": "George Hemmings has created the most big chances for Aston Villa (1)",
+          "color": "#7D1142"
+        },
+        {
+          "type": "player",
+          "playerId": 1607333,
+          "teamId": 10252,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1607333,
+              "name": "George Hemmings",
+              "type": "player"
+            },
+            {
+              "value": 10252,
+              "name": "Aston Villa",
+              "type": "team"
+            },
+            {
+              "value": 0.4,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "George Hemmings has the most shots on target per match for Aston Villa (0.4)",
           "color": "#7D1142"
         }
       ],

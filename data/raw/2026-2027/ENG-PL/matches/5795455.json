@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8603_xsmall.png",
-            "linkToMatch": "/matches/real-betis-vs-afc-bournemouth/2gwqp3#5899062",
-            "date": {
-              "utcTime": "2026-08-08T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8603/overview/real-betis",
-            "tooltipText": {
-              "utcTime": "2026-08-08T19:00:00.000Z",
-              "homeTeam": "Real Betis",
-              "homeTeamId": 8603,
-              "homeScore": "2",
-              "awayTeam": "AFC Bournemouth",
-              "awayTeamId": 8678,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8603",
-              "name": "Real Betis",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8678",
-              "name": "AFC Bournemouth",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9905_xsmall.png",
@@ -270,6 +240,36 @@
               "id": "8678",
               "name": "AFC Bournemouth",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8430_xsmall.png",
+            "linkToMatch": "/matches/lincoln-city-vs-afc-bournemouth/2f4zdk#6099334",
+            "date": {
+              "utcTime": "2026-09-08T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8430/overview/lincoln-city",
+            "tooltipText": {
+              "utcTime": "2026-09-08T18:45:00.000Z",
+              "homeTeam": "AFC Bournemouth",
+              "homeTeamId": 8678,
+              "homeScore": "4",
+              "awayTeam": "Lincoln City",
+              "awayTeamId": 8430,
+              "awayScore": "0"
+            },
+            "score": "4 - 0",
+            "home": {
+              "id": "8678",
+              "name": "AFC Bournemouth",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8430",
+              "name": "Lincoln City",
+              "isOurTeam": false
             }
           }
         ],
@@ -546,7 +546,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -556,41 +556,61 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#D71921"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8678,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 6,
+          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+          "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
             {
-              "value": 5,
+              "value": 8678,
+              "name": "AFC Bournemouth",
+              "type": "team"
+            },
+            {
+              "value": 8650,
+              "name": "Liverpool",
+              "type": "team"
+            },
+            {
+              "value": 15,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "AFC Bournemouth and Liverpool have not drawn any of their last 15 matches against each other.",
           "color": "#D71921"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1098096,
           "teamId": 8678,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 1098096,
+              "name": "Evanilson",
+              "type": "player"
+            },
+            {
+              "value": 8678,
+              "name": "AFC Bournemouth",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Evanilson has created the most big chances for AFC Bournemouth (2)",
           "color": "#D71921"
         },
         {
@@ -620,23 +640,6 @@
           "playerId": null,
           "teamId": 8650,
           "priority": 10,
-          "defaultText": "Have been awarded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_awarded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have been awarded the most penalties this season (1)",
-          "color": "#911712"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8650,
-          "priority": 10,
           "defaultText": "Have conceded the most penalties this season ({0})",
           "localizedTextId": "insights_penalties_conceded",
           "statValues": [
@@ -647,6 +650,28 @@
             }
           ],
           "text": "Have conceded the most penalties this season (1)",
+          "color": "#911712"
+        },
+        {
+          "type": "player",
+          "playerId": 690107,
+          "teamId": 8650,
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
+          "statValues": [
+            {
+              "value": 690107,
+              "name": "Alexander Isak",
+              "type": "player"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Alexander Isak is the competition's top scorer (3)",
           "color": "#911712"
         }
       ],
