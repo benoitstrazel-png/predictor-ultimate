@@ -91,13 +91,17 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
 
   if (!isOpen || !match) return null;
 
-  const targetMatch = currentMatch || activeMatch || match;
+  const targetMatch = currentMatch?.id === match.id ? currentMatch : match;
   const homeTeam = targetMatch.homeTeam || targetMatch.home_team || 'Domicile';
   const awayTeam = targetMatch.awayTeam || targetMatch.away_team || 'Extérieur';
-  const isFinished = targetMatch.status === 'FINISHED' || targetMatch.score !== 'À Venir';
+  const isFinished = targetMatch.status === 'FINISHED' || (targetMatch.score && targetMatch.score !== 'À Venir');
   const isLive = targetMatch.status === 'LIVE';
 
-  const scoreDisplay = targetMatch.score ? (typeof targetMatch.score === 'object' ? `${targetMatch.score.home} - ${targetMatch.score.away}` : targetMatch.score.replace('-', ' - ')) : (isFinished ? `${targetMatch.homeScore} - ${targetMatch.awayScore}` : (isLive ? 'LIVE' : 'VS'));
+  const scoreDisplay = targetMatch.score 
+    ? (typeof targetMatch.score === 'object' 
+        ? `${targetMatch.score.home} - ${targetMatch.score.away}` 
+        : String(targetMatch.score).replace('-', ' - ')) 
+    : (isFinished ? `${targetMatch.homeScore ?? '-'} - ${targetMatch.awayScore ?? '-'}` : (isLive ? 'LIVE' : 'VS'));
 
   const refereeName = typeof targetMatch.referee === 'object' ? targetMatch.referee?.name : (targetMatch.referee || 'Arbitre Officiel');
   const stadiumName = targetMatch.location || `Stade de ${homeTeam}`;
@@ -362,12 +366,12 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
           }}>
             {/* TAB 1: CHRONOLOGIE (MATCH TIMELINE) */}
             {activeTab === 'timeline' && (
-              <MatchTimeline match={match} />
+              <MatchTimeline match={targetMatch} />
             )}
 
             {/* TAB 2: STATISTIQUES COMPARATIVES */}
             {activeTab === 'stats' && (
-              <TeamMatchStats match={match} />
+              <TeamMatchStats match={targetMatch} />
             )}
 
             {/* TAB 3: COMPOSITIONS & NOTES */}
@@ -682,12 +686,12 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                     <Sparkles size={16} /> Résumé Analytique & Contexte de la Rencontre
                   </div>
                   <p style={{ fontSize: 13, color: 'var(--ivory)', lineHeight: 1.6, margin: 0 }}>
-                    {currentMatch.aiSummary || `Rencontre officielle ${currentMatch.league || 'Ligue'} ${currentMatch.season || '2026-2027'} : ${homeTeam} ${currentMatch.score || 'VS'} ${awayTeam}.`}
+                    {targetMatch.aiSummary || `Rencontre officielle ${targetMatch.league || 'Ligue'} ${targetMatch.season || '2026-2027'} : ${homeTeam} ${targetMatch.score || 'VS'} ${awayTeam}.`}
                   </p>
                 </div>
 
                 {/* Complete Detailed Prediction Engine */}
-                <MatchPrediction match={currentMatch} />
+                <MatchPrediction match={targetMatch} />
               </div>
             )}
           </div>

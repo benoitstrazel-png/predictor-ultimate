@@ -98,7 +98,7 @@ export default function MatchTimeline({ match }) {
     ? `${firstHalfEvents.filter(e => e.type?.includes('GOAL') && e.isHome).length} - ${firstHalfEvents.filter(e => e.type?.includes('GOAL') && !e.isHome).length}`
     : '0 - 0');
 
-  const ftScore = match.score ? (typeof match.score === 'object' ? `${match.score.home} - ${match.score.away}` : match.score.replace('-', ' - ')) : (match.homeScore !== undefined ? `${match.homeScore} - ${match.awayScore}` : '0 - 0');
+  const ftScore = match.score ? (typeof match.score === 'object' ? `${match.score.home} - ${match.score.away}` : String(match.score).replace('-', ' - ')) : (match.homeScore !== undefined ? `${match.homeScore} - ${match.awayScore}` : '0 - 0');
 
   // Render a single event item
   const renderEventRow = (ev) => {

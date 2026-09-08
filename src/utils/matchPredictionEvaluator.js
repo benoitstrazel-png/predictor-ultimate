@@ -88,9 +88,11 @@ export function evaluateMatchPrediction(match) {
       predictedLabel = `2 · ${match.awayTeam}`;
     }
     predictedProb = match.prediction.confidence || match.prediction.winner_conf || 50;
-  } else if (match.topExactScores && match.topExactScores.length > 0) {
-    const topScore = match.topExactScores[0].score;
-    const [th, ta] = topScore.split('-').map(Number);
+  } else if (match.topExactScores && match.topExactScores.length > 0 && match.topExactScores[0]?.score) {
+    const topScore = String(match.topExactScores[0].score);
+    const parts = topScore.split('-').map(Number);
+    const th = parts[0] ?? 0;
+    const ta = parts[1] ?? 0;
     if (th > ta) {
       predictedOutcome = '1';
       predictedLabel = `1 · ${match.homeTeam}`;
@@ -132,7 +134,7 @@ export function evaluateMatchPrediction(match) {
   let valueBetWon = null;
   let valueBetNetProfit = 0; // 1 unit stake
   if (valueBet) {
-    const side = valueBet.side || valueBet.selection || '';
+    const side = String(valueBet.side || valueBet.selection || '');
     const odd = parseFloat(valueBet.betclic_odd || valueBet.odd || valueBet.bookmaker_odds || 2.0);
     const isSide1 = side.includes('1') || side.toLowerCase().includes((match.homeTeam || '').toLowerCase());
     const isSide2 = side.includes('2') || side.toLowerCase().includes((match.awayTeam || '').toLowerCase());
