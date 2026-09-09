@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -878,8 +878,8 @@
     },
     "lineup": {
       "matchId": 5795454,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -975,7 +975,6 @@
             "positionId": 36,
             "usualPlayingPositionId": 1,
             "shirtNumber": "37",
-            "isCaptain": true,
             "countryName": "Netherlands",
             "countryCode": "NED",
             "horizontalLayout": {
@@ -1191,146 +1190,11 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 72241,
-            "age": 37,
-            "name": "Martin Dúbravka",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "39",
-            "countryName": "Slovakia",
-            "countryCode": "SVK",
-            "marketValue": 773933,
-            "firstName": "Martin",
-            "lastName": "Dúbravka",
-            "rankings": null
-          },
-          {
-            "id": 357880,
-            "age": 32,
-            "name": "Andrew Robertson",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
-            "marketValue": 6672012,
-            "firstName": "Andrew",
-            "lastName": "Robertson",
-            "rankings": null
-          },
-          {
-            "id": 785411,
-            "age": 29,
-            "name": "Marcos Senesi",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 15220112,
-            "firstName": "Marcos",
-            "lastName": "Senesi",
-            "rankings": null
-          },
-          {
-            "id": 1323305,
-            "age": 20,
-            "name": "Archie Gray",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "14",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 42396110,
-            "firstName": "Archie",
-            "lastName": "Gray",
-            "rankings": null
-          },
-          {
-            "id": 1386775,
-            "age": 20,
-            "name": "Lucas Bergvall",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "15",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 41566039,
-            "firstName": "Lucas",
-            "lastName": "Bergvall",
-            "rankings": null
-          },
-          {
-            "id": 1356312,
-            "age": 22,
-            "name": "Mateus Fernandes",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "18",
-            "countryName": "Portugal",
-            "countryCode": "POR",
-            "marketValue": 25793353,
-            "firstName": "Mateus",
-            "lastName": "Fernandes",
-            "rankings": null
-          },
-          {
-            "id": 591734,
-            "age": 28,
-            "name": "Dominic Solanke",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "19",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 28435353,
-            "firstName": "Dominic",
-            "lastName": "Solanke",
-            "rankings": null
-          },
-          {
-            "id": 891743,
-            "age": 26,
-            "name": "Mohammed Kudus",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "20",
-            "countryName": "Ghana",
-            "countryCode": "GHA",
-            "marketValue": 45048717,
-            "firstName": "Mohammed",
-            "lastName": "Kudus",
-            "rankings": null
-          },
-          {
-            "id": 976506,
-            "age": 25,
-            "name": "Mykhaylo Mudryk",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "27",
-            "countryName": "Ukraine",
-            "countryCode": "UKR",
-            "marketValue": 30619485,
-            "firstName": "Mykhaylo",
-            "lastName": "Mudryk",
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 493165,
-            "age": 29,
-            "name": "James Maddison",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 27200402,
-            "unavailability": {
-              "injuryId": 32,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "James",
-            "lastName": "Maddison"
-          },
           {
             "id": 935379,
             "age": 26,
             "name": "Dejan Kulusevski",
-            "positionId": 1000,
             "countryName": "Sweden",
             "countryCode": "SWE",
             "marketValue": 36582245,
@@ -1341,6 +1205,22 @@
             },
             "firstName": "Dejan",
             "lastName": "Kulusevski"
+          },
+          {
+            "id": 493165,
+            "age": 29,
+            "name": "James Maddison",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 27200402,
+            "unavailability": {
+              "injuryId": 32,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "James",
+            "lastName": "Maddison"
           },
           {
             "id": 1173787,
@@ -1376,17 +1256,7 @@
           }
         ],
         "averageStarterAge": 25.4,
-        "totalStarterMarketValue": 395221944,
-        "lastMatch": {
-          "matchId": 5795444,
-          "homeTeamId": 10203,
-          "awayTeamId": 8586,
-          "homeTeamName": "Nottingham Forest",
-          "awayTeamName": "Tottenham Hotspur",
-          "homeScore": 0,
-          "awayScore": 0,
-          "matchDate": "2026-09-05T16:00:00"
-        }
+        "totalStarterMarketValue": 395221944
       },
       "awayTeam": {
         "id": 8668,
@@ -1452,7 +1322,6 @@
             "positionId": 34,
             "usualPlayingPositionId": 1,
             "shirtNumber": "6",
-            "isCaptain": true,
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -1694,141 +1563,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 731855,
-            "age": 27,
-            "name": "Mark Travers",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "12",
-            "countryName": "Ireland",
-            "countryCode": "IRL",
-            "marketValue": 3123247,
-            "firstName": "Mark",
-            "lastName": "Travers",
-            "rankings": null
-          },
-          {
-            "id": 604089,
-            "age": 29,
-            "name": "Ainsley Maitland-Niles",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "2",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 6563810,
-            "firstName": "Ainsley",
-            "lastName": "Maitland-Niles",
-            "rankings": null
-          },
-          {
-            "id": 1098607,
-            "age": 25,
-            "name": "Jake O'Brien",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "countryName": "Ireland",
-            "countryCode": "IRL",
-            "marketValue": 17926277,
-            "firstName": "Jake",
-            "lastName": "O'Brien",
-            "rankings": null
-          },
-          {
-            "id": 290410,
-            "age": 33,
-            "name": "Michael Keane",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 1966313,
-            "firstName": "Michael",
-            "lastName": "Keane",
-            "rankings": null
-          },
-          {
-            "id": 1128965,
-            "age": 23,
-            "name": "Charly Alcaraz",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "24",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 13344531,
-            "firstName": "Charly",
-            "lastName": "Alcaraz",
-            "rankings": null
-          },
-          {
-            "id": 982394,
-            "age": 24,
-            "name": "Hayden Hackney",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "30",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 20726796,
-            "firstName": "Hayden",
-            "lastName": "Hackney",
-            "rankings": null
-          },
-          {
-            "id": 1589726,
-            "age": 18,
-            "name": "Braiden Graham",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "58",
-            "countryName": "Northern Ireland",
-            "countryCode": "NIR",
-            "marketValue": 500866,
-            "firstName": "Braiden",
-            "lastName": "Graham",
-            "rankings": null
-          },
-          {
-            "id": 312765,
-            "age": 31,
-            "name": "Jack Grealish",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 14543590,
-            "firstName": "Jack",
-            "lastName": "Grealish",
-            "rankings": null
-          },
-          {
-            "id": 1292833,
-            "age": 20,
-            "name": "Tyler Dibling",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "20",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 29322542,
-            "firstName": "Tyler",
-            "lastName": "Dibling",
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 950474,
-            "age": 25,
-            "name": "James Garner",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 30460872,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "James",
-            "lastName": "Garner"
-          },
           {
             "id": 266520,
             "age": 32,
@@ -1847,17 +1582,7 @@
           }
         ],
         "averageStarterAge": 25.9,
-        "totalStarterMarketValue": 231983123,
-        "lastMatch": {
-          "matchId": 5795438,
-          "homeTeamId": 8668,
-          "awayTeamId": 10260,
-          "homeTeamName": "Everton",
-          "awayTeamName": "Manchester United",
-          "homeScore": 2,
-          "awayScore": 2,
-          "matchDate": "2026-09-06T15:00:00"
-        }
+        "totalStarterMarketValue": 231983123
       }
     },
     "hasPlayoff": false,
