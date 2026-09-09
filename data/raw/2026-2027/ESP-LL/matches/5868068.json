@@ -439,10 +439,12 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't won a match in their last {2} attempts, and {1} in their last {3}.",
+              "TextTemplateId": "not_won_both",
               "StatValues": [
                 "home_team",
+                "away_team",
+                "5",
                 "5"
               ],
               "DefaultLabels": [
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Málaga haven't won a match in 5 attempts."
+              "defaultText": "Málaga haven't won a match in their last 5 attempts, and Villarreal in their last 5."
             },
             {
               "OddsType": "bts",
@@ -619,23 +621,6 @@
           "playerId": null,
           "teamId": 10205,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
-          "color": "#e19d00"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10205,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -646,6 +631,23 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#e19d00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 5 attempts",
           "color": "#e19d00"
         }
       ],
@@ -670,17 +672,17 @@
       "temperature": 23,
       "windSpeed": 2,
       "windDirectionCardinal": "ESE",
-      "iconCode": 29,
-      "relativeHumidity": 73,
-      "precipChance": 2,
+      "iconCode": 33,
+      "relativeHumidity": 70,
+      "precipChance": 6,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 36,
-      "description": "Partly Cloudy",
+      "cloudCover": 20,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-08T22:00:25Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-09T10:00:05Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5868068,

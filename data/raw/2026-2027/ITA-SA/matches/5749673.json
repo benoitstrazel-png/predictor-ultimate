@@ -114,9 +114,55 @@
           "surface": "grass"
         },
         "Referee": {
-          "text": "",
-          "countryCode": "",
-          "country": ""
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/ita.png",
+          "text": "Luca Pairetto",
+          "countryCode": "ITA",
+          "country": "Italy",
+          "id": 1001075261,
+          "leagueId": 55,
+          "leagueName": "Serie A",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 24,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 4.83,
+              "valueType": "perMatch",
+              "average": 3.77,
+              "total": 116,
+              "averageType": "above",
+              "fillPercentage": 64.08,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 6,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 4,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 10,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 25.2,
+              "valueType": "perMatch",
+              "average": 25.16,
+              "total": 504,
+              "averageType": "average",
+              "fillPercentage": 50.19,
+              "averagePercentage": 50
+            }
+          ]
         },
         "Attendance": null
       },
@@ -439,11 +485,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +507,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Inter have won their last 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Inter have 4W, 0D, 1L in five matches while Udinese have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -485,12 +537,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +555,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored 8 goals in their last 3 matches."
+              "defaultText": "Inter have scored 5 goals in their last 3 matches, while Udinese have scored 6."
             },
             {
               "OddsType": "dc",
@@ -511,7 +565,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +578,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Inter haven't drawn in their last 5 matches."
+              "defaultText": "Inter haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -681,7 +735,7 @@
       "countryCode": "ITA",
       "QAData": [],
       "matchInsightsConfig": {
-        "hasBettingInsight": true,
+        "hasBettingInsight": false,
         "languages": [
           "en",
           "nb",
@@ -738,14 +792,14 @@
       "windSpeed": 2,
       "windDirectionCardinal": "E",
       "iconCode": 31,
-      "relativeHumidity": 63,
-      "precipChance": 2,
+      "relativeHumidity": 65,
+      "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 15,
+      "cloudCover": 14,
       "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-08T21:00:26Z",
+      "lastUpdated": "2026-09-09T09:00:06Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },

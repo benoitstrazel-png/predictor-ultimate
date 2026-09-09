@@ -124,17 +124,17 @@
           "stats": [
             {
               "type": "matches",
-              "value": 37,
+              "value": 38,
               "valueType": "total"
             },
             {
               "type": "yellowCards",
-              "value": 3.78,
+              "value": 3.74,
               "valueType": "perMatch",
               "average": 3.82,
-              "total": 140,
+              "total": 142,
               "averageType": "average",
-              "fillPercentage": 48.72,
+              "fillPercentage": 47.42,
               "averagePercentage": 50
             },
             {
@@ -154,12 +154,12 @@
             },
             {
               "type": "fouls",
-              "value": 23.22,
+              "value": 23.05,
               "valueType": "perMatch",
-              "average": 22.06,
-              "total": 859,
+              "average": 22.05,
+              "total": 876,
               "averageType": "above",
-              "fillPercentage": 58.22,
+              "fillPercentage": 57.08,
               "averagePercentage": 50
             }
           ]
@@ -485,11 +485,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "4",
+                "0",
+                "1",
                 "away_team",
-                "5"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -501,8 +507,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Hull City haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Chelsea have 4W, 0D, 1L in five matches while Hull City have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -536,7 +542,7 @@
                 "away_team",
                 "3",
                 "7",
-                "2"
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -547,7 +553,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have scored 7 goals in their last 3 matches, while Hull City have scored 2."
+              "defaultText": "Chelsea have scored 7 goals in their last 3 matches, while Hull City have scored 1."
             },
             {
               "OddsType": "dc",
@@ -714,6 +720,57 @@
           "color": "#ED8B00"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 1021382,
+          "position": 3,
+          "matchesWithRating": 3,
+          "lastName": "Pedro",
+          "fullName": "João Pedro",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 2,
+            "ontargetScoringAtt": 1.5,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 270,
+            "minsPlayedGoal": 135,
+            "expectedGoals": 1.8717000484466553,
+            "playerRating": 7.53
+          }
+        },
+        "awayPlayer": {
+          "playerId": 410836,
+          "position": 1,
+          "matchesWithRating": 3,
+          "lastName": "Ajayi",
+          "fullName": "Semi Ajayi",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 244,
+            "minsPlayedGoal": 244,
+            "expectedGoals": 0.5230000019073486,
+            "playerRating": 7.46
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ENG",
       "QAData": [],
       "matchInsightsConfig": {
@@ -752,7 +809,8 @@
           "zh-Hans",
           "zh"
         ],
-        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795447/matchinsights_{lang}.json"
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795447/matchinsights_{lang}.json",
+        "hasRefereeInsight": true
       }
     },
     "liveticker": false,
@@ -771,19 +829,19 @@
     },
     "weather": {
       "temperature": 22,
-      "windSpeed": 5,
+      "windSpeed": 6,
       "windDirectionCardinal": "SW",
-      "iconCode": 30,
-      "relativeHumidity": 51,
-      "precipChance": 2,
+      "iconCode": 28,
+      "relativeHumidity": 59,
+      "precipChance": 6,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 49,
-      "description": "Partly Cloudy",
+      "cloudCover": 63,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-08T16:00:01Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-09T04:00:19Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795447,
@@ -1284,133 +1342,54 @@
       "awayTeam": {
         "id": 8667,
         "name": "Hull City",
-        "formation": "5-4-1",
+        "formation": "4-2-3-1",
         "starters": [
           {
-            "id": 1072068,
-            "age": 23,
-            "name": "Konstantinos Tzolakis",
+            "id": 518500,
+            "age": 31,
+            "name": "Dillon Phillips",
             "positionId": 11,
             "usualPlayingPositionId": 0,
-            "shirtNumber": "19",
-            "countryName": "Greece",
-            "countryCode": "GRE",
+            "shirtNumber": "12",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
-              "height": 0.195,
-              "width": 0.2
+              "height": 0.25,
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.5,
               "y": 0.1,
-              "height": 0.2,
+              "height": 0.192,
               "width": 1
             },
-            "marketValue": 11730780,
-            "firstName": "Konstantinos",
-            "lastName": "Tzolakis",
-            "rankings": null
-          },
-          {
-            "id": 410836,
-            "age": 32,
-            "name": "Semi Ajayi",
-            "positionId": 33,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "6",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
-            "horizontalLayout": {
-              "x": 0.357,
-              "y": 0.695,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.305,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 677915,
-            "firstName": "Semi",
-            "lastName": "Ajayi",
-            "rankings": null
-          },
-          {
-            "id": 295062,
-            "age": 33,
-            "name": "John Egan",
-            "positionId": 35,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "countryName": "Ireland",
-            "countryCode": "IRL",
-            "horizontalLayout": {
-              "x": 0.357,
-              "y": 0.5,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.5,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 1005292,
-            "firstName": "John",
-            "lastName": "Egan",
-            "rankings": null
-          },
-          {
-            "id": 1428427,
-            "age": 22,
-            "name": "Nobel Mendy",
-            "positionId": 37,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "32",
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "horizontalLayout": {
-              "x": 0.357,
-              "y": 0.305,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.695,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 5556680,
-            "firstName": "Nobel",
-            "lastName": "Mendy",
+            "marketValue": 407034,
+            "firstName": "Dillon",
+            "lastName": "Phillips",
             "rankings": null
           },
           {
             "id": 709148,
             "age": 30,
             "name": "Lewie Coyle",
-            "positionId": 51,
+            "positionId": 32,
             "usualPlayingPositionId": 1,
             "shirtNumber": "2",
-            "isCaptain": true,
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
-              "x": 0.371,
-              "y": 0.89,
-              "height": 0.195,
-              "width": 0.243
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
             },
             "verticalLayout": {
-              "x": 0.11,
-              "y": 0.371,
-              "height": 0.2,
-              "width": 0.195
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
             },
             "marketValue": 1405771,
             "firstName": "Lewie",
@@ -1418,103 +1397,129 @@
             "rankings": null
           },
           {
-            "id": 933635,
-            "age": 26,
-            "name": "Ryan Giles",
-            "positionId": 59,
+            "id": 1686118,
+            "age": 19,
+            "name": "Lucas Herrington",
+            "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "22",
+            "countryName": "Australia",
+            "countryCode": "AUS",
             "horizontalLayout": {
-              "x": 0.371,
-              "y": 0.11,
-              "height": 0.195,
-              "width": 0.243
-            },
-            "verticalLayout": {
-              "x": 0.89,
-              "y": 0.371,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 5031841,
-            "firstName": "Ryan",
-            "lastName": "Giles",
-            "rankings": null
-          },
-          {
-            "id": 1231090,
-            "age": 24,
-            "name": "Mohamed Belloumi",
-            "positionId": 72,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.875,
-              "height": 0.195,
-              "width": 0.243
-            },
-            "verticalLayout": {
-              "x": 0.125,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.25
-            },
-            "marketValue": 2351413,
-            "firstName": "Mohamed",
-            "lastName": "Belloumi",
-            "rankings": null
-          },
-          {
-            "id": 807930,
-            "age": 27,
-            "name": "Regan Slater",
-            "positionId": 74,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "27",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "horizontalLayout": {
-              "x": 0.613,
+              "x": 0.292,
               "y": 0.625,
-              "height": 0.195,
-              "width": 0.257
+              "height": 0.25,
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.375,
-              "y": 0.613,
-              "height": 0.2,
+              "y": 0.292,
+              "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 1528478,
-            "firstName": "Regan",
-            "lastName": "Slater",
+            "marketValue": 1225345,
+            "firstName": "Lucas",
+            "lastName": "Herrington",
+            "rankings": null
+          },
+          {
+            "id": 1428427,
+            "age": 22,
+            "name": "Nobel Mendy",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "32",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 5556680,
+            "firstName": "Nobel",
+            "lastName": "Mendy",
+            "rankings": null
+          },
+          {
+            "id": 538112,
+            "age": 30,
+            "name": "Matt Targett",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "23",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2300914,
+            "firstName": "Matt",
+            "lastName": "Targett",
+            "rankings": null
+          },
+          {
+            "id": 280507,
+            "age": 32,
+            "name": "Matt Crooks",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "25",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 735563,
+            "firstName": "Matt",
+            "lastName": "Crooks",
             "rankings": null
           },
           {
             "id": 1137106,
             "age": 23,
             "name": "Lucas Gourna-Douath",
-            "positionId": 76,
+            "positionId": 66,
             "usualPlayingPositionId": 2,
             "shirtNumber": "29",
             "countryName": "France",
             "countryCode": "FRA",
             "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.375,
-              "height": 0.195,
-              "width": 0.257
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
             },
             "verticalLayout": {
-              "x": 0.625,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.25
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
             },
             "marketValue": 3685724,
             "firstName": "Lucas",
@@ -1522,55 +1527,107 @@
             "rankings": null
           },
           {
-            "id": 1272349,
-            "age": 24,
-            "name": "Elliot Stroud",
-            "positionId": 78,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "21",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
+            "id": 1180718,
+            "age": 22,
+            "name": "Mohamed-Ali Cho",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "50",
+            "countryName": "France",
+            "countryCode": "FRA",
             "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.125,
-              "height": 0.195,
-              "width": 0.243
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
             },
             "verticalLayout": {
-              "x": 0.875,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.25
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
             },
-            "marketValue": 1336905,
-            "firstName": "Elliot",
-            "lastName": "Stroud",
+            "marketValue": 13209735,
+            "firstName": "Mohamed-Ali",
+            "lastName": "Cho",
             "rankings": null
           },
           {
-            "id": 509151,
-            "age": 30,
-            "name": "Oli McBurnie",
+            "id": 1377949,
+            "age": 20,
+            "name": "Jens Hjertø-Dahl",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 6607565,
+            "firstName": "Jens",
+            "lastName": "Hjertø-Dahl",
+            "rankings": null
+          },
+          {
+            "id": 812982,
+            "age": 27,
+            "name": "Sorba Thomas",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 6036847,
+            "firstName": "Sorba",
+            "lastName": "Thomas",
+            "rankings": null
+          },
+          {
+            "id": 1705134,
+            "age": 19,
+            "name": "Robinio Vaz",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
+            "shirtNumber": "47",
+            "countryName": "France",
+            "countryCode": "FRA",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
-              "height": 0.195,
-              "width": 0.257
+              "height": 0.25,
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.5,
               "y": 0.87,
-              "height": 0.2,
+              "height": 0.192,
               "width": 1
             },
-            "marketValue": 1614717,
-            "firstName": "Oli",
-            "lastName": "McBurnie",
+            "marketValue": 11835731,
+            "firstName": "Robinio",
+            "lastName": "Vaz",
             "rankings": null
           }
         ],
@@ -1589,55 +1646,41 @@
         },
         "subs": [
           {
-            "id": 518500,
-            "age": 31,
-            "name": "Dillon Phillips",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "12",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 407034,
-            "firstName": "Dillon",
-            "lastName": "Phillips",
-            "rankings": null
-          },
-          {
-            "id": 1686118,
+            "id": 1842900,
             "age": 19,
-            "name": "Lucas Herrington",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Australia",
-            "countryCode": "AUS",
-            "marketValue": 1225345,
-            "firstName": "Lucas",
-            "lastName": "Herrington",
+            "name": "Archie Howard",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "55",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "firstName": "Archie",
+            "lastName": "Howard",
             "rankings": null
           },
           {
-            "id": 538112,
-            "age": 30,
-            "name": "Matt Targett",
+            "id": 295062,
+            "age": 33,
+            "name": "John Egan",
             "usualPlayingPositionId": 1,
-            "shirtNumber": "23",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 2300914,
-            "firstName": "Matt",
-            "lastName": "Targett",
+            "shirtNumber": "15",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "marketValue": 1005292,
+            "firstName": "John",
+            "lastName": "Egan",
             "rankings": null
           },
           {
-            "id": 1214915,
-            "age": 22,
-            "name": "Brooke Norton-Cuffy",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "18",
+            "id": 933635,
+            "age": 26,
+            "name": "Ryan Giles",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 15618119,
-            "firstName": "Brooke",
-            "lastName": "Norton-Cuffy",
+            "marketValue": 5031841,
+            "firstName": "Ryan",
+            "lastName": "Giles",
             "rankings": null
           },
           {
@@ -1654,55 +1697,68 @@
             "rankings": null
           },
           {
-            "id": 1377949,
-            "age": 20,
-            "name": "Jens Hjertø-Dahl",
+            "id": 1272349,
+            "age": 24,
+            "name": "Elliot Stroud",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "14",
-            "countryName": "Norway",
-            "countryCode": "NOR",
-            "marketValue": 6607565,
-            "firstName": "Jens",
-            "lastName": "Hjertø-Dahl",
+            "shirtNumber": "21",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 1336905,
+            "firstName": "Elliot",
+            "lastName": "Stroud",
             "rankings": null
           },
           {
-            "id": 1180718,
+            "id": 956161,
+            "age": 24,
+            "name": "Joe Gelhardt",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 5602066,
+            "firstName": "Joe",
+            "lastName": "Gelhardt",
+            "rankings": null
+          },
+          {
+            "id": 605262,
+            "age": 28,
+            "name": "Kieran Dowell",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "26",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 383324,
+            "firstName": "Kieran",
+            "lastName": "Dowell",
+            "rankings": null
+          },
+          {
+            "id": 1356264,
             "age": 22,
-            "name": "Mohamed-Ali Cho",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "50",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 13209735,
-            "firstName": "Mohamed-Ali",
-            "lastName": "Cho",
+            "name": "Óscar Zambrano",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "18",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
+            "marketValue": 1673508,
+            "firstName": "Óscar",
+            "lastName": "Zambrano",
             "rankings": null
           },
           {
-            "id": 1705134,
-            "age": 19,
-            "name": "Robinio Vaz",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "47",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 11835731,
-            "firstName": "Robinio",
-            "lastName": "Vaz",
-            "rankings": null
-          },
-          {
-            "id": 812982,
+            "id": 807930,
             "age": 27,
-            "name": "Sorba Thomas",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 6036847,
-            "firstName": "Sorba",
-            "lastName": "Thomas",
+            "name": "Regan Slater",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 1528478,
+            "firstName": "Regan",
+            "lastName": "Slater",
             "rankings": null
           }
         ],
@@ -1726,7 +1782,6 @@
             "id": 288880,
             "age": 33,
             "name": "Jack Butland",
-            "positionId": 1000,
             "countryName": "England",
             "countryCode": "ENG",
             "marketValue": 1324504,
@@ -1739,26 +1794,9 @@
             "lastName": "Butland"
           },
           {
-            "id": 1331703,
-            "age": 22,
-            "name": "Charlie Hughes",
-            "positionId": 1000,
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 7699887,
-            "unavailability": {
-              "injuryId": 47,
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
-            },
-            "firstName": "Charlie",
-            "lastName": "Hughes"
-          },
-          {
             "id": 1125874,
             "age": 22,
             "name": "Darko Gyabi",
-            "positionId": 1000,
             "countryName": "England",
             "countryCode": "ENG",
             "marketValue": 2242691,
@@ -1771,26 +1809,24 @@
             "lastName": "Gyabi"
           },
           {
-            "id": 1178514,
-            "age": 24,
-            "name": "Eliot Matazo",
-            "positionId": 1000,
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 1714374,
+            "id": 1331703,
+            "age": 22,
+            "name": "Charlie Hughes",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 7699887,
             "unavailability": {
-              "injuryId": 76,
+              "injuryId": 47,
               "type": "injury",
-              "expectedReturn": "Mid January 2027"
+              "expectedReturn": "Mid September 2026"
             },
-            "firstName": "Eliot",
-            "lastName": "Matazo"
+            "firstName": "Charlie",
+            "lastName": "Hughes"
           },
           {
             "id": 1356264,
             "age": 22,
             "name": "Óscar Zambrano",
-            "positionId": 1000,
             "countryName": "Ecuador",
             "countryCode": "ECU",
             "marketValue": 1673508,
@@ -1801,19 +1837,34 @@
             },
             "firstName": "Óscar",
             "lastName": "Zambrano"
+          },
+          {
+            "id": 1178514,
+            "age": 24,
+            "name": "Eliot Matazo",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 1714374,
+            "unavailability": {
+              "injuryId": 76,
+              "type": "injury",
+              "expectedReturn": "Mid January 2027"
+            },
+            "firstName": "Eliot",
+            "lastName": "Matazo"
           }
         ],
-        "averageStarterAge": 27.2,
-        "totalStarterMarketValue": 35925516,
+        "averageStarterAge": 25.5,
+        "totalStarterMarketValue": 53006909,
         "lastMatch": {
-          "matchId": 5795440,
-          "homeTeamId": 8667,
-          "awayTeamId": 10252,
-          "homeTeamName": "Hull City",
-          "awayTeamName": "Aston Villa",
-          "homeScore": 0,
+          "matchId": 6099331,
+          "homeTeamId": 8472,
+          "awayTeamId": 8667,
+          "homeTeamName": "Sunderland",
+          "awayTeamName": "Hull City",
+          "homeScore": 1,
           "awayScore": 0,
-          "matchDate": "2026-09-05T18:30:00"
+          "matchDate": "2026-09-08T20:45:00"
         }
       }
     },

@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "3",
-                "0",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Villarreal have 1W, 2D, 2L in five matches while Real Betis have 3W, 0D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Villarreal haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -496,7 +490,7 @@
                 "away_team",
                 "3",
                 "4",
-                "4"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 4 goals in their last 3 matches, while Real Betis have scored 4."
+              "defaultText": "Villarreal have scored 4 goals in their last 3 matches, while Real Betis have scored 6."
             },
             {
               "OddsType": "dc",
@@ -517,7 +511,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Villarreal haven't won a match in 4 attempts."
+              "defaultText": "Villarreal haven't won a match in 5 attempts."
             }
           ]
         },
@@ -568,23 +562,6 @@
           "playerId": null,
           "teamId": 10205,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
-          "color": "#e19d00"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10205,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -595,6 +572,23 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#e19d00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 5 attempts",
           "color": "#e19d00"
         },
         {
@@ -638,15 +632,15 @@
         },
         {
           "type": "player",
-          "playerId": 1315711,
+          "playerId": 640220,
           "teamId": 8603,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1315711,
-              "name": "Nelson Deossa",
+              "value": 640220,
+              "name": "Marc Roca",
               "type": "player"
             },
             {
@@ -655,12 +649,12 @@
               "type": "team"
             },
             {
-              "value": 1.9,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Nelson Deossa has the most shots on target per match for Real Betis (1.9)",
+          "text": "Marc Roca has created the most big chances for Real Betis (2)",
           "color": "#009048"
         }
       ],
@@ -722,16 +716,16 @@
     "weather": {
       "temperature": 26,
       "windSpeed": 1,
-      "windDirectionCardinal": "S",
-      "iconCode": 31,
-      "relativeHumidity": 70,
+      "windDirectionCardinal": "SSW",
+      "iconCode": 33,
+      "relativeHumidity": 69,
       "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 6,
-      "description": "Clear",
+      "cloudCover": 21,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-08T20:00:31Z",
+      "lastUpdated": "2026-09-09T08:00:13Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },

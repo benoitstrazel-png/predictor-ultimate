@@ -559,33 +559,6 @@
         },
         {
           "type": "player",
-          "playerId": 604105,
-          "teamId": 8315,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 604105,
-              "name": "Iñaki Williams",
-              "type": "player"
-            },
-            {
-              "value": 8315,
-              "name": "Athletic Club",
-              "type": "team"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Iñaki Williams has created the most big chances for Athletic Club (1)",
-          "color": "#E2001A"
-        },
-        {
-          "type": "player",
           "playerId": 660625,
           "teamId": 8315,
           "priority": 4,
@@ -609,6 +582,33 @@
             }
           ],
           "text": "Unai Simón is ranked 1 in saves per match in the competition (4.3)",
+          "color": "#E2001A"
+        },
+        {
+          "type": "player",
+          "playerId": 1011117,
+          "teamId": 8315,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1011117,
+              "name": "Robert Navarro",
+              "type": "player"
+            },
+            {
+              "value": 8315,
+              "name": "Athletic Club",
+              "type": "team"
+            },
+            {
+              "value": 1.6,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Robert Navarro has the most shots on target per match for Athletic Club (1.6)",
           "color": "#E2001A"
         },
         {
@@ -638,23 +638,6 @@
           "playerId": null,
           "teamId": 10268,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 6 attempts",
-          "color": "#00662D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10268,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -666,8 +649,76 @@
           ],
           "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#00662D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10268,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 6 attempts",
+          "color": "#00662D"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 1011117,
+          "position": 3,
+          "matchesWithRating": 3,
+          "lastName": "Navarro",
+          "fullName": "Robert Navarro",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.5,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 170,
+            "minsPlayedGoal": 85,
+            "expectedGoals": 0.9210000038146973,
+            "playerRating": 7.49
+          }
+        },
+        "awayPlayer": {
+          "playerId": 1127224,
+          "position": 3,
+          "matchesWithRating": 4,
+          "lastName": "Niño",
+          "fullName": "Fer Niño",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 2,
+            "motm": 0,
+            "gamesPlayed": 4,
+            "minsPlayed": 318,
+            "minsPlayedGoal": 159,
+            "expectedGoals": 1.9557000398635864,
+            "playerRating": 7.03
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ESP",
       "QAData": [],
       "matchInsightsConfig": {
@@ -726,16 +777,16 @@
     "weather": {
       "temperature": 24,
       "windSpeed": 4,
-      "windDirectionCardinal": "N",
+      "windDirectionCardinal": "NNE",
       "iconCode": 32,
-      "relativeHumidity": 63,
+      "relativeHumidity": 62,
       "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 10,
+      "cloudCover": 7,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-08T20:00:30Z",
+      "lastUpdated": "2026-09-09T08:00:13Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -1212,21 +1263,6 @@
         ],
         "unavailable": [
           {
-            "id": 639450,
-            "age": 31,
-            "name": "Yeray Álvarez",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1171733,
-            "unavailability": {
-              "injuryId": 9,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Yeray",
-            "lastName": "Álvarez"
-          },
-          {
             "id": 1229176,
             "age": 25,
             "name": "Beñat Prados",
@@ -1288,22 +1324,6 @@
             },
             "firstName": "Peio",
             "lastName": "Canales"
-          },
-          {
-            "id": 1203614,
-            "age": 23,
-            "name": "Nico Serrano",
-            "positionId": 1000,
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1543961,
-            "unavailability": {
-              "injuryId": 121,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Nico",
-            "lastName": "Serrano"
           }
         ],
         "averageStarterAge": 29.2,

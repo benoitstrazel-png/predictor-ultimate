@@ -556,11 +556,14 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
+                "away_team",
                 "home_team",
-                "5"
+                "9",
+                "6",
+                "3"
               ],
               "DefaultLabels": [
                 "1x",
@@ -572,8 +575,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "AFC Bournemouth haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Brentford haven't lost to AFC Bournemouth in their last 9 meetings (6W, 3D)."
             }
           ]
         },
@@ -737,6 +740,57 @@
           "color": "#C00808"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 789630,
+          "position": 3,
+          "matchesWithRating": 3,
+          "lastName": "Tavernier",
+          "fullName": "Marcus Tavernier",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 2.5,
+            "motm": 1,
+            "gamesPlayed": 3,
+            "minsPlayed": 269,
+            "minsPlayedGoal": 135,
+            "expectedGoals": 1.5026999711990356,
+            "playerRating": 7.79
+          }
+        },
+        "awayPlayer": {
+          "playerId": 688273,
+          "position": 2,
+          "matchesWithRating": 3,
+          "lastName": "Janelt",
+          "fullName": "Vitaly Janelt",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 1,
+            "gamesPlayed": 3,
+            "minsPlayed": 270,
+            "minsPlayedGoal": 135,
+            "expectedGoals": 0.5004000067710876,
+            "playerRating": 7.9
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ENG",
       "QAData": [],
       "matchInsightsConfig": {
@@ -794,19 +848,19 @@
     },
     "weather": {
       "temperature": 20,
-      "windSpeed": 5,
+      "windSpeed": 6,
       "windDirectionCardinal": "WSW",
-      "iconCode": 30,
-      "relativeHumidity": 61,
-      "precipChance": 5,
+      "iconCode": 28,
+      "relativeHumidity": 69,
+      "precipChance": 10,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 47,
-      "description": "Partly Cloudy",
+      "cloudCover": 61,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-08T16:00:01Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-09T04:00:12Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795445,
@@ -823,14 +877,14 @@
         "formation": "4-2-3-1",
         "starters": [
           {
-            "id": 1067256,
-            "age": 26,
-            "name": "Djordje Petrović",
+            "id": 766062,
+            "age": 29,
+            "name": "Michele Di Gregorio",
             "positionId": 11,
             "usualPlayingPositionId": 0,
-            "shirtNumber": "1",
-            "countryName": "Serbia",
-            "countryCode": "SRB",
+            "shirtNumber": "20",
+            "countryName": "Italy",
+            "countryCode": "ITA",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
@@ -843,19 +897,18 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 28592239,
-            "firstName": "Djordje",
-            "lastName": "Petrović",
+            "marketValue": 11436259,
+            "firstName": "Michele",
+            "lastName": "Di Gregorio",
             "rankings": null
           },
           {
-            "id": 160447,
-            "age": 35,
-            "name": "Adam Smith",
+            "id": 959407,
+            "age": 24,
+            "name": "James Hill",
             "positionId": 32,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "isCaptain": true,
+            "shirtNumber": "5",
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -870,20 +923,20 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 926733,
-            "firstName": "Adam",
-            "lastName": "Smith",
+            "marketValue": 8264255,
+            "firstName": "James",
+            "lastName": "Hill",
             "rankings": null
           },
           {
-            "id": 959407,
-            "age": 24,
-            "name": "James Hill",
+            "id": 979752,
+            "age": 25,
+            "name": "Bafodé Diakité",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "18",
+            "countryName": "France",
+            "countryCode": "FRA",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.625,
@@ -896,9 +949,9 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 8264255,
-            "firstName": "James",
-            "lastName": "Hill",
+            "marketValue": 30284619,
+            "firstName": "Bafodé",
+            "lastName": "Diakité",
             "rankings": null
           },
           {
@@ -922,19 +975,20 @@
               "height": 0.192,
               "width": 0.25
             },
+            "marketValue": 16283890,
             "firstName": "António",
             "lastName": "Silva",
             "rankings": null
           },
           {
-            "id": 1177358,
-            "age": 24,
-            "name": "Adrien Truffert",
+            "id": 1358655,
+            "age": 21,
+            "name": "Julio Soler",
             "positionId": 38,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "France",
-            "countryCode": "FRA",
+            "shirtNumber": "6",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.125,
@@ -947,20 +1001,20 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 24511502,
-            "firstName": "Adrien",
-            "lastName": "Truffert",
+            "marketValue": 10560066,
+            "firstName": "Julio",
+            "lastName": "Soler",
             "rankings": null
           },
           {
-            "id": 729769,
-            "age": 27,
-            "name": "Tyler Adams",
+            "id": 562724,
+            "age": 29,
+            "name": "Lewis Cook",
             "positionId": 64,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "12",
-            "countryName": "USA",
-            "countryCode": "USA",
+            "shirtNumber": "4",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.7,
@@ -973,20 +1027,20 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 19657997,
-            "firstName": "Tyler",
-            "lastName": "Adams",
+            "marketValue": 11770441,
+            "firstName": "Lewis",
+            "lastName": "Cook",
             "rankings": null
           },
           {
-            "id": 1233655,
-            "age": 23,
-            "name": "Alex Scott",
+            "id": 439369,
+            "age": 31,
+            "name": "Ryan Christie",
             "positionId": 66,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "10",
+            "countryName": "Scotland",
+            "countryCode": "SCO",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.3,
@@ -999,20 +1053,20 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 47303002,
-            "firstName": "Alex",
-            "lastName": "Scott",
+            "marketValue": 5745498,
+            "firstName": "Ryan",
+            "lastName": "Christie",
             "rankings": null
           },
           {
-            "id": 1478295,
-            "age": 20,
-            "name": "Rayan",
+            "id": 674014,
+            "age": 29,
+            "name": "David Brooks",
             "positionId": 83,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "37",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
+            "shirtNumber": "7",
+            "countryName": "Wales",
+            "countryCode": "WAL",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.837,
@@ -1025,9 +1079,9 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 47583920,
-            "firstName": "",
-            "lastName": "Rayan",
+            "marketValue": 13042174,
+            "firstName": "David",
+            "lastName": "Brooks",
             "rankings": null
           },
           {
@@ -1057,14 +1111,14 @@
             "rankings": null
           },
           {
-            "id": 789630,
-            "age": 27,
-            "name": "Marcus Tavernier",
+            "id": 1324871,
+            "age": 20,
+            "name": "Ben Gannon-Doak",
             "positionId": 87,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "16",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "11",
+            "countryName": "Scotland",
+            "countryCode": "SCO",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.163,
@@ -1077,20 +1131,20 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 21273511,
-            "firstName": "Marcus",
-            "lastName": "Tavernier",
+            "marketValue": 15692081,
+            "firstName": "Ben",
+            "lastName": "Gannon-Doak",
             "rankings": null
           },
           {
-            "id": 1098096,
-            "age": 26,
-            "name": "Evanilson",
+            "id": 1327406,
+            "age": 22,
+            "name": "Álvaro Rodriguez",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
+            "shirtNumber": "30",
+            "countryName": "Uruguay",
+            "countryCode": "URU",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -1103,9 +1157,9 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 36266396,
-            "firstName": "",
-            "lastName": "Evanilson",
+            "marketValue": 6485521,
+            "firstName": "Álvaro",
+            "lastName": "Rodriguez",
             "rankings": null
           }
         ],
@@ -1124,42 +1178,55 @@
         },
         "subs": [
           {
-            "id": 766062,
-            "age": 29,
-            "name": "Michele Di Gregorio",
+            "id": 1067256,
+            "age": 26,
+            "name": "Djordje Petrović",
             "usualPlayingPositionId": 0,
-            "shirtNumber": "20",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 11436259,
-            "firstName": "Michele",
-            "lastName": "Di Gregorio",
+            "shirtNumber": "1",
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 28592239,
+            "firstName": "Djordje",
+            "lastName": "Petrović",
             "rankings": null
           },
           {
-            "id": 979752,
-            "age": 25,
-            "name": "Bafodé Diakité",
+            "id": 1177358,
+            "age": 24,
+            "name": "Adrien Truffert",
             "usualPlayingPositionId": 1,
-            "shirtNumber": "18",
+            "shirtNumber": "3",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 30284619,
-            "firstName": "Bafodé",
-            "lastName": "Diakité",
+            "marketValue": 24511502,
+            "firstName": "Adrien",
+            "lastName": "Truffert",
             "rankings": null
           },
           {
-            "id": 1358655,
-            "age": 21,
-            "name": "Julio Soler",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "6",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 10560066,
-            "firstName": "Julio",
-            "lastName": "Soler",
+            "id": 1233655,
+            "age": 23,
+            "name": "Alex Scott",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 47303002,
+            "firstName": "Alex",
+            "lastName": "Scott",
+            "rankings": null
+          },
+          {
+            "id": 1449690,
+            "age": 20,
+            "name": "Alex Tóth",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "Hungary",
+            "countryCode": "HUN",
+            "marketValue": 10752240,
+            "firstName": "Alex",
+            "lastName": "Tóth",
             "rankings": null
           },
           {
@@ -1176,42 +1243,16 @@
             "rankings": null
           },
           {
-            "id": 562724,
-            "age": 29,
-            "name": "Lewis Cook",
+            "id": 729769,
+            "age": 27,
+            "name": "Tyler Adams",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "4",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 11770441,
-            "firstName": "Lewis",
-            "lastName": "Cook",
-            "rankings": null
-          },
-          {
-            "id": 439369,
-            "age": 31,
-            "name": "Ryan Christie",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "10",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
-            "marketValue": 5745498,
-            "firstName": "Ryan",
-            "lastName": "Christie",
-            "rankings": null
-          },
-          {
-            "id": 1324871,
-            "age": 20,
-            "name": "Ben Gannon-Doak",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
-            "marketValue": 15692081,
-            "firstName": "Ben",
-            "lastName": "Gannon-Doak",
+            "shirtNumber": "12",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 19657997,
+            "firstName": "Tyler",
+            "lastName": "Adams",
             "rankings": null
           },
           {
@@ -1228,57 +1269,37 @@
             "rankings": null
           },
           {
-            "id": 674014,
-            "age": 29,
-            "name": "David Brooks",
+            "id": 789630,
+            "age": 27,
+            "name": "Marcus Tavernier",
             "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 13042174,
-            "firstName": "David",
-            "lastName": "Brooks",
+            "shirtNumber": "16",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 21273511,
+            "firstName": "Marcus",
+            "lastName": "Tavernier",
+            "rankings": null
+          },
+          {
+            "id": 1478295,
+            "age": 20,
+            "name": "Rayan",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "37",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 47583920,
+            "firstName": "",
+            "lastName": "Rayan",
             "rankings": null
           }
         ],
         "unavailable": [
           {
-            "id": 1027447,
-            "age": 25,
-            "name": "Julián Araujo",
-            "positionId": 1000,
-            "countryName": "Mexico",
-            "countryCode": "MEX",
-            "marketValue": 7212351,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Mid October 2026"
-            },
-            "firstName": "Julián",
-            "lastName": "Araujo"
-          },
-          {
-            "id": 1666977,
-            "age": 19,
-            "name": "Veljko Milosavljević",
-            "positionId": 1000,
-            "countryName": "Serbia",
-            "countryCode": "SRB",
-            "marketValue": 24053959,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Veljko",
-            "lastName": "Milosavljević"
-          },
-          {
             "id": 1460534,
             "age": 20,
             "name": "Junior Kroupi",
-            "positionId": 1000,
             "countryName": "France",
             "countryCode": "FRA",
             "marketValue": 44505006,
@@ -1291,10 +1312,24 @@
             "lastName": "Kroupi"
           },
           {
+            "id": 1666977,
+            "age": 19,
+            "name": "Veljko Milosavljević",
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 24053959,
+            "unavailability": {
+              "injuryId": 130,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Veljko",
+            "lastName": "Milosavljević"
+          },
+          {
             "id": 1079557,
             "age": 26,
             "name": "Amine Adli",
-            "positionId": 1000,
             "countryName": "Morocco",
             "countryCode": "MAR",
             "marketValue": 20313540,
@@ -1305,19 +1340,34 @@
             },
             "firstName": "Amine",
             "lastName": "Adli"
+          },
+          {
+            "id": 1027447,
+            "age": 25,
+            "name": "Julián Araujo",
+            "countryName": "Mexico",
+            "countryCode": "MEX",
+            "marketValue": 7212351,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Mid October 2026"
+            },
+            "firstName": "Julián",
+            "lastName": "Araujo"
           }
         ],
-        "averageStarterAge": 26.1,
-        "totalStarterMarketValue": 261579790,
+        "averageStarterAge": 25.9,
+        "totalStarterMarketValue": 156765039,
         "lastMatch": {
-          "matchId": 5795443,
-          "homeTeamId": 10261,
-          "awayTeamId": 8678,
-          "homeTeamName": "Newcastle United",
-          "awayTeamName": "AFC Bournemouth",
-          "homeScore": 2,
-          "awayScore": 2,
-          "matchDate": "2026-09-05T13:30:00"
+          "matchId": 6099334,
+          "homeTeamId": 8678,
+          "awayTeamId": 8430,
+          "homeTeamName": "AFC Bournemouth",
+          "awayTeamName": "Lincoln City",
+          "homeScore": 4,
+          "awayScore": 0,
+          "matchDate": "2026-09-08T20:45:00"
         }
       },
       "awayTeam": {
