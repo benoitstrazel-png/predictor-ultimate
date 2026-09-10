@@ -461,6 +461,27 @@ TRANSFERS_RAW = [
         "photo": "https://images.fotmob.com/image_resources/playerimages/1148810.png",
         "notes": "Buteur international géorgien recruté par le sous-marin jaune"
     },
+    {
+        "player_name": "Breel Embolo",
+        "from_team": "Rennes",
+        "to_team": "Sans Club",
+        "transfer_date": "2026-07-01",
+        "season": "2026-2027",
+        "mercato_window": "SUMMER",
+        "transfer_type": "FIN_DE_CONTRAT",
+        "transfer_type_label": "🆓 Fin de Contrat / Départ",
+        "fee_numeric_eur": 0.0,
+        "fee_display": "Gratuit (Libre)",
+        "market_value_eur": 18000000.0,
+        "market_value_display": "18.00 M€",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "1997-02-14",
+        "nationality": "Suisse",
+        "photo": "/assets/players/ply_breel_embolo_ext.webp",
+        "notes": "Attaquant international suisse quittant le Stade Rennais à la fin de la saison 2025-2026"
+    },
 
     # ══════════════════════════════════════════════════════════════════════
     # ── SAISON 2025-2026 ──
@@ -575,6 +596,30 @@ TRANSFERS_RAW = [
         "nationality": "Égypte",
         "photo": "https://images.fotmob.com/image_resources/playerimages/894788.png",
         "notes": "Buteur international égyptien recruté par City"
+    },
+    {
+        "player_name": "Breel Embolo",
+        "from_team": "Monaco",
+        "to_team": "Rennes",
+        "transfer_date": "2025-07-01",
+        "season": "2025-2026",
+        "mercato_window": "SUMMER",
+        "transfer_type": "ACHAT_SEC",
+        "transfer_type_label": "💰 Achat Définitif",
+        "fee_numeric_eur": 15000000.0,
+        "fee_display": "15.00 M€",
+        "market_value_eur": 20000000.0,
+        "market_value_display": "20.00 M€",
+        "squad_number": 6,
+        "age": 28,
+        "contract_until": "2026-06-30",
+        "preferred_foot": "Droitier",
+        "position": "ST",
+        "role": "A",
+        "birth_date": "1997-02-14",
+        "nationality": "Suisse",
+        "photo": "/assets/players/ply_breel_embolo_ext.webp",
+        "notes": "Attaquant international suisse transféré de l'AS Monaco au Stade Rennais"
     },
 
     # ══════════════════════════════════════════════════════════════════════

@@ -125,15 +125,20 @@ function validateDataset(dataset) {
       let duplicateActiveCount = 0;
       scd2List.filter(c => c.is_current).forEach(c => {
         const pKey = (c.player_name || '').toLowerCase().trim();
+        const team = c.team_name || c.club || 'UNKNOWN';
         if (activeContractsByPlayer[pKey]) {
           duplicateActiveCount++;
         } else {
-          activeContractsByPlayer[pKey] = c.club;
+          activeContractsByPlayer[pKey] = team;
         }
       });
-      assert(duplicateActiveCount === 0, `Unicité stricte des contrats actifs 2026-2027 validée (${duplicateActiveCount} doublons)`);
+      assert(duplicateActiveCount === 0, `Unicité stricte des contrats actifs 2026-2027 validée (${duplicateActiveCount} doublons)`, true);
+
+      // Anti-ghost / departed player verification (Breel Embolo must NOT be active in Rennes)
+      const rennesEmbolo = scd2List.find(c => (c.player_name || '').toLowerCase().includes('breel embolo') && (c.team_name || c.club || '').toLowerCase().includes('rennes') && c.is_current);
+      assert(!rennesEmbolo, 'Vérification anti-régression : Breel Embolo n\'est pas actif au Stade Rennais en 2026-2027', true);
     } catch (e) {
-      assert(false, `Erreur lecture squads_unified_scd2.json : ${e.message}`, false);
+      assert(false, `Erreur lecture squads_unified_scd2.json : ${e.message}`, true);
     }
   }
 

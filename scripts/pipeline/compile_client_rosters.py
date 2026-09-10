@@ -75,7 +75,12 @@ cursor.execute("""
         p.photo_url, t.team_id, t.name as team_name, t.slug as team_slug, t.league_id,
         c.squad_number, c.market_value_formatted, c.is_current, c.valid_from, c.valid_to
     FROM dim_players p
-    LEFT JOIN dim_player_contracts_scd2 c ON p.player_id = c.player_id AND c.is_current = 1
+    LEFT JOIN (
+        SELECT player_id, team_id, squad_number, market_value_formatted, is_current, valid_from, valid_to
+        FROM dim_player_contracts_scd2
+        WHERE is_current = 1
+        GROUP BY player_id
+    ) c ON p.player_id = c.player_id
     LEFT JOIN dim_teams t ON c.team_id = t.team_id
 """)
 
@@ -83,6 +88,8 @@ players_registry = {}
 legacy_players_list = []
 legacy_real_players_dict = {}
 legacy_positions_dict = {}
+seen_legacy_players = set()
+seen_real_players_by_team = {}
 
 for row in cursor.fetchall():
     (pid, tm_id, api_id, full_name, disp_name, short_name, pos_code, role_cat,
@@ -115,37 +122,43 @@ for row in cursor.fetchall():
     }
     players_registry[pid] = player_obj
 
-    # Legacy players.json format
-    legacy_players_list.append({
-        "name": full_name,
-        "team": t_name,
-        "league": t_league,
-        "pos": "Gardien" if role_cat == 'G' else "Défenseur" if role_cat == 'D' else "Milieu" if role_cat == 'M' else "Attaquant",
-        "number": num or 0,
-        "nationality": nat or "France",
-        "rating": 7.8 if role_cat == 'G' else 8.0,
-        "xG90": 0.15 if role_cat != 'A' else 0.45,
-        "xA90": 0.10 if role_cat != 'M' else 0.35,
-        "oddScorer": 4.5 if role_cat != 'A' else 2.1,
-        "oddAssist": 5.0 if role_cat != 'M' else 2.8,
-        "confidence": "90%",
-        "photoUrl": photo or "https://media.api-sports.io/football/players/placeholder.png"
-    })
+    # Legacy players.json format (strictly unique per player name)
+    if full_name not in seen_legacy_players:
+        seen_legacy_players.add(full_name)
+        legacy_players_list.append({
+            "name": full_name,
+            "team": t_name,
+            "league": t_league,
+            "pos": "Gardien" if role_cat == 'G' else "Défenseur" if role_cat == 'D' else "Milieu" if role_cat == 'M' else "Attaquant",
+            "number": num or 0,
+            "nationality": nat or "France",
+            "rating": 7.8 if role_cat == 'G' else 8.0,
+            "xG90": 0.15 if role_cat != 'A' else 0.45,
+            "xA90": 0.10 if role_cat != 'M' else 0.35,
+            "oddScorer": 4.5 if role_cat != 'A' else 2.1,
+            "oddAssist": 5.0 if role_cat != 'M' else 2.8,
+            "confidence": "90%",
+            "photoUrl": photo or "https://media.api-sports.io/football/players/placeholder.png"
+        })
 
-    # Legacy real_players.json format
-    if t_name not in legacy_real_players_dict:
-        legacy_real_players_dict[t_name] = []
-    legacy_real_players_dict[t_name].append({
-        "name": full_name,
-        "position": role_cat,
-        "number": num or 0,
-        "nationality": nat or "France",
-        "rating": 7.8,
-        "mj": 1,
-        "goals": 0,
-        "assists": 0,
-        "photoUrl": photo or "https://media.api-sports.io/football/players/placeholder.png"
-    })
+    # Legacy real_players.json format (strictly unique per team)
+    if t_name != "Sans Club":
+        if t_name not in legacy_real_players_dict:
+            legacy_real_players_dict[t_name] = []
+            seen_real_players_by_team[t_name] = set()
+        if full_name not in seen_real_players_by_team[t_name]:
+            seen_real_players_by_team[t_name].add(full_name)
+            legacy_real_players_dict[t_name].append({
+                "name": full_name,
+                "position": role_cat,
+                "number": num or 0,
+                "nationality": nat or "France",
+                "rating": 7.8,
+                "mj": 1,
+                "goals": 0,
+                "assists": 0,
+                "photoUrl": photo or "https://media.api-sports.io/football/players/placeholder.png"
+            })
 
     # Legacy player_positions_tm.json format
     legacy_positions_dict[full_name] = {

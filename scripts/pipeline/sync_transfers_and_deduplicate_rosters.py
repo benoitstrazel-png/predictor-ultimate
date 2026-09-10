@@ -124,10 +124,16 @@ for p_norm, t_list in player_transfer_timeline.items():
     
     for season in SEASONS_ORDER:
         target_club, status, trf_info = get_transferred_player_state(p_norm, season)
+        
+        # 1. Remove from all clubs if player has left for an external club or departed
         if not target_club or target_club not in all_squads_data:
+            for s_slug, s_data in all_squads_data.items():
+                season_roster = s_data.get('seasons', {}).get(season, [])
+                filtered = [p for p in season_roster if normalize_text(p.get('name')) != p_norm]
+                s_data['seasons'][season] = filtered
             continue
             
-        # 1. Remove from all other clubs for this season
+        # 2. Remove from all other clubs for this season
         for other_slug, s_data in all_squads_data.items():
             if other_slug == target_club:
                 continue
@@ -135,7 +141,7 @@ for p_norm, t_list in player_transfer_timeline.items():
             filtered = [p for p in season_roster if normalize_text(p.get('name')) != p_norm]
             s_data['seasons'][season] = filtered
             
-        # 2. Ensure present in target_club for this season
+        # 3. Ensure present in target_club for this season
         target_roster = all_squads_data[target_club].get('seasons', {}).get(season, [])
         existing = next((p for p in target_roster if normalize_text(p.get('name')) == p_norm), None)
         

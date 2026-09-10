@@ -251,8 +251,8 @@ def main():
                     short_rev = f"{parts[0][0]}. {parts[-1]}"
                     aliases_list.append((f"als_{player_id}_fs_rev", player_id, 'FLASHSCORE', short_rev, normalize_text(short_rev), 0.95))
 
-                # Populate real_players and flat_players for 2026-2027
-                if season_name == '2026-2027':
+                # Populate real_players and flat_players for 2026-2027 (ACTIVE players only)
+                if season_name == '2026-2027' and is_current == 1:
                     p_stats = p.get('stats', {})
                     goals = p_stats.get('goals', 0)
                     assists = p_stats.get('assists', 0)
@@ -301,6 +301,7 @@ def main():
         team_map[s] = tid
         team_map[nm] = tid
 
+    # Process Mercato additions only for players NOT already indexed from squad files
     for m in mercato_scd2_data:
         p_name = m.get('player_name')
         if not p_name:
@@ -308,26 +309,29 @@ def main():
         p_norm = normalize_text(p_name)
         matched_p_id = norm_to_pid.get(p_norm)
         
-        if not matched_p_id:
-            p_slug = slugify(p_name)
-            matched_p_id = f"ply_{p_slug}_mercato"
-            pos_code, role_cat = map_detailed_position(None, m.get('position'))
-            player_master[matched_p_id] = {
-                'player_id': matched_p_id,
-                'tm_id': None,
-                'api_sports_id': None,
-                'flashscore_slug': p_slug,
-                'full_name': p_name,
-                'display_name': p_name,
-                'short_name': f"{p_name.split()[-1]} {p_name[0]}." if len(p_name.split()) > 1 else p_name,
-                'primary_position': pos_code,
-                'role_category': role_cat,
-                'birth_date': None,
-                'age': 25,
-                'nationality': 'France',
-                'photo_url': m.get('photoUrl')
-            }
-            norm_to_pid[p_norm] = matched_p_id
+        # If player was already indexed in official squad files, skip adding conflicting contract SKs
+        if matched_p_id:
+            continue
+            
+        p_slug = slugify(p_name)
+        matched_p_id = f"ply_{p_slug}_mercato"
+        pos_code, role_cat = map_detailed_position(None, m.get('position'))
+        player_master[matched_p_id] = {
+            'player_id': matched_p_id,
+            'tm_id': None,
+            'api_sports_id': None,
+            'flashscore_slug': p_slug,
+            'full_name': p_name,
+            'display_name': p_name,
+            'short_name': f"{p_name.split()[-1]} {p_name[0]}." if len(p_name.split()) > 1 else p_name,
+            'primary_position': pos_code,
+            'role_category': role_cat,
+            'birth_date': None,
+            'age': 25,
+            'nationality': 'France',
+            'photo_url': m.get('photoUrl')
+        }
+        norm_to_pid[p_norm] = matched_p_id
 
         club_name_m = m.get('club', '')
         c_slug = slugify(club_name_m)

@@ -399,7 +399,14 @@ const PitchMap = ({ clubName, roster, stats, schedule, currentWeek, matchHistory
             }
         }
 
-        const fullRosterList = [...safeRoster];
+        // Filtrage strict : exclure joueurs transférés ou partis
+        const fullRosterList = safeRoster.filter(p => {
+            if (!p || !p.name) return false;
+            const status = String(p.status || '').toUpperCase();
+            if (['DEPARTED', 'TRANSFERRED', 'LOANED_OUT', 'INACTIVE'].includes(status)) return false;
+            if (p.left_date) return false;
+            return true;
+        });
 
         // Nombre de joueurs cibles par ligne selon le schéma
         let targetCounts = { G: 1, D: 4, M: 3, A: 3 };
