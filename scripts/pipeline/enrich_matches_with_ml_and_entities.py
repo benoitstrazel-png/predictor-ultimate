@@ -16,6 +16,12 @@ import json
 import datetime
 import numpy as np
 
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
@@ -66,8 +72,8 @@ def build_coach_lookup():
         "elversberg": {"name": "Vincent Wagner", "winRate": "48%", "style": "Organisation Rapprochée & Discipline", "formation": "4-3-3"},
         "paris saint germain": {"name": "Luis Enrique", "winRate": "71%", "style": "Possession Dominante & Tiki-Taka", "formation": "4-3-3"},
         "psg": {"name": "Luis Enrique", "winRate": "71%", "style": "Possession Dominante & Tiki-Taka", "formation": "4-3-3"},
-        "marseille": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Relance Courte & Sortie de Balle", "formation": "4-2-3-1"},
-        "olympique de marseille": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Relance Courte & Sortie de Balle", "formation": "4-2-3-1"},
+        "marseille": {"name": "Bruno Génésio", "winRate": "56%", "style": "Transitions Rapides & Flexibilité", "formation": "4-3-3"},
+        "olympique de marseille": {"name": "Bruno Génésio", "winRate": "56%", "style": "Transitions Rapides & Flexibilité", "formation": "4-3-3"},
         "manchester city": {"name": "Pep Guardiola", "winRate": "75%", "style": "Jeu de Position & Surcharge Axiale", "formation": "4-3-3"},
         "arsenal": {"name": "Mikel Arteta", "winRate": "67%", "style": "Contrôle Spatial & Pressing Synchronisé", "formation": "4-3-3"},
         "real madrid": {"name": "Carlo Ancelotti", "winRate": "72%", "style": "Adaptabilité & Liberté Créative", "formation": "4-3-3"},

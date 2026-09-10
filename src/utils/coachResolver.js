@@ -186,7 +186,10 @@ export function resolveTeamCoach(teamName, season = '2026-2027', explicitCoachNa
     return { name: 'Luis Enrique', winRate: '71%', style: 'Possession Dominante & Tiki-Taka', formation: '4-3-3', nationality: 'Espagne', nationalityFlag: '🇪🇸' };
   }
   if (teamCanonical.includes('marseille') || teamCanonical === 'om') {
-    return { name: 'Roberto De Zerbi', winRate: '58%', style: 'Relance Courte & Sortie de Balle', formation: '4-2-3-1', nationality: 'Italie', nationalityFlag: '🇮🇹' };
+    if (season === '2024-2025' || (season === '2025-2026' && (!rawTargetName || rawTargetName.includes('Zerbi')))) {
+      return { name: 'Roberto De Zerbi', winRate: '58%', style: 'Relance Courte & Sortie de Balle', formation: '4-2-3-1', nationality: 'Italie', nationalityFlag: '🇮🇹' };
+    }
+    return { name: rawTargetName || 'Bruno Génésio', winRate: '56%', style: 'Transitions Rapides & Flexibilité', formation: '4-3-3', nationality: 'France', nationalityFlag: '🇫🇷' };
   }
 
   return {

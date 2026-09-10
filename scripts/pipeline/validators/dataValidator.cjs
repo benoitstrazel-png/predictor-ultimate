@@ -155,19 +155,35 @@ function validateDataset(dataset) {
     try {
       const cRegistry = JSON.parse(fs.readFileSync(COACHES_REGISTRY_PATH, 'utf8'));
       const cCount = Object.keys(cRegistry).length;
-      assert(cCount >= 100, `Registre maître des entraîneurs synchronisé (${cCount} coachs certifiés)`);
+      assert(cCount >= 100, `Registre maître des entraîneurs synchronisé (${cCount} coachs certifiés)`, true);
     } catch (e) {
-      assert(false, `Erreur lecture coaches_master_registry.json : ${e.message}`, false);
+      assert(false, `Erreur lecture coaches_master_registry.json : ${e.message}`, true);
     }
+  } else {
+    assert(false, `Fichier coaches_master_registry.json manquant`, true);
   }
 
   if (fs.existsSync(COACHES_SCD2_PATH)) {
     try {
       const cScd2List = JSON.parse(fs.readFileSync(COACHES_SCD2_PATH, 'utf8'));
-      assert(Array.isArray(cScd2List) && cScd2List.length >= 100, `Mandats SCD2 des entraîneurs validés (${cScd2List.length} mandats enregistrés)`);
+      assert(Array.isArray(cScd2List) && cScd2List.length >= 100, `Mandats SCD2 des entraîneurs validés (${cScd2List.length} mandats enregistrés)`, true);
     } catch (e) {
-      assert(false, `Erreur lecture coaches_unified_scd2.json : ${e.message}`, false);
+      assert(false, `Erreur lecture coaches_unified_scd2.json : ${e.message}`, true);
     }
+  } else {
+    assert(false, `Fichier coaches_unified_scd2.json manquant`, true);
+  }
+
+  // 6. Historical Archives Integrity Check (Anti-Regression)
+  const HIST_DIR = path.join(__dirname, '..', '..', '..', 'public', 'data', 'history');
+  if (fs.existsSync(HIST_DIR)) {
+    const requiredArchives = ['2024-2025_FRA-L1.json', '2025-2026_FRA-L1.json', '2026-2027_FRA-L1.json'];
+    for (const arch of requiredArchives) {
+      const archPath = path.join(HIST_DIR, arch);
+      assert(fs.existsSync(archPath), `Archive historique certifiée présente : ${arch}`, true);
+    }
+  } else {
+    assert(false, `Répertoire d'archives d'historique public manquant : ${HIST_DIR}`, true);
   }
 
   const qualityScore = Math.round((checksPassed / totalChecks) * 100);

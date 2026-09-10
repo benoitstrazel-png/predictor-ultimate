@@ -131,7 +131,7 @@ export default function MatchHistoryHub() {
 
     const baseList = Array.from(map.values());
     return baseList;
-  }, []);
+  }, [historyArchiveMatches, selectedSeason]);
 
   const [liveOddsUpdates, setLiveOddsUpdates] = useState({});
   const [refreshingMatchId, setRefreshingMatchId] = useState(null);

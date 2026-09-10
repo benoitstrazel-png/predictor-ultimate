@@ -196,19 +196,52 @@ export function getTeamStadiumCoords(teamName) {
  */
 export async function fetchLiveMatchWeather(homeTeam, matchDate) {
   const stadiumInfo = getTeamStadiumCoords(homeTeam);
-  const targetDate = matchDate && matchDate.includes('-') ? matchDate.split('T')[0] : new Date().toISOString().split('T')[0];
-  const cacheKey = `${stadiumInfo.lat}_${stadiumInfo.lon}_${targetDate}`;
+  const now = new Date();
+  const targetDateStr = matchDate && matchDate.includes('-') 
+    ? matchDate.split('T')[0] 
+    : now.toISOString().split('T')[0];
+  
+  const targetDate = new Date(targetDateStr);
+  const diffDays = Math.round((targetDate - now) / (1000 * 60 * 60 * 24));
+  const cacheKey = `${stadiumInfo.lat}_${stadiumInfo.lon}_${targetDateStr}`;
 
   if (weatherCache.has(cacheKey)) {
     return weatherCache.get(cacheKey);
   }
 
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${stadiumInfo.lat}&longitude=${stadiumInfo.lon}&current=temperature_2m,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max&timezone=auto&start_date=${targetDate}&end_date=${targetDate}`;
+  let url;
+  if (diffDays < -5) {
+    // Match passé : Archive API Open-Meteo
+    url = `https://archive-api.open-meteo.com/v1/archive?latitude=${stadiumInfo.lat}&longitude=${stadiumInfo.lon}&start_date=${targetDateStr}&end_date=${targetDateStr}&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max&timezone=auto`;
+  } else if (diffDays > 14) {
+    // Match trop lointain dans le futur : Climatologie saisonnière estimée sans crash HTTP 400
+    const mMonth = targetDate.getMonth(); // 0-11
+    const seasonTemp = [11, 0, 1].includes(mMonth) ? 8.0 : (mMonth >= 5 && mMonth <= 8 ? 24.0 : 16.5);
+    const projResult = {
+      isLive: false,
+      city: stadiumInfo.city,
+      stadium: stadiumInfo.stadium,
+      condition: "Prévision Saisonnière",
+      conditionKey: "Sun",
+      pitchImpact: "Pelouse optimale · Climat tempéré",
+      weatherCode: 0,
+      temp_avg_c: seasonTemp,
+      precipitation_mm: 0.0,
+      wind_speed_kmh: 12,
+      updatedAt: `Projection J+${diffDays}`
+    };
+    weatherCache.set(cacheKey, projResult);
+    return projResult;
+  } else {
+    // Fenêtre active Live / Forecast [-5 jours, +14 jours]
+    url = `https://api.open-meteo.com/v1/forecast?latitude=${stadiumInfo.lat}&longitude=${stadiumInfo.lon}&current=temperature_2m,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max&timezone=auto&start_date=${targetDateStr}&end_date=${targetDateStr}`;
+  }
 
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
+    if (data.error) throw new Error(data.reason || 'Open-Meteo API Error');
 
     const current = data.current || {};
     const daily = data.daily || {};
@@ -229,7 +262,7 @@ export async function fetchLiveMatchWeather(homeTeam, matchDate) {
       : Math.round(daily.windspeed_10m_max?.[0] || 12);
 
     const result = {
-      isLive: true,
+      isLive: diffDays >= -1 && diffDays <= 1,
       city: stadiumInfo.city,
       stadium: stadiumInfo.stadium,
       condition: condMeta.label,
@@ -245,7 +278,7 @@ export async function fetchLiveMatchWeather(homeTeam, matchDate) {
     weatherCache.set(cacheKey, result);
     return result;
   } catch (err) {
-    console.warn('Fallback météo Open-Meteo:', err.message);
+    console.warn(`[WeatherService] Fallback actif (${stadiumInfo.city}) :`, err.message);
     const fallbackResult = {
       isLive: false,
       city: stadiumInfo.city,

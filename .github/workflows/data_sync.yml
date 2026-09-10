@@ -58,14 +58,20 @@ jobs:
           npx puppeteer browsers install chrome || true
           python scripts/pipeline/extractors/betclic_collector.py || true
 
+      - name: Ingest Master Coaches & SCD2 Contracts
+        run: python scripts/pipeline/ingest_master_coaches.py
+
+      - name: Synchronize Multi-Season Squads & Transfermarkt Database
+        run: python scripts/pipeline/sync_full_squads_and_transfers.py
+
+      - name: Compile Client Rosters and Registries
+        run: python scripts/pipeline/compile_client_rosters.py
+
       - name: Compile Unified History and App Data
         run: python scripts/pipeline/compile_unified_history_and_app_data.py
 
       - name: Enrich Matches with Quant ML and Entities
         run: python scripts/pipeline/enrich_matches_with_ml_and_entities.py
-
-      - name: Synchronize Multi-Season Squads & Transfermarkt Database
-        run: python scripts/pipeline/sync_full_squads_and_transfers.py
 
       - name: Assert Odds Retention
         run: |
