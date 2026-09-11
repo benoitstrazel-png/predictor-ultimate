@@ -277,36 +277,6 @@
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8127.png",
-            "linkToMatch": "/matches/mjallby-vs-salzburg/2pyt9x#5987961",
-            "date": {
-              "utcTime": "2026-08-20T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8127/overview/mjallby",
-            "tooltipText": {
-              "utcTime": "2026-08-20T16:00:00.000Z",
-              "homeTeam": "Mjällby",
-              "homeTeamId": 8127,
-              "homeScore": "0",
-              "awayTeam": "Salzburg",
-              "awayTeamId": 10013,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8127",
-              "name": "Mjällby",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10013",
-              "name": "Salzburg",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8127.png",
             "linkToMatch": "/matches/mjallby-vs-salzburg/2pyt9x#5987973",
             "date": {
               "utcTime": "2026-08-27T17:00:00.000Z"
@@ -422,6 +392,36 @@
               "name": "Salzburg",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10017.png",
+            "linkToMatch": "/matches/salzburg-vs-ried/3bfzr6#5845983",
+            "date": {
+              "utcTime": "2026-09-11T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10017/overview/ried",
+            "tooltipText": {
+              "utcTime": "2026-09-11T17:30:00.000Z",
+              "homeTeam": "Ried",
+              "homeTeamId": 10017,
+              "homeScore": "1",
+              "awayTeam": "Salzburg",
+              "awayTeamId": 10013,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10017",
+              "name": "Ried",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10013",
+              "name": "Salzburg",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "12"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Salzburg have won their last 6 matches."
+              "defaultText": "Salzburg haven't lost in 12 matches."
             },
             {
               "OddsType": "bts",
@@ -488,7 +488,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "12",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -500,18 +500,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Salzburg have scored 12 goals in their last 3 matches."
+              "defaultText": "Salzburg have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "6",
                 "6"
               ],
               "DefaultLabels": [
@@ -525,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Levski Sofia haven't drawn in their last 6 matches and Salzburg in their last 6."
+              "defaultText": "Levski Sofia haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -540,34 +538,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 10013,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 12,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 11 matches",
-          "color": "#F13032"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10013,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 6 matches",
+          "text": "Haven't lost in 12 matches",
           "color": "#F13032"
         }
       ],
@@ -589,18 +570,18 @@
       }
     },
     "weather": {
-      "temperature": 21,
+      "temperature": 22,
       "windSpeed": 3,
-      "windDirectionCardinal": "NE",
-      "iconCode": 33,
-      "relativeHumidity": 47,
+      "windDirectionCardinal": "E",
+      "iconCode": 31,
+      "relativeHumidity": 43,
       "precipChance": 18,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 21,
-      "description": "Mostly Clear",
+      "cloudCover": 16,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-11T07:00:18Z",
+      "lastUpdated": "2026-09-11T19:00:22Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },

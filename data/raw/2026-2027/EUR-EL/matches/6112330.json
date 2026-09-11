@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10217.png",
-            "linkToMatch": "/matches/ado-den-haag-vs-az-alkmaar/3ggg86#5781699",
-            "date": {
-              "utcTime": "2026-08-08T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10217/overview/ado-den-haag",
-            "tooltipText": {
-              "utcTime": "2026-08-08T19:00:00.000Z",
-              "homeTeam": "AZ Alkmaar",
-              "homeTeamId": 10229,
-              "homeScore": "2",
-              "awayTeam": "ADO Den Haag",
-              "awayTeamId": 10217,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "10229",
-              "name": "AZ Alkmaar",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10217",
-              "name": "ADO Den Haag",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9908.png",
             "linkToMatch": "/matches/fc-utrecht-vs-az-alkmaar/3cq1u9#5781707",
             "date": {
@@ -422,6 +392,36 @@
               "name": "AZ Alkmaar",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8525.png",
+            "linkToMatch": "/matches/willem-ii-vs-az-alkmaar/2wpldc#5781742",
+            "date": {
+              "utcTime": "2026-09-11T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8525/overview/willem-ii",
+            "tooltipText": {
+              "utcTime": "2026-09-11T18:00:00.000Z",
+              "homeTeam": "AZ Alkmaar",
+              "homeTeamId": 10229,
+              "homeScore": "1",
+              "awayTeam": "Willem II",
+              "awayTeamId": 8525,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10229",
+              "name": "AZ Alkmaar",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8525",
+              "name": "Willem II",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "8"
+                "12"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "AZ Alkmaar have won their last 8 matches."
+              "defaultText": "AZ Alkmaar haven't lost in 12 matches."
             },
             {
               "OddsType": "bts",
@@ -488,7 +488,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "10",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -500,17 +500,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AZ Alkmaar have scored 10 goals in their last 3 matches."
+              "defaultText": "AZ Alkmaar have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "8"
+                "4",
+                "1",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "AZ Alkmaar haven't drawn in their last 8 matches."
+              "defaultText": "Sunderland have 3W, 1D, 1L in five matches while AZ Alkmaar have 4W, 1D, 0L."
             }
           ]
         },
@@ -538,34 +544,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 10229,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 17,
+              "value": 18,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 17 matches",
-          "color": "#CB0008"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10229,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 8 matches",
+          "text": "Haven't lost in 18 matches",
           "color": "#CB0008"
         }
       ],
@@ -590,15 +579,15 @@
       "temperature": 14,
       "windSpeed": 5,
       "windDirectionCardinal": "WSW",
-      "iconCode": 27,
-      "relativeHumidity": 74,
-      "precipChance": 6,
+      "iconCode": 26,
+      "relativeHumidity": 73,
+      "precipChance": 18,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 65,
-      "description": "Mostly Cloudy",
+      "cloudCover": 89,
+      "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-11T09:00:15Z",
+      "lastUpdated": "2026-09-11T21:00:23Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },

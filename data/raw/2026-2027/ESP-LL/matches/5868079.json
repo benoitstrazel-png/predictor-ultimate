@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
-            "linkToMatch": "/matches/newcastle-united-vs-valencia/3hggj7#5898826",
-            "date": {
-              "utcTime": "2026-08-08T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10261/overview/newcastle-united",
-            "tooltipText": {
-              "utcTime": "2026-08-08T19:00:00.000Z",
-              "homeTeam": "Valencia",
-              "homeTeamId": 10267,
-              "homeScore": "1",
-              "awayTeam": "Newcastle United",
-              "awayTeamId": 10261,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "10267",
-              "name": "Valencia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10261",
-              "name": "Newcastle United",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
@@ -270,6 +240,36 @@
               "id": "8634",
               "name": "Barcelona",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
+            "linkToMatch": "/matches/sevilla-vs-valencia/2unl97#5868059",
+            "date": {
+              "utcTime": "2026-09-11T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8302/overview/sevilla",
+            "tooltipText": {
+              "utcTime": "2026-09-11T19:00:00.000Z",
+              "homeTeam": "Sevilla",
+              "homeTeamId": 8302,
+              "homeScore": "1",
+              "awayTeam": "Valencia",
+              "awayTeamId": 10267,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8302",
+              "name": "Sevilla",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10267",
+              "name": "Valencia",
+              "isOurTeam": true
             }
           }
         ],
@@ -511,7 +511,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Valencia haven't won a match in 7 attempts."
+              "defaultText": "Valencia haven't won a match in 8 attempts."
             }
           ]
         },
@@ -544,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 1,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +554,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 2 goals in their last 5 matches",
+          "text": "Have scored 1 goals in their last 5 matches",
+          "color": "#ff671f"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10267,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#ff671f"
         },
         {
@@ -566,29 +583,12 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 7 attempts",
-          "color": "#ff671f"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10267,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have lost their last 3 matches",
+          "text": "Haven't won a match in 8 attempts",
           "color": "#ff671f"
         },
         {
@@ -611,6 +611,33 @@
             }
           ],
           "text": "Have scored 6 goals in their last 5 matches",
+          "color": "#0056B3"
+        },
+        {
+          "type": "player",
+          "playerId": 536455,
+          "teamId": 8560,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 536455,
+              "name": "Gonçalo Guedes",
+              "type": "player"
+            },
+            {
+              "value": 8560,
+              "name": "Real Sociedad",
+              "type": "team"
+            },
+            {
+              "value": 2.6,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Gonçalo Guedes has the most shots on target per match for Real Sociedad (2.6)",
           "color": "#0056B3"
         },
         {
@@ -639,33 +666,6 @@
           ],
           "text": "Alex Remiro is ranked 1 in saves per match in the competition (4.3)",
           "color": "#0056B3"
-        },
-        {
-          "type": "player",
-          "playerId": 708890,
-          "teamId": 8560,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 708890,
-              "name": "Carlos Soler",
-              "type": "player"
-            },
-            {
-              "value": 8560,
-              "name": "Real Sociedad",
-              "type": "team"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Carlos Soler has created the most big chances for Real Sociedad (2)",
-          "color": "#0056B3"
         }
       ],
       "countryCode": "ESP",
@@ -689,17 +689,17 @@
       "temperature": 25,
       "windSpeed": 3,
       "windDirectionCardinal": "E",
-      "iconCode": 31,
-      "relativeHumidity": 72,
-      "precipChance": 10,
+      "iconCode": 29,
+      "relativeHumidity": 76,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 17,
-      "description": "Clear",
+      "cloudCover": 36,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-11T09:00:12Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-09-11T21:00:18Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5868079,
