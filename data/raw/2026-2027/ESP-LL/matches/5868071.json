@@ -440,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "0",
+                "3",
                 "away_team",
-                "6"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,8 +462,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Deportivo Alavés haven't lost in 6 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Athletic Club have 2W, 0D, 3L in five matches while Deportivo Alavés have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -467,7 +473,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +484,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Deportivo Alavés have scored in their last 3 away matches."
+              "defaultText": "Deportivo Alavés have scored in their last 4 away matches."
             },
             {
               "OddsType": "ou",
@@ -700,34 +706,38 @@
       "temperature": 25,
       "windSpeed": 3,
       "windDirectionCardinal": "N",
-      "iconCode": 30,
-      "relativeHumidity": 54,
+      "iconCode": 32,
+      "relativeHumidity": 56,
       "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 46,
-      "description": "Partly Cloudy",
+      "cloudCover": 19,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T05:00:13Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-12T17:00:09Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5868071,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8315,
         "name": "Athletic Club",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 711231,
+            "age": 30,
             "name": "Gorka Guruzeta",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 3581628,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-09T20:05:04Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
@@ -736,10 +746,13 @@
           },
           {
             "id": 1585726,
+            "age": 21,
             "name": "Peio Canales",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 2107929,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-02T09:56:28Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -748,10 +761,13 @@
           },
           {
             "id": 1229176,
+            "age": 25,
             "name": "Beñat Prados",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 15566917,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-10T21:41:40Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -760,10 +776,13 @@
           },
           {
             "id": 940743,
+            "age": 27,
             "name": "Daniel Vivian",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 26956575,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-09-10T12:34:07Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
@@ -772,10 +791,13 @@
           },
           {
             "id": 1425770,
+            "age": 24,
             "name": "Unai Egiluz",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 586218,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-04T05:30:45Z",
               "type": "injury",
               "expectedReturn": "Mid January 2027"
             },
@@ -787,23 +809,47 @@
       "awayTeam": {
         "id": 9866,
         "name": "Deportivo Alavés",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 845067,
-            "name": "Facundo Garcés",
+            "id": 1553663,
+            "age": 23,
+            "name": "Aitor Mañas",
+            "countryName": "Spain",
+            "countryCode": "ESP",
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "injuryId": 85,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Aitor",
+            "lastName": "Mañas"
+          },
+          {
+            "id": 845067,
+            "age": 27,
+            "name": "Facundo Garcés",
+            "countryName": "Malaysia",
+            "countryCode": "MAS",
+            "marketValue": 1699051,
+            "unavailability": {
+              "injuryId": 76,
+              "type": "injury",
+              "expectedReturn": "Out for season"
             },
             "firstName": "Facundo",
             "lastName": "Garcés"
           },
           {
             "id": 1426189,
+            "age": 24,
             "name": "Mikel Rodríguez",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 732230,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-04T22:00:28Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },

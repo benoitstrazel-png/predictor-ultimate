@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
-            "linkToMatch": "/matches/lazio-vs-frosinone/2t636u#5980769",
-            "date": {
-              "utcTime": "2026-08-09T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9891/overview/frosinone",
-            "tooltipText": {
-              "utcTime": "2026-08-09T18:45:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "1",
-              "awayTeam": "Lazio",
-              "awayTeamId": 8543,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8543",
-              "name": "Lazio",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9889.png",
@@ -422,6 +392,36 @@
               "id": "8543",
               "name": "Lazio",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
+            "linkToMatch": "/matches/lazio-vs-milan/2f4m36#5749674",
+            "date": {
+              "utcTime": "2026-09-12T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8564/overview/milan",
+            "tooltipText": {
+              "utcTime": "2026-09-12T16:00:00.000Z",
+              "homeTeam": "Lazio",
+              "homeTeamId": 8543,
+              "homeScore": "2",
+              "awayTeam": "Milan",
+              "awayTeamId": 8564,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "8543",
+              "name": "Lazio",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8564",
+              "name": "Milan",
+              "isOurTeam": false
             }
           }
         ]
@@ -562,23 +562,6 @@
           "playerId": null,
           "teamId": 7881,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#101010"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 7881,
-          "priority": 8,
           "defaultText": "Haven't won a match in {0} attempts",
           "localizedTextId": "insights_not_won_team",
           "statValues": [
@@ -589,6 +572,23 @@
             }
           ],
           "text": "Haven't won a match in 5 attempts",
+          "color": "#101010"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 7881,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#101010"
         },
         {
@@ -614,29 +614,12 @@
           "color": "#75acd4"
         },
         {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8543,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have kept the most clean sheets in the competition (2)",
-          "color": "#75acd4"
-        },
-        {
           "type": "player",
           "playerId": 541555,
           "teamId": 8543,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
               "value": 541555,
@@ -644,17 +627,44 @@
               "type": "player"
             },
             {
-              "value": 8543,
-              "name": "Lazio",
-              "type": "team"
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Mattia Zaccagni has created the most big chances for Lazio (2)",
+          "text": "Mattia Zaccagni is ranked 3 in big chances created in the competition (3)",
+          "color": "#75acd4"
+        },
+        {
+          "type": "player",
+          "playerId": 915156,
+          "teamId": 8543,
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "statValues": [
+            {
+              "value": 915156,
+              "name": "Christos Mandas",
+              "type": "player"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4.7,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Christos Mandas is ranked 3 in saves per match in the competition (4.7)",
           "color": "#75acd4"
         }
       ],

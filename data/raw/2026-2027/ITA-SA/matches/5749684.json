@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6106.png",
-            "linkToMatch": "/matches/juve-stabia-vs-frosinone/246u7a#5852779",
-            "date": {
-              "utcTime": "2026-08-16T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6106/overview/juve-stabia",
-            "tooltipText": {
-              "utcTime": "2026-08-16T16:00:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "4",
-              "awayTeam": "Juve Stabia",
-              "awayTeamId": 6106,
-              "awayScore": "1"
-            },
-            "score": "4 - 1",
-            "home": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6106",
-              "name": "Juve Stabia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9885.png",
@@ -270,6 +240,36 @@
               "id": "7881",
               "name": "Venezia",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
+            "linkToMatch": "/matches/frosinone-vs-genoa/3ckfw9#5749672",
+            "date": {
+              "utcTime": "2026-09-12T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10233/overview/genoa",
+            "tooltipText": {
+              "utcTime": "2026-09-12T13:00:00.000Z",
+              "homeTeam": "Genoa",
+              "homeTeamId": 10233,
+              "homeScore": "1",
+              "awayTeam": "Frosinone",
+              "awayTeamId": 9891,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10233",
+              "name": "Genoa",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9891",
+              "name": "Frosinone",
+              "isOurTeam": true
             }
           }
         ],
@@ -462,11 +462,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
+                "home_team",
+                "4",
                 "away_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Como have scored in their last 3 away matches."
+              "defaultText": "Frosinone have scored in their last 4 matches and Como have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -505,11 +507,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "10"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Frosinone haven't drawn in their last 10 matches."
+              "defaultText": "Frosinone have 2W, 1D, 2L in five matches while Como have 3W, 1D, 1L."
             }
           ]
         },
@@ -542,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -552,7 +560,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
+          "color": "#d5a300"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9891,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (1)",
           "color": "#d5a300"
         },
         {
@@ -580,33 +605,6 @@
             }
           ],
           "text": "Frosinone have won the previous 2 matches against Como.",
-          "color": "#d5a300"
-        },
-        {
-          "type": "player",
-          "playerId": 1256534,
-          "teamId": 9891,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1256534,
-              "name": "Antonio Raimondo",
-              "type": "player"
-            },
-            {
-              "value": 9891,
-              "name": "Frosinone",
-              "type": "team"
-            },
-            {
-              "value": 1.4,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Antonio Raimondo has the most shots on target per match for Frosinone (1.4)",
           "color": "#d5a300"
         },
         {
@@ -684,20 +682,20 @@
       }
     },
     "weather": {
-      "temperature": 29,
+      "temperature": 30,
       "windSpeed": 3,
-      "windDirectionCardinal": "SSW",
-      "iconCode": 11,
-      "relativeHumidity": 43,
-      "precipChance": 31,
-      "precipitation": 0.2,
+      "windDirectionCardinal": "SW",
+      "iconCode": 34,
+      "relativeHumidity": 40,
+      "precipChance": 14,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 40,
-      "description": "Few Showers",
+      "cloudCover": 21,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T03:00:10Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-09-12T15:00:09Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749684,

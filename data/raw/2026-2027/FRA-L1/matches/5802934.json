@@ -71,6 +71,7 @@
   },
   "nav": [
     "matchfacts",
+    "liveticker",
     "lineup",
     "table",
     "head to head"
@@ -613,6 +614,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 6379,
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have kept the most clean sheets in the competition (2)",
+          "color": "#0C1C3D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 6379,
           "priority": 7,
           "defaultText": "{0} and {1} have drawn their last {2} matches against each other.",
           "localizedTextId": "h2h_draw_streak_v2",
@@ -634,23 +652,6 @@
             }
           ],
           "text": "Paris FC and Lyon have drawn their last 3 matches against each other.",
-          "color": "#0C1C3D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 6379,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 6 matches",
           "color": "#0C1C3D"
         },
         {
@@ -822,7 +823,13 @@
         "urlTemplate": "https://data.fotmob.com/generated-match-insights/53/5802934/matchinsights_{lang}.json"
       }
     },
-    "liveticker": false,
+    "liveticker": {
+      "langs": "de_gen,en_gen,es_gen,fr_gen,it_gen",
+      "teams": [
+        "Paris FC",
+        "Lyon"
+      ]
+    },
     "superlive": {
       "superLiveUrl": "https://pub.fotmob.com/prod/news/api/law?matchid=9ly5pj3wj73eacy7iybog07is&competition=dm5ka0os1e3dxcp3vh05kmp33&season=bqnc4ccgnrp6pb3bktqet0yz8&version=v4w",
       "showSuperLive": false
@@ -841,20 +848,20 @@
       "windSpeed": 2,
       "windDirectionCardinal": "NW",
       "iconCode": 31,
-      "relativeHumidity": 48,
+      "relativeHumidity": 45,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 12,
+      "cloudCover": 0,
       "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T14:00:18Z",
+      "lastUpdated": "2026-09-12T18:00:10Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5802934,
-      "lineupType": "predicted",
+      "lineupType": "standard",
       "source": "enetpulse",
       "availableFilters": [
         "season",
@@ -1049,6 +1056,7 @@
             "positionId": 66,
             "usualPlayingPositionId": 2,
             "shirtNumber": "33",
+            "isCaptain": true,
             "countryName": "France",
             "countryCode": "FRA",
             "horizontalLayout": {
@@ -1205,6 +1213,143 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
+        "subs": [
+          {
+            "id": 1127125,
+            "age": 23,
+            "name": "Obed Nkambadio",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "16",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 4348240,
+            "firstName": "Obed",
+            "lastName": "Nkambadio",
+            "rankings": null
+          },
+          {
+            "id": 1053678,
+            "age": 26,
+            "name": "Mamadou Mbow",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 4624821,
+            "performance": {
+              "seasonRating": 6.65
+            },
+            "firstName": "Mamadou",
+            "lastName": "Mbow",
+            "rankings": null
+          },
+          {
+            "id": 1283024,
+            "age": 21,
+            "name": "Yoan Koré",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "25",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 654516,
+            "firstName": "Yoan",
+            "lastName": "Koré",
+            "rankings": null
+          },
+          {
+            "id": 1709839,
+            "age": 19,
+            "name": "Patrick Zabi",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.99
+            },
+            "firstName": "Patrick",
+            "lastName": "Zabi",
+            "rankings": null
+          },
+          {
+            "id": 1738340,
+            "age": 18,
+            "name": "Rudy Matondo",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "23",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 5503177,
+            "performance": {
+              "seasonRating": 6.68
+            },
+            "firstName": "Rudy",
+            "lastName": "Matondo",
+            "rankings": null
+          },
+          {
+            "id": 640292,
+            "age": 29,
+            "name": "Vincent Marchetti",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "4",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 857397,
+            "performance": {
+              "seasonGoals": 1
+            },
+            "firstName": "Vincent",
+            "lastName": "Marchetti",
+            "rankings": null
+          },
+          {
+            "id": 637745,
+            "age": 28,
+            "name": "Jonathan Ikoné",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "93",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 2132550,
+            "firstName": "Jonathan",
+            "lastName": "Ikoné",
+            "rankings": null
+          },
+          {
+            "id": 467486,
+            "age": 31,
+            "name": "Moses Simon",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "27",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 6534970,
+            "performance": {
+              "seasonRating": 6.64
+            },
+            "firstName": "Moses",
+            "lastName": "Simon",
+            "rankings": null
+          },
+          {
+            "id": 1529204,
+            "age": 20,
+            "name": "Omar Sissoko",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "18",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1445742,
+            "performance": {
+              "seasonRating": 6.31
+            },
+            "firstName": "Omar",
+            "lastName": "Sissoko",
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 784448,
@@ -1270,22 +1415,6 @@
             },
             "firstName": "",
             "lastName": "Otávio"
-          },
-          {
-            "id": 637745,
-            "age": 28,
-            "name": "Jonathan Ikoné",
-            "positionId": 1000,
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 2132550,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Jonathan",
-            "lastName": "Ikoné"
           }
         ],
         "averageStarterAge": 28.5,
@@ -1540,6 +1669,7 @@
             "positionId": 85,
             "usualPlayingPositionId": 2,
             "shirtNumber": "8",
+            "isCaptain": true,
             "countryName": "France",
             "countryCode": "FRA",
             "horizontalLayout": {
@@ -1638,6 +1768,147 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
+        "subs": [
+          {
+            "id": 767014,
+            "age": 30,
+            "name": "Rémy Descamps",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "40",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1151072,
+            "performance": {
+              "seasonRating": 7.51
+            },
+            "firstName": "Rémy",
+            "lastName": "Descamps",
+            "rankings": null
+          },
+          {
+            "id": 266105,
+            "age": 33,
+            "name": "Clinton Mata",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "22",
+            "countryName": "Angola",
+            "countryCode": "ANG",
+            "marketValue": 1900812,
+            "performance": {
+              "seasonRating": 7.56
+            },
+            "firstName": "Clinton",
+            "lastName": "Mata",
+            "rankings": null
+          },
+          {
+            "id": 195750,
+            "age": 34,
+            "name": "Nicolás Tagliafico",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 1887853,
+            "performance": {
+              "seasonRating": 6.81
+            },
+            "firstName": "Nicolás",
+            "lastName": "Tagliafico",
+            "rankings": null
+          },
+          {
+            "id": 1125076,
+            "age": 25,
+            "name": "Ruben Kluivert",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "21",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 2145932,
+            "firstName": "Ruben",
+            "lastName": "Kluivert",
+            "rankings": null
+          },
+          {
+            "id": 1896949,
+            "age": 20,
+            "name": "Kaïl Boudache",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "26",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "marketValue": 2568242,
+            "performance": {
+              "seasonRating": 6.74
+            },
+            "firstName": "Kaïl",
+            "lastName": "Boudache",
+            "rankings": null
+          },
+          {
+            "id": 1793640,
+            "age": 19,
+            "name": "Khalis Merah",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "18",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 10999668,
+            "performance": {
+              "seasonRating": 6.68
+            },
+            "firstName": "Khalis",
+            "lastName": "Merah",
+            "rankings": null
+          },
+          {
+            "id": 1368710,
+            "age": 20,
+            "name": "Noah Nartey",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "99",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 9412606,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 7.07
+            },
+            "firstName": "Noah",
+            "lastName": "Nartey",
+            "rankings": null
+          },
+          {
+            "id": 1057433,
+            "age": 24,
+            "name": "Tanner Tessmann",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 7973151,
+            "performance": {
+              "seasonRating": 6.19
+            },
+            "firstName": "Tanner",
+            "lastName": "Tessmann",
+            "rankings": null
+          },
+          {
+            "id": 887704,
+            "age": 26,
+            "name": "Keito Nakamura",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 6070909,
+            "firstName": "Keito",
+            "lastName": "Nakamura",
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1368304,
@@ -1811,7 +2082,33 @@
         }
       ]
     },
-    "momentum": false
+    "momentum": false,
+    "attackingZones": {
+      "home": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      },
+      "away": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      }
+    }
   },
   "seo": {
     "path": "paris-fc-vs-lyon",

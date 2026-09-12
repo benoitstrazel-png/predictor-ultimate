@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8521.png",
-            "linkToMatch": "/matches/brest-vs-nottingham-forest/2wdjkz#5899097",
-            "date": {
-              "utcTime": "2026-08-16T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8521/overview/brest",
-            "tooltipText": {
-              "utcTime": "2026-08-16T13:00:00.000Z",
-              "homeTeam": "Nottingham Forest",
-              "homeTeamId": 10203,
-              "homeScore": "2",
-              "awayTeam": "Brest",
-              "awayTeamId": 8521,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8521",
-              "name": "Brest",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8463.png",
@@ -270,6 +240,36 @@
               "id": "8586",
               "name": "Tottenham Hotspur",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
+            "linkToMatch": "/matches/nottingham-forest-vs-aston-villa/3gke9k#5795446",
+            "date": {
+              "utcTime": "2026-09-12T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10252/overview/aston-villa",
+            "tooltipText": {
+              "utcTime": "2026-09-12T14:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "1",
+              "awayTeam": "Nottingham Forest",
+              "awayTeamId": 10203,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10203",
+              "name": "Nottingham Forest",
+              "isOurTeam": true
             }
           }
         ],
@@ -489,11 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored at home for {1} matches.",
-              "TextTemplateId": "goalless_home",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "3"
+                "away_team",
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,18 +506,18 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Nottingham Forest haven't scored at home for 3 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Nottingham Forest have scored 4 goals in their last 3 matches, while Coventry City have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Nottingham Forest haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Coventry City haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -578,30 +581,30 @@
           "color": "#C8102E"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 789502,
           "teamId": 10203,
-          "priority": 6,
-          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-          "localizedTextId": "h2h_no_draws_v2",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 10203,
-              "name": "Nottingham Forest",
-              "type": "team"
+              "value": 789502,
+              "name": "Morgan Gibbs-White",
+              "type": "player"
             },
             {
-              "value": 8669,
-              "name": "Coventry City",
-              "type": "team"
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 9,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Nottingham Forest and Coventry City have not drawn any of their last 9 matches against each other.",
+          "text": "Morgan Gibbs-White is ranked 2 in big chances created in the competition (3)",
           "color": "#C8102E"
         },
         {
@@ -645,15 +648,15 @@
         },
         {
           "type": "player",
-          "playerId": 1161885,
+          "playerId": 1030830,
           "teamId": 8669,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1161885,
-              "name": "Bobby Thomas",
+              "value": 1030830,
+              "name": "Jack Rudoni",
               "type": "player"
             },
             {
@@ -662,12 +665,12 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 1.2,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Bobby Thomas has created the most big chances for Coventry City (1)",
+          "text": "Jack Rudoni has the most shots on target per match for Coventry City (1.2)",
           "color": "#65b0e4"
         }
       ],
