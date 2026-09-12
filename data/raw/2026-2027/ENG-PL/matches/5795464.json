@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226.png",
-            "linkToMatch": "/matches/hoffenheim-vs-tottenham-hotspur/2c5dm0#5874668",
-            "date": {
-              "utcTime": "2026-08-15T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8226/overview/hoffenheim",
-            "tooltipText": {
-              "utcTime": "2026-08-15T14:00:00.000Z",
-              "homeTeam": "Tottenham Hotspur",
-              "homeTeamId": 8586,
-              "homeScore": "3",
-              "awayTeam": "Hoffenheim",
-              "awayTeamId": 8226,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8586",
-              "name": "Tottenham Hotspur",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8226",
-              "name": "Hoffenheim",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
@@ -270,6 +240,36 @@
               "id": "8586",
               "name": "Tottenham Hotspur",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
+            "linkToMatch": "/matches/tottenham-hotspur-vs-everton/2gmqxt#5795454",
+            "date": {
+              "utcTime": "2026-09-12T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8668/overview/everton",
+            "tooltipText": {
+              "utcTime": "2026-09-12T16:30:00.000Z",
+              "homeTeam": "Tottenham Hotspur",
+              "homeTeamId": 8586,
+              "homeScore": "0",
+              "awayTeam": "Everton",
+              "awayTeamId": 8668,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8586",
+              "name": "Tottenham Hotspur",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8668",
+              "name": "Everton",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,8 +443,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
+                "2",
                 "2",
                 "away_team",
                 "1",
@@ -462,20 +462,19 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Tottenham Hotspur have 2W, 1D, 2L in five matches while Aston Villa have 1W, 1D, 3L."
+              "defaultText": "Tottenham Hotspur have 1W, 2D, 2L in five matches while Aston Villa have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "4"
+                "0",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,20 +485,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have scored 5 goals in their last 3 matches, while Aston Villa have scored 4."
+              "defaultText": "Tottenham Hotspur have an average of 0 goals in their last three matches and Aston Villa have an average of 1.33."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "5",
-                "4"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -509,8 +505,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have scored 5 goals in their last 3 matches, while Aston Villa have scored 4."
+              "Icon": "poll_glove",
+              "defaultText": "Tottenham Hotspur haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -554,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -564,7 +560,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#132257"
         },
         {
@@ -576,12 +572,12 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#132257"
         },
         {

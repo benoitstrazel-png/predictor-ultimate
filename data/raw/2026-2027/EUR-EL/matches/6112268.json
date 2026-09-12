@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,21 +460,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Olympiacos haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Olympiacos have 3W, 1D, 1L in five matches while Jagiellonia Białystok have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "8",
-                "3"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,18 +484,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Olympiacos have scored 8 goals in their last 3 matches, while Jagiellonia Białystok have scored 3."
+              "defaultText": "Olympiacos have an average of 1.33 goals in their last three matches and Jagiellonia Białystok have an average of 1."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Olympiacos have scored 8 goals in their last 3 matches."
+              "defaultText": "Olympiacos have an average of 1.33 goals in their last three matches and Jagiellonia Białystok have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -611,18 +617,18 @@
     "weather": {
       "temperature": 23,
       "windSpeed": 2,
-      "windDirectionCardinal": "NNE",
-      "iconCode": 29,
-      "relativeHumidity": 50,
+      "windDirectionCardinal": "N",
+      "iconCode": 31,
+      "relativeHumidity": 49,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 31,
-      "description": "Partly Cloudy",
+      "cloudCover": 14,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T09:00:30Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-12T21:00:28Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 6112268,

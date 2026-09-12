@@ -438,17 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "2",
-                "0",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,8 +454,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "OFI Crete have 3W, 1D, 1L in five matches while Hoffenheim have 2W, 0D, 3L."
+              "Icon": "poll_stat_up",
+              "defaultText": "OFI Crete haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -488,12 +482,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "6",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored 8 goals in their last 3 matches."
+              "defaultText": "OFI Crete have scored 6 goals in their last 3 matches, while Hoffenheim have scored 6."
             },
             {
               "OddsType": "dc",
@@ -514,7 +510,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "10"
+                "11"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hoffenheim haven't drawn in their last 10 matches."
+              "defaultText": "Hoffenheim haven't drawn in their last 11 matches."
             }
           ]
         },
@@ -594,17 +590,17 @@
     },
     "weather": {
       "temperature": 24,
-      "windSpeed": 3,
+      "windSpeed": 4,
       "windDirectionCardinal": "NW",
       "iconCode": 29,
       "relativeHumidity": 71,
-      "precipChance": 11,
+      "precipChance": 17,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 35,
+      "cloudCover": 44,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T07:00:25Z",
+      "lastUpdated": "2026-09-12T19:00:21Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

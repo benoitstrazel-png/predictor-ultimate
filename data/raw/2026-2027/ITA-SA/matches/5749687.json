@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -639,23 +640,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 10233,
-          "priority": 10,
-          "defaultText": "Have been awarded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_awarded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have been awarded the most penalties this season (1)",
-          "color": "#CB1111"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10233,
           "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
@@ -667,6 +651,33 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#CB1111"
+        },
+        {
+          "type": "player",
+          "playerId": 1050163,
+          "teamId": 10233,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1050163,
+              "name": "Lorenzo Colombo",
+              "type": "player"
+            },
+            {
+              "value": 10233,
+              "name": "Genoa",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Lorenzo Colombo has created the most big chances for Genoa (2)",
           "color": "#CB1111"
         }
       ],
@@ -755,6 +766,16 @@
         "id": 10233,
         "name": "Genoa",
         "unavailable": [
+          {
+            "id": 914103,
+            "name": "Johan Vásquez",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Johan",
+            "lastName": "Vásquez"
+          },
           {
             "id": 1231904,
             "name": "Elias Havel",

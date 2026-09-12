@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/102117.png",
-            "linkToMatch": "/matches/elche-vs-al-ain/2wfxy8t#5932983",
-            "date": {
-              "utcTime": "2026-07-28T18:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/102117/overview/al-ain",
-            "tooltipText": {
-              "utcTime": "2026-07-28T18:15:00.000Z",
-              "homeTeam": "Elche",
-              "homeTeamId": 10268,
-              "homeScore": "2",
-              "awayTeam": "Al-Ain",
-              "awayTeamId": 102117,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "10268",
-              "name": "Elche",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "102117",
-              "name": "Al-Ain",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783.png",
             "linkToMatch": "/matches/deportivo-coruna-vs-elche/3bp0b9#5868014",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Real Sociedad",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
+            "linkToMatch": "/matches/athletic-club-vs-elche/2ut5xr#5868051",
+            "date": {
+              "utcTime": "2026-09-12T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8315/overview/athletic-club",
+            "tooltipText": {
+              "utcTime": "2026-09-12T16:30:00.000Z",
+              "homeTeam": "Athletic Club",
+              "homeTeamId": 8315,
+              "homeScore": "1",
+              "awayTeam": "Elche",
+              "awayTeamId": 10268,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8315",
+              "name": "Athletic Club",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10268",
+              "name": "Elche",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -469,7 +469,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,19 +480,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Espanyol have scored in their last 6 home matches."
+              "defaultText": "Espanyol have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Espanyol have an average of 1 goals in their last three matches and Elche have an average of 1.33."
+              "defaultText": "Espanyol have scored 4 goals in their last 3 matches, while Elche have scored 5."
             },
             {
               "OddsType": "dc",
@@ -513,7 +514,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Elche haven't won a match in 6 attempts."
+              "defaultText": "Elche haven't won a match in 7 attempts."
             }
           ]
         },
@@ -598,15 +599,15 @@
         },
         {
           "type": "player",
-          "playerId": 1407741,
+          "playerId": 1427828,
           "teamId": 8558,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1407741,
-              "name": "Marcos Fernández",
+              "value": 1427828,
+              "name": "Javi Hernández",
               "type": "player"
             },
             {
@@ -615,12 +616,12 @@
               "type": "team"
             },
             {
-              "value": 2.2,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Marcos Fernández has the most shots on target per match for Espanyol (2.2)",
+          "text": "Javi Hernández has created the most big chances for Espanyol (3)",
           "color": "#1954B2"
         },
         {
@@ -632,7 +633,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -642,24 +643,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
-          "color": "#00662D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10268,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 6 attempts",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#00662D"
         },
         {
@@ -671,12 +655,29 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#00662D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10268,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 7 attempts",
           "color": "#00662D"
         }
       ],
@@ -699,17 +700,17 @@
     },
     "weather": {
       "temperature": 23,
-      "windSpeed": 3,
-      "windDirectionCardinal": "S",
+      "windSpeed": 2,
+      "windDirectionCardinal": "SSE",
       "iconCode": 29,
-      "relativeHumidity": 74,
-      "precipChance": 6,
+      "relativeHumidity": 71,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 42,
+      "cloudCover": 43,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T09:00:24Z",
+      "lastUpdated": "2026-09-12T21:00:21Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

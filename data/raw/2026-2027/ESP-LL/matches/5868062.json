@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,18 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored 4 goals in their last 3 matches, while Osasuna have scored 5."
+              "defaultText": "Atlético Madrid have an average of 1.33 goals in their last three matches and Osasuna have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "8"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atlético Madrid and Osasuna have not drawn any of their last 8 matches against each other."
+              "defaultText": "Osasuna haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -568,23 +566,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 9906,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have conceded the most penalties this season (2)",
-          "color": "#C63527"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9906,
           "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
@@ -606,6 +587,33 @@
             }
           ],
           "text": "Atlético Madrid have won the previous 2 matches against Osasuna.",
+          "color": "#C63527"
+        },
+        {
+          "type": "player",
+          "playerId": 940976,
+          "teamId": 9906,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 940976,
+              "name": "Kang-In Lee",
+              "type": "player"
+            },
+            {
+              "value": 9906,
+              "name": "Atlético Madrid",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Kang-In Lee has created the most big chances for Atlético Madrid (2)",
           "color": "#C63527"
         },
         {
@@ -693,18 +701,18 @@
       }
     },
     "weather": {
-      "temperature": 30,
+      "temperature": 29,
       "windSpeed": 4,
-      "windDirectionCardinal": "NNE",
+      "windDirectionCardinal": "NE",
       "iconCode": 32,
-      "relativeHumidity": 25,
-      "precipChance": 1,
+      "relativeHumidity": 28,
+      "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 9,
+      "cloudCover": 10,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-12T07:00:22Z",
+      "lastUpdated": "2026-09-12T19:00:17Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
