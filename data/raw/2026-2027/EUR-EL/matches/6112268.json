@@ -461,13 +461,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "6",
                 "away_team",
-                "6"
+                "3",
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Olympiacos have scored in their last 6 matches and Jagiellonia Białystok have scored in their last 6 matches."
+              "defaultText": "Olympiacos have scored 8 goals in their last 3 matches, while Jagiellonia Białystok have scored 3."
             },
             {
               "OddsType": "ou",
@@ -510,7 +511,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Jagiellonia Białystok haven't drawn in their last 5 matches."
+              "defaultText": "Jagiellonia Białystok haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -625,47 +626,494 @@
       }
     },
     "weather": {
-      "temperature": 24,
-      "windSpeed": 1,
-      "windDirectionCardinal": "NE",
-      "iconCode": 31,
-      "relativeHumidity": 55,
-      "precipChance": 3,
+      "temperature": 23,
+      "windSpeed": 2,
+      "windDirectionCardinal": "NNE",
+      "iconCode": 29,
+      "relativeHumidity": 50,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 8,
-      "description": "Clear",
+      "cloudCover": 31,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-11T21:00:23Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-09-12T09:00:30Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112268,
-      "lineupType": "unavailable",
-      "source": "enetpulse",
-      "availableFilters": [],
+      "lineupType": "lastStarting11",
+      "source": "lastStartingLineups",
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 8638,
         "name": "Olympiacos",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 1050165,
-            "age": 24,
-            "name": "Lorenzo Pirola",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 5159471,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "A few days"
+            "id": 1683553,
+            "age": 26,
+            "name": "Balša Popović",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "31",
+            "countryName": "Montenegro",
+            "countryCode": "MNE",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Lorenzo",
-            "lastName": "Pirola"
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 799204,
+            "firstName": "Balša",
+            "lastName": "Popović",
+            "rankings": null
           },
+          {
+            "id": 935622,
+            "age": 26,
+            "name": "Marcus Holmgren Pedersen",
+            "positionId": 32,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2231687,
+            "firstName": "Marcus Holmgren",
+            "lastName": "Pedersen",
+            "rankings": null
+          },
+          {
+            "id": 1457854,
+            "age": 22,
+            "name": "Zinedin Smajlović",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Bosnia and Herzegovina",
+            "countryCode": "BIH",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1815623,
+            "firstName": "Zinedin",
+            "lastName": "Smajlović",
+            "rankings": null
+          },
+          {
+            "id": 954962,
+            "age": 27,
+            "name": "David Carmo",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Angola",
+            "countryCode": "ANG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 6465146,
+            "firstName": "David",
+            "lastName": "Carmo",
+            "rankings": null
+          },
+          {
+            "id": 951976,
+            "age": 27,
+            "name": "Nair Tiknizyan",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "71",
+            "countryName": "Armenia",
+            "countryCode": "ARM",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1818437,
+            "firstName": "Nair",
+            "lastName": "Tiknizyan",
+            "rankings": null
+          },
+          {
+            "id": 1820535,
+            "age": 19,
+            "name": "Christos Filis",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "77",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 373686,
+            "firstName": "Christos",
+            "lastName": "Filis",
+            "rankings": null
+          },
+          {
+            "id": 1331597,
+            "age": 23,
+            "name": "Gustavo Puerta",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "15",
+            "countryName": "Colombia",
+            "countryCode": "COL",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 3199579,
+            "firstName": "Gustavo",
+            "lastName": "Puerta",
+            "rankings": null
+          },
+          {
+            "id": 1586560,
+            "age": 22,
+            "name": "Athanasios Koutsogoulas",
+            "positionId": 83,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "72",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 302506,
+            "firstName": "Athanasios",
+            "lastName": "Koutsogoulas",
+            "rankings": null
+          },
+          {
+            "id": 1395482,
+            "age": 21,
+            "name": "Gustavo Sá",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 14993002,
+            "firstName": "Gustavo",
+            "lastName": "Sá",
+            "rankings": null
+          },
+          {
+            "id": 209430,
+            "age": 33,
+            "name": "Konstantinos Fortounis",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 704012,
+            "firstName": "Konstantinos",
+            "lastName": "Fortounis",
+            "rankings": null
+          },
+          {
+            "id": 1456983,
+            "age": 23,
+            "name": "Armando González",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "34",
+            "countryName": "Mexico",
+            "countryCode": "MEX",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 2679705,
+            "firstName": "Armando",
+            "lastName": "González",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 96943,
+          "age": 65,
+          "name": "José Luis Mendilibar",
+          "countryName": "Spain",
+          "countryCode": "ESP",
+          "firstName": "José Luis",
+          "lastName": "Mendilibar",
+          "primaryTeamId": 8638,
+          "primaryTeamName": "Olympiacos",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 1432028,
+            "age": 22,
+            "name": "Alexandros Tsobanidis",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "76",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 282109,
+            "firstName": "Alexandros",
+            "lastName": "Tsobanidis",
+            "rankings": null
+          },
+          {
+            "id": 1818166,
+            "age": 25,
+            "name": "Dimitrios Stournaras",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "91",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 223418,
+            "firstName": "Dimitrios",
+            "lastName": "Stournaras",
+            "rankings": null
+          },
+          {
+            "id": 1287837,
+            "age": 27,
+            "name": "Bruno Onyemaechi",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "70",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 1478050,
+            "firstName": "Bruno",
+            "lastName": "Onyemaechi",
+            "rankings": null
+          },
+          {
+            "id": 719055,
+            "age": 28,
+            "name": "Panagiotis Retsos",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "45",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 2914752,
+            "firstName": "Panagiotis",
+            "lastName": "Retsos",
+            "rankings": null
+          },
+          {
+            "id": 566644,
+            "age": 31,
+            "name": "Chiquinho",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "22",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 2349131,
+            "firstName": "",
+            "lastName": "Chiquinho",
+            "rankings": null
+          },
+          {
+            "id": 1358378,
+            "age": 21,
+            "name": "Lorenzo Scipioni",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "16",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 2208562,
+            "firstName": "Lorenzo",
+            "lastName": "Scipioni",
+            "rankings": null
+          },
+          {
+            "id": 530197,
+            "age": 30,
+            "name": "Manolis Saliakas",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "2",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 1205561,
+            "firstName": "Manolis",
+            "lastName": "Saliakas",
+            "rankings": null
+          },
+          {
+            "id": 201704,
+            "age": 34,
+            "name": "Remo Freuler",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "19",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 2322660,
+            "firstName": "Remo",
+            "lastName": "Freuler",
+            "rankings": null
+          },
+          {
+            "id": 1639718,
+            "age": 21,
+            "name": "Theofanis Bakoulas",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "21",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 1015556,
+            "firstName": "Theofanis",
+            "lastName": "Bakoulas",
+            "rankings": null
+          },
+          {
+            "id": 575225,
+            "age": 31,
+            "name": "Gelson Martins",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 1499702,
+            "firstName": "Gelson",
+            "lastName": "Martins",
+            "rankings": null
+          },
+          {
+            "id": 1114798,
+            "age": 27,
+            "name": "Jota Silva",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "20",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 8284231,
+            "firstName": "Jota",
+            "lastName": "Silva",
+            "rankings": null
+          },
+          {
+            "id": 643690,
+            "age": 30,
+            "name": "Roman Yaremchuk",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Ukraine",
+            "countryCode": "UKR",
+            "marketValue": 2088008,
+            "firstName": "Roman",
+            "lastName": "Yaremchuk",
+            "rankings": null
+          }
+        ],
+        "unavailable": [
           {
             "id": 884382,
             "age": 33,
@@ -711,13 +1159,482 @@
             "firstName": "Yusuf",
             "lastName": "Yazıcı"
           }
-        ]
+        ],
+        "averageStarterAge": 24.9,
+        "totalStarterMarketValue": 35382587,
+        "lastMatch": {
+          "matchId": 6106050,
+          "homeTeamId": 8638,
+          "awayTeamId": 885256,
+          "homeTeamName": "Olympiacos",
+          "awayTeamName": "NFC Volos",
+          "homeScore": 3,
+          "awayScore": 2,
+          "matchDate": "2026-09-08T20:45:00"
+        }
       },
       "awayTeam": {
         "id": 1957,
         "name": "Jagiellonia Białystok",
-        "formation": "",
-        "starters": [],
+        "formation": "4-1-4-1",
+        "starters": [
+          {
+            "id": 1306211,
+            "age": 22,
+            "name": "Sławomir Abramowicz",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "50",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 2270398,
+            "firstName": "Sławomir",
+            "lastName": "Abramowicz",
+            "rankings": null
+          },
+          {
+            "id": 1156126,
+            "age": 24,
+            "name": "Norbert Wojtuszek",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "15",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1832427,
+            "firstName": "Norbert",
+            "lastName": "Wojtuszek",
+            "rankings": null
+          },
+          {
+            "id": 1184043,
+            "age": 25,
+            "name": "Bernardo Vital",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1817287,
+            "firstName": "Bernardo",
+            "lastName": "Vital",
+            "rankings": null
+          },
+          {
+            "id": 1161614,
+            "age": 24,
+            "name": "Apostolos Konstantopoulos",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "44",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 525812,
+            "firstName": "Apostolos",
+            "lastName": "Konstantopoulos",
+            "rankings": null
+          },
+          {
+            "id": 1132121,
+            "age": 25,
+            "name": "Bartłomiej Wdowik",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1244516,
+            "firstName": "Bartłomiej",
+            "lastName": "Wdowik",
+            "rankings": null
+          },
+          {
+            "id": 560564,
+            "age": 34,
+            "name": "Taras Romanczuk",
+            "positionId": 65,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 171977,
+            "firstName": "Taras",
+            "lastName": "Romanczuk",
+            "rankings": null
+          },
+          {
+            "id": 1624587,
+            "age": 20,
+            "name": "Jeremy Agbonifo",
+            "positionId": 82,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2994504,
+            "firstName": "Jeremy",
+            "lastName": "Agbonifo",
+            "rankings": null
+          },
+          {
+            "id": 573756,
+            "age": 35,
+            "name": "Jesús Imaz",
+            "positionId": 84,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 272180,
+            "firstName": "Jesús",
+            "lastName": "Imaz",
+            "rankings": null
+          },
+          {
+            "id": 1161870,
+            "age": 25,
+            "name": "Anders Klynge",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "19",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 920525,
+            "firstName": "Anders",
+            "lastName": "Klynge",
+            "rankings": null
+          },
+          {
+            "id": 1177738,
+            "age": 24,
+            "name": "Kajetan Szmyt",
+            "positionId": 88,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 604660,
+            "firstName": "Kajetan",
+            "lastName": "Szmyt",
+            "rankings": null
+          },
+          {
+            "id": 1186446,
+            "age": 25,
+            "name": "Nik Prelec",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "99",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
+            "horizontalLayout": {
+              "x": 0.89,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.212
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.89,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1018958,
+            "firstName": "Nik",
+            "lastName": "Prelec",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 1459811,
+          "age": 34,
+          "name": "Adrian Siemieniec",
+          "countryName": "Poland",
+          "countryCode": "POL",
+          "firstName": "Adrian",
+          "lastName": "Siemieniec",
+          "primaryTeamId": 1957,
+          "primaryTeamName": "Jagiellonia Białystok",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 1658897,
+            "age": 19,
+            "name": "Michał Perchel",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 862527,
+            "firstName": "Michał",
+            "lastName": "Perchel",
+            "rankings": null
+          },
+          {
+            "id": 1304445,
+            "age": 23,
+            "name": "Cezary Polak",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "2",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 281103,
+            "firstName": "Cezary",
+            "lastName": "Polak",
+            "rankings": null
+          },
+          {
+            "id": 924935,
+            "age": 26,
+            "name": "Dušan Stojinović",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
+            "marketValue": 435747,
+            "firstName": "Dušan",
+            "lastName": "Stojinović",
+            "rankings": null
+          },
+          {
+            "id": 1630298,
+            "age": 23,
+            "name": "Guilherme Montóia",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "23",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 661538,
+            "firstName": "Guilherme",
+            "lastName": "Montóia",
+            "rankings": null
+          },
+          {
+            "id": 980264,
+            "age": 26,
+            "name": "Rodrigo Conceição",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "27",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "firstName": "Rodrigo",
+            "lastName": "Conceição",
+            "rankings": null
+          },
+          {
+            "id": 1366619,
+            "age": 21,
+            "name": "Dawid Drachal",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 864614,
+            "firstName": "Dawid",
+            "lastName": "Drachal",
+            "rankings": null
+          },
+          {
+            "id": 1681526,
+            "age": 19,
+            "name": "Eryk Kozłowski",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "85",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 388782,
+            "firstName": "Eryk",
+            "lastName": "Kozłowski",
+            "rankings": null
+          },
+          {
+            "id": 916335,
+            "age": 26,
+            "name": "Hampus Finndell",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 543280,
+            "firstName": "Hampus",
+            "lastName": "Finndell",
+            "rankings": null
+          },
+          {
+            "id": 906919,
+            "age": 27,
+            "name": "Sergio Lozano",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "21",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 772939,
+            "firstName": "Sergio",
+            "lastName": "Lozano",
+            "rankings": null
+          },
+          {
+            "id": 1098041,
+            "age": 24,
+            "name": "Aleksandar Ćirković",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "32",
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 1613552,
+            "firstName": "Aleksandar",
+            "lastName": "Ćirković",
+            "rankings": null
+          },
+          {
+            "id": 728478,
+            "age": 28,
+            "name": "Kamil Józwiak",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "72",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 220356,
+            "firstName": "Kamil",
+            "lastName": "Józwiak",
+            "rankings": null
+          },
+          {
+            "id": 1224181,
+            "age": 23,
+            "name": "Youssuf Sylla",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "17",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 344762,
+            "firstName": "Youssuf",
+            "lastName": "Sylla",
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1673762,
@@ -733,23 +1650,20 @@
             },
             "firstName": "Ousmane",
             "lastName": "Sow"
-          },
-          {
-            "id": 924935,
-            "age": 26,
-            "name": "Dušan Stojinović",
-            "countryName": "Slovenia",
-            "countryCode": "SVN",
-            "marketValue": 435747,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Dušan",
-            "lastName": "Stojinović"
           }
-        ]
+        ],
+        "averageStarterAge": 26.4,
+        "totalStarterMarketValue": 13673244,
+        "lastMatch": {
+          "matchId": 5803983,
+          "homeTeamId": 10265,
+          "awayTeamId": 1957,
+          "homeTeamName": "Wisła Kraków",
+          "awayTeamName": "Jagiellonia Białystok",
+          "homeScore": 2,
+          "awayScore": 0,
+          "matchDate": "2026-09-11T20:30:00"
+        }
       }
     },
     "hasPlayoff": false,
