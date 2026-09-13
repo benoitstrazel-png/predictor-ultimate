@@ -466,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "7"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lille have scored in their last 7 away matches."
+              "defaultText": "Lille have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
@@ -623,6 +623,23 @@
           "color": "#E01D13"
         },
         {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8639,
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have kept the most clean sheets in the competition (3)",
+          "color": "#E01D13"
+        },
+        {
           "type": "player",
           "playerId": 500520,
           "teamId": 8639,
@@ -648,33 +665,6 @@
           ],
           "text": "Nabil Bentaleb has created the most big chances for Lille (2)",
           "color": "#E01D13"
-        },
-        {
-          "type": "player",
-          "playerId": 1426809,
-          "teamId": 8639,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1426809,
-              "name": "Ethan Mbappé",
-              "type": "player"
-            },
-            {
-              "value": 8639,
-              "name": "Lille",
-              "type": "team"
-            },
-            {
-              "value": 2.6,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Ethan Mbappé has the most shots on target per match for Lille (2.6)",
-          "color": "#E01D13"
         }
       ],
       "countryCode": "FRA",
@@ -695,37 +685,41 @@
       }
     },
     "weather": {
-      "temperature": 26,
+      "temperature": 25,
       "windSpeed": 3,
       "windDirectionCardinal": "SSE",
       "iconCode": 32,
-      "relativeHumidity": 61,
-      "precipChance": 0,
+      "relativeHumidity": 62,
+      "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
       "cloudCover": 10,
       "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-13T06:00:13Z",
+      "lastUpdated": "2026-09-13T18:00:10Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5802942,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9831,
         "name": "Nice",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1254147,
+            "age": 22,
             "name": "Antoine Mendy",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 5582058,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-06T14:06:49Z",
               "type": "injury",
               "expectedReturn": "Late May 2027"
             },
@@ -734,10 +728,13 @@
           },
           {
             "id": 1440009,
+            "age": 26,
             "name": "Moïse Bombito",
+            "countryName": "Canada",
+            "countryCode": "CAN",
+            "marketValue": 1114939,
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-08-26T12:07:33Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
@@ -746,10 +743,13 @@
           },
           {
             "id": 355901,
+            "age": 32,
             "name": "Morgan Sanson",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1771084,
             "unavailability": {
               "injuryId": 140,
-              "lastUpdated": "2026-09-11T10:38:52Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -758,10 +758,13 @@
           },
           {
             "id": 413525,
+            "age": 33,
             "name": "Laurent Abergel",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1364383,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-10T19:53:13Z",
               "type": "injury",
               "expectedReturn": "Late April 2027"
             },
@@ -773,13 +776,18 @@
       "awayTeam": {
         "id": 8639,
         "name": "Lille",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1421275,
+            "age": 23,
             "name": "Hamza Igamane",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 10591153,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T13:00:15Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
