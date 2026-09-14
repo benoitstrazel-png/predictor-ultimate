@@ -512,10 +512,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -529,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Osasuna haven't drawn in their last 4 matches."
+              "defaultText": "Atlético Madrid haven't drawn in their last 4 matches and Osasuna in their last 4."
             }
           ]
         },
@@ -591,15 +593,15 @@
         },
         {
           "type": "player",
-          "playerId": 940976,
+          "playerId": 1419969,
           "teamId": 9906,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 940976,
-              "name": "Kang-In Lee",
+              "value": 1419969,
+              "name": "Rodrigo Mendoza",
               "type": "player"
             },
             {
@@ -608,12 +610,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 2.5,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Kang-In Lee has created the most big chances for Atlético Madrid (2)",
+          "text": "Rodrigo Mendoza has the most shots on target per match for Atlético Madrid (2.5)",
           "color": "#C63527"
         },
         {
@@ -657,15 +659,15 @@
         },
         {
           "type": "player",
-          "playerId": 251269,
+          "playerId": 1323398,
           "teamId": 8371,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 251269,
-              "name": "Ante Budimir",
+              "value": 1323398,
+              "name": "Abel Bretones",
               "type": "player"
             },
             {
@@ -674,12 +676,12 @@
               "type": "team"
             },
             {
-              "value": 2.4,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Ante Budimir has the most shots on target per match for Osasuna (2.4)",
+          "text": "Abel Bretones has created the most big chances for Osasuna (2)",
           "color": "#af1428"
         }
       ],
@@ -697,11 +699,11 @@
             "goalAssist": 1,
             "ontargetScoringAtt": 1.33,
             "motm": 1,
-            "gamesPlayed": 4,
-            "minsPlayed": 239,
-            "minsPlayedGoal": 80,
-            "expectedGoals": 0.515500009059906,
-            "playerRating": 7.23
+            "gamesPlayed": 5,
+            "minsPlayed": 298,
+            "minsPlayedGoal": 99,
+            "expectedGoals": 0.5289000272750854,
+            "playerRating": 7.38
           }
         },
         "awayPlayer": {
@@ -735,7 +737,45 @@
         ]
       },
       "countryCode": "ESP",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/87/5868062/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -752,18 +792,18 @@
       }
     },
     "weather": {
-      "temperature": 29,
+      "temperature": 27,
       "windSpeed": 5,
-      "windDirectionCardinal": "NNE",
-      "iconCode": 34,
-      "relativeHumidity": 28,
-      "precipChance": 7,
+      "windDirectionCardinal": "NE",
+      "iconCode": 32,
+      "relativeHumidity": 30,
+      "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 28,
-      "description": "Mostly Sunny",
+      "cloudCover": 11,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-13T19:00:15Z",
+      "lastUpdated": "2026-09-14T07:00:15Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },

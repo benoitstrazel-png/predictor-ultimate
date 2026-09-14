@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Juventus haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Juventus have 3W, 1D, 1L in five matches while NEC Nijmegen have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -483,13 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have an average of 1.33 goals in their last three matches and NEC Nijmegen have an average of 1."
+              "defaultText": "Juventus have scored 5 goals in their last 3 matches, while NEC Nijmegen have scored 3."
             },
             {
               "OddsType": "dc",
@@ -615,17 +622,17 @@
     },
     "weather": {
       "temperature": 20,
-      "windSpeed": 3,
+      "windSpeed": 2,
       "windDirectionCardinal": "NE",
       "iconCode": 11,
-      "relativeHumidity": 77,
-      "precipChance": 43,
-      "precipitation": 0.28,
+      "relativeHumidity": 76,
+      "precipChance": 49,
+      "precipitation": 0.27,
       "snow": 0,
-      "cloudCover": 55,
+      "cloudCover": 57,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-13T21:00:18Z",
+      "lastUpdated": "2026-09-14T09:00:13Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -702,6 +709,7 @@
             "positionId": 34,
             "usualPlayingPositionId": 1,
             "shirtNumber": "3",
+            "isCaptain": true,
             "countryName": "Brazil",
             "countryCode": "BRA",
             "horizontalLayout": {
@@ -774,15 +782,14 @@
             "rankings": null
           },
           {
-            "id": 624166,
+            "id": 787350,
             "age": 28,
-            "name": "Manuel Locatelli",
+            "name": "Douglas Luiz",
             "positionId": 64,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "5",
-            "isCaptain": true,
-            "countryName": "Italy",
-            "countryCode": "ITA",
+            "shirtNumber": "12",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.7,
@@ -795,20 +802,20 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 19019899,
-            "firstName": "Manuel",
-            "lastName": "Locatelli",
+            "marketValue": 15361008,
+            "firstName": "Douglas",
+            "lastName": "Luiz",
             "rankings": null
           },
           {
-            "id": 787350,
+            "id": 866516,
             "age": 28,
-            "name": "Douglas Luiz",
+            "name": "Teun Koopmeiners",
             "positionId": 66,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "12",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
+            "shirtNumber": "8",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.3,
@@ -821,9 +828,9 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 15361008,
-            "firstName": "Douglas",
-            "lastName": "Luiz",
+            "marketValue": 18986273,
+            "firstName": "Teun",
+            "lastName": "Koopmeiners",
             "rankings": null
           },
           {
@@ -1028,7 +1035,7 @@
             "age": 20,
             "name": "Filippo Pagnucco",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "46",
+            "shirtNumber": "43",
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 796421,
@@ -1037,16 +1044,29 @@
             "rankings": null
           },
           {
-            "id": 866516,
-            "age": 28,
-            "name": "Teun Koopmeiners",
+            "id": 1400185,
+            "age": 20,
+            "name": "Justin Oboavwoduo",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 18986273,
-            "firstName": "Teun",
-            "lastName": "Koopmeiners",
+            "shirtNumber": "45",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 1224000,
+            "firstName": "Justin",
+            "lastName": "Oboavwoduo",
+            "rankings": null
+          },
+          {
+            "id": 1107280,
+            "age": 24,
+            "name": "Pape Sarr",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "29",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 31809716,
+            "firstName": "Pape",
+            "lastName": "Sarr",
             "rankings": null
           },
           {
@@ -1060,19 +1080,6 @@
             "marketValue": 13168095,
             "firstName": "Edon",
             "lastName": "Zhegrova",
-            "rankings": null
-          },
-          {
-            "id": 643229,
-            "age": 29,
-            "name": "Jérémie Boga",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "13",
-            "countryName": "Ivory Coast",
-            "countryCode": "CIV",
-            "marketValue": 3049157,
-            "firstName": "Jérémie",
-            "lastName": "Boga",
             "rankings": null
           },
           {
@@ -1106,40 +1113,9 @@
             "lastName": "Kelly"
           },
           {
-            "id": 643229,
-            "age": 29,
-            "name": "Jérémie Boga",
-            "countryName": "Ivory Coast",
-            "countryCode": "CIV",
-            "marketValue": 3049157,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Jérémie",
-            "lastName": "Boga"
-          },
-          {
-            "id": 624166,
-            "age": 28,
-            "name": "Manuel Locatelli",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 19019899,
-            "unavailability": {
-              "injuryId": 70,
-              "type": "injury",
-              "expectedReturn": "Early January 2027"
-            },
-            "firstName": "Manuel",
-            "lastName": "Locatelli"
-          },
-          {
             "id": 1078846,
             "age": 26,
             "name": "Andrea Cambiaso",
-            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 26496646,
@@ -1150,6 +1126,22 @@
             },
             "firstName": "Andrea",
             "lastName": "Cambiaso"
+          },
+          {
+            "id": 643229,
+            "age": 29,
+            "name": "Jérémie Boga",
+            "positionId": 1000,
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 3049157,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Jérémie",
+            "lastName": "Boga"
           },
           {
             "id": 1083562,
@@ -1200,6 +1192,22 @@
             "lastName": "Thuram-Ulien"
           },
           {
+            "id": 624166,
+            "age": 28,
+            "name": "Manuel Locatelli",
+            "positionId": 1000,
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 19019899,
+            "unavailability": {
+              "injuryId": 70,
+              "type": "injury",
+              "expectedReturn": "Early January 2027"
+            },
+            "firstName": "Manuel",
+            "lastName": "Locatelli"
+          },
+          {
             "id": 848266,
             "age": 28,
             "name": "Weston McKennie",
@@ -1233,16 +1241,16 @@
           }
         ],
         "averageStarterAge": 27.2,
-        "totalStarterMarketValue": 206584309,
+        "totalStarterMarketValue": 206550683,
         "lastMatch": {
-          "matchId": 5749667,
-          "homeTeamId": 9885,
-          "awayTeamId": 8564,
-          "homeTeamName": "Juventus",
-          "awayTeamName": "Milan",
-          "homeScore": 1,
-          "awayScore": 1,
-          "matchDate": "2026-09-06T20:45:00"
+          "matchId": 5749677,
+          "homeTeamId": 7943,
+          "awayTeamId": 9885,
+          "homeTeamName": "Sassuolo",
+          "awayTeamName": "Juventus",
+          "homeScore": 3,
+          "awayScore": 2,
+          "matchDate": "2026-09-13T20:45:00"
         }
       },
       "awayTeam": {

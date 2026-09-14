@@ -448,8 +448,8 @@
                 "3",
                 "away_team",
                 "1",
-                "3",
-                "1"
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Auxerre have 1W, 1D, 3L in five matches while Brest have 1W, 3D, 1L."
+              "defaultText": "Auxerre have 1W, 1D, 3L in five matches while Brest have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "6"
+                "1",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored 3 goals in their last 3 matches, while Brest have scored 6."
+              "defaultText": "Auxerre have an average of 1 goals in their last three matches and Brest have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -582,15 +581,15 @@
         },
         {
           "type": "player",
-          "playerId": 1401248,
+          "playerId": 1474555,
           "teamId": 8583,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1401248,
-              "name": "Rémy Lascary",
+              "value": 1474555,
+              "name": "Christ Makosso",
               "type": "player"
             },
             {
@@ -599,12 +598,12 @@
               "type": "team"
             },
             {
-              "value": 2.7,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Rémy Lascary has the most shots on target per match for Auxerre (2.7)",
+          "text": "Christ Makosso has created the most big chances for Auxerre (2)",
           "color": "#055DC6"
         },
         {
@@ -670,7 +669,45 @@
         }
       ],
       "countryCode": "FRA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/53/5802938/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -687,18 +724,18 @@
       }
     },
     "weather": {
-      "temperature": 25,
+      "temperature": 26,
       "windSpeed": 3,
-      "windDirectionCardinal": "NW",
+      "windDirectionCardinal": "NNW",
       "iconCode": 30,
-      "relativeHumidity": 43,
-      "precipChance": 1,
+      "relativeHumidity": 40,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 39,
+      "cloudCover": 31,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-13T15:00:10Z",
+      "lastUpdated": "2026-09-14T03:00:12Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -795,6 +832,21 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 1603990,
+            "age": 20,
+            "name": "Noah Edjouma",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 3977012,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Noah",
+            "lastName": "Edjouma"
+          },
           {
             "id": 1231909,
             "age": 23,
