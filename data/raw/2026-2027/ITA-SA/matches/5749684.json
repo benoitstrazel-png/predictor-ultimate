@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
-            "linkToMatch": "/matches/liverpool-vs-como/2xgkrd#5765327",
-            "date": {
-              "utcTime": "2026-08-16T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8650/overview/liverpool",
-            "tooltipText": {
-              "utcTime": "2026-08-16T17:00:00.000Z",
-              "homeTeam": "Liverpool",
-              "homeTeamId": 8650,
-              "homeScore": "2",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
@@ -423,6 +393,36 @@
               "name": "RB Leipzig",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
+            "linkToMatch": "/matches/parma-vs-como/3f58t2#5749671",
+            "date": {
+              "utcTime": "2026-09-14T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10167/overview/parma",
+            "tooltipText": {
+              "utcTime": "2026-09-14T16:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "2",
+              "awayTeam": "Parma",
+              "awayTeamId": 10167,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,8 +439,8 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
                 "4"
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Como haven't lost in 4 matches."
+              "defaultText": "Como have won their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -468,7 +468,7 @@
                 "home_team",
                 "4",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Frosinone have scored in their last 4 matches and Como have scored in their last 4 matches."
+              "defaultText": "Frosinone have scored in their last 4 matches and Como have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -507,17 +507,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Frosinone have 2W, 1D, 2L in five matches while Como have 3W, 1D, 1L."
+              "defaultText": "Como haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -626,7 +620,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 13,
               "name": null,
               "type": "integer"
             },
@@ -636,7 +630,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 13 goals in their last 5 matches",
           "color": "#005ea9"
         },
         {
@@ -648,34 +642,72 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#005ea9"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10171,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 2.3,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Average 2.3 goals per match",
+          "text": "Haven't lost in 5 matches",
           "color": "#005ea9"
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749684/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -693,19 +725,19 @@
     },
     "weather": {
       "temperature": 29,
-      "windSpeed": 2,
+      "windSpeed": 3,
       "windDirectionCardinal": "SSW",
-      "iconCode": 34,
-      "relativeHumidity": 42,
-      "precipChance": 24,
+      "iconCode": 30,
+      "relativeHumidity": 39,
+      "precipChance": 19,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 27,
-      "description": "Mostly Sunny",
+      "cloudCover": 43,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-14T03:00:11Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-09-15T03:00:11Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749684,

@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8530.png",
-            "linkToMatch": "/matches/catania-vs-parma/2w2prz#5852771",
-            "date": {
-              "utcTime": "2026-08-14T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8530/overview/catania",
-            "tooltipText": {
-              "utcTime": "2026-08-14T16:00:00.000Z",
-              "homeTeam": "Parma",
-              "homeTeamId": 10167,
-              "homeScore": "2",
-              "awayTeam": "Catania",
-              "awayTeamId": 8530,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8530",
-              "name": "Catania",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
@@ -271,6 +241,36 @@
               "id": "6504",
               "name": "Monza",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
+            "linkToMatch": "/matches/parma-vs-como/3f58t2#5749671",
+            "date": {
+              "utcTime": "2026-09-14T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10171/overview/como",
+            "tooltipText": {
+              "utcTime": "2026-09-14T16:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "2",
+              "awayTeam": "Parma",
+              "awayTeamId": 10167,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": true
             }
           }
         ],
@@ -469,7 +469,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
+                "0.67",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -481,7 +481,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Parma have an average of 0.33 goals in their last three matches and Genoa have an average of 0.67."
+              "defaultText": "Parma have an average of 0.67 goals in their last three matches and Genoa have an average of 0.67."
             },
             {
               "OddsType": "ou",
@@ -492,7 +492,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
+                "0.67",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -504,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Parma have an average of 0.33 goals in their last three matches and Genoa have an average of 0.67."
+              "defaultText": "Parma have an average of 0.67 goals in their last three matches and Genoa have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -514,7 +514,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Parma haven't won a match in 4 attempts."
+              "defaultText": "Parma haven't won a match in 5 attempts."
             }
           ]
         },
@@ -547,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 2,
               "name": null,
               "type": "integer"
             },
@@ -557,61 +557,41 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 2 goals in their last 5 matches",
           "color": "#000000"
         },
         {
-          "type": "player",
-          "playerId": 867789,
+          "type": "team",
+          "playerId": null,
           "teamId": 10167,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 867789,
-              "name": "Emanuele Valeri",
-              "type": "player"
-            },
-            {
-              "value": 10167,
-              "name": "Parma",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Emanuele Valeri has created the most big chances for Parma (2)",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#000000"
         },
         {
-          "type": "player",
-          "playerId": 1843609,
+          "type": "team",
+          "playerId": null,
           "teamId": 10167,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 1843609,
-              "name": "Simone Lontani",
-              "type": "player"
-            },
-            {
-              "value": 10167,
-              "name": "Parma",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Simone Lontani has the most shots on target per match for Parma (1)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#000000"
         },
         {
@@ -655,15 +635,15 @@
         },
         {
           "type": "player",
-          "playerId": 1050163,
+          "playerId": 1215057,
           "teamId": 10233,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1050163,
-              "name": "Lorenzo Colombo",
+              "value": 1215057,
+              "name": "Vítinha",
               "type": "player"
             },
             {
@@ -672,17 +652,55 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.2,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Lorenzo Colombo has created the most big chances for Genoa (2)",
+          "text": "Vítinha has the most shots on target per match for Genoa (1.2)",
           "color": "#CB1111"
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749687/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -701,18 +719,18 @@
     "weather": {
       "temperature": 27,
       "windSpeed": 2,
-      "windDirectionCardinal": "NE",
-      "iconCode": 34,
-      "relativeHumidity": 55,
-      "precipChance": 2,
+      "windDirectionCardinal": "NNE",
+      "iconCode": 30,
+      "relativeHumidity": 54,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 22,
-      "description": "Mostly Sunny",
+      "cloudCover": 33,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-14T03:00:11Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-09-15T03:00:11Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749687,
