@@ -89,12 +89,13 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen || !match) return null;
-
-  const targetMatch = currentMatch?.id === match.id ? currentMatch : match;
+  const targetMatch = (currentMatch?.id === match?.id) ? currentMatch : (match || {});
   const homeTeam = targetMatch.homeTeam || targetMatch.home_team || 'Domicile';
   const awayTeam = targetMatch.awayTeam || targetMatch.away_team || 'Extérieur';
-  const isFinished = targetMatch.status === 'FINISHED' || (targetMatch.score && targetMatch.score !== 'À Venir');
+  const isFinished = targetMatch.status === 'FINISHED' || 
+    (targetMatch.score && targetMatch.score !== 'À Venir') || 
+    Boolean(targetMatch.goals?.length) || 
+    Boolean(targetMatch.timeline?.length);
   const isLive = targetMatch.status === 'LIVE';
 
   const scoreDisplay = targetMatch.score 
@@ -118,26 +119,27 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
 
   return (
     <AnimatePresence>
-      <div
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 9999,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '24px 16px',
-          background: 'rgba(4, 6, 12, 0.85)',
-          backdropFilter: 'blur(16px)',
-        }}
-        onClick={onClose}
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.96, y: 15 }}
-          transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          onClick={(e) => e.stopPropagation()}
+      {Boolean(isOpen && match) && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '24px 16px',
+            background: 'rgba(4, 6, 12, 0.85)',
+            backdropFilter: 'blur(16px)',
+          }}
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 15 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            onClick={(e) => e.stopPropagation()}
           style={{
             width: '100%',
             maxWidth: 820,
@@ -697,6 +699,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
           </div>
         </motion.div>
       </div>
+      )}
     </AnimatePresence>
   );
 }

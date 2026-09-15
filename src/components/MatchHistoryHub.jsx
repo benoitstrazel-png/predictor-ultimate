@@ -63,7 +63,25 @@ export default function MatchHistoryHub() {
       const key = getMatchKey(m);
       const existing = map.get(key);
       if (existing) {
-        // Fusion intelligente en préservant les données les plus complètes (arbitre détaillé, cotes, logos, buteurs certifiés)
+        // Fusion intelligente : si l'une des sources a FINISHED ou LIVE, ce statut prévaut sur SCHEDULED
+        const isFin = m.status === 'FINISHED' || existing.status === 'FINISHED';
+        const isLive = !isFin && (m.status === 'LIVE' || existing.status === 'LIVE');
+        const resolvedStatus = isFin ? 'FINISHED' : (isLive ? 'LIVE' : 'SCHEDULED');
+
+        // Score : privilégier un score chiffré réel sur "À Venir"
+        let resolvedScore = 'À Venir';
+        if (m.score && typeof m.score === 'object') {
+          resolvedScore = `${m.score.home}-${m.score.away}`;
+        } else if (m.score && m.score !== 'À Venir') {
+          resolvedScore = m.score;
+        } else if (existing.score && existing.score !== 'À Venir') {
+          resolvedScore = existing.score;
+        } else if (resolvedStatus === 'FINISHED') {
+          const h = m.homeScore ?? existing.homeScore ?? 0;
+          const a = m.awayScore ?? existing.awayScore ?? 0;
+          resolvedScore = `${h}-${a}`;
+        }
+
         map.set(key, {
           ...existing,
           ...m,
@@ -77,21 +95,21 @@ export default function MatchHistoryHub() {
           awayTeam: m.awayTeam || existing.awayTeam,
           homeLogo: m.homeLogo || existing.homeLogo,
           awayLogo: m.awayLogo || existing.awayLogo,
-          score: (m.score && typeof m.score === 'object') ? `${m.score.home}-${m.score.away}` : (m.score || existing.score),
-          homeScore: m.homeScore ?? existing.homeScore,
-          awayScore: m.awayScore ?? existing.awayScore,
+          score: resolvedScore,
+          homeScore: (m.homeScore !== undefined && m.homeScore !== null) ? m.homeScore : existing.homeScore,
+          awayScore: (m.awayScore !== undefined && m.awayScore !== null) ? m.awayScore : existing.awayScore,
           referee: (m.referee && typeof m.referee === 'object') ? m.referee : (existing.referee || m.referee),
           goals: (m.goals && m.goals.length > 0) ? m.goals : (existing.goals || []),
-          status: m.status || existing.status || 'SCHEDULED',
+          status: resolvedStatus,
           aiSummary: m.aiSummary || existing.aiSummary,
           betclicOdds: m.betclicOdds || existing.betclicOdds,
           probabilities: m.probabilities || existing.probabilities,
-          valueBets: m.valueBets || existing.valueBets || [],
+          valueBets: (m.valueBets && m.valueBets.length > 0) ? m.valueBets : (existing.valueBets || []),
           weather: m.weather || existing.weather,
           lineups: existing.lineups || m.lineups,
           formations: existing.formations || m.formations,
           coaches: existing.coaches || m.coaches,
-          timeline: existing.timeline || m.timeline,
+          timeline: (existing.timeline && existing.timeline.length > 0) ? existing.timeline : (m.timeline || []),
           teamStats: existing.teamStats || m.teamStats,
         });
       } else {

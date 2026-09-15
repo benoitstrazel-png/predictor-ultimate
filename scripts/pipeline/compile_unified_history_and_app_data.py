@@ -127,8 +127,26 @@ def compile_data():
     # 1. Verification de la couverture des matchs terminés
     cursor.execute("SELECT COUNT(*) as cnt FROM fact_matches WHERE status = 'FINISHED';")
     fin_count = cursor.fetchone()['cnt']
-    if fin_count < 1000 and os.path.exists(RAW_DIR):
-        print(f"⚠️ [Compiler] Seulement {fin_count} matchs terminés en base. Rechargement automatique depuis {RAW_DIR}...")
+    cursor.execute("SELECT COUNT(*) as cnt FROM fact_matches WHERE season = '2026-2027' AND status = 'FINISHED';")
+    fin_2627_count = cursor.fetchone()['cnt']
+
+    # Compter rapidement les matchs terminés dans les fixtures 2026-2027 du dossier raw
+    raw_finished_2627 = 0
+    raw_2627_dir = os.path.join(RAW_DIR, "2026-2027")
+    if os.path.isdir(raw_2627_dir):
+        for comp in os.listdir(raw_2627_dir):
+            fix_path = os.path.join(raw_2627_dir, comp, "fixtures_calendar.json")
+            if os.path.isfile(fix_path):
+                try:
+                    with open(fix_path, 'r', encoding='utf-8') as ff:
+                        f_data = json.load(ff)
+                        raw_finished_2627 += sum(1 for m in f_data if m.get('status', {}).get('finished') or m.get('status', {}).get('scoreStr'))
+                except Exception:
+                    pass
+
+    needs_reload = (fin_count < 1000) or (raw_finished_2627 > fin_2627_count)
+    if needs_reload and os.path.exists(RAW_DIR):
+        print(f"🔄 [Compiler] Synchronisation SQLite nécessaire (BDD: {fin_2627_count} finis 26/27 vs Raw: {raw_finished_2627} finis). Rechargement...")
         from scripts.pipeline.reload_all_raw_to_sqlite import reload_all
         reload_all()
         conn = sqlite3.connect(DB_PATH)
