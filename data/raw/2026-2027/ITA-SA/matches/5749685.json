@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
-            "linkToMatch": "/matches/inter-vs-juventus/2u4jlu#5449692",
-            "date": {
-              "utcTime": "2026-08-08T11:10:00.000Z"
-            },
-            "teamPageUrl": "/teams/8636/overview/inter",
-            "tooltipText": {
-              "utcTime": "2026-08-08T11:10:00.000Z",
-              "homeTeam": "Juventus",
-              "homeTeamId": 9885,
-              "homeScore": "1",
-              "awayTeam": "Inter",
-              "awayTeamId": 8636,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9885",
-              "name": "Juventus",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8540.png",
@@ -271,39 +241,39 @@
               "name": "Milan",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943.png",
+            "linkToMatch": "/matches/sassuolo-vs-juventus/2mml13#5749677",
+            "date": {
+              "utcTime": "2026-09-13T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/7943/overview/sassuolo",
+            "tooltipText": {
+              "utcTime": "2026-09-13T18:45:00.000Z",
+              "homeTeam": "Sassuolo",
+              "homeTeamId": 7943,
+              "homeScore": "3",
+              "awayTeam": "Juventus",
+              "awayTeamId": 9885,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "7943",
+              "name": "Sassuolo",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10181.png",
-            "linkToMatch": "/matches/atalanta-vs-hapoel-tel-aviv/2w5x7p#5988065",
-            "date": {
-              "utcTime": "2026-08-20T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10181/overview/hapoel-tel-aviv",
-            "tooltipText": {
-              "utcTime": "2026-08-20T18:30:00.000Z",
-              "homeTeam": "Atalanta",
-              "homeTeamId": 8524,
-              "homeScore": "0",
-              "awayTeam": "Hapoel Tel Aviv",
-              "awayTeamId": 10181,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10181",
-              "name": "Hapoel Tel Aviv",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Atalanta",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
+            "linkToMatch": "/matches/atalanta-vs-cagliari/2ekudg#5749670",
+            "date": {
+              "utcTime": "2026-09-12T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8529/overview/cagliari",
+            "tooltipText": {
+              "utcTime": "2026-09-12T18:45:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "1",
+              "awayTeam": "Cagliari",
+              "awayTeamId": 8529,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8529",
+              "name": "Cagliari",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Juventus haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Juventus have 3W, 1D, 1L in five matches while Atalanta have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -466,9 +472,9 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "8",
+                "9",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,19 +485,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored in their last 8 matches and Atalanta have scored in their last 4 matches."
+              "defaultText": "Juventus have scored in their last 9 matches and Atalanta have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have an average of 1.33 goals in their last three matches and Atalanta have an average of 1."
+              "defaultText": "Juventus have scored 5 goals in their last 3 matches, while Atalanta have scored 3."
             },
             {
               "OddsType": "dc",
@@ -512,7 +519,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atalanta haven't drawn in their last 4 matches."
+              "defaultText": "Atalanta haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -545,7 +552,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -555,24 +562,34 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#000001"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 841672,
           "teamId": 9885,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 841672,
+              "name": "Nicolás González",
+              "type": "player"
+            },
+            {
+              "value": 9885,
+              "name": "Juventus",
+              "type": "team"
+            },
+            {
+              "value": 1.7,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Have kept the most clean sheets in the competition (2)",
+          "text": "Nicolás González has the most shots on target per match for Juventus (1.7)",
           "color": "#000001"
         },
         {
@@ -611,7 +628,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -621,34 +638,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#004ca6"
         },
         {
-          "type": "player",
-          "playerId": 833638,
+          "type": "team",
+          "playerId": null,
           "teamId": 8524,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
             {
-              "value": 833638,
-              "name": "Nikola Krstovic",
-              "type": "player"
-            },
-            {
-              "value": 8524,
-              "name": "Atalanta",
-              "type": "team"
-            },
-            {
-              "value": 1.9,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Nikola Krstovic has the most shots on target per match for Atalanta (1.9)",
+          "text": "Have conceded the most penalties this season (1)",
           "color": "#004ca6"
         },
         {
@@ -665,22 +672,60 @@
               "type": "player"
             },
             {
-              "value": 1,
+              "value": 2,
               "name": null,
               "type": "ordinal"
             },
             {
-              "value": 6.3,
+              "value": 5.5,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Marco Carnesecchi is ranked 1 in saves per match in the competition (6.3)",
+          "text": "Marco Carnesecchi is ranked 2 in saves per match in the competition (5.5)",
           "color": "#004ca6"
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749685/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -697,37 +742,41 @@
       }
     },
     "weather": {
-      "temperature": 25,
+      "temperature": 26,
       "windSpeed": 2,
-      "windDirectionCardinal": "ESE",
+      "windDirectionCardinal": "SE",
       "iconCode": 34,
-      "relativeHumidity": 55,
-      "precipChance": 15,
+      "relativeHumidity": 51,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 24,
+      "cloudCover": 29,
       "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T06:00:21Z",
+      "lastUpdated": "2026-09-15T06:00:11Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749685,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9885,
         "name": "Juventus",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 643229,
+            "age": 29,
             "name": "Jérémie Boga",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 3049157,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-08T22:07:38Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -736,10 +785,13 @@
           },
           {
             "id": 624166,
+            "age": 28,
             "name": "Manuel Locatelli",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 19019899,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-09-08T11:49:30Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
@@ -747,23 +799,14 @@
             "lastName": "Locatelli"
           },
           {
-            "id": 1107280,
-            "name": "Pape Sarr",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-09-05T21:29:56Z",
-              "type": "injury",
-              "expectedReturn": "Mid September 2026"
-            },
-            "firstName": "Pape",
-            "lastName": "Sarr"
-          },
-          {
             "id": 1083562,
+            "age": 25,
             "name": "Juan Cabal",
+            "countryName": "Colombia",
+            "countryCode": "COL",
+            "marketValue": 6792260,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-03T14:29:02Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
@@ -772,46 +815,58 @@
           },
           {
             "id": 1669628,
+            "age": 19,
             "name": "Jeff Ekhator",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 12763275,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-31T17:49:31Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Jeff",
             "lastName": "Ekhator"
           },
           {
             "id": 1078846,
+            "age": 26,
             "name": "Andrea Cambiaso",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 26496646,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-09-05T21:29:49Z",
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "Back in training"
             },
             "firstName": "Andrea",
             "lastName": "Cambiaso"
           },
           {
             "id": 848266,
+            "age": 28,
             "name": "Weston McKennie",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 17008438,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-05T21:29:23Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Back in training"
             },
             "firstName": "Weston",
             "lastName": "McKennie"
           },
           {
             "id": 980793,
+            "age": 25,
             "name": "Khéphren Thuram-Ulien",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 29965777,
             "unavailability": {
               "injuryId": 140,
-              "lastUpdated": "2026-09-03T14:25:55Z",
               "type": "injury",
               "expectedReturn": "Mid February 2027"
             },
@@ -820,10 +875,13 @@
           },
           {
             "id": 1412132,
+            "age": 21,
             "name": "Kenan Yıldız",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
+            "marketValue": 60648847,
             "unavailability": {
               "injuryId": 8,
-              "lastUpdated": "2026-08-31T17:48:23Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
@@ -835,13 +893,18 @@
       "awayTeam": {
         "id": 8524,
         "name": "Atalanta",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1130691,
+            "age": 24,
             "name": "Kamaldeen Sulemana",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "marketValue": 14737148,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-04T12:42:53Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },
@@ -850,10 +913,13 @@
           },
           {
             "id": 939780,
+            "age": 27,
             "name": "Isak Hien",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 19811208,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-04T12:42:48Z",
               "type": "injury",
               "expectedReturn": "Early October 2026"
             },

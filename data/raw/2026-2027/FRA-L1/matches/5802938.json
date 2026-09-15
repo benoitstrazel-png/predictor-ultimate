@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/47211.png",
-            "linkToMatch": "/matches/auxerre-vs-orleans/pqpntu#5900177",
-            "date": {
-              "utcTime": "2026-07-25T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/47211/overview/orleans",
-            "tooltipText": {
-              "utcTime": "2026-07-25T16:00:00.000Z",
-              "homeTeam": "Auxerre",
-              "homeTeamId": 8583,
-              "homeScore": "1",
-              "awayTeam": "Orléans",
-              "awayTeamId": 47211,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8583",
-              "name": "Auxerre",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "47211",
-              "name": "Orléans",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9874.png",
@@ -271,39 +241,39 @@
               "name": "Auxerre",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-brest/283fn8#5900185",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
+            "linkToMatch": "/matches/auxerre-vs-nice/2sy6tc#5802928",
             "date": {
-              "utcTime": "2026-08-08T16:30:00.000Z"
+              "utcTime": "2026-09-12T18:45:00.000Z"
             },
-            "teamPageUrl": "/teams/7881/overview/venezia",
+            "teamPageUrl": "/teams/9831/overview/nice",
             "tooltipText": {
-              "utcTime": "2026-08-08T16:30:00.000Z",
-              "homeTeam": "Brest",
-              "homeTeamId": 8521,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "2"
+              "utcTime": "2026-09-12T18:45:00.000Z",
+              "homeTeam": "Auxerre",
+              "homeTeamId": 8583,
+              "homeScore": "1",
+              "awayTeam": "Nice",
+              "awayTeamId": 9831,
+              "awayScore": "0"
             },
-            "score": "2 - 2",
+            "score": "1 - 0",
             "home": {
-              "id": "8521",
-              "name": "Brest",
+              "id": "8583",
+              "name": "Auxerre",
               "isOurTeam": true
             },
             "away": {
-              "id": "7881",
-              "name": "Venezia",
+              "id": "9831",
+              "name": "Nice",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -423,6 +393,36 @@
               "name": "Brest",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+            "linkToMatch": "/matches/brest-vs-paris-saint-germain/2sg21j#5802929",
+            "date": {
+              "utcTime": "2026-09-13T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
+            "tooltipText": {
+              "utcTime": "2026-09-13T18:45:00.000Z",
+              "homeTeam": "Brest",
+              "homeTeamId": 8521,
+              "homeScore": "0",
+              "awayTeam": "Paris Saint-Germain",
+              "awayTeamId": 9847,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "8521",
+              "name": "Brest",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9847",
+              "name": "Paris Saint-Germain",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "1",
+                "3",
+                "away_team",
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Auxerre haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Auxerre have 1W, 1D, 3L in five matches while Brest have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -466,30 +472,6 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored in their last 5 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -501,17 +483,40 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored 4 goals in their last 3 matches, while Brest have scored 6."
+              "defaultText": "Auxerre have scored in their last 6 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "1",
+                "1.33"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Auxerre have an average of 1 goals in their last three matches and Brest have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,8 +528,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Auxerre haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Auxerre haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -575,20 +580,30 @@
           "color": "#055DC6"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1401248,
           "teamId": 8583,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 1401248,
+              "name": "Rémy Lascary",
+              "type": "player"
+            },
+            {
+              "value": 8583,
+              "name": "Auxerre",
+              "type": "team"
+            },
+            {
+              "value": 2.7,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Rémy Lascary has the most shots on target per match for Auxerre (2.7)",
           "color": "#055DC6"
         },
         {
@@ -600,7 +615,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -610,7 +625,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#ED1C24"
         },
         {
@@ -622,12 +637,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 17,
+              "value": 18,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 17 matches",
+          "text": "Haven't kept a clean sheet in 18 matches",
           "color": "#ED1C24"
         },
         {
@@ -654,7 +669,45 @@
         }
       ],
       "countryCode": "FRA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/53/5802938/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -671,61 +724,55 @@
       }
     },
     "weather": {
-      "temperature": 24,
-      "windSpeed": 4,
+      "temperature": 25,
+      "windSpeed": 3,
       "windDirectionCardinal": "NW",
       "iconCode": 30,
-      "relativeHumidity": 43,
+      "relativeHumidity": 47,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 33,
+      "cloudCover": 59,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T03:00:20Z",
+      "lastUpdated": "2026-09-15T03:00:12Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5802938,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8583,
         "name": "Auxerre",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 690149,
-            "name": "Axel Tuanzebe",
+            "id": 1744576,
+            "age": 21,
+            "name": "Telli Siwe",
+            "countryName": "France",
+            "countryCode": "FRA",
             "unavailability": {
-              "injuryId": 137,
-              "lastUpdated": "2026-09-03T18:47:15Z",
+              "injuryId": 42,
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "Mid October 2026"
             },
-            "firstName": "Axel",
-            "lastName": "Tuanzebe"
-          },
-          {
-            "id": 1203189,
-            "name": "Fredrik Oppegård",
-            "unavailability": {
-              "injuryId": 92,
-              "lastUpdated": "2026-09-03T18:46:25Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Fredrik",
-            "lastName": "Oppegård"
+            "firstName": "Telli",
+            "lastName": "Siwe"
           },
           {
             "id": 612212,
+            "age": 29,
             "name": "Assane Dioussé",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 292408,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-20T14:09:36Z",
               "type": "injury",
               "expectedReturn": "Early May 2027"
             },
@@ -734,22 +781,28 @@
           },
           {
             "id": 1273881,
+            "age": 23,
             "name": "Sékou Fofana",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 842287,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-09-01T12:29:47Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Sékou",
             "lastName": "Fofana"
           },
           {
             "id": 1201760,
+            "age": 25,
             "name": "Marvin Senaya",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "marketValue": 2468757,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-07-07T10:16:48Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -758,10 +811,13 @@
           },
           {
             "id": 1073979,
+            "age": 23,
             "name": "Bryan Okoh",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 1713474,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T12:59:16Z",
               "type": "injury",
               "expectedReturn": "Late January 2027"
             },
@@ -773,13 +829,33 @@
       "awayTeam": {
         "id": 8521,
         "name": "Brest",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 1603990,
+            "age": 20,
+            "name": "Noah Edjouma",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 3977012,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Noah",
+            "lastName": "Edjouma"
+          },
+          {
             "id": 1231909,
+            "age": 23,
             "name": "Mamady Diambou",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "marketValue": 1335192,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-09-04T14:42:55Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -788,10 +864,13 @@
           },
           {
             "id": 448865,
+            "age": 31,
             "name": "Brendan Chardonnet",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 2056325,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-08-16T13:25:08Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },

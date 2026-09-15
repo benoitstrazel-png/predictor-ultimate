@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
-            "linkToMatch": "/matches/atalanta-vs-schalke-04/2w94pd#5847100",
-            "date": {
-              "utcTime": "2026-08-08T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8524/overview/atalanta",
-            "tooltipText": {
-              "utcTime": "2026-08-08T15:00:00.000Z",
-              "homeTeam": "Schalke 04",
-              "homeTeamId": 10189,
-              "homeScore": "0",
-              "awayTeam": "Atalanta",
-              "awayTeamId": 8524,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "10189",
-              "name": "Schalke 04",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png",
             "linkToMatch": "/matches/real-madrid-vs-schalke-04/2xgz9q#5979020",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Bayern München",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10191.png",
-            "linkToMatch": "/matches/elversberg-vs-thun/2t1pho#5765430",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8149.png",
+            "linkToMatch": "/matches/union-berlin-vs-schalke-04/2s47vs#5881169",
             "date": {
-              "utcTime": "2026-07-11T10:30:00.000Z"
+              "utcTime": "2026-09-11T18:30:00.000Z"
             },
-            "teamPageUrl": "/teams/10191/overview/thun",
+            "teamPageUrl": "/teams/8149/overview/union-berlin",
             "tooltipText": {
-              "utcTime": "2026-07-11T10:30:00.000Z",
-              "homeTeam": "Thun",
-              "homeTeamId": 10191,
+              "utcTime": "2026-09-11T18:30:00.000Z",
+              "homeTeam": "Union Berlin",
+              "homeTeamId": 8149,
               "homeScore": "1",
-              "awayTeam": "Elversberg",
-              "awayTeamId": 8232,
-              "awayScore": "1"
+              "awayTeam": "Schalke 04",
+              "awayTeamId": 10189,
+              "awayScore": "3"
             },
-            "score": "1 - 1",
+            "score": "1 - 3",
             "home": {
-              "id": "10191",
-              "name": "Thun",
+              "id": "8149",
+              "name": "Union Berlin",
               "isOurTeam": false
             },
             "away": {
-              "id": "8232",
-              "name": "Elversberg",
+              "id": "10189",
+              "name": "Schalke 04",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Elversberg",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
+            "linkToMatch": "/matches/elversberg-vs-bayern-munchen/2p1vln#5881163",
+            "date": {
+              "utcTime": "2026-09-13T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9823/overview/bayern-munchen",
+            "tooltipText": {
+              "utcTime": "2026-09-13T15:30:00.000Z",
+              "homeTeam": "Elversberg",
+              "homeTeamId": 8232,
+              "homeScore": "1",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "8232",
+              "name": "Elversberg",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "1",
+                "2",
                 "away_team",
-                "4"
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Elversberg have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Schalke 04 have 2W, 1D, 2L in five matches while Elversberg have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -466,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Elversberg have scored in their last 6 away matches."
+              "defaultText": "Elversberg have scored in their last 5 away matches."
             },
             {
               "OddsType": "ou",
@@ -487,7 +493,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "10",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Elversberg have scored 10 goals in their last 3 matches."
+              "defaultText": "Elversberg have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -509,7 +515,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Elversberg haven't drawn in their last 4 matches."
+              "defaultText": "Elversberg haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -542,7 +548,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -552,24 +558,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
-          "color": "#083890"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10189,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#083890"
         },
         {
@@ -597,6 +586,33 @@
             }
           ],
           "text": "Schalke 04 have won the previous 2 matches against Elversberg.",
+          "color": "#083890"
+        },
+        {
+          "type": "player",
+          "playerId": 287894,
+          "teamId": 10189,
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "statValues": [
+            {
+              "value": 287894,
+              "name": "Loris Karius",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 7.3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Loris Karius is ranked 1 in saves per match in the competition (7.3)",
           "color": "#083890"
         },
         {
@@ -630,34 +646,77 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 5 matches",
-          "color": "#141414"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8232,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
               "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 6 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#141414"
+        },
+        {
+          "type": "player",
+          "playerId": 1412933,
+          "teamId": 8232,
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
+          "statValues": [
+            {
+              "value": 1412933,
+              "name": "Maurice Krattenmacher",
+              "type": "player"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Maurice Krattenmacher is the competition's top scorer (3)",
           "color": "#141414"
         }
       ],
       "countryCode": "GER",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881176/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -676,35 +735,53 @@
     "weather": {
       "temperature": 19,
       "windSpeed": 4,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 30,
-      "relativeHumidity": 64,
-      "precipChance": 10,
+      "windDirectionCardinal": "W",
+      "iconCode": 28,
+      "relativeHumidity": 71,
+      "precipChance": 17,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 45,
-      "description": "Partly Cloudy",
+      "cloudCover": 71,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T06:00:19Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-15T06:00:09Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5881176,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10189,
         "name": "Schalke 04",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 861668,
+            "age": 28,
+            "name": "Dejan Ljubičić",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 1998042,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Dejan",
+            "lastName": "Ljubičić"
+          },
+          {
             "id": 1816238,
+            "age": 20,
             "name": "Ayman Gülasi",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
             "unavailability": {
               "injuryId": 142,
-              "lastUpdated": "2026-08-26T06:51:24Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
@@ -713,24 +790,30 @@
           },
           {
             "id": 815566,
+            "age": 27,
             "name": "Bryan Lasme",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 365300,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-09-01T12:30:10Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Bryan",
             "lastName": "Lasme"
           },
           {
             "id": 1179182,
+            "age": 25,
             "name": "Adrian Gantenbein",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 999268,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-07-29T14:04:21Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Adrian",
             "lastName": "Gantenbein"
@@ -740,13 +823,33 @@
       "awayTeam": {
         "id": 8232,
         "name": "Elversberg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 1603681,
+            "age": 19,
+            "name": "Francis Onyeka",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 3187687,
+            "unavailability": {
+              "injuryId": 85,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Francis",
+            "lastName": "Onyeka"
+          },
+          {
             "id": 940015,
+            "age": 27,
             "name": "Tom Zimmerschied",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1270029,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-08-20T15:49:50Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },

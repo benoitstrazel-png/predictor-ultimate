@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8721.png",
-            "linkToMatch": "/matches/paderborn-vs-wolfsburg/2fvt50#5630366",
-            "date": {
-              "utcTime": "2026-05-21T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8721/overview/wolfsburg",
-            "tooltipText": {
-              "utcTime": "2026-05-21T18:30:00.000Z",
-              "homeTeam": "Wolfsburg",
-              "homeTeamId": 8721,
-              "homeScore": "0",
-              "awayTeam": "Paderborn",
-              "awayTeamId": 8460,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8721",
-              "name": "Wolfsburg",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8460",
-              "name": "Paderborn",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8721.png",
@@ -271,39 +241,39 @@
               "name": "Freiburg",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png",
+            "linkToMatch": "/matches/paderborn-vs-borussia-dortmund/2r5cui#5881162",
+            "date": {
+              "utcTime": "2026-09-12T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9789/overview/borussia-dortmund",
+            "tooltipText": {
+              "utcTime": "2026-09-12T13:30:00.000Z",
+              "homeTeam": "Borussia Dortmund",
+              "homeTeamId": 9789,
+              "homeScore": "3",
+              "awayTeam": "Paderborn",
+              "awayTeamId": 8460,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "9789",
+              "name": "Borussia Dortmund",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8460",
+              "name": "Paderborn",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8150.png",
-            "linkToMatch": "/matches/holstein-kiel-vs-hoffenheim/27uam6#5958626",
-            "date": {
-              "utcTime": "2026-07-29T16:05:00.000Z"
-            },
-            "teamPageUrl": "/teams/8150/overview/holstein-kiel",
-            "tooltipText": {
-              "utcTime": "2026-07-29T16:05:00.000Z",
-              "homeTeam": "Hoffenheim",
-              "homeTeamId": 8226,
-              "homeScore": "3",
-              "awayTeam": "Holstein Kiel",
-              "awayTeamId": 8150,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "8226",
-              "name": "Hoffenheim",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8150",
-              "name": "Holstein Kiel",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -423,6 +393,36 @@
               "name": "Borussia Dortmund",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png",
+            "linkToMatch": "/matches/hoffenheim-vs-vfb-stuttgart/2tu70i#5881166",
+            "date": {
+              "utcTime": "2026-09-12T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10269/overview/vfb-stuttgart",
+            "tooltipText": {
+              "utcTime": "2026-09-12T13:30:00.000Z",
+              "homeTeam": "Hoffenheim",
+              "homeTeamId": 8226,
+              "homeScore": "2",
+              "awayTeam": "VfB Stuttgart",
+              "awayTeamId": 10269,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8226",
+              "name": "Hoffenheim",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10269",
+              "name": "VfB Stuttgart",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "2",
                 "1",
+                "2",
                 "away_team",
                 "2",
                 "0",
@@ -462,20 +462,19 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paderborn have 2W, 2D, 1L in five matches while Hoffenheim have 2W, 0D, 3L."
+              "defaultText": "Paderborn have 2W, 1D, 2L in five matches while Hoffenheim have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "8"
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,17 +485,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paderborn have scored 4 goals in their last 3 matches, while Hoffenheim have scored 8."
+              "defaultText": "Paderborn have an average of 0 goals in their last three matches and Hoffenheim have an average of 2."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
-                "away_team",
-                "8",
+                "home_team",
                 "3"
               ],
               "DefaultLabels": [
@@ -507,8 +505,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored 8 goals in their last 3 matches."
+              "Icon": "poll_glove",
+              "defaultText": "Paderborn haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -518,7 +516,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "10"
+                "11"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hoffenheim haven't drawn in their last 10 matches."
+              "defaultText": "Hoffenheim haven't drawn in their last 11 matches."
             }
           ]
         },
@@ -573,25 +571,25 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#004A99"
         },
         {
           "type": "player",
-          "playerId": 1362492,
+          "playerId": 956913,
           "teamId": 8460,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1362492,
-              "name": "Santiago Castañeda",
+              "value": 956913,
+              "name": "Marvin Pieringer",
               "type": "player"
             },
             {
@@ -600,12 +598,12 @@
               "type": "team"
             },
             {
-              "value": 0.5,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Santiago Castañeda has the most shots on target per match for Paderborn (0.5)",
+          "text": "Marvin Pieringer has created the most big chances for Paderborn (1)",
           "color": "#004A99"
         },
         {
@@ -617,7 +615,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -627,7 +625,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#005098"
         },
         {
@@ -651,9 +649,9 @@
           "type": "player",
           "playerId": 1353000,
           "teamId": 8226,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
               "value": 1353000,
@@ -661,22 +659,60 @@
               "type": "player"
             },
             {
-              "value": 8226,
-              "name": "Hoffenheim",
-              "type": "team"
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 2,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Adam Daghim has created the most big chances for Hoffenheim (2)",
+          "text": "Adam Daghim is ranked 1 in big chances created in the competition (5)",
           "color": "#005098"
         }
       ],
       "countryCode": "GER",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881175/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -695,47 +731,39 @@
     "weather": {
       "temperature": 17,
       "windSpeed": 4,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 30,
-      "relativeHumidity": 67,
-      "precipChance": 19,
-      "precipitation": 0,
+      "windDirectionCardinal": "WNW",
+      "iconCode": 11,
+      "relativeHumidity": 73,
+      "precipChance": 33,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 45,
-      "description": "Partly Cloudy",
+      "cloudCover": 77,
+      "description": "Few Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T08:00:06Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-15T08:00:05Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5881175,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8460,
         "name": "Paderborn",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 767790,
-            "name": "Felix Götze",
-            "unavailability": {
-              "injuryId": 85,
-              "lastUpdated": "2026-09-03T17:08:20Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Felix",
-            "lastName": "Götze"
-          },
-          {
             "id": 1473681,
+            "age": 26,
             "name": "Nyamekye Awortwie-Grant",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 366832,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-27T21:20:50Z",
               "type": "injury",
               "expectedReturn": "Late September 2026"
             },
@@ -744,22 +772,28 @@
           },
           {
             "id": 840947,
+            "age": 28,
             "name": "Sebastian Klaas",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 486139,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-09-01T12:28:01Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Sebastian",
             "lastName": "Klaas"
           },
           {
             "id": 419774,
+            "age": 36,
             "name": "Sven Michel",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 243045,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-05T17:15:34Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
@@ -768,10 +802,13 @@
           },
           {
             "id": 978381,
+            "age": 28,
             "name": "Timur Gayret",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 223981,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-04-22T12:24:51Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
@@ -783,30 +820,23 @@
       "awayTeam": {
         "id": 8226,
         "name": "Hoffenheim",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1027194,
+            "age": 25,
             "name": "Alexander Prass",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 4882862,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-28T14:19:07Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Alexander",
             "lastName": "Prass"
-          },
-          {
-            "id": 1219540,
-            "name": "Fisnik Asllani",
-            "unavailability": {
-              "injuryId": 14,
-              "lastUpdated": "2026-08-28T11:48:06Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Fisnik",
-            "lastName": "Asllani"
           }
         ]
       }

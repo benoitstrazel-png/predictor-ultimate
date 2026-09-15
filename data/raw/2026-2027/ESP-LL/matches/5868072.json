@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9864.png",
-            "linkToMatch": "/matches/malaga-vs-atletico-madrid/38d3a9#5868012",
-            "date": {
-              "utcTime": "2026-08-19T19:05:00.000Z"
-            },
-            "teamPageUrl": "/teams/9864/overview/malaga",
-            "tooltipText": {
-              "utcTime": "2026-08-19T19:05:00.000Z",
-              "homeTeam": "Atlético Madrid",
-              "homeTeamId": 9906,
-              "homeScore": "2",
-              "awayTeam": "Málaga",
-              "awayTeamId": 9864,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10205.png",
@@ -271,39 +241,39 @@
               "name": "Atlético Madrid",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8558.png",
-            "linkToMatch": "/matches/espanyol-vs-real-madrid/2fzhol#5868025",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
+            "linkToMatch": "/matches/real-sociedad-vs-atletico-madrid/2tiqrp#5868058",
             "date": {
-              "utcTime": "2026-08-22T19:30:00.000Z"
+              "utcTime": "2026-09-13T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/8558/overview/espanyol",
+            "teamPageUrl": "/teams/8560/overview/real-sociedad",
             "tooltipText": {
-              "utcTime": "2026-08-22T19:30:00.000Z",
-              "homeTeam": "Espanyol",
-              "homeTeamId": 8558,
-              "homeScore": "1",
-              "awayTeam": "Real Madrid",
-              "awayTeamId": 8633,
-              "awayScore": "2"
+              "utcTime": "2026-09-13T19:00:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "0",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "3"
             },
-            "score": "1 - 2",
+            "score": "0 - 3",
             "home": {
-              "id": "8558",
-              "name": "Espanyol",
+              "id": "8560",
+              "name": "Real Sociedad",
               "isOurTeam": false
             },
             "away": {
-              "id": "8633",
-              "name": "Real Madrid",
+              "id": "9906",
+              "name": "Atlético Madrid",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Inter",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8370.png",
+            "linkToMatch": "/matches/rayo-vallecano-vs-real-madrid/2e2lhn#5868057",
+            "date": {
+              "utcTime": "2026-09-12T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8370/overview/rayo-vallecano",
+            "tooltipText": {
+              "utcTime": "2026-09-12T19:00:00.000Z",
+              "homeTeam": "Real Madrid",
+              "homeTeamId": 8633,
+              "homeScore": "4",
+              "awayTeam": "Rayo Vallecano",
+              "awayTeamId": 8370,
+              "awayScore": "1"
+            },
+            "score": "4 - 1",
+            "home": {
+              "id": "8633",
+              "name": "Real Madrid",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8370",
+              "name": "Rayo Vallecano",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -513,11 +513,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8"
+                "4",
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Madrid haven't drawn in their last 8 matches."
+              "defaultText": "Atlético Madrid haven't drawn in their last 4 matches and Real Madrid in their last 9."
             }
           ]
         },
@@ -550,7 +552,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -560,24 +562,34 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#C63527"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 940976,
           "teamId": 9906,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
+            {
+              "value": 940976,
+              "name": "Kang-In Lee",
+              "type": "player"
+            },
+            {
+              "value": 9906,
+              "name": "Atlético Madrid",
+              "type": "team"
+            },
             {
               "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have conceded the most penalties this season (2)",
+          "text": "Kang-In Lee has created the most big chances for Atlético Madrid (2)",
           "color": "#C63527"
         },
         {
@@ -616,7 +628,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 12,
+              "value": 14,
               "name": null,
               "type": "integer"
             },
@@ -626,7 +638,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 12 goals in their last 5 matches",
+          "text": "Have scored 14 goals in their last 5 matches",
           "color": "#085098"
         },
         {
@@ -657,20 +669,30 @@
           "color": "#085098"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1253890,
           "teamId": 8633,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 2.5,
+              "value": 1253890,
+              "name": "Arda Güler",
+              "type": "player"
+            },
+            {
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "ordinal"
+            },
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
             }
           ],
-          "text": "Average 2.5 goals per match",
+          "text": "Arda Güler is ranked 1 in big chances created in the competition (6)",
           "color": "#085098"
         }
       ],
@@ -692,39 +714,73 @@
       }
     },
     "weather": {
-      "temperature": 29,
-      "windSpeed": 3,
-      "windDirectionCardinal": "SW",
-      "iconCode": 34,
-      "relativeHumidity": 25,
+      "temperature": 30,
+      "windSpeed": 2,
+      "windDirectionCardinal": "SSE",
+      "iconCode": 32,
+      "relativeHumidity": 24,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 20,
-      "description": "Mostly Sunny",
+      "cloudCover": 12,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T05:00:36Z",
+      "lastUpdated": "2026-09-15T05:00:15Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5868072,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9906,
         "name": "Atlético Madrid",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 440330,
-            "name": "Alexander Sørloth",
+            "id": 974753,
+            "age": 26,
+            "name": "Julián Álvarez",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 84016674,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-07T15:56:25Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Julián",
+            "lastName": "Álvarez"
+          },
+          {
+            "id": 1338192,
+            "age": 23,
+            "name": "Pablo Barrios",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 41612897,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "Pablo",
+            "lastName": "Barrios"
+          },
+          {
+            "id": 440330,
+            "age": 30,
+            "name": "Alexander Sørloth",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 16313796,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Back in training"
             },
             "firstName": "Alexander",
             "lastName": "Sørloth"
@@ -734,49 +790,48 @@
       "awayTeam": {
         "id": 8633,
         "name": "Real Madrid",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 1580528,
-            "name": "Raúl Asencio",
-            "unavailability": {
-              "injuryId": 122,
-              "lastUpdated": "2026-09-06T21:36:39Z",
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Raúl",
-            "lastName": "Asencio"
-          },
-          {
             "id": 623537,
+            "age": 31,
             "name": "Ferland Mendy",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 3657062,
             "unavailability": {
               "injuryId": 71,
-              "lastUpdated": "2026-09-06T21:36:19Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Unknown"
             },
             "firstName": "Ferland",
             "lastName": "Mendy"
           },
           {
             "id": 844415,
+            "age": 28,
             "name": "Éder Militao",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 19143417,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-06T21:36:11Z",
               "type": "injury",
-              "expectedReturn": "Back in training"
+              "expectedReturn": "Mid October 2026"
             },
             "firstName": "Éder",
             "lastName": "Militao"
           },
           {
             "id": 895362,
+            "age": 25,
             "name": "Rodrygo",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 40145992,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:46:42Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },

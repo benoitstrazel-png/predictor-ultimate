@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -122,36 +122,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9864.png",
-            "linkToMatch": "/matches/malaga-vs-atletico-madrid/38d3a9#5868012",
-            "date": {
-              "utcTime": "2026-08-19T19:05:00.000Z"
-            },
-            "teamPageUrl": "/teams/9864/overview/malaga",
-            "tooltipText": {
-              "utcTime": "2026-08-19T19:05:00.000Z",
-              "homeTeam": "Atlético Madrid",
-              "homeTeamId": 9906,
-              "homeScore": "2",
-              "awayTeam": "Málaga",
-              "awayTeamId": 9864,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -271,39 +241,39 @@
               "name": "Atlético Madrid",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
-            "linkToMatch": "/matches/osasuna-vs-napoli/2r46o8#5987734",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
+            "linkToMatch": "/matches/real-sociedad-vs-atletico-madrid/2tiqrp#5868058",
             "date": {
-              "utcTime": "2026-08-05T16:30:00.000Z"
+              "utcTime": "2026-09-13T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9875/overview/napoli",
+            "teamPageUrl": "/teams/8560/overview/real-sociedad",
             "tooltipText": {
-              "utcTime": "2026-08-05T16:30:00.000Z",
-              "homeTeam": "Napoli",
-              "homeTeamId": 9875,
-              "homeScore": "2",
-              "awayTeam": "Osasuna",
-              "awayTeamId": 8371,
-              "awayScore": "1"
+              "utcTime": "2026-09-13T19:00:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "0",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "3"
             },
-            "score": "2 - 1",
+            "score": "0 - 3",
             "home": {
-              "id": "9875",
-              "name": "Napoli",
+              "id": "8560",
+              "name": "Real Sociedad",
               "isOurTeam": false
             },
             "away": {
-              "id": "8371",
-              "name": "Osasuna",
+              "id": "9906",
+              "name": "Atlético Madrid",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 0,
             "resultString": "D",
@@ -423,6 +393,36 @@
               "name": "Osasuna",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8558.png",
+            "linkToMatch": "/matches/osasuna-vs-espanyol/2dbonz#5868055",
+            "date": {
+              "utcTime": "2026-09-12T14:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/8558/overview/espanyol",
+            "tooltipText": {
+              "utcTime": "2026-09-12T14:15:00.000Z",
+              "homeTeam": "Osasuna",
+              "homeTeamId": 8371,
+              "homeScore": "0",
+              "awayTeam": "Espanyol",
+              "awayTeamId": 8558,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8371",
+              "name": "Osasuna",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8558",
+              "name": "Espanyol",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,18 +506,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored 4 goals in their last 3 matches, while Osasuna have scored 5."
+              "defaultText": "Atlético Madrid have an average of 1.33 goals in their last three matches and Osasuna have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "8"
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atlético Madrid and Osasuna have not drawn any of their last 8 matches against each other."
+              "defaultText": "Atlético Madrid haven't drawn in their last 4 matches and Osasuna in their last 4."
             }
           ]
         },
@@ -551,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -561,24 +561,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
-          "color": "#C63527"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9906,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have conceded the most penalties this season (2)",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#C63527"
         },
         {
@@ -609,6 +592,33 @@
           "color": "#C63527"
         },
         {
+          "type": "player",
+          "playerId": 1419969,
+          "teamId": 9906,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1419969,
+              "name": "Rodrigo Mendoza",
+              "type": "player"
+            },
+            {
+              "value": 9906,
+              "name": "Atlético Madrid",
+              "type": "team"
+            },
+            {
+              "value": 2.5,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Rodrigo Mendoza has the most shots on target per match for Atlético Madrid (2.5)",
+          "color": "#C63527"
+        },
+        {
           "type": "team",
           "playerId": null,
           "teamId": 8371,
@@ -617,7 +627,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -627,7 +637,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#af1428"
         },
         {
@@ -666,17 +676,106 @@
               "type": "team"
             },
             {
-              "value": 3.1,
+              "value": 2.4,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Ante Budimir has the most shots on target per match for Osasuna (3.1)",
+          "text": "Ante Budimir has the most shots on target per match for Osasuna (2.4)",
           "color": "#af1428"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 942372,
+          "position": 2,
+          "matchesWithRating": 5,
+          "lastName": "Baena",
+          "fullName": "Álex Baena",
+          "stats": {
+            "goals": 3,
+            "goalAssist": 1,
+            "ontargetScoringAtt": 1.33,
+            "motm": 1,
+            "gamesPlayed": 5,
+            "minsPlayed": 298,
+            "minsPlayedGoal": 99,
+            "expectedGoals": 0.5289000272750854,
+            "playerRating": 7.38
+          }
+        },
+        "awayPlayer": {
+          "playerId": 251269,
+          "position": 3,
+          "matchesWithRating": 5,
+          "lastName": "Budimir",
+          "fullName": "Ante Budimir",
+          "stats": {
+            "goals": 4,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 2.5,
+            "motm": 1,
+            "gamesPlayed": 5,
+            "minsPlayed": 382,
+            "minsPlayedGoal": 96,
+            "expectedGoals": 4.179299831390381,
+            "playerRating": 7.68
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ESP",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/87/5868062/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -693,96 +792,778 @@
       }
     },
     "weather": {
-      "temperature": 31,
-      "windSpeed": 3,
-      "windDirectionCardinal": "NNE",
-      "iconCode": 34,
-      "relativeHumidity": 21,
-      "precipChance": 3,
+      "temperature": 25,
+      "windSpeed": 6,
+      "windDirectionCardinal": "NE",
+      "iconCode": 32,
+      "relativeHumidity": 36,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 21,
-      "description": "Mostly Sunny",
+      "cloudCover": 10,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T07:00:18Z",
+      "lastUpdated": "2026-09-15T05:00:15Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5868062,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "season",
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 9906,
         "name": "Atlético Madrid",
-        "formation": "",
-        "starters": [],
+        "formation": "4-4-2",
+        "starters": [
+          {
+            "id": 177126,
+            "age": 33,
+            "name": "Jan Oblak",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "13",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.2
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.2,
+              "width": 1
+            },
+            "marketValue": 11149486,
+            "performance": {
+              "seasonRating": 6.82
+            },
+            "firstName": "Jan",
+            "lastName": "Oblak",
+            "rankings": null
+          },
+          {
+            "id": 602563,
+            "age": 31,
+            "name": "Marcos Llorente",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "14",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 13460129,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.98
+            },
+            "firstName": "Marcos",
+            "lastName": "Llorente",
+            "rankings": null
+          },
+          {
+            "id": 1323897,
+            "age": 23,
+            "name": "Marc Pubill",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "18",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 19884779,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 7.01
+            },
+            "firstName": "Marc",
+            "lastName": "Pubill",
+            "rankings": null
+          },
+          {
+            "id": 727897,
+            "age": 28,
+            "name": "Dávid Hancko",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "17",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 29233903,
+            "performance": {
+              "seasonAssists": 2,
+              "seasonRating": 7.52
+            },
+            "firstName": "Dávid",
+            "lastName": "Hancko",
+            "rankings": null
+          },
+          {
+            "id": 288406,
+            "age": 30,
+            "name": "Alejandro Grimaldo",
+            "positionId": 38,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "22",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 19098981,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 7.45
+            },
+            "firstName": "Alejandro",
+            "lastName": "Grimaldo",
+            "rankings": null
+          },
+          {
+            "id": 1226147,
+            "age": 23,
+            "name": "Giuliano Simeone",
+            "positionId": 72,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "20",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 32628949,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonAssists": 1,
+              "seasonRating": 7.22
+            },
+            "firstName": "Giuliano",
+            "lastName": "Simeone",
+            "rankings": null
+          },
+          {
+            "id": 1338192,
+            "age": 23,
+            "name": "Pablo Barrios",
+            "positionId": 74,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 41612897,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 7.54
+            },
+            "firstName": "Pablo",
+            "lastName": "Barrios",
+            "rankings": null
+          },
+          {
+            "id": 950199,
+            "age": 27,
+            "name": "Morten Hjulmand",
+            "positionId": 76,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "23",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 32205693,
+            "performance": {
+              "seasonRating": 7.23
+            },
+            "firstName": "Morten",
+            "lastName": "Hjulmand",
+            "rankings": null
+          },
+          {
+            "id": 690516,
+            "age": 28,
+            "name": "Ademola Lookman",
+            "positionId": 78,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 29289525,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.77
+            },
+            "firstName": "Ademola",
+            "lastName": "Lookman",
+            "rankings": null
+          },
+          {
+            "id": 940976,
+            "age": 25,
+            "name": "Kang-In Lee",
+            "positionId": 104,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "South Korea",
+            "countryCode": "KOR",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.4
+            },
+            "marketValue": 22399224,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 7.25
+            },
+            "firstName": "Kang-In",
+            "lastName": "Lee",
+            "rankings": null
+          },
+          {
+            "id": 942372,
+            "age": 25,
+            "name": "Álex Baena",
+            "positionId": 106,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.4
+            },
+            "marketValue": 33205694,
+            "performance": {
+              "seasonGoals": 3,
+              "seasonAssists": 1,
+              "seasonRating": 7.37
+            },
+            "firstName": "Álex",
+            "lastName": "Baena",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 2642,
+          "age": 56,
+          "name": "Diego Simeone",
+          "countryName": "Argentina",
+          "countryCode": "ARG",
+          "firstName": "Diego",
+          "lastName": "Simeone",
+          "primaryTeamId": 9906,
+          "primaryTeamName": "Atlético Madrid",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
+          {
+            "id": 974753,
+            "age": 26,
+            "name": "Julián Álvarez",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 84016674,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "performance": {
+              "seasonRating": 6.43
+            },
+            "firstName": "Julián",
+            "lastName": "Álvarez"
+          },
           {
             "id": 440330,
             "age": 30,
             "name": "Alexander Sørloth",
+            "positionId": 1000,
             "countryName": "Norway",
             "countryCode": "NOR",
             "marketValue": 16313796,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Back in training"
             },
             "firstName": "Alexander",
             "lastName": "Sørloth"
           }
-        ]
+        ],
+        "averageStarterAge": 27.5,
+        "totalStarterMarketValue": 284169260
       },
       "awayTeam": {
         "id": 8371,
         "name": "Osasuna",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 262592,
-            "age": 32,
-            "name": "Moi Gómez",
+            "id": 683762,
+            "age": 33,
+            "name": "Sergio Herrera",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 872172,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Moi",
-            "lastName": "Gómez"
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 2123501,
+            "performance": {
+              "seasonRating": 6.28
+            },
+            "firstName": "Sergio",
+            "lastName": "Herrera",
+            "rankings": null
           },
           {
-            "id": 1054786,
+            "id": 1614872,
+            "age": 21,
+            "name": "Iñigo Arguibide",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "27",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 824931,
+            "performance": {
+              "seasonRating": 6.42
+            },
+            "firstName": "Iñigo",
+            "lastName": "Arguibide",
+            "rankings": null
+          },
+          {
+            "id": 1603025,
+            "age": 22,
+            "name": "Rockson Yeboah",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "48",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 375824,
+            "performance": {
+              "seasonRating": 6.59
+            },
+            "firstName": "Rockson",
+            "lastName": "Yeboah",
+            "rankings": null
+          },
+          {
+            "id": 814663,
+            "age": 31,
+            "name": "Alejandro Catena",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "24",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1823772,
+            "performance": {
+              "seasonRating": 6.44
+            },
+            "firstName": "Alejandro",
+            "lastName": "Catena",
+            "rankings": null
+          },
+          {
+            "id": 488718,
+            "age": 33,
+            "name": "Diego Rico",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "15",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 774174,
+            "performance": {
+              "seasonRating": 5.97
+            },
+            "firstName": "Diego",
+            "lastName": "Rico",
+            "rankings": null
+          },
+          {
+            "id": 921825,
+            "age": 28,
+            "name": "Jon Moncayola",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 5226497,
+            "performance": {
+              "seasonRating": 6.69
+            },
+            "firstName": "Jon",
+            "lastName": "Moncayola",
+            "rankings": null
+          },
+          {
+            "id": 1323863,
             "age": 24,
-            "name": "Aimar Oroz",
+            "name": "Iker Muñoz",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 9801846,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Aimar",
-            "lastName": "Oroz"
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1982689,
+            "performance": {
+              "seasonRating": 6.61
+            },
+            "firstName": "Iker",
+            "lastName": "Muñoz",
+            "rankings": null
           },
+          {
+            "id": 384413,
+            "age": 33,
+            "name": "Rubén Garcia",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "14",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 915538,
+            "performance": {
+              "seasonRating": 6.76
+            },
+            "firstName": "Rubén",
+            "lastName": "Garcia",
+            "rankings": null
+          },
+          {
+            "id": 1094778,
+            "age": 25,
+            "name": "Raúl García",
+            "positionId": 85,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 2043497,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.58
+            },
+            "firstName": "Raúl",
+            "lastName": "García",
+            "rankings": null
+          },
+          {
+            "id": 574624,
+            "age": 29,
+            "name": "Enrique Barja",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 1205403,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.85
+            },
+            "firstName": "Enrique",
+            "lastName": "Barja",
+            "rankings": null
+          },
+          {
+            "id": 251269,
+            "age": 35,
+            "name": "Ante Budimir",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "17",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1951700,
+            "performance": {
+              "seasonGoals": 4,
+              "seasonRating": 7.67
+            },
+            "firstName": "Ante",
+            "lastName": "Budimir",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 11549,
+          "age": 56,
+          "name": "Luis Ramis",
+          "countryName": "Spain",
+          "countryCode": "ESP",
+          "firstName": "Luis",
+          "lastName": "Ramis",
+          "primaryTeamId": 8371,
+          "primaryTeamName": "Osasuna",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 1098365,
             "age": 25,
             "name": "Jorge Herrando",
+            "positionId": 1000,
             "countryName": "Spain",
             "countryCode": "ESP",
             "marketValue": 3018884,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
+            },
+            "performance": {
+              "seasonRating": 6.83
             },
             "firstName": "Jorge",
             "lastName": "Herrando"
@@ -791,6 +1572,7 @@
             "id": 763970,
             "age": 30,
             "name": "Valentin Rosier",
+            "positionId": 1000,
             "countryName": "France",
             "countryCode": "FRA",
             "marketValue": 2254543,
@@ -801,8 +1583,49 @@
             },
             "firstName": "Valentin",
             "lastName": "Rosier"
+          },
+          {
+            "id": 1054786,
+            "age": 24,
+            "name": "Aimar Oroz",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 9801846,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "performance": {
+              "seasonRating": 6.57
+            },
+            "firstName": "Aimar",
+            "lastName": "Oroz"
+          },
+          {
+            "id": 262592,
+            "age": 32,
+            "name": "Moi Gómez",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 872172,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.97
+            },
+            "firstName": "Moi",
+            "lastName": "Gómez"
           }
-        ]
+        ],
+        "averageStarterAge": 28.9,
+        "totalStarterMarketValue": 19247526
       }
     },
     "hasPlayoff": false,

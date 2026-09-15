@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
-            "linkToMatch": "/matches/newcastle-united-vs-valencia/3hggj7#5898826",
-            "date": {
-              "utcTime": "2026-08-08T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10261/overview/newcastle-united",
-            "tooltipText": {
-              "utcTime": "2026-08-08T19:00:00.000Z",
-              "homeTeam": "Valencia",
-              "homeTeamId": 10267,
-              "homeScore": "1",
-              "awayTeam": "Newcastle United",
-              "awayTeamId": 10261,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "10267",
-              "name": "Valencia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10261",
-              "name": "Newcastle United",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
@@ -271,39 +241,39 @@
               "name": "Barcelona",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8603.png",
-            "linkToMatch": "/matches/real-sociedad-vs-real-betis/2fp6jh#5868023",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
+            "linkToMatch": "/matches/sevilla-vs-valencia/2unl97#5868059",
             "date": {
-              "utcTime": "2026-08-21T19:00:00.000Z"
+              "utcTime": "2026-09-11T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/8603/overview/real-betis",
+            "teamPageUrl": "/teams/8302/overview/sevilla",
             "tooltipText": {
-              "utcTime": "2026-08-21T19:00:00.000Z",
-              "homeTeam": "Real Betis",
-              "homeTeamId": 8603,
+              "utcTime": "2026-09-11T19:00:00.000Z",
+              "homeTeam": "Sevilla",
+              "homeTeamId": 8302,
               "homeScore": "1",
-              "awayTeam": "Real Sociedad",
-              "awayTeamId": 8560,
+              "awayTeam": "Valencia",
+              "awayTeamId": 10267,
               "awayScore": "0"
             },
             "score": "1 - 0",
             "home": {
-              "id": "8603",
-              "name": "Real Betis",
+              "id": "8302",
+              "name": "Sevilla",
               "isOurTeam": false
             },
             "away": {
-              "id": "8560",
-              "name": "Real Sociedad",
+              "id": "10267",
+              "name": "Valencia",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -423,6 +393,36 @@
               "name": "Real Sociedad",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
+            "linkToMatch": "/matches/real-sociedad-vs-atletico-madrid/2tiqrp#5868058",
+            "date": {
+              "utcTime": "2026-09-13T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
+            "tooltipText": {
+              "utcTime": "2026-09-13T19:00:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "0",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -511,7 +511,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Valencia haven't won a match in 7 attempts."
+              "defaultText": "Valencia haven't won a match in 8 attempts."
             }
           ]
         },
@@ -544,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 1,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +554,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 2 goals in their last 5 matches",
+          "text": "Have scored 1 goals in their last 5 matches",
+          "color": "#ff671f"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10267,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#ff671f"
         },
         {
@@ -566,29 +583,12 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 7 attempts",
-          "color": "#ff671f"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10267,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have lost their last 3 matches",
+          "text": "Haven't won a match in 8 attempts",
           "color": "#ff671f"
         },
         {
@@ -627,17 +627,17 @@
               "type": "player"
             },
             {
-              "value": 1,
+              "value": 3,
               "name": null,
               "type": "ordinal"
             },
             {
-              "value": 4.3,
+              "value": 3.8,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Alex Remiro is ranked 1 in saves per match in the competition (4.3)",
+          "text": "Alex Remiro is ranked 3 in saves per match in the competition (3.8)",
           "color": "#0056B3"
         },
         {
@@ -686,85 +686,71 @@
       }
     },
     "weather": {
-      "temperature": 25,
-      "windSpeed": 3,
+      "temperature": 24,
+      "windSpeed": 2,
       "windDirectionCardinal": "E",
-      "iconCode": 33,
-      "relativeHumidity": 72,
-      "precipChance": 4,
+      "iconCode": 31,
+      "relativeHumidity": 69,
+      "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 23,
-      "description": "Mostly Clear",
+      "cloudCover": 9,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T09:00:09Z",
+      "lastUpdated": "2026-09-15T09:00:10Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5868079,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10267,
         "name": "Valencia",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 1220187,
-            "name": "Jesus Vázquez",
+            "id": 1311985,
+            "age": 24,
+            "name": "César Tárrega",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 13049721,
             "unavailability": {
-              "injuryId": 30,
-              "lastUpdated": "2026-09-08T13:59:03Z",
+              "injuryId": 42,
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Early October 2026"
             },
-            "firstName": "Jesus",
-            "lastName": "Vázquez"
-          },
-          {
-            "id": 1600732,
-            "name": "David Otorbi",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-09-08T11:02:30Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "David",
-            "lastName": "Otorbi"
-          },
-          {
-            "id": 723148,
-            "name": "Aliou Dieng",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-09-08T11:02:20Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Aliou",
-            "lastName": "Dieng"
+            "firstName": "César",
+            "lastName": "Tárrega"
           },
           {
             "id": 561198,
+            "age": 29,
             "name": "Mouctar Diakhaby",
+            "countryName": "Guinea",
+            "countryCode": "GUI",
+            "marketValue": 922146,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-06T20:21:18Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Mouctar",
             "lastName": "Diakhaby"
           },
           {
             "id": 261609,
+            "age": 33,
             "name": "Dimitri Foulquier",
+            "countryName": "Guadeloupe",
+            "countryCode": "GLP",
+            "marketValue": 596524,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-09-03T14:49:57Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -773,22 +759,28 @@
           },
           {
             "id": 638070,
+            "age": 32,
             "name": "Luis Rioja",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1094215,
             "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-09-03T14:49:49Z",
+              "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Back in training"
             },
             "firstName": "Luis",
             "lastName": "Rioja"
           },
           {
             "id": 590494,
+            "age": 29,
             "name": "Sadiq Umar",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 2540440,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-01T09:27:44Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
@@ -797,34 +789,28 @@
           },
           {
             "id": 586768,
+            "age": 32,
             "name": "Guido Rodríguez",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 2479331,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-29T21:12:53Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Guido",
             "lastName": "Rodríguez"
           },
           {
-            "id": 969711,
-            "name": "Justin De Haas",
-            "unavailability": {
-              "injuryId": 30,
-              "lastUpdated": "2026-08-25T16:59:02Z",
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Justin",
-            "lastName": "De Haas"
-          },
-          {
             "id": 1284434,
+            "age": 24,
             "name": "Diego López",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 12207091,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-10T20:37:01Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
@@ -833,10 +819,13 @@
           },
           {
             "id": 673937,
+            "age": 29,
             "name": "Sergi Canós",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 364820,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:43:59Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
@@ -845,10 +834,13 @@
           },
           {
             "id": 896402,
+            "age": 26,
             "name": "José Copete",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 3529367,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-08-31T17:47:15Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
@@ -860,25 +852,48 @@
       "awayTeam": {
         "id": 8560,
         "name": "Real Sociedad",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 1293912,
-            "name": "Pablo Marín",
+            "id": 698653,
+            "age": 29,
+            "name": "Igor Zubeldia",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 7211547,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-06T17:35:29Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2027"
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Igor",
+            "lastName": "Zubeldia"
+          },
+          {
+            "id": 1293912,
+            "age": 23,
+            "name": "Pablo Marín",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 7830653,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Back in training"
             },
             "firstName": "Pablo",
             "lastName": "Marín"
           },
           {
             "id": 636570,
+            "age": 30,
             "name": "Álvaro Odriozola",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 750043,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:47:55Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },

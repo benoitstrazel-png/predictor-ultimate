@@ -570,8 +570,8 @@
             "card": "Yellow",
             "cardDescription": null,
             "cardReason": {
-              "localizedKey": "card_desc_professional_foul",
-              "defaultText": "Professional foul"
+              "localizedKey": "card_desc_foul",
+              "defaultText": "Foul"
             }
           },
           {
@@ -717,8 +717,8 @@
             "card": "Yellow",
             "cardDescription": null,
             "cardReason": {
-              "localizedKey": "card_desc_professional_foul",
-              "defaultText": "Professional foul"
+              "localizedKey": "card_desc_foul",
+              "defaultText": "Foul"
             }
           },
           {
@@ -878,8 +878,8 @@
             "card": "Yellow",
             "cardDescription": null,
             "cardReason": {
-              "localizedKey": "card_desc_professional_foul",
-              "defaultText": "Professional foul"
+              "localizedKey": "card_desc_foul",
+              "defaultText": "Foul"
             }
           },
           {
@@ -3952,7 +3952,7 @@
               "Expected goals (xG)": {
                 "key": "expected_goals",
                 "stat": {
-                  "value": 0.13,
+                  "value": 0.12,
                   "type": "double"
                 }
               },
@@ -3972,14 +3972,14 @@
               "xG + xA": {
                 "key": "xg_and_xa",
                 "stat": {
-                  "value": 0.43,
+                  "value": 0.42,
                   "type": "double"
                 }
               },
               "Total shots": {
                 "key": "total_shots",
                 "stat": {
-                  "value": 5,
+                  "value": 4,
                   "type": "integer"
                 },
                 "hideInPopupCard": true
@@ -4009,7 +4009,7 @@
               "Shots off target": {
                 "key": "ShotsOffTarget",
                 "stat": {
-                  "value": 3,
+                  "value": 2,
                   "type": "integer"
                 }
               },
@@ -4024,7 +4024,7 @@
                 "key": "shot_accuracy",
                 "stat": {
                   "value": 0,
-                  "total": 3,
+                  "total": 2,
                   "type": "fractionWithPercentage"
                 }
               },
@@ -4051,7 +4051,7 @@
               "Touches": {
                 "key": "touches",
                 "stat": {
-                  "value": 69,
+                  "value": 68,
                   "type": "integer"
                 }
               },
@@ -4095,7 +4095,7 @@
               "xG Non-penalty": {
                 "key": "expected_goals_non_penalty",
                 "stat": {
-                  "value": 0.13,
+                  "value": 0.12,
                   "type": "double"
                 }
               }
@@ -4217,38 +4217,6 @@
           }
         ],
         "shotmap": [
-          {
-            "id": 2961052727,
-            "eventType": "Miss",
-            "teamId": 9905,
-            "playerId": 240537,
-            "playerName": "Danny da Costa",
-            "x": 84.1742718448,
-            "y": 24.349554145,
-            "min": 30,
-            "minAdded": null,
-            "isBlocked": false,
-            "isOnTarget": false,
-            "blockedX": 95.54385964789999,
-            "blockedY": 34.305,
-            "goalCrossedY": 45.4020382125,
-            "goalCrossedZ": 0.9824210478000001,
-            "expectedGoals": 0.010925078764557838,
-            "expectedGoalsOnTarget": 0,
-            "shotType": "RightFoot",
-            "situation": "FromCorner",
-            "period": "FirstHalf",
-            "isOwnGoal": false,
-            "onGoalShot": {
-              "x": 1.1102230246251565e-16,
-              "y": 0.08616187996309084,
-              "zoomRatio": 0.33151967477674327
-            },
-            "isSavedOffLine": false,
-            "isFromInsideBox": false,
-            "keeperId": null,
-            "teamColor": "#B8121C"
-          },
           {
             "id": 2961144649,
             "eventType": "AttemptSaved",
@@ -4383,9 +4351,9 @@
         "usualPosition": 1,
         "funFacts": [
           {
-            "translationKey": "fun_fact_most_shots",
-            "fallbackText": "Took the most shots (%1$s)",
-            "value": 5,
+            "translationKey": "fun_fact_joint_most_shots",
+            "fallbackText": "Took the joint-most shots (%1$s)",
+            "value": 4,
             "valueFormat": "integer",
             "isPositive": true,
             "hasLiveVariant": true
@@ -5342,6 +5310,19 @@
                   "type": "integer"
                 }
               },
+              "Expected goals (xG)": {
+                "key": "expected_goals",
+                "stat": {
+                  "value": 0.01,
+                  "type": "double"
+                }
+              },
+              "Expected goals on target (xGOT)": {
+                "key": "expected_goals_on_target_variant",
+                "stat": {
+                  "type": "double"
+                }
+              },
               "Expected assists (xA)": {
                 "key": "expected_assists",
                 "stat": {
@@ -5352,9 +5333,17 @@
               "xG + xA": {
                 "key": "xg_and_xa",
                 "stat": {
-                  "value": 0.55,
+                  "value": 0.56,
                   "type": "double"
                 }
+              },
+              "Total shots": {
+                "key": "total_shots",
+                "stat": {
+                  "value": 1,
+                  "type": "integer"
+                },
+                "hideInPopupCard": true
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -5371,10 +5360,32 @@
                   "type": "integer"
                 }
               },
+              "Shots on target": {
+                "key": "ShotsOnTarget",
+                "stat": {
+                  "value": 0,
+                  "type": "integer"
+                }
+              },
+              "Shots off target": {
+                "key": "ShotsOffTarget",
+                "stat": {
+                  "value": 1,
+                  "type": "integer"
+                }
+              },
+              "Shot accuracy": {
+                "key": "shot_accuracy",
+                "stat": {
+                  "value": 0,
+                  "total": 1,
+                  "type": "fractionWithPercentage"
+                }
+              },
               "Shotmap": {
                 "key": null,
                 "stat": {
-                  "value": 0,
+                  "value": 1,
                   "type": "boolean"
                 }
               },
@@ -5394,7 +5405,7 @@
               "Touches": {
                 "key": "touches",
                 "stat": {
-                  "value": 27,
+                  "value": 28,
                   "type": "integer"
                 }
               },
@@ -5433,6 +5444,13 @@
                 "stat": {
                   "value": 3,
                   "type": "integer"
+                }
+              },
+              "xG Non-penalty": {
+                "key": "expected_goals_non_penalty",
+                "stat": {
+                  "value": 0.01,
+                  "type": "double"
                 }
               }
             }
@@ -5551,7 +5569,40 @@
             }
           }
         ],
-        "shotmap": [],
+        "shotmap": [
+          {
+            "id": 2961052727,
+            "eventType": "Miss",
+            "teamId": 9905,
+            "playerId": 495222,
+            "playerName": "Sheraldo Becker",
+            "x": 84.1742718448,
+            "y": 24.349554145,
+            "min": 30,
+            "minAdded": null,
+            "isBlocked": false,
+            "isOnTarget": false,
+            "blockedX": 95.54385964789999,
+            "blockedY": 34.305,
+            "goalCrossedY": 45.4020382125,
+            "goalCrossedZ": 0.9824210478000001,
+            "expectedGoals": 0.010925078764557838,
+            "expectedGoalsOnTarget": 0,
+            "shotType": "RightFoot",
+            "situation": "FromCorner",
+            "period": "FirstHalf",
+            "isOwnGoal": false,
+            "onGoalShot": {
+              "x": 1.1102230246251565e-16,
+              "y": 0.08616187996309084,
+              "zoomRatio": 0.33151967477674327
+            },
+            "isSavedOffLine": false,
+            "isFromInsideBox": false,
+            "keeperId": null,
+            "teamColor": "#B8121C"
+          }
+        ],
         "shirtNumber": "23",
         "positionId": 104,
         "usualPosition": 3
@@ -6002,7 +6053,17 @@
         ],
         "shirtNumber": "7",
         "positionId": 74,
-        "usualPosition": 2
+        "usualPosition": 2,
+        "funFacts": [
+          {
+            "translationKey": "fun_fact_joint_most_shots",
+            "fallbackText": "Took the joint-most shots (%1$s)",
+            "value": 4,
+            "valueFormat": "integer",
+            "isPositive": true,
+            "hasLiveVariant": true
+          }
+        ]
       },
       "556505": {
         "name": "Robin Zentner",
@@ -7359,7 +7420,7 @@
               "Expected goals (xG)": {
                 "key": "expected_goals",
                 "stat": {
-                  "value": 0.06,
+                  "value": 0.13,
                   "type": "double"
                 }
               },
@@ -7372,7 +7433,7 @@
               "xG + xA": {
                 "key": "xg_and_xa",
                 "stat": {
-                  "value": 0.06,
+                  "value": 0.13,
                   "type": "double"
                 }
               },
@@ -7473,7 +7534,7 @@
               "xG Non-penalty": {
                 "key": "expected_goals_non_penalty",
                 "stat": {
-                  "value": 0.06,
+                  "value": 0.13,
                   "type": "double"
                 }
               }
@@ -8091,7 +8152,7 @@
               "Expected goals (xG)": {
                 "key": "expected_goals",
                 "stat": {
-                  "value": 0.04,
+                  "value": 0.06,
                   "type": "double"
                 }
               },
@@ -8111,7 +8172,7 @@
               "xG + xA": {
                 "key": "xg_and_xa",
                 "stat": {
-                  "value": 0.27,
+                  "value": 0.29000000000000004,
                   "type": "double"
                 }
               },
@@ -8241,7 +8302,7 @@
               "xG Non-penalty": {
                 "key": "expected_goals_non_penalty",
                 "stat": {
-                  "value": 0.04,
+                  "value": 0.06,
                   "type": "double"
                 }
               }
@@ -8459,7 +8520,7 @@
               "Expected goals (xG)": {
                 "key": "expected_goals",
                 "stat": {
-                  "value": 0.08,
+                  "value": 0.07,
                   "type": "double"
                 }
               },
@@ -8479,7 +8540,7 @@
               "xG + xA": {
                 "key": "xg_and_xa",
                 "stat": {
-                  "value": 0.25,
+                  "value": 0.24000000000000002,
                   "type": "double"
                 }
               },
@@ -8593,7 +8654,7 @@
               "xG Non-penalty": {
                 "key": "expected_goals_non_penalty",
                 "stat": {
-                  "value": 0.08,
+                  "value": 0.07,
                   "type": "double"
                 }
               }
@@ -9558,7 +9619,7 @@
         "usualPosition": 0
       },
       "1276453": {
-        "name": "Gabriel Vidovic",
+        "name": "Gabriel Vidović",
         "id": 1276453,
         "optaId": "508347",
         "teamId": 8460,
@@ -10974,7 +11035,7 @@
               "Expected goals (xG)": {
                 "key": "expected_goals",
                 "stat": {
-                  "value": 0.02,
+                  "value": 0.03,
                   "type": "double"
                 }
               },
@@ -10994,7 +11055,7 @@
               "xG + xA": {
                 "key": "xg_and_xa",
                 "stat": {
-                  "value": 0.04,
+                  "value": 0.05,
                   "type": "double"
                 }
               },
@@ -11116,7 +11177,7 @@
               "xG Non-penalty": {
                 "key": "expected_goals_non_penalty",
                 "stat": {
-                  "value": 0.02,
+                  "value": 0.03,
                   "type": "double"
                 }
               }
@@ -12703,7 +12764,7 @@
         "usualPosition": 3
       },
       "1586401": {
-        "name": "Luka Duric",
+        "name": "Luka Djuric",
         "id": 1586401,
         "optaId": "515218",
         "teamId": 8460,
@@ -13499,8 +13560,8 @@
           "id": 2961052727,
           "eventType": "Miss",
           "teamId": 9905,
-          "playerId": 240537,
-          "playerName": "Danny da Costa",
+          "playerId": 495222,
+          "playerName": "Sheraldo Becker",
           "x": 84.1742718448,
           "y": 24.349554145,
           "min": 30,
@@ -13525,9 +13586,9 @@
           "isSavedOffLine": false,
           "isFromInsideBox": false,
           "keeperId": null,
-          "firstName": "Danny",
-          "lastName": "da Costa",
-          "fullName": "Danny da Costa",
+          "firstName": "Sheraldo",
+          "lastName": "Becker",
+          "fullName": "Sheraldo Becker",
           "teamColor": "#B8121C"
         },
         {
@@ -14587,8 +14648,8 @@
             "id": 2961052727,
             "eventType": "Miss",
             "teamId": 9905,
-            "playerId": 240537,
-            "playerName": "Danny da Costa",
+            "playerId": 495222,
+            "playerName": "Sheraldo Becker",
             "x": 84.1742718448,
             "y": 24.349554145,
             "min": 30,
@@ -14613,9 +14674,9 @@
             "isSavedOffLine": false,
             "isFromInsideBox": false,
             "keeperId": null,
-            "firstName": "Danny",
-            "lastName": "da Costa",
-            "fullName": "Danny da Costa",
+            "firstName": "Sheraldo",
+            "lastName": "Becker",
+            "fullName": "Sheraldo Becker",
             "teamColor": "#B8121C"
           },
           {
@@ -15674,8 +15735,8 @@
             "id": 2961052727,
             "eventType": "Miss",
             "teamId": 9905,
-            "playerId": 240537,
-            "playerName": "Danny da Costa",
+            "playerId": 495222,
+            "playerName": "Sheraldo Becker",
             "x": 84.1742718448,
             "y": 24.349554145,
             "min": 30,
@@ -15700,9 +15761,9 @@
             "isSavedOffLine": false,
             "isFromInsideBox": false,
             "keeperId": null,
-            "firstName": "Danny",
-            "lastName": "da Costa",
-            "fullName": "Danny da Costa",
+            "firstName": "Sheraldo",
+            "lastName": "Becker",
+            "fullName": "Sheraldo Becker",
             "teamColor": "#B8121C"
           },
           {
@@ -17349,7 +17410,7 @@
           {
             "id": 1276453,
             "age": 22,
-            "name": "Gabriel Vidovic",
+            "name": "Gabriel Vidović",
             "positionId": 107,
             "usualPlayingPositionId": 3,
             "shirtNumber": "40",
@@ -17372,7 +17433,7 @@
               "rating": 7
             },
             "firstName": "Gabriel",
-            "lastName": "Vidovic",
+            "lastName": "Vidović",
             "rankings": null
           }
         ],
@@ -17511,14 +17572,14 @@
           {
             "id": 1586401,
             "age": 23,
-            "name": "Luka Duric",
+            "name": "Luka Djuric",
             "usualPlayingPositionId": 2,
             "shirtNumber": "8",
             "countryName": "Serbia",
             "countryCode": "SRB",
             "performance": {},
             "firstName": "Luka",
-            "lastName": "Duric",
+            "lastName": "Djuric",
             "rankings": null
           },
           {

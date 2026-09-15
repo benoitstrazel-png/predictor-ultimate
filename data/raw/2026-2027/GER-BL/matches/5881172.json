@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -122,36 +123,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2564.png",
-            "linkToMatch": "/matches/velbert-vs-borussia-monchengladbach/19fexo#5997766",
-            "date": {
-              "utcTime": "2026-08-12T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/2564/overview/velbert",
-            "tooltipText": {
-              "utcTime": "2026-08-12T16:00:00.000Z",
-              "homeTeam": "Velbert",
-              "homeTeamId": 2564,
-              "homeScore": "0",
-              "awayTeam": "Borussia Mönchengladbach",
-              "awayTeamId": 9788,
-              "awayScore": "8"
-            },
-            "score": "0 - 8",
-            "home": {
-              "id": "2564",
-              "name": "Velbert",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9788",
-              "name": "Borussia Mönchengladbach",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -271,39 +242,39 @@
               "name": "Elversberg",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
-            "linkToMatch": "/matches/udinese-vs-mainz-05/2ty726#5944889",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8358.png",
+            "linkToMatch": "/matches/freiburg-vs-borussia-monchengladbach/2q16jz#5881165",
             "date": {
-              "utcTime": "2026-08-01T14:00:00.000Z"
+              "utcTime": "2026-09-12T13:30:00.000Z"
             },
-            "teamPageUrl": "/teams/8600/overview/udinese",
+            "teamPageUrl": "/teams/8358/overview/freiburg",
             "tooltipText": {
-              "utcTime": "2026-08-01T14:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "3",
-              "awayTeam": "Mainz 05",
-              "awayTeamId": 9905,
-              "awayScore": "3"
+              "utcTime": "2026-09-12T13:30:00.000Z",
+              "homeTeam": "Freiburg",
+              "homeTeamId": 8358,
+              "homeScore": "5",
+              "awayTeam": "Borussia Mönchengladbach",
+              "awayTeamId": 9788,
+              "awayScore": "0"
             },
-            "score": "3 - 3",
+            "score": "5 - 0",
             "home": {
-              "id": "8600",
-              "name": "Udinese",
+              "id": "8358",
+              "name": "Freiburg",
               "isOurTeam": false
             },
             "away": {
-              "id": "9905",
-              "name": "Mainz 05",
+              "id": "9788",
+              "name": "Borussia Mönchengladbach",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +394,36 @@
               "name": "Mainz 05",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9810.png",
+            "linkToMatch": "/matches/eintracht-frankfurt-vs-mainz-05/37ptfb#5881167",
+            "date": {
+              "utcTime": "2026-09-12T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9810/overview/eintracht-frankfurt",
+            "tooltipText": {
+              "utcTime": "2026-09-12T13:30:00.000Z",
+              "homeTeam": "Mainz 05",
+              "homeTeamId": 9905,
+              "homeScore": "1",
+              "awayTeam": "Eintracht Frankfurt",
+              "awayTeamId": 9810,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "9905",
+              "name": "Mainz 05",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9810",
+              "name": "Eintracht Frankfurt",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "0",
+                "3",
                 "away_team",
-                "10"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +462,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Mainz 05 haven't lost in 10 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Borussia Mönchengladbach have 2W, 0D, 3L in five matches while Mainz 05 have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -483,12 +490,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "3",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Mönchengladbach have scored 8 goals in their last 3 matches."
+              "defaultText": "Borussia Mönchengladbach have scored 3 goals in their last 3 matches, while Mainz 05 have scored 6."
             },
             {
               "OddsType": "dc",
@@ -509,7 +518,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "11"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Borussia Mönchengladbach haven't drawn in their last 11 matches."
+              "defaultText": "Borussia Mönchengladbach haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -542,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 18,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -552,34 +561,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 18 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#417E37"
         },
         {
-          "type": "player",
-          "playerId": 501543,
+          "type": "team",
+          "playerId": null,
           "teamId": 9788,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 501543,
-              "name": "Franck Honorat",
-              "type": "player"
-            },
-            {
-              "value": 9788,
-              "name": "Borussia Mönchengladbach",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Franck Honorat has created the most big chances for Borussia Mönchengladbach (2)",
+          "text": "Have lost their last 3 matches",
           "color": "#417E37"
         },
         {
@@ -601,12 +600,12 @@
               "type": "ordinal"
             },
             {
-              "value": 7,
+              "value": 6,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Moritz Nicolas is ranked 2 in saves per match in the competition (7)",
+          "text": "Moritz Nicolas is ranked 2 in saves per match in the competition (6)",
           "color": "#417E37"
         },
         {
@@ -618,7 +617,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 19,
+              "value": 17,
               "name": null,
               "type": "integer"
             },
@@ -628,7 +627,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 19 goals in their last 5 matches",
+          "text": "Have scored 17 goals in their last 5 matches",
+          "color": "#B8121C"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9905,
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
+          "statValues": [
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have been awarded the most penalties this season (1)",
           "color": "#B8121C"
         },
         {
@@ -647,27 +663,48 @@
           ],
           "text": "Have kept the most clean sheets in the competition (2)",
           "color": "#B8121C"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9905,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 10,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 10 matches",
-          "color": "#B8121C"
         }
       ],
       "countryCode": "GER",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881172/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -685,72 +722,493 @@
     },
     "weather": {
       "temperature": 19,
-      "windSpeed": 4,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 30,
-      "relativeHumidity": 60,
-      "precipChance": 7,
+      "windSpeed": 6,
+      "windDirectionCardinal": "SW",
+      "iconCode": 28,
+      "relativeHumidity": 72,
+      "precipChance": 9,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 41,
-      "description": "Partly Cloudy",
+      "cloudCover": 76,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-10T04:00:39Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-09-15T04:00:19Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5881172,
-      "lineupType": "standard",
+      "lineupType": "lastStarting11",
+      "source": "lastStartingLineups",
       "availableFilters": [
-        "match"
+        "marketValue",
+        "age",
+        "country"
       ],
       "homeTeam": {
         "id": 9788,
         "name": "Borussia Mönchengladbach",
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 888745,
-            "name": "Nicolas-Gerrit Kühn",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-09-09T18:53:18Z",
-              "type": "injury",
-              "expectedReturn": "Early October 2026"
+            "id": 784146,
+            "age": 28,
+            "name": "Moritz Nicolas",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Nicolas-Gerrit",
-            "lastName": "Kühn"
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 4545133,
+            "firstName": "Moritz",
+            "lastName": "Nicolas",
+            "rankings": null
           },
           {
-            "id": 1301517,
-            "name": "Enzo Leopold",
-            "unavailability": {
-              "injuryId": 76,
-              "lastUpdated": "2026-09-02T23:01:20Z",
-              "type": "injury",
-              "expectedReturn": "Late May 2027"
+            "id": 959696,
+            "age": 23,
+            "name": "Joseph Scally",
+            "positionId": 32,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "29",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
             },
-            "firstName": "Enzo",
-            "lastName": "Leopold"
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 6986402,
+            "firstName": "Joseph",
+            "lastName": "Scally",
+            "rankings": null
+          },
+          {
+            "id": 620917,
+            "age": 29,
+            "name": "Ko Itakura",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 6854975,
+            "firstName": "Ko",
+            "lastName": "Itakura",
+            "rankings": null
+          },
+          {
+            "id": 566158,
+            "age": 29,
+            "name": "Kevin Diks",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Indonesia",
+            "countryCode": "IDN",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 3030510,
+            "firstName": "Kevin",
+            "lastName": "Diks",
+            "rankings": null
+          },
+          {
+            "id": 1356589,
+            "age": 23,
+            "name": "David Herold",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2112486,
+            "firstName": "David",
+            "lastName": "Herold",
+            "rankings": null
+          },
+          {
+            "id": 951918,
+            "age": 28,
+            "name": "Philipp Sander",
+            "positionId": 64,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "16",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 2565497,
+            "firstName": "Philipp",
+            "lastName": "Sander",
+            "rankings": null
+          },
+          {
+            "id": 276739,
+            "age": 33,
+            "name": "Kevin Stöger",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 918912,
+            "firstName": "Kevin",
+            "lastName": "Stöger",
+            "rankings": null
+          },
+          {
+            "id": 501543,
+            "age": 30,
+            "name": "Franck Honorat",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 8031247,
+            "firstName": "Franck",
+            "lastName": "Honorat",
+            "rankings": null
+          },
+          {
+            "id": 1351569,
+            "age": 23,
+            "name": "Hugo Bolin",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "38",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 3103190,
+            "firstName": "Hugo",
+            "lastName": "Bolin",
+            "rankings": null
+          },
+          {
+            "id": 884919,
+            "age": 28,
+            "name": "Robin Hack",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "25",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 7000405,
+            "firstName": "Robin",
+            "lastName": "Hack",
+            "rankings": null
+          },
+          {
+            "id": 442728,
+            "age": 31,
+            "name": "Tim Kleindienst",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "isCaptain": true,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 7713209,
+            "firstName": "Tim",
+            "lastName": "Kleindienst",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 27420,
+          "age": 40,
+          "name": "Eugen Polanski",
+          "countryName": "Poland",
+          "countryCode": "POL",
+          "firstName": "Eugen",
+          "lastName": "Polanski",
+          "primaryTeamId": 9788,
+          "primaryTeamName": "Borussia Mönchengladbach",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 212873,
+            "age": 35,
+            "name": "Daniel Batz",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "33",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 580072,
+            "firstName": "Daniel",
+            "lastName": "Batz",
+            "rankings": null
+          },
+          {
+            "id": 1276331,
+            "age": 21,
+            "name": "Fabio Chiarodia",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "2",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2505464,
+            "firstName": "Fabio",
+            "lastName": "Chiarodia",
+            "rankings": null
+          },
+          {
+            "id": 1660228,
+            "age": 19,
+            "name": "Jan Leszczyński",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 1010528,
+            "firstName": "Jan",
+            "lastName": "Leszczyński",
+            "rankings": null
+          },
+          {
+            "id": 1398483,
+            "age": 22,
+            "name": "Lukas Ullrich",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "26",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 6734544,
+            "firstName": "Lukas",
+            "lastName": "Ullrich",
+            "rankings": null
+          },
+          {
+            "id": 764507,
+            "age": 29,
+            "name": "Florian Neuhaus",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1566193,
+            "firstName": "Florian",
+            "lastName": "Neuhaus",
+            "rankings": null
+          },
+          {
+            "id": 1975572,
+            "age": 18,
+            "name": "Mathieu Nguefack",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "34",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "firstName": "Mathieu",
+            "lastName": "Nguefack",
+            "rankings": null
+          },
+          {
+            "id": 1793874,
+            "age": 17,
+            "name": "Wael Mohya",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "36",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 2099521,
+            "firstName": "Wael",
+            "lastName": "Mohya",
+            "rankings": null
+          },
+          {
+            "id": 655095,
+            "age": 28,
+            "name": "Isac Lidberg",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "3",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 2358441,
+            "firstName": "Isac",
+            "lastName": "Lidberg",
+            "rankings": null
+          },
+          {
+            "id": 915111,
+            "age": 26,
+            "name": "Shuto Machino",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "18",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 4289622,
+            "firstName": "Shuto",
+            "lastName": "Machino",
+            "rankings": null
+          }
+        ],
+        "unavailable": [
+          {
+            "id": 442728,
+            "age": 31,
+            "name": "Tim Kleindienst",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 7713209,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Mid September 2026",
+              "expectedReturnDate": "2026-09-19T15:30:00Z"
+            },
+            "firstName": "Tim",
+            "lastName": "Kleindienst"
           },
           {
             "id": 878296,
+            "age": 27,
             "name": "Daiki Hashioka",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 880068,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-09-01T11:56:20Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Daiki",
             "lastName": "Hashioka"
           },
           {
             "id": 1337143,
+            "age": 22,
             "name": "Zento Uno",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 982477,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-27T14:56:58Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -758,65 +1216,533 @@
             "lastName": "Uno"
           },
           {
+            "id": 1054026,
+            "age": 27,
+            "name": "Yukhym Konoplya",
+            "positionId": 1000,
+            "countryName": "Ukraine",
+            "countryCode": "UKR",
+            "marketValue": 1574984,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Yukhym",
+            "lastName": "Konoplya"
+          },
+          {
+            "id": 1301517,
+            "age": 26,
+            "name": "Enzo Leopold",
+            "positionId": 1000,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 2004420,
+            "unavailability": {
+              "injuryId": 76,
+              "type": "injury",
+              "expectedReturn": "Late May 2027"
+            },
+            "firstName": "Enzo",
+            "lastName": "Leopold"
+          },
+          {
             "id": 1185902,
+            "age": 23,
             "name": "Jens Castrop",
+            "positionId": 1000,
+            "countryName": "South Korea",
+            "countryCode": "KOR",
+            "marketValue": 4975001,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-09-01T12:25:40Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Jens",
             "lastName": "Castrop"
           },
           {
-            "id": 1054026,
-            "name": "Yukhym Konoplya",
+            "id": 888745,
+            "age": 26,
+            "name": "Nicolas-Gerrit Kühn",
+            "positionId": 1000,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 10966767,
             "unavailability": {
-              "injuryId": 14,
-              "lastUpdated": "2026-09-01T12:25:25Z",
+              "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Early October 2026"
             },
-            "firstName": "Yukhym",
-            "lastName": "Konoplya"
+            "firstName": "Nicolas-Gerrit",
+            "lastName": "Kühn"
           }
-        ]
+        ],
+        "averageStarterAge": 28.2,
+        "totalStarterMarketValue": 52861966,
+        "lastMatch": {
+          "matchId": 5881165,
+          "homeTeamId": 8358,
+          "awayTeamId": 9788,
+          "homeTeamName": "Freiburg",
+          "awayTeamName": "Borussia Mönchengladbach",
+          "homeScore": 5,
+          "awayScore": 0,
+          "matchDate": "2026-09-12T15:30:00"
+        }
       },
       "awayTeam": {
         "id": 9905,
         "name": "Mainz 05",
-        "unavailable": [
-          {
-            "id": 275034,
-            "name": "Silvan Widmer",
-            "unavailability": {
-              "injuryId": 14,
-              "lastUpdated": "2026-09-07T11:24:24Z",
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Silvan",
-            "lastName": "Widmer"
-          },
+        "formation": "3-1-4-2",
+        "starters": [
           {
             "id": 556505,
+            "age": 31,
             "name": "Robin Zentner",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "27",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1779405,
+            "firstName": "Robin",
+            "lastName": "Zentner",
+            "rankings": null
+          },
+          {
+            "id": 557325,
+            "age": 29,
+            "name": "Stefan Posch",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 2815415,
+            "firstName": "Stefan",
+            "lastName": "Posch",
+            "rankings": null
+          },
+          {
+            "id": 1362417,
+            "age": 24,
+            "name": "Fabio Gruber",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Peru",
+            "countryCode": "PER",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 1688968,
+            "firstName": "Fabio",
+            "lastName": "Gruber",
+            "rankings": null
+          },
+          {
+            "id": 1800401,
+            "age": 18,
+            "name": "Kacper Potulski",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "48",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 1204226,
+            "firstName": "Kacper",
+            "lastName": "Potulski",
+            "rankings": null
+          },
+          {
+            "id": 1033111,
+            "age": 25,
+            "name": "Kaishu Sano",
+            "positionId": 65,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 21322112,
+            "firstName": "Kaishu",
+            "lastName": "Sano",
+            "rankings": null
+          },
+          {
+            "id": 771401,
+            "age": 29,
+            "name": "Anthony Caci",
+            "positionId": 82,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "19",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 6854975,
+            "firstName": "Anthony",
+            "lastName": "Caci",
+            "rankings": null
+          },
+          {
+            "id": 523749,
+            "age": 34,
+            "name": "Jae-Sung Lee",
+            "positionId": 84,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "South Korea",
+            "countryCode": "KOR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1320102,
+            "firstName": "Jae-Sung",
+            "lastName": "Lee",
+            "rankings": null
+          },
+          {
+            "id": 614449,
+            "age": 29,
+            "name": "Nadiem Amiri",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "isCaptain": true,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 12468732,
+            "firstName": "Nadiem",
+            "lastName": "Amiri",
+            "rankings": null
+          },
+          {
+            "id": 423812,
+            "age": 32,
+            "name": "Phillipp Mwene",
+            "positionId": 88,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "2",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1003273,
+            "firstName": "Phillipp",
+            "lastName": "Mwene",
+            "rankings": null
+          },
+          {
+            "id": 495222,
+            "age": 31,
+            "name": "Sheraldo Becker",
+            "positionId": 104,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "23",
+            "countryName": "Suriname",
+            "countryCode": "SUR",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1014998,
+            "firstName": "Sheraldo",
+            "lastName": "Becker",
+            "rankings": null
+          },
+          {
+            "id": 686315,
+            "age": 29,
+            "name": "Phillip Tietz",
+            "positionId": 106,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 2756660,
+            "firstName": "Phillip",
+            "lastName": "Tietz",
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 266042,
+          "age": 60,
+          "name": "Urs Fischer",
+          "countryName": "Switzerland",
+          "countryCode": "SUI",
+          "firstName": "Urs",
+          "lastName": "Fischer",
+          "primaryTeamId": 9905,
+          "primaryTeamName": "Mainz 05",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 248437,
+            "age": 34,
+            "name": "Alexander Schwolow",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 310242,
+            "firstName": "Alexander",
+            "lastName": "Schwolow",
+            "rankings": null
+          },
+          {
+            "id": 240537,
+            "age": 33,
+            "name": "Danny da Costa",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "21",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 816288,
+            "firstName": "Danny",
+            "lastName": "da Costa",
+            "rankings": null
+          },
+          {
+            "id": 2140397,
+            "age": 19,
+            "name": "Rael Nakuzola",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "47",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "firstName": "Rael",
+            "lastName": "Nakuzola",
+            "rankings": null
+          },
+          {
+            "id": 193901,
+            "age": 35,
+            "name": "Stefan Bell",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "16",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 365859,
+            "firstName": "Stefan",
+            "lastName": "Bell",
+            "rankings": null
+          },
+          {
+            "id": 921197,
+            "age": 26,
+            "name": "Lennard Maloney",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "15",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 1966172,
+            "firstName": "Lennard",
+            "lastName": "Maloney",
+            "rankings": null
+          },
+          {
+            "id": 1347994,
+            "age": 20,
+            "name": "Otto Ruoppi",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "20",
+            "countryName": "Finland",
+            "countryCode": "FIN",
+            "marketValue": 970074,
+            "firstName": "Otto",
+            "lastName": "Ruoppi",
+            "rankings": null
+          },
+          {
+            "id": 1134759,
+            "age": 25,
+            "name": "Sota Kawasaki",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "24",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 1343402,
+            "firstName": "Sota",
+            "lastName": "Kawasaki",
+            "rankings": null
+          },
+          {
+            "id": 1185568,
+            "age": 25,
+            "name": "Benedict Hollerbach",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "17",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 7674709,
+            "firstName": "Benedict",
+            "lastName": "Hollerbach",
+            "rankings": null
+          },
+          {
+            "id": 1121170,
+            "age": 25,
+            "name": "Ransford Königsdörffer",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "marketValue": 2830976,
+            "firstName": "Ransford",
+            "lastName": "Königsdörffer",
+            "rankings": null
+          }
+        ],
+        "unavailable": [
+          {
+            "id": 556505,
+            "age": 31,
+            "name": "Robin Zentner",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1779405,
             "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-09-07T11:23:58Z",
+              "injuryId": 35,
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "A few weeks"
             },
             "firstName": "Robin",
             "lastName": "Zentner"
           },
           {
             "id": 303905,
+            "age": 32,
             "name": "Dominik Kohr",
+            "positionId": 1000,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1689125,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-09-10T10:53:37Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
@@ -825,22 +1751,30 @@
           },
           {
             "id": 1199283,
+            "age": 24,
             "name": "Eric Martel",
+            "positionId": 1000,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 7139367,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-01T12:35:26Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Eric",
             "lastName": "Martel"
           },
           {
             "id": 1175939,
+            "age": 23,
             "name": "Paul Nebel",
+            "positionId": 1000,
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 12251841,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-08-08T10:34:51Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
@@ -848,18 +1782,50 @@
             "lastName": "Nebel"
           },
           {
+            "id": 275034,
+            "age": 33,
+            "name": "Silvan Widmer",
+            "positionId": 1000,
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 599096,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Silvan",
+            "lastName": "Widmer"
+          },
+          {
             "id": 959404,
+            "age": 27,
             "name": "Silas Katompa Mvumpa",
+            "positionId": 1000,
+            "countryName": "DR Congo",
+            "countryCode": "COD",
+            "marketValue": 1346596,
             "unavailability": {
               "injuryId": 23,
-              "lastUpdated": "2026-09-01T12:31:55Z",
               "type": "injury",
-              "expectedReturn": "Mid September 2026"
+              "expectedReturn": "Late September 2026"
             },
             "firstName": "Silas Katompa",
             "lastName": "Mvumpa"
           }
-        ]
+        ],
+        "averageStarterAge": 28.8,
+        "totalStarterMarketValue": 54228866,
+        "lastMatch": {
+          "matchId": 5881167,
+          "homeTeamId": 9905,
+          "awayTeamId": 9810,
+          "homeTeamName": "Mainz 05",
+          "awayTeamName": "Eintracht Frankfurt",
+          "homeScore": 1,
+          "awayScore": 3,
+          "matchDate": "2026-09-12T15:30:00"
+        }
       }
     },
     "hasPlayoff": false,
