@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -122,36 +122,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8581.png",
-            "linkToMatch": "/matches/espanyol-vs-levante/2fgcwj#5868015",
-            "date": {
-              "utcTime": "2026-08-16T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8581/overview/levante",
-            "tooltipText": {
-              "utcTime": "2026-08-16T17:00:00.000Z",
-              "homeTeam": "Espanyol",
-              "homeTeamId": 8558,
-              "homeScore": "3",
-              "awayTeam": "Levante",
-              "awayTeamId": 8581,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8558",
-              "name": "Espanyol",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8581",
-              "name": "Levante",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -264,6 +234,36 @@
             "home": {
               "id": "8371",
               "name": "Osasuna",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8558",
+              "name": "Espanyol",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8370.png",
+            "linkToMatch": "/matches/rayo-vallecano-vs-espanyol/2dbblq#5868069",
+            "date": {
+              "utcTime": "2026-09-15T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8370/overview/rayo-vallecano",
+            "tooltipText": {
+              "utcTime": "2026-09-15T17:00:00.000Z",
+              "homeTeam": "Rayo Vallecano",
+              "homeTeamId": 8370,
+              "homeScore": "2",
+              "awayTeam": "Espanyol",
+              "awayTeamId": 8558,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8370",
+              "name": "Rayo Vallecano",
               "isOurTeam": false
             },
             "away": {
@@ -547,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -557,7 +557,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#1954B2"
         },
         {
@@ -599,29 +599,24 @@
         },
         {
           "type": "player",
-          "playerId": 1407741,
+          "playerId": 1252373,
           "teamId": 8558,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 1407741,
-              "name": "Marcos Fernández",
+              "value": 1252373,
+              "name": "Roberto Fernández",
               "type": "player"
             },
             {
-              "value": 8558,
-              "name": "Espanyol",
-              "type": "team"
-            },
-            {
-              "value": 2.2,
+              "value": 6,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Marcos Fernández has the most shots on target per match for Espanyol (2.2)",
+          "text": "Roberto Fernández is the competition's top scorer (6)",
           "color": "#1954B2"
         },
         {
@@ -651,23 +646,6 @@
           "playerId": null,
           "teamId": 10268,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 7 attempts",
-          "color": "#00662D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10268,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -679,6 +657,23 @@
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#00662D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10268,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 7 attempts",
+          "color": "#00662D"
         }
       ],
       "topScorers": {
@@ -687,18 +682,18 @@
         "homePlayer": {
           "playerId": 1252373,
           "position": 3,
-          "matchesWithRating": 5,
+          "matchesWithRating": 6,
           "lastName": "Fernández",
           "fullName": "Roberto Fernández",
           "stats": {
-            "goals": 5,
+            "goals": 6,
             "goalAssist": 0,
-            "ontargetScoringAtt": 1.67,
+            "ontargetScoringAtt": 1.5,
             "motm": 2,
-            "gamesPlayed": 5,
-            "minsPlayed": 433,
+            "gamesPlayed": 6,
+            "minsPlayed": 523,
             "minsPlayedGoal": 87,
-            "expectedGoals": 2.92549991607666,
+            "expectedGoals": 3.2353999614715576,
             "playerRating": 7.65
           }
         },
@@ -767,8 +762,8 @@
     },
     "lineup": {
       "matchId": 5868075,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -864,7 +859,6 @@
             "positionId": 36,
             "usualPlayingPositionId": 1,
             "shirtNumber": "6",
-            "isCaptain": true,
             "countryName": "Uruguay",
             "countryCode": "URU",
             "horizontalLayout": {
@@ -911,12 +905,12 @@
             "rankings": null
           },
           {
-            "id": 837089,
-            "age": 30,
-            "name": "Edu Expósito",
+            "id": 1187767,
+            "age": 25,
+            "name": "Urko González",
             "positionId": 64,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
+            "shirtNumber": "4",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -931,20 +925,20 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 2084856,
-            "firstName": "Edu",
-            "lastName": "Expósito",
+            "marketValue": 7775072,
+            "firstName": "Urko",
+            "lastName": "González",
             "rankings": null
           },
           {
-            "id": 1187767,
-            "age": 25,
-            "name": "Urko González",
+            "id": 1503655,
+            "age": 20,
+            "name": "Gabriel Moscardo",
             "positionId": 66,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "4",
-            "countryName": "Spain",
-            "countryCode": "ESP",
+            "shirtNumber": "20",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.3,
@@ -957,18 +951,18 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 7775072,
-            "firstName": "Urko",
-            "lastName": "González",
+            "marketValue": 6016464,
+            "firstName": "Gabriel",
+            "lastName": "Moscardo",
             "rankings": null
           },
           {
-            "id": 1407741,
-            "age": 23,
-            "name": "Marcos Fernández",
+            "id": 1609364,
+            "age": 21,
+            "name": "Rafel Bauzà",
             "positionId": 83,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "18",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "26",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -983,9 +977,9 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 676624,
-            "firstName": "Marcos",
-            "lastName": "Fernández",
+            "marketValue": 1441541,
+            "firstName": "Rafel",
+            "lastName": "Bauzà",
             "rankings": null
           },
           {
@@ -1015,14 +1009,14 @@
             "rankings": null
           },
           {
-            "id": 1181101,
+            "id": 1393669,
             "age": 24,
-            "name": "Tyrhys Dolan",
+            "name": "Quilindschy Hartman",
             "positionId": 87,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "24",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.163,
@@ -1035,9 +1029,9 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 9279937,
-            "firstName": "Tyrhys",
-            "lastName": "Dolan",
+            "marketValue": 18118008,
+            "firstName": "Quilindschy",
+            "lastName": "Hartman",
             "rankings": null
           },
           {
@@ -1080,179 +1074,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1184772,
-            "age": 24,
-            "name": "Ángel Fortuno",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "1",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 568501,
-            "firstName": "Ángel",
-            "lastName": "Fortuno",
-            "rankings": null
-          },
-          {
-            "id": 1687255,
-            "age": 20,
-            "name": "José Ángel",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "32",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "firstName": "José",
-            "lastName": "Ángel",
-            "rankings": null
-          },
-          {
-            "id": 1393669,
-            "age": 24,
-            "name": "Quilindschy Hartman",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 18118008,
-            "firstName": "Quilindschy",
-            "lastName": "Hartman",
-            "rankings": null
-          },
-          {
-            "id": 805352,
-            "age": 29,
-            "name": "Unai Núñez",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "14",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2125846,
-            "firstName": "Unai",
-            "lastName": "Núñez",
-            "rankings": null
-          },
-          {
-            "id": 955204,
-            "age": 26,
-            "name": "Vanja Drkušić",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "16",
-            "countryName": "Slovenia",
-            "countryCode": "SVN",
-            "marketValue": 2440432,
-            "firstName": "Vanja",
-            "lastName": "Drkušić",
-            "rankings": null
-          },
-          {
-            "id": 1503655,
-            "age": 20,
-            "name": "Gabriel Moscardo",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "20",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 6016464,
-            "firstName": "Gabriel",
-            "lastName": "Moscardo",
-            "rankings": null
-          },
-          {
-            "id": 1184777,
-            "age": 25,
-            "name": "Jofre Carreras",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "17",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2305708,
-            "firstName": "Jofre",
-            "lastName": "Carreras",
-            "rankings": null
-          },
-          {
-            "id": 750031,
-            "age": 26,
-            "name": "Pol Lozano",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "10",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 3699965,
-            "firstName": "Pol",
-            "lastName": "Lozano",
-            "rankings": null
-          },
-          {
-            "id": 1609364,
-            "age": 21,
-            "name": "Rafel Bauzà",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "26",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1441541,
-            "firstName": "Rafel",
-            "lastName": "Bauzà",
-            "rankings": null
-          },
-          {
-            "id": 1300457,
-            "age": 26,
-            "name": "Álex Calatrava",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "22",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2065856,
-            "firstName": "Álex",
-            "lastName": "Calatrava",
-            "rankings": null
-          },
-          {
-            "id": 1202525,
-            "age": 25,
-            "name": "Bryan Zaragoza",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "15",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 7805560,
-            "firstName": "Bryan",
-            "lastName": "Zaragoza",
-            "rankings": null
-          },
-          {
-            "id": 593129,
-            "age": 33,
-            "name": "Pere Milla",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 650900,
-            "firstName": "Pere",
-            "lastName": "Milla",
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1184777,
-            "age": 25,
-            "name": "Jofre Carreras",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2305708,
-            "unavailability": {
-              "injuryId": 47,
-              "type": "injury",
-              "expectedReturn": "Early October 2026"
-            },
-            "firstName": "Jofre",
-            "lastName": "Carreras"
-          },
           {
             "id": 839893,
             "age": 30,
@@ -1268,6 +1090,22 @@
             },
             "firstName": "Andoni",
             "lastName": "Gorosabel"
+          },
+          {
+            "id": 1184777,
+            "age": 25,
+            "name": "Jofre Carreras",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 2305708,
+            "unavailability": {
+              "injuryId": 47,
+              "type": "injury",
+              "expectedReturn": "Early October 2026"
+            },
+            "firstName": "Jofre",
+            "lastName": "Carreras"
           },
           {
             "id": 846966,
@@ -1302,18 +1140,8 @@
             "lastName": "García"
           }
         ],
-        "averageStarterAge": 26.2,
-        "totalStarterMarketValue": 52261310,
-        "lastMatch": {
-          "matchId": 5868055,
-          "homeTeamId": 8371,
-          "awayTeamId": 8558,
-          "homeTeamName": "Osasuna",
-          "awayTeamName": "Espanyol",
-          "homeScore": 0,
-          "awayScore": 2,
-          "matchDate": "2026-09-12T16:15:00"
-        }
+        "averageStarterAge": 25.2,
+        "totalStarterMarketValue": 65795906
       },
       "awayTeam": {
         "id": 10268,
@@ -1327,7 +1155,6 @@
             "positionId": 11,
             "usualPlayingPositionId": 0,
             "shirtNumber": "1",
-            "isCaptain": true,
             "countryName": "Argentina",
             "countryCode": "ARG",
             "horizontalLayout": {
@@ -1619,169 +1446,12 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1311126,
-            "age": 23,
-            "name": "Alejandro Iturbe",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "13",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1784732,
-            "firstName": "Alejandro",
-            "lastName": "Iturbe",
-            "rankings": null
-          },
-          {
-            "id": 1670276,
-            "age": 22,
-            "name": "Matia Barzić",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "26",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1341799,
-            "firstName": "Matia",
-            "lastName": "Barzić",
-            "rankings": null
-          },
-          {
-            "id": 291635,
-            "age": 36,
-            "name": "Pedro Bigas",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "6",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 486013,
-            "firstName": "Pedro",
-            "lastName": "Bigas",
-            "rankings": null
-          },
-          {
-            "id": 1330035,
-            "age": 25,
-            "name": "Rubén Sánchez",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1061411,
-            "firstName": "Rubén",
-            "lastName": "Sánchez",
-            "rankings": null
-          },
-          {
-            "id": 654091,
-            "age": 28,
-            "name": "Grady Diangana",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "19",
-            "countryName": "DR Congo",
-            "countryCode": "COD",
-            "marketValue": 1235133,
-            "firstName": "Grady",
-            "lastName": "Diangana",
-            "rankings": null
-          },
-          {
-            "id": 1392232,
-            "age": 26,
-            "name": "Marc Aguado",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 2234758,
-            "firstName": "Marc",
-            "lastName": "Aguado",
-            "rankings": null
-          },
-          {
-            "id": 1226189,
-            "age": 23,
-            "name": "Martim Neto",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "16",
-            "countryName": "Portugal",
-            "countryCode": "POR",
-            "marketValue": 4264850,
-            "firstName": "Martim",
-            "lastName": "Neto",
-            "rankings": null
-          },
-          {
-            "id": 468931,
-            "age": 30,
-            "name": "Thomas Lemar",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "18",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 1323056,
-            "firstName": "Thomas",
-            "lastName": "Lemar",
-            "rankings": null
-          },
-          {
-            "id": 1343195,
-            "age": 24,
-            "name": "Abiel Osorio",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "24",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 1563113,
-            "firstName": "Abiel",
-            "lastName": "Osorio",
-            "rankings": null
-          },
-          {
-            "id": 493216,
-            "age": 29,
-            "name": "Ezequiel Ponce",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 2029962,
-            "firstName": "Ezequiel",
-            "lastName": "Ponce",
-            "rankings": null
-          },
-          {
-            "id": 623982,
-            "age": 36,
-            "name": "Josan",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "17",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 359514,
-            "firstName": "",
-            "lastName": "Josan",
-            "rankings": null
-          },
-          {
-            "id": 1280756,
-            "age": 23,
-            "name": "Lucas Cepeda",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "21",
-            "countryName": "Chile",
-            "countryCode": "CHI",
-            "marketValue": 2259707,
-            "firstName": "Lucas",
-            "lastName": "Cepeda",
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 1577912,
             "age": 20,
             "name": "Adam Boayar",
+            "positionId": 1000,
             "countryName": "Morocco",
             "countryCode": "MAR",
             "marketValue": 800522,
@@ -1811,17 +1481,7 @@
           }
         ],
         "averageStarterAge": 25.7,
-        "totalStarterMarketValue": 32355869,
-        "lastMatch": {
-          "matchId": 5868051,
-          "homeTeamId": 8315,
-          "awayTeamId": 10268,
-          "homeTeamName": "Athletic Club",
-          "awayTeamName": "Elche",
-          "homeScore": 1,
-          "awayScore": 1,
-          "matchDate": "2026-09-12T18:30:00"
-        }
+        "totalStarterMarketValue": 32355869
       }
     },
     "hasPlayoff": false,
