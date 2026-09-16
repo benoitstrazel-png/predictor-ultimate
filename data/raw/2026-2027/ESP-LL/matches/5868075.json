@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -465,11 +466,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "12",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Espanyol have scored in their last 5 home matches."
+              "defaultText": "Espanyol have scored in their last 12 matches and Elche have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -514,7 +517,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Elche haven't won a match in 7 attempts."
+              "defaultText": "Elche haven't won a match in 8 attempts."
             }
           ]
         },
@@ -651,23 +654,6 @@
           "playerId": null,
           "teamId": 10268,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 8 attempts",
-          "color": "#00662D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10268,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -678,6 +664,23 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 7 matches",
+          "color": "#00662D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10268,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 8 attempts",
           "color": "#00662D"
         }
       ],
@@ -698,26 +701,26 @@
             "gamesPlayed": 6,
             "minsPlayed": 523,
             "minsPlayedGoal": 87,
-            "expectedGoals": 3.2353999614715576,
-            "playerRating": 7.65
+            "expectedGoals": 3.2098000049591064,
+            "playerRating": 7.63
           }
         },
         "awayPlayer": {
           "playerId": 1127224,
           "position": 3,
-          "matchesWithRating": 5,
+          "matchesWithRating": 6,
           "lastName": "Niño",
           "fullName": "Fer Niño",
           "stats": {
-            "goals": 2,
+            "goals": 3,
             "goalAssist": 0,
-            "ontargetScoringAtt": 2,
+            "ontargetScoringAtt": 1.75,
             "motm": 0,
-            "gamesPlayed": 5,
-            "minsPlayed": 387,
-            "minsPlayedGoal": 194,
-            "expectedGoals": 1.9557000398635864,
-            "playerRating": 6.94
+            "gamesPlayed": 6,
+            "minsPlayed": 409,
+            "minsPlayedGoal": 136,
+            "expectedGoals": 2.00600004196167,
+            "playerRating": 6.96
           }
         },
         "statsOrder": [
@@ -733,7 +736,45 @@
         ]
       },
       "countryCode": "ESP",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/87/5868075/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -750,18 +791,18 @@
       }
     },
     "weather": {
-      "temperature": 22,
+      "temperature": 23,
       "windSpeed": 2,
       "windDirectionCardinal": "SSW",
       "iconCode": 31,
-      "relativeHumidity": 73,
-      "precipChance": 5,
+      "relativeHumidity": 75,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 11,
+      "cloudCover": 13,
       "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-15T21:00:13Z",
+      "lastUpdated": "2026-09-16T09:00:10Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
@@ -806,14 +847,14 @@
             "rankings": null
           },
           {
-            "id": 1208708,
-            "age": 23,
-            "name": "Omar El Hilali",
+            "id": 955204,
+            "age": 26,
+            "name": "Vanja Drkušić",
             "positionId": 32,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "23",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
+            "shirtNumber": "16",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.875,
@@ -826,9 +867,9 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 12403970,
-            "firstName": "Omar",
-            "lastName": "El Hilali",
+            "marketValue": 2440432,
+            "firstName": "Vanja",
+            "lastName": "Drkušić",
             "rankings": null
           },
           {
@@ -1097,6 +1138,22 @@
             "lastName": "Gorosabel"
           },
           {
+            "id": 1208708,
+            "age": 23,
+            "name": "Omar El Hilali",
+            "positionId": 1100,
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 12403970,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Mid September 2026",
+              "expectedReturnDate": "2026-09-18T21:00:00Z"
+            },
+            "firstName": "Omar",
+            "lastName": "El Hilali"
+          },
+          {
             "id": 1184777,
             "age": 25,
             "name": "Jofre Carreras",
@@ -1145,13 +1202,13 @@
             "lastName": "García"
           }
         ],
-        "averageStarterAge": 25.2,
-        "totalStarterMarketValue": 65795906
+        "averageStarterAge": 25.6,
+        "totalStarterMarketValue": 55832368
       },
       "awayTeam": {
         "id": 10268,
         "name": "Elche",
-        "formation": "4-4-1-1",
+        "formation": "4-1-4-1",
         "starters": [
           {
             "id": 592412,
@@ -1192,7 +1249,7 @@
               "x": 0.292,
               "y": 0.875,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.385
             },
             "verticalLayout": {
               "x": 0.125,
@@ -1243,7 +1300,7 @@
               "x": 0.292,
               "y": 0.375,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.385
             },
             "verticalLayout": {
               "x": 0.625,
@@ -1269,7 +1326,7 @@
               "x": 0.292,
               "y": 0.125,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.385
             },
             "verticalLayout": {
               "x": 0.875,
@@ -1283,100 +1340,49 @@
             "rankings": null
           },
           {
-            "id": 801213,
-            "age": 29,
-            "name": "Tete Morente",
-            "positionId": 72,
+            "id": 1392232,
+            "age": 26,
+            "name": "Marc Aguado",
+            "positionId": 65,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "20",
+            "shirtNumber": "8",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
               "x": 0.485,
-              "y": 0.875,
+              "y": 0.5,
               "height": 0.25,
               "width": 0.192
             },
             "verticalLayout": {
-              "x": 0.125,
+              "x": 0.5,
               "y": 0.485,
               "height": 0.192,
-              "width": 0.25
+              "width": 1
             },
-            "marketValue": 1291044,
-            "firstName": "Tete",
-            "lastName": "Morente",
-            "rankings": null
-          },
-          {
-            "id": 1732412,
-            "age": 20,
-            "name": "Javi Morcillo",
-            "positionId": 74,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "47",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "horizontalLayout": {
-              "x": 0.485,
-              "y": 0.625,
-              "height": 0.25,
-              "width": 0.192
-            },
-            "verticalLayout": {
-              "x": 0.375,
-              "y": 0.485,
-              "height": 0.192,
-              "width": 0.25
-            },
-            "firstName": "Javi",
-            "lastName": "Morcillo",
-            "rankings": null
-          },
-          {
-            "id": 881773,
-            "age": 28,
-            "name": "Gonzalo Villar",
-            "positionId": 76,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "12",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "horizontalLayout": {
-              "x": 0.485,
-              "y": 0.375,
-              "height": 0.25,
-              "width": 0.192
-            },
-            "verticalLayout": {
-              "x": 0.625,
-              "y": 0.485,
-              "height": 0.192,
-              "width": 0.25
-            },
-            "marketValue": 1222406,
-            "firstName": "Gonzalo",
-            "lastName": "Villar",
+            "marketValue": 2234758,
+            "firstName": "Marc",
+            "lastName": "Aguado",
             "rankings": null
           },
           {
             "id": 1102708,
             "age": 24,
             "name": "Germán Valera",
-            "positionId": 78,
+            "positionId": 82,
             "usualPlayingPositionId": 2,
             "shirtNumber": "11",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
-              "x": 0.485,
-              "y": 0.125,
+              "x": 0.678,
+              "y": 0.875,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.385
             },
             "verticalLayout": {
-              "x": 0.875,
-              "y": 0.485,
+              "x": 0.125,
+              "y": 0.678,
               "height": 0.192,
               "width": 0.25
             },
@@ -1386,55 +1392,107 @@
             "rankings": null
           },
           {
-            "id": 1336566,
-            "age": 21,
-            "name": "Facundo Buonanotte",
-            "positionId": 95,
+            "id": 1226189,
+            "age": 23,
+            "name": "Martim Neto",
+            "positionId": 84,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "10",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
+            "shirtNumber": "16",
+            "countryName": "Portugal",
+            "countryCode": "POR",
             "horizontalLayout": {
               "x": 0.678,
-              "y": 0.5,
+              "y": 0.625,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.193
             },
             "verticalLayout": {
-              "x": 0.5,
+              "x": 0.375,
               "y": 0.678,
               "height": 0.192,
-              "width": 1
+              "width": 0.25
             },
-            "marketValue": 16327826,
-            "firstName": "Facundo",
-            "lastName": "Buonanotte",
+            "marketValue": 4264850,
+            "firstName": "Martim",
+            "lastName": "Neto",
             "rankings": null
           },
           {
-            "id": 1127224,
-            "age": 25,
-            "name": "Fer Niño",
-            "positionId": 115,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
+            "id": 881773,
+            "age": 28,
+            "name": "Gonzalo Villar",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "12",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
-              "x": 0.87,
+              "x": 0.678,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1222406,
+            "firstName": "Gonzalo",
+            "lastName": "Villar",
+            "rankings": null
+          },
+          {
+            "id": 801213,
+            "age": 29,
+            "name": "Tete Morente",
+            "positionId": 88,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "20",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1291044,
+            "firstName": "Tete",
+            "lastName": "Morente",
+            "rankings": null
+          },
+          {
+            "id": 1343195,
+            "age": 24,
+            "name": "Abiel Osorio",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "24",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.89,
               "y": 0.5,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.212
             },
             "verticalLayout": {
               "x": 0.5,
-              "y": 0.87,
+              "y": 0.89,
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 1740416,
-            "firstName": "Fer",
-            "lastName": "Niño",
+            "marketValue": 1563113,
+            "firstName": "Abiel",
+            "lastName": "Osorio",
             "rankings": null
           }
         ],
@@ -1453,22 +1511,6 @@
         },
         "unavailable": [
           {
-            "id": 1577912,
-            "age": 20,
-            "name": "Adam Boayar",
-            "positionId": 1000,
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 800522,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Adam",
-            "lastName": "Boayar"
-          },
-          {
             "id": 1137497,
             "age": 23,
             "name": "Yago Santiago",
@@ -1483,10 +1525,26 @@
             },
             "firstName": "Yago",
             "lastName": "Santiago"
+          },
+          {
+            "id": 1577912,
+            "age": 20,
+            "name": "Adam Boayar",
+            "positionId": 1000,
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 800522,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Adam",
+            "lastName": "Boayar"
           }
         ],
-        "averageStarterAge": 25.7,
-        "totalStarterMarketValue": 32355869
+        "averageStarterAge": 26.3,
+        "totalStarterMarketValue": 22350348
       }
     },
     "hasPlayoff": false,

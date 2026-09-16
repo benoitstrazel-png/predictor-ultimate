@@ -131,10 +131,10 @@
               "type": "yellowCards",
               "value": 4,
               "valueType": "perMatch",
-              "average": 3.97,
+              "average": 3.96,
               "total": 184,
               "averageType": "average",
-              "fillPercentage": 51.91,
+              "fillPercentage": 52.41,
               "averagePercentage": 50
             },
             {
@@ -519,7 +519,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0",
+                "0.33",
                 "1.33"
               ],
               "DefaultLabels": [
@@ -531,17 +531,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have an average of 0 goals in their last three matches and Aston Villa have an average of 1.33."
+              "defaultText": "Tottenham Hotspur have an average of 0.33 goals in their last three matches and Aston Villa have an average of 1.33."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
-              "TextTemplateId": "goalless_team",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "3"
+                "away_team",
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -551,19 +553,18 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Tottenham Hotspur haven't scored in their last 3 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Tottenham Hotspur have an average of 0.33 goals in their last three matches and Aston Villa have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "10"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -575,8 +576,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Tottenham Hotspur and Aston Villa have not drawn any of their last 10 matches against each other."
+              "Icon": "poll_stat_down",
+              "defaultText": "Tottenham Hotspur haven't won a match in 4 attempts."
             }
           ]
         },
@@ -638,15 +639,15 @@
         },
         {
           "type": "player",
-          "playerId": 357880,
+          "playerId": 591734,
           "teamId": 8586,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 357880,
-              "name": "Andrew Robertson",
+              "value": 591734,
+              "name": "Dominic Solanke",
               "type": "player"
             },
             {
@@ -655,12 +656,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 0.8,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Andrew Robertson has created the most big chances for Tottenham Hotspur (2)",
+          "text": "Dominic Solanke has the most shots on target per match for Tottenham Hotspur (0.8)",
           "color": "#132257"
         },
         {
@@ -797,17 +798,17 @@
     },
     "weather": {
       "temperature": 20,
-      "windSpeed": 6,
+      "windSpeed": 7,
       "windDirectionCardinal": "WSW",
-      "iconCode": 26,
-      "relativeHumidity": 74,
-      "precipChance": 8,
+      "iconCode": 28,
+      "relativeHumidity": 70,
+      "precipChance": 7,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 81,
-      "description": "Cloudy",
+      "cloudCover": 75,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-15T14:00:02Z",
+      "lastUpdated": "2026-09-16T02:00:03Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -826,14 +827,14 @@
         "formation": "4-2-3-1",
         "starters": [
           {
-            "id": 1341475,
-            "age": 23,
-            "name": "Antonín Kinský",
+            "id": 72241,
+            "age": 37,
+            "name": "Martin Dúbravka",
             "positionId": 11,
             "usualPlayingPositionId": 0,
-            "shirtNumber": "31",
-            "countryName": "Czechia",
-            "countryCode": "CZE",
+            "shirtNumber": "39",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
@@ -846,9 +847,9 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 13594074,
-            "firstName": "Antonín",
-            "lastName": "Kinský",
+            "marketValue": 773933,
+            "firstName": "Martin",
+            "lastName": "Dúbravka",
             "rankings": null
           },
           {
@@ -878,14 +879,14 @@
             "rankings": null
           },
           {
-            "id": 974618,
-            "age": 26,
-            "name": "Jan Paul van Hecke",
+            "id": 683402,
+            "age": 28,
+            "name": "Tosin Adarabioyo",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "6",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
+            "shirtNumber": "4",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.625,
@@ -898,21 +899,20 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 43404030,
-            "firstName": "Jan Paul",
-            "lastName": "van Hecke",
+            "marketValue": 17148690,
+            "firstName": "Tosin",
+            "lastName": "Adarabioyo",
             "rankings": null
           },
           {
-            "id": 1097466,
-            "age": 25,
-            "name": "Micky van de Ven",
+            "id": 785411,
+            "age": 29,
+            "name": "Marcos Senesi",
             "positionId": 36,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "37",
-            "isCaptain": true,
-            "countryName": "Netherlands",
-            "countryCode": "NED",
+            "shirtNumber": "5",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.375,
@@ -925,20 +925,20 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 53566976,
-            "firstName": "Micky",
-            "lastName": "van de Ven",
+            "marketValue": 15220112,
+            "firstName": "Marcos",
+            "lastName": "Senesi",
             "rankings": null
           },
           {
-            "id": 357880,
-            "age": 32,
-            "name": "Andrew Robertson",
+            "id": 1052898,
+            "age": 23,
+            "name": "Destiny Udogie",
             "positionId": 38,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
+            "shirtNumber": "13",
+            "countryName": "Italy",
+            "countryCode": "ITA",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.125,
@@ -951,9 +951,9 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 6672012,
-            "firstName": "Andrew",
-            "lastName": "Robertson",
+            "marketValue": 33569434,
+            "firstName": "Destiny",
+            "lastName": "Udogie",
             "rankings": null
           },
           {
@@ -983,14 +983,14 @@
             "rankings": null
           },
           {
-            "id": 867414,
-            "age": 26,
-            "name": "Sandro Tonali",
+            "id": 1386775,
+            "age": 20,
+            "name": "Lucas Bergvall",
             "positionId": 66,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "16",
-            "countryName": "Italy",
-            "countryCode": "ITA",
+            "shirtNumber": "15",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.3,
@@ -1003,20 +1003,20 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 53916205,
-            "firstName": "Sandro",
-            "lastName": "Tonali",
+            "marketValue": 41566039,
+            "firstName": "Lucas",
+            "lastName": "Bergvall",
             "rankings": null
           },
           {
-            "id": 1174337,
-            "age": 22,
-            "name": "Sávio",
+            "id": 891743,
+            "age": 26,
+            "name": "Mohammed Kudus",
             "positionId": 83,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "17",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
+            "shirtNumber": "20",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.837,
@@ -1029,20 +1029,20 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 40402809,
-            "firstName": "",
-            "lastName": "Sávio",
+            "marketValue": 45048717,
+            "firstName": "Mohammed",
+            "lastName": "Kudus",
             "rankings": null
           },
           {
-            "id": 1356312,
-            "age": 22,
-            "name": "Mateus Fernandes",
+            "id": 966027,
+            "age": 26,
+            "name": "Conor Gallagher",
             "positionId": 85,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "18",
-            "countryName": "Portugal",
-            "countryCode": "POR",
+            "shirtNumber": "8",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.5,
@@ -1055,20 +1055,20 @@
               "height": 0.192,
               "width": 0.337
             },
-            "marketValue": 25793353,
-            "firstName": "Mateus",
-            "lastName": "Fernandes",
+            "marketValue": 31191160,
+            "firstName": "Conor",
+            "lastName": "Gallagher",
             "rankings": null
           },
           {
-            "id": 839204,
-            "age": 27,
-            "name": "Omar Marmoush",
+            "id": 1288111,
+            "age": 21,
+            "name": "Mathys Tel",
             "positionId": 87,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "22",
-            "countryName": "Egypt",
-            "countryCode": "EGY",
+            "shirtNumber": "11",
+            "countryName": "France",
+            "countryCode": "FRA",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.163,
@@ -1081,20 +1081,20 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 44511095,
-            "firstName": "Omar",
-            "lastName": "Marmoush",
+            "marketValue": 29279046,
+            "firstName": "Mathys",
+            "lastName": "Tel",
             "rankings": null
           },
           {
-            "id": 591734,
-            "age": 29,
-            "name": "Dominic Solanke",
+            "id": 839204,
+            "age": 27,
+            "name": "Omar Marmoush",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "19",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "22",
+            "countryName": "Egypt",
+            "countryCode": "EGY",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -1107,9 +1107,9 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 28435353,
-            "firstName": "Dominic",
-            "lastName": "Solanke",
+            "marketValue": 44511095,
+            "firstName": "Omar",
+            "lastName": "Marmoush",
             "rankings": null
           }
         ],
@@ -1128,16 +1128,29 @@
         },
         "subs": [
           {
-            "id": 72241,
-            "age": 37,
-            "name": "Martin Dúbravka",
+            "id": 1341475,
+            "age": 23,
+            "name": "Antonín Kinský",
             "usualPlayingPositionId": 0,
-            "shirtNumber": "39",
-            "countryName": "Slovakia",
-            "countryCode": "SVK",
-            "marketValue": 773933,
-            "firstName": "Martin",
-            "lastName": "Dúbravka",
+            "shirtNumber": "31",
+            "countryName": "Czechia",
+            "countryCode": "CZE",
+            "marketValue": 13594074,
+            "firstName": "Antonín",
+            "lastName": "Kinský",
+            "rankings": null
+          },
+          {
+            "id": 357880,
+            "age": 32,
+            "name": "Andrew Robertson",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Scotland",
+            "countryCode": "SCO",
+            "marketValue": 6672012,
+            "firstName": "Andrew",
+            "lastName": "Robertson",
             "rankings": null
           },
           {
@@ -1154,42 +1167,29 @@
             "rankings": null
           },
           {
-            "id": 785411,
-            "age": 29,
-            "name": "Marcos Senesi",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 15220112,
-            "firstName": "Marcos",
-            "lastName": "Senesi",
-            "rankings": null
-          },
-          {
-            "id": 683402,
-            "age": 28,
-            "name": "Tosin Adarabioyo",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "4",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 17148690,
-            "firstName": "Tosin",
-            "lastName": "Adarabioyo",
-            "rankings": null
-          },
-          {
-            "id": 966027,
+            "id": 974618,
             "age": 26,
-            "name": "Conor Gallagher",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 31191160,
-            "firstName": "Conor",
-            "lastName": "Gallagher",
+            "name": "Jan Paul van Hecke",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 43404030,
+            "firstName": "Jan Paul",
+            "lastName": "van Hecke",
+            "rankings": null
+          },
+          {
+            "id": 1097466,
+            "age": 25,
+            "name": "Micky van de Ven",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "37",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 53566976,
+            "firstName": "Micky",
+            "lastName": "van de Ven",
             "rankings": null
           },
           {
@@ -1206,83 +1206,80 @@
             "rankings": null
           },
           {
-            "id": 1386775,
-            "age": 20,
-            "name": "Lucas Bergvall",
+            "id": 1356312,
+            "age": 22,
+            "name": "Mateus Fernandes",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "15",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 41566039,
-            "firstName": "Lucas",
-            "lastName": "Bergvall",
+            "shirtNumber": "18",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 25793353,
+            "firstName": "Mateus",
+            "lastName": "Fernandes",
             "rankings": null
           },
           {
-            "id": 1288111,
-            "age": 21,
-            "name": "Mathys Tel",
+            "id": 591734,
+            "age": 29,
+            "name": "Dominic Solanke",
             "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 29279046,
-            "firstName": "Mathys",
-            "lastName": "Tel",
+            "shirtNumber": "19",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 28435353,
+            "firstName": "Dominic",
+            "lastName": "Solanke",
             "rankings": null
           },
           {
-            "id": 891743,
-            "age": 26,
-            "name": "Mohammed Kudus",
+            "id": 1174337,
+            "age": 22,
+            "name": "Sávio",
             "usualPlayingPositionId": 3,
-            "shirtNumber": "20",
-            "countryName": "Ghana",
-            "countryCode": "GHA",
-            "marketValue": 45048717,
-            "firstName": "Mohammed",
-            "lastName": "Kudus",
+            "shirtNumber": "17",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 40402809,
+            "firstName": "",
+            "lastName": "Sávio",
             "rankings": null
           }
         ],
         "unavailable": [
           {
-            "id": 935379,
+            "id": 867414,
             "age": 26,
-            "name": "Dejan Kulusevski",
-            "positionId": 1000,
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 36582245,
+            "name": "Sandro Tonali",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 53916205,
             "unavailability": {
-              "injuryId": 14,
+              "injuryId": 130,
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Doubtful"
             },
-            "firstName": "Dejan",
-            "lastName": "Kulusevski"
+            "firstName": "Sandro",
+            "lastName": "Tonali"
           },
           {
-            "id": 1173787,
-            "age": 23,
-            "name": "Xavi Simons",
-            "positionId": 1000,
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 47134048,
+            "id": 941573,
+            "age": 27,
+            "name": "Pedro Porro",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 36417627,
             "unavailability": {
-              "injuryId": 76,
+              "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Early February 2027"
+              "expectedReturn": "Doubtful"
             },
-            "firstName": "Xavi",
-            "lastName": "Simons"
+            "firstName": "Pedro",
+            "lastName": "Porro"
           },
           {
             "id": 976506,
             "age": 25,
             "name": "Mykhaylo Mudryk",
-            "positionId": 1000,
             "countryName": "Ukraine",
             "countryCode": "UKR",
             "marketValue": 30619485,
@@ -1295,10 +1292,24 @@
             "lastName": "Mudryk"
           },
           {
+            "id": 1173787,
+            "age": 23,
+            "name": "Xavi Simons",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 47134048,
+            "unavailability": {
+              "injuryId": 76,
+              "type": "injury",
+              "expectedReturn": "Early February 2027"
+            },
+            "firstName": "Xavi",
+            "lastName": "Simons"
+          },
+          {
             "id": 1341387,
             "age": 21,
             "name": "Wilson Odobert",
-            "positionId": 1000,
             "countryName": "France",
             "countryCode": "FRA",
             "marketValue": 19534310,
@@ -1309,19 +1320,34 @@
             },
             "firstName": "Wilson",
             "lastName": "Odobert"
+          },
+          {
+            "id": 935379,
+            "age": 26,
+            "name": "Dejan Kulusevski",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 36582245,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Dejan",
+            "lastName": "Kulusevski"
           }
         ],
-        "averageStarterAge": 25.9,
-        "totalStarterMarketValue": 368061505,
+        "averageStarterAge": 26.5,
+        "totalStarterMarketValue": 316073824,
         "lastMatch": {
-          "matchId": 5795454,
-          "homeTeamId": 8586,
-          "awayTeamId": 8668,
-          "homeTeamName": "Tottenham Hotspur",
-          "awayTeamName": "Everton",
-          "homeScore": 0,
-          "awayScore": 0,
-          "matchDate": "2026-09-12T18:30:00"
+          "matchId": 6099335,
+          "homeTeamId": 8650,
+          "awayTeamId": 8586,
+          "homeTeamName": "Liverpool",
+          "awayTeamName": "Tottenham Hotspur",
+          "homeScore": 3,
+          "awayScore": 1,
+          "matchDate": "2026-09-15T21:00:00"
         }
       },
       "awayTeam": {
