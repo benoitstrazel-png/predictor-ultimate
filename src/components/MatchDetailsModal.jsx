@@ -89,7 +89,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  const targetMatch = (currentMatch?.id === match?.id) ? currentMatch : (match || {});
+  const targetMatch = (match && currentMatch?.id === match.id ? currentMatch : match) || {};
   const homeTeam = targetMatch.homeTeam || targetMatch.home_team || 'Domicile';
   const awayTeam = targetMatch.awayTeam || targetMatch.away_team || 'Extérieur';
   const isFinished = targetMatch.status === 'FINISHED' || 
@@ -196,7 +196,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase'
               }}>
-                {match.league || 'Ligue 1'}
+                {targetMatch.league || 'Ligue 1'}
               </span>
               <span style={{
                 fontSize: 11,
@@ -207,7 +207,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 border: '1px solid var(--ivory-border)',
                 fontWeight: 600
               }}>
-                {match.round || 'Journée 1'} · {match.season || '2026-2027'}
+                {targetMatch.round || 'Journée 1'} · {targetMatch.season || '2026-2027'}
               </span>
               <span style={{ fontSize: 11, color: 'var(--neutral)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                 <Calendar size={12} /> {targetMatch.date || targetMatch.matchDate || 'Date officielle'}

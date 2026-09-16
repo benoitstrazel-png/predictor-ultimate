@@ -4,7 +4,7 @@ import { ShieldAlert, RefreshCw, Home } from 'lucide-react';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null };
+    this.state = { hasError: false, error: null, errorInfo: null, showDetails: false };
   }
 
   static getDerivedStateFromError(error) {
@@ -13,6 +13,7 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error('[ErrorBoundary] Frontend Runtime Error caught:', error, errorInfo);
+    this.setState({ errorInfo });
   }
 
   handleReload = () => {
@@ -20,8 +21,12 @@ class ErrorBoundary extends React.Component {
   };
 
   handleHome = () => {
-    this.setState({ hasError: false, error: null });
+    this.setState({ hasError: false, error: null, errorInfo: null, showDetails: false });
     window.location.href = '/main';
+  };
+
+  toggleDetails = () => {
+    this.setState(prev => ({ showDetails: !prev.showDetails }));
   };
 
   render() {
@@ -81,7 +86,7 @@ class ErrorBoundary extends React.Component {
               Une incohérence ponctuelle de rendu a été interceptée par le système de sécurité. L'intégrité de vos données reste 100% préservée.
             </p>
 
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: this.state.error ? 16 : 0 }}>
               <button
                 onClick={this.handleReload}
                 style={{
@@ -120,6 +125,50 @@ class ErrorBoundary extends React.Component {
                 <Home size={14} /> Retour au Hub
               </button>
             </div>
+
+            {this.state.error && (
+              <div style={{ marginTop: 16 }}>
+                <button
+                  onClick={this.toggleDetails}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--gold)',
+                    fontSize: 11,
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                    opacity: 0.85,
+                  }}
+                >
+                  {this.state.showDetails ? 'Masquer les détails techniques' : 'Détails techniques du rapport'}
+                </button>
+
+                {this.state.showDetails && (
+                  <div style={{
+                    marginTop: 12,
+                    padding: 12,
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    borderRadius: 8,
+                    border: '1px solid rgba(239, 68, 68, 0.25)',
+                    textAlign: 'left',
+                    maxHeight: 180,
+                    overflowY: 'auto',
+                    fontFamily: 'monospace',
+                    fontSize: 11,
+                    color: '#f87171',
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                  }}>
+                    <strong>{this.state.error.toString()}</strong>
+                    {this.state.errorInfo?.componentStack && (
+                      <div style={{ color: 'var(--neutral)', marginTop: 6, fontSize: 10 }}>
+                        {this.state.errorInfo.componentStack}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       );
