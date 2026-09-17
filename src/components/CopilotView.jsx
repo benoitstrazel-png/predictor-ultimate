@@ -1,15 +1,40 @@
 import React, { useState } from 'react';
-import { queryCopilotRAG, rewriteQuery } from '../utils/ragEngine';
-import { calculateResilienceIndex, calculateSequelImpact } from '../utils/featureStore';
-import { Bot, Send, Sparkles, RefreshCw, UserCheck, ShieldCheck, TrendingUp, Layers, Award, Terminal } from 'lucide-react';
+import { queryCopilotRAG, rewriteQuery, getIndices } from '../utils/ragEngine.js';
+import { calculateResilienceIndex, calculateSequelImpact } from '../utils/featureStore.js';
+import {
+  Bot,
+  Send,
+  Sparkles,
+  RefreshCw,
+  UserCheck,
+  ShieldCheck,
+  TrendingUp,
+  Layers,
+  Award,
+  Terminal,
+  CloudRain,
+  Flame
+} from 'lucide-react';
 
 const ANALYSIS_MODES = [
-  { id: 'MATCH_ANALYSIS', label: 'Match Preview & xG', icon: Layers },
-  { id: 'PLAYER_SCOUT', label: 'Scout Joueur', icon: UserCheck },
-  { id: 'COACH_TACTICS', label: 'Entraîneur Virtuel', icon: ShieldCheck },
-  { id: 'VALUE_BET', label: 'Value Bet Finder', icon: TrendingUp },
+  { id: 'MATCH_ANALYSIS', label: 'Match Preview 360°', icon: Layers },
+  { id: 'DISCIPLINE_CARDS', label: 'Discipline & Cartons', icon: Award },
+  { id: 'MATCH_SCORERS', label: 'Buteurs & xG Projections', icon: Flame },
+  { id: 'H2H_HISTORY', label: 'H2H & Confrontations', icon: Layers },
+  { id: 'HOME_AWAY_SPLITS', label: 'Splits Domicile / Extérieur', icon: TrendingUp },
+  { id: 'WEATHER_CONDITIONS', label: 'Météo & Pelouse', icon: CloudRain },
+  { id: 'VALUE_BETS', label: 'Value Bet Finder', icon: TrendingUp },
+  { id: 'COACH_TACTICS', label: 'Entraîneur Virtuel', icon: UserCheck },
   { id: 'ML_EXPLAIN', label: 'Modèle Dixon-Coles', icon: Terminal },
-  { id: 'ADVANCED_STATS', label: 'Statistiques & H2H', icon: Award },
+];
+
+const AVAILABLE_TEAMS = [
+  'PSG', 'Marseille', 'Lyon', 'Monaco', 'Lille', 'Nice', 'Lens', 'Rennes', 'Strasbourg',
+  'Real Madrid', 'FC Barcelona', 'Atlético Madrid', 'Athletic Club', 'Real Sociedad', 'Sevilla',
+  'Manchester City', 'Arsenal', 'Liverpool', 'Chelsea', 'Manchester United', 'Tottenham', 'Aston Villa',
+  'Bayern Munich', 'Borussia Dortmund', 'Bayer Leverkusen', 'RB Leipzig', 'Eintracht Frankfurt',
+  'Inter Milan', 'AC Milan', 'Juventus', 'Napoli', 'AS Roma', 'Atalanta',
+  'Benfica', 'Sporting CP', 'FC Porto'
 ];
 
 export default function CopilotView() {
@@ -19,7 +44,8 @@ export default function CopilotView() {
       sender: 'ai',
       text: [
         'Bonjour. Je suis votre Moteur RAG Football Predictor Ultimate.',
-        'Posez vos questions sur les matchs, les joueurs, les tactiques d entraîneurs, les xG, les projections Dixon-Coles ou les Value Bets.'
+        'J analyse en temps réel plus de 4 800 rencontres officielles, 20 400 cartons, 13 600 buts et les cotes Betclic.',
+        'Posez vos questions sur les buteurs probables, les joueurs sanctionnés de cartons, l historique H2H, le rendement domicile/extérieur, la météo ou les Value Bets.'
       ].join('\n'),
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     }
@@ -30,6 +56,8 @@ export default function CopilotView() {
 
   const resilience = calculateResilienceIndex(selectedTeam);
   const sequel = calculateSequelImpact(selectedTeam);
+  const { analyticsIndex } = getIndices();
+  const teamStats = analyticsIndex.findTeamStats(selectedTeam);
 
   const handleSendMessage = (textToSend, modeOverride = null) => {
     const promptText = textToSend || inputPrompt;
@@ -58,7 +86,7 @@ export default function CopilotView() {
       };
       setMessages(prev => [...prev, aiMsg]);
       setIsSearching(false);
-    }, 450);
+    }, 350);
   };
 
   return (
@@ -78,23 +106,31 @@ export default function CopilotView() {
             gap: 12,
           }}>
             <Bot size={32} color="var(--gold)" />
-            AI Predictor Copilot (Moteur RAG Live)
+            AI Predictor Copilot (Moteur RAG Omniscient)
           </h1>
           <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-            Moteur RAG Hybride Multi-Index : Matchs · Joueurs · Entraîneurs · Dixon-Coles · Value Bets
+            Base Multi-Saisons : 4 793 Matchs · 20 400 Cartons · 2 060 Paires H2H · Modèle Dixon-Coles · Cotes Betclic
           </p>
         </div>
 
         {/* Feature Store Quick Metrics */}
-        <div style={{ display: 'flex', gap: 12 }}>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--gold-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
-            <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Indice Résilience ({selectedTeam})</div>
+            <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Résilience ({selectedTeam})</div>
             <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--gold)' }}>{resilience.score} / 10</div>
           </div>
-          <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
-            <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Impact Séquelles</div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--positive)' }}>{sequel.impactScore}</div>
-          </div>
+          {teamStats?.home && (
+            <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Win Rate Domicile</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--positive)' }}>{teamStats.home.winRateStr}</div>
+            </div>
+          )}
+          {teamStats?.discipline && (
+            <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
+              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Cartons Jaunes / M</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: '#facc15' }}>{teamStats.discipline.yellowsPerMatch}</div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -150,7 +186,7 @@ export default function CopilotView() {
           padding: 20,
           display: 'flex',
           flexDirection: 'column',
-          height: 560,
+          height: 600,
         }}>
           {/* Messages Area */}
           <div style={{
@@ -171,20 +207,20 @@ export default function CopilotView() {
                 }}
               >
                 <div style={{
-                  maxWidth: '88%',
+                  maxWidth: '92%',
                   background: m.sender === 'user' ? 'var(--gold-muted)' : 'var(--obsidian-2)',
                   border: `1px solid ${m.sender === 'user' ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
                   borderRadius: 16,
-                  padding: '14px 18px',
+                  padding: '16px 20px',
                   color: 'var(--ivory)',
                   fontSize: 13,
-                  lineHeight: 1.6,
+                  lineHeight: 1.65,
                   whiteSpace: 'pre-line',
                 }}>
                   {m.text}
                   {m.rewrittenQuery && (
                     <div style={{
-                      marginTop: 8,
+                      marginTop: 10,
                       paddingTop: 8,
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontSize: 10,
@@ -196,7 +232,7 @@ export default function CopilotView() {
                       <Sparkles size={11} /> Réécriture RAG : {m.rewrittenQuery}
                     </div>
                   )}
-                  <div style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 6, textAlign: 'right' }}>
+                  <div style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 8, textAlign: 'right' }}>
                     {m.timestamp}
                   </div>
                 </div>
@@ -206,7 +242,7 @@ export default function CopilotView() {
             {isSearching && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 12 }}>
                 <RefreshCw className="animate-spin" size={14} />
-                <span>Interrogation et fusion contextuelle du Moteur RAG Football en cours...</span>
+                <span>Interrogation des 4 793 matchs et fusion du Feature Store Football en cours...</span>
               </div>
             )}
           </div>
@@ -226,7 +262,7 @@ export default function CopilotView() {
               value={inputPrompt}
               onChange={e => setInputPrompt(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleSendMessage()}
-              placeholder="Posez votre question (ex: Paris FC va gagner ou pas, Stats Haaland, Tactique De Zerbi, Value bets)..."
+              placeholder="Posez votre question (buteurs, cartons, H2H, stats domicile/extérieur, météo, arbitre, cotes)..."
               style={{
                 flex: 1,
                 background: 'transparent',
@@ -262,7 +298,7 @@ export default function CopilotView() {
           {/* Team Quick Filter */}
           <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 16 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', marginBottom: 10 }}>
-              🎯 Sélection Équipe pour Analyse RAG
+              🎯 Sélection Club pour Analyse Ciblée
             </div>
             <select
               value={selectedTeam}
@@ -278,7 +314,7 @@ export default function CopilotView() {
                 outline: 'none',
               }}
             >
-              {['PSG', 'Marseille', 'Lyon', 'Monaco', 'Nice', 'Paris FC', 'Real Madrid', 'FC Barcelona', 'Manchester City', 'Arsenal', 'Liverpool', 'Inter Milan', 'Bayern Munich'].map(t => (
+              {AVAILABLE_TEAMS.map(t => (
                 <option key={t} value={t}>{t}</option>
               ))}
             </select>
@@ -287,17 +323,19 @@ export default function CopilotView() {
           {/* Quick Prompt Chips */}
           <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 16 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Sparkles size={16} color="var(--gold)" /> Exemples de Requêtes RAG
+              <Sparkles size={16} color="var(--gold)" /> Suggestions de Requêtes RAG
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
-                { text: `${selectedTeam} va gagner ou pas ?`, mode: 'MATCH_ANALYSIS' },
-                { text: `Analyse et métriques xG90 des buteurs de ${selectedTeam}`, mode: 'PLAYER_SCOUT' },
+                { text: `Qui prend le plus de cartons jaunes à ${selectedTeam} et en Europe ?`, mode: 'DISCIPLINE_CARDS' },
+                { text: `Quels joueurs peuvent marquer pour ${selectedTeam} ?`, mode: 'MATCH_SCORERS' },
+                { text: `Statistiques de ${selectedTeam} à domicile vs à l extérieur`, mode: 'HOME_AWAY_SPLITS' },
+                { text: `Historique des confrontations directes H2H pour ${selectedTeam}`, mode: 'H2H_HISTORY' },
+                { text: `Conditions météo au stade et impact sur le jeu`, mode: 'WEATHER_CONDITIONS' },
+                { text: 'Y a-t-il des Value Bets détectés aujourd hui ?', mode: 'VALUE_BETS' },
                 { text: `Philosophie tactique et style de jeu de ${selectedTeam}`, mode: 'COACH_TACTICS' },
-                { text: 'Y a-t-il des Value Bets détectés aujourd hui ?', mode: 'VALUE_BET' },
                 { text: 'Comment fonctionne la loi de Poisson Dixon-Coles ?', mode: 'ML_EXPLAIN' },
-                { text: `Indice de résilience et cartons H2H pour ${selectedTeam}`, mode: 'ADVANCED_STATS' },
               ].map((pItem, pIdx) => (
                 <button
                   key={pIdx}
@@ -316,8 +354,8 @@ export default function CopilotView() {
                     cursor: 'pointer',
                     transition: 'all 0.2s',
                   }}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'var(--neutral)'}
+                  onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)'; e.currentTarget.style.borderColor = 'var(--gold-border)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'var(--neutral)'; e.currentTarget.style.borderColor = 'var(--ivory-border)'; }}
                 >
                   💬 {pItem.text}
                 </button>
@@ -331,4 +369,3 @@ export default function CopilotView() {
     </div>
   );
 }
-

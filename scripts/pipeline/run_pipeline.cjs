@@ -53,9 +53,13 @@ async function main() {
     runPy('scripts/pipeline/compile_unified_history_and_app_data.py', 'ÉTAPE 3/4 : COMPILATION UNIFIÉE & ARCHIVES PARTITIONNÉES');
 
     // 5. Step 4: Modélisation ML Quantitatif (LightGBM 54 features + Dixon-Coles)
-    runPy('scripts/pipeline/enrich_matches_with_ml_and_entities.py', 'ÉTAPE 4/4 : INFERENCE QUANT ML & DÉTECTION VALUE BETS');
+    runPy('scripts/pipeline/enrich_matches_with_ml_and_entities.py', 'ÉTAPE 4/5 : INFERENCE QUANT ML & DÉTECTION VALUE BETS');
 
-    // 6. Validation Contractuelle
+    // 6. Step 5: Compilation du Feature Store Analytique RAG Football
+    console.log('\n▶ ÉTAPE 5/5 : COMPILATION DU RAG ANALYTICS STORE (Cartons, H2H, Splits, Arbitres)...');
+    execSync('node scripts/pipeline/build_rag_analytics_store.cjs', { stdio: 'inherit', cwd: path.join(__dirname, '..', '..') });
+
+    // 7. Validation Contractuelle
     console.log('\n▶ CONTRÔLE FINAL : VALIDATION CONTRACTUELLE & DATA QUALITY');
     delete require.cache[require.resolve(APP_DATA_FILE)];
     const finalData = require(APP_DATA_FILE);

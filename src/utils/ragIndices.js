@@ -3,18 +3,23 @@
  * ─────────────────────────────────────────────────────────────
  * Architecture RAG Multi-Index Spécialisés Football :
  * 1. matchesIndex      : xG, cotes Betclic, météo, arbitres, forfaits, H2H, Dixon-Coles, value bets
- * 2. playersIndex      : 2 112 joueurs, stats, forme, xG90, xA90, ratings, historique
- * 3. coachesIndex      : styles de jeu, systèmes tactiques, win rates, bilans H2H
- * 4. competitionsIndex : règles, barèmes, calendrier, enjeux
- * 5. mlModelIndex      : logique Dixon-Coles, Bivariate Poisson, SHAP, limites, value bets
+ * 2. analyticsIndex    : 4 793 matchs multi-saisons, 20 400 cartons, 13 600 buts, 2 060 paires H2H, splits domicile/extérieur
+ * 3. playersIndex      : 3 056 joueurs, stats réelles, forme, xG90, xA90, ratings, historique
+ * 4. coachesIndex      : styles de jeu, systèmes tactiques, win rates, bilans H2H
+ * 5. competitionsIndex : règles, barèmes, calendrier, enjeux
+ * 6. mlModelIndex      : logique Dixon-Coles, Bivariate Poisson, SHAP, limites, value bets
+ * 7. refereesIndex     : profils arbitres UEFA Elite, moyennes de cartons et penaltys
  */
 
 import APP_DATA from '../data/app_data.json';
 import ANALYTICS_CACHE from '../data/compiled/analytics_cache.json';
 import PLAYERS_DATA from '../data/players.json';
+import RAG_ANALYTICS_STORE from '../data/compiled/rag_analytics_store.json';
+import REFEREES_MASTER from '../data/referees_master.json';
 
-// Dictionnaire des alias d'équipes normalisés
+// Dictionnaire étendu des alias d'équipes normalisés
 export const TEAM_ALIASES = {
+  // Ligue 1
   'psg': 'PSG',
   'paris': 'PSG',
   'paris saint germain': 'PSG',
@@ -31,30 +36,95 @@ export const TEAM_ALIASES = {
   'lille': 'Lille',
   'losc': 'Lille',
   'lens': 'Lens',
+  'rc lens': 'Lens',
   'rennes': 'Rennes',
+  'stade rennais': 'Rennes',
   'strasbourg': 'Strasbourg',
-  'real': 'Real Madrid',
-  'real madrid': 'Real Madrid',
-  'barca': 'FC Barcelona',
-  'barcelona': 'FC Barcelona',
-  'fc barcelona': 'FC Barcelona',
-  'atletico': 'Atlético Madrid',
-  'atletico madrid': 'Atlético Madrid',
+  'rc strasbourg': 'Strasbourg',
+  'nantes': 'Nantes',
+  'fc nantes': 'Nantes',
+  'montpellier': 'Montpellier',
+  'toulouse': 'Toulouse',
+  'brest': 'Brest',
+  'stade brestois': 'Brest',
+  'reims': 'Reims',
+  'stade de reims': 'Reims',
+  'saint etienne': 'Saint-Etienne',
+  'saint-etienne': 'Saint-Etienne',
+  'asse': 'Saint-Etienne',
+  'le havre': 'Le Havre',
+  'auxerre': 'Auxerre',
+  'angers': 'Angers',
+
+  // Premier League
   'man city': 'Manchester City',
   'city': 'Manchester City',
   'man utd': 'Manchester United',
   'manchester united': 'Manchester United',
+  'united': 'Manchester United',
   'arsenal': 'Arsenal',
   'liverpool': 'Liverpool',
   'chelsea': 'Chelsea',
   'tottenham': 'Tottenham',
   'spurs': 'Tottenham',
-  'bayern': 'Bayern Munich',
-  'bayern munich': 'Bayern Munich',
-  'dortmund': 'Borussia Dortmund',
-  'bvb': 'Borussia Dortmund',
-  'leverkusen': 'Bayer Leverkusen',
-  'leipzig': 'RB Leipzig',
+  'newcastle': 'Newcastle',
+  'aston villa': 'Aston Villa',
+  'villa': 'Aston Villa',
+  'brighton': 'Brighton',
+  'west ham': 'West Ham',
+  'everton': 'Everton',
+  'brentford': 'Brentford',
+  'wolves': 'Wolves',
+  'wolverhampton': 'Wolves',
+  'crystal palace': 'Crystal Palace',
+  'fulham': 'Fulham',
+  'bournemouth': 'Bournemouth',
+  'nottingham': 'Nottingham Forest',
+  'forest': 'Nottingham Forest',
+  'nottingham forest': 'Nottingham Forest',
+  'leicester': 'Leicester',
+  'southampton': 'Southampton',
+  'ipswich': 'Ipswich',
+
+  // La Liga
+  'real': 'Real Madrid',
+  'real madrid': 'Real Madrid',
+  'barca': 'FC Barcelona',
+  'barcelona': 'FC Barcelona',
+  'fc barcelona': 'FC Barcelona',
+  'barcelone': 'FC Barcelona',
+  'atletico': 'Atlético Madrid',
+  'atletico madrid': 'Atlético Madrid',
+  'sevilla': 'Sevilla',
+  'seville': 'Sevilla',
+  'real betis': 'Real Betis',
+  'betis': 'Real Betis',
+  'athletic club': 'Athletic Club',
+  'athletic bilbao': 'Athletic Club',
+  'bilbao': 'Athletic Club',
+  'real sociedad': 'Real Sociedad',
+  'sociedad': 'Real Sociedad',
+  'villarreal': 'Villarreal',
+  'girona': 'Girona',
+  'gerone': 'Girona',
+  'valencia': 'Valencia',
+  'valence': 'Valencia',
+  'celta vigo': 'Celta Vigo',
+  'celta': 'Celta Vigo',
+  'rayo': 'Rayo Vallecano',
+  'rayo vallecano': 'Rayo Vallecano',
+  'mallorca': 'Mallorca',
+  'majorque': 'Mallorca',
+  'osasuna': 'Osasuna',
+  'getafe': 'Getafe',
+  'alaves': 'Alavés',
+  'deportivo alaves': 'Alavés',
+  'las palmas': 'Las Palmas',
+  'espanyol': 'Espanyol',
+  'valladolid': 'Valladolid',
+  'leganes': 'Leganés',
+
+  // Serie A
   'inter': 'Inter Milan',
   'inter milan': 'Inter Milan',
   'milan': 'AC Milan',
@@ -62,27 +132,92 @@ export const TEAM_ALIASES = {
   'juventus': 'Juventus',
   'juve': 'Juventus',
   'napoli': 'Napoli',
+  'naples': 'Napoli',
   'roma': 'AS Roma',
+  'as roma': 'AS Roma',
+  'lazio': 'Lazio',
+  'atalanta': 'Atalanta',
+  'fiorentina': 'Fiorentina',
+  'bologna': 'Bologna',
+  'bologne': 'Bologna',
+  'torino': 'Torino',
+  'genoa': 'Genoa',
+  'udinese': 'Udinese',
+  'parma': 'Parma',
+  'parme': 'Parma',
+  'empoli': 'Empoli',
+  'verona': 'Verona',
+  'hellas verona': 'Verona',
+  'cagliari': 'Cagliari',
+  'monza': 'Monza',
+  'lecce': 'Lecce',
+  'como': 'Como',
+  'venezia': 'Venezia',
+
+  // Bundesliga
+  'bayern': 'Bayern Munich',
+  'bayern munich': 'Bayern Munich',
+  'dortmund': 'Borussia Dortmund',
+  'bvb': 'Borussia Dortmund',
+  'leverkusen': 'Bayer Leverkusen',
+  'bayer leverkusen': 'Bayer Leverkusen',
+  'leipzig': 'RB Leipzig',
+  'rb leipzig': 'RB Leipzig',
+  'frankfurt': 'Eintracht Frankfurt',
+  'eintracht': 'Eintracht Frankfurt',
+  'stuttgart': 'VfB Stuttgart',
+  'vfb stuttgart': 'VfB Stuttgart',
+  'wolfsburg': 'Wolfsburg',
+  'freiburg': 'SC Freiburg',
+  'mainz': 'Mainz',
+  'hoffenheim': 'Hoffenheim',
+  'bremen': 'Werder Bremen',
+  'werder': 'Werder Bremen',
+  'augsburg': 'Augsburg',
+  'heidenheim': 'Heidenheim',
+  'st pauli': 'St. Pauli',
+  'bochum': 'Bochum',
+  'kiel': 'Holstein Kiel',
+
+  // Autres Europe
   'benfica': 'Benfica',
   'sporting': 'Sporting CP',
+  'sporting cp': 'Sporting CP',
   'porto': 'FC Porto',
+  'fc porto': 'FC Porto',
   'aarhus': 'AGF Aarhus',
   'agf aarhus': 'AGF Aarhus',
   'tromso': 'Tromsø',
   'tromsø': 'Tromsø',
-  'brighton': 'Brighton'
+  'salzburg': 'Salzburg',
+  'celtic': 'Celtic',
+  'rangers': 'Rangers'
 };
 
-// ── INDEX 1: MATCHS (Actuels + Historiques) ──
+const normalizeStr = (s) => {
+  if (!s) return '';
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+};
+
+// ── INDEX 1: MATCHS (Actuels & Fixtures) ──
 export const buildMatchesIndex = () => {
   const schedule = APP_DATA?.fullSchedule || [];
 
   return {
     liveSchedule: schedule.map(m => {
       const pred = m.prediction || {};
-      const probs = pred.probabilities || { home: '45%', draw: '28%', away: '27%' };
-      const homeXg = pred.expectedGoals?.home || m.homeXg || 1.65;
-      const awayXg = pred.expectedGoals?.away || m.awayXg || 1.10;
+      const probs = pred.probabilities || {
+        home: pred.homeProb || '45%',
+        draw: pred.drawProb || '28%',
+        away: pred.awayProb || '27%'
+      };
+      const homeXg = pred.expectedGoals?.home || pred.homeXg || m.homeXg || 1.65;
+      const awayXg = pred.expectedGoals?.away || pred.awayXg || m.awayXg || 1.10;
+
+      // Correction clé : Mapper potentialScorers et potentialAssists de app_data.json
+      const scorers = m.potentialScorers || m.topScorers || { home: [], away: [] };
+      const assists = m.potentialAssists || { home: [], away: [] };
+
       return {
         id: m.id,
         league: m.league,
@@ -93,47 +228,154 @@ export const buildMatchesIndex = () => {
         awayXg,
         odds: m.betclicOdds || { home: 1.85, draw: 3.50, away: 4.20 },
         weather: m.weather || { condition: 'Ciel Dégagé', temp_avg_c: 19, wind_speed_kmh: 12, city: `${m.homeTeam} Stadium` },
+        location: m.location || `${m.homeTeam} Stadium`,
         referee: m.referee || { name: 'Corps Arbitral Officiel', severity: '7.2/10' },
         probabilities: probs,
         valueBets: m.valueBets || [],
-        topScorers: m.topScorers || { home: [], away: [] },
-        potentialAssists: m.potentialAssists || { home: [], away: [] },
+        topScorers: scorers,
+        potentialAssists: assists,
         overUnder25: m.overUnder25 || null,
         btts: m.btts || null,
         coaches: m.coaches || null,
         formations: m.formations || null,
         lineupStatus: m.lineupStatus || 'PROBABLE',
-        homeLineup: m.homeLineup || { formation: '4-3-3', keyAbsentees: [] },
-        awayLineup: m.awayLineup || { formation: '4-2-3-1', keyAbsentees: [] },
+        homeLineup: m.homeLineup || { formation: m.formations?.home || '4-3-3', keyAbsentees: [] },
+        awayLineup: m.awayLineup || { formation: m.formations?.away || '4-2-3-1', keyAbsentees: [] },
+        topExactScores: m.topExactScores || [],
+        shapFactors: m.shapFactors || [],
         advice: pred.advice || `Avantage ${homeXg > awayXg ? m.homeTeam : m.awayTeam}`,
         searchTokens: `${m.homeTeam} ${m.awayTeam} ${m.league} ${m.date}`.toLowerCase()
       };
     }),
-    historyMatchesCount: 4705,
-    historyData: null
+    historyMatchesCount: RAG_ANALYTICS_STORE?.meta?.totalMatchesAnalyzed || 4793,
+    analyticsStore: RAG_ANALYTICS_STORE
   };
 };
 
-// ── INDEX 2: JOUEURS (Stats, xG90, xA90, Forme) ──
+// ── INDEX 2: FEATURE STORE ANALYTIQUE MULTI-SAISONS (Cartons, H2H, Dom/Ext, Arbitres) ──
+export const buildAnalyticsIndex = () => {
+  const store = RAG_ANALYTICS_STORE || { teams: {}, h2h: {}, referees: {}, globalLeaderboards: {} };
+
+  return {
+    meta: store.meta || {},
+
+    // Recherche d'un club dans le store avec tolérance de nom
+    findTeamStats: (teamName) => {
+      if (!teamName) return null;
+      const direct = store.teams?.[teamName];
+      if (direct) return direct;
+
+      const normQ = normalizeStr(teamName);
+      const canonical = TEAM_ALIASES[normQ] || TEAM_ALIASES[teamName.toLowerCase()];
+      if (canonical && store.teams?.[canonical]) {
+        return store.teams[canonical];
+      }
+
+      for (const [key, t] of Object.entries(store.teams || {})) {
+        const normK = normalizeStr(key);
+        if (normK.includes(normQ) || normQ.includes(normK)) {
+          return t;
+        }
+      }
+      return null;
+    },
+
+    // Confrontations H2H directes entre deux clubs
+    getH2hStats: (team1, team2) => {
+      if (!team1 || !team2) return null;
+      const n1 = normalizeStr(team1);
+      const n2 = normalizeStr(team2);
+      const pairKey = [n1, n2].sort().join('__');
+
+      // Recherche directe
+      if (store.h2h?.[pairKey]) return store.h2h[pairKey];
+
+      // Recherche floue si pas de match exact
+      for (const [key, val] of Object.entries(store.h2h || {})) {
+        const [k1, k2] = key.split('__');
+        if ((k1.includes(n1) || n1.includes(k1)) && (k2.includes(n2) || n2.includes(k2))) {
+          return val;
+        }
+      }
+      return null;
+    },
+
+    // Leaderboard des cartons jaunes et rouges
+    getGlobalTopYellowCards: (limit = 15, league = null) => {
+      let list = store.globalLeaderboards?.topYellowCards || [];
+      if (league) {
+        list = list.filter(p => p.league === league || normalizeStr(p.league).includes(normalizeStr(league)));
+      }
+      return list.slice(0, limit);
+    },
+
+    // Leaderboard des buteurs historiques
+    getGlobalTopGoalscorers: (limit = 15, league = null) => {
+      let list = store.globalLeaderboards?.topGoalscorers || [];
+      if (league) {
+        list = list.filter(p => p.league === league || normalizeStr(p.league).includes(normalizeStr(league)));
+      }
+      return list.slice(0, limit);
+    },
+
+    // Profil arbitral approfondi
+    getRefereeProfile: (refName) => {
+      if (!refName) return null;
+      const normR = normalizeStr(refName.replace(/\(.*?\)/g, '').split('\n')[0]);
+
+      // Recherche dans le store de matchs réels
+      for (const [key, ref] of Object.entries(store.referees || {})) {
+        if (normalizeStr(key).includes(normR) || normR.includes(normalizeStr(key))) {
+          return ref;
+        }
+      }
+
+      // Recherche dans le catalogue master des arbitres officiels
+      const masterList = REFEREES_MASTER?.referees || [];
+      const masterFound = masterList.find(r => {
+        const mNorm = normalizeStr(r.full_name);
+        return mNorm.includes(normR) || normR.includes(mNorm) || (r.aliases || []).some(a => normalizeStr(a).includes(normR));
+      });
+
+      if (masterFound) {
+        return {
+          name: masterFound.full_name,
+          matches: 25,
+          yellowTotal: Math.round(masterFound.yellow_avg_per_match * 25),
+          redTotal: Math.round(masterFound.red_avg_per_match * 25),
+          yellowsPerMatch: masterFound.yellow_avg_per_match,
+          redsPerMatch: masterFound.red_avg_per_match,
+          penaltiesPerMatch: masterFound.penalty_ratio,
+          severityScore: masterFound.severity_index,
+          severityLabel: masterFound.severity_index >= 7.8 ? 'Très Sévère' : 'Modérée'
+        };
+      }
+
+      return null;
+    }
+  };
+};
+
+// ── INDEX 3: JOUEURS (Stats, xG90, xA90, Forme) ──
 export const buildPlayersIndex = () => {
   const players = Array.isArray(PLAYERS_DATA) ? PLAYERS_DATA : [];
-  
+
   return {
     totalCount: players.length,
     allPlayers: players,
     findByName: (name) => {
       if (!name) return null;
-      const q = name.toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeStr(name);
       return players.find(p => {
-        const pName = (p.name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const pName = normalizeStr(p.name || '');
         return pName.includes(q) || q.includes(pName);
       });
     },
     findByTeam: (team) => {
       if (!team) return [];
-      const q = team.toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeStr(team);
       return players.filter(p => {
-        const pTeam = (p.team || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const pTeam = normalizeStr(p.team || '');
         return pTeam.includes(q) || q.includes(pTeam);
       });
     },
@@ -146,7 +388,7 @@ export const buildPlayersIndex = () => {
   };
 };
 
-// ── INDEX 3: ENTRAÎNEURS (Tactiques, Styles, Formations) ──
+// ── INDEX 4: ENTRAÎNEURS (Tactiques, Styles, Formations) ──
 export const COACHES_KNOWLEDGE = [
   {
     name: 'Luis Enrique',
@@ -227,6 +469,26 @@ export const COACHES_KNOWLEDGE = [
     xgCreatedAvg: 2.70,
     xgConcededAvg: 0.95,
     keyPrinciples: 'Récupération haute, rythme élevé et percussion sur les ailes'
+  },
+  {
+    name: 'Diego Simeone',
+    team: 'Atlético Madrid',
+    formation: '3-5-2 / 5-3-2',
+    style: 'Bloc bas agressif, solidarité défensive absolue et contre-attaque tranchante',
+    winRate: '64.5%',
+    xgCreatedAvg: 1.85,
+    xgConcededAvg: 0.80,
+    keyPrinciples: 'Densité dans l axe, fautes tactiques pour couper les transitions, impact physique'
+  },
+  {
+    name: 'Arne Slot',
+    team: 'Liverpool',
+    formation: '4-2-3-1 / 4-3-3',
+    style: 'Contrôle posé du rythme, contre-pressing organisé et percussion chirurgicale',
+    winRate: '70.8%',
+    xgCreatedAvg: 2.35,
+    xgConcededAvg: 0.80,
+    keyPrinciples: 'Patience à la construction, pressing ciblé sur les relances basses adverses'
   }
 ];
 
@@ -235,17 +497,17 @@ export const buildCoachesIndex = () => {
     allCoaches: COACHES_KNOWLEDGE,
     findCoach: (nameOrTeam) => {
       if (!nameOrTeam) return null;
-      const q = nameOrTeam.toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeStr(nameOrTeam);
       return COACHES_KNOWLEDGE.find(c => {
-        const cName = c.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const cTeam = c.team.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const cName = normalizeStr(c.name);
+        const cTeam = normalizeStr(c.team);
         return cName.includes(q) || cTeam.includes(q) || q.includes(cName) || q.includes(cTeam);
       });
     }
   };
 };
 
-// ── INDEX 4: COMPÉTITIONS (Règles, Formats, Calendrier) ──
+// ── INDEX 5: COMPÉTITIONS ──
 export const COMPETITIONS_KNOWLEDGE = [
   {
     code: 'FRA-L1',
@@ -328,18 +590,18 @@ export const buildCompetitionsIndex = () => {
     allCompetitions: COMPETITIONS_KNOWLEDGE,
     findCompetition: (query) => {
       if (!query) return null;
-      const q = query.toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeStr(query);
       return COMPETITIONS_KNOWLEDGE.find(c => {
         const cCode = c.code.toLowerCase();
-        const cName = c.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const cCountry = c.country.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const cName = normalizeStr(c.name);
+        const cCountry = normalizeStr(c.country);
         return cCode.includes(q) || cName.includes(q) || cCountry.includes(q) || q.includes(cCode) || q.includes(cName);
       });
     }
   };
 };
 
-// ── INDEX 5: MODÈLE ML (Dixon-Coles, Poisson, Explications Mathématiques) ──
+// ── INDEX 6: MODÈLE ML (Dixon-Coles, Poisson, Explications Mathématiques) ──
 export const ML_MODEL_KNOWLEDGE = {
   architecture: 'Modèle Hybride Bivarié Dixon-Coles + LightGBM Multi-Task Calibré',
   dixonColesLogic: {

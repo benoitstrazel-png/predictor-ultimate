@@ -73,6 +73,9 @@ jobs:
       - name: Enrich Matches with Quant ML and Entities
         run: python scripts/pipeline/enrich_matches_with_ml_and_entities.py
 
+      - name: Build RAG Analytics Store
+        run: node scripts/pipeline/build_rag_analytics_store.cjs
+
       - name: Assert Odds Retention
         run: |
           python -c "import json; d = json.load(open('src/data/app_data.json', encoding='utf-8')); active = [m for m in d.get('fullSchedule', []) if m.get('oddsStatus') == 'ACTIVE' and m.get('betclicOdds')]; print(f'Active certified odds in app_data.json: {len(active)}'); assert len(active) >= 10, f'CRITICAL: Odds regression! Only {len(active)} active odds found.'"
