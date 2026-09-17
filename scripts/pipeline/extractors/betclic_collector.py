@@ -30,9 +30,34 @@ from scripts.db.init_odds_schema import init_odds_schema
 DB_PATH = os.path.join(ROOT_DIR, 'predictor_v2.db')
 APP_DATA_PATH = os.path.join(ROOT_DIR, 'src', 'data', 'app_data.json')
 
+def clean_team_str(raw: str) -> str:
+    if not raw:
+        return ""
+    replacements = {
+        'ø': 'o', 'Ø': 'o',
+        'æ': 'ae', 'Æ': 'ae',
+        'œ': 'oe', 'Œ': 'oe',
+        'ß': 'ss',
+        'ð': 'd', 'Ð': 'd',
+        'þ': 'th', 'Þ': 'th',
+        'ł': 'l', 'Ł': 'l',
+    }
+    s = raw
+    for k, v in replacements.items():
+        s = s.replace(k, v)
+    s = s.replace('\ufffd', '').replace('\xa0', ' ')
+    nfkd = unicodedata.normalize('NFKD', s)
+    stripped = "".join([c for c in nfkd if not unicodedata.combining(c)])
+    cleaned = re.sub(r"[\'’\-\.\,\(\)\/\\\_]", " ", stripped.lower())
+    cleaned = re.sub(r"[^a-z0-9\s]", "", cleaned)
+    cleaned = re.sub(r"\bst\b", "saint", cleaned)
+    cleaned = re.sub(r"^(fc|cf|sc|rc|ac|as|sk|fk)\s+", "", cleaned)
+    cleaned = re.sub(r"\s+(fc|cf|sc|rc|ac|as|sk|fk|tc)$", "", cleaned)
+    return re.sub(r"\s+", " ", cleaned).strip()
+
 TEAM_CANONICAL_MAP = {
     # Ligue 1
-    'psg': 'PSG', 'paris sg': 'PSG', 'paris saint germain': 'PSG',
+    'psg': 'PSG', 'paris sg': 'PSG', 'paris saint germain': 'PSG', 'paris saint-germain': 'PSG',
     'marseille': 'Marseille', 'om': 'Marseille', 'olympique de marseille': 'Marseille',
     'lyon': 'Lyon', 'ol': 'Lyon', 'olympique lyonnais': 'Lyon',
     'monaco': 'Monaco', 'as monaco': 'Monaco',
@@ -56,7 +81,7 @@ TEAM_CANONICAL_MAP = {
     'manchester city': 'Manchester City', 'man city': 'Manchester City', 'man. city': 'Manchester City',
     'liverpool': 'Liverpool',
     'chelsea': 'Chelsea',
-    'manchester united': 'Manchester United', 'man united': 'Manchester United', 'man. united': 'Manchester United',
+    'manchester united': 'Manchester United', 'man united': 'Manchester United', 'man. united': 'Manchester United', 'manchester utd': 'Manchester United',
     'tottenham': 'Tottenham', 'tottenham hotspur': 'Tottenham', 'spurs': 'Tottenham',
     'newcastle': 'Newcastle', 'newcastle united': 'Newcastle',
     'brighton': 'Brighton', 'brighton and hove albion': 'Brighton',
@@ -79,149 +104,158 @@ TEAM_CANONICAL_MAP = {
 
     # La Liga
     'real madrid': 'Real Madrid',
-    'barcelona': 'FC Barcelona', 'fc barcelona': 'FC Barcelona', 'barcelone': 'FC Barcelona',
-    'atletico madrid': 'Atlético Madrid', 'atlético madrid': 'Atlético Madrid', 'atletico': 'Atlético Madrid',
+    'barcelona': 'FC Barcelona', 'fc barcelona': 'FC Barcelona', 'barcelone': 'FC Barcelona', 'fc barcelone': 'FC Barcelona',
+    'atletico madrid': 'Atlético Madrid', 'atlético madrid': 'Atlético Madrid', 'atletico': 'Atlético Madrid', 'atltico madrid': 'Atlético Madrid',
     'athletic club': 'Athletic Club', 'athletic bilbao': 'Athletic Club', 'bilbao': 'Athletic Club',
     'real sociedad': 'Real Sociedad',
     'villarreal': 'Villarreal', 'villarreal cf': 'Villarreal',
-    'betis': 'Betis', 'real betis': 'Betis',
+    'betis': 'Betis', 'real betis': 'Betis', 'betis seville': 'Betis',
     'sevilla': 'Sevilla', 'seville': 'Sevilla', 'séville': 'Sevilla', 'sevilla fc': 'Sevilla', 'séville fc': 'Sevilla',
     'girona': 'Girona', 'girone': 'Girona',
-    'valencia': 'Valencia', 'valence': 'Valencia',
+    'valencia': 'Valencia', 'valence': 'Valencia', 'valencia cf': 'Valencia',
     'celta vigo': 'Celta Vigo', 'celta': 'Celta Vigo',
     'mallorca': 'Mallorca', 'majorque': 'Mallorca',
-    'osasuna': 'Osasuna',
-    'getafe': 'Getafe',
-    'alaves': 'Alavés', 'alavés': 'Alavés',
-    'rayo vallecano': 'Rayo Vallecano',
+    'osasuna': 'Osasuna', 'ca osasuna': 'Osasuna',
+    'getafe': 'Getafe', 'getafe cf': 'Getafe',
+    'alaves': 'Alavés', 'alavés': 'Alavés', 'deportivo alaves': 'Alavés',
+    'rayo vallecano': 'Rayo Vallecano', 'rayo': 'Rayo Vallecano',
     'las palmas': 'Las Palmas',
-    'espanyol': 'Espanyol', 'rcd espanyol': 'Espanyol',
+    'espanyol': 'Espanyol', 'rcd espanyol': 'Espanyol', 'espanyol barcelone': 'Espanyol',
     'leganes': 'Leganés', 'leganés': 'Leganés',
-    'valladolid': 'Real Valladolid',
-    'levante': 'Levante',
-    'malaga': 'Málaga', 'málaga': 'Málaga',
-    'deportivo': 'Deportivo A Coruña', 'deportivo a coruna': 'Deportivo A Coruña', 'deportivo a coruña': 'Deportivo A Coruña', 'deportivo la corogne': 'Deportivo A Coruña',
-    'elche': 'Elche',
-    'racing santander': 'Racing Santander',
+    'valladolid': 'Real Valladolid', 'real valladolid': 'Real Valladolid',
+    'levante': 'Levante', 'levante ud': 'Levante',
+    'malaga': 'Málaga', 'málaga': 'Málaga', 'malaga cf': 'Málaga', 'málaga cf': 'Málaga',
+    'deportivo': 'Deportivo A Coruña', 'deportivo a coruna': 'Deportivo A Coruña', 'deportivo a coruña': 'Deportivo A Coruña', 'deportivo la corogne': 'Deportivo A Coruña', 'la corogne': 'Deportivo A Coruña',
+    'elche': 'Elche', 'elche cf': 'Elche',
+    'racing santander': 'Racing Santander', 'racing de santander': 'Racing Santander',
 
     # Serie A
-    'inter': 'Inter Milan', 'inter milan': 'Inter Milan',
+    'inter': 'Inter Milan', 'inter milan': 'Inter Milan', 'internazionale': 'Inter Milan',
     'milan': 'AC Milan', 'ac milan': 'AC Milan',
     'juventus': 'Juventus', 'juve': 'Juventus',
-    'napoli': 'Napoli', 'naples': 'Napoli',
-    'atalanta': 'Atalanta', 'atalanta bergamo': 'Atalanta',
-    'roma': 'AS Roma', 'as roma': 'AS Roma',
-    'lazio': 'Lazio', 'lazio rome': 'Lazio',
-    'bologna': 'Bologna', 'bologne': 'Bologna',
-    'fiorentina': 'Fiorentina',
-    'torino': 'Torino',
-    'genoa': 'Genoa',
-    'monza': 'Monza',
-    'como': 'Como',
+    'napoli': 'Napoli', 'naples': 'Napoli', 'ssc napoli': 'Napoli',
+    'atalanta': 'Atalanta', 'atalanta bergamo': 'Atalanta', 'atalanta bergame': 'Atalanta',
+    'roma': 'AS Roma', 'as roma': 'AS Roma', 'as rome': 'AS Roma', 'rome': 'AS Roma',
+    'lazio': 'Lazio', 'lazio rome': 'Lazio', 'ss lazio': 'Lazio',
+    'bologna': 'Bologna', 'bologne': 'Bologna', 'fc bologne': 'Bologna',
+    'fiorentina': 'Fiorentina', 'acf fiorentina': 'Fiorentina',
+    'torino': 'Torino', 'torino fc': 'Torino',
+    'genoa': 'Genoa', 'genoa cfc': 'Genoa',
+    'monza': 'Monza', 'ac monza': 'Monza',
+    'como': 'Como', 'côme': 'Como', 'come': 'Como',
     'parma': 'Parma', 'parme': 'Parma',
-    'udinese': 'Udinese',
-    'cagliari': 'Cagliari',
+    'udinese': 'Udinese', 'udinese calcio': 'Udinese',
+    'cagliari': 'Cagliari', 'cagliari calcio': 'Cagliari',
     'empoli': 'Empoli',
     'verona': 'Hellas Verona', 'hellas verona': 'Hellas Verona',
-    'lecce': 'Lecce',
+    'lecce': 'Lecce', 'us lecce': 'Lecce',
     'venezia': 'Venezia', 'venise': 'Venezia',
-    'frosinone': 'Frosinone',
-    'sassuolo': 'Sassuolo',
+    'frosinone': 'Frosinone', 'frosinone calcio': 'Frosinone',
+    'sassuolo': 'Sassuolo', 'us sassuolo': 'Sassuolo',
 
     # Bundesliga
     'bayern': 'Bayern Munich', 'bayern munich': 'Bayern Munich', 'bayern munchen': 'Bayern Munich', 'fc bayern münchen': 'Bayern Munich',
     'dortmund': 'Borussia Dortmund', 'bvb': 'Borussia Dortmund', 'borussia dortmund': 'Borussia Dortmund',
-    'leverkusen': 'Bayer 04 Leverkusen', 'bayer leverkusen': 'Bayer 04 Leverkusen', 'b. leverkusen': 'Bayer 04 Leverkusen',
+    'leverkusen': 'Bayer Leverkusen', 'bayer leverkusen': 'Bayer Leverkusen', 'b. leverkusen': 'Bayer Leverkusen', 'b leverkusen': 'Bayer Leverkusen', 'bayer 04 leverkusen': 'Bayer Leverkusen',
     'leipzig': 'RB Leipzig', 'rb leipzig': 'RB Leipzig',
     'stuttgart': 'Stuttgart', 'vfb stuttgart': 'Stuttgart',
     'frankfurt': 'Eintracht Frankfurt', 'francfort': 'Eintracht Frankfurt', 'eintracht francfort': 'Eintracht Frankfurt', 'eintracht frankfurt': 'Eintracht Frankfurt',
     'wolfsburg': 'VfL Wolfsburg',
-    'freiburg': 'Freiburg', 'sc freiburg': 'Freiburg', 'fribourg': 'Freiburg',
+    'freiburg': 'Freiburg', 'sc freiburg': 'Freiburg', 'fribourg': 'Freiburg', 'sc fribourg': 'Freiburg',
     'heidenheim': '1. FC Heidenheim',
-    'augsburg': 'Augsburg', 'fc augsburg': 'Augsburg', 'augsbourg': 'Augsburg',
-    'monchengladbach': "B. Monchengladbach", "borussia m'gladbach": "B. Monchengladbach", "b. m'gladbach": "B. Monchengladbach", "b. monchengladbach": "B. Monchengladbach", "borussia monchengladbach": "B. Monchengladbach",
-    'union berlin': 'Union Berlin', '1. fc union berlin': 'Union Berlin',
+    'augsburg': 'Augsburg', 'fc augsburg': 'Augsburg', 'augsbourg': 'Augsburg', 'fc augsbourg': 'Augsburg',
+    'monchengladbach': "B. Monchengladbach", "borussia m'gladbach": "B. Monchengladbach", "b. m'gladbach": "B. Monchengladbach", "b. monchengladbach": "B. Monchengladbach", "borussia monchengladbach": "B. Monchengladbach", "b m gladbach": "B. Monchengladbach",
+    'union berlin': 'Union Berlin', '1. fc union berlin': 'Union Berlin', '1 fc union berlin': 'Union Berlin',
     'mainz': 'Mainz', 'mainz 05': 'Mainz', 'mayence': 'Mainz',
     'bochum': 'VfL Bochum',
     'st. pauli': 'FC St. Pauli', 'st pauli': 'FC St. Pauli',
     'holstein kiel': 'Holstein Kiel', 'kiel': 'Holstein Kiel',
-    'hoffenheim': 'Hoffenheim', 'tsg hoffenheim': 'Hoffenheim',
-    'cologne': 'FC Koln', 'koln': 'FC Koln', '1. fc koln': 'FC Koln', '1. fc köln': 'FC Koln', 'fc koln': 'FC Koln',
-    'elversberg': 'Elversberg',
+    'hoffenheim': 'Hoffenheim', 'tsg hoffenheim': 'Hoffenheim', 'tsg 1899 hoffenheim': 'Hoffenheim',
+    'cologne': 'FC Koln', 'koln': 'FC Koln', '1. fc koln': 'FC Koln', '1. fc köln': 'FC Koln', 'fc koln': 'FC Koln', '1 fc koln': 'FC Koln',
+    'elversberg': 'Elversberg', 'sv elversberg': 'Elversberg',
     'hamburger sv': 'Hambourg SV', 'hambourg': 'Hambourg SV', 'hambourg sv': 'Hambourg SV', 'hamburger': 'Hambourg SV',
-    'paderborn': 'Paderborn',
-    'schalke 04': 'Schalke 04', 'schalke': 'Schalke 04',
+    'paderborn': 'Paderborn', 'sc paderborn': 'Paderborn',
+    'schalke 04': 'Schalke 04', 'schalke': 'Schalke 04', 'fc schalke 04': 'Schalke 04',
+    'werder breme': 'Werder Bremen', 'werder bremen': 'Werder Bremen', 'werder brême': 'Werder Bremen',
 
     # Coupes d'Europe & Variantes Betclic
-    'manchester utd': 'Manchester United',
+    'salzburg': 'Salzburg', 'salzbourg': 'Salzburg', 'red bull salzburg': 'Salzburg', 'red bull salzbourg': 'Salzburg', 'rb salzburg': 'Salzburg', 'rb salzbourg': 'Salzburg',
+    'nec nijmegen': 'NEC Nijmegen', 'nec nimegue': 'NEC Nijmegen', 'nijmegen': 'NEC Nijmegen', 'nimegue': 'NEC Nijmegen',
+    'union saint gilloise': 'Union St.Gilloise', 'union saint-gilloise': 'Union St.Gilloise', 'union st gilloise': 'Union St.Gilloise', 'union st.gilloise': 'Union St.Gilloise', 'royale union saint-gilloise': 'Union St.Gilloise', 'saint gilloise': 'Union St.Gilloise',
+    'viktoria plzen': 'Viktoria Plzeň', 'viktoria plzeň': 'Viktoria Plzeň', 'fc viktoria plzen': 'Viktoria Plzeň', 'plzen': 'Viktoria Plzeň',
+    'ferencvaros': 'Ferencváros', 'ferencváros': 'Ferencváros', 'ferencvarosi': 'Ferencváros', 'ferencvárosi': 'Ferencváros', 'ferencvarosi tc': 'Ferencváros', 'ferencvárosi tc': 'Ferencváros',
+    'lech poznan': 'Lech Poznań', 'lech poznań': 'Lech Poznań',
+    'besiktas': 'Beşiktaş', 'beşiktaş': 'Beşiktaş', 'besiktas jk': 'Beşiktaş',
+    'celtic': 'Celtic', 'celtic glasgow': 'Celtic', 'celtic fc': 'Celtic',
+    'lillestrom': 'Lillestrøm', 'lillestrøm': 'Lillestrøm', 'lillestrom sk': 'Lillestrøm', 'lillestrøm sk': 'Lillestrøm',
+    'ofi crete': 'OFI Crete', 'ofi crête': 'OFI Crete', 'ofi': 'OFI Crete',
+    'torreense': 'Torreense', 'sc torreense': 'Torreense',
+    'red star belgrade': 'FK Crvena Zvezda', 'crvena zvezda': 'FK Crvena Zvezda', 'etoile rouge': 'FK Crvena Zvezda', 'etoile rouge belgrade': 'FK Crvena Zvezda', 'fk crvena zvezda': 'FK Crvena Zvezda',
+    'kauno zalgiris': 'FK Kauno Žalgiris', 'zalgiris kaunas': 'FK Kauno Žalgiris', 'fk kauno zalgiris': 'FK Kauno Žalgiris',
+    'inter club d escaldes': "Inter Club d'Escaldes", "inter club d'escaldes": "Inter Club d'Escaldes", 'int club escaldes': "Inter Club d'Escaldes", 'inter club escaldes': "Inter Club d'Escaldes",
+    'gent': 'Gent', 'la gantoise': 'Gent', 'kaa gent': 'Gent',
+    'agf': 'AGF', 'agf aarhus': 'AGF', 'aarhus': 'AGF',
+    'copenhagen': 'FC København', 'copenhague': 'FC København', 'fc kobenhavn': 'FC København', 'fc copenhague': 'FC København', 'fc copenhagen': 'FC København',
     'club bruges': 'Club Brugge', 'club brugge': 'Club Brugge', 'bruges': 'Club Brugge',
     'aek athenes': 'AEK Athens', 'aek athens': 'AEK Athens', 'aek': 'AEK Athens',
     'lask linz': 'LASK', 'lask': 'LASK',
     'porto': 'FC Porto', 'fc porto': 'FC Porto',
-    'werder breme': 'Werder Bremen', 'werder bremen': 'Werder Bremen',
-    'b. leverkusen': 'Bayer Leverkusen',
-    'b. m\'gladbach': 'B. Monchengladbach', "b. m'gladbach": 'B. Monchengladbach',
-    'francfort': 'Eintracht Frankfurt',
-    'valence': 'Valencia',
-    'seville': 'Sevilla',
-    'hull': 'Hull City',
     'feyenoord': 'Feyenoord', 'feyenoord rotterdam': 'Feyenoord',
     'galatasaray': 'Galatasaray',
-    'shakhtar': 'Shakhtar Donetsk', 'shakhtar donetsk': 'Shakhtar Donetsk',
+    'shakhtar': 'Shakhtar Donetsk', 'shakhtar donetsk': 'Shakhtar Donetsk', 'chakhtar': 'Shakhtar Donetsk',
     'sporting': 'Sporting CP', 'sporting cp': 'Sporting CP', 'sporting lisbonne': 'Sporting CP', 'sporting portugal': 'Sporting CP',
-    'slavia prague': 'Slavia Prague', 'slavia': 'Slavia Prague',
+    'slavia prague': 'Slavia Prague', 'slavia': 'Slavia Prague', 'slavia praha': 'Slavia Prague',
     'bodø/glimt': 'Bodø/Glimt', 'bodo/glimt': 'Bodø/Glimt', 'bodo glimt': 'Bodø/Glimt', 'bod glimt': 'Bodø/Glimt',
     'fenerbahce': 'Fenerbahçe', 'fenerbahçe': 'Fenerbahçe', 'fenerbah e': 'Fenerbahçe',
     'slovan bratislava': 'Slovan Bratislava', 'slovan': 'Slovan Bratislava',
     'viking': 'Viking', 'viking fk': 'Viking',
     'sabah fk': 'Sabah FK', 'sabah': 'Sabah FK',
-    'come': 'Como', 'côme': 'Como',
     'psv': 'PSV Eindhoven', 'psv eindhoven': 'PSV Eindhoven',
     'sturm graz': 'Sturm Graz',
     'dinamo zagreb': 'Dinamo Zagreb',
-    'olympiakos': 'Olympiakos', 'olympiacos': 'Olympiakos',
-    'sparta prague': 'Sparta Prague',
-    'ararat-armenia': 'Ararat-Armenia',
+    'olympiakos': 'Olympiacos', 'olympiacos': 'Olympiacos', 'olympiacos le piree': 'Olympiacos',
+    'sparta prague': 'Sparta Prague', 'sparta praha': 'Sparta Prague',
+    'ararat-armenia': 'Ararat Armenia', 'ararat armenia': 'Ararat Armenia',
     'az': 'AZ Alkmaar', 'az alkmaar': 'AZ Alkmaar',
     'hapoel beer sheva': 'Hapoel Beer Sheva',
-    'omonia nicosie': 'Omonia Nicosie',
-    'la gantoise': 'La Gantoise',
-    'agf aarhus': 'AGF Aarhus',
+    'omonia nicosie': 'Omonia Nicosia', 'omonia nicosia': 'Omonia Nicosia',
     'cska sofia': 'CSKA Sofia',
-    'jagiellonia bialystok': 'Jagiellonia Bialystok',
-    'nk celje': 'NK Celje',
-    'atltico madrid': 'Atlético Madrid',
+    'jagiellonia bialystok': 'Jagiellonia Białystok', 'jagiellonia białystok': 'Jagiellonia Białystok',
+    'nk celje': 'NK Celje', 'celje': 'NK Celje',
+    'st truiden': 'St.Truiden', 'st.truiden': 'St.Truiden', 'sint truiden': 'St.Truiden', 'saint trond': 'St.Truiden',
+    'pafos': 'Pafos FC', 'pafos fc': 'Pafos FC',
+    'borac banja luka': 'Borac Banja Luka',
+    'egnatia': 'Egnatia', 'kf egnatia': 'Egnatia', 'kf egnatia rrogozhine': 'Egnatia',
+    'kups': 'KuPS', 'kups kuopio': 'KuPS', 'kuopio': 'KuPS',
+    'mjallby': 'Mjällby', 'mjällby': 'Mjällby', 'mjallby aif': 'Mjällby',
+    'thun': 'Thun', 'fc thun': 'Thun',
+    'lugano': 'Lugano', 'fc lugano': 'Lugano',
+    'heart of midlothian': 'Heart of Midlothian', 'hearts': 'Heart of Midlothian',
+    'nordsjaelland': 'Nordsjælland', 'nordsjælland': 'Nordsjælland',
+    'jablonec': 'Jablonec', 'fk jablonec': 'Jablonec',
+    'brann': 'Brann', 'sk brann': 'Brann',
+    'lincoln red imps': 'Lincoln Red Imps FC', 'lincoln red imps fc': 'Lincoln Red Imps FC',
+    'iberia 1999': 'Iberia 1999',
+    'universitatea craiova': 'Universitatea Craiova', 'craiova': 'Universitatea Craiova',
+    'trabzonspor': 'Trabzonspor',
+    'twente': 'FC Twente', 'fc twente': 'FC Twente',
+    'midtjylland': 'FC Midtjylland', 'fc midtjylland': 'FC Midtjylland',
+    'anderlecht': 'Anderlecht',
+    'benfica': 'Benfica',
+    'braga': 'Braga',
+    'kairat almaty': 'Kairat Almaty', 'kairat': 'Kairat Almaty',
+    'riga fc': 'Riga FC', 'riga': 'Riga FC',
 }
 
-def clean_team_str(raw: str) -> str:
-    if not raw:
-        return ""
-    replacements = {
-        'ø': 'o', 'Ø': 'o',
-        'æ': 'ae', 'Æ': 'ae',
-        'œ': 'oe', 'Œ': 'oe',
-        'ß': 'ss',
-        'ð': 'd', 'Ð': 'd',
-        'þ': 'th', 'Þ': 'th',
-        'ł': 'l', 'Ł': 'l',
-    }
-    s = raw
-    for k, v in replacements.items():
-        s = s.replace(k, v)
-    s = s.replace('\ufffd', '').replace('\xa0', ' ')
-    nfkd = unicodedata.normalize('NFKD', s)
-    stripped = "".join([c for c in nfkd if not unicodedata.combining(c)])
-    cleaned = re.sub(r"[\'’\-\.\,\(\)\/\\\_]", " ", stripped.lower())
-    cleaned = re.sub(r"[^a-z0-9\s]", "", cleaned)
-    return re.sub(r"\s+", " ", cleaned).strip()
+CLEAN_CANONICAL_MAP = {clean_team_str(k): v for k, v in TEAM_CANONICAL_MAP.items()}
 
 def normalize_team_name(raw_name: str) -> str:
     if not raw_name:
         return ""
     clean = clean_team_str(raw_name)
-    if clean in TEAM_CANONICAL_MAP:
-        return TEAM_CANONICAL_MAP[clean]
-    return TEAM_CANONICAL_MAP.get(clean, raw_name.strip())
+    if clean in CLEAN_CANONICAL_MAP:
+        return CLEAN_CANONICAL_MAP[clean]
+    return raw_name.strip()
 
 def extract_live_betclic_odds() -> List[Dict[str, Any]]:
     script_path = os.path.join(ROOT_DIR, 'scripts', 'pipeline', 'extractors', 'run_puppeteer_extractor.cjs')
@@ -296,10 +330,21 @@ def ingest_betclic_odds_to_database_and_app_data():
         found_m = None
         candidates_schedule = []
         for m in schedule:
-            m_h_clean = clean_team_str(normalize_team_name(m.get('homeTeam', '')))
-            m_a_clean = clean_team_str(normalize_team_name(m.get('awayTeam', '')))
-            if (m_h_clean == clean_nh or clean_nh in m_h_clean or m_h_clean in clean_nh) and \
-               (m_a_clean == clean_na or clean_na in m_a_clean or m_a_clean in clean_na):
+            m_h_norm = normalize_team_name(m.get('homeTeam', ''))
+            m_a_norm = normalize_team_name(m.get('awayTeam', ''))
+            m_h_clean = clean_team_str(m_h_norm)
+            m_a_clean = clean_team_str(m_a_norm)
+            
+            h_ok = (m_h_clean == clean_nh or clean_nh in m_h_clean or m_h_clean in clean_nh)
+            a_ok = (m_a_clean == clean_na or clean_na in m_a_clean or m_a_clean in clean_na)
+            
+            # Éviter faux positif Lille vs Lillestrøm
+            if ('lille' in [clean_nh, m_h_clean]) and ('lillestrom' in [clean_nh, m_h_clean]):
+                h_ok = False
+            if ('lille' in [clean_na, m_a_clean]) and ('lillestrom' in [clean_na, m_a_clean]):
+                a_ok = False
+                
+            if h_ok and a_ok:
                 candidates_schedule.append(m)
 
         if candidates_schedule:
@@ -336,8 +381,14 @@ def ingest_betclic_odds_to_database_and_app_data():
             cr_h = clean_team_str(normalize_team_name(r_hname))
             cr_a = clean_team_str(normalize_team_name(r_aname))
             
-            if (cr_h == clean_nh or clean_nh in cr_h or cr_h in clean_nh) and \
-               (cr_a == clean_na or clean_na in cr_a or cr_a in clean_na):
+            h_ok = (cr_h == clean_nh or clean_nh in cr_h or cr_h in clean_nh)
+            a_ok = (cr_a == clean_na or clean_na in cr_a or cr_a in clean_na)
+            if ('lille' in [clean_nh, cr_h]) and ('lillestrom' in [clean_nh, cr_h]):
+                h_ok = False
+            if ('lille' in [clean_na, cr_a]) and ('lillestrom' in [clean_na, cr_a]):
+                a_ok = False
+                
+            if h_ok and a_ok:
                 candidates_db.append(r)
 
         if candidates_db:

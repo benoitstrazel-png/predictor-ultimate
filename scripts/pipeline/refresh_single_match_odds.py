@@ -24,7 +24,7 @@ if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 from scripts.pipeline.validators.odds_quality_gate import validate_odds_record, calculate_margin_metrics
-from scripts.pipeline.extractors.betclic_collector import normalize_team_name, extract_live_betclic_odds
+from scripts.pipeline.extractors.betclic_collector import normalize_team_name, clean_team_str, extract_live_betclic_odds
 
 DB_PATH = os.path.join(ROOT_DIR, 'predictor_v2.db')
 APP_DATA_PATH = os.path.join(ROOT_DIR, 'src', 'data', 'app_data.json')
@@ -57,12 +57,12 @@ def refresh_single_match(
                 break
 
     if not target_match and home_team and away_team:
-        norm_h = normalize_team_name(home_team)
-        norm_a = normalize_team_name(away_team)
+        clean_h = clean_team_str(normalize_team_name(home_team))
+        clean_a = clean_team_str(normalize_team_name(away_team))
         for m in schedule:
-            mh = normalize_team_name(m.get('homeTeam', ''))
-            ma = normalize_team_name(m.get('awayTeam', ''))
-            if (mh == norm_h and ma == norm_a) or (norm_h in mh and norm_a in ma):
+            mh = clean_team_str(normalize_team_name(m.get('homeTeam', '')))
+            ma = clean_team_str(normalize_team_name(m.get('awayTeam', '')))
+            if (mh == clean_h and ma == clean_a) or (clean_h in mh and clean_a in ma) or (mh in clean_h and ma in clean_a):
                 target_match = m
                 break
 
@@ -76,8 +76,8 @@ def refresh_single_match(
 
     h_name = target_match.get('homeTeam')
     a_name = target_match.get('awayTeam')
-    norm_h = normalize_team_name(h_name)
-    norm_a = normalize_team_name(a_name)
+    clean_target_h = clean_team_str(normalize_team_name(h_name))
+    clean_target_a = clean_team_str(normalize_team_name(a_name))
     found_match_id = target_match.get('id')
 
     # Si les cotes ne sont pas passees en argument, scrape Betclic en direct
@@ -86,9 +86,9 @@ def refresh_single_match(
         live_matches = extract_live_betclic_odds()
         matched_live = None
         for lm in live_matches:
-            lm_h = normalize_team_name(lm['homeTeam'])
-            lm_a = normalize_team_name(lm['awayTeam'])
-            if (lm_h == norm_h and lm_a == norm_a) or (norm_h in lm_h and norm_a in lm_a):
+            lm_h = clean_team_str(normalize_team_name(lm['homeTeam']))
+            lm_a = clean_team_str(normalize_team_name(lm['awayTeam']))
+            if (lm_h == clean_target_h and lm_a == clean_target_a) or (clean_target_h in lm_h and clean_target_a in lm_a) or (lm_h in clean_target_h and lm_a in clean_target_a):
                 matched_live = lm
                 break
 

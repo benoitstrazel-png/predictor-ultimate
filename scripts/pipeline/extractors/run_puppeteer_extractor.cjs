@@ -102,7 +102,7 @@ async function runCleanScraper() {
 
               if (home && away && home !== away && odds.length >= 3) {
                 const invSum = (1 / odds[0]) + (1 / odds[1]) + (1 / odds[2]);
-                if (invSum >= 1.025 && invSum <= 1.16) {
+                if (invSum >= 1.02 && invSum <= 1.22) {
                   found.push({
                     competition: compCode,
                     homeTeam: home,
@@ -139,7 +139,7 @@ async function runCleanScraper() {
               const cards = document.querySelectorAll('a.cardEvent');
               if (cards[i]) cards[i].scrollIntoView({ behavior: 'instant', block: 'center' });
             }, cardIdx);
-            await new Promise(r => setTimeout(r, 450));
+            await new Promise(r => setTimeout(r, 400));
             batch = await harvestBatch();
             batch.forEach(m => {
               const k = `${m.homeTeam}_vs_${m.awayTeam}`;
@@ -148,7 +148,7 @@ async function runCleanScraper() {
                 allResults.push(m);
               }
             });
-            cardIdx++;
+            cardIdx += 4;
             endOfPageTries = 0;
           } else {
             // Au bout des cartes rendues : scroll container pour déclencher le chargement des jours suivants

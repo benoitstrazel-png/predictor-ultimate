@@ -34,6 +34,8 @@ UNIFIED_HIST_FILE = os.path.join(ROOT_DIR, "src", "data", "unified_history.json"
 APP_DATA_FILE = os.path.join(ROOT_DIR, "src", "data", "app_data.json")
 TEAMS_MASTER_FILE = os.path.join(ROOT_DIR, "src", "data", "teams_master.json")
 
+from scripts.pipeline.extractors.betclic_collector import clean_team_str, normalize_team_name
+
 def load_team_logos():
     logos = {}
     if os.path.exists(TEAMS_MASTER_FILE):
@@ -595,12 +597,7 @@ def compile_data():
 
     def clean_team_norm(raw: str) -> str:
         if not raw: return ""
-        clean = raw.strip().lower()
-        for o, n in [('é','e'), ('è','e'), ('ê','e'), ('ë','e'), ('à','a'), ('â','a'), ('ä','a'), ('ô','o'), ('ö','o'), ('î','i'), ('ï','i'), ('û','u'), ('ü','u'), ('ù','u'), ('ç','c')]:
-            clean = clean.replace(o, n)
-        import re
-        clean = re.sub(r'[\'’\-\.\,\(\)]', ' ', clean)
-        return re.sub(r'\s+', ' ', clean).strip()
+        return clean_team_str(normalize_team_name(raw))
 
     closing_odds_by_teams = {}
     for row in all_closing_odds:
