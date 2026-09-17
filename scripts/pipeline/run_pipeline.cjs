@@ -12,10 +12,8 @@
 
 'use strict';
 const path = require('path');
-const { extractBetclicMatches } = require('./extractors/betclicExtractor.cjs');
-const { transformMatches } = require('./transformers/predictionEngine.cjs');
+const { execSync } = require('child_process');
 const { validateDataset } = require('./validators/dataValidator.cjs');
-const { loadDataset } = require('./loaders/dataLoader.cjs');
 
 async function main() {
   const args = process.argv.slice(2);
@@ -28,9 +26,10 @@ async function main() {
   const startTime = Date.now();
 
   try {
+    const APP_DATA_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'app_data.json');
+
     // 1. Validation Only Mode
     if (isValidateOnly) {
-      const APP_DATA_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'app_data.json');
       const currentData = require(APP_DATA_FILE);
       const valResult = validateDataset(currentData);
       if (!valResult.isValid) {
@@ -39,36 +38,39 @@ async function main() {
       return;
     }
 
-    // 2. Step 1: Extraction
-    console.log('\n▶ ÉTAPE 1/4 : INGESTION & EXTRACTION (Betclic + Sources Officielles)');
-    const rawData = await extractBetclicMatches();
+    const runPy = (cmd, desc) => {
+      console.log(`\n▶ ${desc}...`);
+      execSync(`python ${cmd}`, { stdio: 'inherit', cwd: path.join(__dirname, '..', '..') });
+    };
 
-    // 3. Step 2: Transformation & ML
-    console.log('\n▶ ÉTAPE 2/4 : TRANSFORMATION & MODÉLISATION PRÉDICTIVE (Dixon-Coles)');
-    const transformed = transformMatches(rawData);
+    // 2. Step 1: Extraction des Cotes Betclic Réelles
+    runPy('scripts/pipeline/extractors/betclic_collector.py', 'ÉTAPE 1/4 : INGESTION & COTES RÉELLES (Betclic Collector)');
 
-    // 4. Step 3: Data Quality & Certification
-    console.log('\n▶ ÉTAPE 3/4 : VALIDATION CONTRACTUELLE & DATA QUALITY');
-    const validationResult = validateDataset(transformed);
+    // 3. Step 2: Effectifs & Transferts Multi-Saisons
+    runPy('scripts/pipeline/sync_full_squads_and_transfers.py', 'ÉTAPE 2/4 : SYNCHRONISATION EFFECTIFS & MERCATO (SCD2)');
+
+    // 4. Step 3: Compilation Base SQLite & Calendrier 2026-2027
+    runPy('scripts/pipeline/compile_unified_history_and_app_data.py', 'ÉTAPE 3/4 : COMPILATION UNIFIÉE & ARCHIVES PARTITIONNÉES');
+
+    // 5. Step 4: Modélisation ML Quantitatif (LightGBM 54 features + Dixon-Coles)
+    runPy('scripts/pipeline/enrich_matches_with_ml_and_entities.py', 'ÉTAPE 4/4 : INFERENCE QUANT ML & DÉTECTION VALUE BETS');
+
+    // 6. Validation Contractuelle
+    console.log('\n▶ CONTRÔLE FINAL : VALIDATION CONTRACTUELLE & DATA QUALITY');
+    delete require.cache[require.resolve(APP_DATA_FILE)];
+    const finalData = require(APP_DATA_FILE);
+    const validationResult = validateDataset(finalData);
 
     if (!validationResult.isValid) {
-      throw new Error('Échec des contrôles de qualité de données. Chargement annulé.');
-    }
-
-    // 5. Step 4: Loading & Storage
-    if (!isDryRun) {
-      console.log('\n▶ ÉTAPE 4/4 : PERSISTANCE ATOMIQUE & SNAPSHOT');
-      loadDataset(transformed);
-    } else {
-      console.log('\n▶ [DRY RUN] Sauvegarde ignorée.');
+      throw new Error('Échec des contrôles de qualité de données. Pipeline non conforme.');
     }
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
     console.log('\n═══════════════════════════════════════════════════════════════════════════');
     console.log(`✅ PIPELINE TERMINÉ AVEC SUCCÈS en ${duration}s !`);
     console.log(`   🏆 Score Data Quality : ${validationResult.qualityScore}/100`);
-    console.log(`   📊 Rencontres Prêtes  : ${transformed.fullSchedule.length}`);
-    console.log(`   🌐 Compétitions       : ${transformed.supportedLeagues.length} actives (Top 5 + 3 Coupes d'Europe)`);
+    console.log(`   📊 Rencontres Prêtes  : ${finalData.fullSchedule.length}`);
+    console.log(`   🌐 Compétitions       : ${finalData.supportedLeagues.length} actives (Top 5 + 3 Coupes d'Europe)`);
     console.log('═══════════════════════════════════════════════════════════════════════════\n');
 
   } catch (err) {

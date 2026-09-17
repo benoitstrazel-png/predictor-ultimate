@@ -46,6 +46,7 @@ export const STADIA_COORDINATES = {
   "Le Havre AC": { lat: 49.4986, lon: 0.1697, city: "Le Havre", stadium: "Stade Océane" },
   "Auxerre": { lat: 47.7867, lon: 3.5886, city: "Auxerre", stadium: "Stade de l'Abbé-Deschamps" },
   "AJ Auxerre": { lat: 47.7867, lon: 3.5886, city: "Auxerre", stadium: "Stade de l'Abbé-Deschamps" },
+  "Paris FC": { lat: 48.8189, lon: 2.3475, city: "Paris", stadium: "Stade Charléty" },
 
   // ── Premier League (England) ──
   "Liverpool": { lat: 53.4308, lon: -2.9608, city: "Liverpool", stadium: "Anfield" },

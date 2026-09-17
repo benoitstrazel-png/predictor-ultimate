@@ -16,6 +16,7 @@ import sys
 import json
 import sqlite3
 import datetime
+import shutil
 
 if sys.platform == "win32":
     try:
@@ -559,6 +560,13 @@ def compile_data():
         with open(cache_path, 'w', encoding='utf-8') as cf:
             json.dump(analytics_cache, cf, ensure_ascii=False, separators=(',', ':'))
         print(f"✅ [Compiler] analytics_cache.json & archives public/data régénérés avec succès.")
+        
+        # Export du rapport de backtest ML vers public/data pour le monitoring frontend
+        backtest_src = os.path.join(ROOT_DIR, "models", "training_evaluation_report.json")
+        backtest_dst = os.path.join(ROOT_DIR, "public", "data", "model_backtest_report.json")
+        if os.path.exists(backtest_src):
+            shutil.copyfile(backtest_src, backtest_dst)
+            print(f"✅ [Compiler] model_backtest_report.json synchronisé dans public/data/.")
     except Exception as e:
         print(f"⚠️ [Compiler] Attention génération cache analytique : {e}")
 

@@ -22,7 +22,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.pa
 TEAMS_MASTER_FILE = os.path.join(ROOT_DIR, "src", "data", "teams_master.json")
 
 # Chargement du dictionnaire des noms canoniques
-from scripts.build_comprehensive_teams_master import CANONICAL_DISPLAY_NAMES
+from scripts.pipeline.build_comprehensive_teams_master import CANONICAL_DISPLAY_NAMES
 
 TEAMS_BY_LEAGUE = {}
 GLOBAL_TEAM_LOOKUP = {}

@@ -1,12 +1,13 @@
 /**
  * scripts/pipeline/transformers/predictionEngine.cjs
  * ─────────────────────────────────────────────────────────────
- * Moteur de Modélisation & Transformation Analytique Certifié :
- * 1. Modèle Dixon-Coles / Poisson (xG et probabilités 1N2)
- * 2. Détecteur de Value Bets (Edge % vs cotes réelles Betclic)
- * 3. Météo Réelle par Stade (Open-Meteo Geocoding)
- * 4. Arbitres Internationaux FIFA / UEFA Officiels
- * 5. Registre de Logos HD Fotmob CDN
+ * [DEPRECATED / ARCHIVE PROTOTYPE]
+ * Moteur historique JS prototype.
+ * NOTE ARCHITECTURE :
+ * La source canonique et certifiée de modélisation prédictive (Dixon-Coles +
+ * LightGBM 54 variables + SHAP + Value Bets certifiés + SCD2 coaches) est :
+ *   scripts/pipeline/enrich_matches_with_ml_and_entities.py
+ * Ce fichier est conservé à titre de référence documentaire.
  */
 
 'use strict';
@@ -15,7 +16,7 @@ const TEAM_API_SPORTS_IDS = {
   // Ligue 1
   'PSG': 85, 'Paris Saint-Germain': 85, 'Marseille': 81, 'Lyon': 80, 'Monaco': 91, 'Lille': 79,
   'Rennes': 94, 'Lens': 116, 'Nice': 84, 'Strasbourg': 95, 'Nantes': 83, 'Montpellier': 82,
-  'Toulouse': 96, 'Brest': 106, 'Angers': 77, 'Le Havre': 97, 'Auxerre': 108, 'Saint-Étienne': 1063,
+  'Toulouse': 96, 'Brest': 106, 'Angers': 77, 'Le Havre': 97, 'Auxerre': 108, 'Paris FC': 86,
 
   // Premier League
   'Manchester City': 50, 'Arsenal': 42, 'Liverpool': 40, 'Chelsea': 49, 'Manchester United': 33,
@@ -79,7 +80,7 @@ const STADIUM_WEATHER = {
   'Jagiellonia Bialystok': { city: 'Stadion Miejski (Bialystok, Pologne)', condition: 'Partiellement Nuageux', temp: 21.0, rain: 0.0, wind: 10 },
   'Mjallby AIF': { city: 'Strandvallen (Sölvesborg, Suède)', condition: 'Vent Littoral', temp: 17.5, rain: 0.0, wind: 16 },
   'Universitatea Craiova': { city: 'Ion Oblemenco (Craiova, Roumanie)', condition: 'Ensoleillé', temp: 27.0, rain: 0.0, wind: 9 },
-  'Lech Poznan': 'Stadion Miejski (Poznan, Pologne)',
+  'Lech Poznan': { city: 'Stadion Miejski (Poznan, Pologne)', condition: 'Partiellement Nuageux', temp: 21.0, rain: 0.0, wind: 10 },
   'Besiktas': { city: 'Tüpraş Stadyumu (Istanbul, Turquie)', condition: 'Brise du Bosphore', temp: 27.5, rain: 0.0, wind: 15 },
   'Benfica': { city: 'Estádio da Luz (Lisbonne, Portugal)', condition: 'Soirée Douce & Étoilée', temp: 23.0, rain: 0.0, wind: 12 },
   'PSG': { city: 'Parc des Princes (Paris, France)', condition: 'Ciel Dégagé', temp: 22.0, rain: 0.0, wind: 10 },

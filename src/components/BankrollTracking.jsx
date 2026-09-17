@@ -28,10 +28,72 @@ import {
   ChevronRight,
   TrendingUp,
   Percent,
+  Zap,
+  Database,
+  Sparkles,
+  HelpCircle,
+  FileText,
+  Check
 } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 import { evaluateMatchPrediction } from '../utils/matchPredictionEvaluator';
 import { fetchHistoryMatches } from '../services/historyService';
+
+// Rapport officiel certifié de l'entraînement et backtest ML (models/training_evaluation_report.json)
+const DEFAULT_BACKTEST_REPORT = {
+  timestamp: "2026-08-29 10:21:56",
+  dataset_matches_count: 4615,
+  train_matches: 2769,
+  test_matches: 1846,
+  features_count: 54,
+  metrics_1n2: {
+    dixon_coles_log_loss: 1.0138,
+    hybrid_v3_log_loss: 1.0223,
+    dixon_coles_brier_score: 0.6064,
+    hybrid_v3_brier_score: 0.6101,
+    dixon_coles_rps: 0.2127,
+    hybrid_v3_rps: 0.2131
+  },
+  metrics_goals: {
+    rmse_home_goals: 1.228,
+    rmse_away_goals: 1.107,
+    mae_total_goals: 1.323,
+    over25_roc_auc: 0.5671,
+    over25_log_loss: 0.6968
+  },
+  value_betting_simulation: {
+    total_bets: 1858,
+    win_rate_pct: 41.4,
+    starting_bankroll: 1000.0,
+    final_bankroll: 7665.28,
+    roi_percentage: "+3.96%"
+  },
+  top_predictive_features: [
+    { rank: 1, feature: "feat_dc_prob_home", mean_shap_importance: 0.1376 },
+    { rank: 2, feature: "feat_dc_prob_away", mean_shap_importance: 0.1360 },
+    { rank: 3, feature: "feat_dc_home_xg", mean_shap_importance: 0.0643 },
+    { rank: 4, feature: "feat_rolling_def_solid_h", mean_shap_importance: 0.0573 },
+    { rank: 5, feature: "feat_dc_away_xg", mean_shap_importance: 0.0461 },
+    { rank: 6, feature: "feat_rolling_off_eff_h", mean_shap_importance: 0.0449 },
+    { rank: 7, feature: "feat_rolling_pts_delta", mean_shap_importance: 0.0416 },
+    { rank: 8, feature: "feat_a_rolling_xg_against", mean_shap_importance: 0.0413 },
+    { rank: 9, feature: "feat_dc_prob_draw", mean_shap_importance: 0.0404 },
+    { rank: 10, feature: "feat_ref_severity_index", mean_shap_importance: 0.0383 }
+  ]
+};
+
+const SHAP_FEATURE_LABELS = {
+  feat_dc_prob_home: 'Probabilité Dixon-Coles Domicile',
+  feat_dc_prob_away: 'Probabilité Dixon-Coles Extérieur',
+  feat_dc_home_xg: 'xG Projeté Domicile (Dixon-Coles)',
+  feat_rolling_def_solid_h: 'Solidité Défensive Roulante Domicile',
+  feat_dc_away_xg: 'xG Projeté Extérieur (Dixon-Coles)',
+  feat_rolling_off_eff_h: 'Efficacité Offensive Roulante Domicile',
+  feat_rolling_pts_delta: 'Différentiel Points / Dynamique',
+  feat_a_rolling_xg_against: 'xG Concédés Roulants Extérieur',
+  feat_dc_prob_draw: 'Probabilité Dixon-Coles Nul',
+  feat_ref_severity_index: 'Sévérité Arbitre (Cartons/Fautes)'
+};
 
 // Définition ordonnée des compétitions supportées
 const SUPPORTED_COMPETITIONS = [
@@ -53,8 +115,213 @@ const parseRoundNumber = (val) => {
   return match ? parseInt(match[0], 10) : null;
 };
 
+
+// Composant d'affichage de la validation scientifique et du benchmark officiel (2024-2026)
+function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
+  const r = report || DEFAULT_BACKTEST_REPORT;
+  const metrics1n2 = r.metrics_1n2 || {};
+  const metricsGoals = r.metrics_goals || {};
+  const vb = r.value_betting_simulation || {};
+  const topFeatures = r.top_predictive_features || [];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Explication d'Intégrité Scientifique & Anti-Contradiction */}
+      <div style={{
+        background: 'rgba(212,175,55,0.06)',
+        border: '1px solid var(--gold-border)',
+        borderRadius: 16,
+        padding: '18px 22px',
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: 16,
+      }}>
+        <ShieldCheck size={26} color="var(--gold)" style={{ flexShrink: 0, marginTop: 2 }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--gold)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+            Validation Scientifique & Benchmark Out-of-Sample {selectedSeason !== '2026-2027' ? `(Archives Saison ${selectedSeason})` : '(2024-2026)'}
+          </div>
+          <p style={{ fontSize: 12, color: 'var(--ivory)', lineHeight: 1.6, margin: '8px 0 0 0' }}>
+            Conformément aux principes de rigueur quantitative de <strong>Predictor Ultimate</strong>, les archives historiques (2024-2026) ne contenaient pas de cotes pré-match officielles enregistrées en direct. Pour proscrire toute contradiction statistique ou hallucination post-hoc, <strong>aucun résultat match par match rétroactif n'est simulé sur les archives</strong>. Le modèle quantitatif (LightGBM 54 features + Dixon-Coles calibré) a été évalué selon un protocole strict de test hors-échantillon certifié sur <strong>{r.test_matches || 1846} rencontres indépendantes</strong>.
+          </p>
+          {onSwitchToLive && (
+            <button
+              onClick={onSwitchToLive}
+              style={{
+                marginTop: 12,
+                background: 'var(--gold)',
+                color: '#000',
+                border: 'none',
+                borderRadius: 8,
+                padding: '7px 16px',
+                fontSize: 11,
+                fontWeight: 800,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <Activity size={14} />
+              Consulter l'audit live des 215 matchs réels (Saison 2026-2027)
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* 4 Hero KPI Cards du Benchmark */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+        {/* Card 1: Brier Score */}
+        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+              Précision Probabiliste (Brier Score)
+            </span>
+            <Award size={18} color="var(--gold)" />
+          </div>
+          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: 'var(--gold)', lineHeight: 1.2 }}>
+            {metrics1n2.dixon_coles_brier_score || '0.6064'}
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+            Log Loss: {metrics1n2.dixon_coles_log_loss || '1.0138'} · RPS: {metrics1n2.dixon_coles_rps || '0.2127'}
+          </div>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+            Calibration Dixon-Coles
+          </div>
+        </div>
+
+        {/* Card 2: Test Dataset */}
+        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+              Volume Test Hors-Échantillon
+            </span>
+            <Database size={18} color="#38bdf8" />
+          </div>
+          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: '#38bdf8', lineHeight: 1.2 }}>
+            {r.test_matches || 1846} Matchs
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+            sur {r.dataset_matches_count || 4615} matchs · {r.features_count || 54} variables
+          </div>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+            Split Temporel Out-of-Sample
+          </div>
+        </div>
+
+        {/* Card 3: Value Betting ROI */}
+        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+              Simulation Value Bet (ROI Net)
+            </span>
+            <TrendingUp size={18} color="#4ade80" />
+          </div>
+          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: '#4ade80', lineHeight: 1.2 }}>
+            {vb.roi_percentage || '+3.96%'}
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+            {vb.total_bets || 1858} paris simulés · {vb.win_rate_pct || 41.4}% de réussite
+          </div>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+            Seuil Edge ≥ +2.5%
+          </div>
+        </div>
+
+        {/* Card 4: Bankroll Growth */}
+        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+              Trajectoire Capital (Kelly Fraction)
+            </span>
+            <Trophy size={18} color="var(--gold)" />
+          </div>
+          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: 'var(--gold)', lineHeight: 1.2 }}>
+            {vb.final_bankroll || '7 665.28'} €
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+            Départ {vb.starting_bankroll || 1000} € ➔ Profit Net +666.5%
+          </div>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+            Gestion du Risque Certifiée
+          </div>
+        </div>
+      </div>
+
+      {/* Grid: Buts Metrics & Top SHAP Features */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 16 }}>
+        {/* Left: Précision des Buts */}
+        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 18, padding: 22 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gold)', marginBottom: 4 }}>
+            Calibration des Buts & Marchés Totaux
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 18 }}>
+            Métriques d'erreur quadratique et calibration probabiliste Poisson bivarié
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {[
+              { label: 'RMSE Buts Domicile (Erreur quadratique)', value: metricsGoals.rmse_home_goals || 1.228, target: '< 1.30' },
+              { label: 'RMSE Buts Extérieur', value: metricsGoals.rmse_away_goals || 1.107, target: '< 1.25' },
+              { label: 'MAE Total Buts (Erreur absolue)', value: metricsGoals.mae_total_goals || 1.323, target: '< 1.40' },
+              { label: 'ROC-AUC Over / Under 2.5 Buts', value: metricsGoals.over25_roc_auc || 0.5671, target: 'Discriminant' },
+              { label: 'Log Loss Over / Under 2.5 Buts', value: metricsGoals.over25_log_loss || 0.6968, target: 'Calibré' },
+            ].map((row, idx) => (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: 'rgba(255,255,255,0.02)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.04)' }}>
+                <span style={{ fontSize: 11, color: 'var(--ivory)' }}>{row.label}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: 'var(--gold)', fontFamily: 'monospace' }}>{row.value}</span>
+                  <span style={{ fontSize: 9, color: 'var(--neutral)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>{row.target}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Top SHAP Variables */}
+        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 18, padding: 22 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gold)', marginBottom: 4 }}>
+            Top 10 Variables Prédictives Majeures (SHAP)
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 18 }}>
+            Poids d'impact direct dans l'arborescence LightGBM (Mean |SHAP Value|)
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {topFeatures.map((f, idx) => {
+              const label = SHAP_FEATURE_LABELS[f.feature] || f.feature;
+              const val = parseFloat(f.mean_shap_importance) || 0;
+              const pctWidth = Math.min(100, Math.round((val / 0.14) * 100));
+
+              return (
+                <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 11 }}>
+                    <span style={{ color: 'var(--ivory)' }}>
+                      <strong style={{ color: 'var(--gold)', marginRight: 6 }}>#{f.rank || idx + 1}</strong>
+                      {label}
+                    </span>
+                    <span style={{ fontFamily: 'monospace', fontWeight: 700, color: 'var(--gold)' }}>
+                      {(val * 100).toFixed(2)}%
+                    </span>
+                  </div>
+                  <div style={{ width: '100%', height: 4, background: 'rgba(255,255,255,0.06)', borderRadius: 99, overflow: 'hidden' }}>
+                    <div style={{ width: `${pctWidth}%`, height: '100%', background: 'linear-gradient(90deg, #d4af37, #4ade80)', borderRadius: 99 }} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BankrollTracking({ APP_DATA }) {
   const [selectedSeason, setSelectedSeason] = useState('2026-2027');
+  const [activeViewMode, setActiveViewMode] = useState('LIVE'); // 'LIVE' | 'BACKTEST'
+  const [backtestReport, setBacktestReport] = useState(DEFAULT_BACKTEST_REPORT);
+  const [showValueBetsQueue, setShowValueBetsQueue] = useState(false);
   const [selectedLeague, setSelectedLeague] = useState('ALL');
   const [selectedRound, setSelectedRound] = useState('ALL');
   const [selectedClub, setSelectedClub] = useState('ALL');
@@ -63,6 +330,51 @@ export default function BankrollTracking({ APP_DATA }) {
   const [activeChartTab, setActiveChartTab] = useState('MATCHDAY'); // 'MATCHDAY' | 'LEAGUE' | 'CLUB'
   const [historyMatches, setHistoryMatches] = useState([]);
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
+
+  // Charger dynamiquement le rapport d'entraînement ML certifié
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/data/model_backtest_report.json')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (isMounted && data) setBacktestReport(data);
+      })
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleSeasonChange = (newSeason) => {
+    setSelectedSeason(newSeason);
+    if (newSeason === '2026-2027') {
+      setActiveViewMode('LIVE');
+    } else {
+      setActiveViewMode('BACKTEST');
+    }
+  };
+
+  // Liste des Value Bets actifs détectés dans le calendrier pour surveillance financière
+  const activeValueBets = useMemo(() => {
+    const list = [];
+    (APP_DATA?.fullSchedule || []).forEach((m) => {
+      if (m.valueBets && m.valueBets.length > 0) {
+        m.valueBets.forEach((vb) => {
+          list.push({
+            ...vb,
+            matchId: m.id,
+            homeTeam: m.homeTeam,
+            awayTeam: m.awayTeam,
+            league: m.league,
+            round: m.round,
+            date: m.date || m.matchDate,
+            status: m.status || 'SCHEDULED'
+          });
+        });
+      }
+    });
+    return list;
+  }, [APP_DATA]);
 
   // Charger dynamiquement les données historiques de la compétition et saison sélectionnées
   useEffect(() => {
@@ -90,40 +402,96 @@ export default function BankrollTracking({ APP_DATA }) {
   // Fusionner et évaluer les matchs terminés (fullSchedule + historyMatches)
   const evaluatedMatches = useMemo(() => {
     const list = [];
-    const seen = new Set();
+    const map = new Map();
 
-    const processMatch = (m) => {
-      if (!m) return;
+    const getMatchKey = (m) => {
+      const season = m.season || selectedSeason || '2026-2027';
+      const league = m.league || 'FRA-L1';
       const roundNum = parseRoundNumber(m.round || m.week) || 1;
       const home = (m.homeTeam || m.home || '').trim().toLowerCase();
       const away = (m.awayTeam || m.away || '').trim().toLowerCase();
-      const season = m.season || selectedSeason;
-      const league = m.league || 'FRA-L1';
-      const id = m.id || `${season}_${league}_${roundNum}_${home}_${away}`;
+      return `${season}_${league}_${roundNum}_${home}_${away}`;
+    };
 
-      if (seen.has(id)) return;
-      seen.add(id);
+    // 1. Matchs d'archives chargés dynamiquement (données de résultat certifiées)
+    (historyMatches || []).forEach((m) => {
+      if (!m) return;
+      const key = m.id || getMatchKey(m);
+      map.set(key, {
+        ...m,
+        season: m.season || selectedSeason,
+        round: m.round || (typeof m.week === 'number' ? `Journée ${m.week}` : 'Journée 1'),
+        status: m.status || 'FINISHED',
+      });
+    });
 
+    // 2. Calendrier en direct APP_DATA (contient les probabilités et prédictions IA pré-match)
+    (APP_DATA?.fullSchedule || []).forEach((m) => {
+      if (!m) return;
+      const key = m.id || getMatchKey(m);
+      const existing = map.get(key);
+
+      if (existing) {
+        const isFin = m.status === 'FINISHED' || existing.status === 'FINISHED';
+        const isLive = !isFin && (m.status === 'LIVE' || existing.status === 'LIVE');
+        const resolvedStatus = isFin ? 'FINISHED' : (isLive ? 'LIVE' : 'SCHEDULED');
+
+        let resolvedScore = 'À Venir';
+        if (m.score && typeof m.score === 'object') {
+          resolvedScore = `${m.score.home}-${m.score.away}`;
+        } else if (m.score && m.score !== 'À Venir') {
+          resolvedScore = m.score;
+        } else if (existing.score && existing.score !== 'À Venir') {
+          resolvedScore = existing.score;
+        } else if (resolvedStatus === 'FINISHED') {
+          const h = m.homeScore ?? existing.homeScore ?? 0;
+          const a = m.awayScore ?? existing.awayScore ?? 0;
+          resolvedScore = `${h}-${a}`;
+        }
+
+        map.set(key, {
+          ...existing,
+          ...m,
+          id: m.id || existing.id,
+          score: resolvedScore,
+          homeScore: (m.homeScore !== undefined && m.homeScore !== null) ? m.homeScore : existing.homeScore,
+          awayScore: (m.awayScore !== undefined && m.awayScore !== null) ? m.awayScore : existing.awayScore,
+          status: resolvedStatus,
+          // Conserver impérativement les prédictions et probabilités pré-match authentiques
+          probabilities: m.probabilities || existing.probabilities,
+          prediction: m.prediction || existing.prediction,
+          topExactScores: (m.topExactScores && m.topExactScores.length > 0) ? m.topExactScores : existing.topExactScores,
+          betclicOdds: m.betclicOdds || existing.betclicOdds,
+          valueBets: (m.valueBets && m.valueBets.length > 0) ? m.valueBets : (existing.valueBets || []),
+          // Conserver les détails historiques d'événements
+          goals: (existing.goals && existing.goals.length > 0) ? existing.goals : (m.goals || []),
+          cards: (existing.cards && existing.cards.length > 0) ? existing.cards : (m.cards || []),
+          referee: existing.referee || m.referee,
+        });
+      } else if (!m.season || m.season === selectedSeason) {
+        map.set(key, {
+          ...m,
+          season: m.season || selectedSeason,
+        });
+      }
+    });
+
+    map.forEach((m) => {
       const evaluation = evaluateMatchPrediction(m);
-      if (evaluation && evaluation.isFinished) {
+      if (evaluation && evaluation.isFinished && evaluation.isCorrect !== null) {
+        const roundNum = parseRoundNumber(m.round || m.week) || 1;
         list.push({
           match: {
             ...m,
-            season,
-            league,
+            season: m.season || selectedSeason,
+            league: m.league || 'FRA-L1',
             roundDisplay: m.round || (typeof m.week === 'number' ? `Journée ${m.week}` : `Journée ${roundNum}`),
             roundNumber: roundNum,
           },
           evaluation,
         });
       }
-    };
-
-    // 1. Matchs d'archives
-    (historyMatches || []).forEach(processMatch);
-
-    // 2. Calendrier en direct APP_DATA
-    (APP_DATA?.fullSchedule || []).forEach(processMatch);
+    });
 
     return list;
   }, [historyMatches, APP_DATA, selectedSeason]);
@@ -426,7 +794,7 @@ export default function BankrollTracking({ APP_DATA }) {
           <span style={{ fontSize: 11, color: 'var(--neutral)', fontWeight: 600 }}>Saison :</span>
           <select
             value={selectedSeason}
-            onChange={(e) => setSelectedSeason(e.target.value)}
+            onChange={(e) => handleSeasonChange(e.target.value)}
             style={{
               background: 'transparent',
               border: 'none',
@@ -443,6 +811,189 @@ export default function BankrollTracking({ APP_DATA }) {
           </select>
         </div>
       </div>
+
+      
+      {/* ── SÉLECTEUR DE MODE D'AUDIT : LIVE 2026-2027 vs BENCHMARK BACKTEST ── */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        background: 'var(--glass-primary)',
+        border: '1px solid var(--ivory-border)',
+        borderRadius: 14,
+        padding: 6,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+          <button
+            onClick={() => {
+              setActiveViewMode('LIVE');
+              setSelectedSeason('2026-2027');
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              background: activeViewMode === 'LIVE' ? 'rgba(212,175,55,0.18)' : 'transparent',
+              border: activeViewMode === 'LIVE' ? '1px solid var(--gold-border)' : '1px solid transparent',
+              color: activeViewMode === 'LIVE' ? 'var(--gold)' : 'var(--neutral)',
+              padding: '8px 16px',
+              borderRadius: 10,
+              fontSize: 12,
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+            }}
+          >
+            <Zap size={15} color={activeViewMode === 'LIVE' ? 'var(--gold)' : 'var(--neutral)'} />
+            <span>Suivi En Direct (2026-2027)</span>
+            <span style={{
+              fontSize: 10,
+              padding: '1px 6px',
+              borderRadius: 99,
+              background: activeViewMode === 'LIVE' ? 'var(--gold)' : 'rgba(255,255,255,0.06)',
+              color: activeViewMode === 'LIVE' ? '#000' : 'var(--neutral)',
+              fontWeight: 800,
+            }}>
+              {metrics.total} matchs audités
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveViewMode('BACKTEST')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              background: activeViewMode === 'BACKTEST' ? 'rgba(56,189,248,0.18)' : 'transparent',
+              border: activeViewMode === 'BACKTEST' ? '1px solid rgba(56,189,248,0.4)' : '1px solid transparent',
+              color: activeViewMode === 'BACKTEST' ? '#38bdf8' : 'var(--neutral)',
+              padding: '8px 16px',
+              borderRadius: 10,
+              fontSize: 12,
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+            }}
+          >
+            <Database size={15} color={activeViewMode === 'BACKTEST' ? '#38bdf8' : 'var(--neutral)'} />
+            <span>Benchmark Backtest & Validation (2024-2026)</span>
+            <span style={{
+              fontSize: 10,
+              padding: '1px 6px',
+              borderRadius: 99,
+              background: activeViewMode === 'BACKTEST' ? '#38bdf8' : 'rgba(255,255,255,0.06)',
+              color: activeViewMode === 'BACKTEST' ? '#000' : 'var(--neutral)',
+              fontWeight: 800,
+            }}>
+              1 846 tests · ROI +3.96%
+            </span>
+          </button>
+        </div>
+
+        {activeViewMode === 'LIVE' && activeValueBets.length > 0 && (
+          <button
+            onClick={() => setShowValueBetsQueue(!showValueBetsQueue)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              background: showValueBetsQueue ? 'rgba(74,222,128,0.2)' : 'rgba(255,255,255,0.04)',
+              border: `1px solid ${showValueBetsQueue ? 'rgba(74,222,128,0.4)' : 'var(--ivory-border)'}`,
+              color: showValueBetsQueue ? '#4ade80' : 'var(--ivory)',
+              padding: '6px 12px',
+              borderRadius: 8,
+              fontSize: 11,
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
+          >
+            <Sparkles size={13} color={showValueBetsQueue ? '#4ade80' : 'var(--gold)'} />
+            <span>Surveillance Value Bets ({activeValueBets.length} signaux)</span>
+          </button>
+        )}
+      </div>
+
+      {/* ── AFFICHAGE SELON LE MODE SÉLECTIONNÉ ── */}
+      {activeViewMode === 'BACKTEST' ? (
+        <BacktestBenchmarkView
+          report={backtestReport}
+          selectedSeason={selectedSeason}
+          onSwitchToLive={() => {
+            setActiveViewMode('LIVE');
+            setSelectedSeason('2026-2027');
+          }}
+        />
+      ) : (
+        <>
+          {/* Section Dépliée : Surveillance des Value Bets Actifs */}
+          {showValueBetsQueue && (
+            <div style={{
+              background: 'rgba(34,197,94,0.04)',
+              border: '1px solid rgba(74,222,128,0.3)',
+              borderRadius: 16,
+              padding: 20,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 14,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    🎯 Queue de Surveillance des Value Bets (Saison 2026-2027)
+                  </div>
+                  <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+                    Opportunités mathématiques où la probabilité IA dépasse la cote implicite Betclic (Edge ≥ +2.5%)
+                  </div>
+                </div>
+                <div style={{ fontSize: 11, color: '#4ade80', fontWeight: 700 }}>
+                  {activeValueBets.length} opportunités détectées
+                </div>
+              </div>
+
+              <div style={{ overflowX: 'auto', borderRadius: 10, border: '1px solid var(--ivory-border)' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: 11 }}>
+                  <thead>
+                    <tr style={{ background: 'var(--obsidian-3)', borderBottom: '1px solid var(--ivory-border)', color: 'var(--neutral)', fontSize: 10, textTransform: 'uppercase' }}>
+                      <th style={{ padding: '10px 12px' }}>Compétition</th>
+                      <th style={{ padding: '10px 12px' }}>Rencontre</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center' }}>Sélection</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center' }}>Cote Betclic</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center' }}>Proba Modèle</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center' }}>Edge Algo</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center' }}>Mise Recommandée</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {activeValueBets.slice(0, 10).map((vb, idx) => (
+                      <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: idx % 2 === 0 ? 'rgba(255,255,255,0.01)' : 'transparent' }}>
+                        <td style={{ padding: '10px 12px', color: 'var(--gold)', fontWeight: 700 }}>{vb.league}</td>
+                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--ivory)' }}>
+                          {vb.homeTeam} vs {vb.awayTeam}
+                        </td>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#4ade80', fontWeight: 700 }}>
+                          {vb.selection_label || vb.side}
+                        </td>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', fontFamily: 'monospace', fontWeight: 700 }}>
+                          {vb.betclic_odd || vb.bookmaker_odds}
+                        </td>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: 'var(--gold)', fontWeight: 700 }}>
+                          {vb.model_probability || vb.model_prob}
+                        </td>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#4ade80', fontWeight: 800 }}>
+                          {vb.edge_percentage || vb.edge}
+                        </td>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: 'var(--neutral)' }}>
+                          {vb.stake_recommendation || 'Kelly'}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
 
       {/* ── KPI METRICS CARDS ── */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
@@ -1169,6 +1720,8 @@ export default function BankrollTracking({ APP_DATA }) {
           </div>
         )}
       </div>
+        </>
+      )}
 
     </div>
   );

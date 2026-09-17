@@ -72,6 +72,11 @@ export function buildCombinedMatches(unifiedHistory = [], appDataSchedule = []) 
         cards: (m.cards && m.cards.length > 0) ? m.cards : (existing.cards || []),
         teamStats: m.teamStats || existing.teamStats,
         status: m.status || existing.status || 'SCHEDULED',
+        probabilities: m.probabilities || existing.probabilities,
+        prediction: m.prediction || existing.prediction,
+        topExactScores: m.topExactScores || existing.topExactScores,
+        betclicOdds: m.betclicOdds || existing.betclicOdds,
+        valueBets: m.valueBets || existing.valueBets,
       });
     } else {
       map.set(key, {

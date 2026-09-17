@@ -17,7 +17,7 @@ if sys.platform == "win32":
     except Exception:
         pass
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TEAMS_MASTER_FILE = os.path.join(ROOT_DIR, "src", "data", "teams_master.json")
 
 # Dictionnaire de standardisation des noms courts par ligue

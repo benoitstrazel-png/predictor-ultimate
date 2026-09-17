@@ -87,7 +87,7 @@ def main():
     run_step(
         5,
         "Reconstruction des bases joueurs statiques (players_static.js, real_players.json)",
-        "node scripts/rebuild_all_player_databases_2026_2027.cjs"
+        "node scripts/pipeline/rebuild_all_player_databases_2026_2027.cjs"
     )
 
     total_elapsed = time.time() - total_start

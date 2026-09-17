@@ -16,11 +16,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const REAL_PLAYERS_FILE = path.join(__dirname, '..', 'src', 'data', 'real_players.json');
-const PLAYERS_JSON_FILE = path.join(__dirname, '..', 'src', 'data', 'players.json');
-const PLAYERS_STATIC_FILE = path.join(__dirname, '..', 'src', 'data', 'players_static.js');
-const TM_POSITIONS_FILE = path.join(__dirname, '..', 'src', 'data', 'player_positions_tm.json');
-const PHOTOS_FILE = path.join(__dirname, '..', 'src', 'data', 'player_photos.json');
+const REAL_PLAYERS_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'real_players.json');
+const PLAYERS_JSON_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'players.json');
+const PLAYERS_STATIC_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'players_static.js');
+const TM_POSITIONS_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'player_positions_tm.json');
+const PHOTOS_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'player_photos.json');
 
 console.log('⚡ Reconstruction Intégrale de la BDD Joueurs 2026-2027 (Source de Vérité)...');
 

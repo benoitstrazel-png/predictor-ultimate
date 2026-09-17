@@ -105,22 +105,22 @@ export function evaluateMatchPrediction(match) {
     }
     predictedProb = match.topExactScores[0].prob || 35;
   } else {
-    // Deterministic estimation based on xG or team names
-    const hXg = parseFloat(match.homeXg) || 1.4;
-    const aXg = parseFloat(match.awayXg) || 1.1;
-    if (hXg > aXg + 0.25) {
-      predictedOutcome = '1';
-      predictedLabel = `1 · ${match.homeTeam}`;
-      predictedProb = Math.min(85, Math.round(45 + (hXg - aXg) * 20));
-    } else if (aXg > hXg + 0.25) {
-      predictedOutcome = '2';
-      predictedLabel = `2 · ${match.awayTeam}`;
-      predictedProb = Math.min(85, Math.round(45 + (aXg - hXg) * 20));
-    } else {
-      predictedOutcome = 'N';
-      predictedLabel = 'N · Nul';
-      predictedProb = 34;
-    }
+    // Aucune prédiction ou probabilité pré-match disponible pour cette rencontre
+    return {
+      status: 'NO_PREDICTION',
+      isFinished: true,
+      realOutcome,
+      realScore,
+      predictedOutcome: null,
+      predictedLabel: 'Non prédit',
+      predictedProb: null,
+      predictedScore: null,
+      isCorrect: null,
+      isExactScoreCorrect: null,
+      valueBet: null,
+      valueBetWon: null,
+      valueBetNetProfit: 0
+    };
   }
 
   const isCorrect = predictedOutcome === realOutcome;
