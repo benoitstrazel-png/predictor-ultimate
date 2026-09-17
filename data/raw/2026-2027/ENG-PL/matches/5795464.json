@@ -493,9 +493,9 @@
                 "2",
                 "2",
                 "away_team",
+                "2",
                 "1",
-                "1",
-                "3"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -508,19 +508,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Tottenham Hotspur have 1W, 2D, 2L in five matches while Aston Villa have 1W, 1D, 3L."
+              "defaultText": "Tottenham Hotspur have 1W, 2D, 2L in five matches while Aston Villa have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "1.33"
+                "3",
+                "1",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -531,19 +532,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have an average of 0.33 goals in their last three matches and Aston Villa have an average of 1.33."
+              "defaultText": "Tottenham Hotspur have scored 1 goals in their last 3 matches, while Aston Villa have scored 7."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "1.33"
+                "3",
+                "1",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -554,7 +556,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have an average of 0.33 goals in their last three matches and Aston Villa have an average of 1.33."
+              "defaultText": "Tottenham Hotspur have scored 1 goals in their last 3 matches, while Aston Villa have scored 7."
             },
             {
               "OddsType": "dc",
@@ -639,15 +641,15 @@
         },
         {
           "type": "player",
-          "playerId": 357880,
+          "playerId": 591734,
           "teamId": 8586,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 357880,
-              "name": "Andrew Robertson",
+              "value": 591734,
+              "name": "Dominic Solanke",
               "type": "player"
             },
             {
@@ -656,12 +658,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 0.8,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Andrew Robertson has created the most big chances for Tottenham Hotspur (2)",
+          "text": "Dominic Solanke has the most shots on target per match for Tottenham Hotspur (0.8)",
           "color": "#132257"
         },
         {
@@ -779,7 +781,8 @@
           "zh-Hans",
           "zh"
         ],
-        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795464/matchinsights_{lang}.json"
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795464/matchinsights_{lang}.json",
+        "hasRefereeInsight": true
       }
     },
     "liveticker": false,
@@ -799,16 +802,16 @@
     "weather": {
       "temperature": 20,
       "windSpeed": 7,
-      "windDirectionCardinal": "WSW",
+      "windDirectionCardinal": "SW",
       "iconCode": 26,
-      "relativeHumidity": 73,
-      "precipChance": 13,
+      "relativeHumidity": 69,
+      "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 86,
+      "cloudCover": 95,
       "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-16T14:00:02Z",
+      "lastUpdated": "2026-09-17T02:00:02Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -1137,7 +1140,7 @@
             "unavailability": {
               "injuryId": 14,
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Dejan",
             "lastName": "Kulusevski"
@@ -1517,19 +1520,35 @@
         },
         "unavailable": [
           {
-            "id": 729731,
-            "age": 29,
-            "name": "Matty Cash",
-            "countryName": "Poland",
-            "countryCode": "POL",
-            "marketValue": 17956030,
+            "id": 1174672,
+            "age": 25,
+            "name": "João Gomes",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 36287824,
             "unavailability": {
-              "injuryId": 121,
+              "injuryId": 101,
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
-            "firstName": "Matty",
-            "lastName": "Cash"
+            "firstName": "João",
+            "lastName": "Gomes"
+          },
+          {
+            "id": 966026,
+            "age": 24,
+            "name": "Ian Maatsen",
+            "positionId": 1000,
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 27793807,
+            "unavailability": {
+              "injuryId": 30,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Ian",
+            "lastName": "Maatsen"
           },
           {
             "id": 792645,
@@ -1542,7 +1561,7 @@
             "unavailability": {
               "injuryId": 42,
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Mid October 2026"
             },
             "firstName": "Pau",
             "lastName": "Torres"

@@ -483,11 +483,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -500,7 +502,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Rennes haven't lost in 4 matches."
+              "defaultText": "Lyon haven't lost in their last 4 matches, and Rennes in their last 5."
             },
             {
               "OddsType": "bts",
@@ -510,30 +512,6 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "7"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Lyon have scored in their last 7 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -545,7 +523,31 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored 4 goals in their last 3 matches, while Rennes have scored 6."
+              "defaultText": "Lyon have scored in their last 6 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "5",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Lyon have scored 5 goals in their last 3 matches, while Rennes have scored 3."
             },
             {
               "OddsType": "dc",
@@ -631,15 +633,15 @@
         },
         {
           "type": "player",
-          "playerId": 747767,
+          "playerId": 473852,
           "teamId": 9748,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 747767,
-              "name": "Loïs Openda",
+              "value": 473852,
+              "name": "Corentin Tolisso",
               "type": "player"
             },
             {
@@ -648,12 +650,12 @@
               "type": "team"
             },
             {
-              "value": 1.8,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Loïs Openda has the most shots on target per match for Lyon (1.8)",
+          "text": "Corentin Tolisso has created the most big chances for Lyon (2)",
           "color": "#0160A0"
         },
         {
@@ -822,16 +824,16 @@
     "weather": {
       "temperature": 20,
       "windSpeed": 2,
-      "windDirectionCardinal": "N",
+      "windDirectionCardinal": "NNE",
       "iconCode": 29,
-      "relativeHumidity": 44,
+      "relativeHumidity": 46,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 43,
+      "cloudCover": 40,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-16T21:00:17Z",
+      "lastUpdated": "2026-09-17T09:00:06Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

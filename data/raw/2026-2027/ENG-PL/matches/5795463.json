@@ -486,16 +486,10 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "2",
-                "2",
                 "away_team",
-                "1",
-                "0",
                 "4"
               ],
               "DefaultLabels": [
@@ -508,8 +502,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Nottingham Forest have 1W, 2D, 2L in five matches while Coventry City have 1W, 0D, 4L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Coventry City have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -536,10 +530,10 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
-              "TextTemplateId": "goalless_team",
+              "DefaultTemplate": "{0} haven't scored at home for {1} matches.",
+              "TextTemplateId": "goalless_home",
               "StatValues": [
-                "away_team",
+                "home_team",
                 "3"
               ],
               "DefaultLabels": [
@@ -551,17 +545,17 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Coventry City haven't scored in their last 3 matches."
+              "defaultText": "Nottingham Forest haven't scored at home for 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -573,8 +567,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Coventry City haven't drawn in their last 7 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Coventry City haven't won a match in 4 attempts."
             }
           ]
         },
@@ -777,15 +771,15 @@
       "temperature": 20,
       "windSpeed": 7,
       "windDirectionCardinal": "WSW",
-      "iconCode": 26,
-      "relativeHumidity": 70,
-      "precipChance": 24,
+      "iconCode": 28,
+      "relativeHumidity": 66,
+      "precipChance": 10,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 83,
-      "description": "Cloudy",
+      "cloudCover": 75,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-16T20:00:02Z",
+      "lastUpdated": "2026-09-17T08:00:01Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -1105,6 +1099,22 @@
         },
         "unavailable": [
           {
+            "id": 1391209,
+            "age": 21,
+            "name": "Jair Cunha",
+            "positionId": 1000,
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 13310855,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Jair",
+            "lastName": "Cunha"
+          },
+          {
             "id": 1622290,
             "age": 23,
             "name": "Nicolò Savona",
@@ -1119,6 +1129,22 @@
             },
             "firstName": "Nicolò",
             "lastName": "Savona"
+          },
+          {
+            "id": 766611,
+            "age": 28,
+            "name": "Nikola Milenković",
+            "positionId": 1000,
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 25645714,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Nikola",
+            "lastName": "Milenković"
           }
         ],
         "averageStarterAge": 26.9,
@@ -1431,6 +1457,21 @@
         },
         "unavailable": [
           {
+            "id": 982284,
+            "age": 25,
+            "name": "Ellis Simms",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 7127317,
+            "unavailability": {
+              "injuryId": 130,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Ellis",
+            "lastName": "Simms"
+          },
+          {
             "id": 1089686,
             "age": 23,
             "name": "Kaine Kesler-Hayden",
@@ -1504,8 +1545,8 @@
             "marketValue": 7899105,
             "unavailability": {
               "type": "suspension",
-              "expectedReturn": "Mid September 2026",
-              "expectedReturnDate": "2026-09-19T18:30:00Z"
+              "expectedReturn": "Early October 2026",
+              "expectedReturnDate": "2026-10-10T16:00:00Z"
             },
             "firstName": "Taiwo",
             "lastName": "Awoniyi"

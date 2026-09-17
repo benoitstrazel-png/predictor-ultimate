@@ -582,15 +582,15 @@
         },
         {
           "type": "player",
-          "playerId": 1419969,
+          "playerId": 940976,
           "teamId": 9906,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1419969,
-              "name": "Rodrigo Mendoza",
+              "value": 940976,
+              "name": "Kang-In Lee",
               "type": "player"
             },
             {
@@ -599,12 +599,12 @@
               "type": "team"
             },
             {
-              "value": 2.5,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Rodrigo Mendoza has the most shots on target per match for Atlético Madrid (2.5)",
+          "text": "Kang-In Lee has created the most big chances for Atlético Madrid (3)",
           "color": "#C63527"
         },
         {
@@ -630,25 +630,30 @@
           "color": "#085098"
         },
         {
-          "type": "player",
-          "playerId": 701154,
+          "type": "team",
+          "playerId": null,
           "teamId": 8633,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
+          "priority": 8,
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 701154,
-              "name": "Kylian Mbappé",
-              "type": "player"
+              "value": 8633,
+              "name": "Real Madrid",
+              "type": "team"
             },
             {
-              "value": 7,
+              "value": 9906,
+              "name": "Atlético Madrid",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Kylian Mbappé is the competition's top scorer (7)",
+          "text": "Real Madrid have won the previous 2 matches against Atlético Madrid.",
           "color": "#085098"
         },
         {
@@ -679,8 +684,97 @@
           "color": "#085098"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 942372,
+          "position": 2,
+          "matchesWithRating": 6,
+          "lastName": "Baena",
+          "fullName": "Álex Baena",
+          "stats": {
+            "goals": 4,
+            "goalAssist": 1,
+            "ontargetScoringAtt": 1.5,
+            "motm": 1,
+            "gamesPlayed": 6,
+            "minsPlayed": 388,
+            "minsPlayedGoal": 97,
+            "expectedGoals": 1.0937000513076782,
+            "playerRating": 7.6
+          }
+        },
+        "awayPlayer": {
+          "playerId": 701154,
+          "position": 3,
+          "matchesWithRating": 6,
+          "lastName": "Mbappé",
+          "fullName": "Kylian Mbappé",
+          "stats": {
+            "goals": 7,
+            "goalAssist": 2,
+            "ontargetScoringAtt": 3.67,
+            "motm": 3,
+            "gamesPlayed": 6,
+            "minsPlayed": 540,
+            "minsPlayedGoal": 77,
+            "expectedGoals": 7.8566999435424805,
+            "playerRating": 8.47
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ESP",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/87/5868072/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -697,18 +791,18 @@
       }
     },
     "weather": {
-      "temperature": 29,
+      "temperature": 30,
       "windSpeed": 2,
       "windDirectionCardinal": "SE",
-      "iconCode": 34,
-      "relativeHumidity": 23,
+      "iconCode": 32,
+      "relativeHumidity": 25,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 24,
-      "description": "Mostly Sunny",
+      "cloudCover": 8,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-16T17:00:10Z",
+      "lastUpdated": "2026-09-17T05:00:09Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -724,7 +818,7 @@
       "homeTeam": {
         "id": 9906,
         "name": "Atlético Madrid",
-        "formation": "3-4-2-1",
+        "formation": "4-4-2",
         "starters": [
           {
             "id": 177126,
@@ -733,19 +827,18 @@
             "positionId": 11,
             "usualPlayingPositionId": 0,
             "shirtNumber": "13",
-            "isCaptain": true,
             "countryName": "Slovenia",
             "countryCode": "SVN",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.2
             },
             "verticalLayout": {
               "x": 0.5,
               "y": 0.1,
-              "height": 0.192,
+              "height": 0.2,
               "width": 1
             },
             "marketValue": 11149486,
@@ -754,128 +847,24 @@
             "rankings": null
           },
           {
-            "id": 1323897,
-            "age": 23,
-            "name": "Marc Pubill",
-            "positionId": 33,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "18",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "horizontalLayout": {
-              "x": 0.292,
-              "y": 0.79,
-              "height": 0.25,
-              "width": 0.192
-            },
-            "verticalLayout": {
-              "x": 0.21,
-              "y": 0.292,
-              "height": 0.192,
-              "width": 0.29
-            },
-            "marketValue": 19884779,
-            "firstName": "Marc",
-            "lastName": "Pubill",
-            "rankings": null
-          },
-          {
-            "id": 789066,
-            "age": 28,
-            "name": "Cristian Romero",
-            "positionId": 35,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "21",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "horizontalLayout": {
-              "x": 0.292,
-              "y": 0.5,
-              "height": 0.25,
-              "width": 0.192
-            },
-            "verticalLayout": {
-              "x": 0.5,
-              "y": 0.292,
-              "height": 0.192,
-              "width": 0.29
-            },
-            "marketValue": 42074463,
-            "firstName": "Cristian",
-            "lastName": "Romero",
-            "rankings": null
-          },
-          {
-            "id": 727897,
-            "age": 28,
-            "name": "Dávid Hancko",
-            "positionId": 37,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "17",
-            "countryName": "Slovakia",
-            "countryCode": "SVK",
-            "horizontalLayout": {
-              "x": 0.292,
-              "y": 0.21,
-              "height": 0.25,
-              "width": 0.192
-            },
-            "verticalLayout": {
-              "x": 0.79,
-              "y": 0.292,
-              "height": 0.192,
-              "width": 0.29
-            },
-            "marketValue": 29233903,
-            "firstName": "Dávid",
-            "lastName": "Hancko",
-            "rankings": null
-          },
-          {
-            "id": 1226147,
-            "age": 23,
-            "name": "Giuliano Simeone",
-            "positionId": 62,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "20",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "horizontalLayout": {
-              "x": 0.485,
-              "y": 0.875,
-              "height": 0.25,
-              "width": 0.192
-            },
-            "verticalLayout": {
-              "x": 0.125,
-              "y": 0.485,
-              "height": 0.192,
-              "width": 0.25
-            },
-            "marketValue": 32628949,
-            "firstName": "Giuliano",
-            "lastName": "Simeone",
-            "rankings": null
-          },
-          {
             "id": 602563,
             "age": 31,
             "name": "Marcos Llorente",
-            "positionId": 64,
+            "positionId": 32,
             "usualPlayingPositionId": 1,
             "shirtNumber": "14",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
-              "x": 0.485,
-              "y": 0.625,
+              "x": 0.357,
+              "y": 0.875,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.375,
-              "y": 0.485,
-              "height": 0.192,
+              "x": 0.125,
+              "y": 0.357,
+              "height": 0.2,
               "width": 0.25
             },
             "marketValue": 13460129,
@@ -884,50 +873,76 @@
             "rankings": null
           },
           {
-            "id": 950199,
-            "age": 27,
-            "name": "Morten Hjulmand",
-            "positionId": 66,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "23",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
+            "id": 789066,
+            "age": 28,
+            "name": "Cristian Romero",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "21",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
             "horizontalLayout": {
-              "x": 0.485,
+              "x": 0.357,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 42074463,
+            "firstName": "Cristian",
+            "lastName": "Romero",
+            "rankings": null
+          },
+          {
+            "id": 609516,
+            "age": 29,
+            "name": "Robin Le Normand",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "24",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.357,
               "y": 0.375,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.257
             },
             "verticalLayout": {
               "x": 0.625,
-              "y": 0.485,
-              "height": 0.192,
+              "y": 0.357,
+              "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 32205693,
-            "firstName": "Morten",
-            "lastName": "Hjulmand",
+            "marketValue": 21976758,
+            "firstName": "Robin",
+            "lastName": "Le Normand",
             "rankings": null
           },
           {
             "id": 288406,
             "age": 31,
             "name": "Alejandro Grimaldo",
-            "positionId": 68,
+            "positionId": 38,
             "usualPlayingPositionId": 2,
             "shirtNumber": "22",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
-              "x": 0.485,
+              "x": 0.357,
               "y": 0.125,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.257
             },
             "verticalLayout": {
               "x": 0.875,
-              "y": 0.485,
-              "height": 0.192,
+              "y": 0.357,
+              "height": 0.2,
               "width": 0.25
             },
             "marketValue": 19098981,
@@ -939,22 +954,22 @@
             "id": 940976,
             "age": 25,
             "name": "Kang-In Lee",
-            "positionId": 84,
+            "positionId": 72,
             "usualPlayingPositionId": 3,
             "shirtNumber": "7",
             "countryName": "South Korea",
             "countryCode": "KOR",
             "horizontalLayout": {
-              "x": 0.678,
-              "y": 0.7,
+              "x": 0.613,
+              "y": 0.875,
               "height": 0.25,
-              "width": 0.193
+              "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.3,
-              "y": 0.678,
-              "height": 0.192,
-              "width": 0.4
+              "x": 0.125,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
             },
             "marketValue": 22399224,
             "firstName": "Kang-In",
@@ -962,25 +977,78 @@
             "rankings": null
           },
           {
+            "id": 184533,
+            "age": 34,
+            "name": "Koke",
+            "positionId": 74,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "isCaptain": true,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 2507440,
+            "firstName": "",
+            "lastName": "Koke",
+            "rankings": null
+          },
+          {
+            "id": 1173678,
+            "age": 25,
+            "name": "Johnny Cardoso",
+            "positionId": 76,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "5",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 16448769,
+            "firstName": "Johnny",
+            "lastName": "Cardoso",
+            "rankings": null
+          },
+          {
             "id": 942372,
             "age": 25,
             "name": "Álex Baena",
-            "positionId": 86,
+            "positionId": 78,
             "usualPlayingPositionId": 2,
             "shirtNumber": "10",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
-              "x": 0.678,
-              "y": 0.3,
+              "x": 0.613,
+              "y": 0.125,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.7,
-              "y": 0.678,
-              "height": 0.192,
-              "width": 0.4
+              "x": 0.875,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
             },
             "marketValue": 33205694,
             "firstName": "Álex",
@@ -988,25 +1056,51 @@
             "rankings": null
           },
           {
+            "id": 939569,
+            "age": 26,
+            "name": "Jonathan David",
+            "positionId": 104,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "15",
+            "countryName": "Canada",
+            "countryCode": "CAN",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.4
+            },
+            "marketValue": 26617217,
+            "firstName": "Jonathan",
+            "lastName": "David",
+            "rankings": null
+          },
+          {
             "id": 690516,
             "age": 28,
             "name": "Ademola Lookman",
-            "positionId": 105,
+            "positionId": 106,
             "usualPlayingPositionId": 2,
             "shirtNumber": "11",
             "countryName": "Nigeria",
             "countryCode": "NGA",
             "horizontalLayout": {
               "x": 0.87,
-              "y": 0.5,
+              "y": 0.3,
               "height": 0.25,
-              "width": 0.192
+              "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.5,
+              "x": 0.7,
               "y": 0.87,
-              "height": 0.192,
-              "width": 1
+              "height": 0.2,
+              "width": 0.4
             },
             "marketValue": 29289525,
             "firstName": "Ademola",
@@ -1067,16 +1161,16 @@
             "rankings": null
           },
           {
-            "id": 1691620,
-            "age": 20,
-            "name": "Javier Gil",
+            "id": 727897,
+            "age": 28,
+            "name": "Dávid Hancko",
             "usualPlayingPositionId": 1,
-            "shirtNumber": "45",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1925711,
-            "firstName": "Javier",
-            "lastName": "Gil",
+            "shirtNumber": "17",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "marketValue": 29233903,
+            "firstName": "Dávid",
+            "lastName": "Hancko",
             "rankings": null
           },
           {
@@ -1092,42 +1186,55 @@
             "rankings": null
           },
           {
-            "id": 609516,
-            "age": 29,
-            "name": "Robin Le Normand",
+            "id": 1323897,
+            "age": 23,
+            "name": "Marc Pubill",
             "usualPlayingPositionId": 1,
-            "shirtNumber": "24",
+            "shirtNumber": "18",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 21976758,
-            "firstName": "Robin",
-            "lastName": "Le Normand",
+            "marketValue": 19884779,
+            "firstName": "Marc",
+            "lastName": "Pubill",
             "rankings": null
           },
           {
-            "id": 1173678,
-            "age": 25,
-            "name": "Johnny Cardoso",
+            "id": 1226147,
+            "age": 23,
+            "name": "Giuliano Simeone",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "5",
-            "countryName": "USA",
-            "countryCode": "USA",
-            "marketValue": 16448769,
-            "firstName": "Johnny",
-            "lastName": "Cardoso",
+            "shirtNumber": "20",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 32628949,
+            "firstName": "Giuliano",
+            "lastName": "Simeone",
             "rankings": null
           },
           {
-            "id": 184533,
-            "age": 34,
-            "name": "Koke",
+            "id": 1692877,
+            "age": 20,
+            "name": "Jorge Castillo",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "6",
+            "shirtNumber": "46",
             "countryName": "Spain",
             "countryCode": "ESP",
-            "marketValue": 2507440,
-            "firstName": "",
-            "lastName": "Koke",
+            "marketValue": 389602,
+            "firstName": "Jorge",
+            "lastName": "Castillo",
+            "rankings": null
+          },
+          {
+            "id": 950199,
+            "age": 27,
+            "name": "Morten Hjulmand",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "23",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 32205693,
+            "firstName": "Morten",
+            "lastName": "Hjulmand",
             "rankings": null
           },
           {
@@ -1168,19 +1275,6 @@
             "firstName": "Arnau",
             "lastName": "Ortiz",
             "rankings": null
-          },
-          {
-            "id": 939569,
-            "age": 26,
-            "name": "Jonathan David",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "15",
-            "countryName": "Canada",
-            "countryCode": "CAN",
-            "marketValue": 26617217,
-            "firstName": "Jonathan",
-            "lastName": "David",
-            "rankings": null
           }
         ],
         "unavailable": [
@@ -1188,6 +1282,7 @@
             "id": 1338192,
             "age": 23,
             "name": "Pablo Barrios",
+            "positionId": 1000,
             "countryName": "Spain",
             "countryCode": "ESP",
             "marketValue": 41612897,
@@ -1226,23 +1321,23 @@
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Julián",
             "lastName": "Álvarez"
           }
         ],
-        "averageStarterAge": 27.9,
-        "totalStarterMarketValue": 284630826,
+        "averageStarterAge": 29.2,
+        "totalStarterMarketValue": 238227686,
         "lastMatch": {
-          "matchId": 5868058,
-          "homeTeamId": 8560,
-          "awayTeamId": 9906,
-          "homeTeamName": "Real Sociedad",
-          "awayTeamName": "Atlético Madrid",
-          "homeScore": 0,
-          "awayScore": 3,
-          "matchDate": "2026-09-13T21:00:00"
+          "matchId": 5868062,
+          "homeTeamId": 9906,
+          "awayTeamId": 8371,
+          "homeTeamName": "Atlético Madrid",
+          "awayTeamName": "Osasuna",
+          "homeScore": 4,
+          "awayScore": 0,
+          "matchDate": "2026-09-16T19:00:00"
         }
       },
       "awayTeam": {
@@ -3196,9 +3291,9 @@
           },
           "matchUrl": "/matches/real-madrid-vs-atletico-madrid/2ubozo#1727281",
           "league": {
-            "name": "Supercup",
+            "name": "Super Cup",
             "id": "139",
-            "pageUrl": "/leagues/139/overview/supercup"
+            "pageUrl": "/leagues/139/overview/super-cup"
           },
           "home": {
             "name": "Atlético Madrid",
@@ -3230,9 +3325,9 @@
           },
           "matchUrl": "/matches/real-madrid-vs-atletico-madrid/2ubozo#1727280",
           "league": {
-            "name": "Supercup",
+            "name": "Super Cup",
             "id": "139",
-            "pageUrl": "/leagues/139/overview/supercup"
+            "pageUrl": "/leagues/139/overview/super-cup"
           },
           "home": {
             "name": "Real Madrid",
@@ -3298,9 +3393,9 @@
           },
           "matchUrl": "/matches/real-madrid-vs-atletico-madrid/2ubozo#1506066",
           "league": {
-            "name": "Primera Division",
+            "name": "LaLiga",
             "id": "87",
-            "pageUrl": "/leagues/87/overview/primera-division"
+            "pageUrl": "/leagues/87/overview/laliga"
           },
           "home": {
             "name": "Atlético Madrid",
@@ -3400,9 +3495,9 @@
           },
           "matchUrl": "/matches/real-madrid-vs-atletico-madrid/2ubozo#1505876",
           "league": {
-            "name": "Primera Division",
+            "name": "LaLiga",
             "id": "87",
-            "pageUrl": "/leagues/87/overview/primera-division"
+            "pageUrl": "/leagues/87/overview/laliga"
           },
           "home": {
             "name": "Real Madrid",
