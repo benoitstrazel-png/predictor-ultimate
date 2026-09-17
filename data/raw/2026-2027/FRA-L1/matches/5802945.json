@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -168,36 +168,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
-            "linkToMatch": "/matches/marseille-vs-atletico-madrid/2tvf4l#5973858",
-            "date": {
-              "utcTime": "2026-08-14T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
-            "tooltipText": {
-              "utcTime": "2026-08-14T15:30:00.000Z",
-              "homeTeam": "Marseille",
-              "homeTeamId": 8592,
-              "homeScore": "1",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8592",
-              "name": "Marseille",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -310,6 +280,36 @@
             "home": {
               "id": "9851",
               "name": "Rennes",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8592",
+              "name": "Marseille",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10188.png",
+            "linkToMatch": "/matches/marseille-vs-besiktas/2x01xi#6112354",
+            "date": {
+              "utcTime": "2026-09-17T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10188/overview/besiktas",
+            "tooltipText": {
+              "utcTime": "2026-09-17T19:00:00.000Z",
+              "homeTeam": "Beşiktaş",
+              "homeTeamId": 10188,
+              "homeScore": "4",
+              "awayTeam": "Marseille",
+              "awayTeamId": 8592,
+              "awayScore": "1"
+            },
+            "score": "4 - 1",
+            "home": {
+              "id": "10188",
+              "name": "Beşiktaş",
               "isOurTeam": false
             },
             "away": {
@@ -485,17 +485,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "0",
-                "4",
-                "away_team",
-                "2",
-                "2",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -507,8 +501,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Marseille have 1W, 0D, 4L in five matches while Paris Saint-Germain have 2W, 2D, 1L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Marseille have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -557,11 +551,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "12"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -573,8 +567,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Marseille haven't drawn in their last 12 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Marseille haven't won a match in 4 attempts."
             }
           ]
         },
@@ -594,7 +588,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -604,7 +598,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#0A60A8"
         },
         {
@@ -616,12 +610,12 @@
           "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 3 matches",
+          "text": "Have lost their last 4 matches",
           "color": "#0A60A8"
         },
         {
@@ -655,7 +649,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 12,
+              "value": 13,
               "name": null,
               "type": "integer"
             },
@@ -665,7 +659,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 12 goals in their last 5 matches",
+          "text": "Have scored 13 goals in their last 5 matches",
           "color": "#273F6D"
         },
         {
@@ -831,24 +825,24 @@
     },
     "weather": {
       "temperature": 23,
-      "windSpeed": 3,
-      "windDirectionCardinal": "WNW",
-      "iconCode": 31,
-      "relativeHumidity": 59,
+      "windSpeed": 2,
+      "windDirectionCardinal": "W",
+      "iconCode": 29,
+      "relativeHumidity": 61,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 13,
-      "description": "Clear",
+      "cloudCover": 36,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-09-17T09:00:06Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-09-17T21:00:11Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5802945,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -892,7 +886,6 @@
             "positionId": 32,
             "usualPlayingPositionId": 1,
             "shirtNumber": "22",
-            "isCaptain": true,
             "countryName": "USA",
             "countryCode": "USA",
             "horizontalLayout": {
@@ -1160,130 +1153,11 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1078904,
-            "age": 29,
-            "name": "Théo Vermot",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "92",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 117769,
-            "firstName": "Théo",
-            "lastName": "Vermot",
-            "rankings": null
-          },
-          {
-            "id": 1287489,
-            "age": 24,
-            "name": "Bamo Meité",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "18",
-            "countryName": "Ivory Coast",
-            "countryCode": "CIV",
-            "marketValue": 3723453,
-            "firstName": "Bamo",
-            "lastName": "Meité",
-            "rankings": null
-          },
-          {
-            "id": 847629,
-            "age": 28,
-            "name": "Derek Cornelius",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "13",
-            "countryName": "Canada",
-            "countryCode": "CAN",
-            "marketValue": 1678889,
-            "firstName": "Derek",
-            "lastName": "Cornelius",
-            "rankings": null
-          },
-          {
-            "id": 520979,
-            "age": 30,
-            "name": "Ulisses Garcia",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "25",
-            "countryName": "Switzerland",
-            "countryCode": "SUI",
-            "marketValue": 2224357,
-            "firstName": "Ulisses",
-            "lastName": "Garcia",
-            "rankings": null
-          },
-          {
-            "id": 1698484,
-            "age": 21,
-            "name": "Nouhoum Kamissoko",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "42",
-            "countryName": "Mali",
-            "countryCode": "MLI",
-            "firstName": "Nouhoum",
-            "lastName": "Kamissoko",
-            "rankings": null
-          },
-          {
-            "id": 952325,
-            "age": 26,
-            "name": "Faris Moumbagna",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "29",
-            "countryName": "Cameroon",
-            "countryCode": "CMR",
-            "marketValue": 2518640,
-            "firstName": "Faris",
-            "lastName": "Moumbagna",
-            "rankings": null
-          },
-          {
-            "id": 1638922,
-            "age": 20,
-            "name": "Keyliane Abdallah",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "48",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 566853,
-            "firstName": "Keyliane",
-            "lastName": "Abdallah",
-            "rankings": null
-          },
-          {
-            "id": 391064,
-            "age": 30,
-            "name": "Neal Maupay",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 3465010,
-            "firstName": "Neal",
-            "lastName": "Maupay",
-            "rankings": null
-          },
-          {
-            "id": 1814264,
-            "age": 19,
-            "name": "Tadjidine Mmadi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "43",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 1337700,
-            "firstName": "Tadjidine",
-            "lastName": "Mmadi",
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 214972,
             "age": 33,
             "name": "Geoffrey Kondogbia",
-            "positionId": 1000,
             "countryName": "Central African Rep.",
             "countryCode": "CTA",
             "marketValue": 1626750,
@@ -1313,17 +1187,7 @@
           }
         ],
         "averageStarterAge": 28,
-        "totalStarterMarketValue": 132097707,
-        "lastMatch": {
-          "matchId": 5802935,
-          "homeTeamId": 9851,
-          "awayTeamId": 8592,
-          "homeTeamName": "Rennes",
-          "awayTeamName": "Marseille",
-          "homeScore": 1,
-          "awayScore": 0,
-          "matchDate": "2026-09-11T20:45:00"
-        }
+        "totalStarterMarketValue": 132097707
       },
       "awayTeam": {
         "id": 9847,
@@ -1357,14 +1221,14 @@
             "rankings": null
           },
           {
-            "id": 770881,
-            "age": 27,
-            "name": "Achraf Hakimi",
+            "id": 1367615,
+            "age": 20,
+            "name": "Warren Zaïre-Emery",
             "positionId": 32,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "2",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "33",
+            "countryName": "France",
+            "countryCode": "FRA",
             "horizontalLayout": {
               "x": 0.357,
               "y": 0.875,
@@ -1377,9 +1241,9 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 59159846,
-            "firstName": "Achraf",
-            "lastName": "Hakimi",
+            "marketValue": 64228510,
+            "firstName": "Warren",
+            "lastName": "Zaïre-Emery",
             "rankings": null
           },
           {
@@ -1389,7 +1253,6 @@
             "positionId": 34,
             "usualPlayingPositionId": 1,
             "shirtNumber": "5",
-            "isCaptain": true,
             "countryName": "Brazil",
             "countryCode": "BRA",
             "horizontalLayout": {
@@ -1514,14 +1377,14 @@
             "rankings": null
           },
           {
-            "id": 1367615,
-            "age": 20,
-            "name": "Warren Zaïre-Emery",
+            "id": 605654,
+            "age": 30,
+            "name": "Fabián Ruiz",
             "positionId": 77,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "33",
-            "countryName": "France",
-            "countryCode": "FRA",
+            "shirtNumber": "8",
+            "countryName": "Spain",
+            "countryCode": "ESP",
             "horizontalLayout": {
               "x": 0.613,
               "y": 0.21,
@@ -1534,9 +1397,9 @@
               "height": 0.2,
               "width": 0.29
             },
-            "marketValue": 64228510,
-            "firstName": "Warren",
-            "lastName": "Zaïre-Emery",
+            "marketValue": 24275350,
+            "firstName": "Fabián",
+            "lastName": "Ruiz",
             "rankings": null
           },
           {
@@ -1631,130 +1494,12 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1177131,
-            "age": 24,
-            "name": "Lucas Chevalier",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "30",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 24672267,
-            "firstName": "Lucas",
-            "lastName": "Chevalier",
-            "rankings": null
-          },
-          {
-            "id": 1255209,
-            "age": 22,
-            "name": "Lucas Beraldo",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "4",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 20018792,
-            "firstName": "Lucas",
-            "lastName": "Beraldo",
-            "rankings": null
-          },
-          {
-            "id": 210111,
-            "age": 33,
-            "name": "Lucas Digne",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "12",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 6097385,
-            "firstName": "Lucas",
-            "lastName": "Digne",
-            "rankings": null
-          },
-          {
-            "id": 504606,
-            "age": 30,
-            "name": "Lucas Hernández",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "21",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 15076440,
-            "firstName": "Lucas",
-            "lastName": "Hernández",
-            "rankings": null
-          },
-          {
-            "id": 1682313,
-            "age": 18,
-            "name": "Dro Fernández",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "27",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 6504161,
-            "firstName": "Dro",
-            "lastName": "Fernández",
-            "rankings": null
-          },
-          {
-            "id": 605654,
-            "age": 30,
-            "name": "Fabián Ruiz",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 24275350,
-            "firstName": "Fabián",
-            "lastName": "Ruiz",
-            "rankings": null
-          },
-          {
-            "id": 1339208,
-            "age": 21,
-            "name": "Désiré Doué",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 89203040,
-            "firstName": "Désiré",
-            "lastName": "Doué",
-            "rankings": null
-          },
-          {
-            "id": 1305618,
-            "age": 24,
-            "name": "Maghnes Akliouche",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 39664679,
-            "firstName": "Maghnes",
-            "lastName": "Akliouche",
-            "rankings": null
-          },
-          {
-            "id": 1396372,
-            "age": 21,
-            "name": "Mika Godts",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "22",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 34050500,
-            "firstName": "Mika",
-            "lastName": "Godts",
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 770881,
             "age": 27,
             "name": "Achraf Hakimi",
+            "positionId": 1000,
             "countryName": "Morocco",
             "countryCode": "MAR",
             "marketValue": 59159846,
@@ -1767,18 +1512,8 @@
             "lastName": "Hakimi"
           }
         ],
-        "averageStarterAge": 26.1,
-        "totalStarterMarketValue": 639780338,
-        "lastMatch": {
-          "matchId": 5802929,
-          "homeTeamId": 8521,
-          "awayTeamId": 9847,
-          "homeTeamName": "Brest",
-          "awayTeamName": "Paris Saint-Germain",
-          "homeScore": 0,
-          "awayScore": 1,
-          "matchDate": "2026-09-13T20:45:00"
-        }
+        "averageStarterAge": 26.4,
+        "totalStarterMarketValue": 604895842
       }
     },
     "hasPlayoff": false,
