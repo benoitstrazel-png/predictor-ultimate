@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8696.png",
-            "linkToMatch": "/matches/getafe-vs-racing-santander/2e1vat#5868026",
-            "date": {
-              "utcTime": "2026-08-23T17:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8696/overview/racing-santander",
-            "tooltipText": {
-              "utcTime": "2026-08-23T17:30:00.000Z",
-              "homeTeam": "Getafe",
-              "homeTeamId": 8305,
-              "homeScore": "1",
-              "awayTeam": "Racing Santander",
-              "awayTeamId": 8696,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8696",
-              "name": "Racing Santander",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7998.png",
@@ -270,6 +240,36 @@
               "id": "9783",
               "name": "Deportivo A Coruña",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8603.png",
+            "linkToMatch": "/matches/getafe-vs-real-betis/2d42jt#5868063",
+            "date": {
+              "utcTime": "2026-09-17T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8603/overview/real-betis",
+            "tooltipText": {
+              "utcTime": "2026-09-17T17:00:00.000Z",
+              "homeTeam": "Real Betis",
+              "homeTeamId": 8603,
+              "homeScore": "1",
+              "awayTeam": "Getafe",
+              "awayTeamId": 8305,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8603",
+              "name": "Real Betis",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,10 +439,12 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't won a match in their last {2} attempts, and {1} in their last {3}.",
+              "TextTemplateId": "not_won_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "5",
                 "6"
               ],
               "DefaultLabels": [
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Málaga haven't won a match in 6 attempts."
+              "defaultText": "Getafe haven't won a match in their last 5 attempts, and Málaga in their last 6."
             },
             {
               "OddsType": "bts",
@@ -510,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Getafe haven't won a match in 4 attempts."
+              "defaultText": "Getafe haven't won a match in 5 attempts."
             }
           ]
         },
@@ -543,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -553,7 +555,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
           "color": "#084888"
         },
         {
@@ -561,53 +563,33 @@
           "playerId": null,
           "teamId": 8305,
           "priority": 8,
-          "defaultText": "{0} have won the previous {2} matches against {1}.",
-          "localizedTextId": "h2h_winstreak",
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8305,
-              "name": "Getafe",
-              "type": "team"
-            },
-            {
-              "value": 9864,
-              "name": "Málaga",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Getafe have won the previous 2 matches against Málaga.",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#084888"
         },
         {
-          "type": "player",
-          "playerId": 175311,
+          "type": "team",
+          "playerId": null,
           "teamId": 8305,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 175311,
-              "name": "Kiko",
-              "type": "player"
-            },
-            {
-              "value": 8305,
-              "name": "Getafe",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Kiko has created the most big chances for Getafe (1)",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#084888"
         },
         {
@@ -651,29 +633,29 @@
         },
         {
           "type": "player",
-          "playerId": 1669622,
+          "playerId": 616538,
           "teamId": 9864,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 1669622,
-              "name": "Chupe",
+              "value": 616538,
+              "name": "Alfonso Herrero",
               "type": "player"
             },
             {
-              "value": 9864,
-              "name": "Málaga",
-              "type": "team"
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 0.6,
+              "value": 4.2,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Chupe has the most shots on target per match for Málaga (0.6)",
+          "text": "Alfonso Herrero is ranked 3 in saves per match in the competition (4.2)",
           "color": "#518EC7"
         }
       ],
@@ -683,7 +665,7 @@
         "homePlayer": {
           "playerId": 464486,
           "position": 3,
-          "matchesWithRating": 5,
+          "matchesWithRating": 6,
           "lastName": "Ünal",
           "fullName": "Enes Ünal",
           "stats": {
@@ -691,29 +673,29 @@
             "goalAssist": 0,
             "ontargetScoringAtt": 1,
             "motm": 0,
-            "gamesPlayed": 5,
-            "minsPlayed": 405,
-            "minsPlayedGoal": 405,
+            "gamesPlayed": 6,
+            "minsPlayed": 450,
+            "minsPlayedGoal": 450,
             "expectedGoals": 1.1902999877929688,
-            "playerRating": 6.53
+            "playerRating": 6.37
           }
         },
         "awayPlayer": {
-          "playerId": 1403695,
-          "position": 3,
-          "matchesWithRating": 1,
-          "lastName": "Nino",
-          "fullName": "Adrián Nino",
+          "playerId": 1209421,
+          "position": 2,
+          "matchesWithRating": 5,
+          "lastName": "Dotor",
+          "fullName": "Carlos Dotor",
           "stats": {
             "goals": 1,
             "goalAssist": 0,
             "ontargetScoringAtt": 1,
             "motm": 0,
-            "gamesPlayed": 1,
-            "minsPlayed": 23,
-            "minsPlayedGoal": 23,
-            "expectedGoals": 0.14079999923706055,
-            "playerRating": 7.33
+            "gamesPlayed": 4,
+            "minsPlayed": 316,
+            "minsPlayedGoal": 316,
+            "expectedGoals": 0.36880001425743103,
+            "playerRating": 7.08
           }
         },
         "statsOrder": [
@@ -1495,36 +1477,6 @@
             "lastName": "Aznou"
           },
           {
-            "id": 1288506,
-            "age": 24,
-            "name": "Moussa Diarra",
-            "countryName": "Mali",
-            "countryCode": "MLI",
-            "marketValue": 341157,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Moussa",
-            "lastName": "Diarra"
-          },
-          {
-            "id": 1669621,
-            "age": 19,
-            "name": "Aarón Ochoa",
-            "countryName": "Ireland",
-            "countryCode": "IRL",
-            "marketValue": 1625809,
-            "unavailability": {
-              "injuryId": 70,
-              "type": "injury",
-              "expectedReturn": "Mid November 2026"
-            },
-            "firstName": "Aarón",
-            "lastName": "Ochoa"
-          },
-          {
             "id": 1408529,
             "age": 25,
             "name": "Diego Murillo",
@@ -1555,6 +1507,38 @@
             },
             "firstName": "Fernando",
             "lastName": "Calero"
+          },
+          {
+            "id": 1288506,
+            "age": 24,
+            "name": "Moussa Diarra",
+            "positionId": 1000,
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "marketValue": 341157,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late September 2026"
+            },
+            "firstName": "Moussa",
+            "lastName": "Diarra"
+          },
+          {
+            "id": 1669621,
+            "age": 19,
+            "name": "Aarón Ochoa",
+            "positionId": 1000,
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "marketValue": 1625809,
+            "unavailability": {
+              "injuryId": 70,
+              "type": "injury",
+              "expectedReturn": "Mid November 2026"
+            },
+            "firstName": "Aarón",
+            "lastName": "Ochoa"
           },
           {
             "id": 1098594,
@@ -1832,9 +1816,9 @@
           },
           "matchUrl": "/matches/getafe-vs-malaga/2qa4v1#1506154",
           "league": {
-            "name": "LaLiga",
+            "name": "Primera Division",
             "id": "87",
-            "pageUrl": "/leagues/87/overview/laliga"
+            "pageUrl": "/leagues/87/overview/primera-division"
           },
           "home": {
             "name": "Getafe",
@@ -1866,9 +1850,9 @@
           },
           "matchUrl": "/matches/getafe-vs-malaga/2qa4v1#1505964",
           "league": {
-            "name": "LaLiga",
+            "name": "Primera Division",
             "id": "87",
-            "pageUrl": "/leagues/87/overview/laliga"
+            "pageUrl": "/leagues/87/overview/primera-division"
           },
           "home": {
             "name": "Málaga",
