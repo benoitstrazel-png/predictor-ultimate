@@ -443,12 +443,12 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
+                "3",
+                "0",
                 "2",
                 "away_team",
-                "2",
                 "1",
+                "2",
                 "2"
               ],
               "DefaultLabels": [
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atlético Madrid have 2W, 1D, 2L in five matches while Manchester United have 2W, 1D, 2L."
+              "defaultText": "Atlético Madrid have 3W, 0D, 2L in five matches while Manchester United have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -472,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,19 +483,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored in their last 4 home matches."
+              "defaultText": "Atlético Madrid have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "6",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -507,23 +505,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored 6 goals in their last 3 matches, while Manchester United have scored 3."
+              "defaultText": "Atlético Madrid have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
-                "2",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -536,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atlético Madrid have 2W, 1D, 2L in five matches while Manchester United have 2W, 1D, 2L."
+              "defaultText": "Atlético Madrid haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -551,7 +543,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 9906,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
           "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
@@ -573,23 +565,6 @@
           ],
           "text": "Atlético Madrid and Manchester United have not drawn any of their last 3 matches against each other.",
           "color": "#C63527"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10260,
-          "priority": 1345,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 5 matches",
-          "color": "#C70101"
         }
       ],
       "countryCode": "INT-2",

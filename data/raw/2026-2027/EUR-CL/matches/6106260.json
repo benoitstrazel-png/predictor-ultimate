@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "4",
+                "0",
+                "1",
                 "away_team",
-                "4"
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,19 +461,17 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Lille haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Arsenal have 4W, 0D, 1L in five matches while Lille have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "12",
-                "away_team",
                 "6"
               ],
               "DefaultLabels": [
@@ -479,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Arsenal have scored in their last 12 matches and Lille have scored in their last 6 matches."
+              "defaultText": "Arsenal have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
@@ -491,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
+                "6",
                 "5"
               ],
               "DefaultLabels": [
@@ -503,17 +507,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Arsenal have scored 7 goals in their last 3 matches, while Lille have scored 5."
+              "defaultText": "Arsenal have scored 6 goals in their last 3 matches, while Lille have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Arsenal haven't drawn in their last 12 matches."
+              "defaultText": "Arsenal haven't drawn in their last 12 matches and Lille in their last 4."
             }
           ]
         },
@@ -579,18 +585,6 @@
         "id": 9825,
         "name": "Arsenal",
         "unavailable": [
-          {
-            "id": 710159,
-            "name": "Ezri Konsa",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-09-29T09:30:03Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ezri",
-            "lastName": "Konsa"
-          },
           {
             "id": 534670,
             "name": "Martin Ødegaard",

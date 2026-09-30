@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Inter haven't lost in 12 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Inter have 3W, 1D, 1L in five matches while Club Brugge have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -484,14 +490,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "7",
-                "7"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored 7 goals in their last 3 matches, while Club Brugge have scored 7."
+              "defaultText": "Inter have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -512,7 +516,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "9"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Club Brugge haven't drawn in their last 9 matches."
+              "defaultText": "Club Brugge haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -535,25 +539,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8636,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 18,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 18 matches",
-          "color": "#010E80"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },

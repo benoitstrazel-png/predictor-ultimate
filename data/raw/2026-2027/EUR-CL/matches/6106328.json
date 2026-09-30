@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "0",
+                "3",
                 "away_team",
-                "5"
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Napoli haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Villarreal have 2W, 0D, 3L in five matches while Napoli have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -483,12 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "7",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,23 +507,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Napoli have scored 9 goals in their last 3 matches."
+              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Napoli have scored 2."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "2",
-                "2",
-                "1",
-                "away_team",
-                "4",
-                "1",
-                "0"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal have 2W, 2D, 1L in five matches while Napoli have 4W, 1D, 0L."
+              "defaultText": "Villarreal haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -542,19 +544,19 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 9875,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "teamId": 10205,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#12A0D7"
+          "text": "Haven't kept a clean sheet in 9 matches",
+          "color": "#e19d00"
         }
       ],
       "countryCode": "INT-2",

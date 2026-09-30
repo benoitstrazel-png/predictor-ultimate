@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "10"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,19 +456,17 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Barcelona have won their last 4 matches."
+              "defaultText": "Barcelona have won their last 10 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4",
-                "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Galatasaray have scored in their last 4 matches and Barcelona have scored in their last 4 matches."
+              "defaultText": "Galatasaray have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -489,7 +487,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "9",
+                "14",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,16 +499,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Barcelona have scored 9 goals in their last 3 matches."
+              "defaultText": "Barcelona have scored 14 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "6",
                 "12"
               ],
               "DefaultLabels": [
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Barcelona haven't drawn in their last 12 matches."
+              "defaultText": "Galatasaray haven't drawn in their last 6 matches and Barcelona in their last 12."
             }
           ]
         },
@@ -534,6 +534,42 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8634,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 10 matches",
+          "color": "#971e48"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8634,
+          "priority": 7,
+          "defaultText": "Have won their last {0} matches",
+          "localizedTextId": "insights_good_form_team",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have won their last 10 matches",
+          "color": "#971e48"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },

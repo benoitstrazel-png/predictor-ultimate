@@ -488,12 +488,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "6",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "PSV Eindhoven have scored 9 goals in their last 3 matches."
+              "defaultText": "RB Leipzig have scored 6 goals in their last 3 matches, while PSV Eindhoven have scored 7."
             },
             {
               "OddsType": "dc",
@@ -537,6 +539,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8640,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 9,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 9 matches",
+          "color": "#E00000"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
