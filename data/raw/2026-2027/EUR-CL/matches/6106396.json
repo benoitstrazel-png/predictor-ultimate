@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "10"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "2",
+                "0",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Slovan Bratislava haven't lost in 10 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Slovan Bratislava have 2W, 1D, 2L in five matches while VfB Stuttgart have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -483,14 +489,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "5",
-                "5"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Slovan Bratislava have scored 5 goals in their last 3 matches, while VfB Stuttgart have scored 5."
+              "defaultText": "Slovan Bratislava have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -511,7 +515,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 4 matches."
+              "defaultText": "VfB Stuttgart haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -539,18 +543,35 @@
           "type": "team",
           "playerId": null,
           "teamId": 6019,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 10 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#43B1E6"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10269,
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#D30029"
         }
       ],
       "countryCode": "INT-2",

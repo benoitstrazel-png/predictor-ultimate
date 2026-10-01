@@ -438,17 +438,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
                 "home_team",
-                "4",
-                "0",
-                "1",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4",
+                "10"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,21 +456,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Shakhtar Donetsk have 4W, 0D, 1L in five matches while AEK Athens have 3W, 1D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Shakhtar Donetsk haven't lost in their last 4 matches, and AEK Athens in their last 10."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
                 "away_team",
-                "3",
-                "8",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Shakhtar Donetsk have scored 8 goals in their last 3 matches, while AEK Athens have scored 8."
+              "defaultText": "Shakhtar Donetsk have scored in their last 4 matches and AEK Athens have scored in their last 9 matches."
             },
             {
               "OddsType": "ou",
@@ -494,8 +489,8 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
-                "8",
+                "away_team",
+                "11",
                 "3"
               ],
               "DefaultLabels": [
@@ -507,17 +502,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Shakhtar Donetsk have scored 8 goals in their last 3 matches."
+              "defaultText": "AEK Athens have scored 11 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "4",
+                "1",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Shakhtar Donetsk haven't drawn in their last 12 matches."
+              "defaultText": "Shakhtar Donetsk have 3W, 1D, 1L in five matches while AEK Athens have 4W, 1D, 0L."
             }
           ]
         },
@@ -540,6 +541,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8563,
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 10 matches",
+          "color": "#d99f00"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },

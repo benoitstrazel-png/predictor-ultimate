@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1072445.png",
-            "linkToMatch": "/matches/paderborn-vs-1-fc-phonix-lubeck/7gd8pm6x#5750699",
-            "date": {
-              "utcTime": "2026-08-23T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/1072445/overview/1-fc-phonix-lubeck",
-            "tooltipText": {
-              "utcTime": "2026-08-23T16:00:00.000Z",
-              "homeTeam": "1. FC Phönix Lübeck",
-              "homeTeamId": 1072445,
-              "homeScore": "2",
-              "awayTeam": "Paderborn",
-              "awayTeamId": 8460,
-              "awayScore": "4"
-            },
-            "score": "2 - 4",
-            "home": {
-              "id": "1072445",
-              "name": "1. FC Phönix Lübeck",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8460",
-              "name": "Paderborn",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9905.png",
@@ -270,6 +240,36 @@
               "id": "8226",
               "name": "Hoffenheim",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6602.png",
+            "linkToMatch": "/matches/dc-united-vs-paderborn/1vjkyx#6000976",
+            "date": {
+              "utcTime": "2026-09-30T23:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/6602/overview/dc-united",
+            "tooltipText": {
+              "utcTime": "2026-09-30T23:30:00.000Z",
+              "homeTeam": "DC United",
+              "homeTeamId": 6602,
+              "homeScore": "0",
+              "awayTeam": "Paderborn",
+              "awayTeamId": 8460,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "6602",
+              "name": "DC United",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8460",
+              "name": "Paderborn",
+              "isOurTeam": true
             }
           }
         ],
@@ -489,13 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,16 +507,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paderborn have an average of 1 goals in their last three matches and VfB Stuttgart have an average of 1.33."
+              "defaultText": "Paderborn have scored 4 goals in their last 3 matches, while VfB Stuttgart have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "8"
               ],
               "DefaultLabels": [
@@ -529,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 8 matches."
+              "defaultText": "Paderborn haven't drawn in their last 4 matches and VfB Stuttgart in their last 8."
             }
           ]
         },
@@ -549,7 +552,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -559,7 +562,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#004A99"
         },
         {

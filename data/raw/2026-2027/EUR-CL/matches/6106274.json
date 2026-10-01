@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "away_team",
-                "5"
+                "home_team",
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,16 +456,18 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Real Madrid have won their last 5 matches."
+              "defaultText": "Roma haven't lost in 7 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "7",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 4 home matches."
+              "defaultText": "Roma have scored in their last 7 matches and Real Madrid have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -487,7 +489,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "9",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Madrid have scored 9 goals in their last 3 matches."
+              "defaultText": "Real Madrid have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -509,7 +511,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "11"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Madrid haven't drawn in their last 5 matches."
+              "defaultText": "Real Madrid haven't drawn in their last 11 matches."
             }
           ]
         },
@@ -538,43 +540,33 @@
           "playerId": null,
           "teamId": 8686,
           "priority": 1343,
-          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-          "localizedTextId": "h2h_no_draws_v2",
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 8686,
-              "name": "Roma",
-              "type": "team"
-            },
-            {
-              "value": 8633,
-              "name": "Real Madrid",
-              "type": "team"
-            },
-            {
-              "value": 8,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Roma and Real Madrid have not drawn any of their last 8 matches against each other.",
+          "text": "Haven't lost in 7 matches",
           "color": "#96092B"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8633,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 10,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 10 matches",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#085098"
         }
       ],
