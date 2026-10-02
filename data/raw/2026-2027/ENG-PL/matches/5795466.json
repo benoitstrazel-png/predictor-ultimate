@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8667.png",
-            "linkToMatch": "/matches/hull-city-vs-aston-villa/2yk7pj#5795440",
-            "date": {
-              "utcTime": "2026-09-05T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8667/overview/hull-city",
-            "tooltipText": {
-              "utcTime": "2026-09-05T16:30:00.000Z",
-              "homeTeam": "Hull City",
-              "homeTeamId": 8667,
-              "homeScore": "0",
-              "awayTeam": "Aston Villa",
-              "awayTeamId": 10252,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8667",
-              "name": "Hull City",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8342.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "8586",
               "name": "Tottenham Hotspur",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
+            "linkToMatch": "/matches/sevilla-vs-aston-villa/2uhmf1#6369374",
+            "date": {
+              "utcTime": "2026-10-02T18:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8302/overview/sevilla",
+            "tooltipText": {
+              "utcTime": "2026-10-02T18:30:00.000Z",
+              "homeTeam": "Sevilla",
+              "homeTeamId": 8302,
+              "homeScore": "1",
+              "awayTeam": "Aston Villa",
+              "awayTeamId": 10252,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "8302",
+              "name": "Sevilla",
               "isOurTeam": false
             },
             "away": {
@@ -467,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4",
+                "5",
                 "away_team",
                 "11"
               ],
@@ -480,20 +480,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored in their last 4 matches and Brentford have scored in their last 11 matches."
+              "defaultText": "Aston Villa have scored in their last 5 matches and Brentford have scored in their last 11 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "7",
-                "7"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored 7 goals in their last 3 matches, while Brentford have scored 7."
+              "defaultText": "Aston Villa have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -514,7 +512,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Aston Villa haven't drawn in their last 4 matches."
+              "defaultText": "Aston Villa haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -547,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -557,34 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#7D1142"
         },
         {
-          "type": "player",
-          "playerId": 356406,
+          "type": "team",
+          "playerId": null,
           "teamId": 10252,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 356406,
-              "name": "John McGinn",
-              "type": "player"
-            },
-            {
-              "value": 10252,
-              "name": "Aston Villa",
-              "type": "team"
-            },
-            {
-              "value": 1,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "John McGinn has created the most big chances for Aston Villa (1)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#7D1142"
         },
         {

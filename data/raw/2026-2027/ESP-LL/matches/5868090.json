@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
-            "linkToMatch": "/matches/real-sociedad-vs-celta-vigo/2tkbrv#5868070",
-            "date": {
-              "utcTime": "2026-09-03T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9910/overview/celta-vigo",
-            "tooltipText": {
-              "utcTime": "2026-09-03T19:00:00.000Z",
-              "homeTeam": "Real Sociedad",
-              "homeTeamId": 8560,
-              "homeScore": "0",
-              "awayTeam": "Celta Vigo",
-              "awayTeamId": 9910,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9910",
-              "name": "Celta Vigo",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10268.png",
@@ -272,39 +242,39 @@
               "name": "Real Sociedad",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10267.png",
-            "linkToMatch": "/matches/deportivo-coruna-vs-valencia/3bokua#5868033",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
+            "linkToMatch": "/matches/athletic-club-vs-real-sociedad/2cs4ea#6371519",
             "date": {
-              "utcTime": "2026-08-30T17:30:00.000Z"
+              "utcTime": "2026-10-02T17:00:00.000Z"
             },
-            "teamPageUrl": "/teams/10267/overview/valencia",
+            "teamPageUrl": "/teams/8315/overview/athletic-club",
             "tooltipText": {
-              "utcTime": "2026-08-30T17:30:00.000Z",
-              "homeTeam": "Deportivo A Coruña",
-              "homeTeamId": 9783,
-              "homeScore": "3",
-              "awayTeam": "Valencia",
-              "awayTeamId": 10267,
+              "utcTime": "2026-10-02T17:00:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "0",
+              "awayTeam": "Athletic Club",
+              "awayTeamId": 8315,
               "awayScore": "1"
             },
-            "score": "3 - 1",
+            "score": "0 - 1",
             "home": {
-              "id": "9783",
-              "name": "Deportivo A Coruña",
+              "id": "8560",
+              "name": "Real Sociedad",
               "isOurTeam": true
             },
             "away": {
-              "id": "10267",
-              "name": "Valencia",
+              "id": "8315",
+              "name": "Athletic Club",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -424,6 +394,36 @@
               "name": "Real Betis",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png",
+            "linkToMatch": "/matches/fc-porto-vs-deportivo-coruna/35uwa9#6369375",
+            "date": {
+              "utcTime": "2026-10-02T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9773/overview/fc-porto",
+            "tooltipText": {
+              "utcTime": "2026-10-02T17:00:00.000Z",
+              "homeTeam": "Deportivo A Coruña",
+              "homeTeamId": 9783,
+              "homeScore": "1",
+              "awayTeam": "FC Porto",
+              "awayTeamId": 9773,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "9783",
+              "name": "Deportivo A Coruña",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9773",
+              "name": "FC Porto",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -445,12 +445,12 @@
               "StatValues": [
                 "home_team",
                 "2",
+                "0",
+                "3",
+                "away_team",
                 "1",
                 "2",
-                "away_team",
-                "2",
-                "2",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -463,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Sociedad have 2W, 1D, 2L in five matches while Deportivo A Coruña have 2W, 2D, 1L."
+              "defaultText": "Real Sociedad have 2W, 0D, 3L in five matches while Deportivo A Coruña have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -513,10 +513,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -529,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Real Sociedad haven't drawn in their last 4 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Deportivo A Coruña haven't won a match in 4 attempts."
             }
           ]
         },
@@ -591,30 +591,20 @@
           "color": "#0056B3"
         },
         {
-          "type": "player",
-          "playerId": 536455,
+          "type": "team",
+          "playerId": null,
           "teamId": 8560,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 536455,
-              "name": "Gonçalo Guedes",
-              "type": "player"
-            },
-            {
-              "value": 8560,
-              "name": "Real Sociedad",
-              "type": "team"
-            },
-            {
-              "value": 1.3,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Gonçalo Guedes has the most shots on target per match for Real Sociedad (1.3)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#0056B3"
         },
         {
@@ -626,7 +616,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -636,7 +626,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#00599D"
         },
         {
@@ -648,25 +638,25 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#00599D"
         },
         {
           "type": "player",
-          "playerId": 1050828,
+          "playerId": 1621150,
           "teamId": 9783,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1050828,
-              "name": "Mario Soriano",
+              "value": 1621150,
+              "name": "Jonathan Asp",
               "type": "player"
             },
             {
@@ -675,12 +665,12 @@
               "type": "team"
             },
             {
-              "value": 4,
+              "value": 2.4,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Mario Soriano has created the most big chances for Deportivo A Coruña (4)",
+          "text": "Jonathan Asp has the most shots on target per match for Deportivo A Coruña (2.4)",
           "color": "#00599D"
         }
       ],
@@ -736,6 +726,18 @@
             },
             "firstName": "Orri",
             "lastName": "Óskarsson"
+          },
+          {
+            "id": 1490110,
+            "name": "Héctor Fort",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-02T20:46:41Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Héctor",
+            "lastName": "Fort"
           },
           {
             "id": 698653,
