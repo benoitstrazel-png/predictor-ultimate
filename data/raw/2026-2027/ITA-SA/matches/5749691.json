@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
-            "linkToMatch": "/matches/juventus-vs-parma/3bpfv3#5749654",
-            "date": {
-              "utcTime": "2026-08-29T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10167/overview/parma",
-            "tooltipText": {
-              "utcTime": "2026-08-29T18:45:00.000Z",
-              "homeTeam": "Juventus",
-              "homeTeamId": 9885,
-              "homeScore": "2",
-              "awayTeam": "Parma",
-              "awayTeamId": 10167,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9885",
-              "name": "Juventus",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
@@ -424,6 +394,36 @@
               "name": "Atalanta",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7801.png",
+            "linkToMatch": "/matches/cremonese-vs-juventus/2l4jdm#6369355",
+            "date": {
+              "utcTime": "2026-10-02T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/7801/overview/cremonese",
+            "tooltipText": {
+              "utcTime": "2026-10-02T10:30:00.000Z",
+              "homeTeam": "Juventus",
+              "homeTeamId": 9885,
+              "homeScore": "0",
+              "awayTeam": "Cremonese",
+              "awayTeamId": 7801,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7801",
+              "name": "Cremonese",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -448,9 +448,9 @@
                 "0",
                 "2",
                 "away_team",
-                "3",
+                "2",
                 "1",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -463,19 +463,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari have 3W, 0D, 2L in five matches while Juventus have 3W, 1D, 1L."
+              "defaultText": "Cagliari have 3W, 0D, 2L in five matches while Juventus have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "4",
                 "away_team",
-                "11"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,18 +484,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Cagliari have scored in their last 4 matches and Juventus have scored in their last 11 matches."
+              "defaultText": "Juventus have scored in their last 4 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "4",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,17 +508,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 9 goals in their last 3 matches."
+              "defaultText": "Cagliari have scored 4 goals in their last 3 matches, while Juventus have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "away_team",
+                "7",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari haven't drawn in their last 7 matches."
+              "defaultText": "Cagliari haven't drawn in their last 7 matches and Juventus in their last 4."
             }
           ]
         },
@@ -569,23 +571,6 @@
           "playerId": null,
           "teamId": 8529,
           "priority": 10,
-          "defaultText": "Have been awarded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_awarded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have been awarded the most penalties this season (1)",
-          "color": "#B51F2B"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8529,
-          "priority": 10,
           "defaultText": "Have kept the most clean sheets in the competition ({0})",
           "localizedTextId": "insights_clean_sheets",
           "statValues": [
@@ -601,13 +586,30 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 8529,
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
+          "statValues": [
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have been awarded the most penalties this season (1)",
+          "color": "#B51F2B"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 9885,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -617,7 +619,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#000001"
         },
         {
@@ -639,15 +641,15 @@
         },
         {
           "type": "player",
-          "playerId": 787350,
+          "playerId": 866516,
           "teamId": 9885,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 787350,
-              "name": "Douglas Luiz",
+              "value": 866516,
+              "name": "Teun Koopmeiners",
               "type": "player"
             },
             {
@@ -656,12 +658,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 1.4,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Douglas Luiz has created the most big chances for Juventus (3)",
+          "text": "Teun Koopmeiners has the most shots on target per match for Juventus (1.4)",
           "color": "#000001"
         }
       ],

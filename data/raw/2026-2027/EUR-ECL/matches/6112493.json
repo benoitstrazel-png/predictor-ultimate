@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8609.png",
-            "linkToMatch": "/matches/brann-vs-sandefjord/2etmgo#5104988",
-            "date": {
-              "utcTime": "2026-08-30T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8609/overview/sandefjord",
-            "tooltipText": {
-              "utcTime": "2026-08-30T15:00:00.000Z",
-              "homeTeam": "Sandefjord",
-              "homeTeamId": 8609,
-              "homeScore": "0",
-              "awayTeam": "Brann",
-              "awayTeamId": 8468,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8609",
-              "name": "Sandefjord",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8468",
-              "name": "Brann",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8476.png",
@@ -270,6 +240,36 @@
               "id": "8402",
               "name": "Bodø/Glimt",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9919.png",
+            "linkToMatch": "/matches/brann-vs-start/2snjj1#6369363",
+            "date": {
+              "utcTime": "2026-10-02T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9919/overview/start",
+            "tooltipText": {
+              "utcTime": "2026-10-02T12:00:00.000Z",
+              "homeTeam": "Start",
+              "homeTeamId": 9919,
+              "homeScore": "2",
+              "awayTeam": "Brann",
+              "awayTeamId": 8468,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "9919",
+              "name": "Start",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8468",
+              "name": "Brann",
+              "isOurTeam": true
             }
           }
         ],
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "1",
-                "2",
+                "0",
+                "3",
                 "away_team",
                 "1",
                 "2",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brann have 2W, 1D, 2L in five matches while Lincoln Red Imps FC have 1W, 2D, 2L."
+              "defaultText": "Brann have 2W, 0D, 3L in five matches while Lincoln Red Imps FC have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,13 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brann have an average of 1.33 goals in their last three matches and Lincoln Red Imps FC have an average of 1."
+              "defaultText": "Brann have scored 5 goals in their last 3 matches, while Lincoln Red Imps FC have scored 3."
             },
             {
               "OddsType": "dc",
@@ -516,7 +517,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brann haven't drawn in their last 4 matches."
+              "defaultText": "Brann haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -539,6 +540,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8468,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#DE1215"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },

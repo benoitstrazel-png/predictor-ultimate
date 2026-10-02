@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
-            "linkToMatch": "/matches/juventus-vs-parma/3bpfv3#5749654",
-            "date": {
-              "utcTime": "2026-08-29T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10167/overview/parma",
-            "tooltipText": {
-              "utcTime": "2026-08-29T18:45:00.000Z",
-              "homeTeam": "Juventus",
-              "homeTeamId": 9885,
-              "homeScore": "2",
-              "awayTeam": "Parma",
-              "awayTeamId": 10167,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9885",
-              "name": "Juventus",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
@@ -423,6 +393,36 @@
               "name": "Atalanta",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7801.png",
+            "linkToMatch": "/matches/cremonese-vs-juventus/2l4jdm#6369355",
+            "date": {
+              "utcTime": "2026-10-02T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/7801/overview/cremonese",
+            "tooltipText": {
+              "utcTime": "2026-10-02T10:30:00.000Z",
+              "homeTeam": "Juventus",
+              "homeTeamId": 9885,
+              "homeScore": "0",
+              "awayTeam": "Cremonese",
+              "awayTeamId": 7801,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7801",
+              "name": "Cremonese",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -447,9 +447,9 @@
                 "3",
                 "1",
                 "away_team",
-                "3",
+                "2",
                 "1",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Celta Vigo have 1W, 3D, 1L in five matches while Juventus have 3W, 1D, 1L."
+              "defaultText": "Celta Vigo have 1W, 3D, 1L in five matches while Juventus have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,12 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "6",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,23 +507,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 9 goals in their last 3 matches."
+              "defaultText": "Celta Vigo have scored 6 goals in their last 3 matches, while Juventus have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "3",
-                "1",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -534,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Celta Vigo have 1W, 3D, 1L in five matches while Juventus have 3W, 1D, 1L."
+              "defaultText": "Juventus haven't drawn in their last 4 matches."
             }
           ]
         },
