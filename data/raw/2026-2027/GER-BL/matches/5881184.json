@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/860781.png",
-            "linkToMatch": "/matches/mainz-05-vs-vfb-krieschow/4u4r3f9e#5750684",
-            "date": {
-              "utcTime": "2026-08-23T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/860781/overview/vfb-krieschow",
-            "tooltipText": {
-              "utcTime": "2026-08-23T13:30:00.000Z",
-              "homeTeam": "VfB Krieschow",
-              "homeTeamId": 860781,
-              "homeScore": "0",
-              "awayTeam": "Mainz 05",
-              "awayTeamId": 9905,
-              "awayScore": "9"
-            },
-            "score": "0 - 9",
-            "home": {
-              "id": "860781",
-              "name": "VfB Krieschow",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9905",
-              "name": "Mainz 05",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8460.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "9788",
               "name": "Borussia Mönchengladbach",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9905",
+              "name": "Mainz 05",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9743.png",
+            "linkToMatch": "/matches/waldhof-mannheim-vs-mainz-05/36xjwx#6301695",
+            "date": {
+              "utcTime": "2026-10-03T11:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9743/overview/waldhof-mannheim",
+            "tooltipText": {
+              "utcTime": "2026-10-03T11:00:00.000Z",
+              "homeTeam": "Waldhof Mannheim",
+              "homeTeamId": 9743,
+              "homeScore": "0",
+              "awayTeam": "Mainz 05",
+              "awayTeamId": 9905,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "9743",
+              "name": "Waldhof Mannheim",
               "isOurTeam": false
             },
             "away": {
@@ -465,11 +465,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
+                "home_team",
+                "4",
                 "away_team",
-                "6"
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayer Leverkusen have scored in their last 6 away matches."
+              "defaultText": "Mainz 05 have scored in their last 4 matches and Bayer Leverkusen have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +492,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "10",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,20 +504,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Mainz 05 have scored 10 goals in their last 3 matches."
+              "defaultText": "Mainz 05 have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
                 "home_team",
-                "6",
-                "4",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayer Leverkusen haven't lost to Mainz 05 in their last 6 meetings (4W, 2D)."
+              "defaultText": "Mainz 05 haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -548,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 21,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +557,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 21 goals in their last 5 matches",
           "color": "#B8121C"
         },
         {
@@ -691,36 +690,40 @@
     },
     "weather": {
       "temperature": 15,
-      "windSpeed": 5,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 28,
-      "relativeHumidity": 55,
-      "precipChance": 21,
+      "windSpeed": 4,
+      "windDirectionCardinal": "W",
+      "iconCode": 26,
+      "relativeHumidity": 60,
+      "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 71,
-      "description": "Mostly Cloudy",
+      "cloudCover": 81,
+      "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-03T02:00:16Z",
+      "lastUpdated": "2026-10-03T14:00:16Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5881184,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9905,
         "name": "Mainz 05",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 556505,
+            "age": 31,
             "name": "Robin Zentner",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1729403,
             "unavailability": {
               "injuryId": 35,
-              "lastUpdated": "2026-09-15T11:42:17Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
@@ -729,10 +732,13 @@
           },
           {
             "id": 275034,
+            "age": 33,
             "name": "Silvan Widmer",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 667569,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-21T11:00:11Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
@@ -741,10 +747,13 @@
           },
           {
             "id": 303905,
+            "age": 32,
             "name": "Dominik Kohr",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1766604,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-09-29T10:05:26Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
@@ -753,10 +762,13 @@
           },
           {
             "id": 1199283,
+            "age": 24,
             "name": "Eric Martel",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 7726759,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-21T10:55:04Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
@@ -765,10 +777,13 @@
           },
           {
             "id": 1175939,
+            "age": 24,
             "name": "Paul Nebel",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 15949716,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-08-08T10:34:51Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
@@ -777,10 +792,13 @@
           },
           {
             "id": 959404,
+            "age": 28,
             "name": "Silas Katompa Mvumpa",
+            "countryName": "DR Congo",
+            "countryCode": "COD",
+            "marketValue": 1346596,
             "unavailability": {
               "injuryId": 23,
-              "lastUpdated": "2026-09-29T10:04:41Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
@@ -792,13 +810,18 @@
       "awayTeam": {
         "id": 8178,
         "name": "Bayer Leverkusen",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1395704,
+            "age": 23,
             "name": "Guéla Doué",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 18775914,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-09-16T20:18:23Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
@@ -807,10 +830,13 @@
           },
           {
             "id": 1793217,
+            "age": 17,
             "name": "Kennet Eichhorn",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 13669775,
             "unavailability": {
               "injuryId": 92,
-              "lastUpdated": "2026-08-18T13:32:31Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
@@ -819,10 +845,13 @@
           },
           {
             "id": 1793199,
+            "age": 19,
             "name": "Montrell Culbreath",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1343692,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-09-21T11:16:42Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },

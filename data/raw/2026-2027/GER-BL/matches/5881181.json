@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/145486.png",
-            "linkToMatch": "/matches/1-fc-koln-vs-wurzburger-kickers/5gn2ybm#5750690",
-            "date": {
-              "utcTime": "2026-08-24T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/145486/overview/wurzburger-kickers",
-            "tooltipText": {
-              "utcTime": "2026-08-24T16:00:00.000Z",
-              "homeTeam": "Würzburger Kickers",
-              "homeTeamId": 145486,
-              "homeScore": "1",
-              "awayTeam": "1. FC Köln",
-              "awayTeamId": 8722,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "145486",
-              "name": "Würzburger Kickers",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8722",
-              "name": "1. FC Köln",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226.png",
             "linkToMatch": "/matches/hoffenheim-vs-1-fc-koln/2dil4k#5881147",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8722",
               "name": "1. FC Köln",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/276267.png",
+            "linkToMatch": "/matches/1-fc-koln-vs-viktoria-koln-1904/inluvat#6278621",
+            "date": {
+              "utcTime": "2026-10-03T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/276267/overview/viktoria-koln-1904",
+            "tooltipText": {
+              "utcTime": "2026-10-03T12:00:00.000Z",
+              "homeTeam": "1. FC Köln",
+              "homeTeamId": 8722,
+              "homeScore": "2",
+              "awayTeam": "Viktoria Köln 1904",
+              "awayTeamId": 276267,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "8722",
+              "name": "1. FC Köln",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "276267",
+              "name": "Viktoria Köln 1904",
+              "isOurTeam": false
             }
           }
         ],
@@ -469,30 +469,6 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "1. FC Köln have scored in their last 5 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "3",
                 "6"
               ],
               "DefaultLabels": [
@@ -504,17 +480,41 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "1. FC Köln have scored 3 goals in their last 3 matches, while Borussia Mönchengladbach have scored 6."
+              "defaultText": "1. FC Köln have scored in their last 6 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "4",
+                "6"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "1. FC Köln have scored 4 goals in their last 3 matches, while Borussia Mönchengladbach have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "away_team",
-                "12"
+                "home_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,8 +526,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Borussia Mönchengladbach haven't drawn in their last 12 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "1. FC Köln haven't won a match in 4 attempts."
             }
           ]
         },
@@ -547,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 15,
               "name": null,
               "type": "integer"
             },
@@ -557,7 +557,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 15 goals in their last 5 matches",
           "color": "#E21718"
         },
         {
@@ -569,25 +569,25 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#E21718"
         },
         {
           "type": "player",
-          "playerId": 1613676,
+          "playerId": 1407250,
           "teamId": 8722,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1613676,
-              "name": "Saïd El Mala",
+              "value": 1407250,
+              "name": "Mikey Moore",
               "type": "player"
             },
             {
@@ -596,12 +596,12 @@
               "type": "team"
             },
             {
-              "value": 2.6,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Saïd El Mala has the most shots on target per match for 1. FC Köln (2.6)",
+          "text": "Mikey Moore has created the most big chances for 1. FC Köln (2)",
           "color": "#E21718"
         },
         {
@@ -689,20 +689,20 @@
       }
     },
     "weather": {
-      "temperature": 14,
+      "temperature": 15,
       "windSpeed": 5,
       "windDirectionCardinal": "W",
-      "iconCode": 11,
-      "relativeHumidity": 64,
-      "precipChance": 32,
-      "precipitation": 0.17,
+      "iconCode": 28,
+      "relativeHumidity": 63,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 69,
-      "description": "Few Showers",
+      "cloudCover": 71,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-03T02:00:16Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-03T14:00:16Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5881181,
@@ -744,6 +744,18 @@
         "id": 9788,
         "name": "Borussia Mönchengladbach",
         "unavailable": [
+          {
+            "id": 501543,
+            "name": "Franck Honorat",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-03T15:51:07Z",
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "Franck",
+            "lastName": "Honorat"
+          },
           {
             "id": 888745,
             "name": "Nicolas-Gerrit Kühn",
