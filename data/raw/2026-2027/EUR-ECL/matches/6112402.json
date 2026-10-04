@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10202.png",
-            "linkToMatch": "/matches/fc-kobenhavn-vs-nordsjaelland/2ux5fc#5739498",
-            "date": {
-              "utcTime": "2026-09-03T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10202/overview/nordsjaelland",
-            "tooltipText": {
-              "utcTime": "2026-09-03T18:00:00.000Z",
-              "homeTeam": "FC København",
-              "homeTeamId": 8391,
-              "homeScore": "2",
-              "awayTeam": "Nordsjælland",
-              "awayTeamId": 10202,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8391",
-              "name": "FC København",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10202",
-              "name": "Nordsjælland",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8414.png",
             "linkToMatch": "/matches/fc-kobenhavn-vs-ob/2c2uot#5739503",
             "date": {
@@ -263,6 +233,36 @@
             "home": {
               "id": "8595",
               "name": "Brøndby IF",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8391",
+              "name": "FC København",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9790.png",
+            "linkToMatch": "/matches/fc-kobenhavn-vs-hamburger-sv/2qet3h#6055121",
+            "date": {
+              "utcTime": "2026-10-04T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9790/overview/hamburger-sv",
+            "tooltipText": {
+              "utcTime": "2026-10-04T13:30:00.000Z",
+              "homeTeam": "Hamburger SV",
+              "homeTeamId": 9790,
+              "homeScore": "2",
+              "awayTeam": "FC København",
+              "awayTeamId": 8391,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "9790",
+              "name": "Hamburger SV",
               "isOurTeam": false
             },
             "away": {
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "FC København have won their last 7 matches."
+              "Icon": "poll_teams",
+              "defaultText": "FC København have 4W, 0D, 1L in five matches while Braga have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -482,14 +488,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "6",
-                "2"
+                "1.33",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC København have scored 6 goals in their last 3 matches, while Braga have scored 2."
+              "defaultText": "FC København have an average of 1.33 goals in their last three matches and Braga have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -510,7 +515,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC København haven't drawn in their last 8 matches."
+              "defaultText": "FC København haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -533,42 +538,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8391,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 7 matches",
-          "color": "#375196"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8391,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 7 matches",
-          "color": "#375196"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },
