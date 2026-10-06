@@ -124,36 +124,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9802.png",
-            "linkToMatch": "/matches/mjallby-vs-djurgarden/2npabb#5107513",
-            "date": {
-              "utcTime": "2026-09-03T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9802/overview/djurgarden",
-            "tooltipText": {
-              "utcTime": "2026-09-03T17:00:00.000Z",
-              "homeTeam": "Mjällby",
-              "homeTeamId": 8127,
-              "homeScore": "0",
-              "awayTeam": "Djurgården",
-              "awayTeamId": 9802,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "8127",
-              "name": "Mjällby",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9802",
-              "name": "Djurgården",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9893.png",
             "linkToMatch": "/matches/mjallby-vs-ifk-goteborg/2oocin#5107591",
             "date": {
@@ -269,6 +239,36 @@
               "id": "8297",
               "name": "GAIS",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6183.png",
+            "linkToMatch": "/matches/trollhattan-fc-vs-mjallby/1oyux0#5820431",
+            "date": {
+              "utcTime": "2026-10-06T15:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/6183/overview/trollhattan-fc",
+            "tooltipText": {
+              "utcTime": "2026-10-06T15:00:00.000Z",
+              "homeTeam": "Trollhättan FC",
+              "homeTeamId": 6183,
+              "homeScore": "1",
+              "awayTeam": "Mjällby",
+              "awayTeamId": 8127,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "6183",
+              "name": "Trollhättan FC",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8127",
+              "name": "Mjällby",
+              "isOurTeam": true
             }
           }
         ],
@@ -442,7 +442,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Mjällby haven't won a match in 8 attempts."
+              "defaultText": "Mjällby haven't won a match in 9 attempts."
             },
             {
               "OddsType": "bts",
@@ -482,14 +482,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.33",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Mjällby have scored 2 goals in their last 3 matches, while Inter Club d'Escaldes have scored 6."
+              "defaultText": "Mjällby have an average of 0.33 goals in their last three matches and Inter Club d'Escaldes have an average of 2."
             },
             {
               "OddsType": "dc",
@@ -510,7 +509,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Mjällby haven't won a match in 8 attempts."
+              "defaultText": "Mjällby haven't won a match in 9 attempts."
             }
           ]
         },
@@ -543,12 +542,29 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 8 attempts",
+          "text": "Haven't won a match in 9 attempts",
+          "color": "#e09d00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8127,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#e09d00"
         },
         {
@@ -560,12 +576,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 12,
+              "value": 13,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 12 matches",
+          "text": "Haven't kept a clean sheet in 13 matches",
           "color": "#e09d00"
         }
       ],
@@ -587,18 +603,18 @@
       }
     },
     "weather": {
-      "temperature": 14,
-      "windSpeed": 6,
-      "windDirectionCardinal": "WSW",
+      "temperature": 13,
+      "windSpeed": 5,
+      "windDirectionCardinal": "SW",
       "iconCode": 11,
-      "relativeHumidity": 73,
-      "precipChance": 34,
-      "precipitation": 0.1,
+      "relativeHumidity": 81,
+      "precipChance": 40,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 74,
-      "description": "Few Showers",
+      "cloudCover": 68,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-06T05:00:20Z",
+      "lastUpdated": "2026-10-06T17:00:18Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
