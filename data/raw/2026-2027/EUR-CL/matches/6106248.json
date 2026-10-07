@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "2",
-                "2",
-                "1"
+                "9"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Liverpool have 1W, 2D, 2L in five matches while Villarreal have 2W, 2D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Liverpool haven't lost in 9 matches."
             },
             {
               "OddsType": "bts",
@@ -475,7 +469,7 @@
                 "away_team",
                 "3",
                 "4",
-                "4"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while Villarreal have scored 4."
+              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while Villarreal have scored 7."
             },
             {
               "OddsType": "ou",
@@ -499,7 +493,7 @@
                 "away_team",
                 "3",
                 "4",
-                "4"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,23 +504,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while Villarreal have scored 4."
+              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while Villarreal have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "2",
-                "2",
                 "away_team",
-                "2",
-                "2",
-                "1"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -539,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool have 1W, 2D, 2L in five matches while Villarreal have 2W, 2D, 1L."
+              "defaultText": "Villarreal haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -554,28 +542,35 @@
           "type": "team",
           "playerId": null,
           "teamId": 8650,
-          "priority": 8,
-          "defaultText": "{0} have won the previous {2} matches against {1}.",
-          "localizedTextId": "h2h_winstreak",
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 8650,
-              "name": "Liverpool",
-              "type": "team"
-            },
-            {
-              "value": 10205,
-              "name": "Villarreal",
-              "type": "team"
-            },
-            {
-              "value": 3,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Liverpool have won the previous 3 matches against Villarreal.",
+          "text": "Haven't lost in 9 matches",
           "color": "#911712"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 9,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 9 matches",
+          "color": "#e19d00"
         }
       ],
       "countryCode": "INT-2",
@@ -722,18 +717,6 @@
             },
             "firstName": "Tajon",
             "lastName": "Buchanan"
-          },
-          {
-            "id": 671865,
-            "name": "Santi Comesaña",
-            "unavailability": {
-              "injuryId": 30,
-              "lastUpdated": "2026-10-06T09:31:29Z",
-              "type": "injury",
-              "expectedReturn": "Mid October 2026"
-            },
-            "firstName": "Santi",
-            "lastName": "Comesaña"
           }
         ]
       }

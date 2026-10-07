@@ -438,17 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "home_team",
-                "4",
-                "0",
-                "1",
-                "away_team",
-                "3",
-                "1",
-                "1"
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,18 +454,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Manchester City have 4W, 0D, 1L in five matches while AEK Athens have 3W, 1D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Manchester City have won their last 7 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "7",
+                "away_team",
+                "9"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester City have scored in their last 6 home matches."
+              "defaultText": "Manchester City have scored in their last 7 matches and AEK Athens have scored in their last 9 matches."
             },
             {
               "OddsType": "ou",
@@ -491,8 +487,8 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "away_team",
-                "8",
+                "home_team",
+                "11",
                 "3"
               ],
               "DefaultLabels": [
@@ -504,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AEK Athens have scored 8 goals in their last 3 matches."
+              "defaultText": "Manchester City have scored 11 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -514,7 +510,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Manchester City haven't drawn in their last 7 matches."
+              "defaultText": "Manchester City haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -542,18 +538,35 @@
           "type": "team",
           "playerId": null,
           "teamId": 8456,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't lost in 7 matches",
           "color": "#69A8D8"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8563,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 10 matches",
+          "color": "#d99f00"
         }
       ],
       "countryCode": "INT-2",

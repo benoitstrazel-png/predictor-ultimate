@@ -443,12 +443,12 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
+                "3",
+                "0",
                 "2",
                 "away_team",
-                "2",
-                "1",
+                "3",
+                "0",
                 "2"
               ],
               "DefaultLabels": [
@@ -462,16 +462,41 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart have 2W, 1D, 2L in five matches while Atlético Madrid have 2W, 1D, 2L."
+              "defaultText": "VfB Stuttgart have 3W, 0D, 2L in five matches while Atlético Madrid have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
+                "away_team",
+                "3",
+                "6",
+                "9"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "VfB Stuttgart have scored 6 goals in their last 3 matches, while Atlético Madrid have scored 9."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "away_team",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -483,41 +508,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored in their last 3 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "5",
-                "6"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored 5 goals in their last 3 matches, while Atlético Madrid have scored 6."
+              "defaultText": "Atlético Madrid have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "away_team",
+                "9",
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 4 matches."
+              "defaultText": "VfB Stuttgart haven't drawn in their last 9 matches and Atlético Madrid in their last 6."
             }
           ]
         },
@@ -684,18 +687,6 @@
             },
             "firstName": "Alejandro",
             "lastName": "Grimaldo"
-          },
-          {
-            "id": 440330,
-            "name": "Alexander Sørloth",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-06T09:29:25Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Alexander",
-            "lastName": "Sørloth"
           }
         ]
       }

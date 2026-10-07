@@ -442,8 +442,8 @@
               "DefaultTemplate": "{0} haven't lost in {1} matches.",
               "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "away_team",
-                "10"
+                "home_team",
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,16 +456,18 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Slovan Bratislava haven't lost in 10 matches."
+              "defaultText": "Roma haven't lost in 7 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "7",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -477,20 +479,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 4 home matches."
+              "defaultText": "Roma have scored in their last 7 matches and Slovan Bratislava have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "6",
-                "5"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored 6 goals in their last 3 matches, while Slovan Bratislava have scored 5."
+              "defaultText": "Slovan Bratislava have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -511,13 +511,13 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
+                "3",
                 "2",
-                "1",
-                "2",
+                "0",
                 "away_team",
-                "4",
+                "2",
                 "1",
-                "0"
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Roma have 2W, 1D, 2L in five matches while Slovan Bratislava have 4W, 1D, 0L."
+              "defaultText": "Roma have 3W, 2D, 0L in five matches while Slovan Bratislava have 2W, 1D, 2L."
             }
           ]
         },
@@ -544,18 +544,35 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 6019,
-          "priority": 6,
+          "teamId": 8686,
+          "priority": 1343,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 10 matches",
+          "text": "Haven't lost in 7 matches",
+          "color": "#96092B"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 6019,
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 9,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#43B1E6"
         }
       ],
@@ -603,30 +620,6 @@
         "name": "Roma",
         "unavailable": [
           {
-            "id": 660301,
-            "name": "Donyell Malen",
-            "unavailability": {
-              "injuryId": 14,
-              "lastUpdated": "2026-10-06T13:40:55Z",
-              "type": "injury",
-              "expectedReturn": "Early October 2026"
-            },
-            "firstName": "Donyell",
-            "lastName": "Malen"
-          },
-          {
-            "id": 1320176,
-            "name": "Wesley",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-06T13:41:01Z",
-              "type": "injury",
-              "expectedReturn": "Early October 2026"
-            },
-            "firstName": "",
-            "lastName": "Wesley"
-          },
-          {
             "id": 299799,
             "name": "Bryan Cristante",
             "unavailability": {
@@ -637,18 +630,6 @@
             },
             "firstName": "Bryan",
             "lastName": "Cristante"
-          },
-          {
-            "id": 787242,
-            "name": "Evan N'Dicka",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-06T13:41:45Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Evan",
-            "lastName": "N'Dicka"
           }
         ]
       },
