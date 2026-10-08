@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "0",
+                "2",
+                "away_team",
+                "2",
+                "0",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Real Madrid have won their last 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Real Madrid have 3W, 0D, 2L in five matches while RB Leipzig have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -487,7 +493,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "9",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Madrid have scored 9 goals in their last 3 matches."
+              "defaultText": "Real Madrid have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -510,7 +516,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "5",
+                "11",
                 "12"
               ],
               "DefaultLabels": [
@@ -524,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Madrid haven't drawn in their last 5 matches and RB Leipzig in their last 12."
+              "defaultText": "Real Madrid haven't drawn in their last 11 matches and RB Leipzig in their last 12."
             }
           ]
         },
@@ -539,17 +545,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 8633,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 10,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 10 matches",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#085098"
         }
       ],
@@ -571,20 +577,20 @@
       }
     },
     "weather": {
-      "temperature": 17,
+      "temperature": 16,
       "windSpeed": 2,
       "windDirectionCardinal": "WSW",
-      "iconCode": 33,
-      "relativeHumidity": 47,
-      "precipChance": 12,
+      "iconCode": 29,
+      "relativeHumidity": 50,
+      "precipChance": 18,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 23,
-      "description": "Mostly Clear",
+      "cloudCover": 46,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-07T19:00:19Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-10-08T07:00:15Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106244,
@@ -609,18 +615,6 @@
             "lastName": "Asencio"
           },
           {
-            "id": 701154,
-            "name": "Kylian Mbappé",
-            "unavailability": {
-              "injuryId": 14,
-              "lastUpdated": "2026-10-07T20:41:56Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Kylian",
-            "lastName": "Mbappé"
-          },
-          {
             "id": 820140,
             "name": "Ibrahima Konaté",
             "unavailability": {
@@ -631,18 +625,6 @@
             },
             "firstName": "Ibrahima",
             "lastName": "Konaté"
-          },
-          {
-            "id": 743533,
-            "name": "Federico Valverde",
-            "unavailability": {
-              "injuryId": 38,
-              "lastUpdated": "2026-10-07T20:42:45Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Federico",
-            "lastName": "Valverde"
           },
           {
             "id": 844415,
