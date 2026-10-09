@@ -85,7 +85,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -121,36 +122,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8391.png",
-            "linkToMatch": "/matches/fc-kobenhavn-vs-nordsjaelland/2ux5fc#5739498",
-            "date": {
-              "utcTime": "2026-09-03T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8391/overview/fc-kobenhavn",
-            "tooltipText": {
-              "utcTime": "2026-09-03T18:00:00.000Z",
-              "homeTeam": "FC København",
-              "homeTeamId": 8391,
-              "homeScore": "2",
-              "awayTeam": "Nordsjælland",
-              "awayTeamId": 10202,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8391",
-              "name": "FC København",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10202",
-              "name": "Nordsjælland",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -269,6 +240,36 @@
               "id": "10202",
               "name": "Nordsjælland",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8414.png",
+            "linkToMatch": "/matches/ob-vs-nordsjaelland/2v6bmi#5739523",
+            "date": {
+              "utcTime": "2026-10-09T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8414/overview/ob",
+            "tooltipText": {
+              "utcTime": "2026-10-09T17:00:00.000Z",
+              "homeTeam": "Nordsjælland",
+              "homeTeamId": 10202,
+              "homeScore": "0",
+              "awayTeam": "OB",
+              "awayTeamId": 8414,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10202",
+              "name": "Nordsjælland",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8414",
+              "name": "OB",
+              "isOurTeam": false
             }
           }
         ],
@@ -461,13 +462,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "4",
                 "away_team",
-                "6"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Nordsjælland have scored in their last 4 matches and CSKA Sofia have scored in their last 6 matches."
+              "defaultText": "CSKA Sofia have scored in their last 4 away matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +489,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "4",
                 "7"
               ],
               "DefaultLabels": [
@@ -502,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Nordsjælland have scored 6 goals in their last 3 matches, while CSKA Sofia have scored 7."
+              "defaultText": "Nordsjælland have scored 4 goals in their last 3 matches, while CSKA Sofia have scored 7."
             },
             {
               "OddsType": "dc",
@@ -513,8 +512,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "1",
                 "2",
+                "1",
                 "away_team",
                 "3",
                 "2",
@@ -531,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Nordsjælland have 2W, 1D, 2L in five matches while CSKA Sofia have 3W, 2D, 0L."
+              "defaultText": "Nordsjælland have 2W, 2D, 1L in five matches while CSKA Sofia have 3W, 2D, 0L."
             }
           ]
         },
@@ -644,7 +643,18 @@
       "awayTeam": {
         "id": 10144,
         "name": "CSKA Sofia",
-        "unavailable": []
+        "unavailable": [
+          {
+            "id": 1177022,
+            "name": "Mohamed Brahimi",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Mohamed",
+            "lastName": "Brahimi"
+          }
+        ]
       }
     },
     "hasPlayoff": false,

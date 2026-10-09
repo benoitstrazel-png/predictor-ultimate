@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8476.png",
-            "linkToMatch": "/matches/brann-vs-lillestrom/2dh4ms#5104995",
-            "date": {
-              "utcTime": "2026-09-05T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8476/overview/lillestrom",
-            "tooltipText": {
-              "utcTime": "2026-09-05T16:00:00.000Z",
-              "homeTeam": "Brann",
-              "homeTeamId": 8468,
-              "homeScore": "1",
-              "awayTeam": "Lillestrøm",
-              "awayTeamId": 8476,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8468",
-              "name": "Brann",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8476",
-              "name": "Lillestrøm",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9919.png",
             "linkToMatch": "/matches/brann-vs-start/2snjj1#5105001",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8468",
               "name": "Brann",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8478.png",
+            "linkToMatch": "/matches/brann-vs-viking/2dhus9#5105018",
+            "date": {
+              "utcTime": "2026-10-09T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8478/overview/viking",
+            "tooltipText": {
+              "utcTime": "2026-10-09T17:00:00.000Z",
+              "homeTeam": "Brann",
+              "homeTeamId": 8468,
+              "homeScore": "0",
+              "awayTeam": "Viking",
+              "awayTeamId": 8478,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8468",
+              "name": "Brann",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8478",
+              "name": "Viking",
+              "isOurTeam": false
             }
           }
         ],
@@ -468,11 +468,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "away_team",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,20 +485,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brann have scored in their last 4 home matches."
+              "defaultText": "Brann have an average of 1 goals in their last three matches and Lincoln Red Imps FC have an average of 1."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "3"
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brann have scored 5 goals in their last 3 matches, while Lincoln Red Imps FC have scored 3."
+              "defaultText": "Brann have an average of 1 goals in their last three matches and Lincoln Red Imps FC have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -517,7 +518,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brann haven't drawn in their last 5 matches."
+              "defaultText": "Brann haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -550,12 +551,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#DE1215"
         }
       ],
@@ -578,17 +579,17 @@
     },
     "weather": {
       "temperature": 8,
-      "windSpeed": 5,
-      "windDirectionCardinal": "S",
+      "windSpeed": 3,
+      "windDirectionCardinal": "W",
       "iconCode": 12,
-      "relativeHumidity": 84,
-      "precipChance": 70,
-      "precipitation": 2.51,
+      "relativeHumidity": 87,
+      "precipChance": 75,
+      "precipitation": 0.86,
       "snow": 0,
       "cloudCover": 100,
       "description": "Rain",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-09T07:00:21Z",
+      "lastUpdated": "2026-10-09T19:00:29Z",
       "localizedKey": "weather_condition_rain",
       "defaultTitle": "Rain"
     },
@@ -627,7 +628,7 @@
             "countryCode": "NOR",
             "marketValue": 914787,
             "unavailability": {
-              "injuryId": 130,
+              "injuryId": 47,
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },

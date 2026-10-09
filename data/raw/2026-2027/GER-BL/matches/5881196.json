@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/145630.png",
-            "linkToMatch": "/matches/werder-bremen-vs-fc-hansa-luneburg/5gy0fcd#5750678",
-            "date": {
-              "utcTime": "2026-08-22T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/145630/overview/fc-hansa-luneburg",
-            "tooltipText": {
-              "utcTime": "2026-08-22T13:30:00.000Z",
-              "homeTeam": "FC Hansa Lüneburg",
-              "homeTeamId": 145630,
-              "homeScore": "0",
-              "awayTeam": "Werder Bremen",
-              "awayTeamId": 8697,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "145630",
-              "name": "FC Hansa Lüneburg",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8697",
-              "name": "Werder Bremen",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8358.png",
@@ -270,6 +240,36 @@
               "id": "8406",
               "name": "Augsburg",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png",
+            "linkToMatch": "/matches/werder-bremen-vs-borussia-dortmund/2tqnt6#5881180",
+            "date": {
+              "utcTime": "2026-10-09T18:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9789/overview/borussia-dortmund",
+            "tooltipText": {
+              "utcTime": "2026-10-09T18:30:00.000Z",
+              "homeTeam": "Borussia Dortmund",
+              "homeTeamId": 9789,
+              "homeScore": "2",
+              "awayTeam": "Werder Bremen",
+              "awayTeamId": 8697,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "9789",
+              "name": "Borussia Dortmund",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8697",
+              "name": "Werder Bremen",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Werder Bremen have 3W, 1D, 1L in five matches while Paderborn have 2W, 1D, 2L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Werder Bremen haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -495,7 +489,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
+                "6",
                 "4"
               ],
               "DefaultLabels": [
@@ -507,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored 7 goals in their last 3 matches, while Paderborn have scored 4."
+              "defaultText": "Werder Bremen have scored 6 goals in their last 3 matches, while Paderborn have scored 4."
             },
             {
               "OddsType": "dc",
@@ -550,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -560,43 +554,33 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#007642"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8697,
-          "priority": 6,
-          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-          "localizedTextId": "h2h_no_draws_v2",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8697,
-              "name": "Werder Bremen",
-              "type": "team"
-            },
-            {
-              "value": 8460,
-              "name": "Paderborn",
-              "type": "team"
-            },
-            {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Werder Bremen and Paderborn have not drawn any of their last 6 matches against each other.",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#007642"
         },
         {
           "type": "player",
           "playerId": 276791,
           "teamId": 8697,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
               "value": 276791,
@@ -604,17 +588,12 @@
               "type": "player"
             },
             {
-              "value": 8697,
-              "name": "Werder Bremen",
-              "type": "team"
-            },
-            {
-              "value": 2.1,
+              "value": 4,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Niclas Füllkrug has the most shots on target per match for Werder Bremen (2.1)",
+          "text": "Niclas Füllkrug is the competition's top scorer (4)",
           "color": "#007642"
         },
         {

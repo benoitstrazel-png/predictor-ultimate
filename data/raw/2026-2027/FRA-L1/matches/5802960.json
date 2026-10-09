@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9746.png",
-            "linkToMatch": "/matches/le-havre-vs-lyon/354y61#5802913",
-            "date": {
-              "utcTime": "2026-08-29T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9746/overview/le-havre",
-            "tooltipText": {
-              "utcTime": "2026-08-29T18:45:00.000Z",
-              "homeTeam": "Lyon",
-              "homeTeamId": 9748,
-              "homeScore": "1",
-              "awayTeam": "Le Havre",
-              "awayTeamId": 9746,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9748",
-              "name": "Lyon",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9746",
-              "name": "Le Havre",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
@@ -270,6 +240,36 @@
               "id": "9851",
               "name": "Rennes",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
+            "linkToMatch": "/matches/lens-vs-lyon/2s3gtg#5802947",
+            "date": {
+              "utcTime": "2026-10-09T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8588/overview/lens",
+            "tooltipText": {
+              "utcTime": "2026-10-09T18:45:00.000Z",
+              "homeTeam": "Lens",
+              "homeTeamId": 8588,
+              "homeScore": "2",
+              "awayTeam": "Lyon",
+              "awayTeamId": 9748,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8588",
+              "name": "Lens",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9748",
+              "name": "Lyon",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Lyon haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Lyon have 3W, 1D, 1L in five matches while Nice have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -466,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored in their last 6 home matches."
+              "defaultText": "Lyon have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -489,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "7",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored 6 goals in their last 3 matches, while Nice have scored 3."
+              "defaultText": "Lyon have scored 7 goals in their last 3 matches, while Nice have scored 3."
             },
             {
               "OddsType": "dc",
@@ -562,23 +568,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 9748,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have kept the most clean sheets in the competition (3)",
-          "color": "#0160A0"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9748,
           "priority": 7,
           "defaultText": "Ranked {0} at home this season",
           "localizedTextId": "insights_best_home",
@@ -590,6 +579,33 @@
             }
           ],
           "text": "Ranked 1 at home this season",
+          "color": "#0160A0"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9748,
+          "priority": 6,
+          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+          "localizedTextId": "h2h_no_draws_v2",
+          "statValues": [
+            {
+              "value": 9748,
+              "name": "Lyon",
+              "type": "team"
+            },
+            {
+              "value": 9831,
+              "name": "Nice",
+              "type": "team"
+            },
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Lyon and Nice have not drawn any of their last 5 matches against each other.",
           "color": "#0160A0"
         },
         {
@@ -689,18 +705,18 @@
     "weather": {
       "temperature": 14,
       "windSpeed": 2,
-      "windDirectionCardinal": "N",
-      "iconCode": 29,
+      "windDirectionCardinal": "NNE",
+      "iconCode": 33,
       "relativeHumidity": 74,
-      "precipChance": 24,
+      "precipChance": 13,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 53,
-      "description": "Partly Cloudy",
+      "cloudCover": 28,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-09T07:00:14Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-09T19:00:19Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5802960,

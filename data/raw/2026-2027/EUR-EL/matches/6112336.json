@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2137.png",
-            "linkToMatch": "/matches/pafos-fc-vs-omonia-nicosia/uv3mj#5986223",
-            "date": {
-              "utcTime": "2026-09-03T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/2137/overview/pafos-fc",
-            "tooltipText": {
-              "utcTime": "2026-09-03T16:30:00.000Z",
-              "homeTeam": "Omonia Nicosia",
-              "homeTeamId": 8044,
-              "homeScore": "0",
-              "awayTeam": "Pafos FC",
-              "awayTeamId": 2137,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8044",
-              "name": "Omonia Nicosia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "2137",
-              "name": "Pafos FC",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2136.png",
@@ -422,6 +392,36 @@
               "name": "Krasava Ypsonas FC",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/468676.png",
+            "linkToMatch": "/matches/omonia-nicosia-vs-karmiotissa/1g793itg#5975414",
+            "date": {
+              "utcTime": "2026-10-09T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/468676/overview/karmiotissa",
+            "tooltipText": {
+              "utcTime": "2026-10-09T16:00:00.000Z",
+              "homeTeam": "Karmiotissa",
+              "homeTeamId": 468676,
+              "homeScore": "0",
+              "awayTeam": "Omonia Nicosia",
+              "awayTeamId": 8044,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "468676",
+              "name": "Karmiotissa",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8044",
+              "name": "Omonia Nicosia",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -442,7 +442,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,19 +455,20 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Omonia Nicosia haven't lost in 4 matches."
+              "defaultText": "Omonia Nicosia haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "1.67"
+                "3",
+                "1",
+                "8"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,19 +479,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "NK Celje have an average of 0.33 goals in their last three matches and Omonia Nicosia have an average of 1.67."
+              "defaultText": "NK Celje have scored 1 goals in their last 3 matches, while Omonia Nicosia have scored 8."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "0.33",
-                "1.67"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "NK Celje have an average of 0.33 goals in their last three matches and Omonia Nicosia have an average of 1.67."
+              "defaultText": "Omonia Nicosia have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -539,7 +539,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 4622,
-          "priority": 9,
+          "priority": 1346,
           "defaultText": "Haven't scored in their last {0} matches",
           "localizedTextId": "insights_goalless_team",
           "statValues": [
@@ -551,6 +551,23 @@
           ],
           "text": "Haven't scored in their last 2 matches",
           "color": "#021B5C"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8044,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#0B582C"
         }
       ],
       "countryCode": "INT-2",
