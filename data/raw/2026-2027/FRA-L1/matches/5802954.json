@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -703,8 +703,8 @@
           "playerId": null,
           "teamId": 8592,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
               "value": 5,
@@ -712,7 +712,7 @@
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#0A60A8"
         }
       ],
@@ -774,6 +774,7 @@
         "languages": [
           "en",
           "nb",
+          "no",
           "de",
           "es",
           "fr",
@@ -824,51 +825,369 @@
     },
     "weather": {
       "temperature": 12,
-      "windSpeed": 2,
-      "windDirectionCardinal": "SW",
+      "windSpeed": 1,
+      "windDirectionCardinal": "SSW",
       "iconCode": 26,
-      "relativeHumidity": 77,
-      "precipChance": 11,
+      "relativeHumidity": 79,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 82,
+      "cloudCover": 85,
       "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-08T19:00:15Z",
+      "lastUpdated": "2026-10-09T07:00:14Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5802954,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 10242,
         "name": "Troyes",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 1523321,
-            "age": 27,
-            "name": "Merwan Ifnaou",
+            "id": 1335765,
+            "age": 23,
+            "name": "Patrick Beach",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "33",
+            "countryName": "Australia",
+            "countryCode": "AUS",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1862008,
+            "firstName": "Patrick",
+            "lastName": "Beach",
+            "nationalTeamId": 6716,
+            "rankings": null
+          },
+          {
+            "id": 1330942,
+            "age": 26,
+            "name": "Lucas Maronnier",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "2",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 1410068,
-            "unavailability": {
-              "injuryId": 101,
-              "type": "injury",
-              "expectedReturn": "Early October 2026"
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
             },
-            "firstName": "Merwan",
-            "lastName": "Ifnaou",
-            "nationalTeamId": 6723
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 460504,
+            "firstName": "Lucas",
+            "lastName": "Maronnier",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 465719,
+            "age": 35,
+            "name": "Adrien Monfray",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 355020,
+            "firstName": "Adrien",
+            "lastName": "Monfray",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1401205,
+            "age": 23,
+            "name": "Michel Diaz",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 7893137,
+            "firstName": "Michel",
+            "lastName": "Diaz",
+            "nationalTeamId": 6709,
+            "rankings": null
+          },
+          {
+            "id": 1844131,
+            "age": 19,
+            "name": "Noah Donkor",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "31",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 294243,
+            "firstName": "Noah",
+            "lastName": "Donkor",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1321149,
+            "age": 26,
+            "name": "Mouhamed Diop",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 2639138,
+            "firstName": "Mouhamed",
+            "lastName": "Diop",
+            "nationalTeamId": 6395,
+            "rankings": null
+          },
+          {
+            "id": 1342983,
+            "age": 29,
+            "name": "Antoine Mille",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "17",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1671582,
+            "firstName": "Antoine",
+            "lastName": "Mille",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1108031,
+            "age": 26,
+            "name": "Kandet Diawara",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Guinea",
+            "countryCode": "GUI",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 600643,
+            "firstName": "Kandet",
+            "lastName": "Diawara",
+            "nationalTeamId": 6289,
+            "rankings": null
+          },
+          {
+            "id": 1030945,
+            "age": 26,
+            "name": "Iron Gomis",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 1234875,
+            "firstName": "Iron",
+            "lastName": "Gomis",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1411553,
+            "age": 23,
+            "name": "Hugo Picard",
+            "positionId": 87,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "22",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 4272604,
+            "firstName": "Hugo",
+            "lastName": "Picard",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 917808,
+            "age": 28,
+            "name": "Jérémy Le Douaron",
+            "positionId": 115,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "9",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 2055746,
+            "firstName": "Jérémy",
+            "lastName": "Le Douaron",
+            "nationalTeamId": 6723,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 26159,
+          "age": 44,
+          "name": "Stéphane Dumont",
+          "countryName": "France",
+          "countryCode": "FRA",
+          "firstName": "Stéphane",
+          "lastName": "Dumont",
+          "nationalTeamId": 6723,
+          "primaryTeamId": 10242,
+          "primaryTeamName": "Troyes",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
+          {
+            "id": 1177359,
+            "age": 26,
+            "name": "Ismaël Boura",
+            "positionId": 1000,
+            "countryName": "Comoros",
+            "countryCode": "COM",
+            "marketValue": 2144873,
+            "unavailability": {
+              "injuryId": 31,
+              "type": "injury",
+              "expectedReturn": "A few weeks"
+            },
+            "firstName": "Ismaël",
+            "lastName": "Boura",
+            "nationalTeamId": 230692
           },
           {
             "id": 1039458,
             "age": 25,
             "name": "Paolo Gozzi",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 692111,
@@ -885,6 +1204,7 @@
             "id": 1487935,
             "age": 20,
             "name": "Yvann Titi",
+            "positionId": 1000,
             "countryName": "France",
             "countryCode": "FRA",
             "marketValue": 1927558,
@@ -898,61 +1218,344 @@
             "nationalTeamId": 6723
           },
           {
-            "id": 1177359,
-            "age": 26,
-            "name": "Ismaël Boura",
-            "countryName": "Comoros",
-            "countryCode": "COM",
-            "marketValue": 2144873,
+            "id": 1523321,
+            "age": 27,
+            "name": "Merwan Ifnaou",
+            "positionId": 1000,
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1410068,
             "unavailability": {
-              "injuryId": 31,
+              "injuryId": 101,
               "type": "injury",
-              "expectedReturn": "A few weeks"
+              "expectedReturn": "Early October 2026"
             },
-            "firstName": "Ismaël",
-            "lastName": "Boura",
-            "nationalTeamId": 230692
+            "firstName": "Merwan",
+            "lastName": "Ifnaou",
+            "nationalTeamId": 6723
           }
-        ]
+        ],
+        "averageStarterAge": 26.3,
+        "totalStarterMarketValue": 23339500
       },
       "awayTeam": {
         "id": 8592,
         "name": "Marseille",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 889536,
+            "id": 687868,
+            "age": 28,
+            "name": "Jeffrey De Lange",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1322796,
+            "firstName": "Jeffrey",
+            "lastName": "De Lange",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 520979,
+            "age": 30,
+            "name": "Ulisses Garcia",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "25",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2033918,
+            "firstName": "Ulisses",
+            "lastName": "Garcia",
+            "nationalTeamId": 6717,
+            "rankings": null
+          },
+          {
+            "id": 1187227,
+            "age": 23,
+            "name": "CJ Egan-Riley",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 11871342,
+            "firstName": "CJ",
+            "lastName": "Egan-Riley",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 617310,
+            "age": 30,
+            "name": "Nayef Aguerd",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "21",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 16132655,
+            "firstName": "Nayef",
+            "lastName": "Aguerd",
+            "nationalTeamId": 6262,
+            "rankings": null
+          },
+          {
+            "id": 267371,
+            "age": 32,
+            "name": "Emerson",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "33",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 4195800,
+            "firstName": "",
+            "lastName": "Emerson",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 1353104,
+            "age": 23,
+            "name": "Tochukwu Nnadi",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 5060315,
+            "firstName": "Tochukwu",
+            "lastName": "Nnadi",
+            "nationalTeamId": 6346,
+            "rankings": null
+          },
+          {
+            "id": 956659,
             "age": 26,
-            "name": "Timothy Weah",
-            "countryName": "USA",
-            "countryCode": "USA",
-            "marketValue": 22459055,
-            "unavailability": {
-              "type": "suspension",
-              "expectedReturn": "Mid October 2026",
-              "expectedReturnDate": "2026-10-11T20:45:00Z"
+            "name": "Himad Abdelli",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Timothy",
-            "lastName": "Weah",
-            "nationalTeamId": 6713
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 4958792,
+            "firstName": "Himad",
+            "lastName": "Abdelli",
+            "nationalTeamId": 6317,
+            "rankings": null
           },
           {
-            "id": 266523,
-            "age": 31,
-            "name": "Pierre-Emile Højbjerg",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 14020317,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "A few weeks"
+            "id": 1638922,
+            "age": 20,
+            "name": "Keyliane Abdallah",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "48",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
             },
-            "firstName": "Pierre-Emile",
-            "lastName": "Højbjerg",
-            "nationalTeamId": 8238
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 816267,
+            "firstName": "Keyliane",
+            "lastName": "Abdallah",
+            "nationalTeamId": 6723,
+            "rankings": null
           },
+          {
+            "id": 848667,
+            "age": 26,
+            "name": "Angel Gomes",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 20657841,
+            "firstName": "Angel",
+            "lastName": "Gomes",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1265963,
+            "age": 26,
+            "name": "Igor Paixão",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "14",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 37444012,
+            "firstName": "Igor",
+            "lastName": "Paixão",
+            "nationalTeamId": 8256,
+            "rankings": null
+          },
+          {
+            "id": 391064,
+            "age": 30,
+            "name": "Neal Maupay",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 2772008,
+            "firstName": "Neal",
+            "lastName": "Maupay",
+            "nationalTeamId": 6723,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 712734,
+          "age": 60,
+          "name": "Bruno Génésio",
+          "countryName": "France",
+          "countryCode": "FRA",
+          "firstName": "Bruno",
+          "lastName": "Génésio",
+          "nationalTeamId": 6723,
+          "primaryTeamId": 8592,
+          "primaryTeamName": "Marseille",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 780815,
             "age": 29,
@@ -970,38 +1573,6 @@
             "nationalTeamId": 6262
           },
           {
-            "id": 844437,
-            "age": 26,
-            "name": "Amine Gouiri",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
-            "marketValue": 30436290,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "firstName": "Amine",
-            "lastName": "Gouiri",
-            "nationalTeamId": 6317
-          },
-          {
-            "id": 847629,
-            "age": 28,
-            "name": "Derek Cornelius",
-            "countryName": "Canada",
-            "countryCode": "CAN",
-            "marketValue": 1679278,
-            "unavailability": {
-              "injuryId": 31,
-              "type": "injury",
-              "expectedReturn": "Early January 2027"
-            },
-            "firstName": "Derek",
-            "lastName": "Cornelius",
-            "nationalTeamId": 5810
-          },
-          {
             "id": 214972,
             "age": 33,
             "name": "Geoffrey Kondogbia",
@@ -1016,8 +1587,78 @@
             "firstName": "Geoffrey",
             "lastName": "Kondogbia",
             "nationalTeamId": 230693
+          },
+          {
+            "id": 847629,
+            "age": 28,
+            "name": "Derek Cornelius",
+            "positionId": 1000,
+            "countryName": "Canada",
+            "countryCode": "CAN",
+            "marketValue": 1679278,
+            "unavailability": {
+              "injuryId": 31,
+              "type": "injury",
+              "expectedReturn": "Early January 2027"
+            },
+            "firstName": "Derek",
+            "lastName": "Cornelius",
+            "nationalTeamId": 5810
+          },
+          {
+            "id": 889536,
+            "age": 26,
+            "name": "Timothy Weah",
+            "positionId": 1100,
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 22459055,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-11T20:45:00Z"
+            },
+            "firstName": "Timothy",
+            "lastName": "Weah",
+            "nationalTeamId": 6713
+          },
+          {
+            "id": 266523,
+            "age": 31,
+            "name": "Pierre-Emile Højbjerg",
+            "positionId": 1000,
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 14020317,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "A few weeks"
+            },
+            "firstName": "Pierre-Emile",
+            "lastName": "Højbjerg",
+            "nationalTeamId": 8238
+          },
+          {
+            "id": 844437,
+            "age": 26,
+            "name": "Amine Gouiri",
+            "positionId": 1000,
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "marketValue": 30436290,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "About a week"
+            },
+            "firstName": "Amine",
+            "lastName": "Gouiri",
+            "nationalTeamId": 6317
           }
-        ]
+        ],
+        "averageStarterAge": 27.2,
+        "totalStarterMarketValue": 107265746
       }
     },
     "hasPlayoff": false,
