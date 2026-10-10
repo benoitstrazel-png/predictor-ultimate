@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10015.png",
-            "linkToMatch": "/matches/salzburg-vs-rapid-wien/3bf4ud#5845974",
-            "date": {
-              "utcTime": "2026-09-02T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10015/overview/rapid-wien",
-            "tooltipText": {
-              "utcTime": "2026-09-02T18:30:00.000Z",
-              "homeTeam": "Salzburg",
-              "homeTeamId": 10013,
-              "homeScore": "5",
-              "awayTeam": "Rapid Wien",
-              "awayTeamId": 10015,
-              "awayScore": "1"
-            },
-            "score": "5 - 1",
-            "home": {
-              "id": "10013",
-              "name": "Salzburg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10015",
-              "name": "Rapid Wien",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1907.png",
             "linkToMatch": "/matches/skn-st-polten-vs-salzburg/16avcr#5980399",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Sturm Graz",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10012.png",
+            "linkToMatch": "/matches/grazer-ak-vs-salzburg/3bduhe#5845995",
+            "date": {
+              "utcTime": "2026-10-10T15:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10012/overview/grazer-ak",
+            "tooltipText": {
+              "utcTime": "2026-10-10T15:00:00.000Z",
+              "homeTeam": "Grazer AK",
+              "homeTeamId": 10012,
+              "homeScore": "0",
+              "awayTeam": "Salzburg",
+              "awayTeamId": 10013,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10012",
+              "name": "Grazer AK",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10013",
+              "name": "Salzburg",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -461,11 +461,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "7"
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Salzburg have scored in their last 7 away matches."
+              "defaultText": "NK Celje have an average of 0.33 goals in their last three matches and Salzburg have an average of 1.33."
             },
             {
               "OddsType": "ou",
@@ -488,7 +490,7 @@
                 "home_team",
                 "away_team",
                 "0.33",
-                "1.67"
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "NK Celje have an average of 0.33 goals in their last three matches and Salzburg have an average of 1.67."
+              "defaultText": "NK Celje have an average of 0.33 goals in their last three matches and Salzburg have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -559,12 +561,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 15,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 14 matches",
+          "text": "Haven't lost in 15 matches",
           "color": "#F13032"
         }
       ],
@@ -706,7 +708,7 @@
             "name": "Gaoussou Diakite",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-17T11:06:29Z",
+              "lastUpdated": "2026-10-10T16:33:26Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },

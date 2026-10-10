@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
-            "linkToMatch": "/matches/afc-bournemouth-vs-newcastle-united/2ysbu8#5795443",
-            "date": {
-              "utcTime": "2026-09-05T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10261/overview/newcastle-united",
-            "tooltipText": {
-              "utcTime": "2026-09-05T11:30:00.000Z",
-              "homeTeam": "Newcastle United",
-              "homeTeamId": 10261,
-              "homeScore": "2",
-              "awayTeam": "AFC Bournemouth",
-              "awayTeamId": 8678,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "10261",
-              "name": "Newcastle United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8678",
-              "name": "AFC Bournemouth",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8430.png",
@@ -271,39 +241,39 @@
               "name": "Liverpool",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
-            "linkToMatch": "/matches/sunderland-vs-brentford/2sw7v2#5795436",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png",
+            "linkToMatch": "/matches/chelsea-vs-afc-bournemouth/2fe5n5#5795467",
             "date": {
-              "utcTime": "2026-09-05T14:00:00.000Z"
+              "utcTime": "2026-10-10T14:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9937/overview/brentford",
+            "teamPageUrl": "/teams/8455/overview/chelsea",
             "tooltipText": {
-              "utcTime": "2026-09-05T14:00:00.000Z",
-              "homeTeam": "Brentford",
-              "homeTeamId": 9937,
-              "homeScore": "1",
-              "awayTeam": "Sunderland",
-              "awayTeamId": 8472,
+              "utcTime": "2026-10-10T14:00:00.000Z",
+              "homeTeam": "Chelsea",
+              "homeTeamId": 8455,
+              "homeScore": "5",
+              "awayTeam": "AFC Bournemouth",
+              "awayTeamId": 8678,
               "awayScore": "1"
             },
-            "score": "1 - 1",
+            "score": "5 - 1",
             "home": {
-              "id": "9937",
-              "name": "Brentford",
+              "id": "8455",
+              "name": "Chelsea",
               "isOurTeam": false
             },
             "away": {
-              "id": "8472",
-              "name": "Sunderland",
+              "id": "8678",
+              "name": "AFC Bournemouth",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Sunderland",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
+            "linkToMatch": "/matches/sunderland-vs-brighton-hove-albion/2vuaxm#5795474",
+            "date": {
+              "utcTime": "2026-10-10T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "tooltipText": {
+              "utcTime": "2026-10-10T14:00:00.000Z",
+              "homeTeam": "Sunderland",
+              "homeTeamId": 8472,
+              "homeScore": "0",
+              "awayTeam": "Brighton & Hove Albion",
+              "awayTeamId": 10204,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8472",
+              "name": "Sunderland",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -444,12 +444,12 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "2",
                 "1",
+                "2",
                 "away_team",
                 "2",
-                "1",
-                "2"
+                "0",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "AFC Bournemouth have 2W, 2D, 1L in five matches while Sunderland have 2W, 1D, 2L."
+              "defaultText": "AFC Bournemouth have 2W, 1D, 2L in five matches while Sunderland have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "4"
+                "1",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AFC Bournemouth have scored 4 goals in their last 3 matches, while Sunderland have scored 4."
+              "defaultText": "AFC Bournemouth have an average of 1 goals in their last three matches and Sunderland have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -517,7 +516,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sunderland haven't drawn in their last 4 matches."
+              "defaultText": "Sunderland haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -550,7 +549,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -560,7 +559,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#D71921"
         },
         {
@@ -626,7 +625,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -636,7 +635,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#DC0814"
         },
         {
@@ -660,9 +659,9 @@
           "type": "player",
           "playerId": 207236,
           "teamId": 8472,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
               "value": 207236,
@@ -670,9 +669,9 @@
               "type": "player"
             },
             {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
+              "value": 8472,
+              "name": "Sunderland",
+              "type": "team"
             },
             {
               "value": 5,
@@ -680,7 +679,7 @@
               "type": "integer"
             }
           ],
-          "text": "Granit Xhaka is ranked 2 in big chances created in the competition (5)",
+          "text": "Granit Xhaka has created the most big chances for Sunderland (5)",
           "color": "#DC0814"
         }
       ],
@@ -703,19 +702,19 @@
     },
     "weather": {
       "temperature": 15,
-      "windSpeed": 5,
-      "windDirectionCardinal": "NNW",
-      "iconCode": 28,
-      "relativeHumidity": 67,
-      "precipChance": 7,
+      "windSpeed": 6,
+      "windDirectionCardinal": "NE",
+      "iconCode": 30,
+      "relativeHumidity": 64,
+      "precipChance": 11,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 61,
-      "description": "Mostly Cloudy",
+      "cloudCover": 36,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T01:00:02Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-10T13:00:04Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795475,
@@ -732,7 +731,7 @@
             "name": "David Brooks",
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-10-08T07:38:34Z",
+              "lastUpdated": "2026-10-10T14:47:28Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },

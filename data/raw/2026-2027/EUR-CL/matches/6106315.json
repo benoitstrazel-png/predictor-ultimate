@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8417.png",
-            "linkToMatch": "/matches/bodoglimt-vs-fredrikstad/2c7wb3#5104994",
-            "date": {
-              "utcTime": "2026-09-04T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8417/overview/fredrikstad",
-            "tooltipText": {
-              "utcTime": "2026-09-04T17:00:00.000Z",
-              "homeTeam": "Fredrikstad",
-              "homeTeamId": 8417,
-              "homeScore": "1",
-              "awayTeam": "Bodø/Glimt",
-              "awayTeamId": 8402,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8417",
-              "name": "Fredrikstad",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8402",
-              "name": "Bodø/Glimt",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
@@ -270,6 +240,36 @@
               "id": "8402",
               "name": "Bodø/Glimt",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8605.png",
+            "linkToMatch": "/matches/bodoglimt-vs-kristiansund/2e41yd#5105017",
+            "date": {
+              "utcTime": "2026-10-10T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8605/overview/kristiansund",
+            "tooltipText": {
+              "utcTime": "2026-10-10T14:00:00.000Z",
+              "homeTeam": "Bodø/Glimt",
+              "homeTeamId": 8402,
+              "homeScore": "3",
+              "awayTeam": "Kristiansund",
+              "awayTeamId": 8605,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8402",
+              "name": "Bodø/Glimt",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8605",
+              "name": "Kristiansund",
+              "isOurTeam": false
             }
           }
         ],
@@ -462,11 +462,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "4",
+                "away_team",
+                "11"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bodø/Glimt have scored in their last 4 home matches."
+              "defaultText": "Bodø/Glimt have scored in their last 4 matches and Borussia Dortmund have scored in their last 11 matches."
             },
             {
               "OddsType": "ou",
@@ -509,7 +511,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "11"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bodø/Glimt haven't drawn in their last 11 matches."
+              "defaultText": "Bodø/Glimt haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -542,12 +544,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#e09d00"
         },
         {
@@ -1626,7 +1628,7 @@
             "unavailability": {
               "injuryId": 77,
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Julian",
             "lastName": "Ryerson",

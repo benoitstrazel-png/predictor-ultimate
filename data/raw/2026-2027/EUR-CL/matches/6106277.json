@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/103598.png",
-            "linkToMatch": "/matches/slovan-bratislava-vs-dac-1904-dunajska-streda/2rd0dos#5772178",
-            "date": {
-              "utcTime": "2026-09-05T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/103598/overview/dac-1904-dunajska-streda",
-            "tooltipText": {
-              "utcTime": "2026-09-05T18:30:00.000Z",
-              "homeTeam": "DAC 1904 Dunajska Streda",
-              "homeTeamId": 103598,
-              "homeScore": "2",
-              "awayTeam": "Slovan Bratislava",
-              "awayTeamId": 6019,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "103598",
-              "name": "DAC 1904 Dunajska Streda",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "6019",
-              "name": "Slovan Bratislava",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
             "linkToMatch": "/matches/slovan-bratislava-vs-paris-saint-germain/22y3ra#6106237",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Slovan Bratislava",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/555292.png",
+            "linkToMatch": "/matches/slovan-bratislava-vs-skalica/20dcgc37#5772261",
+            "date": {
+              "utcTime": "2026-10-10T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/555292/overview/skalica",
+            "tooltipText": {
+              "utcTime": "2026-10-10T13:30:00.000Z",
+              "homeTeam": "Skalica",
+              "homeTeamId": 555292,
+              "homeScore": "1",
+              "awayTeam": "Slovan Bratislava",
+              "awayTeamId": 6019,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "555292",
+              "name": "Skalica",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "6019",
+              "name": "Slovan Bratislava",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
                 "home_team",
-                "7"
+                "away_team",
+                "7",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Roma haven't lost in 7 matches."
+              "defaultText": "Roma haven't lost in their last 7 matches, and Slovan Bratislava in their last 4."
             },
             {
               "OddsType": "bts",
@@ -468,7 +470,7 @@
                 "home_team",
                 "7",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,18 +481,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 7 matches and Slovan Bratislava have scored in their last 4 matches."
+              "defaultText": "Roma have scored in their last 7 matches and Slovan Bratislava have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Slovan Bratislava have scored 8 goals in their last 3 matches."
+              "defaultText": "Roma have scored 5 goals in their last 3 matches, while Slovan Bratislava have scored 6."
             },
             {
               "OddsType": "dc",
@@ -516,8 +520,8 @@
                 "0",
                 "away_team",
                 "2",
-                "1",
-                "2"
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Roma have 3W, 2D, 0L in five matches while Slovan Bratislava have 2W, 1D, 2L."
+              "defaultText": "Roma have 3W, 2D, 0L in five matches while Slovan Bratislava have 2W, 2D, 1L."
             }
           ]
         },
@@ -567,12 +571,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Haven't kept a clean sheet in 10 matches",
           "color": "#43B1E6"
         }
       ],

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8342.png",
-            "linkToMatch": "/matches/club-brugge-vs-aston-villa/2uxjqh#6106295",
-            "date": {
-              "utcTime": "2026-09-08T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8342/overview/club-brugge",
-            "tooltipText": {
-              "utcTime": "2026-09-08T16:45:00.000Z",
-              "homeTeam": "Club Brugge",
-              "homeTeamId": 8342,
-              "homeScore": "2",
-              "awayTeam": "Aston Villa",
-              "awayTeamId": 10252,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "8342",
-              "name": "Club Brugge",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png",
@@ -270,6 +240,36 @@
               "id": "10252",
               "name": "Aston Villa",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
+            "linkToMatch": "/matches/brentford-vs-aston-villa/3dciw4#5795466",
+            "date": {
+              "utcTime": "2026-10-10T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9937/overview/brentford",
+            "tooltipText": {
+              "utcTime": "2026-10-10T14:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "2",
+              "awayTeam": "Brentford",
+              "awayTeamId": 9937,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9937",
+              "name": "Brentford",
+              "isOurTeam": false
             }
           }
         ],
@@ -439,9 +439,10 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} and {1} haven't lost their {2} last games.",
+              "TextTemplateId": "undefeated_both_equal",
               "StatValues": [
+                "home_team",
                 "away_team",
                 "4"
               ],
@@ -456,7 +457,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Fenerbahçe haven't lost in 4 matches."
+              "defaultText": "Aston Villa and Fenerbahçe haven't lost their 4 last games."
             },
             {
               "OddsType": "bts",
@@ -468,7 +469,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "9",
+                "8",
                 "10"
               ],
               "DefaultLabels": [
@@ -480,7 +481,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored 9 goals in their last 3 matches, while Fenerbahçe have scored 10."
+              "defaultText": "Aston Villa have scored 8 goals in their last 3 matches, while Fenerbahçe have scored 10."
             },
             {
               "OddsType": "ou",
@@ -490,7 +491,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "9",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,17 +503,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored 9 goals in their last 3 matches."
+              "defaultText": "Aston Villa have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Aston Villa haven't drawn in their last 5 matches."
+              "defaultText": "Aston Villa have 3W, 1D, 1L in five matches while Fenerbahçe have 2W, 2D, 1L."
             }
           ]
         },
@@ -545,12 +552,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#7D1142"
         }
       ],

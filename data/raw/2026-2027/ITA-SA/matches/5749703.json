@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
-            "linkToMatch": "/matches/fiorentina-vs-frosinone/2t2xf6#5749653",
-            "date": {
-              "utcTime": "2026-08-29T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9891/overview/frosinone",
-            "tooltipText": {
-              "utcTime": "2026-08-29T16:30:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "0",
-              "awayTeam": "Frosinone",
-              "awayTeamId": 9891,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9804.png",
             "linkToMatch": "/matches/fiorentina-vs-torino/2s4nb6#5749663",
             "date": {
@@ -270,6 +240,36 @@
               "id": "9875",
               "name": "Napoli",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
+            "linkToMatch": "/matches/fiorentina-vs-genoa/2wv81r#5749693",
+            "date": {
+              "utcTime": "2026-10-10T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10233/overview/genoa",
+            "tooltipText": {
+              "utcTime": "2026-10-10T13:00:00.000Z",
+              "homeTeam": "Genoa",
+              "homeTeamId": 10233,
+              "homeScore": "2",
+              "awayTeam": "Fiorentina",
+              "awayTeamId": 8535,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "10233",
+              "name": "Genoa",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": true
             }
           }
         ],
@@ -489,12 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have scored 8 goals in their last 3 matches."
+              "defaultText": "Fiorentina have scored 5 goals in their last 3 matches, while Como have scored 6."
             },
             {
               "OddsType": "dc",
@@ -548,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +560,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#5F259F"
         },
         {
@@ -607,12 +609,12 @@
               "type": "team"
             },
             {
-              "value": 1.9,
+              "value": 1.7,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Franco Mastantuono has the most shots on target per match for Fiorentina (1.9)",
+          "text": "Franco Mastantuono has the most shots on target per match for Fiorentina (1.7)",
           "color": "#5F259F"
         },
         {
@@ -642,23 +644,6 @@
           "playerId": null,
           "teamId": 10171,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 7 matches",
-          "color": "#005ea9"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10171,
-          "priority": 8,
           "defaultText": "Ranked {0} away from home this season",
           "localizedTextId": "insights_best_away",
           "statValues": [
@@ -669,6 +654,23 @@
             }
           ],
           "text": "Ranked 3 away from home this season",
+          "color": "#005ea9"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10171,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#005ea9"
         }
       ],
@@ -692,16 +694,16 @@
     "weather": {
       "temperature": 22,
       "windSpeed": 2,
-      "windDirectionCardinal": "SSW",
+      "windDirectionCardinal": "E",
       "iconCode": 30,
-      "relativeHumidity": 50,
-      "precipChance": 18,
+      "relativeHumidity": 47,
+      "precipChance": 9,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 42,
+      "cloudCover": 40,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T01:00:07Z",
+      "lastUpdated": "2026-10-10T13:00:15Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
