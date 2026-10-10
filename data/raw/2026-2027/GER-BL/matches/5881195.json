@@ -491,7 +491,7 @@
                 "away_team",
                 "3",
                 "2",
-                "7"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,19 +502,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Union Berlin have scored 2 goals in their last 3 matches, while Borussia Dortmund have scored 7."
+              "defaultText": "Union Berlin have scored 2 goals in their last 3 matches, while Borussia Dortmund have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "4",
-                "7"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Union Berlin haven't drawn in their last 4 matches and Borussia Dortmund in their last 7."
+              "defaultText": "Union Berlin haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -589,15 +587,15 @@
         },
         {
           "type": "player",
-          "playerId": 622373,
+          "playerId": 658440,
           "teamId": 8149,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 622373,
-              "name": "Josip Juranović",
+              "value": 658440,
+              "name": "Tim Skarke",
               "type": "player"
             },
             {
@@ -606,12 +604,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 3.9,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Josip Juranović has created the most big chances for Union Berlin (2)",
+          "text": "Tim Skarke has the most shots on target per match for Union Berlin (3.9)",
           "color": "#E30613"
         },
         {
@@ -658,16 +656,26 @@
           "playerId": null,
           "teamId": 9789,
           "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 2,
+              "value": 9789,
+              "name": "Borussia Dortmund",
+              "type": "team"
+            },
+            {
+              "value": 8149,
+              "name": "Union Berlin",
+              "type": "team"
+            },
+            {
+              "value": 3,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 2 away from home this season",
+          "text": "Borussia Dortmund have won the previous 3 matches against Union Berlin.",
           "color": "#d8a000"
         }
       ],
@@ -689,18 +697,18 @@
       }
     },
     "weather": {
-      "temperature": 14,
-      "windSpeed": 5,
+      "temperature": 13,
+      "windSpeed": 4,
       "windDirectionCardinal": "W",
       "iconCode": 30,
-      "relativeHumidity": 63,
-      "precipChance": 6,
+      "relativeHumidity": 66,
+      "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
       "cloudCover": 49,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-09T14:00:18Z",
+      "lastUpdated": "2026-10-10T02:00:18Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -803,18 +811,6 @@
             },
             "firstName": "Julian",
             "lastName": "Ryerson"
-          },
-          {
-            "id": 1002058,
-            "name": "Nico Schlotterbeck",
-            "unavailability": {
-              "injuryId": 30,
-              "lastUpdated": "2026-10-09T15:18:26Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Nico",
-            "lastName": "Schlotterbeck"
           },
           {
             "id": 1663094,
