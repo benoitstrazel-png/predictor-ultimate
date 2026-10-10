@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
-            "linkToMatch": "/matches/paris-fc-vs-troyes/2a8w7q#5802909",
-            "date": {
-              "utcTime": "2026-08-22T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10242/overview/troyes",
-            "tooltipText": {
-              "utcTime": "2026-08-22T18:45:00.000Z",
-              "homeTeam": "Troyes",
-              "homeTeamId": 10242,
-              "homeScore": "0",
-              "awayTeam": "Paris FC",
-              "awayTeamId": 6379,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "10242",
-              "name": "Troyes",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "6379",
-              "name": "Paris FC",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
@@ -270,6 +240,36 @@
               "id": "9848",
               "name": "Strasbourg",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8689.png",
+            "linkToMatch": "/matches/paris-fc-vs-lorient/1vliw7#5802949",
+            "date": {
+              "utcTime": "2026-10-10T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8689/overview/lorient",
+            "tooltipText": {
+              "utcTime": "2026-10-10T18:45:00.000Z",
+              "homeTeam": "Lorient",
+              "homeTeamId": 8689,
+              "homeScore": "1",
+              "awayTeam": "Paris FC",
+              "awayTeamId": 6379,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8689",
+              "name": "Lorient",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "6379",
+              "name": "Paris FC",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "8"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Paris FC haven't lost in 8 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Paris FC have 3W, 1D, 1L in five matches while Rennes have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -467,7 +473,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
+                "0.67",
                 "0.33"
               ],
               "DefaultLabels": [
@@ -479,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris FC have an average of 1.67 goals in their last three matches and Rennes have an average of 0.33."
+              "defaultText": "Paris FC have an average of 0.67 goals in their last three matches and Rennes have an average of 0.33."
             },
             {
               "OddsType": "ou",
@@ -490,7 +496,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
+                "0.67",
                 "0.33"
               ],
               "DefaultLabels": [
@@ -502,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris FC have an average of 1.67 goals in their last three matches and Rennes have an average of 0.33."
+              "defaultText": "Paris FC have an average of 0.67 goals in their last three matches and Rennes have an average of 0.33."
             },
             {
               "OddsType": "dc",
@@ -513,8 +519,8 @@
               "StatValues": [
                 "home_team",
                 "3",
-                "2",
-                "0",
+                "1",
+                "1",
                 "away_team",
                 "3",
                 "1",
@@ -531,7 +537,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris FC have 3W, 2D, 0L in five matches while Rennes have 3W, 1D, 1L."
+              "defaultText": "Paris FC have 3W, 1D, 1L in five matches while Rennes have 3W, 1D, 1L."
             }
           ]
         },
@@ -568,23 +574,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 6379,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have kept the most clean sheets in the competition (3)",
-          "color": "#0C1C3D"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 6379,
           "priority": 7,
           "defaultText": "Ranked {0} at home this season",
           "localizedTextId": "insights_best_home",
@@ -596,6 +585,33 @@
             }
           ],
           "text": "Ranked 2 at home this season",
+          "color": "#0C1C3D"
+        },
+        {
+          "type": "player",
+          "playerId": 923196,
+          "teamId": 6379,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 923196,
+              "name": "Lassine Sinayoko",
+              "type": "player"
+            },
+            {
+              "value": 6379,
+              "name": "Paris FC",
+              "type": "team"
+            },
+            {
+              "value": 2.1,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Lassine Sinayoko has the most shots on target per match for Paris FC (2.1)",
           "color": "#0C1C3D"
         },
         {
@@ -713,7 +729,7 @@
             "name": "Emmanuel Mbemba",
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-09-21T11:03:50Z",
+              "lastUpdated": "2026-10-10T19:51:09Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
@@ -725,7 +741,7 @@
             "name": "Otávio",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-05T22:04:40Z",
+              "lastUpdated": "2026-10-10T19:50:50Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },

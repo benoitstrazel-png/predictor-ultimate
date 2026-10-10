@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10188.png",
-            "linkToMatch": "/matches/fenerbahce-vs-besiktas/2y5mot#5904737",
-            "date": {
-              "utcTime": "2026-09-05T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10188/overview/besiktas",
-            "tooltipText": {
-              "utcTime": "2026-09-05T17:00:00.000Z",
-              "homeTeam": "Fenerbahçe",
-              "homeTeamId": 8695,
-              "homeScore": "1",
-              "awayTeam": "Beşiktaş",
-              "awayTeamId": 10188,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8695",
-              "name": "Fenerbahçe",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10188",
-              "name": "Beşiktaş",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
@@ -423,6 +393,36 @@
               "name": "Fenerbahçe",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2166.png",
+            "linkToMatch": "/matches/rizespor-vs-fenerbahce/z4go2#5904761",
+            "date": {
+              "utcTime": "2026-10-10T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/2166/overview/rizespor",
+            "tooltipText": {
+              "utcTime": "2026-10-10T16:00:00.000Z",
+              "homeTeam": "Rizespor",
+              "homeTeamId": 2166,
+              "homeScore": "0",
+              "awayTeam": "Fenerbahçe",
+              "awayTeamId": 8695,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "2166",
+              "name": "Rizespor",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8695",
+              "name": "Fenerbahçe",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,12 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} and {1} haven't lost their {2} last games.",
-              "TextTemplateId": "undefeated_both_equal",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "4"
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -457,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Aston Villa and Fenerbahçe haven't lost their 4 last games."
+              "defaultText": "Aston Villa haven't lost in their last 4 matches, and Fenerbahçe in their last 5."
             },
             {
               "OddsType": "bts",
@@ -470,7 +471,7 @@
                 "away_team",
                 "3",
                 "8",
-                "10"
+                "13"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored 8 goals in their last 3 matches, while Fenerbahçe have scored 10."
+              "defaultText": "Aston Villa have scored 8 goals in their last 3 matches, while Fenerbahçe have scored 13."
             },
             {
               "OddsType": "ou",
@@ -517,9 +518,9 @@
                 "1",
                 "1",
                 "away_team",
+                "3",
                 "2",
-                "2",
-                "1"
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -532,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Aston Villa have 3W, 1D, 1L in five matches while Fenerbahçe have 2W, 2D, 1L."
+              "defaultText": "Aston Villa have 3W, 1D, 1L in five matches while Fenerbahçe have 3W, 2D, 0L."
             }
           ]
         },
@@ -547,7 +548,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 10252,
-          "priority": 8,
+          "priority": 1345,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -559,6 +560,23 @@
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8695,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#002D72"
         }
       ],
       "countryCode": "INT-2",
@@ -619,17 +637,17 @@
     },
     "weather": {
       "temperature": 14,
-      "windSpeed": 5,
+      "windSpeed": 4,
       "windDirectionCardinal": "SSW",
       "iconCode": 27,
       "relativeHumidity": 75,
-      "precipChance": 6,
+      "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 60,
+      "cloudCover": 78,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T07:00:29Z",
+      "lastUpdated": "2026-10-10T19:00:21Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
-            "linkToMatch": "/matches/fiorentina-vs-frosinone/2t2xf6#5749653",
-            "date": {
-              "utcTime": "2026-08-29T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8535/overview/fiorentina",
-            "tooltipText": {
-              "utcTime": "2026-08-29T16:30:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "0",
-              "awayTeam": "Frosinone",
-              "awayTeamId": 9891,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943.png",
@@ -270,6 +240,36 @@
               "id": "10171",
               "name": "Como",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
+            "linkToMatch": "/matches/napoli-vs-frosinone/38be9c#5749697",
+            "date": {
+              "utcTime": "2026-10-10T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9875/overview/napoli",
+            "tooltipText": {
+              "utcTime": "2026-10-10T18:45:00.000Z",
+              "homeTeam": "Napoli",
+              "homeTeamId": 9875,
+              "homeScore": "3",
+              "awayTeam": "Frosinone",
+              "awayTeamId": 9891,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "9875",
+              "name": "Napoli",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9891",
+              "name": "Frosinone",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "3",
                 "1",
@@ -462,19 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Frosinone have 3W, 1D, 1L in five matches while Sassuolo have 3W, 1D, 1L."
+              "defaultText": "Frosinone have 2W, 1D, 2L in five matches while Sassuolo have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "5",
                 "away_team",
-                "9"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Frosinone have scored in their last 5 matches and Sassuolo have scored in their last 9 matches."
+              "defaultText": "Sassuolo have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
@@ -497,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "3",
                 "6"
               ],
               "DefaultLabels": [
@@ -509,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Frosinone have scored 6 goals in their last 3 matches, while Sassuolo have scored 6."
+              "defaultText": "Frosinone have scored 3 goals in their last 3 matches, while Sassuolo have scored 6."
             },
             {
               "OddsType": "dc",
@@ -553,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -563,34 +561,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#d5a300"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 9891,
-          "priority": 6,
-          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-          "localizedTextId": "h2h_no_draws_v2",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
             {
-              "value": 9891,
-              "name": "Frosinone",
-              "type": "team"
-            },
-            {
-              "value": 7943,
-              "name": "Sassuolo",
-              "type": "team"
-            },
-            {
-              "value": 5,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Frosinone and Sassuolo have not drawn any of their last 5 matches against each other.",
+          "text": "Have conceded the most penalties this season (2)",
           "color": "#d5a300"
         },
         {
@@ -646,23 +634,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 7943,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have conceded the most penalties this season (1)",
-          "color": "#009A44"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 7943,
           "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
@@ -674,6 +645,33 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#009A44"
+        },
+        {
+          "type": "player",
+          "playerId": 364520,
+          "teamId": 7943,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 364520,
+              "name": "Domenico Berardi",
+              "type": "player"
+            },
+            {
+              "value": 7943,
+              "name": "Sassuolo",
+              "type": "team"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Domenico Berardi has the most shots on target per match for Sassuolo (3)",
           "color": "#009A44"
         }
       ],
@@ -697,16 +695,16 @@
     "weather": {
       "temperature": 16,
       "windSpeed": 1,
-      "windDirectionCardinal": "ESE",
+      "windDirectionCardinal": "E",
       "iconCode": 33,
       "relativeHumidity": 79,
-      "precipChance": 4,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 29,
+      "cloudCover": 25,
       "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T07:00:16Z",
+      "lastUpdated": "2026-10-10T19:00:11Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },

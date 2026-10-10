@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8149.png",
-            "linkToMatch": "/matches/union-berlin-vs-eintracht-frankfurt/2o0tpa#5881151",
-            "date": {
-              "utcTime": "2026-08-29T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8149/overview/union-berlin",
-            "tooltipText": {
-              "utcTime": "2026-08-29T13:30:00.000Z",
-              "homeTeam": "Union Berlin",
-              "homeTeamId": 8149,
-              "homeScore": "3",
-              "awayTeam": "Eintracht Frankfurt",
-              "awayTeamId": 9810,
-              "awayScore": "3"
-            },
-            "score": "3 - 3",
-            "home": {
-              "id": "8149",
-              "name": "Union Berlin",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9810",
-              "name": "Eintracht Frankfurt",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8406.png",
@@ -270,6 +240,36 @@
               "id": "9776",
               "name": "Eintracht Braunschweig",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png",
+            "linkToMatch": "/matches/eintracht-frankfurt-vs-rb-leipzig/855fslx#5881186",
+            "date": {
+              "utcTime": "2026-10-10T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
+            "tooltipText": {
+              "utcTime": "2026-10-10T16:30:00.000Z",
+              "homeTeam": "RB Leipzig",
+              "homeTeamId": 178475,
+              "homeScore": "6",
+              "awayTeam": "Eintracht Frankfurt",
+              "awayTeamId": 9810,
+              "awayScore": "0"
+            },
+            "score": "6 - 0",
+            "home": {
+              "id": "178475",
+              "name": "RB Leipzig",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9810",
+              "name": "Eintracht Frankfurt",
+              "isOurTeam": true
             }
           }
         ],
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "2",
                 "1",
+                "2",
                 "away_team",
                 "1",
                 "2",
@@ -462,19 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Eintracht Frankfurt have 2W, 2D, 1L in five matches while 1. FC Köln have 1W, 2D, 2L."
+              "defaultText": "Eintracht Frankfurt have 2W, 1D, 2L in five matches while 1. FC Köln have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6",
-                "away_team",
-                "12"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,18 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Eintracht Frankfurt have scored in their last 6 matches and 1. FC Köln have scored in their last 12 matches."
+              "defaultText": "Eintracht Frankfurt have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "9",
-                "3"
+                "away_team",
+                "3",
+                "6",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Eintracht Frankfurt have scored 9 goals in their last 3 matches."
+              "defaultText": "Eintracht Frankfurt have scored 6 goals in their last 3 matches, while 1. FC Köln have scored 4."
             },
             {
               "OddsType": "dc",
@@ -550,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -560,7 +560,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#000000"
         },
         {
@@ -609,12 +609,12 @@
               "type": "team"
             },
             {
-              "value": 1.6,
+              "value": 1.7,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Younes Ebnoutalib has the most shots on target per match for Eintracht Frankfurt (1.6)",
+          "text": "Younes Ebnoutalib has the most shots on target per match for Eintracht Frankfurt (1.7)",
           "color": "#000000"
         },
         {
@@ -658,15 +658,15 @@
         },
         {
           "type": "player",
-          "playerId": 1407250,
+          "playerId": 1613676,
           "teamId": 8722,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1407250,
-              "name": "Mikey Moore",
+              "value": 1613676,
+              "name": "Saïd El Mala",
               "type": "player"
             },
             {
@@ -675,12 +675,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 2.6,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Mikey Moore has created the most big chances for 1. FC Köln (2)",
+          "text": "Saïd El Mala has the most shots on target per match for 1. FC Köln (2.6)",
           "color": "#E21718"
         }
       ],
@@ -702,18 +702,18 @@
       }
     },
     "weather": {
-      "temperature": 14,
-      "windSpeed": 2,
-      "windDirectionCardinal": "NW",
+      "temperature": 13,
+      "windSpeed": 3,
+      "windDirectionCardinal": "N",
       "iconCode": 29,
-      "relativeHumidity": 72,
-      "precipChance": 19,
+      "relativeHumidity": 74,
+      "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 59,
+      "cloudCover": 54,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T07:00:11Z",
+      "lastUpdated": "2026-10-10T19:00:10Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

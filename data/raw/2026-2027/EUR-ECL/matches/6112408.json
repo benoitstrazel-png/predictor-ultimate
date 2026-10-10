@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7998.png",
-            "linkToMatch": "/matches/partizan-beograd-vs-fk-crvena-zvezda/2avse2#1000015122",
-            "date": {
-              "utcTime": "2026-09-06T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7998/overview/partizan-beograd",
-            "tooltipText": {
-              "utcTime": "2026-09-06T17:00:00.000Z",
-              "homeTeam": "FK Crvena Zvezda",
-              "homeTeamId": 8687,
-              "homeScore": "2",
-              "awayTeam": "Partizan Beograd",
-              "awayTeamId": 7998,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8687",
-              "name": "FK Crvena Zvezda",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7998",
-              "name": "Partizan Beograd",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/463461.png",
@@ -270,6 +240,36 @@
               "id": "6410",
               "name": "Radnički Niš",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1675.png",
+            "linkToMatch": "/matches/fk-radnicki-1923-vs-fk-crvena-zvezda/vyypq#1000015145",
+            "date": {
+              "utcTime": "2026-10-10T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/1675/overview/fk-radnicki-1923",
+            "tooltipText": {
+              "utcTime": "2026-10-10T17:00:00.000Z",
+              "homeTeam": "FK Radnički 1923",
+              "homeTeamId": 1675,
+              "homeScore": "0",
+              "awayTeam": "FK Crvena Zvezda",
+              "awayTeamId": 8687,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "1675",
+              "name": "FK Radnički 1923",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8687",
+              "name": "FK Crvena Zvezda",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "home_team",
-                "6"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "FK Crvena Zvezda haven't lost in 6 matches."
+              "defaultText": "FK Crvena Zvezda have won their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -483,14 +483,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "6",
-                "4"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,16 +499,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FK Crvena Zvezda have scored 6 goals in their last 3 matches, while FC København have scored 4."
+              "defaultText": "FK Crvena Zvezda have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "9"
               ],
               "DefaultLabels": [
@@ -524,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC København haven't drawn in their last 9 matches."
+              "defaultText": "FK Crvena Zvezda haven't drawn in their last 4 matches and FC København in their last 9."
             }
           ]
         },
@@ -544,12 +544,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 6 matches",
+          "text": "Haven't lost in 7 matches",
           "color": "#D80017"
         }
       ],
@@ -571,20 +571,20 @@
       }
     },
     "weather": {
-      "temperature": 14,
+      "temperature": 13,
       "windSpeed": 3,
-      "windDirectionCardinal": "ENE",
-      "iconCode": 29,
-      "relativeHumidity": 52,
-      "precipChance": 10,
-      "precipitation": 0,
+      "windDirectionCardinal": "N",
+      "iconCode": 11,
+      "relativeHumidity": 57,
+      "precipChance": 46,
+      "precipitation": 0.33,
       "snow": 0,
-      "cloudCover": 59,
-      "description": "Partly Cloudy",
+      "cloudCover": 65,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T05:00:26Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-10T17:00:19Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 6112408,
@@ -602,11 +602,23 @@
         "name": "FC København",
         "unavailable": [
           {
+            "id": 775246,
+            "name": "Mads Madsen",
+            "unavailability": {
+              "injuryId": 92,
+              "lastUpdated": "2026-10-10T20:22:28Z",
+              "type": "injury",
+              "expectedReturn": "Mid October 2026"
+            },
+            "firstName": "Mads",
+            "lastName": "Madsen"
+          },
+          {
             "id": 1244640,
             "name": "Rodrigo Huescas",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-02T11:39:58Z",
+              "lastUpdated": "2026-10-10T20:17:59Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
@@ -618,7 +630,7 @@
             "name": "Magnus Mattsson",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-02T11:39:45Z",
+              "lastUpdated": "2026-10-10T20:22:56Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },

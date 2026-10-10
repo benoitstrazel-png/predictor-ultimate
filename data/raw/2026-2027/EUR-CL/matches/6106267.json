@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
-            "linkToMatch": "/matches/everton-vs-manchester-united/2ynv4k#5795438",
-            "date": {
-              "utcTime": "2026-09-06T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8668/overview/everton",
-            "tooltipText": {
-              "utcTime": "2026-09-06T13:00:00.000Z",
-              "homeTeam": "Everton",
-              "homeTeamId": 8668,
-              "homeScore": "2",
-              "awayTeam": "Manchester United",
-              "awayTeamId": 10260,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/951893.png",
@@ -423,6 +393,36 @@
               "name": "Manchester United",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
+            "linkToMatch": "/matches/tottenham-hotspur-vs-manchester-united/2xqo0r#5795473",
+            "date": {
+              "utcTime": "2026-10-10T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8586/overview/tottenham-hotspur",
+            "tooltipText": {
+              "utcTime": "2026-10-10T16:30:00.000Z",
+              "homeTeam": "Manchester United",
+              "homeTeamId": 10260,
+              "homeScore": "1",
+              "awayTeam": "Tottenham Hotspur",
+              "awayTeamId": 8586,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10260",
+              "name": "Manchester United",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8586",
+              "name": "Tottenham Hotspur",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "0",
-                "2",
-                "away_team",
-                "1",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Atlético Madrid have 3W, 0D, 2L in five matches while Manchester United have 1W, 2D, 2L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Atlético Madrid have won their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -472,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored in their last 5 home matches."
+              "defaultText": "Atlético Madrid have scored in their last 4 home matches."
             },
             {
               "OddsType": "ou",
@@ -493,7 +487,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "9",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -505,17 +499,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored 9 goals in their last 3 matches."
+              "defaultText": "Atlético Madrid have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "6"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Atlético Madrid haven't drawn in their last 6 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Manchester United haven't won a match in 4 attempts."
             }
           ]
         },
@@ -675,54 +669,668 @@
       }
     },
     "weather": {
-      "temperature": 23,
+      "temperature": 24,
       "windSpeed": 1,
       "windDirectionCardinal": "WNW",
       "iconCode": 31,
-      "relativeHumidity": 44,
+      "relativeHumidity": 42,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 19,
+      "cloudCover": 11,
       "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T07:00:28Z",
+      "lastUpdated": "2026-10-10T19:00:21Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 6106267,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 9906,
         "name": "Atlético Madrid",
-        "formation": "",
-        "starters": []
+        "formation": "3-4-2-1",
+        "starters": [
+          {
+            "id": 177126,
+            "age": 33,
+            "name": "Jan Oblak",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "13",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 13156307,
+            "firstName": "Jan",
+            "lastName": "Oblak",
+            "nationalTeamId": 5787,
+            "rankings": null
+          },
+          {
+            "id": 1323897,
+            "age": 23,
+            "name": "Marc Pubill",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "18",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 32674865,
+            "firstName": "Marc",
+            "lastName": "Pubill",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 789066,
+            "age": 28,
+            "name": "Cristian Romero",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "21",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 56787269,
+            "firstName": "Cristian",
+            "lastName": "Romero",
+            "nationalTeamId": 6706,
+            "rankings": null
+          },
+          {
+            "id": 727897,
+            "age": 28,
+            "name": "Dávid Hancko",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "17",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 39892368,
+            "firstName": "Dávid",
+            "lastName": "Hancko",
+            "nationalTeamId": 8497,
+            "rankings": null
+          },
+          {
+            "id": 602563,
+            "age": 31,
+            "name": "Marcos Llorente",
+            "positionId": 62,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "14",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 12713837,
+            "firstName": "Marcos",
+            "lastName": "Llorente",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 1338192,
+            "age": 23,
+            "name": "Pablo Barrios",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 57020541,
+            "firstName": "Pablo",
+            "lastName": "Barrios",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 184533,
+            "age": 34,
+            "name": "Koke",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2769886,
+            "firstName": "",
+            "lastName": "Koke",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 1226147,
+            "age": 23,
+            "name": "Giuliano Simeone",
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "20",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 46816961,
+            "firstName": "Giuliano",
+            "lastName": "Simeone",
+            "nationalTeamId": 6706,
+            "rankings": null
+          },
+          {
+            "id": 940976,
+            "age": 25,
+            "name": "Kang-In Lee",
+            "positionId": 84,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "South Korea",
+            "countryCode": "KOR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 30951441,
+            "firstName": "Kang-In",
+            "lastName": "Lee",
+            "nationalTeamId": 7804,
+            "rankings": null
+          },
+          {
+            "id": 942372,
+            "age": 25,
+            "name": "Álex Baena",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 42607920,
+            "firstName": "Álex",
+            "lastName": "Baena",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 974753,
+            "age": 26,
+            "name": "Julián Álvarez",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 112452793,
+            "firstName": "Julián",
+            "lastName": "Álvarez",
+            "nationalTeamId": 6706,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 2642,
+          "age": 56,
+          "name": "Diego Simeone",
+          "countryName": "Argentina",
+          "countryCode": "ARG",
+          "firstName": "Diego",
+          "lastName": "Simeone",
+          "nationalTeamId": 6706,
+          "primaryTeamId": 9906,
+          "primaryTeamName": "Atlético Madrid",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "averageStarterAge": 27.8,
+        "totalStarterMarketValue": 447844188
       },
       "awayTeam": {
         "id": 10260,
         "name": "Manchester United",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
+          {
+            "id": 1178602,
+            "age": 24,
+            "name": "Senne Lammens",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 25694269,
+            "firstName": "Senne",
+            "lastName": "Lammens",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
           {
             "id": 775539,
             "age": 28,
             "name": "Noussair Mazraoui",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
             "countryName": "Morocco",
             "countryCode": "MAR",
-            "marketValue": 16781589,
-            "unavailability": {
-              "injuryId": 45,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
             },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 16781589,
             "firstName": "Noussair",
             "lastName": "Mazraoui",
-            "nationalTeamId": 6262
+            "nationalTeamId": 6262,
+            "rankings": null
           },
+          {
+            "id": 1358581,
+            "age": 20,
+            "name": "Leny Yoro",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "15",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 64213544,
+            "firstName": "Leny",
+            "lastName": "Yoro",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 847983,
+            "age": 28,
+            "name": "Lisandro Martínez",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 29269722,
+            "firstName": "Lisandro",
+            "lastName": "Martínez",
+            "nationalTeamId": 6706,
+            "rankings": null
+          },
+          {
+            "id": 751550,
+            "age": 27,
+            "name": "Diogo Dalot",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "2",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 33062873,
+            "firstName": "Diogo",
+            "lastName": "Dalot",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 465960,
+            "age": 29,
+            "name": "Youri Tielemans",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "18",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 47631944,
+            "firstName": "Youri",
+            "lastName": "Tielemans",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1292810,
+            "age": 21,
+            "name": "Kobbie Mainoo",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "37",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 79664956,
+            "firstName": "Kobbie",
+            "lastName": "Mainoo",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 923312,
+            "age": 27,
+            "name": "Bryan Mbeumo",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Cameroon",
+            "countryCode": "CMR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 74714544,
+            "firstName": "Bryan",
+            "lastName": "Mbeumo",
+            "nationalTeamId": 6629,
+            "rankings": null
+          },
+          {
+            "id": 422685,
+            "age": 32,
+            "name": "Bruno Fernandes",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 27178733,
+            "firstName": "Bruno",
+            "lastName": "Fernandes",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 863098,
+            "age": 27,
+            "name": "Matheus Cunha",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 76014204,
+            "firstName": "Matheus",
+            "lastName": "Cunha",
+            "nationalTeamId": 8256,
+            "rankings": null
+          },
+          {
+            "id": 696365,
+            "age": 28,
+            "name": "Marcus Rashford",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 41522585,
+            "firstName": "Marcus",
+            "lastName": "Rashford",
+            "nationalTeamId": 8491,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 34944,
+          "age": 45,
+          "name": "Michael Carrick",
+          "countryName": "England",
+          "countryCode": "ENG",
+          "firstName": "Michael",
+          "lastName": "Carrick",
+          "nationalTeamId": 8491,
+          "primaryTeamId": 10260,
+          "primaryTeamName": "Manchester United",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 163604,
             "age": 36,
@@ -740,22 +1348,6 @@
             "nationalTeamId": 5790
           },
           {
-            "id": 1292810,
-            "age": 21,
-            "name": "Kobbie Mainoo",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 79664956,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Kobbie",
-            "lastName": "Mainoo",
-            "nationalTeamId": 8491
-          },
-          {
             "id": 1526560,
             "age": 21,
             "name": "Patrick Dorgu",
@@ -770,22 +1362,6 @@
             "firstName": "Patrick",
             "lastName": "Dorgu",
             "nationalTeamId": 8238
-          },
-          {
-            "id": 696365,
-            "age": 28,
-            "name": "Marcus Rashford",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 41522585,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Marcus",
-            "lastName": "Rashford",
-            "nationalTeamId": 8491
           },
           {
             "id": 1073977,
@@ -867,7 +1443,9 @@
             "lastName": "de Ligt",
             "nationalTeamId": 6708
           }
-        ]
+        ],
+        "averageStarterAge": 27,
+        "totalStarterMarketValue": 515748963
       }
     },
     "hasPlayoff": false,

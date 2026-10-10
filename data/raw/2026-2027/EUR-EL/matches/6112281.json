@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/355346.png",
-            "linkToMatch": "/matches/ferencvaros-vs-puskas-fc-academy/ud0w986#5865456",
-            "date": {
-              "utcTime": "2026-08-30T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/355346/overview/puskas-fc-academy",
-            "tooltipText": {
-              "utcTime": "2026-08-30T17:00:00.000Z",
-              "homeTeam": "Puskás FC Academy",
-              "homeTeamId": 355346,
-              "homeScore": "1",
-              "awayTeam": "Ferencváros",
-              "awayTeamId": 8222,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "355346",
-              "name": "Puskás FC Academy",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8222",
-              "name": "Ferencváros",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/5755.png",
             "linkToMatch": "/matches/gyori-eto-vs-ferencvaros/1m5wrn#5865439",
             "date": {
@@ -269,6 +239,36 @@
               "id": "8222",
               "name": "Ferencváros",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8369.png",
+            "linkToMatch": "/matches/ferencvaros-vs-debrecen/29y9c9#5865474",
+            "date": {
+              "utcTime": "2026-10-10T15:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8369/overview/debrecen",
+            "tooltipText": {
+              "utcTime": "2026-10-10T15:00:00.000Z",
+              "homeTeam": "Ferencváros",
+              "homeTeamId": 8222,
+              "homeScore": "1",
+              "awayTeam": "Debrecen",
+              "awayTeamId": 8369,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8222",
+              "name": "Ferencváros",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8369",
+              "name": "Debrecen",
+              "isOurTeam": false
             }
           }
         ],
@@ -442,7 +442,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Ferencváros haven't lost in 9 matches."
+              "defaultText": "Ferencváros haven't lost in 10 matches."
             },
             {
               "OddsType": "bts",
@@ -465,7 +465,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,20 +476,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ferencváros have scored in their last 4 home matches."
+              "defaultText": "Ferencváros have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "6",
-                "2"
+                "1.67",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ferencváros have scored 6 goals in their last 3 matches, while Torreense have scored 2."
+              "defaultText": "Ferencváros have an average of 1.67 goals in their last three matches and Torreense have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -510,8 +509,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
                 "2",
+                "3",
                 "0",
                 "away_team",
                 "2",
@@ -529,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Ferencváros have 3W, 2D, 0L in five matches while Torreense have 2W, 1D, 2L."
+              "defaultText": "Ferencváros have 2W, 3D, 0L in five matches while Torreense have 2W, 1D, 2L."
             }
           ]
         },
@@ -549,12 +548,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 9 matches",
+          "text": "Haven't lost in 10 matches",
           "color": "#008040"
         }
       ],
@@ -579,17 +578,17 @@
       "temperature": 13,
       "windSpeed": 3,
       "windDirectionCardinal": "NW",
-      "iconCode": 29,
+      "iconCode": 27,
       "relativeHumidity": 55,
-      "precipChance": 14,
+      "precipChance": 9,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 56,
-      "description": "Partly Cloudy",
+      "cloudCover": 65,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T05:00:24Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-10T17:00:17Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 6112281,

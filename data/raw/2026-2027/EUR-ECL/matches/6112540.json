@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7730.png",
-            "linkToMatch": "/matches/lausanne-vs-thun/2nm62b#5804253",
-            "date": {
-              "utcTime": "2026-09-02T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/7730/overview/lausanne",
-            "tooltipText": {
-              "utcTime": "2026-09-02T18:30:00.000Z",
-              "homeTeam": "Thun",
-              "homeTeamId": 10191,
-              "homeScore": "0",
-              "awayTeam": "Lausanne",
-              "awayTeamId": 7730,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "10191",
-              "name": "Thun",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7730",
-              "name": "Lausanne",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10179.png",
@@ -263,6 +233,36 @@
             "home": {
               "id": "9824",
               "name": "FC Vaduz",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10191",
+              "name": "Thun",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10243.png",
+            "linkToMatch": "/matches/thun-vs-fc-zurich/3gb6z2#5804275",
+            "date": {
+              "utcTime": "2026-10-10T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10243/overview/fc-zurich",
+            "tooltipText": {
+              "utcTime": "2026-10-10T16:00:00.000Z",
+              "homeTeam": "FC Zürich",
+              "homeTeamId": 10243,
+              "homeScore": "4",
+              "awayTeam": "Thun",
+              "awayTeamId": 10191,
+              "awayScore": "2"
+            },
+            "score": "4 - 2",
+            "home": {
+              "id": "10243",
+              "name": "FC Zürich",
               "isOurTeam": false
             },
             "away": {
@@ -443,8 +443,8 @@
               "StatValues": [
                 "home_team",
                 "1",
-                "1",
-                "3",
+                "0",
+                "4",
                 "away_team",
                 "4",
                 "0",
@@ -461,19 +461,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Thun have 1W, 1D, 3L in five matches while Hajduk Split have 4W, 0D, 1L."
+              "defaultText": "Thun have 1W, 0D, 4L in five matches while Hajduk Split have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "6",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -484,19 +485,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Thun have an average of 1.33 goals in their last three matches and Hajduk Split have an average of 1."
+              "defaultText": "Thun have scored 6 goals in their last 3 matches, while Hajduk Split have scored 3."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "6",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Thun have an average of 1.33 goals in their last three matches and Hajduk Split have an average of 1."
+              "defaultText": "Thun have scored 6 goals in their last 3 matches, while Hajduk Split have scored 3."
             },
             {
               "OddsType": "dc",
@@ -518,7 +520,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "4",
+                "5",
                 "8"
               ],
               "DefaultLabels": [
@@ -532,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Thun haven't drawn in their last 4 matches and Hajduk Split in their last 8."
+              "defaultText": "Thun haven't drawn in their last 5 matches and Hajduk Split in their last 8."
             }
           ]
         },
@@ -542,6 +544,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10191,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#E30513"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -560,18 +581,18 @@
       }
     },
     "weather": {
-      "temperature": 9,
+      "temperature": 10,
       "windSpeed": 1,
-      "windDirectionCardinal": "S",
+      "windDirectionCardinal": "NNE",
       "iconCode": 11,
       "relativeHumidity": 86,
-      "precipChance": 31,
+      "precipChance": 41,
       "precipitation": 0.1,
       "snow": 0,
-      "cloudCover": 65,
-      "description": "Few Showers",
+      "cloudCover": 58,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T07:00:31Z",
+      "lastUpdated": "2026-10-10T19:00:23Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
