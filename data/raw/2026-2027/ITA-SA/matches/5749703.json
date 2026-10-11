@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
-            "linkToMatch": "/matches/napoli-vs-como/3bmv18#5749658",
-            "date": {
-              "utcTime": "2026-08-30T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9875/overview/napoli",
-            "tooltipText": {
-              "utcTime": "2026-08-30T16:30:00.000Z",
-              "homeTeam": "Napoli",
-              "homeTeamId": 9875,
-              "homeScore": "1",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
             "linkToMatch": "/matches/como-vs-genoa/3fy2aj#5749665",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Como",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
+            "linkToMatch": "/matches/roma-vs-como/2xv43v#5749692",
+            "date": {
+              "utcTime": "2026-10-11T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8686/overview/roma",
+            "tooltipText": {
+              "utcTime": "2026-10-11T10:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "0",
+              "awayTeam": "Roma",
+              "awayTeamId": 8686,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "1",
                 "2",
                 "away_team",
-                "4",
-                "0",
+                "3",
+                "1",
                 "1"
               ],
               "DefaultLabels": [
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Fiorentina have 2W, 1D, 2L in five matches while Como have 4W, 0D, 1L."
+              "defaultText": "Fiorentina have 2W, 1D, 2L in five matches while Como have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "6"
+                "1.67",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,15 +506,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have scored 5 goals in their last 3 matches, while Como have scored 6."
+              "defaultText": "Fiorentina have an average of 1.67 goals in their last three matches and Como have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+              "TextTemplateId": "h2h_no_draws_v2",
               "StatValues": [
+                "home_team",
                 "away_team",
                 "5"
               ],
@@ -530,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Como haven't drawn in their last 5 matches."
+              "defaultText": "Fiorentina and Como have not drawn any of their last 5 matches against each other."
             }
           ]
         },
@@ -626,7 +626,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 12,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -636,41 +636,51 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 12 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#005ea9"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10171,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#005ea9"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 747926,
           "teamId": 10171,
-          "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 747926,
+              "name": "Moise Kean",
+              "type": "player"
+            },
+            {
+              "value": 10171,
+              "name": "Como",
+              "type": "team"
+            },
+            {
+              "value": 2.8,
               "name": null,
-              "type": "ordinal"
+              "type": "double"
             }
           ],
-          "text": "Ranked 3 away from home this season",
+          "text": "Moise Kean has the most shots on target per match for Como (2.8)",
           "color": "#005ea9"
         }
       ],
@@ -694,70 +704,85 @@
     "weather": {
       "temperature": 22,
       "windSpeed": 3,
-      "windDirectionCardinal": "NE",
+      "windDirectionCardinal": "ENE",
       "iconCode": 30,
-      "relativeHumidity": 53,
-      "precipChance": 24,
+      "relativeHumidity": 48,
+      "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 42,
+      "cloudCover": 54,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T01:00:09Z",
+      "lastUpdated": "2026-10-11T13:00:09Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749703,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8535,
         "name": "Fiorentina",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1428426,
+            "age": 23,
             "name": "Arthur Atta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 25949449,
             "unavailability": {
               "injuryId": 114,
-              "lastUpdated": "2026-10-09T17:03:31Z",
               "type": "injury",
               "expectedReturn": "A few days"
             },
             "firstName": "Arthur",
-            "lastName": "Atta"
+            "lastName": "Atta",
+            "nationalTeamId": 6723
           },
           {
             "id": 1093285,
+            "age": 25,
             "name": "Fabiano Parisi",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 6964775,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:38:03Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Fabiano",
-            "lastName": "Parisi"
+            "lastName": "Parisi",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 10171,
         "name": "Como",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 747926,
+            "age": 26,
             "name": "Moise Kean",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 36095131,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-10T20:36:33Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Moise",
-            "lastName": "Kean"
+            "lastName": "Kean",
+            "nationalTeamId": 8204
           }
         ]
       }

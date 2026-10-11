@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
-            "linkToMatch": "/matches/roma-vs-lecce/2upm4p#5749656",
-            "date": {
-              "utcTime": "2026-08-31T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9888/overview/lecce",
-            "tooltipText": {
-              "utcTime": "2026-08-31T16:30:00.000Z",
-              "homeTeam": "Lecce",
-              "homeTeamId": 9888,
-              "homeScore": "0",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "4"
-            },
-            "score": "0 - 4",
-            "home": {
-              "id": "9888",
-              "name": "Lecce",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
             "linkToMatch": "/matches/atalanta-vs-roma/2g6hwd#5749660",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Inter",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
+            "linkToMatch": "/matches/roma-vs-como/2xv43v#5749692",
+            "date": {
+              "utcTime": "2026-10-11T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10171/overview/como",
+            "tooltipText": {
+              "utcTime": "2026-10-11T10:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "0",
+              "awayTeam": "Roma",
+              "awayTeamId": 8686,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -465,10 +465,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "3",
+                "5",
                 "4"
               ],
               "DefaultLabels": [
@@ -480,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 4 away matches."
+              "defaultText": "Napoli have scored 5 goals in their last 3 matches, while Roma have scored 4."
             },
             {
               "OddsType": "ou",
@@ -493,7 +496,7 @@
                 "away_team",
                 "3",
                 "5",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Napoli have scored 5 goals in their last 3 matches, while Roma have scored 5."
+              "defaultText": "Napoli have scored 5 goals in their last 3 matches, while Roma have scored 4."
             },
             {
               "OddsType": "dc",
@@ -636,7 +639,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -646,34 +649,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#96092B"
         },
         {
-          "type": "player",
-          "playerId": 325916,
+          "type": "team",
+          "playerId": null,
           "teamId": 8686,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
           "statValues": [
             {
-              "value": 325916,
-              "name": "Paulo Dybala",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 8,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Paulo Dybala is ranked 1 in big chances created in the competition (8)",
+          "text": "Have kept the most clean sheets in the competition (4)",
           "color": "#96092B"
         },
         {
@@ -717,18 +710,18 @@
       }
     },
     "weather": {
-      "temperature": 18,
+      "temperature": 19,
       "windSpeed": 4,
-      "windDirectionCardinal": "SSE",
+      "windDirectionCardinal": "S",
       "iconCode": 11,
-      "relativeHumidity": 60,
-      "precipChance": 48,
-      "precipitation": 0.3,
+      "relativeHumidity": 58,
+      "precipChance": 39,
+      "precipitation": 0.31,
       "snow": 0,
-      "cloudCover": 55,
+      "cloudCover": 50,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T04:00:12Z",
+      "lastUpdated": "2026-10-11T16:00:08Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },

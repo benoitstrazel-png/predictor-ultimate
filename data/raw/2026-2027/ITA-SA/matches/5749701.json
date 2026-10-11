@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -122,36 +123,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
-            "linkToMatch": "/matches/roma-vs-lecce/2upm4p#5749656",
-            "date": {
-              "utcTime": "2026-08-31T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9888/overview/lecce",
-            "tooltipText": {
-              "utcTime": "2026-08-31T16:30:00.000Z",
-              "homeTeam": "Lecce",
-              "homeTeamId": 9888,
-              "homeScore": "0",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "4"
-            },
-            "score": "0 - 4",
-            "home": {
-              "id": "9888",
-              "name": "Lecce",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -270,6 +241,36 @@
               "id": "8636",
               "name": "Inter",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
+            "linkToMatch": "/matches/roma-vs-como/2xv43v#5749692",
+            "date": {
+              "utcTime": "2026-10-11T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10171/overview/como",
+            "tooltipText": {
+              "utcTime": "2026-10-11T10:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "0",
+              "awayTeam": "Roma",
+              "awayTeamId": 8686,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,7 +444,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,19 +457,17 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Roma haven't lost in 7 matches."
+              "defaultText": "Roma haven't lost in 8 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "7",
-                "away_team",
-                "5"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 7 matches and Genoa have scored in their last 5 matches."
+              "defaultText": "Roma have scored in their last 3 home matches."
             },
             {
               "OddsType": "ou",
@@ -491,7 +490,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -503,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored 5 goals in their last 3 matches, while Genoa have scored 4."
+              "defaultText": "Roma have scored 4 goals in their last 3 matches, while Genoa have scored 4."
             },
             {
               "OddsType": "dc",
@@ -513,8 +512,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
                 "2",
+                "3",
                 "0",
                 "away_team",
                 "2",
@@ -532,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Roma have 3W, 2D, 0L in five matches while Genoa have 2W, 1D, 2L."
+              "defaultText": "Roma have 2W, 3D, 0L in five matches while Genoa have 2W, 1D, 2L."
             }
           ]
         },
@@ -552,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -562,34 +561,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#96092B"
         },
         {
-          "type": "player",
-          "playerId": 325916,
+          "type": "team",
+          "playerId": null,
           "teamId": 8686,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
           "statValues": [
             {
-              "value": 325916,
-              "name": "Paulo Dybala",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 8,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Paulo Dybala is ranked 1 in big chances created in the competition (8)",
+          "text": "Have kept the most clean sheets in the competition (4)",
           "color": "#96092B"
         },
         {
@@ -735,6 +724,22 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 660301,
+            "age": 27,
+            "name": "Donyell Malen",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 38404030,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-17T20:45:00Z"
+            },
+            "firstName": "Donyell",
+            "lastName": "Malen",
+            "nationalTeamId": 6708
+          },
           {
             "id": 1337884,
             "age": 22,

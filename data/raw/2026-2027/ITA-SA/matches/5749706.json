@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -122,36 +123,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9804.png",
-            "linkToMatch": "/matches/monza-vs-torino/276icu#6003654",
-            "date": {
-              "utcTime": "2026-09-01T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9804/overview/torino",
-            "tooltipText": {
-              "utcTime": "2026-09-01T19:00:00.000Z",
-              "homeTeam": "Torino",
-              "homeTeamId": 9804,
-              "homeScore": "0",
-              "awayTeam": "Monza",
-              "awayTeamId": 6504,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9804",
-              "name": "Torino",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "6504",
-              "name": "Monza",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -264,6 +235,36 @@
             "home": {
               "id": "8521",
               "name": "Brest",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8543.png",
+            "linkToMatch": "/matches/monza-vs-lazio/1veqsb#5749695",
+            "date": {
+              "utcTime": "2026-10-11T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8543/overview/lazio",
+            "tooltipText": {
+              "utcTime": "2026-10-11T13:00:00.000Z",
+              "homeTeam": "Lazio",
+              "homeTeamId": 8543,
+              "homeScore": "3",
+              "awayTeam": "Monza",
+              "awayTeamId": 6504,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8543",
+              "name": "Lazio",
               "isOurTeam": false
             },
             "away": {
@@ -443,9 +444,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "2",
                 "1",
+                "2",
+                "2",
                 "away_team",
                 "3",
                 "0",
@@ -462,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Monza have 2W, 2D, 1L in five matches while Cagliari have 3W, 0D, 2L."
+              "defaultText": "Monza have 1W, 2D, 2L in five matches while Cagliari have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -472,7 +473,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "10",
+                "11",
                 "away_team",
                 "4"
               ],
@@ -485,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored in their last 10 matches and Cagliari have scored in their last 4 matches."
+              "defaultText": "Monza have scored in their last 11 matches and Cagliari have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -497,7 +498,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "5",
                 "4"
               ],
               "DefaultLabels": [
@@ -509,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored 6 goals in their last 3 matches, while Cagliari have scored 4."
+              "defaultText": "Monza have scored 5 goals in their last 3 matches, while Cagliari have scored 4."
             },
             {
               "OddsType": "dc",
@@ -566,43 +567,33 @@
           "color": "#e10032"
         },
         {
-          "type": "player",
-          "playerId": 824655,
+          "type": "team",
+          "playerId": null,
           "teamId": 6504,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 824655,
-              "name": "Ricardo Mangas",
-              "type": "player"
-            },
-            {
-              "value": 6504,
-              "name": "Monza",
-              "type": "team"
-            },
-            {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Ricardo Mangas has created the most big chances for Monza (3)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#e10032"
         },
         {
           "type": "player",
-          "playerId": 1453338,
+          "playerId": 737339,
           "teamId": 6504,
           "priority": 1,
           "defaultText": "{0} has the most shots on target per match for {1} ({2})",
           "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1453338,
-              "name": "Jay Robinson",
+              "value": 737339,
+              "name": "Dany Mota",
               "type": "player"
             },
             {
@@ -611,12 +602,12 @@
               "type": "team"
             },
             {
-              "value": 1.5,
+              "value": 3.1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Jay Robinson has the most shots on target per match for Monza (1.5)",
+          "text": "Dany Mota has the most shots on target per match for Monza (3.1)",
           "color": "#e10032"
         },
         {
@@ -662,17 +653,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 8529,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
+          "priority": 8,
+          "defaultText": "Ranked {0} away from home this season",
+          "localizedTextId": "insights_best_away",
           "statValues": [
             {
-              "value": 3,
+              "value": 2,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
             }
           ],
-          "text": "Have kept the most clean sheets in the competition (3)",
+          "text": "Ranked 2 away from home this season",
           "color": "#B51F2B"
         }
       ],
@@ -694,20 +685,20 @@
       }
     },
     "weather": {
-      "temperature": 16,
-      "windSpeed": 2,
+      "temperature": 17,
+      "windSpeed": 3,
       "windDirectionCardinal": "SE",
-      "iconCode": 11,
-      "relativeHumidity": 64,
-      "precipChance": 41,
-      "precipitation": 0.5,
+      "iconCode": 30,
+      "relativeHumidity": 61,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 53,
-      "description": "Showers",
+      "cloudCover": 47,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T05:00:14Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-11T17:00:12Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749706,
@@ -719,6 +710,16 @@
         "id": 6504,
         "name": "Monza",
         "unavailable": [
+          {
+            "id": 1524139,
+            "name": "Lorenzo Lucchesi",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Lorenzo",
+            "lastName": "Lucchesi"
+          },
           {
             "id": 1511063,
             "name": "Jan Ziólkowski",

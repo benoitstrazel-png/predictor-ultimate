@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8696.png",
-            "linkToMatch": "/matches/racing-santander-vs-elche/2z2hfu#5868037",
-            "date": {
-              "utcTime": "2026-08-28T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8696/overview/racing-santander",
-            "tooltipText": {
-              "utcTime": "2026-08-28T17:00:00.000Z",
-              "homeTeam": "Racing Santander",
-              "homeTeamId": 8696,
-              "homeScore": "3",
-              "awayTeam": "Elche",
-              "awayTeamId": 10268,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "8696",
-              "name": "Racing Santander",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10268",
-              "name": "Elche",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
             "linkToMatch": "/matches/real-sociedad-vs-elche/2xjeda#5868044",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Elche",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
+            "linkToMatch": "/matches/celta-vigo-vs-elche/3d7rk1#5868083",
+            "date": {
+              "utcTime": "2026-10-11T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9910/overview/celta-vigo",
+            "tooltipText": {
+              "utcTime": "2026-10-11T12:00:00.000Z",
+              "homeTeam": "Elche",
+              "homeTeamId": 10268,
+              "homeScore": "0",
+              "awayTeam": "Celta Vigo",
+              "awayTeamId": 9910,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10268",
+              "name": "Elche",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9910",
+              "name": "Celta Vigo",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -448,8 +448,8 @@
                 "3",
                 "away_team",
                 "1",
-                "1",
-                "3"
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal have 2W, 0D, 3L in five matches while Elche have 1W, 1D, 3L."
+              "defaultText": "Villarreal have 2W, 0D, 3L in five matches while Elche have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -496,7 +496,7 @@
                 "away_team",
                 "3",
                 "6",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 6 goals in their last 3 matches, while Elche have scored 6."
+              "defaultText": "Villarreal have scored 6 goals in their last 3 matches, while Elche have scored 5."
             },
             {
               "OddsType": "dc",
@@ -568,6 +568,23 @@
           "playerId": null,
           "teamId": 10205,
           "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 10 matches",
+          "color": "#e19d00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
+          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -593,30 +610,13 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 10205,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 10,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 10 matches",
-          "color": "#e19d00"
-        },
-        {
-          "type": "team",
-          "playerId": null,
           "teamId": 10268,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -626,24 +626,34 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#00662D"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 801213,
           "teamId": 10268,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 801213,
+              "name": "Tete Morente",
+              "type": "player"
+            },
+            {
+              "value": 10268,
+              "name": "Elche",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Tete Morente has created the most big chances for Elche (2)",
           "color": "#00662D"
         },
         {
@@ -665,12 +675,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.8,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Lucas Cepeda has the most shots on target per match for Elche (2)",
+          "text": "Lucas Cepeda has the most shots on target per match for Elche (1.8)",
           "color": "#00662D"
         }
       ],
@@ -692,18 +702,18 @@
       }
     },
     "weather": {
-      "temperature": 24,
+      "temperature": 25,
       "windSpeed": 3,
       "windDirectionCardinal": "SE",
       "iconCode": 30,
-      "relativeHumidity": 58,
-      "precipChance": 24,
+      "relativeHumidity": 59,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 51,
+      "cloudCover": 37,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T03:00:10Z",
+      "lastUpdated": "2026-10-11T15:00:15Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -758,6 +768,21 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 1583872,
+            "age": 19,
+            "name": "Buba Sangaré",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Buba",
+            "lastName": "Sangaré",
+            "nationalTeamId": 6720
+          },
           {
             "id": 1137497,
             "age": 23,

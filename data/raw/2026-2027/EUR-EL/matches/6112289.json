@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9997.png",
-            "linkToMatch": "/matches/union-stgilloise-vs-sttruiden/2o6zo1#5811745",
-            "date": {
-              "utcTime": "2026-09-02T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9997/overview/sttruiden",
-            "tooltipText": {
-              "utcTime": "2026-09-02T18:30:00.000Z",
-              "homeTeam": "St.Truiden",
-              "homeTeamId": 9997,
-              "homeScore": "0",
-              "awayTeam": "Union St.Gilloise",
-              "awayTeamId": 7978,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "9997",
-              "name": "St.Truiden",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7978",
-              "name": "Union St.Gilloise",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9986.png",
             "linkToMatch": "/matches/union-stgilloise-vs-sporting-charleroi/2o2r4w#5811747",
             "date": {
@@ -269,6 +239,36 @@
               "id": "7978",
               "name": "Union St.Gilloise",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1773.png",
+            "linkToMatch": "/matches/oh-leuven-vs-union-stgilloise/sb8se#5811778",
+            "date": {
+              "utcTime": "2026-10-11T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/1773/overview/oh-leuven",
+            "tooltipText": {
+              "utcTime": "2026-10-11T14:00:00.000Z",
+              "homeTeam": "Union St.Gilloise",
+              "homeTeamId": 7978,
+              "homeScore": "1",
+              "awayTeam": "OH Leuven",
+              "awayTeamId": 1773,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "7978",
+              "name": "Union St.Gilloise",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "1773",
+              "name": "OH Leuven",
+              "isOurTeam": false
             }
           }
         ],
@@ -438,11 +438,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
                 "home_team",
-                "6"
+                "away_team",
+                "8",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,38 +457,16 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Union St.Gilloise have won their last 6 matches."
+              "defaultText": "Union St.Gilloise haven't lost in their last 8 matches, and Hapoel Beer Sheva in their last 4."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
-              "StatValues": [
-                "away_team",
-                "4"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Hapoel Beer Sheva have scored in their last 4 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -498,17 +478,47 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Union St.Gilloise have scored 10 goals in their last 3 matches."
+              "defaultText": "Union St.Gilloise have scored in their last 3 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "6",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Union St.Gilloise have scored 6 goals in their last 3 matches, while Hapoel Beer Sheva have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "4",
+                "1",
+                "0",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Union St.Gilloise haven't drawn in their last 6 matches."
+              "defaultText": "Union St.Gilloise have 4W, 1D, 0L in five matches while Hapoel Beer Sheva have 3W, 1D, 1L."
             }
           ]
         },
@@ -536,34 +546,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 7978,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 7 matches",
-          "color": "#daa000"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 7978,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 6 matches",
+          "text": "Haven't lost in 8 matches",
           "color": "#daa000"
         }
       ],

@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
-            "linkToMatch": "/matches/napoli-vs-como/3bmv18#5749658",
-            "date": {
-              "utcTime": "2026-08-30T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9875/overview/napoli",
-            "tooltipText": {
-              "utcTime": "2026-08-30T16:30:00.000Z",
-              "homeTeam": "Napoli",
-              "homeTeamId": 9875,
-              "homeScore": "1",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
             "linkToMatch": "/matches/como-vs-genoa/3fy2aj#5749665",
             "date": {
@@ -269,6 +239,36 @@
               "id": "10171",
               "name": "Como",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
+            "linkToMatch": "/matches/roma-vs-como/2xv43v#5749692",
+            "date": {
+              "utcTime": "2026-10-11T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8686/overview/roma",
+            "tooltipText": {
+              "utcTime": "2026-10-11T10:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "0",
+              "awayTeam": "Roma",
+              "awayTeamId": 8686,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": false
             }
           }
         ],
@@ -442,8 +442,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4",
-                "0",
+                "3",
+                "1",
                 "1",
                 "away_team",
                 "1",
@@ -461,17 +461,19 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Como have 4W, 0D, 1L in five matches while Manchester United have 1W, 2D, 2L."
+              "defaultText": "Como have 3W, 1D, 1L in five matches while Manchester United have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "away_team",
+                "0.67",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,20 +484,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Como have scored in their last 4 home matches."
+              "defaultText": "Como have an average of 0.67 goals in their last three matches and Manchester United have an average of 1.33."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "6",
-                "4"
+                "0.67",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Como have scored 6 goals in their last 3 matches, while Manchester United have scored 4."
+              "defaultText": "Como have an average of 0.67 goals in their last three matches and Manchester United have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -544,17 +545,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 10171,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#005ea9"
         }
       ],
@@ -578,18 +579,18 @@
     "weather": {
       "temperature": 14,
       "windSpeed": 2,
-      "windDirectionCardinal": "SW",
-      "iconCode": 11,
-      "relativeHumidity": 68,
-      "precipChance": 37,
-      "precipitation": 0.2,
+      "windDirectionCardinal": "SSW",
+      "iconCode": 29,
+      "relativeHumidity": 67,
+      "precipChance": 20,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 52,
-      "description": "Showers",
+      "cloudCover": 54,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T05:00:24Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-11T17:00:21Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106410,

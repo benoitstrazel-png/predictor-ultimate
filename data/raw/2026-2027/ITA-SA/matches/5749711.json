@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8543.png",
-            "linkToMatch": "/matches/lazio-vs-bologna/2ssnzl#5749642",
-            "date": {
-              "utcTime": "2026-08-24T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8543/overview/lazio",
-            "tooltipText": {
-              "utcTime": "2026-08-24T16:30:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "0",
-              "awayTeam": "Lazio",
-              "awayTeamId": 8543,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8543",
-              "name": "Lazio",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
             "linkToMatch": "/matches/atalanta-vs-bologna/2sl6d8#5749651",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Torino",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
+            "linkToMatch": "/matches/bologna-vs-lecce/382i4x#5749696",
+            "date": {
+              "utcTime": "2026-10-11T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9888/overview/lecce",
+            "tooltipText": {
+              "utcTime": "2026-10-11T13:00:00.000Z",
+              "homeTeam": "Lecce",
+              "homeTeamId": 9888,
+              "homeScore": "1",
+              "awayTeam": "Bologna",
+              "awayTeamId": 9857,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -465,11 +465,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} haven't scored away for {1} matches.",
-              "TextTemplateId": "goalless_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,18 +481,20 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Bologna haven't scored away for 4 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Cagliari have an average of 1.33 goals in their last three matches and Bologna have an average of 1."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored away for {1} matches.",
-              "TextTemplateId": "goalless_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,18 +504,18 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Bologna haven't scored away for 4 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Cagliari have an average of 1.33 goals in their last three matches and Bologna have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
-                "6"
+                "home_team",
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,8 +527,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Bologna haven't won a match in 6 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Cagliari haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -575,20 +579,30 @@
           "color": "#B51F2B"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1705649,
           "teamId": 8529,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 1705649,
+              "name": "Alessandro Romano",
+              "type": "player"
+            },
+            {
+              "value": 8529,
+              "name": "Cagliari",
+              "type": "team"
+            },
+            {
+              "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Have kept the most clean sheets in the competition (3)",
+          "text": "Alessandro Romano has the most shots on target per match for Cagliari (1)",
           "color": "#B51F2B"
         },
         {
@@ -600,7 +614,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -610,7 +624,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#102880"
         },
         {
@@ -622,29 +636,39 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#102880"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 414245,
           "teamId": 9857,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 414245,
+              "name": "Federico Bernardeschi",
+              "type": "player"
+            },
+            {
+              "value": 9857,
+              "name": "Bologna",
+              "type": "team"
+            },
+            {
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 6 attempts",
+          "text": "Federico Bernardeschi has created the most big chances for Bologna (3)",
           "color": "#102880"
         }
       ],
@@ -666,18 +690,18 @@
       }
     },
     "weather": {
-      "temperature": 23,
-      "windSpeed": 5,
-      "windDirectionCardinal": "S",
+      "temperature": 22,
+      "windSpeed": 6,
+      "windDirectionCardinal": "SW",
       "iconCode": 11,
-      "relativeHumidity": 58,
-      "precipChance": 30,
+      "relativeHumidity": 60,
+      "precipChance": 33,
       "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 57,
+      "cloudCover": 51,
       "description": "Few Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T01:00:09Z",
+      "lastUpdated": "2026-10-11T13:00:09Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -733,6 +757,30 @@
         "id": 9857,
         "name": "Bologna",
         "unavailable": [
+          {
+            "id": 661761,
+            "name": "Riccardo Orsolini",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-10-11T19:06:58Z",
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Riccardo",
+            "lastName": "Orsolini"
+          },
+          {
+            "id": 1173250,
+            "name": "Arthur Theate",
+            "unavailability": {
+              "injuryId": 130,
+              "lastUpdated": "2026-10-11T16:48:13Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Arthur",
+            "lastName": "Theate"
+          },
           {
             "id": 1402900,
             "name": "Samuel Mbangula",

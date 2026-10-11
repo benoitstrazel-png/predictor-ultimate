@@ -71,8 +71,8 @@
   },
   "nav": [
     "matchfacts",
-    "table",
-    "injured"
+    "lineup",
+    "table"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
-            "linkToMatch": "/matches/napoli-vs-como/3bmv18#5749658",
-            "date": {
-              "utcTime": "2026-08-30T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9875/overview/napoli",
-            "tooltipText": {
-              "utcTime": "2026-08-30T16:30:00.000Z",
-              "homeTeam": "Napoli",
-              "homeTeamId": 9875,
-              "homeScore": "1",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
             "linkToMatch": "/matches/como-vs-genoa/3fy2aj#5749665",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Como",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
+            "linkToMatch": "/matches/roma-vs-como/2xv43v#5749692",
+            "date": {
+              "utcTime": "2026-10-11T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8686/overview/roma",
+            "tooltipText": {
+              "utcTime": "2026-10-11T10:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "0",
+              "awayTeam": "Roma",
+              "awayTeamId": 8686,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -446,8 +446,8 @@
                 "0",
                 "1",
                 "away_team",
-                "4",
-                "0",
+                "3",
+                "1",
                 "1"
               ],
               "DefaultLabels": [
@@ -461,7 +461,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Feyenoord have 4W, 0D, 1L in five matches while Como have 4W, 0D, 1L."
+              "defaultText": "Feyenoord have 4W, 0D, 1L in five matches while Como have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -510,12 +510,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "5",
                 "5"
               ],
               "DefaultLabels": [
@@ -529,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Feyenoord haven't drawn in their last 5 matches and Como in their last 5."
+              "defaultText": "Feyenoord haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -544,17 +542,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 10171,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#005ea9"
         }
       ],
@@ -667,30 +665,346 @@
     },
     "weather": {
       "temperature": 15,
-      "windSpeed": 2,
+      "windSpeed": 3,
       "windDirectionCardinal": "SSW",
-      "iconCode": 27,
-      "relativeHumidity": 79,
+      "iconCode": 29,
+      "relativeHumidity": 78,
       "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 65,
-      "description": "Mostly Cloudy",
+      "cloudCover": 42,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T05:00:24Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-11T17:00:21Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106309,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 10235,
         "name": "Feyenoord",
-        "formation": "",
-        "starters": [],
+        "formation": "4-2-3-1",
+        "starters": [
+          {
+            "id": 1336731,
+            "age": 23,
+            "name": "Tjark Ernst",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 5838992,
+            "firstName": "Tjark",
+            "lastName": "Ernst",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1351133,
+            "age": 20,
+            "name": "Givairo Read",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "26",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 26816516,
+            "firstName": "Givairo",
+            "lastName": "Read",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 611831,
+            "age": 29,
+            "name": "Jeremiah St. Juste",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1576440,
+            "firstName": "Jeremiah",
+            "lastName": "St. Juste",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 630494,
+            "age": 29,
+            "name": "Mats Deijl",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1475246,
+            "firstName": "Mats",
+            "lastName": "Deijl",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 1225450,
+            "age": 25,
+            "name": "Mika Mármol",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "35",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 11587096,
+            "firstName": "Mika",
+            "lastName": "Mármol",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 1523822,
+            "age": 22,
+            "name": "Gjivai Zechiël",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 10000000,
+            "firstName": "Gjivai",
+            "lastName": "Zechiël",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 952057,
+            "age": 28,
+            "name": "Charles Vanhoutte",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "34",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 6713561,
+            "firstName": "Charles",
+            "lastName": "Vanhoutte",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1576876,
+            "age": 24,
+            "name": "Anis Hadj Moussa",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "23",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 28200000,
+            "firstName": "Anis Hadj",
+            "lastName": "Moussa",
+            "nationalTeamId": 6317,
+            "rankings": null
+          },
+          {
+            "id": 1256180,
+            "age": 23,
+            "name": "Luciano Valente",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 20949157,
+            "firstName": "Luciano",
+            "lastName": "Valente",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 1159181,
+            "age": 24,
+            "name": "Javi López",
+            "positionId": 87,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "16",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 5801269,
+            "firstName": "Javi",
+            "lastName": "López",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 1382019,
+            "age": 22,
+            "name": "Nacho Ferri",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 9478705,
+            "firstName": "Nacho",
+            "lastName": "Ferri",
+            "nationalTeamId": 6720,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 30654,
+          "age": 51,
+          "name": "Giovanni van Bronckhorst",
+          "countryName": "Netherlands",
+          "countryCode": "NED",
+          "firstName": "Giovanni",
+          "lastName": "van Bronckhorst",
+          "nationalTeamId": 6708,
+          "primaryTeamId": 10235,
+          "primaryTeamName": "Feyenoord",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
           {
             "id": 1023887,
@@ -788,13 +1102,327 @@
             "lastName": "Beelen",
             "nationalTeamId": 6708
           }
-        ]
+        ],
+        "averageStarterAge": 24.8,
+        "totalStarterMarketValue": 128436982
       },
       "awayTeam": {
         "id": 10171,
         "name": "Como",
-        "formation": "",
-        "starters": [],
+        "formation": "4-2-3-1",
+        "starters": [
+          {
+            "id": 560939,
+            "age": 31,
+            "name": "Jean Butez",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 8605667,
+            "firstName": "Jean",
+            "lastName": "Butez",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1109171,
+            "age": 24,
+            "name": "Yan Couto",
+            "positionId": 32,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 18640589,
+            "firstName": "Yan",
+            "lastName": "Couto",
+            "nationalTeamId": 8256,
+            "rankings": null
+          },
+          {
+            "id": 1413963,
+            "age": 21,
+            "name": "Jacobo Ramón",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 23685230,
+            "firstName": "Jacobo",
+            "lastName": "Ramón",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 793907,
+            "age": 27,
+            "name": "Trevoh Chalobah",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "99",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 47162878,
+            "firstName": "Trevoh",
+            "lastName": "Chalobah",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1384881,
+            "age": 22,
+            "name": "Álex Valle",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 17740551,
+            "firstName": "Álex",
+            "lastName": "Valle",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 638090,
+            "age": 32,
+            "name": "Luis Milla",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 2599930,
+            "firstName": "Luis",
+            "lastName": "Milla",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 1076647,
+            "age": 25,
+            "name": "Lucas Da Cunha",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 22534524,
+            "firstName": "Lucas",
+            "lastName": "Da Cunha",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1434889,
+            "age": 21,
+            "name": "Assane Diao",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 30417776,
+            "firstName": "Assane",
+            "lastName": "Diao",
+            "nationalTeamId": 6395,
+            "rankings": null
+          },
+          {
+            "id": 1347574,
+            "age": 22,
+            "name": "Nico Paz",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 75705921,
+            "firstName": "Nico",
+            "lastName": "Paz",
+            "nationalTeamId": 6706,
+            "rankings": null
+          },
+          {
+            "id": 1215064,
+            "age": 23,
+            "name": "Martin Baturina",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "20",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 35176821,
+            "firstName": "Martin",
+            "lastName": "Baturina",
+            "nationalTeamId": 10155,
+            "rankings": null
+          },
+          {
+            "id": 873270,
+            "age": 27,
+            "name": "Anastasios Douvikas",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 20614968,
+            "firstName": "Anastasios",
+            "lastName": "Douvikas",
+            "nationalTeamId": 6383,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 30613,
+          "age": 39,
+          "name": "Cesc Fàbregas",
+          "countryName": "Spain",
+          "countryCode": "ESP",
+          "firstName": "Cesc",
+          "lastName": "Fàbregas",
+          "nationalTeamId": 6720,
+          "primaryTeamId": 10171,
+          "primaryTeamName": "Como",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
           {
             "id": 747926,
@@ -812,7 +1440,9 @@
             "lastName": "Kean",
             "nationalTeamId": 8204
           }
-        ]
+        ],
+        "averageStarterAge": 25.3,
+        "totalStarterMarketValue": 302884855
       }
     },
     "hasPlayoff": false,

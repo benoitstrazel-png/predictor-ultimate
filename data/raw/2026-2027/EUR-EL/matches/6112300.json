@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9800.png",
-            "linkToMatch": "/matches/st-mirren-vs-celtic/37u1ls#5793933",
-            "date": {
-              "utcTime": "2026-09-05T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9800/overview/st-mirren",
-            "tooltipText": {
-              "utcTime": "2026-09-05T19:00:00.000Z",
-              "homeTeam": "St. Mirren",
-              "homeTeamId": 9800,
-              "homeScore": "1",
-              "awayTeam": "Celtic",
-              "awayTeamId": 9925,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9800",
-              "name": "St. Mirren",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9925",
-              "name": "Celtic",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8467.png",
             "linkToMatch": "/matches/st-johnstone-vs-celtic/2spihd#5793915",
             "date": {
@@ -270,39 +240,39 @@
               "name": "Rangers",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
-            "linkToMatch": "/matches/real-sociedad-vs-celta-vigo/2tkbrv#5868070",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9927.png",
+            "linkToMatch": "/matches/celtic-vs-motherwell/39bwt1#5793944",
             "date": {
-              "utcTime": "2026-09-03T19:00:00.000Z"
+              "utcTime": "2026-10-11T11:00:00.000Z"
             },
-            "teamPageUrl": "/teams/8560/overview/real-sociedad",
+            "teamPageUrl": "/teams/9927/overview/motherwell",
             "tooltipText": {
-              "utcTime": "2026-09-03T19:00:00.000Z",
-              "homeTeam": "Real Sociedad",
-              "homeTeamId": 8560,
+              "utcTime": "2026-10-11T11:00:00.000Z",
+              "homeTeam": "Motherwell",
+              "homeTeamId": 9927,
               "homeScore": "0",
-              "awayTeam": "Celta Vigo",
-              "awayTeamId": 9910,
-              "awayScore": "0"
+              "awayTeam": "Celtic",
+              "awayTeamId": 9925,
+              "awayScore": "2"
             },
-            "score": "0 - 0",
+            "score": "0 - 2",
             "home": {
-              "id": "8560",
-              "name": "Real Sociedad",
+              "id": "9927",
+              "name": "Motherwell",
               "isOurTeam": false
             },
             "away": {
-              "id": "9910",
-              "name": "Celta Vigo",
+              "id": "9925",
+              "name": "Celtic",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 0,
             "resultString": "D",
@@ -422,6 +392,36 @@
               "name": "Racing Santander",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10268.png",
+            "linkToMatch": "/matches/celta-vigo-vs-elche/3d7rk1#5868083",
+            "date": {
+              "utcTime": "2026-10-11T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10268/overview/elche",
+            "tooltipText": {
+              "utcTime": "2026-10-11T12:00:00.000Z",
+              "homeTeam": "Elche",
+              "homeTeamId": 10268,
+              "homeScore": "0",
+              "awayTeam": "Celta Vigo",
+              "awayTeamId": 9910,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10268",
+              "name": "Elche",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9910",
+              "name": "Celta Vigo",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -467,13 +467,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "2"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -484,19 +485,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Celtic have an average of 0.33 goals in their last three matches and Celta Vigo have an average of 2."
+              "defaultText": "Celtic have scored 3 goals in their last 3 matches, while Celta Vigo have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "2"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Celtic have an average of 0.33 goals in their last three matches and Celta Vigo have an average of 2."
+              "defaultText": "Celtic have scored 3 goals in their last 3 matches, while Celta Vigo have scored 5."
             },
             {
               "OddsType": "dc",
@@ -540,25 +542,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9925,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have lost their last 3 matches",
-          "color": "#007838"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },
