@@ -484,13 +484,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.33"
+                "3",
+                "2",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Málaga have an average of 0.67 goals in their last three matches and Real Sociedad have an average of 1.33."
+              "defaultText": "Málaga have scored 2 goals in their last 3 matches, while Real Sociedad have scored 6."
             },
             {
               "OddsType": "dc",
@@ -703,101 +704,150 @@
     },
     "lineup": {
       "matchId": 5868096,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9864,
         "name": "Málaga",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 801120,
+            "age": 27,
             "name": "Jens-Lys Cajuste",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 6079318,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-09T17:06:07Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jens-Lys",
-            "lastName": "Cajuste"
+            "lastName": "Cajuste",
+            "nationalTeamId": 8520
           },
           {
             "id": 1098594,
+            "age": 26,
             "name": "Julen Lobete",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 713104,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-23T13:11:20Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Julen",
-            "lastName": "Lobete"
+            "lastName": "Lobete",
+            "nationalTeamId": 6720
           },
           {
             "id": 1669621,
+            "age": 19,
             "name": "Aarón Ochoa",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "marketValue": 1361791,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-09-08T13:48:41Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Aarón",
-            "lastName": "Ochoa"
+            "lastName": "Ochoa",
+            "nationalTeamId": 5791
           },
           {
             "id": 1408529,
+            "age": 25,
             "name": "Diego Murillo",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1398466,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-07-01T18:22:52Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Diego",
-            "lastName": "Murillo"
+            "lastName": "Murillo",
+            "nationalTeamId": 6720
           }
         ]
       },
       "awayTeam": {
         "id": 8560,
         "name": "Real Sociedad",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1293912,
+            "age": 23,
             "name": "Pablo Marín",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 9290438,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-18T18:30:00Z"
             },
             "firstName": "Pablo",
-            "lastName": "Marín"
+            "lastName": "Marín",
+            "nationalTeamId": 6720
+          },
+          {
+            "id": 1697334,
+            "age": 22,
+            "name": "Luken Beitia",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1510851,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Luken",
+            "lastName": "Beitia",
+            "nationalTeamId": 6720
           },
           {
             "id": 1249284,
+            "age": 24,
             "name": "Jon Aramburu",
+            "countryName": "Venezuela",
+            "countryCode": "VEN",
+            "marketValue": 18650169,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-07T22:31:47Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jon",
-            "lastName": "Aramburu"
+            "lastName": "Aramburu",
+            "nationalTeamId": 5800
           },
           {
             "id": 636570,
+            "age": 30,
             "name": "Álvaro Odriozola",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 750043,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-15T14:48:04Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Álvaro",
-            "lastName": "Odriozola"
+            "lastName": "Odriozola",
+            "nationalTeamId": 6720
           }
         ]
       }

@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png",
-            "linkToMatch": "/matches/liverpool-vs-ipswich-town/2ugv0q#5795441",
-            "date": {
-              "utcTime": "2026-09-04T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9902/overview/ipswich-town",
-            "tooltipText": {
-              "utcTime": "2026-09-04T19:00:00.000Z",
-              "homeTeam": "Ipswich Town",
-              "homeTeamId": 9902,
-              "homeScore": "0",
-              "awayTeam": "Liverpool",
-              "awayTeamId": 8650,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "9902",
-              "name": "Ipswich Town",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
             "linkToMatch": "/matches/liverpool-vs-atletico-madrid/2uigag#6106246",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Liverpool",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
+            "linkToMatch": "/matches/manchester-city-vs-liverpool/2f48yd#5795472",
+            "date": {
+              "utcTime": "2026-10-11T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8456/overview/manchester-city",
+            "tooltipText": {
+              "utcTime": "2026-10-11T15:30:00.000Z",
+              "homeTeam": "Liverpool",
+              "homeTeamId": 8650,
+              "homeScore": "0",
+              "awayTeam": "Manchester City",
+              "awayTeamId": 8456,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8456",
+              "name": "Manchester City",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
                 "away_team",
-                "9"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,18 +461,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Liverpool haven't lost in 9 matches."
+              "Icon": "poll_teams",
+              "defaultText": "LASK have 1W, 1D, 3L in five matches while Liverpool have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "LASK have scored in their last 4 home matches."
+              "defaultText": "Liverpool have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
@@ -507,17 +513,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
-                "2",
-                "away_team",
-                "4",
-                "1",
-                "0"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "LASK have 2W, 1D, 2L in five matches while Liverpool have 4W, 1D, 0L."
+              "Icon": "poll_stat_down",
+              "defaultText": "LASK haven't won a match in 4 attempts."
             }
           ]
         },
@@ -562,17 +562,27 @@
           "type": "team",
           "playerId": null,
           "teamId": 8650,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 1345,
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 9,
+              "value": 8650,
+              "name": "Liverpool",
+              "type": "team"
+            },
+            {
+              "value": 9977,
+              "name": "LASK",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 9 matches",
+          "text": "Liverpool have won the previous 2 matches against LASK.",
           "color": "#911712"
         }
       ],

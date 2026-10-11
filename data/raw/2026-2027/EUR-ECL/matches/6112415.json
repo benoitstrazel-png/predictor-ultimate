@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8619.png",
-            "linkToMatch": "/matches/paok-thessaloniki-vs-panathinaikos/2xfrox#5943244",
-            "date": {
-              "utcTime": "2026-09-06T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8619/overview/paok-thessaloniki",
-            "tooltipText": {
-              "utcTime": "2026-09-06T18:30:00.000Z",
-              "homeTeam": "Panathinaikos",
-              "homeTeamId": 10200,
-              "homeScore": "3",
-              "awayTeam": "PAOK Thessaloniki",
-              "awayTeamId": 8619,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "10200",
-              "name": "Panathinaikos",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8619",
-              "name": "PAOK Thessaloniki",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/488099.png",
             "linkToMatch": "/matches/panathinaikos-vs-kifisia-fc/1l18pgfh#5943229",
             "date": {
@@ -264,6 +234,36 @@
             "home": {
               "id": "1585",
               "name": "Kalamata",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10200",
+              "name": "Panathinaikos",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8638.png",
+            "linkToMatch": "/matches/olympiacos-vs-panathinaikos/2xnfqz#5943265",
+            "date": {
+              "utcTime": "2026-10-11T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8638/overview/olympiacos",
+            "tooltipText": {
+              "utcTime": "2026-10-11T18:00:00.000Z",
+              "homeTeam": "Olympiacos",
+              "homeTeamId": 8638,
+              "homeScore": "1",
+              "awayTeam": "Panathinaikos",
+              "awayTeamId": 10200,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8638",
+              "name": "Olympiacos",
               "isOurTeam": false
             },
             "away": {
@@ -439,12 +439,10 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {2} matches and {1} their last {3} matches.",
-              "TextTemplateId": "good_form_both",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "8",
                 "4"
               ],
               "DefaultLabels": [
@@ -458,19 +456,17 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Panathinaikos have won their last 8 matches and Borac Banja Luka their last 4 matches."
+              "defaultText": "Borac Banja Luka have won their last 4 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "12",
-                "away_team",
-                "4"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Panathinaikos have scored in their last 12 matches and Borac Banja Luka have scored in their last 4 matches."
+              "defaultText": "Panathinaikos have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
@@ -493,7 +489,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "3",
                 "7"
               ],
               "DefaultLabels": [
@@ -505,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Panathinaikos have scored 6 goals in their last 3 matches, while Borac Banja Luka have scored 7."
+              "defaultText": "Panathinaikos have scored 3 goals in their last 3 matches, while Borac Banja Luka have scored 7."
             },
             {
               "OddsType": "dc",
@@ -516,7 +512,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "8",
+                "9",
                 "6"
               ],
               "DefaultLabels": [
@@ -530,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Panathinaikos haven't drawn in their last 8 matches and Borac Banja Luka in their last 6."
+              "defaultText": "Panathinaikos haven't drawn in their last 9 matches and Borac Banja Luka in their last 6."
             }
           ]
         },
@@ -540,42 +536,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10200,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 13,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 13 matches",
-          "color": "#206830"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10200,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 8 matches",
-          "color": "#206830"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },

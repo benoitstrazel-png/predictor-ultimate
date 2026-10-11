@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8071.png",
-            "linkToMatch": "/matches/agf-vs-fc-midtjylland/25zalp#5739497",
-            "date": {
-              "utcTime": "2026-09-02T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8071/overview/agf",
-            "tooltipText": {
-              "utcTime": "2026-09-02T18:00:00.000Z",
-              "homeTeam": "AGF",
-              "homeTeamId": 8071,
-              "homeScore": "0",
-              "awayTeam": "FC Midtjylland",
-              "awayTeamId": 8113,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "8071",
-              "name": "AGF",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8113",
-              "name": "FC Midtjylland",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10202.png",
@@ -270,39 +240,39 @@
               "name": "FC Midtjylland",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9988.png",
-            "linkToMatch": "/matches/royal-antwerp-vs-sttruiden/3awp0m#5811742",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8391.png",
+            "linkToMatch": "/matches/fc-midtjylland-vs-fc-kobenhavn/293ehv#5739519",
             "date": {
-              "utcTime": "2026-08-30T14:00:00.000Z"
+              "utcTime": "2026-10-11T16:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9988/overview/royal-antwerp",
+            "teamPageUrl": "/teams/8391/overview/fc-kobenhavn",
             "tooltipText": {
-              "utcTime": "2026-08-30T14:00:00.000Z",
-              "homeTeam": "Royal Antwerp",
-              "homeTeamId": 9988,
-              "homeScore": "1",
-              "awayTeam": "St.Truiden",
-              "awayTeamId": 9997,
-              "awayScore": "4"
+              "utcTime": "2026-10-11T16:00:00.000Z",
+              "homeTeam": "FC Midtjylland",
+              "homeTeamId": 8113,
+              "homeScore": "2",
+              "awayTeam": "FC København",
+              "awayTeamId": 8391,
+              "awayScore": "1"
             },
-            "score": "1 - 4",
+            "score": "2 - 1",
             "home": {
-              "id": "9988",
-              "name": "Royal Antwerp",
-              "isOurTeam": false
+              "id": "8113",
+              "name": "FC Midtjylland",
+              "isOurTeam": true
             },
             "away": {
-              "id": "9997",
-              "name": "St.Truiden",
-              "isOurTeam": true
+              "id": "8391",
+              "name": "FC København",
+              "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -422,6 +392,36 @@
               "name": "Westerlo",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8203.png",
+            "linkToMatch": "/matches/kv-mechelen-vs-sttruiden/2qm7y1#5811776",
+            "date": {
+              "utcTime": "2026-10-11T17:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/8203/overview/kv-mechelen",
+            "tooltipText": {
+              "utcTime": "2026-10-11T17:15:00.000Z",
+              "homeTeam": "KV Mechelen",
+              "homeTeamId": 8203,
+              "homeScore": "4",
+              "awayTeam": "St.Truiden",
+              "awayTeamId": 9997,
+              "awayScore": "3"
+            },
+            "score": "4 - 3",
+            "home": {
+              "id": "8203",
+              "name": "KV Mechelen",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9997",
+              "name": "St.Truiden",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -465,7 +465,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,17 +476,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Midtjylland have scored in their last 5 home matches."
+              "defaultText": "FC Midtjylland have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "12",
+                "away_team",
+                "3",
+                "7",
                 "3"
               ],
               "DefaultLabels": [
@@ -498,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Midtjylland have scored 12 goals in their last 3 matches."
+              "defaultText": "FC Midtjylland have scored 7 goals in their last 3 matches, while St.Truiden have scored 3."
             },
             {
               "OddsType": "dc",
@@ -508,7 +510,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "St.Truiden haven't drawn in their last 7 matches."
+              "defaultText": "St.Truiden haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -541,29 +543,29 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 14,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 13 matches",
+          "text": "Haven't lost in 14 matches",
           "color": "#000000"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 9997,
-          "priority": 1346,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
+          "priority": 1344,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Have lost their last 3 matches",
           "color": "#204888"
         }
       ],
@@ -585,20 +587,20 @@
       }
     },
     "weather": {
-      "temperature": 9,
+      "temperature": 8,
       "windSpeed": 4,
-      "windDirectionCardinal": "SSW",
-      "iconCode": 27,
-      "relativeHumidity": 88,
-      "precipChance": 24,
+      "windDirectionCardinal": "W",
+      "iconCode": 29,
+      "relativeHumidity": 89,
+      "precipChance": 11,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 63,
-      "description": "Mostly Cloudy",
+      "cloudCover": 35,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T07:00:25Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-11T19:00:28Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112406,
@@ -705,7 +707,7 @@
             "name": "Frédéric Soèllé Soèllé",
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-09T18:25:19Z",
+              "lastUpdated": "2026-10-11T18:42:16Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },

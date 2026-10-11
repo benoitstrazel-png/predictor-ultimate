@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8619.png",
-            "linkToMatch": "/matches/paok-thessaloniki-vs-panathinaikos/2xfrox#5943244",
-            "date": {
-              "utcTime": "2026-09-06T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8619/overview/paok-thessaloniki",
-            "tooltipText": {
-              "utcTime": "2026-09-06T18:30:00.000Z",
-              "homeTeam": "Panathinaikos",
-              "homeTeamId": 10200,
-              "homeScore": "3",
-              "awayTeam": "PAOK Thessaloniki",
-              "awayTeamId": 8619,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "10200",
-              "name": "Panathinaikos",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8619",
-              "name": "PAOK Thessaloniki",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/488099.png",
             "linkToMatch": "/matches/panathinaikos-vs-kifisia-fc/1l18pgfh#5943229",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Panathinaikos",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8638.png",
+            "linkToMatch": "/matches/olympiacos-vs-panathinaikos/2xnfqz#5943265",
+            "date": {
+              "utcTime": "2026-10-11T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8638/overview/olympiacos",
+            "tooltipText": {
+              "utcTime": "2026-10-11T18:00:00.000Z",
+              "homeTeam": "Olympiacos",
+              "homeTeamId": 8638,
+              "homeScore": "1",
+              "awayTeam": "Panathinaikos",
+              "awayTeamId": 10200,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8638",
+              "name": "Olympiacos",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10200",
+              "name": "Panathinaikos",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "0",
+                "2",
                 "away_team",
-                "8"
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Panathinaikos have won their last 8 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Kairat Almaty have 3W, 0D, 2L in five matches while Panathinaikos have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -482,14 +488,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.67",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Kairat Almaty have scored 2 goals in their last 3 matches, while Panathinaikos have scored 6."
+              "defaultText": "Kairat Almaty have an average of 0.67 goals in their last three matches and Panathinaikos have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -512,7 +517,7 @@
                 "home_team",
                 "away_team",
                 "12",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Kairat Almaty haven't drawn in their last 12 matches and Panathinaikos in their last 8."
+              "defaultText": "Kairat Almaty haven't drawn in their last 12 matches and Panathinaikos in their last 9."
             }
           ]
         },
@@ -535,42 +540,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10200,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 13,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 13 matches",
-          "color": "#206830"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10200,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 8 matches",
-          "color": "#206830"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -624,7 +593,7 @@
             "name": "Levi García",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-06T08:51:28Z",
+              "lastUpdated": "2026-10-11T19:18:35Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },

@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6379.png",
-            "linkToMatch": "/matches/paris-fc-vs-troyes/2a8w7q#5802909",
-            "date": {
-              "utcTime": "2026-08-22T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/6379/overview/paris-fc",
-            "tooltipText": {
-              "utcTime": "2026-08-22T18:45:00.000Z",
-              "homeTeam": "Troyes",
-              "homeTeamId": 10242,
-              "homeScore": "0",
-              "awayTeam": "Paris FC",
-              "awayTeamId": 6379,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "10242",
-              "name": "Troyes",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6379",
-              "name": "Paris FC",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8689.png",
@@ -271,6 +241,36 @@
               "id": "10242",
               "name": "Troyes",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8592.png",
+            "linkToMatch": "/matches/marseille-vs-troyes/2xltkr#5802954",
+            "date": {
+              "utcTime": "2026-10-11T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8592/overview/marseille",
+            "tooltipText": {
+              "utcTime": "2026-10-11T18:45:00.000Z",
+              "homeTeam": "Troyes",
+              "homeTeamId": 10242,
+              "homeScore": "0",
+              "awayTeam": "Marseille",
+              "awayTeamId": 8592,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "10242",
+              "name": "Troyes",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8592",
+              "name": "Marseille",
+              "isOurTeam": false
             }
           }
         ],
@@ -440,17 +440,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "1",
-                "3",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,8 +456,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Troyes have 1W, 1D, 3L in five matches while Lens have 2W, 1D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Troyes have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -490,13 +484,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "0.67",
-                "1.67"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,15 +498,15 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Troyes have an average of 0.67 goals in their last three matches and Lens have an average of 1.67."
+              "Icon": "poll_glove",
+              "defaultText": "Troyes haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
                 "4"
@@ -529,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Troyes haven't drawn in their last 4 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Troyes haven't won a match in 4 attempts."
             }
           ]
         },
@@ -572,29 +564,29 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#2A50A1"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10242,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 3 matches",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#2A50A1"
         },
         {
@@ -637,40 +629,30 @@
           "color": "#d89f00"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 254308,
           "teamId": 8588,
           "priority": 9,
-          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-          "localizedTextId": "h2h_undefeated",
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 8588,
-              "name": "Lens",
-              "type": "team"
+              "value": 254308,
+              "name": "Florian Thauvin",
+              "type": "player"
             },
             {
-              "value": 10242,
-              "name": "Troyes",
-              "type": "team"
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
             },
             {
               "value": 6,
               "name": null,
               "type": "integer"
-            },
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
             }
           ],
-          "text": "Lens haven't lost to Troyes in their last 6 meetings (5W, 1D).",
+          "text": "Florian Thauvin is ranked 1 in big chances created in the competition (6)",
           "color": "#d89f00"
         }
       ],
@@ -695,17 +677,17 @@
       "temperature": 12,
       "windSpeed": 4,
       "windDirectionCardinal": "NNE",
-      "iconCode": 29,
-      "relativeHumidity": 70,
-      "precipChance": 7,
+      "iconCode": 31,
+      "relativeHumidity": 66,
+      "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 35,
-      "description": "Partly Cloudy",
+      "cloudCover": 19,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-11T07:00:15Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-11T19:00:18Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5802963,
