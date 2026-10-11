@@ -440,11 +440,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have won their last {2} matches and {1} their last {3} matches.",
+              "TextTemplateId": "good_form_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "away_team",
+                "7",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -457,7 +459,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Manchester City have won their last 7 matches."
+              "defaultText": "Manchester City have won their last 7 matches and Paris Saint-Germain their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -469,7 +471,7 @@
                 "home_team",
                 "7",
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester City have scored in their last 7 matches and Paris Saint-Germain have scored in their last 6 matches."
+              "defaultText": "Manchester City have scored in their last 7 matches and Paris Saint-Germain have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
@@ -514,7 +516,7 @@
                 "home_team",
                 "away_team",
                 "12",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Manchester City haven't drawn in their last 12 matches and Paris Saint-Germain in their last 4."
+              "defaultText": "Manchester City haven't drawn in their last 12 matches and Paris Saint-Germain in their last 5."
             }
           ]
         },
@@ -600,6 +602,57 @@
           "color": "#69A8D8"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 737066,
+          "position": 3,
+          "matchesWithRating": 1,
+          "lastName": "Haaland",
+          "fullName": "Erling Haaland",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 4,
+            "motm": 1,
+            "gamesPlayed": 1,
+            "minsPlayed": 90,
+            "minsPlayedGoal": 45,
+            "expectedGoals": 1.329300045967102,
+            "playerRating": 8.93
+          }
+        },
+        "awayPlayer": {
+          "playerId": 881771,
+          "position": 3,
+          "matchesWithRating": 1,
+          "lastName": "Torres",
+          "fullName": "Ferrán Torres",
+          "stats": {
+            "goals": 3,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 3,
+            "motm": 0,
+            "gamesPlayed": 1,
+            "minsPlayed": 73,
+            "minsPlayedGoal": 24,
+            "expectedGoals": 0.5299000144004822,
+            "playerRating": 9.62
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -700,22 +753,6 @@
             "nationalTeamId": 8491
           },
           {
-            "id": 933576,
-            "age": 26,
-            "name": "Antoine Semenyo",
-            "countryName": "Ghana",
-            "countryCode": "GHA",
-            "marketValue": 84339140,
-            "unavailability": {
-              "injuryId": 30,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Antoine",
-            "lastName": "Semenyo",
-            "nationalTeamId": 6714
-          },
-          {
             "id": 1300526,
             "age": 21,
             "name": "Nico O'Reilly",
@@ -740,22 +777,6 @@
         "starters": [],
         "unavailable": [
           {
-            "id": 881771,
-            "age": 26,
-            "name": "Ferrán Torres",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 54899241,
-            "unavailability": {
-              "injuryId": 121,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ferrán",
-            "lastName": "Torres",
-            "nationalTeamId": 6720
-          },
-          {
             "id": 1574189,
             "age": 20,
             "name": "Senny Mayulu",
@@ -769,22 +790,6 @@
             },
             "firstName": "Senny",
             "lastName": "Mayulu",
-            "nationalTeamId": 6723
-          },
-          {
-            "id": 1367615,
-            "age": 20,
-            "name": "Warren Zaïre-Emery",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 83881938,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Early October 2026"
-            },
-            "firstName": "Warren",
-            "lastName": "Zaïre-Emery",
             "nationalTeamId": 6723
           }
         ]

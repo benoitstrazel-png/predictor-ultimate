@@ -468,13 +468,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5",
-                "away_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored in their last 5 matches and Elche have scored in their last 5 matches."
+              "defaultText": "Villarreal have scored in their last 4 home matches."
             },
             {
               "OddsType": "ou",
@@ -497,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
+                "6",
                 "6"
               ],
               "DefaultLabels": [
@@ -509,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Elche have scored 6."
+              "defaultText": "Villarreal have scored 6 goals in their last 3 matches, while Elche have scored 6."
             },
             {
               "OddsType": "dc",
@@ -519,7 +517,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -532,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal haven't drawn in their last 6 matches."
+              "defaultText": "Villarreal haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -570,23 +568,6 @@
           "playerId": null,
           "teamId": 10205,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 10,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 10 matches",
-          "color": "#e19d00"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10205,
-          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -607,6 +588,23 @@
             }
           ],
           "text": "Villarreal have won the previous 2 matches against Elche.",
+          "color": "#e19d00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 10 matches",
           "color": "#e19d00"
         },
         {
@@ -650,15 +648,15 @@
         },
         {
           "type": "player",
-          "playerId": 1280756,
+          "playerId": 801213,
           "teamId": 10268,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1280756,
-              "name": "Lucas Cepeda",
+              "value": 801213,
+              "name": "Tete Morente",
               "type": "player"
             },
             {
@@ -669,10 +667,10 @@
             {
               "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Lucas Cepeda has the most shots on target per match for Elche (2)",
+          "text": "Tete Morente has created the most big chances for Elche (2)",
           "color": "#00662D"
         }
       ],

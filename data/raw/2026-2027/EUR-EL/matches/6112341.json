@@ -71,8 +71,7 @@
   },
   "nav": [
     "matchfacts",
-    "table",
-    "injured"
+    "table"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -84,9 +83,7 @@
       "events": {
         "ongoing": true,
         "events": [],
-        "eventTypes": [
-          "Injuries"
-        ],
+        "eventTypes": [],
         "penaltyShootoutEvents": null
       },
       "infoBox": {
@@ -438,17 +435,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "0",
-                "4",
-                "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -460,8 +451,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Jagiellonia Białystok have 1W, 0D, 4L in five matches while Ararat Armenia have 3W, 1D, 1L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Jagiellonia Białystok have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -471,7 +462,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,19 +473,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have scored in their last 3 home matches."
+              "defaultText": "Jagiellonia Białystok have scored in their last 4 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,17 +497,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have an average of 0.67 goals in their last three matches and Ararat Armenia have an average of 1.67."
+              "defaultText": "Jagiellonia Białystok have scored 3 goals in their last 3 matches, while Ararat Armenia have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "8"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,8 +519,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Jagiellonia Białystok haven't drawn in their last 8 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Jagiellonia Białystok haven't won a match in 4 attempts."
             }
           ]
         },
@@ -646,58 +638,7 @@
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
-    "lineup": {
-      "matchId": 6112341,
-      "lineupType": "unavailable",
-      "source": "enetpulse",
-      "availableFilters": [],
-      "homeTeam": {
-        "id": 1957,
-        "name": "Jagiellonia Białystok",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
-          {
-            "id": 560564,
-            "age": 34,
-            "name": "Taras Romanczuk",
-            "countryName": "Poland",
-            "countryCode": "POL",
-            "marketValue": 335893,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Taras",
-            "lastName": "Romanczuk",
-            "nationalTeamId": 8568
-          },
-          {
-            "id": 1673762,
-            "age": 26,
-            "name": "Ousmane Sow",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 984177,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ousmane",
-            "lastName": "Sow",
-            "nationalTeamId": 6723
-          }
-        ]
-      },
-      "awayTeam": {
-        "id": 866109,
-        "name": "Ararat Armenia",
-        "formation": "",
-        "starters": []
-      }
-    },
+    "lineup": null,
     "hasPlayoff": false,
     "table": {
       "leagueId": "943229",

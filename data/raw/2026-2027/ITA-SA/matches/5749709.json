@@ -483,13 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "0.67"
+                "3",
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 1.33 goals in their last three matches and Napoli have an average of 0.67."
+              "defaultText": "Venezia have scored 4 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "dc",
@@ -561,23 +562,6 @@
           "playerId": null,
           "teamId": 7881,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 6 attempts",
-          "color": "#101010"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 7881,
-          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -588,6 +572,23 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 9 matches",
+          "color": "#101010"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 7881,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 6 attempts",
           "color": "#101010"
         },
         {
@@ -658,12 +659,12 @@
               "type": "team"
             },
             {
-              "value": 1.5,
+              "value": 1.1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Noa Lang has the most shots on target per match for Napoli (1.5)",
+          "text": "Noa Lang has the most shots on target per match for Napoli (1.1)",
           "color": "#12A0D7"
         }
       ],
@@ -712,38 +713,6 @@
         "starters": [],
         "unavailable": [
           {
-            "id": 414232,
-            "age": 33,
-            "name": "Ridgeciano Haps",
-            "countryName": "Suriname",
-            "countryCode": "SUR",
-            "marketValue": 578283,
-            "unavailability": {
-              "injuryId": 121,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ridgeciano",
-            "lastName": "Haps",
-            "nationalTeamId": 127411
-          },
-          {
-            "id": 1352744,
-            "age": 24,
-            "name": "Joël Schingtienne",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 6770167,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Joël",
-            "lastName": "Schingtienne",
-            "nationalTeamId": 8263
-          },
-          {
             "id": 924431,
             "age": 24,
             "name": "Gianluca Busio",
@@ -758,22 +727,6 @@
             "firstName": "Gianluca",
             "lastName": "Busio",
             "nationalTeamId": 6713
-          },
-          {
-            "id": 1592168,
-            "age": 22,
-            "name": "Matteo Dagasso",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 4941573,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Matteo",
-            "lastName": "Dagasso",
-            "nationalTeamId": 8204
           },
           {
             "id": 1072710,
