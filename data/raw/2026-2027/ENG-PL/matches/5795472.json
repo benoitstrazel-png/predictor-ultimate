@@ -622,15 +622,15 @@
         },
         {
           "type": "player",
-          "playerId": 690107,
+          "playerId": 846005,
           "teamId": 8650,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 690107,
-              "name": "Alexander Isak",
+              "value": 846005,
+              "name": "Dominik Szoboszlai",
               "type": "player"
             },
             {
@@ -639,12 +639,12 @@
               "type": "team"
             },
             {
-              "value": 1.5,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Alexander Isak has the most shots on target per match for Liverpool (1.5)",
+          "text": "Dominik Szoboszlai has created the most big chances for Liverpool (3)",
           "color": "#911712"
         },
         {
@@ -674,16 +674,26 @@
           "playerId": null,
           "teamId": 8456,
           "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
+            {
+              "value": 8456,
+              "name": "Manchester City",
+              "type": "team"
+            },
+            {
+              "value": 8650,
+              "name": "Liverpool",
+              "type": "team"
+            },
             {
               "value": 3,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 3 away from home this season",
+          "text": "Manchester City have won the previous 3 matches against Liverpool.",
           "color": "#69A8D8"
         },
         {
@@ -903,18 +913,18 @@
     "weather": {
       "temperature": 14,
       "windSpeed": 2,
-      "windDirectionCardinal": "S",
-      "iconCode": 30,
+      "windDirectionCardinal": "SSE",
+      "iconCode": 28,
       "relativeHumidity": 59,
-      "precipChance": 0,
+      "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 58,
-      "description": "Partly Cloudy",
+      "cloudCover": 66,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-10T22:00:02Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-11T11:00:02Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795472,
@@ -1282,6 +1292,22 @@
         },
         "unavailable": [
           {
+            "id": 784510,
+            "age": 28,
+            "name": "Federico Chiesa",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 14160660,
+            "unavailability": {
+              "injuryId": 45,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Federico",
+            "lastName": "Chiesa",
+            "nationalTeamId": 8204
+          },
+          {
             "id": 1113690,
             "age": 23,
             "name": "Conor Bradley",
@@ -1357,23 +1383,6 @@
             "firstName": "Cody",
             "lastName": "Gakpo",
             "nationalTeamId": 6708
-          },
-          {
-            "id": 784510,
-            "age": 28,
-            "name": "Federico Chiesa",
-            "positionId": 1000,
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 14160660,
-            "unavailability": {
-              "injuryId": 45,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Federico",
-            "lastName": "Chiesa",
-            "nationalTeamId": 8204
           },
           {
             "id": 1197030,
@@ -1760,7 +1769,6 @@
             "id": 1300526,
             "age": 21,
             "name": "Nico O'Reilly",
-            "positionId": 1000,
             "countryName": "England",
             "countryCode": "ENG",
             "marketValue": 81688764,
