@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "5"
+                "1",
+                "0",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Marseille have lost their last 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Sturm Graz have 3W, 1D, 1L in five matches while Marseille have 1W, 0D, 4L."
             },
             {
               "OddsType": "bts",
@@ -467,7 +473,7 @@
                 "home_team",
                 "away_team",
                 "0.67",
-                "0.67"
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +484,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sturm Graz have an average of 0.67 goals in their last three matches and Marseille have an average of 0.67."
+              "defaultText": "Sturm Graz have an average of 0.67 goals in their last three matches and Marseille have an average of 1.33."
             },
             {
               "OddsType": "ou",
@@ -490,7 +496,7 @@
                 "home_team",
                 "away_team",
                 "0.67",
-                "0.67"
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,17 +507,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sturm Graz have an average of 0.67 goals in their last three matches and Marseille have an average of 0.67."
+              "defaultText": "Sturm Graz have an average of 0.67 goals in their last three matches and Marseille have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Marseille haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Marseille haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -680,30 +686,6 @@
             "lastName": "Højbjerg"
           },
           {
-            "id": 780815,
-            "name": "Amine Harit",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-11T11:51:43Z",
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "firstName": "Amine",
-            "lastName": "Harit"
-          },
-          {
-            "id": 844437,
-            "name": "Amine Gouiri",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-11T11:52:09Z",
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "firstName": "Amine",
-            "lastName": "Gouiri"
-          },
-          {
             "id": 847629,
             "name": "Derek Cornelius",
             "unavailability": {
@@ -714,18 +696,6 @@
             },
             "firstName": "Derek",
             "lastName": "Cornelius"
-          },
-          {
-            "id": 214972,
-            "name": "Geoffrey Kondogbia",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-11T11:52:01Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Geoffrey",
-            "lastName": "Kondogbia"
           }
         ]
       }

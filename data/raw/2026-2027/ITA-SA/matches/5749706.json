@@ -440,17 +440,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "2",
-                "2",
                 "away_team",
-                "3",
-                "0",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,8 +456,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Monza have 1W, 2D, 2L in five matches while Cagliari have 3W, 0D, 2L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Cagliari haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -475,7 +469,7 @@
                 "home_team",
                 "11",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored in their last 11 matches and Cagliari have scored in their last 4 matches."
+              "defaultText": "Monza have scored in their last 11 matches and Cagliari have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -516,11 +510,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "2",
+                "2",
                 "away_team",
-                "7"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -533,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari haven't drawn in their last 7 matches."
+              "defaultText": "Monza have 1W, 2D, 2L in five matches while Cagliari have 3W, 1D, 1L."
             }
           ]
         },
@@ -602,12 +602,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Ricardo Mangas has created the most big chances for Monza (3)",
+          "text": "Ricardo Mangas has created the most big chances for Monza (4)",
           "color": "#e10032"
         },
         {
@@ -784,6 +784,16 @@
         "id": 8529,
         "name": "Cagliari",
         "unavailable": [
+          {
+            "id": 41732,
+            "name": "Fabio Pisacane",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Fabio",
+            "lastName": "Pisacane"
+          },
           {
             "id": 1021302,
             "name": "Mattia Felici",

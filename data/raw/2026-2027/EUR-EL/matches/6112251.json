@@ -468,14 +468,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "7",
-                "4"
+                "1",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,20 +485,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 7 goals in their last 3 matches, while Rennes have scored 4."
+              "defaultText": "Juventus have an average of 1 goals in their last three matches and Rennes have an average of 1.33."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "7",
-                "4"
+                "1",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,17 +508,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 7 goals in their last 3 matches, while Rennes have scored 4."
+              "defaultText": "Juventus have an average of 1 goals in their last three matches and Rennes have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -533,7 +537,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Juventus haven't drawn in their last 4 matches."
+              "defaultText": "Juventus have 2W, 1D, 2L in five matches while Rennes have 3W, 1D, 1L."
             }
           ]
         },
