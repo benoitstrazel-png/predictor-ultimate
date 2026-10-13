@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -277,36 +278,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10181.png",
-            "linkToMatch": "/matches/atalanta-vs-hapoel-tel-aviv/2w5x7p#5988089",
-            "date": {
-              "utcTime": "2026-08-27T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10181/overview/hapoel-tel-aviv",
-            "tooltipText": {
-              "utcTime": "2026-08-27T18:00:00.000Z",
-              "homeTeam": "Hapoel Tel Aviv",
-              "homeTeamId": 10181,
-              "homeScore": "0",
-              "awayTeam": "Atalanta",
-              "awayTeamId": 8524,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "10181",
-              "name": "Hapoel Tel Aviv",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9857.png",
             "linkToMatch": "/matches/atalanta-vs-bologna/2sl6d8#5749651",
             "date": {
@@ -423,6 +394,36 @@
               "name": "Atalanta",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
+            "linkToMatch": "/matches/venezia-vs-atalanta/284hmb#5749690",
+            "date": {
+              "utcTime": "2026-10-12T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/7881/overview/venezia",
+            "tooltipText": {
+              "utcTime": "2026-10-12T16:30:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "3",
+              "awayTeam": "Venezia",
+              "awayTeamId": 7881,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -465,13 +466,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "0.67"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,19 +484,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have an average of 1.33 goals in their last three matches and Atalanta have an average of 0.67."
+              "defaultText": "Milan have scored 4 goals in their last 3 matches, while Atalanta have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "0.67"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have an average of 1.33 goals in their last three matches and Atalanta have an average of 0.67."
+              "defaultText": "Milan have scored 4 goals in their last 3 matches, while Atalanta have scored 4."
             },
             {
               "OddsType": "dc",
@@ -515,7 +518,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atalanta haven't drawn in their last 6 matches."
+              "defaultText": "Atalanta haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -590,15 +593,15 @@
         },
         {
           "type": "player",
-          "playerId": 1342754,
+          "playerId": 688300,
           "teamId": 8564,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1342754,
-              "name": "Diego Moreira",
+              "value": 688300,
+              "name": "Samuel Chukwueze",
               "type": "player"
             },
             {
@@ -607,12 +610,12 @@
               "type": "team"
             },
             {
-              "value": 1.7,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Diego Moreira has the most shots on target per match for Milan (1.7)",
+          "text": "Samuel Chukwueze has created the most big chances for Milan (5)",
           "color": "#CF2C27"
         },
         {
@@ -624,7 +627,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -634,7 +637,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#004ca6"
         },
         {
@@ -675,20 +678,30 @@
           "color": "#004ca6"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1013021,
           "teamId": 8524,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 3,
+              "value": 1013021,
+              "name": "Marco Carnesecchi",
+              "type": "player"
+            },
+            {
+              "value": 2,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 4.7,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Have lost their last 3 matches",
+          "text": "Marco Carnesecchi is ranked 2 in saves per match in the competition (4.7)",
           "color": "#004ca6"
         }
       ],
@@ -712,18 +725,18 @@
     "weather": {
       "temperature": 18,
       "windSpeed": 3,
-      "windDirectionCardinal": "ESE",
-      "iconCode": 28,
-      "relativeHumidity": 58,
-      "precipChance": 19,
-      "precipitation": 0,
+      "windDirectionCardinal": "E",
+      "iconCode": 11,
+      "relativeHumidity": 63,
+      "precipChance": 40,
+      "precipitation": 0.4,
       "snow": 0,
-      "cloudCover": 73,
-      "description": "Mostly Cloudy",
+      "cloudCover": 64,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-12T04:00:09Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-13T04:00:12Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5749700,
@@ -744,7 +757,7 @@
             "countryCode": "ITA",
             "marketValue": 17101823,
             "unavailability": {
-              "injuryId": 69,
+              "injuryId": 89,
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
@@ -776,6 +789,54 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 741049,
+            "age": 27,
+            "name": "Eljif Elmas",
+            "countryName": "North Macedonia",
+            "countryCode": "MKD",
+            "marketValue": 13141307,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-18T18:00:00Z"
+            },
+            "firstName": "Eljif",
+            "lastName": "Elmas",
+            "nationalTeamId": 8260
+          },
+          {
+            "id": 1202358,
+            "age": 22,
+            "name": "Giorgio Scalvini",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 41104345,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Giorgio",
+            "lastName": "Scalvini",
+            "nationalTeamId": 8204
+          },
+          {
+            "id": 902651,
+            "age": 26,
+            "name": "Raoul Bellanova",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 16775464,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Raoul",
+            "lastName": "Bellanova",
+            "nationalTeamId": 8204
+          },
           {
             "id": 2189043,
             "age": 20,

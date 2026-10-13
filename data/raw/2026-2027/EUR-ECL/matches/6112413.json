@@ -113,9 +113,11 @@
           "surface": "grass"
         },
         "Referee": {
-          "text": "",
-          "countryCode": "",
-          "country": ""
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/kaz.png",
+          "text": "Bulat Sariyev",
+          "countryCode": "KAZ",
+          "country": "Kazakhstan",
+          "id": 1001077957
         },
         "Attendance": null
       },
@@ -274,36 +276,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8415.png",
-            "linkToMatch": "/matches/agf-vs-silkeborg/28x1es#5739501",
-            "date": {
-              "utcTime": "2026-09-05T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8415/overview/silkeborg",
-            "tooltipText": {
-              "utcTime": "2026-09-05T16:00:00.000Z",
-              "homeTeam": "AGF",
-              "homeTeamId": 8071,
-              "homeScore": "2",
-              "awayTeam": "Silkeborg",
-              "awayTeamId": 8415,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8071",
-              "name": "AGF",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8415",
-              "name": "Silkeborg",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10202.png",
@@ -422,6 +394,36 @@
               "name": "Vendsyssel FF",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8487.png",
+            "linkToMatch": "/matches/agf-vs-sonderjyske/29mjds#5739521",
+            "date": {
+              "utcTime": "2026-10-12T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8487/overview/sonderjyske",
+            "tooltipText": {
+              "utcTime": "2026-10-12T17:00:00.000Z",
+              "homeTeam": "AGF",
+              "homeTeamId": 8071,
+              "homeScore": "3",
+              "awayTeam": "Sønderjyske",
+              "awayTeamId": 8487,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8071",
+              "name": "AGF",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8487",
+              "name": "Sønderjyske",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,11 +440,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,17 +459,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Gent haven't lost in 12 matches."
+              "defaultText": "Gent haven't lost in their last 12 matches, and AGF in their last 4."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "3"
+                "7",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,18 +482,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Gent have scored in their last 3 home matches."
+              "defaultText": "Gent have scored in their last 7 matches and AGF have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10",
-                "3"
+                "3",
+                "5",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -498,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AGF have scored 10 goals in their last 3 matches."
+              "defaultText": "Gent have scored 5 goals in their last 3 matches, while AGF have scored 7."
             },
             {
               "OddsType": "dc",
@@ -512,8 +520,8 @@
                 "1",
                 "0",
                 "away_team",
-                "2",
-                "2",
+                "3",
+                "1",
                 "1"
               ],
               "DefaultLabels": [
@@ -527,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Gent have 4W, 1D, 0L in five matches while AGF have 2W, 2D, 1L."
+              "defaultText": "Gent have 4W, 1D, 0L in five matches while AGF have 3W, 1D, 1L."
             }
           ]
         },
@@ -542,7 +550,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 9991,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
@@ -554,23 +562,6 @@
           ],
           "text": "Haven't lost in 12 matches",
           "color": "#004898"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8071,
-          "priority": 1345,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 17,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 17 matches",
-          "color": "#000000"
         }
       ],
       "countryCode": "INT-2",
@@ -595,27 +586,485 @@
       "windSpeed": 3,
       "windDirectionCardinal": "S",
       "iconCode": 29,
-      "relativeHumidity": 74,
+      "relativeHumidity": 70,
       "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 31,
+      "cloudCover": 40,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-12T05:00:20Z",
+      "lastUpdated": "2026-10-13T05:00:21Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112413,
-      "lineupType": "unavailable",
-      "source": "enetpulse",
-      "availableFilters": [],
+      "lineupType": "lastStarting11",
+      "source": "lastStartingLineups",
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 9991,
         "name": "Gent",
-        "formation": "",
-        "starters": [],
+        "formation": "3-4-2-1",
+        "starters": [
+          {
+            "id": 245599,
+            "age": 32,
+            "name": "Davy Roef",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "33",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1678677,
+            "firstName": "Davy",
+            "lastName": "Roef",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1176726,
+            "age": 23,
+            "name": "Maksim Paskotši",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Estonia",
+            "countryCode": "EST",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 3826147,
+            "firstName": "Maksim",
+            "lastName": "Paskotši",
+            "nationalTeamId": 8261,
+            "rankings": null
+          },
+          {
+            "id": 332300,
+            "age": 35,
+            "name": "Christian Burgess",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "16",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 1545130,
+            "firstName": "Christian",
+            "lastName": "Burgess",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 768432,
+            "age": 28,
+            "name": "Siebe van der Heyden",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "44",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 2136762,
+            "firstName": "Siebe",
+            "lastName": "van der Heyden",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1666324,
+            "age": 21,
+            "name": "Hyllarion Goore",
+            "positionId": 62,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "45",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 5876701,
+            "firstName": "Hyllarion",
+            "lastName": "Goore",
+            "nationalTeamId": 6709,
+            "rankings": null
+          },
+          {
+            "id": 1280741,
+            "age": 22,
+            "name": "Mathias Delorge",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "17",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 8991787,
+            "firstName": "Mathias",
+            "lastName": "Delorge",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 604396,
+            "age": 27,
+            "name": "Leonardo Lopes",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "22",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1727424,
+            "firstName": "Leonardo",
+            "lastName": "Lopes",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 1185329,
+            "age": 25,
+            "name": "Tiago Araújo",
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "20",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2018224,
+            "firstName": "Tiago",
+            "lastName": "Araújo",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 1173248,
+            "age": 25,
+            "name": "Michel-Ange Balikwisha",
+            "positionId": 84,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "DR Congo",
+            "countryCode": "COD",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 2304465,
+            "firstName": "Michel-Ange",
+            "lastName": "Balikwisha",
+            "nationalTeamId": 6321,
+            "rankings": null
+          },
+          {
+            "id": 1355206,
+            "age": 21,
+            "name": "Momodou Sonko",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1786670,
+            "firstName": "Momodou",
+            "lastName": "Sonko",
+            "nationalTeamId": 8520,
+            "rankings": null
+          },
+          {
+            "id": 1898989,
+            "age": 19,
+            "name": "Ibrahima Cisse",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "75",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 1542381,
+            "firstName": "Ibrahima",
+            "lastName": "Cisse",
+            "nationalTeamId": 6395,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 1183184,
+          "age": 45,
+          "name": "Rik De Mil",
+          "countryName": "Belgium",
+          "countryCode": "BEL",
+          "firstName": "Rik",
+          "lastName": "De Mil",
+          "nationalTeamId": 8263,
+          "primaryTeamId": 9991,
+          "primaryTeamName": "Gent",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 1252643,
+            "age": 22,
+            "name": "Kjell Peersman",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "30",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 381120,
+            "firstName": "Kjell",
+            "lastName": "Peersman",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1605574,
+            "age": 21,
+            "name": "Abdoul Ayindé",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "39",
+            "countryName": "Burkina Faso",
+            "countryCode": "BFA",
+            "marketValue": 550968,
+            "firstName": "Abdoul",
+            "lastName": "Ayindé",
+            "nationalTeamId": 6323,
+            "rankings": null
+          },
+          {
+            "id": 1838167,
+            "age": 19,
+            "name": "Mamadou Diallo",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "56",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 574216,
+            "firstName": "Mamadou",
+            "lastName": "Diallo",
+            "nationalTeamId": 6395,
+            "rankings": null
+          },
+          {
+            "id": 1844330,
+            "age": 24,
+            "name": "Matties Volckaert",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "57",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 2192974,
+            "firstName": "Matties",
+            "lastName": "Volckaert",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1120987,
+            "age": 26,
+            "name": "Abdelkahar Kadri",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "37",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "marketValue": 1839917,
+            "firstName": "Abdelkahar",
+            "lastName": "Kadri",
+            "nationalTeamId": 6317,
+            "rankings": null
+          },
+          {
+            "id": 1396340,
+            "age": 23,
+            "name": "Aimé Omgba",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 1025142,
+            "firstName": "Aimé",
+            "lastName": "Omgba",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 1553506,
+            "age": 20,
+            "name": "Tibe De Vlieger",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 4402549,
+            "firstName": "Tibe",
+            "lastName": "De Vlieger",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1798011,
+            "age": 19,
+            "name": "El Hadji Seck",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "59",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 1245988,
+            "firstName": "El Hadji",
+            "lastName": "Seck",
+            "nationalTeamId": 6395,
+            "rankings": null
+          },
+          {
+            "id": 1580120,
+            "age": 21,
+            "name": "Kyrell Wilson",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "14",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 503022,
+            "firstName": "Kyrell",
+            "lastName": "Wilson",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1187331,
+            "age": 22,
+            "name": "Max Dean",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "21",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 2161301,
+            "firstName": "Max",
+            "lastName": "Dean",
+            "nationalTeamId": 8491,
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1676100,
@@ -681,66 +1130,472 @@
             "lastName": "Samoise",
             "nationalTeamId": 8263
           }
-        ]
+        ],
+        "averageStarterAge": 25.7,
+        "totalStarterMarketValue": 33434368,
+        "lastMatch": {
+          "matchId": 5811780,
+          "homeTeamId": 10000,
+          "awayTeamId": 9991,
+          "homeTeamName": "Zulte Waregem",
+          "awayTeamName": "Gent",
+          "homeScore": 0,
+          "awayScore": 2,
+          "matchDate": "2026-10-10T20:45:00"
+        }
       },
       "awayTeam": {
         "id": 8071,
         "name": "AGF",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "3-4-2-1",
+        "starters": [
+          {
+            "id": 25329,
+            "age": 41,
+            "name": "Jesper Hansen",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 264266,
+            "firstName": "Jesper",
+            "lastName": "Hansen",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 586712,
+            "age": 30,
+            "name": "Tobias Mølgaard",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "14",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 506805,
+            "firstName": "Tobias",
+            "lastName": "Mølgaard",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 371728,
+            "age": 33,
+            "name": "Frederik Tingager",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 379304,
+            "firstName": "Frederik",
+            "lastName": "Tingager",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 289237,
+            "age": 31,
+            "name": "Daníel Grétarsson",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Iceland",
+            "countryCode": "ISL",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 299207,
+            "firstName": "Daníel",
+            "lastName": "Grétarsson",
+            "nationalTeamId": 8536,
+            "rankings": null
+          },
+          {
+            "id": 1026834,
+            "age": 25,
+            "name": "Rasmus Carstensen",
+            "positionId": 62,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "29",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1621172,
+            "firstName": "Rasmus",
+            "lastName": "Carstensen",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 1025560,
+            "age": 25,
+            "name": "Magnus Knudsen",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "4",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 2340582,
+            "firstName": "Magnus",
+            "lastName": "Knudsen",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 1053293,
+            "age": 23,
+            "name": "Kristian Arnstad",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "isCaptain": true,
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 6656183,
+            "firstName": "Kristian",
+            "lastName": "Arnstad",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 1645317,
+            "age": 19,
+            "name": "Frederik Emmery",
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "39",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1349738,
+            "firstName": "Frederik",
+            "lastName": "Emmery",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 981047,
+            "age": 24,
+            "name": "Tobias Bech",
+            "positionId": 84,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "31",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 4085159,
+            "firstName": "Tobias",
+            "lastName": "Bech",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 723695,
+            "age": 28,
+            "name": "Mikael Anderson",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "23",
+            "countryName": "Iceland",
+            "countryCode": "ISL",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1226293,
+            "firstName": "Mikael",
+            "lastName": "Anderson",
+            "nationalTeamId": 8536,
+            "rankings": null
+          },
+          {
+            "id": 641597,
+            "age": 28,
+            "name": "Janni Serra",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "13",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 328983,
+            "firstName": "Janni",
+            "lastName": "Serra",
+            "nationalTeamId": 8570,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 26479,
+          "age": 43,
+          "name": "Jakob Poulsen",
+          "countryName": "Denmark",
+          "countryCode": "DEN",
+          "firstName": "Jakob",
+          "lastName": "Poulsen",
+          "nationalTeamId": 8238,
+          "primaryTeamId": 8071,
+          "primaryTeamName": "AGF",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 855890,
+            "age": 25,
+            "name": "Mads Hedenstad Christiansen",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "21",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 940070,
+            "firstName": "Mads Hedenstad",
+            "lastName": "Christiansen",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 962074,
+            "age": 26,
+            "name": "Colin Rösler",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "25",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 1338385,
+            "firstName": "Colin",
+            "lastName": "Rösler",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
           {
             "id": 1096495,
             "age": 25,
             "name": "Eric Kahl",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "19",
             "countryName": "Sweden",
             "countryCode": "SWE",
             "marketValue": 2336058,
-            "unavailability": {
-              "injuryId": 6,
-              "type": "injury",
-              "expectedReturn": "Day to day"
-            },
             "firstName": "Eric",
             "lastName": "Kahl",
-            "nationalTeamId": 8520
+            "nationalTeamId": 8520,
+            "rankings": null
+          },
+          {
+            "id": 1258304,
+            "age": 22,
+            "name": "Jacob Andersen",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "26",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 543533,
+            "firstName": "Jacob",
+            "lastName": "Andersen",
+            "nationalTeamId": 8238,
+            "rankings": null
           },
           {
             "id": 848352,
             "age": 27,
             "name": "Callum McCowatt",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "18",
             "countryName": "New Zealand",
             "countryCode": "NZL",
             "marketValue": 1726028,
-            "unavailability": {
-              "injuryId": 6,
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
             "firstName": "Callum",
             "lastName": "McCowatt",
-            "nationalTeamId": 5820
+            "nationalTeamId": 5820,
+            "rankings": null
           },
           {
-            "id": 1759271,
-            "age": 18,
-            "name": "Tómas Kristjánsson",
-            "countryName": "Iceland",
-            "countryCode": "ISL",
-            "marketValue": 795749,
-            "unavailability": {
-              "injuryId": 6,
-              "type": "injury",
-              "expectedReturn": "Day to day"
-            },
-            "firstName": "Tómas",
-            "lastName": "Kristjánsson",
-            "nationalTeamId": 8536
+            "id": 742410,
+            "age": 26,
+            "name": "Markus Solbakken",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 1715962,
+            "firstName": "Markus",
+            "lastName": "Solbakken",
+            "nationalTeamId": 8492,
+            "rankings": null
           },
+          {
+            "id": 1843410,
+            "age": 18,
+            "name": "James Bogere",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "28",
+            "countryName": "Uganda",
+            "countryCode": "UGA",
+            "marketValue": 987296,
+            "firstName": "James",
+            "lastName": "Bogere",
+            "nationalTeamId": 5890,
+            "rankings": null
+          },
+          {
+            "id": 954929,
+            "age": 26,
+            "name": "Sebastian Jørgensen",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "8",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 638263,
+            "firstName": "Sebastian",
+            "lastName": "Jørgensen",
+            "nationalTeamId": 8238,
+            "rankings": null
+          },
+          {
+            "id": 1653997,
+            "age": 20,
+            "name": "Stefen Tchamche",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "27",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 457867,
+            "firstName": "Stefen",
+            "lastName": "Tchamche",
+            "nationalTeamId": 8238,
+            "rankings": null
+          }
+        ],
+        "unavailable": [
           {
             "id": 941579,
             "age": 26,
             "name": "Kevin Yakob",
+            "positionId": 1000,
             "countryName": "Iraq",
             "countryCode": "IRQ",
             "marketValue": 599455,
@@ -754,22 +1609,35 @@
             "nationalTeamId": 5819
           },
           {
-            "id": 392809,
-            "age": 33,
-            "name": "Nicolai Poulsen",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 379304,
+            "id": 1759271,
+            "age": 18,
+            "name": "Tómas Kristjánsson",
+            "positionId": 1000,
+            "countryName": "Iceland",
+            "countryCode": "ISL",
+            "marketValue": 795749,
             "unavailability": {
               "injuryId": 6,
               "type": "injury",
               "expectedReturn": "Day to day"
             },
-            "firstName": "Nicolai",
-            "lastName": "Poulsen",
-            "nationalTeamId": 8238
+            "firstName": "Tómas",
+            "lastName": "Kristjánsson",
+            "nationalTeamId": 8536
           }
-        ]
+        ],
+        "averageStarterAge": 28.4,
+        "totalStarterMarketValue": 19057692,
+        "lastMatch": {
+          "matchId": 5739521,
+          "homeTeamId": 8071,
+          "awayTeamId": 8487,
+          "homeTeamName": "AGF",
+          "awayTeamName": "Sønderjyske",
+          "homeScore": 3,
+          "awayScore": 0,
+          "matchDate": "2026-10-12T19:00:00"
+        }
       }
     },
     "hasPlayoff": false,

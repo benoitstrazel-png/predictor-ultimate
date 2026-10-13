@@ -134,7 +134,7 @@
               "average": 4.45,
               "total": 155,
               "averageType": "average",
-              "fillPercentage": 41.51,
+              "fillPercentage": 41.28,
               "averagePercentage": 50
             },
             {
@@ -159,7 +159,7 @@
               "average": 25.01,
               "total": 870,
               "averageType": "above",
-              "fillPercentage": 70.07,
+              "fillPercentage": 70.1,
               "averagePercentage": 50
             }
           ]
@@ -168,36 +168,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8371.png",
-            "linkToMatch": "/matches/osasuna-vs-levante/2dk1c1#5868028",
-            "date": {
-              "utcTime": "2026-08-24T17:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8371/overview/osasuna",
-            "tooltipText": {
-              "utcTime": "2026-08-24T17:30:00.000Z",
-              "homeTeam": "Osasuna",
-              "homeTeamId": 8371,
-              "homeScore": "0",
-              "awayTeam": "Levante",
-              "awayTeamId": 8581,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8371",
-              "name": "Osasuna",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8581",
-              "name": "Levante",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -316,6 +286,36 @@
               "id": "8581",
               "name": "Levante",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
+            "linkToMatch": "/matches/sevilla-vs-levante/2cv0lv#5868085",
+            "date": {
+              "utcTime": "2026-10-12T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8302/overview/sevilla",
+            "tooltipText": {
+              "utcTime": "2026-10-12T19:00:00.000Z",
+              "homeTeam": "Levante",
+              "homeTeamId": 8581,
+              "homeScore": "3",
+              "awayTeam": "Sevilla",
+              "awayTeamId": 8302,
+              "awayScore": "3"
+            },
+            "score": "3 - 3",
+            "home": {
+              "id": "8581",
+              "name": "Levante",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8302",
+              "name": "Sevilla",
+              "isOurTeam": false
             }
           }
         ],
@@ -529,13 +529,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "6",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -546,23 +547,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Levante have an average of 1 goals in their last three matches and Athletic Club have an average of 0.67."
+              "defaultText": "Levante have scored 6 goals in their last 3 matches, while Athletic Club have scored 2."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "3",
-                "2",
-                "0"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -574,8 +569,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Levante have 1W, 2D, 2L in five matches while Athletic Club have 3W, 2D, 0L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Levante haven't won a match in 4 attempts."
             }
           ]
         },
@@ -595,7 +590,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -605,7 +600,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#335686"
         },
         {
@@ -847,20 +842,20 @@
       }
     },
     "weather": {
-      "temperature": 20,
+      "temperature": 21,
       "windSpeed": 3,
-      "windDirectionCardinal": "NE",
-      "iconCode": 11,
-      "relativeHumidity": 74,
-      "precipChance": 50,
-      "precipitation": 0.2,
+      "windDirectionCardinal": "ENE",
+      "iconCode": 27,
+      "relativeHumidity": 75,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 64,
-      "description": "Showers",
+      "cloudCover": 67,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-12T06:00:09Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-13T06:00:14Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5868067,

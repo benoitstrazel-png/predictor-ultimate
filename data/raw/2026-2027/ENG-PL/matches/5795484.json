@@ -115,9 +115,55 @@
           "surface": "grass"
         },
         "Referee": {
-          "text": "",
-          "countryCode": "",
-          "country": ""
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/eng.png",
+          "text": "Andy Madley",
+          "countryCode": "ENG",
+          "country": "England",
+          "id": 1001079300,
+          "leagueId": 47,
+          "leagueName": "Premier League",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 42,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 3.48,
+              "valueType": "perMatch",
+              "average": 3.9,
+              "total": 146,
+              "averageType": "below",
+              "fillPercentage": 22.13,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 6,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 0,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 9,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 22.74,
+              "valueType": "perMatch",
+              "average": 21.83,
+              "total": 955,
+              "averageType": "above",
+              "fillPercentage": 60.48,
+              "averagePercentage": 50
+            }
+          ]
         },
         "Attendance": null
       },
@@ -278,36 +324,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8667.png",
-            "linkToMatch": "/matches/hull-city-vs-coventry-city/2hh595#5795428",
-            "date": {
-              "utcTime": "2026-08-29T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8667/overview/hull-city",
-            "tooltipText": {
-              "utcTime": "2026-08-29T14:00:00.000Z",
-              "homeTeam": "Coventry City",
-              "homeTeamId": 8669,
-              "homeScore": "0",
-              "awayTeam": "Hull City",
-              "awayTeamId": 8667,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8669",
-              "name": "Coventry City",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8667",
-              "name": "Hull City",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
             "linkToMatch": "/matches/manchester-city-vs-coventry-city/2fb7wc#5795442",
             "date": {
@@ -424,6 +440,36 @@
               "name": "Coventry City",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
+            "linkToMatch": "/matches/coventry-city-vs-newcastle-united/2yooc8#5795468",
+            "date": {
+              "utcTime": "2026-10-12T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10261/overview/newcastle-united",
+            "tooltipText": {
+              "utcTime": "2026-10-12T19:00:00.000Z",
+              "homeTeam": "Coventry City",
+              "homeTeamId": 8669,
+              "homeScore": "4",
+              "awayTeam": "Newcastle United",
+              "awayTeamId": 10261,
+              "awayScore": "1"
+            },
+            "score": "4 - 1",
+            "home": {
+              "id": "8669",
+              "name": "Coventry City",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10261",
+              "name": "Newcastle United",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -463,13 +509,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "0.67"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,19 +527,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have an average of 1.33 goals in their last three matches and Coventry City have an average of 0.67."
+              "defaultText": "Tottenham Hotspur have scored 4 goals in their last 3 matches, while Coventry City have scored 6."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "0.67"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +551,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Tottenham Hotspur have an average of 1.33 goals in their last three matches and Coventry City have an average of 0.67."
+              "defaultText": "Tottenham Hotspur have scored 4 goals in their last 3 matches, while Coventry City have scored 6."
             },
             {
               "OddsType": "dc",
@@ -612,7 +660,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -622,37 +670,20 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 2 goals in their last 5 matches",
-          "color": "#65b0e4"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8669,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have conceded the most penalties this season (1)",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#65b0e4"
         },
         {
           "type": "player",
-          "playerId": 776184,
+          "playerId": 982284,
           "teamId": 8669,
           "priority": 1,
           "defaultText": "{0} has the most shots on target per match for {1} ({2})",
           "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 776184,
-              "name": "Brandon Thomas-Asante",
+              "value": 982284,
+              "name": "Ellis Simms",
               "type": "player"
             },
             {
@@ -661,12 +692,39 @@
               "type": "team"
             },
             {
-              "value": 1.2,
+              "value": 1.5,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Brandon Thomas-Asante has the most shots on target per match for Coventry City (1.2)",
+          "text": "Ellis Simms has the most shots on target per match for Coventry City (1.5)",
+          "color": "#65b0e4"
+        },
+        {
+          "type": "player",
+          "playerId": 1187236,
+          "teamId": 8669,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1187236,
+              "name": "Carl Rushworth",
+              "type": "player"
+            },
+            {
+              "value": 8669,
+              "name": "Coventry City",
+              "type": "team"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Carl Rushworth has created the most big chances for Coventry City (1)",
           "color": "#65b0e4"
         }
       ],
@@ -691,175 +749,212 @@
       "temperature": 12,
       "windSpeed": 4,
       "windDirectionCardinal": "NE",
-      "iconCode": 27,
-      "relativeHumidity": 70,
-      "precipChance": 3,
+      "iconCode": 29,
+      "relativeHumidity": 75,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 67,
-      "description": "Mostly Cloudy",
+      "cloudCover": 55,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-12T07:00:01Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-13T07:00:02Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795484,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8586,
         "name": "Tottenham Hotspur",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 620618,
+            "age": 29,
             "name": "Rodrigo Bentancur",
+            "countryName": "Uruguay",
+            "countryCode": "URU",
+            "marketValue": 23406614,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-19T21:00:00Z"
             },
             "firstName": "Rodrigo",
-            "lastName": "Bentancur"
+            "lastName": "Bentancur",
+            "nationalTeamId": 5796
           },
           {
             "id": 941573,
+            "age": 27,
             "name": "Pedro Porro",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 46058497,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-10-09T17:14:58Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Pedro",
-            "lastName": "Porro"
+            "lastName": "Porro",
+            "nationalTeamId": 6720
           },
           {
             "id": 976506,
+            "age": 25,
             "name": "Mykhaylo Mudryk",
+            "countryName": "Ukraine",
+            "countryCode": "UKR",
+            "marketValue": 28146018,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-12T07:24:39Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Mykhaylo",
-            "lastName": "Mudryk"
+            "lastName": "Mudryk",
+            "nationalTeamId": 6718
           },
           {
             "id": 1173787,
+            "age": 23,
             "name": "Xavi Simons",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 52895901,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-10T15:42:20Z",
               "type": "injury",
               "expectedReturn": "Early February 2027"
             },
             "firstName": "Xavi",
-            "lastName": "Simons"
+            "lastName": "Simons",
+            "nationalTeamId": 6708
           },
           {
             "id": 1341387,
+            "age": 21,
             "name": "Wilson Odobert",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 23329241,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-10T15:41:48Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Wilson",
-            "lastName": "Odobert"
+            "lastName": "Odobert",
+            "nationalTeamId": 6723
           },
           {
             "id": 935379,
+            "age": 26,
             "name": "Dejan Kulusevski",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 32924020,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-17T09:28:13Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Dejan",
-            "lastName": "Kulusevski"
+            "lastName": "Kulusevski",
+            "nationalTeamId": 8520
           }
         ]
       },
       "awayTeam": {
         "id": 8669,
         "name": "Coventry City",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 863822,
-            "name": "Joel Latibeaudiere",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-10-12T00:37:26Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Joel",
-            "lastName": "Latibeaudiere"
-          },
-          {
             "id": 1257648,
+            "age": 23,
             "name": "Aurèle Amenda",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 12425639,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-09-18T13:32:30Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Aurèle",
-            "lastName": "Amenda"
+            "lastName": "Amenda",
+            "nationalTeamId": 6717
           },
           {
             "id": 962000,
+            "age": 26,
             "name": "Josh Eccles",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 11100893,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-09-11T18:24:28Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Josh",
-            "lastName": "Eccles"
+            "lastName": "Eccles",
+            "nationalTeamId": 8491
           },
           {
             "id": 866688,
+            "age": 27,
             "name": "Luke Woolfenden",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 1860631,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-11T18:21:51Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Luke",
-            "lastName": "Woolfenden"
+            "lastName": "Woolfenden",
+            "nationalTeamId": 8491
           },
           {
             "id": 1089686,
+            "age": 23,
             "name": "Kaine Kesler-Hayden",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 4589596,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-12T00:37:16Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Kaine",
-            "lastName": "Kesler-Hayden"
+            "lastName": "Kesler-Hayden",
+            "nationalTeamId": 8491
           },
           {
             "id": 848268,
+            "age": 28,
             "name": "Haji Wright",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 14608137,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-20T08:34:18Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Haji",
-            "lastName": "Wright"
+            "lastName": "Wright",
+            "nationalTeamId": 6713
           }
         ]
       }

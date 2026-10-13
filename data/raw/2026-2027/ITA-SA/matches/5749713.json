@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
-            "linkToMatch": "/matches/venezia-vs-milan/28iklz#5749650",
-            "date": {
-              "utcTime": "2026-08-28T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8564/overview/milan",
-            "tooltipText": {
-              "utcTime": "2026-08-28T18:45:00.000Z",
-              "homeTeam": "Milan",
-              "homeTeamId": 8564,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8564",
-              "name": "Milan",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
             "linkToMatch": "/matches/venezia-vs-udinese/28v9yh#6003658",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Lazio",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
+            "linkToMatch": "/matches/venezia-vs-atalanta/284hmb#5749690",
+            "date": {
+              "utcTime": "2026-10-12T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-10-12T16:30:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "3",
+              "awayTeam": "Venezia",
+              "awayTeamId": 7881,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Venezia have lost their last 6 matches."
+              "defaultText": "Venezia have lost their last 7 matches."
             },
             {
               "OddsType": "bts",
@@ -483,14 +483,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "4"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Genoa have scored 4 goals in their last 3 matches, while Venezia have scored 4."
+              "defaultText": "Genoa have an average of 1.33 goals in their last three matches and Venezia have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -511,7 +510,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Venezia haven't won a match in 6 attempts."
+              "defaultText": "Venezia haven't won a match in 7 attempts."
             }
           ]
         },
@@ -586,15 +585,15 @@
         },
         {
           "type": "player",
-          "playerId": 161328,
+          "playerId": 1050163,
           "teamId": 10233,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 161328,
-              "name": "Stephan El Shaarawy",
+              "value": 1050163,
+              "name": "Lorenzo Colombo",
               "type": "player"
             },
             {
@@ -603,12 +602,12 @@
               "type": "team"
             },
             {
-              "value": 1.5,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Stephan El Shaarawy has the most shots on target per match for Genoa (1.5)",
+          "text": "Lorenzo Colombo has created the most big chances for Genoa (3)",
           "color": "#CB1111"
         },
         {
@@ -620,7 +619,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -630,24 +629,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
-          "color": "#101010"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 7881,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 9,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#101010"
         },
         {
@@ -659,12 +641,29 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 6 attempts",
+          "text": "Haven't won a match in 7 attempts",
+          "color": "#101010"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 7881,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 10 matches",
           "color": "#101010"
         }
       ],
@@ -688,18 +687,18 @@
     "weather": {
       "temperature": 18,
       "windSpeed": 4,
-      "windDirectionCardinal": "NE",
-      "iconCode": 30,
+      "windDirectionCardinal": "NNE",
+      "iconCode": 11,
       "relativeHumidity": 64,
-      "precipChance": 14,
-      "precipitation": 0,
+      "precipChance": 36,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 55,
-      "description": "Partly Cloudy",
+      "cloudCover": 50,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-12T02:00:14Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-13T02:00:16Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5749713,
@@ -801,6 +800,42 @@
         "id": 7881,
         "name": "Venezia",
         "unavailable": [
+          {
+            "id": 675327,
+            "name": "Pasquale Mazzocchi",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-13T12:03:41Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Pasquale",
+            "lastName": "Mazzocchi"
+          },
+          {
+            "id": 951765,
+            "name": "Armel Bella-Kotchap",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-13T12:03:32Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Armel",
+            "lastName": "Bella-Kotchap"
+          },
+          {
+            "id": 992052,
+            "name": "Thierry Correia",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-12T21:49:29Z",
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Thierry",
+            "lastName": "Correia"
+          },
           {
             "id": 924431,
             "name": "Gianluca Busio",

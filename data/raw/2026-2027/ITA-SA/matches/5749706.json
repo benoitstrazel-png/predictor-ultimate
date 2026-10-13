@@ -654,16 +654,26 @@
           "playerId": null,
           "teamId": 8529,
           "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
+            {
+              "value": 8529,
+              "name": "Cagliari",
+              "type": "team"
+            },
+            {
+              "value": 6504,
+              "name": "Monza",
+              "type": "team"
+            },
             {
               "value": 2,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 2 away from home this season",
+          "text": "Cagliari have won the previous 2 matches against Monza.",
           "color": "#B51F2B"
         }
       ],
@@ -685,140 +695,198 @@
       }
     },
     "weather": {
-      "temperature": 16,
+      "temperature": 17,
       "windSpeed": 2,
       "windDirectionCardinal": "SSE",
-      "iconCode": 30,
-      "relativeHumidity": 65,
-      "precipChance": 24,
-      "precipitation": 0,
+      "iconCode": 11,
+      "relativeHumidity": 64,
+      "precipChance": 39,
+      "precipitation": 0.3,
       "snow": 0,
-      "cloudCover": 42,
-      "description": "Partly Cloudy",
+      "cloudCover": 55,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-12T05:00:12Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-13T05:00:13Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5749706,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 6504,
         "name": "Monza",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1524139,
+            "age": 23,
             "name": "Lorenzo Lucchesi",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 3892593,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-19T18:30:00Z"
             },
             "firstName": "Lorenzo",
-            "lastName": "Lucchesi"
+            "lastName": "Lucchesi",
+            "nationalTeamId": 8204
           },
           {
             "id": 1511063,
+            "age": 21,
             "name": "Jan Ziólkowski",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 16064590,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-09T17:15:24Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jan",
-            "lastName": "Ziólkowski"
+            "lastName": "Ziólkowski",
+            "nationalTeamId": 8568
           },
           {
             "id": 480021,
+            "age": 31,
             "name": "Patrick Ciurria",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 1037481,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-10T21:35:35Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Patrick",
-            "lastName": "Ciurria"
+            "lastName": "Ciurria",
+            "nationalTeamId": 8204
           },
           {
             "id": 731600,
+            "age": 28,
             "name": "Idrissa Touré",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 3920185,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-10T20:30:29Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Idrissa",
-            "lastName": "Touré"
+            "lastName": "Touré",
+            "nationalTeamId": 8570
           },
           {
             "id": 566654,
+            "age": 29,
             "name": "Matteo Pessina",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2325736,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-09T17:14:37Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Matteo",
-            "lastName": "Pessina"
+            "lastName": "Pessina",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 8529,
         "name": "Cagliari",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 41732,
+            "age": 40,
             "name": "Fabio Pisacane",
+            "countryName": "Italy",
+            "countryCode": "ITA",
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-19T18:30:00Z"
             },
             "firstName": "Fabio",
-            "lastName": "Pisacane"
+            "lastName": "Pisacane",
+            "nationalTeamId": 8204
+          },
+          {
+            "id": 1166344,
+            "age": 25,
+            "name": "Kevin Carlos",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 4808415,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Kevin",
+            "lastName": "Carlos",
+            "nationalTeamId": 6720
           },
           {
             "id": 1021302,
+            "age": 25,
             "name": "Mattia Felici",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 1549637,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-09T12:44:51Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Mattia",
-            "lastName": "Felici"
+            "lastName": "Felici",
+            "nationalTeamId": 8204
           },
           {
             "id": 1861022,
+            "age": 20,
             "name": "Yael Trepy",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1085416,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-30T20:19:21Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Yael",
-            "lastName": "Trepy"
+            "lastName": "Trepy",
+            "nationalTeamId": 6723
           },
           {
             "id": 1668219,
+            "age": 21,
             "name": "Riyad Idrissi",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 5960579,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:35:50Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Riyad",
-            "lastName": "Idrissi"
+            "lastName": "Idrissi",
+            "nationalTeamId": 8204
           }
         ]
       }
