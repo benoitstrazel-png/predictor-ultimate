@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/577619.png",
-            "linkToMatch": "/matches/zira-vs-sabah-fk/excs9tc9#5987513",
-            "date": {
-              "utcTime": "2026-09-05T14:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/577619/overview/zira",
-            "tooltipText": {
-              "utcTime": "2026-09-05T14:30:00.000Z",
-              "homeTeam": "Sabah FK",
-              "homeTeamId": 951893,
-              "homeScore": "5",
-              "awayTeam": "Zira",
-              "awayTeamId": 577619,
-              "awayScore": "0"
-            },
-            "score": "5 - 0",
-            "home": {
-              "id": "951893",
-              "name": "Sabah FK",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "577619",
-              "name": "Zira",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
@@ -269,6 +239,36 @@
               "id": "951893",
               "name": "Sabah FK",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7787.png",
+            "linkToMatch": "/matches/slavia-prague-vs-sabah-fk/5vjqemr9#6106424",
+            "date": {
+              "utcTime": "2026-10-13T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/7787/overview/slavia-prague",
+            "tooltipText": {
+              "utcTime": "2026-10-13T16:45:00.000Z",
+              "homeTeam": "Sabah FK",
+              "homeTeamId": 951893,
+              "homeScore": "2",
+              "awayTeam": "Slavia Prague",
+              "awayTeamId": 7787,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "951893",
+              "name": "Sabah FK",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7787",
+              "name": "Slavia Prague",
+              "isOurTeam": false
             }
           }
         ],
@@ -438,10 +438,12 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "7"
               ],
               "DefaultLabels": [
@@ -455,7 +457,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Borussia Dortmund haven't lost in 7 matches."
+              "defaultText": "Sabah FK haven't lost in their last 4 matches, and Borussia Dortmund in their last 7."
             },
             {
               "OddsType": "bts",
@@ -465,30 +467,6 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Sabah FK have scored in their last 5 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "6",
                 "6"
               ],
               "DefaultLabels": [
@@ -500,7 +478,31 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sabah FK have scored 6 goals in their last 3 matches, while Borussia Dortmund have scored 6."
+              "defaultText": "Sabah FK have scored in their last 6 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "5",
+                "6"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Sabah FK have scored 5 goals in their last 3 matches, while Borussia Dortmund have scored 6."
             },
             {
               "OddsType": "dc",
@@ -576,95 +578,116 @@
       }
     },
     "weather": {
-      "temperature": 17,
-      "windSpeed": 6,
-      "windDirectionCardinal": "NNW",
+      "temperature": 18,
+      "windSpeed": 5,
+      "windDirectionCardinal": "N",
       "iconCode": 29,
-      "relativeHumidity": 81,
-      "precipChance": 4,
+      "relativeHumidity": 80,
+      "precipChance": 9,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 53,
+      "cloudCover": 44,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-13T05:00:21Z",
+      "lastUpdated": "2026-10-13T17:00:27Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106422,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 951893,
         "name": "Sabah FK",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       },
       "awayTeam": {
         "id": 9789,
         "name": "Borussia Dortmund",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 659272,
+            "age": 28,
             "name": "Julian Ryerson",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 20595292,
             "unavailability": {
               "injuryId": 77,
-              "lastUpdated": "2026-10-10T14:50:09Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Julian",
-            "lastName": "Ryerson"
+            "lastName": "Ryerson",
+            "nationalTeamId": 8492
           },
           {
             "id": 1663094,
+            "age": 21,
             "name": "Filippo Mane",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2174589,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-21T10:48:41Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Filippo",
-            "lastName": "Mane"
+            "lastName": "Mane",
+            "nationalTeamId": 8204
           },
           {
             "id": 1636870,
+            "age": 18,
             "name": "Justin Lerma",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-08-30T19:24:21Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Justin",
-            "lastName": "Lerma"
+            "lastName": "Lerma",
+            "nationalTeamId": 6707
           },
           {
             "id": 1215014,
+            "age": 23,
             "name": "Giannis Konstantelias",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 23674924,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-30T19:23:50Z",
               "type": "injury",
               "expectedReturn": "Late May 2027"
             },
             "firstName": "Giannis",
-            "lastName": "Konstantelias"
+            "lastName": "Konstantelias",
+            "nationalTeamId": 6383
           },
           {
             "id": 307021,
+            "age": 32,
             "name": "Emre Can",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1849615,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T13:11:11Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Emre",
-            "lastName": "Can"
+            "lastName": "Can",
+            "nationalTeamId": 8570
           }
         ]
       }
