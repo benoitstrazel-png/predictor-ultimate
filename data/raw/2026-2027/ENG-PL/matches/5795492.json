@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
-            "linkToMatch": "/matches/liverpool-vs-atletico-madrid/2uigag#6106246",
-            "date": {
-              "utcTime": "2026-09-09T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
-            "tooltipText": {
-              "utcTime": "2026-09-09T19:00:00.000Z",
-              "homeTeam": "Liverpool",
-              "homeTeamId": 8650,
-              "homeScore": "2",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
@@ -270,6 +240,36 @@
               "id": "8456",
               "name": "Manchester City",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9977.png",
+            "linkToMatch": "/matches/liverpool-vs-lask/2vaqvz#6106405",
+            "date": {
+              "utcTime": "2026-10-14T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9977/overview/lask",
+            "tooltipText": {
+              "utcTime": "2026-10-14T16:45:00.000Z",
+              "homeTeam": "LASK",
+              "homeTeamId": 9977,
+              "homeScore": "3",
+              "awayTeam": "Liverpool",
+              "awayTeamId": 8650,
+              "awayScore": "6"
+            },
+            "score": "3 - 6",
+            "home": {
+              "id": "9977",
+              "name": "LASK",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
             }
           }
         ],
@@ -505,10 +505,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -522,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brighton & Hove Albion haven't drawn in their last 4 matches."
+              "defaultText": "Liverpool haven't drawn in their last 4 matches and Brighton & Hove Albion in their last 4."
             }
           ]
         },
@@ -542,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -552,7 +554,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#911712"
         },
         {
@@ -584,15 +586,15 @@
         },
         {
           "type": "player",
-          "playerId": 846005,
+          "playerId": 1364042,
           "teamId": 8650,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 846005,
-              "name": "Dominik Szoboszlai",
+              "value": 1364042,
+              "name": "Lewis Koumas",
               "type": "player"
             },
             {
@@ -601,12 +603,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 1.9,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Dominik Szoboszlai has created the most big chances for Liverpool (3)",
+          "text": "Lewis Koumas has the most shots on target per match for Liverpool (1.9)",
           "color": "#911712"
         },
         {
