@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8697.png",
-            "linkToMatch": "/matches/werder-bremen-vs-rb-leipzig/81p1es3#5881160",
-            "date": {
-              "utcTime": "2026-09-05T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8697/overview/werder-bremen",
-            "tooltipText": {
-              "utcTime": "2026-09-05T13:30:00.000Z",
-              "homeTeam": "Werder Bremen",
-              "homeTeamId": 8697,
-              "homeScore": "3",
-              "awayTeam": "RB Leipzig",
-              "awayTeamId": 178475,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "8697",
-              "name": "Werder Bremen",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
             "linkToMatch": "/matches/como-vs-rb-leipzig/86a1nu8#6106411",
             "date": {
@@ -269,6 +239,36 @@
             "away": {
               "id": "9810",
               "name": "Eintracht Frankfurt",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
+            "linkToMatch": "/matches/psv-eindhoven-vs-rb-leipzig/81iorv6#6106323",
+            "date": {
+              "utcTime": "2026-10-13T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8640/overview/psv-eindhoven",
+            "tooltipText": {
+              "utcTime": "2026-10-13T19:00:00.000Z",
+              "homeTeam": "RB Leipzig",
+              "homeTeamId": 178475,
+              "homeScore": "1",
+              "awayTeam": "PSV Eindhoven",
+              "awayTeamId": 8640,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "178475",
+              "name": "RB Leipzig",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8640",
+              "name": "PSV Eindhoven",
               "isOurTeam": false
             }
           }
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "0",
                 "3",
+                "0",
+                "2",
                 "away_team",
                 "2",
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "RB Leipzig have 2W, 0D, 3L in five matches while Elversberg have 2W, 1D, 2L."
+              "defaultText": "RB Leipzig have 3W, 0D, 2L in five matches while Elversberg have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -472,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,18 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "RB Leipzig have scored in their last 3 home matches."
+              "defaultText": "RB Leipzig have scored in their last 4 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "11",
-                "3"
+                "away_team",
+                "3",
+                "7",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "RB Leipzig have scored 11 goals in their last 3 matches."
+              "defaultText": "RB Leipzig have scored 7 goals in their last 3 matches, while Elversberg have scored 1."
             },
             {
               "OddsType": "dc",
@@ -646,15 +648,15 @@
         },
         {
           "type": "player",
-          "playerId": 1093782,
+          "playerId": 1412933,
           "teamId": 8232,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1093782,
-              "name": "Lukas Petkov",
+              "value": 1412933,
+              "name": "Maurice Krattenmacher",
               "type": "player"
             },
             {
@@ -663,12 +665,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 2.6,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Lukas Petkov has created the most big chances for Elversberg (2)",
+          "text": "Maurice Krattenmacher has the most shots on target per match for Elversberg (2.6)",
           "color": "#141414"
         }
       ],

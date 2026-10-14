@@ -124,36 +124,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
-            "linkToMatch": "/matches/inter-vs-napoli/2u0kq3#5749666",
-            "date": {
-              "utcTime": "2026-09-05T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8636/overview/inter",
-            "tooltipText": {
-              "utcTime": "2026-09-05T16:00:00.000Z",
-              "homeTeam": "Inter",
-              "homeTeamId": 8636,
-              "homeScore": "3",
-              "awayTeam": "Napoli",
-              "awayTeamId": 9875,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
             "linkToMatch": "/matches/arsenal-vs-napoli/37jhat#6106318",
             "date": {
@@ -269,6 +239,36 @@
               "id": "9891",
               "name": "Frosinone",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10205.png",
+            "linkToMatch": "/matches/napoli-vs-villarreal/3c1he3#6106328",
+            "date": {
+              "utcTime": "2026-10-13T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10205/overview/villarreal",
+            "tooltipText": {
+              "utcTime": "2026-10-13T19:00:00.000Z",
+              "homeTeam": "Villarreal",
+              "homeTeamId": 10205,
+              "homeScore": "3",
+              "awayTeam": "Napoli",
+              "awayTeamId": 9875,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "10205",
+              "name": "Villarreal",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9875",
+              "name": "Napoli",
+              "isOurTeam": true
             }
           }
         ],
@@ -467,14 +467,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
                 "away_team",
-                "3",
-                "5",
-                "10"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,7 +484,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Napoli have scored 5 goals in their last 3 matches, while Bodø/Glimt have scored 10."
+              "defaultText": "Napoli have scored in their last 4 matches and Bodø/Glimt have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -577,144 +576,183 @@
       }
     },
     "weather": {
-      "temperature": 19,
+      "temperature": 17,
       "windSpeed": 3,
       "windDirectionCardinal": "NE",
       "iconCode": 29,
-      "relativeHumidity": 72,
-      "precipChance": 9,
+      "relativeHumidity": 67,
+      "precipChance": 19,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 40,
+      "cloudCover": 43,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-13T07:00:20Z",
+      "lastUpdated": "2026-10-13T19:00:36Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106320,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9875,
         "name": "Napoli",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 729093,
+            "age": 28,
             "name": "Mathías Olivera",
+            "countryName": "Uruguay",
+            "countryCode": "URU",
+            "marketValue": 16418517,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-13T12:06:18Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Mathías",
-            "lastName": "Olivera"
+            "lastName": "Olivera",
+            "nationalTeamId": 5796
           },
           {
             "id": 1320863,
+            "age": 23,
             "name": "Antonio Vergara",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 6447305,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-06T19:43:04Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Antonio",
-            "lastName": "Vergara"
+            "lastName": "Vergara",
+            "nationalTeamId": 8204
           },
           {
             "id": 1403328,
+            "age": 22,
             "name": "Costantino Favasuli",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 4973773,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-02T20:41:32Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Costantino",
-            "lastName": "Favasuli"
+            "lastName": "Favasuli",
+            "nationalTeamId": 8204
           },
           {
             "id": 612863,
+            "age": 30,
             "name": "Frank Anguissa",
+            "countryName": "Cameroon",
+            "countryCode": "CMR",
+            "marketValue": 11555178,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-13T12:06:23Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Frank",
-            "lastName": "Anguissa"
+            "lastName": "Anguissa",
+            "nationalTeamId": 6629
           },
           {
             "id": 1355552,
+            "age": 24,
             "name": "Alisson Santos",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 722365,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-09T17:15:18Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Alisson",
-            "lastName": "Santos"
+            "lastName": "Santos",
+            "nationalTeamId": 8256
           },
           {
             "id": 823018,
+            "age": 27,
             "name": "Alessandro Buongiorno",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 21194311,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-10-09T17:13:03Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Alessandro",
-            "lastName": "Buongiorno"
+            "lastName": "Buongiorno",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 8402,
         "name": "Bodø/Glimt",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1126421,
+            "age": 21,
             "name": "Magnus Bech Riisnæs",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 1972523,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-01T11:08:40Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Magnus Bech",
-            "lastName": "Riisnæs"
+            "lastName": "Riisnæs",
+            "nationalTeamId": 8492
           },
           {
             "id": 632870,
+            "age": 26,
             "name": "Håkon Evjen",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 4271027,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-11T12:00:16Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Håkon",
-            "lastName": "Evjen"
+            "lastName": "Evjen",
+            "nationalTeamId": 8492
           },
           {
             "id": 954167,
+            "age": 25,
             "name": "August Mikkelsen",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 500447,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-09-21T10:54:36Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "August",
-            "lastName": "Mikkelsen"
+            "lastName": "Mikkelsen",
+            "nationalTeamId": 8492
           }
         ]
       }

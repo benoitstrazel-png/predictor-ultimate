@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
-            "linkToMatch": "/matches/liverpool-vs-atletico-madrid/2uigag#6106246",
-            "date": {
-              "utcTime": "2026-09-09T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8650/overview/liverpool",
-            "tooltipText": {
-              "utcTime": "2026-09-09T19:00:00.000Z",
-              "homeTeam": "Liverpool",
-              "homeTeamId": 8650,
-              "homeScore": "2",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
@@ -423,6 +393,36 @@
               "name": "Atlético Madrid",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
+            "linkToMatch": "/matches/atletico-madrid-vs-manchester-united/3d2krr#6106267",
+            "date": {
+              "utcTime": "2026-10-13T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10260/overview/manchester-united",
+            "tooltipText": {
+              "utcTime": "2026-10-13T19:00:00.000Z",
+              "homeTeam": "Atlético Madrid",
+              "homeTeamId": 9906,
+              "homeScore": "2",
+              "awayTeam": "Manchester United",
+              "awayTeamId": 10260,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10260",
+              "name": "Manchester United",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Atlético Madrid have won their last 4 matches."
+              "defaultText": "Atlético Madrid have won their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -483,12 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "7",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored 8 goals in their last 3 matches."
+              "defaultText": "VfB Stuttgart have scored 7 goals in their last 3 matches, while Atlético Madrid have scored 6."
             },
             {
               "OddsType": "dc",
@@ -511,7 +513,7 @@
                 "home_team",
                 "away_team",
                 "10",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 10 matches and Atlético Madrid in their last 7."
+              "defaultText": "VfB Stuttgart haven't drawn in their last 10 matches and Atlético Madrid in their last 8."
             }
           ]
         },
@@ -534,6 +536,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9906,
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#C63527"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -569,116 +590,150 @@
     },
     "lineup": {
       "matchId": 6106397,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10269,
         "name": "VfB Stuttgart",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 614384,
+            "age": 29,
             "name": "Maximilian Mittelstädt",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 15829190,
             "unavailability": {
               "injuryId": 116,
-              "lastUpdated": "2026-10-12T11:23:04Z",
               "type": "injury",
               "expectedReturn": "About a week"
             },
             "firstName": "Maximilian",
-            "lastName": "Mittelstädt"
+            "lastName": "Mittelstädt",
+            "nationalTeamId": 8570
           },
           {
             "id": 867080,
+            "age": 28,
             "name": "Jeff Chabot",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 13663848,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-13T19:38:04Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Jeff",
-            "lastName": "Chabot"
+            "lastName": "Chabot",
+            "nationalTeamId": 8570
           },
           {
             "id": 869298,
+            "age": 26,
             "name": "Nikolas Nartey",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 1336689,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-03T13:18:30Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "About a week"
             },
             "firstName": "Nikolas",
-            "lastName": "Nartey"
+            "lastName": "Nartey",
+            "nationalTeamId": 8238
           },
           {
             "id": 1279764,
+            "age": 24,
             "name": "Ameen Al Dakhil",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 2239166,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-02T08:10:14Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Ameen",
-            "lastName": "Al Dakhil"
+            "lastName": "Al Dakhil",
+            "nationalTeamId": 8263
           },
           {
             "id": 1164506,
+            "age": 24,
             "name": "Tiago Tomás",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 18427771,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-11T11:58:42Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Tiago",
-            "lastName": "Tomás"
+            "lastName": "Tomás",
+            "nationalTeamId": 8361
           },
           {
             "id": 1270002,
+            "age": 23,
             "name": "Luca Jaquez",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 12928014,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-21T11:10:06Z",
               "type": "injury",
-              "expectedReturn": "Mid October 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Luca",
-            "lastName": "Jaquez"
+            "lastName": "Jaquez",
+            "nationalTeamId": 6717
           },
           {
             "id": 852347,
+            "age": 27,
             "name": "Dan-Axel Zagadou",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1249820,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-21T10:59:09Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Dan-Axel",
-            "lastName": "Zagadou"
+            "lastName": "Zagadou",
+            "nationalTeamId": 6723
           },
           {
             "id": 1434478,
+            "age": 21,
             "name": "Justin Diehl",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1395029,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-11T12:01:36Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Justin",
-            "lastName": "Diehl"
+            "lastName": "Diehl",
+            "nationalTeamId": 8570
           }
         ]
       },
       "awayTeam": {
         "id": 9906,
         "name": "Atlético Madrid",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       }
     },
     "hasPlayoff": false,

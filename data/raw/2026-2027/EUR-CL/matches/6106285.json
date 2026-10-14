@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png",
-            "linkToMatch": "/matches/viking-vs-vfb-stuttgart/2wms20#6106400",
-            "date": {
-              "utcTime": "2026-09-09T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10269/overview/vfb-stuttgart",
-            "tooltipText": {
-              "utcTime": "2026-09-09T16:45:00.000Z",
-              "homeTeam": "VfB Stuttgart",
-              "homeTeamId": 10269,
-              "homeScore": "3",
-              "awayTeam": "Viking",
-              "awayTeamId": 8478,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "10269",
-              "name": "VfB Stuttgart",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8478",
-              "name": "Viking",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8605.png",
@@ -422,6 +392,36 @@
               "name": "Viking",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
+            "linkToMatch": "/matches/viking-vs-bayern-munchen/2rpq5e#6106417",
+            "date": {
+              "utcTime": "2026-10-13T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9823/overview/bayern-munchen",
+            "tooltipText": {
+              "utcTime": "2026-10-13T19:00:00.000Z",
+              "homeTeam": "Viking",
+              "homeTeamId": 8478,
+              "homeScore": "3",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "3"
+            },
+            "score": "3 - 3",
+            "home": {
+              "id": "8478",
+              "name": "Viking",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,11 +438,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +457,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Viking have won their last 4 matches."
+              "defaultText": "Aston Villa haven't lost in their last 4 matches, and Viking in their last 5."
             },
             {
               "OddsType": "bts",
@@ -506,11 +508,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "5"
+                "4",
+                "1",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Viking haven't drawn in their last 5 matches."
+              "defaultText": "Aston Villa have 3W, 1D, 1L in five matches while Viking have 4W, 1D, 0L."
             }
           ]
         },
@@ -538,7 +546,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 10252,
-          "priority": 8,
+          "priority": 1345,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -550,6 +558,23 @@
           ],
           "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8478,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#132847"
         }
       ],
       "countryCode": "INT-2",

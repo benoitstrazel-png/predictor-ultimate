@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8593.png",
-            "linkToMatch": "/matches/ajax-vs-psv-eindhoven/2gezi1#5781735",
-            "date": {
-              "utcTime": "2026-09-05T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8593/overview/ajax",
-            "tooltipText": {
-              "utcTime": "2026-09-05T18:00:00.000Z",
-              "homeTeam": "Ajax",
-              "homeTeamId": 8593,
-              "homeScore": "1",
-              "awayTeam": "PSV Eindhoven",
-              "awayTeamId": 8640,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8593",
-              "name": "Ajax",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8640",
-              "name": "PSV Eindhoven",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9728.png",
@@ -423,6 +393,36 @@
               "name": "SC Heerenveen",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png",
+            "linkToMatch": "/matches/psv-eindhoven-vs-rb-leipzig/81iorv6#6106323",
+            "date": {
+              "utcTime": "2026-10-13T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
+            "tooltipText": {
+              "utcTime": "2026-10-13T19:00:00.000Z",
+              "homeTeam": "RB Leipzig",
+              "homeTeamId": 178475,
+              "homeScore": "1",
+              "awayTeam": "PSV Eindhoven",
+              "awayTeamId": 8640,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "178475",
+              "name": "RB Leipzig",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8640",
+              "name": "PSV Eindhoven",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -462,13 +462,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "4",
                 "away_team",
-                "9"
+                "3",
+                "8",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Porto have scored in their last 4 matches and PSV Eindhoven have scored in their last 9 matches."
+              "defaultText": "FC Porto have scored 8 goals in their last 3 matches, while PSV Eindhoven have scored 4."
             },
             {
               "OddsType": "ou",
@@ -507,11 +508,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC Porto haven't drawn in their last 12 matches."
+              "defaultText": "FC Porto haven't drawn in their last 12 matches and PSV Eindhoven in their last 4."
             }
           ]
         },
@@ -571,168 +574,199 @@
       }
     },
     "weather": {
-      "temperature": 16,
+      "temperature": 17,
       "windSpeed": 2,
-      "windDirectionCardinal": "SE",
-      "iconCode": 27,
-      "relativeHumidity": 71,
-      "precipChance": 20,
-      "precipitation": 0,
+      "windDirectionCardinal": "SSE",
+      "iconCode": 11,
+      "relativeHumidity": 74,
+      "precipChance": 41,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 65,
-      "description": "Mostly Cloudy",
+      "cloudCover": 70,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-13T07:00:20Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-13T19:00:35Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 6106287,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9773,
         "name": "FC Porto",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
-            "id": 289253,
-            "name": "João Costa",
+            "id": 1580427,
+            "age": 20,
+            "name": "William Gomes",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 26869683,
             "unavailability": {
-              "injuryId": 70,
-              "lastUpdated": "2026-10-13T09:14:16Z",
+              "injuryId": 30,
               "type": "injury",
-              "expectedReturn": "Early December 2026"
+              "expectedReturn": "Mid November 2026"
             },
-            "firstName": "João",
-            "lastName": "Costa"
+            "firstName": "William",
+            "lastName": "Gomes",
+            "nationalTeamId": 8256
           },
           {
-            "id": 902383,
-            "name": "Nehuén Pérez",
+            "id": 1285532,
+            "age": 23,
+            "name": "Vasco Sousa",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 1805046,
             "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-13T09:13:42Z",
+              "injuryId": 2,
               "type": "injury",
               "expectedReturn": "Day to day"
             },
-            "firstName": "Nehuén",
-            "lastName": "Pérez"
-          },
-          {
-            "id": 1079056,
-            "name": "Zaidu Sanusi",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-13T09:13:14Z",
-              "type": "injury",
-              "expectedReturn": "Day to day"
-            },
-            "firstName": "Zaidu",
-            "lastName": "Sanusi"
+            "firstName": "Vasco",
+            "lastName": "Sousa",
+            "nationalTeamId": 8361
           }
         ]
       },
       "awayTeam": {
         "id": 8640,
         "name": "PSV Eindhoven",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1327149,
+            "age": 20,
             "name": "Paul Wanner",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 24821811,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-12T18:13:16Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Paul",
-            "lastName": "Wanner"
+            "lastName": "Wanner",
+            "nationalTeamId": 8255
           },
           {
             "id": 1036401,
+            "age": 23,
             "name": "Ricardo Pepi",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 32325488,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-12T18:13:30Z",
               "type": "injury",
               "expectedReturn": "About a week"
             },
             "firstName": "Ricardo",
-            "lastName": "Pepi"
+            "lastName": "Pepi",
+            "nationalTeamId": 6713
           },
           {
             "id": 1237425,
+            "age": 24,
             "name": "Adamo Nagalo",
+            "countryName": "Burkina Faso",
+            "countryCode": "BFA",
+            "marketValue": 2121574,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-12T18:11:12Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Adamo",
-            "lastName": "Nagalo"
+            "lastName": "Nagalo",
+            "nationalTeamId": 6323
           },
           {
             "id": 665164,
+            "age": 29,
             "name": "Sam Lammers",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 2101436,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-12T18:11:29Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Sam",
-            "lastName": "Lammers"
+            "lastName": "Lammers",
+            "nationalTeamId": 6708
           },
           {
             "id": 1124533,
+            "age": 24,
             "name": "Kilian Sildillia",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 7636604,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-12T18:11:50Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Kilian",
-            "lastName": "Sildillia"
+            "lastName": "Sildillia",
+            "nationalTeamId": 6723
           },
           {
             "id": 294859,
+            "age": 33,
             "name": "Alassane Pléa",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1589221,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-12T18:12:33Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Alassane",
-            "lastName": "Pléa"
+            "lastName": "Pléa",
+            "nationalTeamId": 6723
           },
           {
             "id": 1393117,
+            "age": 22,
             "name": "Sami Ouaissa",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 9988948,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-12T18:12:53Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Sami",
-            "lastName": "Ouaissa"
+            "lastName": "Ouaissa",
+            "nationalTeamId": 6708
           },
           {
             "id": 772104,
+            "age": 29,
             "name": "Jerdy Schouten",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 21233268,
             "unavailability": {
               "injuryId": 71,
-              "lastUpdated": "2026-10-12T18:12:07Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Jerdy",
-            "lastName": "Schouten"
+            "lastName": "Schouten",
+            "nationalTeamId": 6708
           }
         ]
       }
