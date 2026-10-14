@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8691.png",
-            "linkToMatch": "/matches/karpaty-vs-shakhtar-donetsk/2t05se#5909149",
-            "date": {
-              "utcTime": "2026-09-05T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8691/overview/karpaty",
-            "tooltipText": {
-              "utcTime": "2026-09-05T15:00:00.000Z",
-              "homeTeam": "Karpaty",
-              "homeTeamId": 8691,
-              "homeScore": "1",
-              "awayTeam": "Shakhtar Donetsk",
-              "awayTeamId": 9728,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8691",
-              "name": "Karpaty",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9728",
-              "name": "Shakhtar Donetsk",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
@@ -423,6 +393,36 @@
               "name": "Shakhtar Donetsk",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8563.png",
+            "linkToMatch": "/matches/aek-athens-vs-shakhtar-donetsk/2rlswe#6106337",
+            "date": {
+              "utcTime": "2026-10-14T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8563/overview/aek-athens",
+            "tooltipText": {
+              "utcTime": "2026-10-14T19:00:00.000Z",
+              "homeTeam": "Shakhtar Donetsk",
+              "homeTeamId": 9728,
+              "homeScore": "3",
+              "awayTeam": "AEK Athens",
+              "awayTeamId": 8563,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "9728",
+              "name": "Shakhtar Donetsk",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8563",
+              "name": "AEK Athens",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Shakhtar Donetsk haven't lost in 5 matches."
+              "defaultText": "Shakhtar Donetsk have won their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -468,7 +468,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored in their last 12 matches and Shakhtar Donetsk have scored in their last 5 matches."
+              "defaultText": "Inter have scored in their last 12 matches and Shakhtar Donetsk have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
@@ -507,17 +507,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "4",
-                "1",
-                "0"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Inter have 2W, 1D, 2L in five matches while Shakhtar Donetsk have 4W, 1D, 0L."
+              "defaultText": "Shakhtar Donetsk haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -587,12 +581,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't lost in 6 matches",
           "color": "#F0602B"
         }
       ],
@@ -631,115 +625,150 @@
     },
     "lineup": {
       "matchId": 6106252,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8636,
         "name": "Inter",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 933768,
+            "age": 25,
             "name": "Curtis Jones",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 39440749,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-08T21:28:19Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Curtis",
-            "lastName": "Jones"
+            "lastName": "Jones",
+            "nationalTeamId": 8491
           },
           {
             "id": 263653,
+            "age": 32,
             "name": "John Stones",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 9075353,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-09T17:12:19Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "John",
-            "lastName": "Stones"
+            "lastName": "Stones",
+            "nationalTeamId": 8491
           }
         ]
       },
       "awayTeam": {
         "id": 9728,
         "name": "Shakhtar Donetsk",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1067263,
+            "age": 24,
             "name": "Irakli Azarovi",
+            "countryName": "Georgia",
+            "countryCode": "GEO",
+            "marketValue": 1953329,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-14T08:24:14Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Irakli",
-            "lastName": "Azarovi"
+            "lastName": "Azarovi",
+            "nationalTeamId": 8268
           },
           {
             "id": 1106594,
+            "age": 24,
             "name": "Kiril Fesyun",
+            "countryName": "Ukraine",
+            "countryCode": "UKR",
+            "marketValue": 1367003,
             "unavailability": {
               "injuryId": 92,
-              "lastUpdated": "2026-10-14T20:21:47Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "Kiril",
-            "lastName": "Fesyun"
+            "lastName": "Fesyun",
+            "nationalTeamId": 6718
           },
           {
             "id": 1173774,
+            "age": 25,
             "name": "Alaa Ghram",
+            "countryName": "Tunisia",
+            "countryCode": "TUN",
+            "marketValue": 1254823,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-12T23:18:55Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "Alaa",
-            "lastName": "Ghram"
+            "lastName": "Ghram",
+            "nationalTeamId": 6719
           },
           {
             "id": 1389450,
+            "age": 22,
             "name": "Eguinaldo",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 6608356,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-10-11T13:49:16Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "",
-            "lastName": "Eguinaldo"
+            "lastName": "Eguinaldo",
+            "nationalTeamId": 8256
           },
           {
             "id": 1648049,
+            "age": 21,
             "name": "Diego Arroyo",
+            "countryName": "Bolivia",
+            "countryCode": "BOL",
+            "marketValue": 460343,
             "unavailability": {
               "injuryId": 43,
-              "lastUpdated": "2026-10-04T04:37:38Z",
               "type": "injury",
               "expectedReturn": "About a week"
             },
             "firstName": "Diego",
-            "lastName": "Arroyo"
+            "lastName": "Arroyo",
+            "nationalTeamId": 5797
           },
           {
             "id": 540113,
+            "age": 31,
             "name": "Marlon",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 1558195,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-08T11:50:07Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "",
-            "lastName": "Marlon"
+            "lastName": "Marlon",
+            "nationalTeamId": 8256
           }
         ]
       }

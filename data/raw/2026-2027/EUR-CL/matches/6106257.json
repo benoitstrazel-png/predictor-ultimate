@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png",
-            "linkToMatch": "/matches/manchester-city-vs-fc-porto/2qxjd0#6106286",
-            "date": {
-              "utcTime": "2026-09-08T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9773/overview/fc-porto",
-            "tooltipText": {
-              "utcTime": "2026-09-08T19:00:00.000Z",
-              "homeTeam": "FC Porto",
-              "homeTeamId": 9773,
-              "homeScore": "0",
-              "awayTeam": "Manchester City",
-              "awayTeamId": 8456,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "9773",
-              "name": "FC Porto",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8456",
-              "name": "Manchester City",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
             "linkToMatch": "/matches/manchester-city-vs-manchester-united/2wabz2#5795452",
             "date": {
@@ -270,39 +240,39 @@
               "name": "Manchester City",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9977.png",
-            "linkToMatch": "/matches/aek-athens-vs-lask/2uc3cn#6106404",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+            "linkToMatch": "/matches/manchester-city-vs-paris-saint-germain/2rqiev#6106254",
             "date": {
-              "utcTime": "2026-09-08T16:45:00.000Z"
+              "utcTime": "2026-10-14T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9977/overview/lask",
+            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
             "tooltipText": {
-              "utcTime": "2026-09-08T16:45:00.000Z",
-              "homeTeam": "AEK Athens",
-              "homeTeamId": 8563,
-              "homeScore": "1",
-              "awayTeam": "LASK",
-              "awayTeamId": 9977,
-              "awayScore": "0"
+              "utcTime": "2026-10-14T19:00:00.000Z",
+              "homeTeam": "Manchester City",
+              "homeTeamId": 8456,
+              "homeScore": "2",
+              "awayTeam": "Paris Saint-Germain",
+              "awayTeamId": 9847,
+              "awayScore": "4"
             },
-            "score": "1 - 0",
+            "score": "2 - 4",
             "home": {
-              "id": "8563",
-              "name": "AEK Athens",
+              "id": "8456",
+              "name": "Manchester City",
               "isOurTeam": true
             },
             "away": {
-              "id": "9977",
-              "name": "LASK",
+              "id": "9847",
+              "name": "Paris Saint-Germain",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": 0,
             "resultString": "D",
@@ -422,6 +392,36 @@
               "name": "OFI Crete",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9728.png",
+            "linkToMatch": "/matches/aek-athens-vs-shakhtar-donetsk/2rlswe#6106337",
+            "date": {
+              "utcTime": "2026-10-14T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9728/overview/shakhtar-donetsk",
+            "tooltipText": {
+              "utcTime": "2026-10-14T19:00:00.000Z",
+              "homeTeam": "Shakhtar Donetsk",
+              "homeTeamId": 9728,
+              "homeScore": "3",
+              "awayTeam": "AEK Athens",
+              "awayTeamId": 8563,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "9728",
+              "name": "Shakhtar Donetsk",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8563",
+              "name": "AEK Athens",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -467,7 +467,7 @@
                 "home_team",
                 "8",
                 "away_team",
-                "10"
+                "11"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester City have scored in their last 8 matches and AEK Athens have scored in their last 10 matches."
+              "defaultText": "Manchester City have scored in their last 8 matches and AEK Athens have scored in their last 11 matches."
             },
             {
               "OddsType": "ou",
@@ -506,11 +506,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Manchester City haven't drawn in their last 12 matches."
+              "defaultText": "Manchester City haven't drawn in their last 12 matches and AEK Athens in their last 4."
             }
           ]
         },
@@ -533,42 +535,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8456,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 8 matches",
-          "color": "#69A8D8"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8563,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 11,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 11 matches",
-          "color": "#d99f00"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },

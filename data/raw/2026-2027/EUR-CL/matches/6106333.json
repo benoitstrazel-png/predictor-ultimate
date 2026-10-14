@@ -125,36 +125,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
-            "linkToMatch": "/matches/roma-vs-fenerbahce/2hxw0m#6106331",
-            "date": {
-              "utcTime": "2026-09-10T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8686/overview/roma",
-            "tooltipText": {
-              "utcTime": "2026-09-10T16:45:00.000Z",
-              "homeTeam": "Fenerbahçe",
-              "homeTeamId": 8695,
-              "homeScore": "1",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "8695",
-              "name": "Fenerbahçe",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/4081.png",
             "linkToMatch": "/matches/gaziantep-fk-vs-fenerbahce/1clkp7#5904740",
             "date": {
@@ -264,6 +234,36 @@
             "home": {
               "id": "2166",
               "name": "Rizespor",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8695",
+              "name": "Fenerbahçe",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
+            "linkToMatch": "/matches/fenerbahce-vs-aston-villa/2yvksd#6106284",
+            "date": {
+              "utcTime": "2026-10-14T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10252/overview/aston-villa",
+            "tooltipText": {
+              "utcTime": "2026-10-14T19:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "6",
+              "awayTeam": "Fenerbahçe",
+              "awayTeamId": 8695,
+              "awayScore": "0"
+            },
+            "score": "6 - 0",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
               "isOurTeam": false
             },
             "away": {
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Fenerbahçe haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Fenerbahçe have 3W, 1D, 1L in five matches while Slavia Prague have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -483,11 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "13",
+                "away_team",
+                "3",
+                "5",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,16 +507,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fenerbahçe have scored 13 goals in their last 3 matches."
+              "defaultText": "Fenerbahçe have scored 5 goals in their last 3 matches, while Slavia Prague have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "8"
               ],
               "DefaultLabels": [
@@ -522,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Slavia Prague haven't drawn in their last 8 matches."
+              "defaultText": "Fenerbahçe haven't drawn in their last 4 matches and Slavia Prague in their last 8."
             }
           ]
         },
@@ -533,23 +543,6 @@
         "awayTopPlayers": []
       },
       "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8695,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#002D72"
-        },
         {
           "type": "team",
           "playerId": null,
