@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8025.png",
-            "linkToMatch": "/matches/jagiellonia-biaystok-vs-slask-wrocaw/to3iy#5803969",
-            "date": {
-              "utcTime": "2026-09-06T18:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8025/overview/slask-wrocaw",
-            "tooltipText": {
-              "utcTime": "2026-09-06T18:15:00.000Z",
-              "homeTeam": "Jagiellonia Białystok",
-              "homeTeamId": 1957,
-              "homeScore": "2",
-              "awayTeam": "Śląsk Wrocław",
-              "awayTeamId": 8025,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "1957",
-              "name": "Jagiellonia Białystok",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8025",
-              "name": "Śląsk Wrocław",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10265.png",
@@ -270,39 +240,39 @@
               "name": "Górnik Zabrze",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9987.png",
-            "linkToMatch": "/matches/anderlecht-vs-genk/2v8r1g#5811753",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/866109.png",
+            "linkToMatch": "/matches/jagiellonia-biaystok-vs-ararat-armenia/4t33hc34#6112341",
             "date": {
-              "utcTime": "2026-09-06T16:30:00.000Z"
+              "utcTime": "2026-10-15T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9987/overview/genk",
+            "teamPageUrl": "/teams/866109/overview/ararat-armenia",
             "tooltipText": {
-              "utcTime": "2026-09-06T16:30:00.000Z",
-              "homeTeam": "Anderlecht",
-              "homeTeamId": 8635,
-              "homeScore": "0",
-              "awayTeam": "Genk",
-              "awayTeamId": 9987,
-              "awayScore": "0"
+              "utcTime": "2026-10-15T19:00:00.000Z",
+              "homeTeam": "Jagiellonia Białystok",
+              "homeTeamId": 1957,
+              "homeScore": "3",
+              "awayTeam": "Ararat Armenia",
+              "awayTeamId": 866109,
+              "awayScore": "1"
             },
-            "score": "0 - 0",
+            "score": "3 - 1",
             "home": {
-              "id": "8635",
-              "name": "Anderlecht",
+              "id": "1957",
+              "name": "Jagiellonia Białystok",
               "isOurTeam": true
             },
             "away": {
-              "id": "9987",
-              "name": "Genk",
+              "id": "866109",
+              "name": "Ararat Armenia",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -422,6 +392,36 @@
               "name": "Anderlecht",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10156.png",
+            "linkToMatch": "/matches/anderlecht-vs-dinamo-zagreb/2x4hev#6112291",
+            "date": {
+              "utcTime": "2026-10-15T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10156/overview/dinamo-zagreb",
+            "tooltipText": {
+              "utcTime": "2026-10-15T19:00:00.000Z",
+              "homeTeam": "Dinamo Zagreb",
+              "homeTeamId": 10156,
+              "homeScore": "1",
+              "awayTeam": "Anderlecht",
+              "awayTeamId": 8635,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "10156",
+              "name": "Dinamo Zagreb",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8635",
+              "name": "Anderlecht",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "1",
+                "0",
+                "4",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,17 +460,19 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Jagiellonia Białystok have lost their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Jagiellonia Białystok have 1W, 0D, 4L in five matches while Anderlecht have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -476,7 +484,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have scored in their last 4 home matches."
+              "defaultText": "Jagiellonia Białystok have scored in their last 4 matches and Anderlecht have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -488,7 +496,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "3",
+                "5",
                 "6"
               ],
               "DefaultLabels": [
@@ -500,16 +508,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have scored 3 goals in their last 3 matches, while Anderlecht have scored 6."
+              "defaultText": "Jagiellonia Białystok have scored 5 goals in their last 3 matches, while Anderlecht have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
+                "away_team",
+                "10",
                 "4"
               ],
               "DefaultLabels": [
@@ -522,8 +532,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Jagiellonia Białystok haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Jagiellonia Białystok haven't drawn in their last 10 matches and Anderlecht in their last 4."
             }
           ]
         },
@@ -538,34 +548,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 1957,
-          "priority": 1344,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
-          "statValues": [
-            {
-              "value": 4,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have lost their last 4 matches",
-          "color": "#D81921"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 1957,
           "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#D81921"
         }
       ],
@@ -604,66 +597,84 @@
     },
     "lineup": {
       "matchId": 6112339,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 1957,
         "name": "Jagiellonia Białystok",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       },
       "awayTeam": {
         "id": 8635,
         "name": "Anderlecht",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 990989,
+            "age": 26,
             "name": "Giulian Biancone",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1767702,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-15T12:31:42Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Giulian",
-            "lastName": "Biancone"
+            "lastName": "Biancone",
+            "nationalTeamId": 6723
           },
           {
             "id": 1076975,
+            "age": 24,
             "name": "Killian Sardella",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 2103025,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-14T15:23:09Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Killian",
-            "lastName": "Sardella"
+            "lastName": "Sardella",
+            "nationalTeamId": 8263
           },
           {
             "id": 1473998,
+            "age": 23,
             "name": "Ilay Camara",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 3666205,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-14T15:22:09Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Ilay",
-            "lastName": "Camara"
+            "lastName": "Camara",
+            "nationalTeamId": 6395
           },
           {
             "id": 1258287,
+            "age": 23,
             "name": "Lucas Hey",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 2146906,
             "unavailability": {
               "injuryId": 2,
-              "lastUpdated": "2026-10-15T12:33:05Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Lucas",
-            "lastName": "Hey"
+            "lastName": "Hey",
+            "nationalTeamId": 8238
           }
         ]
       }
