@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "FC Porto have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "FC Porto have 4W, 0D, 1L in five matches while PSV Eindhoven have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -468,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "8",
+                "7",
                 "4"
               ],
               "DefaultLabels": [
@@ -480,18 +486,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Porto have scored 8 goals in their last 3 matches, while PSV Eindhoven have scored 4."
+              "defaultText": "FC Porto have scored 7 goals in their last 3 matches, while PSV Eindhoven have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "7",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Porto have scored 8 goals in their last 3 matches."
+              "defaultText": "FC Porto have scored 7 goals in their last 3 matches, while PSV Eindhoven have scored 4."
             },
             {
               "OddsType": "dc",
@@ -557,7 +565,46 @@
         }
       ],
       "countryCode": "INT-2",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/42/6106287/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -574,18 +621,18 @@
       }
     },
     "weather": {
-      "temperature": 15,
-      "windSpeed": 2,
+      "temperature": 14,
+      "windSpeed": 1,
       "windDirectionCardinal": "S",
       "iconCode": 11,
-      "relativeHumidity": 74,
-      "precipChance": 40,
-      "precipitation": 0.3,
+      "relativeHumidity": 76,
+      "precipChance": 35,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 52,
+      "cloudCover": 61,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-14T19:00:23Z",
+      "lastUpdated": "2026-10-15T07:00:20Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
