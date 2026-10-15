@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
-            "linkToMatch": "/matches/getafe-vs-celta-vigo/2qs2ma#5868046",
-            "date": {
-              "utcTime": "2026-09-07T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9910/overview/celta-vigo",
-            "tooltipText": {
-              "utcTime": "2026-09-07T17:00:00.000Z",
-              "homeTeam": "Getafe",
-              "homeTeamId": 8305,
-              "homeScore": "1",
-              "awayTeam": "Celta Vigo",
-              "awayTeamId": 9910,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9910",
-              "name": "Celta Vigo",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783.png",
             "linkToMatch": "/matches/getafe-vs-deportivo-coruna/2penqj#5868053",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Getafe",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/480286.png",
+            "linkToMatch": "/matches/getafe-vs-universitatea-craiova/1iu0cxwp#6112505",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/480286/overview/universitatea-craiova",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Universitatea Craiova",
+              "homeTeamId": 480286,
+              "homeScore": "1",
+              "awayTeam": "Getafe",
+              "awayTeamId": 8305,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "480286",
+              "name": "Universitatea Craiova",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -462,11 +462,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} haven't scored away for {1} matches.",
-              "TextTemplateId": "goalless_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "3"
+                "0.67",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,18 +478,20 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Getafe haven't scored away for 3 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Athletic Club have an average of 0.67 goals in their last three matches and Getafe have an average of 0.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored away for {1} matches.",
-              "TextTemplateId": "goalless_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "3"
+                "0.67",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -497,8 +501,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Getafe haven't scored away for 3 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Athletic Club have an average of 0.67 goals in their last three matches and Getafe have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -645,15 +649,15 @@
         },
         {
           "type": "player",
-          "playerId": 1197039,
+          "playerId": 1203946,
           "teamId": 8305,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1197039,
-              "name": "Martín Satriano",
+              "value": 1203946,
+              "name": "Iván Azon",
               "type": "player"
             },
             {
@@ -662,12 +666,12 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 1.3,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Martín Satriano has created the most big chances for Getafe (1)",
+          "text": "Iván Azon has the most shots on target per match for Getafe (1.3)",
           "color": "#084888"
         }
       ],
@@ -756,6 +760,18 @@
         "id": 8305,
         "name": "Getafe",
         "unavailable": [
+          {
+            "id": 1202587,
+            "name": "Ramón Terrats",
+            "unavailability": {
+              "injuryId": 32,
+              "lastUpdated": "2026-10-15T21:31:27Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Ramón",
+            "lastName": "Terrats"
+          },
           {
             "id": 1203946,
             "name": "Iván Azon",

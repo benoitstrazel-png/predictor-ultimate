@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10228.png",
-            "linkToMatch": "/matches/sc-heerenveen-vs-az-alkmaar/3gl9te#5781736",
-            "date": {
-              "utcTime": "2026-09-06T12:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10228/overview/sc-heerenveen",
-            "tooltipText": {
-              "utcTime": "2026-09-06T12:30:00.000Z",
-              "homeTeam": "SC Heerenveen",
-              "homeTeamId": 10228,
-              "homeScore": "2",
-              "awayTeam": "AZ Alkmaar",
-              "awayTeamId": 10229,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "10228",
-              "name": "SC Heerenveen",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10229",
-              "name": "AZ Alkmaar",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8525.png",
@@ -422,6 +392,36 @@
               "name": "AZ Alkmaar",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9754.png",
+            "linkToMatch": "/matches/hapoel-beer-sheva-vs-az-alkmaar/3avtzm#6112265",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9754/overview/hapoel-beer-sheva",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "AZ Alkmaar",
+              "homeTeamId": 10229,
+              "homeScore": "2",
+              "awayTeam": "Hapoel Beer Sheva",
+              "awayTeamId": 9754,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "10229",
+              "name": "AZ Alkmaar",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9754",
+              "name": "Hapoel Beer Sheva",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -488,13 +488,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.33"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,23 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ararat Armenia have an average of 1.67 goals in their last three matches and AZ Alkmaar have an average of 0.33."
+              "defaultText": "Ararat Armenia have scored 5 goals in their last 3 matches, while AZ Alkmaar have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "3",
-                "1",
-                "1",
                 "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -534,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Ararat Armenia have 3W, 1D, 1L in five matches while AZ Alkmaar have 2W, 1D, 2L."
+              "defaultText": "AZ Alkmaar haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -562,71 +557,85 @@
       }
     },
     "weather": {
-      "temperature": 14,
-      "windSpeed": 2,
+      "temperature": 15,
+      "windSpeed": 3,
       "windDirectionCardinal": "NE",
-      "iconCode": 29,
-      "relativeHumidity": 72,
-      "precipChance": 16,
+      "iconCode": 33,
+      "relativeHumidity": 71,
+      "precipChance": 21,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 32,
-      "description": "Partly Cloudy",
+      "cloudCover": 24,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T05:00:15Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-15T17:00:19Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 6112382,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 866109,
         "name": "Ararat Armenia",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       },
       "awayTeam": {
         "id": 10229,
         "name": "AZ Alkmaar",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1417581,
+            "age": 20,
             "name": "Kees Smit",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 20287206,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-14T10:32:33Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Kees",
-            "lastName": "Smit"
+            "lastName": "Smit",
+            "nationalTeamId": 6708
           },
           {
             "id": 905457,
+            "age": 28,
             "name": "Jizz Hornkamp",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 3123234,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-14T10:31:41Z",
               "type": "injury",
               "expectedReturn": "A few days"
             },
             "firstName": "Jizz",
-            "lastName": "Hornkamp"
+            "lastName": "Hornkamp",
+            "nationalTeamId": 6708
           },
           {
             "id": 1206846,
+            "age": 23,
             "name": "Stije Resink",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 9097857,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-14T10:32:10Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Stije",
-            "lastName": "Resink"
+            "lastName": "Resink",
+            "nationalTeamId": 6708
           }
         ]
       }

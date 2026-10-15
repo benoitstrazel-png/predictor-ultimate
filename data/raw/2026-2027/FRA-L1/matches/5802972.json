@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
-            "linkToMatch": "/matches/auxerre-vs-lyon/2s1i32#5802922",
-            "date": {
-              "utcTime": "2026-09-04T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8583/overview/auxerre",
-            "tooltipText": {
-              "utcTime": "2026-09-04T17:00:00.000Z",
-              "homeTeam": "Lyon",
-              "homeTeamId": 9748,
-              "homeScore": "3",
-              "awayTeam": "Auxerre",
-              "awayTeamId": 8583,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "9748",
-              "name": "Lyon",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8583",
-              "name": "Auxerre",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6379.png",
@@ -423,6 +393,36 @@
               "name": "Lyon",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png",
+            "linkToMatch": "/matches/lyon-vs-crystal-palace/362g27#6112260",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9826/overview/crystal-palace",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Lyon",
+              "homeTeamId": 9748,
+              "homeScore": "3",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "9748",
+              "name": "Lyon",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -462,10 +462,12 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "8",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored in their last 4 home matches."
+              "defaultText": "Paris Saint-Germain have scored in their last 8 matches and Lyon have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -505,11 +507,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "away_team",
+                "6",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 6 matches."
+              "defaultText": "Paris Saint-Germain haven't drawn in their last 6 matches and Lyon in their last 4."
             }
           ]
         },
@@ -560,16 +564,26 @@
           "playerId": null,
           "teamId": 9847,
           "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+          "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
             {
-              "value": 5,
+              "value": 9847,
+              "name": "Paris Saint-Germain",
+              "type": "team"
+            },
+            {
+              "value": 9748,
+              "name": "Lyon",
+              "type": "team"
+            },
+            {
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Paris Saint-Germain and Lyon have not drawn any of their last 9 matches against each other.",
           "color": "#273F6D"
         },
         {
@@ -689,18 +703,18 @@
       }
     },
     "weather": {
-      "temperature": 13,
+      "temperature": 12,
       "windSpeed": 3,
-      "windDirectionCardinal": "SW",
+      "windDirectionCardinal": "SSE",
       "iconCode": 29,
-      "relativeHumidity": 75,
-      "precipChance": 5,
+      "relativeHumidity": 81,
+      "precipChance": 13,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 50,
+      "cloudCover": 59,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T08:00:12Z",
+      "lastUpdated": "2026-10-15T20:00:18Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

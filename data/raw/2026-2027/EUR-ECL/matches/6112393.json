@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
-            "linkToMatch": "/matches/ajax-vs-psv-eindhoven/2gezi1#5781735",
-            "date": {
-              "utcTime": "2026-09-05T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8640/overview/psv-eindhoven",
-            "tooltipText": {
-              "utcTime": "2026-09-05T18:00:00.000Z",
-              "homeTeam": "Ajax",
-              "homeTeamId": 8593,
-              "homeScore": "1",
-              "awayTeam": "PSV Eindhoven",
-              "awayTeamId": 8640,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8593",
-              "name": "Ajax",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8640",
-              "name": "PSV Eindhoven",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6422.png",
@@ -270,6 +240,36 @@
               "id": "8464",
               "name": "NEC Nijmegen",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10154.png",
+            "linkToMatch": "/matches/ajax-vs-hajduk-split/2wms57#6112523",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/10154/overview/hajduk-split",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Hajduk Split",
+              "homeTeamId": 10154,
+              "homeScore": "2",
+              "awayTeam": "Ajax",
+              "awayTeamId": 8593,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "10154",
+              "name": "Hajduk Split",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8593",
+              "name": "Ajax",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "2",
+                "2",
+                "1",
+                "away_team",
+                "2",
+                "0",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Ajax haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Ajax have 2W, 2D, 1L in five matches while Atalanta have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -466,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "7"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,18 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ajax have scored in their last 7 home matches."
+              "defaultText": "Ajax have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ajax have scored 8 goals in their last 3 matches."
+              "defaultText": "Ajax have scored 4 goals in their last 3 matches, while Atalanta have scored 4."
             },
             {
               "OddsType": "dc",
@@ -542,12 +550,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#C2002F"
         }
       ],
@@ -571,16 +579,16 @@
     "weather": {
       "temperature": 12,
       "windSpeed": 3,
-      "windDirectionCardinal": "SE",
+      "windDirectionCardinal": "SSW",
       "iconCode": 29,
       "relativeHumidity": 89,
-      "precipChance": 24,
+      "precipChance": 10,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
+      "cloudCover": 49,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T07:00:23Z",
+      "lastUpdated": "2026-10-15T19:00:26Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -665,9 +673,9 @@
             "name": "Franck Kessié",
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-14T21:05:21Z",
+              "lastUpdated": "2026-10-15T18:40:53Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Late October 2026"
             },
             "firstName": "Franck",
             "lastName": "Kessié"
@@ -689,9 +697,9 @@
             "name": "Raoul Bellanova",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-12T22:37:10Z",
+              "lastUpdated": "2026-10-15T19:11:08Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Raoul",
             "lastName": "Bellanova"

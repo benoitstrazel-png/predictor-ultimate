@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/463461.png",
-            "linkToMatch": "/matches/fk-crvena-zvezda-vs-fk-radnik-surdulica/1f7dnvtt#1000015084",
-            "date": {
-              "utcTime": "2026-09-10T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/463461/overview/fk-radnik-surdulica",
-            "tooltipText": {
-              "utcTime": "2026-09-10T17:00:00.000Z",
-              "homeTeam": "FK Radnik Surdulica",
-              "homeTeamId": 463461,
-              "homeScore": "0",
-              "awayTeam": "FK Crvena Zvezda",
-              "awayTeamId": 8687,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "463461",
-              "name": "FK Radnik Surdulica",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8687",
-              "name": "FK Crvena Zvezda",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/568569.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "1675",
               "name": "FK Radnički 1923",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8687",
+              "name": "FK Crvena Zvezda",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7896.png",
+            "linkToMatch": "/matches/lugano-vs-fk-crvena-zvezda/29vf6z#6112473",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/7896/overview/lugano",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Lugano",
+              "homeTeamId": 7896,
+              "homeScore": "3",
+              "awayTeam": "FK Crvena Zvezda",
+              "awayTeamId": 8687,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "7896",
+              "name": "Lugano",
               "isOurTeam": false
             },
             "away": {
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "FK Crvena Zvezda have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "FK Crvena Zvezda have 4W, 0D, 1L in five matches while FC København have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -510,7 +516,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "4",
+                "5",
                 "10"
               ],
               "DefaultLabels": [
@@ -524,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FK Crvena Zvezda haven't drawn in their last 4 matches and FC København in their last 10."
+              "defaultText": "FK Crvena Zvezda haven't drawn in their last 5 matches and FC København in their last 10."
             }
           ]
         },
@@ -534,25 +540,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8687,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 7 matches",
-          "color": "#D80017"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -571,59 +558,69 @@
       }
     },
     "weather": {
-      "temperature": 16,
+      "temperature": 15,
       "windSpeed": 3,
       "windDirectionCardinal": "ESE",
       "iconCode": 29,
-      "relativeHumidity": 59,
-      "precipChance": 11,
+      "relativeHumidity": 60,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 51,
+      "cloudCover": 31,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T05:00:18Z",
+      "lastUpdated": "2026-10-15T17:00:21Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112408,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8687,
         "name": "FK Crvena Zvezda",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       },
       "awayTeam": {
         "id": 8391,
         "name": "FC København",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 775246,
+            "age": 28,
             "name": "Mads Madsen",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 1719885,
             "unavailability": {
               "injuryId": 92,
-              "lastUpdated": "2026-10-15T09:54:07Z",
               "type": "injury",
               "expectedReturn": "A few days"
             },
             "firstName": "Mads",
-            "lastName": "Madsen"
+            "lastName": "Madsen",
+            "nationalTeamId": 8238
           },
           {
             "id": 875306,
+            "age": 27,
             "name": "Magnus Mattsson",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 2475426,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-15T09:54:26Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Magnus",
-            "lastName": "Mattsson"
+            "lastName": "Mattsson",
+            "nationalTeamId": 8238
           }
         ]
       }

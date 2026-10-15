@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8632.png",
-            "linkToMatch": "/matches/levski-sofia-vs-cska-sofia/2wyg04#5801081",
-            "date": {
-              "utcTime": "2026-09-09T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8632/overview/levski-sofia",
-            "tooltipText": {
-              "utcTime": "2026-09-09T15:30:00.000Z",
-              "homeTeam": "Levski Sofia",
-              "homeTeamId": 8632,
-              "homeScore": "2",
-              "awayTeam": "CSKA Sofia",
-              "awayTeamId": 10144,
-              "awayScore": "4"
-            },
-            "score": "2 - 4",
-            "home": {
-              "id": "8632",
-              "name": "Levski Sofia",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10144",
-              "name": "CSKA Sofia",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/944173.png",
             "linkToMatch": "/matches/cska-sofia-vs-arda-kardzhali/5t6upmp4#5760492",
             "date": {
@@ -423,6 +393,36 @@
               "name": "CSKA Sofia",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9829.png",
+            "linkToMatch": "/matches/monaco-vs-cska-sofia/3arjw4#6112541",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9829/overview/monaco",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "CSKA Sofia",
+              "homeTeamId": 10144,
+              "homeScore": "1",
+              "awayTeam": "Monaco",
+              "awayTeamId": 9829,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "10144",
+              "name": "CSKA Sofia",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9829",
+              "name": "Monaco",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "7"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "CSKA Sofia haven't lost in 7 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Nordsjælland have 2W, 2D, 1L in five matches while CSKA Sofia have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -490,7 +496,7 @@
                 "away_team",
                 "3",
                 "4",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Nordsjælland have scored 4 goals in their last 3 matches, while CSKA Sofia have scored 6."
+              "defaultText": "Nordsjælland have scored 4 goals in their last 3 matches, while CSKA Sofia have scored 5."
             },
             {
               "OddsType": "dc",
@@ -515,9 +521,9 @@
                 "2",
                 "1",
                 "away_team",
-                "4",
+                "3",
                 "1",
-                "0"
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +536,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Nordsjælland have 2W, 2D, 1L in five matches while CSKA Sofia have 4W, 1D, 0L."
+              "defaultText": "Nordsjælland have 2W, 2D, 1L in five matches while CSKA Sofia have 3W, 1D, 1L."
             }
           ]
         },
@@ -540,25 +546,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10144,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 7 matches",
-          "color": "#D80800"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -578,69 +565,86 @@
     },
     "weather": {
       "temperature": 11,
-      "windSpeed": 3,
-      "windDirectionCardinal": "ESE",
-      "iconCode": 29,
+      "windSpeed": 4,
+      "windDirectionCardinal": "SE",
+      "iconCode": 27,
       "relativeHumidity": 87,
-      "precipChance": 13,
+      "precipChance": 17,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 50,
-      "description": "Partly Cloudy",
+      "cloudCover": 64,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T05:00:18Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-15T17:00:21Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 6112531,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10202,
         "name": "Nordsjælland",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1584045,
+            "age": 19,
             "name": "Souleymane Alio",
+            "countryName": "Burkina Faso",
+            "countryCode": "BFA",
+            "marketValue": 398565,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-14T15:43:15Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Souleymane",
-            "lastName": "Alio"
+            "lastName": "Alio",
+            "nationalTeamId": 6323
           },
           {
             "id": 1615926,
+            "age": 20,
             "name": "Araphat Mohammed",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "marketValue": 384807,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-10-14T15:42:57Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Araphat",
-            "lastName": "Mohammed"
+            "lastName": "Mohammed",
+            "nationalTeamId": 6714
           }
         ]
       },
       "awayTeam": {
         "id": 10144,
         "name": "CSKA Sofia",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1177022,
+            "age": 28,
             "name": "Mohamed Brahimi",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 775273,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Late October 2026",
+              "expectedReturnDate": "2026-10-22T18:45:00Z"
             },
             "firstName": "Mohamed",
-            "lastName": "Brahimi"
+            "lastName": "Brahimi",
+            "nationalTeamId": 6723
           }
         ]
       }

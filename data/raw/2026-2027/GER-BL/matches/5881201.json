@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8149.png",
-            "linkToMatch": "/matches/union-berlin-vs-bayer-leverkusen/27d4by#5881152",
-            "date": {
-              "utcTime": "2026-09-05T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8149/overview/union-berlin",
-            "tooltipText": {
-              "utcTime": "2026-09-05T13:30:00.000Z",
-              "homeTeam": "Bayer Leverkusen",
-              "homeTeamId": 8178,
-              "homeScore": "4",
-              "awayTeam": "Union Berlin",
-              "awayTeamId": 8149,
-              "awayScore": "0"
-            },
-            "score": "4 - 0",
-            "home": {
-              "id": "8178",
-              "name": "Bayer Leverkusen",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8149",
-              "name": "Union Berlin",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8406.png",
@@ -423,6 +393,36 @@
               "name": "Bayer Leverkusen",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2182.png",
+            "linkToMatch": "/matches/lech-poznan-vs-bayer-leverkusen/vyiby#6112318",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/2182/overview/lech-poznan",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Lech Poznań",
+              "homeTeamId": 2182,
+              "homeScore": "0",
+              "awayTeam": "Bayer Leverkusen",
+              "awayTeamId": 8178,
+              "awayScore": "4"
+            },
+            "score": "0 - 4",
+            "home": {
+              "id": "2182",
+              "name": "Lech Poznań",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8178",
+              "name": "Bayer Leverkusen",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bayer Leverkusen haven't lost in 5 matches."
+              "defaultText": "Bayer Leverkusen have won their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -487,7 +487,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "8",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,17 +499,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayer Leverkusen have scored 8 goals in their last 3 matches."
+              "defaultText": "Bayer Leverkusen have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hoffenheim haven't drawn in their last 12 matches."
+              "defaultText": "Hoffenheim haven't drawn in their last 12 matches and Bayer Leverkusen in their last 4."
             }
           ]
         },

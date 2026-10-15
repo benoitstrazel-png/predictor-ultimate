@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -278,36 +278,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
-            "linkToMatch": "/matches/real-sociedad-vs-atletico-madrid/2tiqrp#5868058",
-            "date": {
-              "utcTime": "2026-09-13T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
-            "tooltipText": {
-              "utcTime": "2026-09-13T19:00:00.000Z",
-              "homeTeam": "Real Sociedad",
-              "homeTeamId": 8560,
-              "homeScore": "0",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
             "linkToMatch": "/matches/real-sociedad-vs-afc-bournemouth/2ggu0z#6112272",
             "date": {
@@ -424,6 +394,36 @@
               "name": "Deportivo A Coruña",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7978.png",
+            "linkToMatch": "/matches/union-stgilloise-vs-real-sociedad/29fg27#6112286",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/7978/overview/union-stgilloise",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Union St.Gilloise",
+              "homeTeamId": 7978,
+              "homeScore": "1",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "7978",
+              "name": "Union St.Gilloise",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -467,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,20 +478,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored in their last 3 away matches."
+              "defaultText": "Real Sociedad have scored in their last 4 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.67",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Málaga have scored 2 goals in their last 3 matches, while Real Sociedad have scored 6."
+              "defaultText": "Málaga have an average of 0.67 goals in their last three matches and Real Sociedad have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -611,7 +610,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -621,7 +620,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#0056B3"
         },
         {
@@ -633,12 +632,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#0056B3"
         },
         {
@@ -777,25 +776,25 @@
       }
     },
     "weather": {
-      "temperature": 20,
+      "temperature": 21,
       "windSpeed": 3,
-      "windDirectionCardinal": "SE",
+      "windDirectionCardinal": "ESE",
       "iconCode": 38,
-      "relativeHumidity": 75,
-      "precipChance": 59,
-      "precipitation": 0.4,
+      "relativeHumidity": 77,
+      "precipChance": 57,
+      "precipitation": 0.3,
       "snow": 0,
-      "cloudCover": 71,
+      "cloudCover": 79,
       "description": "Scattered Thunderstorms",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T05:00:13Z",
+      "lastUpdated": "2026-10-15T17:00:16Z",
       "localizedKey": "weather_condition_thunderstorms",
       "defaultTitle": "Thunderstorms"
     },
     "lineup": {
       "matchId": 5868096,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -813,7 +812,6 @@
             "positionId": 11,
             "usualPlayingPositionId": 0,
             "shirtNumber": "1",
-            "isCaptain": true,
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -1118,191 +1116,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1678287,
-            "age": 22,
-            "name": "Andrés Céspedes",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "30",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "firstName": "Andrés",
-            "lastName": "Céspedes",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1426161,
-            "age": 21,
-            "name": "Carlos López",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "13",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 716524,
-            "firstName": "Carlos",
-            "lastName": "López",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1573563,
-            "age": 20,
-            "name": "Adam Aznou",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "39",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 14216652,
-            "firstName": "Adam",
-            "lastName": "Aznou",
-            "nationalTeamId": 6262,
-            "rankings": null
-          },
-          {
-            "id": 1256463,
-            "age": 27,
-            "name": "Álex Pastor",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 529577,
-            "firstName": "Álex",
-            "lastName": "Pastor",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 516803,
-            "age": 32,
-            "name": "Einar Galilea",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "4",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 309583,
-            "firstName": "Einar",
-            "lastName": "Galilea",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 873838,
-            "age": 27,
-            "name": "Juan Berrocal",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "25",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 828764,
-            "firstName": "Juan",
-            "lastName": "Berrocal",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1209421,
-            "age": 25,
-            "name": "Carlos Dotor",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1156407,
-            "firstName": "Carlos",
-            "lastName": "Dotor",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1220748,
-            "age": 24,
-            "name": "Haitam Abaida",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "7",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 365047,
-            "firstName": "Haitam",
-            "lastName": "Abaida",
-            "nationalTeamId": 6262,
-            "rankings": null
-          },
-          {
-            "id": 1669619,
-            "age": 20,
-            "name": "Izan Merino",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "23",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 3890645,
-            "firstName": "Izan",
-            "lastName": "Merino",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1082957,
-            "age": 25,
-            "name": "Ramón Enríquez",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "6",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 363054,
-            "firstName": "Ramón",
-            "lastName": "Enríquez",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1403695,
-            "age": 22,
-            "name": "Adrián Nino",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "21",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "firstName": "Adrián",
-            "lastName": "Nino",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 722830,
-            "age": 30,
-            "name": "Eneko Jauregi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "17",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 357226,
-            "firstName": "Eneko",
-            "lastName": "Jauregi",
-            "nationalTeamId": 6720,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 801120,
-            "age": 27,
-            "name": "Jens-Lys Cajuste",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 6079318,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Jens-Lys",
-            "lastName": "Cajuste",
-            "nationalTeamId": 8520
-          },
           {
             "id": 1408529,
             "age": 25,
@@ -1336,6 +1150,23 @@
             "firstName": "Aarón",
             "lastName": "Ochoa",
             "nationalTeamId": 5791
+          },
+          {
+            "id": 801120,
+            "age": 27,
+            "name": "Jens-Lys Cajuste",
+            "positionId": 1000,
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 6079318,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Jens-Lys",
+            "lastName": "Cajuste",
+            "nationalTeamId": 8520
           },
           {
             "id": 940608,
@@ -1373,17 +1204,7 @@
           }
         ],
         "averageStarterAge": 25.9,
-        "totalStarterMarketValue": 18102035,
-        "lastMatch": {
-          "matchId": 5868086,
-          "homeTeamId": 9864,
-          "awayTeamId": 8558,
-          "homeTeamName": "Málaga",
-          "awayTeamName": "Espanyol",
-          "homeScore": 1,
-          "awayScore": 1,
-          "matchDate": "2026-10-09T21:00:00"
-        }
+        "totalStarterMarketValue": 18102035
       },
       "awayTeam": {
         "id": 8560,
@@ -1418,12 +1239,12 @@
             "rankings": null
           },
           {
-            "id": 1293912,
-            "age": 23,
-            "name": "Pablo Marín",
+            "id": 1210647,
+            "age": 24,
+            "name": "Beñat Turrientes",
             "positionId": 32,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "15",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -1438,9 +1259,9 @@
               "height": 0.2,
               "width": 0.25
             },
-            "marketValue": 9290438,
-            "firstName": "Pablo",
-            "lastName": "Marín",
+            "marketValue": 11522358,
+            "firstName": "Beñat",
+            "lastName": "Turrientes",
             "nationalTeamId": 6720,
             "rankings": null
           },
@@ -1532,7 +1353,6 @@
             "positionId": 72,
             "usualPlayingPositionId": 3,
             "shirtNumber": "7",
-            "isCaptain": true,
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -1703,209 +1523,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1217043,
-            "age": 25,
-            "name": "Unai Marrero",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "13",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1061842,
-            "firstName": "Unai",
-            "lastName": "Marrero",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 999159,
-            "age": 29,
-            "name": "Aihen Muñoz",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1516794,
-            "firstName": "Aihen",
-            "lastName": "Muñoz",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1490110,
-            "age": 20,
-            "name": "Héctor Fort",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 15964170,
-            "firstName": "Héctor",
-            "lastName": "Fort",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 698653,
-            "age": 29,
-            "name": "Igor Zubeldia",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 5707452,
-            "firstName": "Igor",
-            "lastName": "Zubeldia",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1112072,
-            "age": 25,
-            "name": "Jon Pacheco",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "16",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 5630649,
-            "firstName": "Jon",
-            "lastName": "Pacheco",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1697334,
-            "age": 22,
-            "name": "Luken Beitia",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "34",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1510851,
-            "firstName": "Luken",
-            "lastName": "Beitia",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1210647,
-            "age": 24,
-            "name": "Beñat Turrientes",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 11522358,
-            "firstName": "Beñat",
-            "lastName": "Turrientes",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1323827,
-            "age": 24,
-            "name": "Jon Gorrotxategi",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "4",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 11510728,
-            "firstName": "Jon",
-            "lastName": "Gorrotxategi",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1431291,
-            "age": 21,
-            "name": "Gorka Carrera",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "27",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 3415425,
-            "firstName": "Gorka",
-            "lastName": "Carrera",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1724551,
-            "age": 23,
-            "name": "Job Ochieng",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "12",
-            "countryName": "Kenya",
-            "countryCode": "KEN",
-            "marketValue": 1174360,
-            "firstName": "Job",
-            "lastName": "Ochieng",
-            "nationalTeamId": 5884,
-            "rankings": null
-          },
-          {
-            "id": 678234,
-            "age": 29,
-            "name": "Mikel Oyarzabal",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 22588238,
-            "firstName": "Mikel",
-            "lastName": "Oyarzabal",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 848289,
-            "age": 25,
-            "name": "Takefusa Kubo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Japan",
-            "countryCode": "JPN",
-            "marketValue": 21480692,
-            "firstName": "Takefusa",
-            "lastName": "Kubo",
-            "nationalTeamId": 6715,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1293912,
-            "age": 23,
-            "name": "Pablo Marín",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 9290438,
-            "unavailability": {
-              "type": "suspension",
-              "expectedReturn": "Mid October 2026",
-              "expectedReturnDate": "2026-10-18T18:30:00Z"
-            },
-            "firstName": "Pablo",
-            "lastName": "Marín",
-            "nationalTeamId": 6720
-          },
-          {
-            "id": 1697334,
-            "age": 22,
-            "name": "Luken Beitia",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1510851,
-            "unavailability": {
-              "injuryId": 38,
-              "type": "injury",
-              "expectedReturn": "Early November 2026"
-            },
-            "firstName": "Luken",
-            "lastName": "Beitia",
-            "nationalTeamId": 6720
-          },
           {
             "id": 636570,
             "age": 30,
@@ -1939,20 +1557,44 @@
             "firstName": "Jon",
             "lastName": "Aramburu",
             "nationalTeamId": 5800
+          },
+          {
+            "id": 1697334,
+            "age": 22,
+            "name": "Luken Beitia",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1510851,
+            "unavailability": {
+              "injuryId": 38,
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "firstName": "Luken",
+            "lastName": "Beitia",
+            "nationalTeamId": 6720
+          },
+          {
+            "id": 1293912,
+            "age": 23,
+            "name": "Pablo Marín",
+            "positionId": 1100,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 9290438,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Mid October 2026",
+              "expectedReturnDate": "2026-10-18T18:30:00Z"
+            },
+            "firstName": "Pablo",
+            "lastName": "Marín",
+            "nationalTeamId": 6720
           }
         ],
-        "averageStarterAge": 25.8,
-        "totalStarterMarketValue": 149718452,
-        "lastMatch": {
-          "matchId": 5868090,
-          "homeTeamId": 8560,
-          "awayTeamId": 9783,
-          "homeTeamName": "Real Sociedad",
-          "awayTeamName": "Deportivo A Coruña",
-          "homeScore": 3,
-          "awayScore": 2,
-          "matchDate": "2026-10-11T16:15:00"
-        }
+        "averageStarterAge": 25.9,
+        "totalStarterMarketValue": 151950372
       }
     },
     "hasPlayoff": false,

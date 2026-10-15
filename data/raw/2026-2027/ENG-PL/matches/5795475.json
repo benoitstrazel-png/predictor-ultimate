@@ -321,36 +321,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8667.png",
-            "linkToMatch": "/matches/sunderland-vs-hull-city/2fgcyx#6099331",
-            "date": {
-              "utcTime": "2026-09-08T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8667/overview/hull-city",
-            "tooltipText": {
-              "utcTime": "2026-09-08T18:45:00.000Z",
-              "homeTeam": "Sunderland",
-              "homeTeamId": 8472,
-              "homeScore": "1",
-              "awayTeam": "Hull City",
-              "awayTeamId": 8667,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8472",
-              "name": "Sunderland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8667",
-              "name": "Hull City",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
@@ -469,6 +439,36 @@
               "name": "Brighton & Hove Albion",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/212820.png",
+            "linkToMatch": "/matches/sunderland-vs-torreense/b8xuoeu#6112360",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/212820/overview/torreense",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Torreense",
+              "homeTeamId": 212820,
+              "homeScore": "1",
+              "awayTeam": "Sunderland",
+              "awayTeamId": 8472,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "212820",
+              "name": "Torreense",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8472",
+              "name": "Sunderland",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -518,7 +518,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -529,19 +529,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sunderland have scored in their last 4 away matches."
+              "defaultText": "Sunderland have scored in their last 5 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -552,7 +553,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AFC Bournemouth have an average of 1 goals in their last three matches and Sunderland have an average of 1.33."
+              "defaultText": "AFC Bournemouth have scored 3 goals in their last 3 matches, while Sunderland have scored 5."
             },
             {
               "OddsType": "dc",
@@ -562,7 +563,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -575,7 +576,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sunderland haven't drawn in their last 5 matches."
+              "defaultText": "Sunderland haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -671,7 +672,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -681,7 +682,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#DC0814"
         },
         {
@@ -703,15 +704,15 @@
         },
         {
           "type": "player",
-          "playerId": 207236,
+          "playerId": 1364069,
           "teamId": 8472,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 207236,
-              "name": "Granit Xhaka",
+              "value": 1364069,
+              "name": "Malick Fofana",
               "type": "player"
             },
             {
@@ -720,12 +721,12 @@
               "type": "team"
             },
             {
-              "value": 5,
+              "value": 3.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Granit Xhaka has created the most big chances for Sunderland (5)",
+          "text": "Malick Fofana has the most shots on target per match for Sunderland (3.1)",
           "color": "#DC0814"
         }
       ],
@@ -1180,6 +1181,38 @@
         },
         "unavailable": [
           {
+            "id": 794253,
+            "age": 27,
+            "name": "Justin Kluivert",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 24480211,
+            "unavailability": {
+              "injuryId": 115,
+              "type": "injury",
+              "expectedReturn": "Mid October 2026"
+            },
+            "firstName": "Justin",
+            "lastName": "Kluivert",
+            "nationalTeamId": 6708
+          },
+          {
+            "id": 1079557,
+            "age": 26,
+            "name": "Amine Adli",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 24875171,
+            "unavailability": {
+              "injuryId": 101,
+              "type": "injury",
+              "expectedReturn": "A few days"
+            },
+            "firstName": "Amine",
+            "lastName": "Adli",
+            "nationalTeamId": 6262
+          },
+          {
             "id": 1027447,
             "age": 25,
             "name": "Julián Araujo",
@@ -1246,40 +1279,6 @@
             "firstName": "Junior",
             "lastName": "Kroupi",
             "nationalTeamId": 6723
-          },
-          {
-            "id": 794253,
-            "age": 27,
-            "name": "Justin Kluivert",
-            "positionId": 1000,
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 24480211,
-            "unavailability": {
-              "injuryId": 115,
-              "type": "injury",
-              "expectedReturn": "Mid October 2026"
-            },
-            "firstName": "Justin",
-            "lastName": "Kluivert",
-            "nationalTeamId": 6708
-          },
-          {
-            "id": 1079557,
-            "age": 26,
-            "name": "Amine Adli",
-            "positionId": 1000,
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 24875171,
-            "unavailability": {
-              "injuryId": 101,
-              "type": "injury",
-              "expectedReturn": "A few days"
-            },
-            "firstName": "Amine",
-            "lastName": "Adli",
-            "nationalTeamId": 6262
           }
         ],
         "averageStarterAge": 27.1,
@@ -1604,6 +1603,38 @@
         },
         "unavailable": [
           {
+            "id": 940446,
+            "age": 24,
+            "name": "Brian Brobbey",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 40558471,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Brian",
+            "lastName": "Brobbey",
+            "nationalTeamId": 6708
+          },
+          {
+            "id": 1285866,
+            "age": 22,
+            "name": "Habib Diarra",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 45896674,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Late October 2026"
+            },
+            "firstName": "Habib",
+            "lastName": "Diarra",
+            "nationalTeamId": 6395
+          },
+          {
             "id": 974268,
             "age": 27,
             "name": "Daniel Ballard",
@@ -1619,40 +1650,6 @@
             "firstName": "Daniel",
             "lastName": "Ballard",
             "nationalTeamId": 10259
-          },
-          {
-            "id": 1285866,
-            "age": 22,
-            "name": "Habib Diarra",
-            "positionId": 1000,
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 45896674,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Habib",
-            "lastName": "Diarra",
-            "nationalTeamId": 6395
-          },
-          {
-            "id": 940446,
-            "age": 24,
-            "name": "Brian Brobbey",
-            "positionId": 1000,
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 40558471,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Brian",
-            "lastName": "Brobbey",
-            "nationalTeamId": 6708
           },
           {
             "id": 1123947,

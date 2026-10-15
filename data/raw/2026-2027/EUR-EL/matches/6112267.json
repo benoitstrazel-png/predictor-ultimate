@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6096.png",
-            "linkToMatch": "/matches/zizkov-vs-sparta-prague/27ioec#6125854",
-            "date": {
-              "utcTime": "2026-09-09T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6096/overview/zizkov",
-            "tooltipText": {
-              "utcTime": "2026-09-09T17:00:00.000Z",
-              "homeTeam": "Žižkov",
-              "homeTeamId": 6096,
-              "homeScore": "0",
-              "awayTeam": "Sparta Prague",
-              "awayTeamId": 10247,
-              "awayScore": "5"
-            },
-            "score": "0 - 5",
-            "home": {
-              "id": "6096",
-              "name": "Žižkov",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10247",
-              "name": "Sparta Prague",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7758.png",
             "linkToMatch": "/matches/jablonec-vs-sparta-prague/2oiidx#5831170",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Pardubice",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8476.png",
+            "linkToMatch": "/matches/lillestrom-vs-sparta-prague/2wd53m#6112305",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8476/overview/lillestrom",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Sparta Prague",
+              "homeTeamId": 10247,
+              "homeScore": "1",
+              "awayTeam": "Lillestrøm",
+              "awayTeamId": 8476,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10247",
+              "name": "Sparta Prague",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8476",
+              "name": "Lillestrøm",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Sparta Prague have won their last 5 matches."
+              "defaultText": "Sparta Prague haven't lost in 6 matches."
             },
             {
               "OddsType": "bts",
@@ -482,12 +482,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -498,19 +500,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sparta Prague have scored 9 goals in their last 3 matches."
+              "defaultText": "Olympiacos have scored 4 goals in their last 3 matches, while Sparta Prague have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "5",
-                "12"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Olympiacos haven't drawn in their last 5 matches and Sparta Prague in their last 12."
+              "defaultText": "Olympiacos haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -543,12 +543,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't lost in 6 matches",
           "color": "#8E192B"
         }
       ],
@@ -571,17 +571,17 @@
     },
     "weather": {
       "temperature": 18,
-      "windSpeed": 3,
+      "windSpeed": 2,
       "windDirectionCardinal": "N",
       "iconCode": 29,
-      "relativeHumidity": 72,
+      "relativeHumidity": 74,
       "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 36,
+      "cloudCover": 43,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T07:00:20Z",
+      "lastUpdated": "2026-10-15T19:00:23Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

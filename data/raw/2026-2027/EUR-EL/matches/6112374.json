@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8007.png",
-            "linkToMatch": "/matches/valerenga-vs-lillestrom/28vzaq#5105003",
-            "date": {
-              "utcTime": "2026-09-12T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8007/overview/valerenga",
-            "tooltipText": {
-              "utcTime": "2026-09-12T14:00:00.000Z",
-              "homeTeam": "Lillestrøm",
-              "homeTeamId": 8476,
-              "homeScore": "2",
-              "awayTeam": "Vålerenga",
-              "awayTeamId": 8007,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8476",
-              "name": "Lillestrøm",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8007",
-              "name": "Vålerenga",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/212820.png",
@@ -270,39 +240,39 @@
               "name": "Molde",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10247.png",
+            "linkToMatch": "/matches/lillestrom-vs-sparta-prague/2wd53m#6112305",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/10247/overview/sparta-prague",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Sparta Prague",
+              "homeTeamId": 10247,
+              "homeScore": "1",
+              "awayTeam": "Lillestrøm",
+              "awayTeamId": 8476,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "10247",
+              "name": "Sparta Prague",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8476",
+              "name": "Lillestrøm",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
-            "linkToMatch": "/matches/real-sociedad-vs-atletico-madrid/2tiqrp#5868058",
-            "date": {
-              "utcTime": "2026-09-13T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
-            "tooltipText": {
-              "utcTime": "2026-09-13T19:00:00.000Z",
-              "homeTeam": "Real Sociedad",
-              "homeTeamId": 8560,
-              "homeScore": "0",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -422,6 +392,36 @@
               "name": "Deportivo A Coruña",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7978.png",
+            "linkToMatch": "/matches/union-stgilloise-vs-real-sociedad/29fg27#6112286",
+            "date": {
+              "utcTime": "2026-10-15T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/7978/overview/union-stgilloise",
+            "tooltipText": {
+              "utcTime": "2026-10-15T16:45:00.000Z",
+              "homeTeam": "Union St.Gilloise",
+              "homeTeamId": 7978,
+              "homeScore": "1",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "7978",
+              "name": "Union St.Gilloise",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -442,13 +442,13 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
+                "2",
                 "2",
                 "away_team",
                 "2",
-                "0",
-                "3"
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,7 +461,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lillestrøm have 2W, 1D, 2L in five matches while Real Sociedad have 2W, 0D, 3L."
+              "defaultText": "Lillestrøm have 1W, 2D, 2L in five matches while Real Sociedad have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -488,14 +488,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "7",
-                "6"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,17 +504,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lillestrøm have scored 7 goals in their last 3 matches, while Real Sociedad have scored 6."
+              "defaultText": "Lillestrøm have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "2",
+                "2",
                 "away_team",
-                "6"
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Sociedad haven't drawn in their last 6 matches."
+              "defaultText": "Lillestrøm have 1W, 2D, 2L in five matches while Real Sociedad have 2W, 1D, 2L."
             }
           ]
         },
@@ -543,18 +547,35 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 8560,
-          "priority": 8,
+          "teamId": 8476,
+          "priority": 1345,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#dba000"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8560,
+          "priority": 1345,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#0056B3"
         }
       ],
@@ -578,16 +599,16 @@
     "weather": {
       "temperature": 7,
       "windSpeed": 3,
-      "windDirectionCardinal": "NE",
+      "windDirectionCardinal": "ENE",
       "iconCode": 11,
-      "relativeHumidity": 89,
-      "precipChance": 44,
+      "relativeHumidity": 93,
+      "precipChance": 55,
       "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 89,
+      "cloudCover": 91,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T07:00:20Z",
+      "lastUpdated": "2026-10-15T19:00:23Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
