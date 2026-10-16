@@ -210,6 +210,36 @@ def refresh_single_match(
     with open(APP_DATA_PATH, 'w', encoding='utf-8') as f:
         json.dump(app_data, f, ensure_ascii=False, separators=(',', ':'))
 
+    # Persistance de sécurité dans closing_odds_master.json
+    try:
+        master_odds_path = os.path.join(ROOT_DIR, 'src', 'data', 'compiled', 'closing_odds_master.json')
+        master_odds = {'updatedAt': now_utc, 'odds': {}, 'byTeams': {}}
+        if os.path.exists(master_odds_path):
+            with open(master_odds_path, 'r', encoding='utf-8') as f_mo:
+                loaded = json.load(f_mo)
+                if isinstance(loaded, dict):
+                    master_odds['odds'] = loaded.get('odds', {})
+                    master_odds['byTeams'] = loaded.get('byTeams', {})
+        master_odds['odds'][found_match_id] = {
+            'matchId': found_match_id,
+            'competitionId': target_match.get('league', 'FRA-L1'),
+            'homeTeam': norm_h,
+            'awayTeam': norm_a,
+            'odds': {'home': odd_home, 'draw': odd_draw, 'away': odd_away},
+            'marginPct': validation['margin_pct'],
+            'payoutTrj': validation['payout_rate_trj'],
+            'oddsStatus': 'ACTIVE',
+            'updatedAt': now_utc
+        }
+        team_key = f"{clean_target_h}__{clean_target_a}"
+        master_odds['byTeams'][team_key] = master_odds['odds'][found_match_id]
+        master_odds['updatedAt'] = now_utc
+        os.makedirs(os.path.dirname(master_odds_path), exist_ok=True)
+        with open(master_odds_path, 'w', encoding='utf-8') as f_mo:
+            json.dump(master_odds, f_mo, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"[ODDS REFRESH] Attention ecriture closing_odds_master.json: {e}")
+
     print(f"[ODDS REFRESH] {h_name} vs {a_name} actualise avec succes !")
     print(f"Cotes : 1:{odd_home} | N:{odd_draw} | 2:{odd_away} (Marge: {validation['margin_pct']}%)")
     print(f"Value Bets ({len(pred['value_bets_detected'])}) : {pred['value_bets_detected']}")

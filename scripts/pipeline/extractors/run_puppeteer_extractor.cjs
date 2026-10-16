@@ -19,9 +19,9 @@ const COMPETITIONS = [
   { code: 'EUR-EL', name: 'Ligue Europa', url: 'https://www.betclic.fr/football-sfootball/ligue-europa-c3453' },
   { code: 'EUR-ECL', name: 'Ligue Conférence', url: 'https://www.betclic.fr/football-sfootball/ligue-conference-c28946' },
   { code: 'FRA-L1', name: 'Ligue 1', url: 'https://www.betclic.fr/football-sfootball/ligue-1-mcdonald-s-c4' },
-  { code: 'ENG-PL', name: 'Premier League', url: 'https://www.betclic.fr/football-sfootball/angl-premier-league-c1' },
-  { code: 'ESP-LL', name: 'La Liga', url: 'https://www.betclic.fr/football-sfootball/espagne-laliga-c2' },
-  { code: 'ITA-SA', name: 'Serie A', url: 'https://www.betclic.fr/football-sfootball/italie-serie-a-c3' },
+  { code: 'ENG-PL', name: 'Premier League', url: 'https://www.betclic.fr/football-sfootball/angl-premier-league-c3' },
+  { code: 'ESP-LL', name: 'La Liga', url: 'https://www.betclic.fr/football-sfootball/espagne-laliga-c7' },
+  { code: 'ITA-SA', name: 'Serie A', url: 'https://www.betclic.fr/football-sfootball/italie-serie-a-c6' },
   { code: 'GER-BL', name: 'Bundesliga', url: 'https://www.betclic.fr/football-sfootball/allemagne-bundesliga-c5' },
   { code: 'TOP-EU', name: 'Top Football', url: 'https://www.betclic.fr/football-sfootball/top-football-europeen-p0' }
 ];
@@ -106,7 +106,8 @@ async function runCleanScraper() {
 
     const page = await browser.newPage();
     await page.setViewport({ width: 1366, height: 900 });
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36');
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36');
+    await page.setExtraHTTPHeaders({ 'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7' });
 
     // Intercept Betclic background JSON API responses (offer.cdn.begmedia.com)
     page.on('response', async (response) => {
@@ -127,8 +128,8 @@ async function runCleanScraper() {
     for (const comp of COMPETITIONS) {
       currentCompCode = comp.code;
       try {
-        await page.goto(comp.url, { waitUntil: 'networkidle2', timeout: 35000 });
-        await new Promise(r => setTimeout(r, 1500));
+        await page.goto(comp.url, { waitUntil: 'domcontentloaded', timeout: 35000 });
+        await new Promise(r => setTimeout(r, 800));
 
         // Dismiss Didomi cookie consent modal if present
         await page.evaluate(() => {
@@ -136,7 +137,65 @@ async function runCleanScraper() {
           if (btn) btn.click();
         }).catch(() => {});
 
-        // Helper pour récolter les cartes actuellement hydratées dans le DOM
+        // 1. Extraction ultra-rapide et exhaustive du state SSR ng-state
+        const ngMatches = await page.evaluate((cCode) => {
+          const ngScript = document.getElementById('ng-state');
+          if (!ngScript) return [];
+          let state;
+          try { state = JSON.parse(ngScript.textContent); } catch (_) { return []; }
+          const out = [];
+          const seenIds = new Set();
+          const walk = (node) => {
+            if (!node || typeof node !== 'object') return;
+            if (Array.isArray(node)) {
+              node.forEach(walk);
+              return;
+            }
+            if (node.matchId && Array.isArray(node.contestants) && node.contestants.length >= 2) {
+              const home = (node.contestants[0]?.name || '').trim();
+              const away = (node.contestants[1]?.name || '').trim();
+              let selections = null;
+              if (node.market && Array.isArray(node.market.mainSelections) && node.market.mainSelections.length >= 3) {
+                selections = node.market.mainSelections;
+              } else if (Array.isArray(node.markets)) {
+                for (const m of node.markets) {
+                  if (m && Array.isArray(m.mainSelections) && m.mainSelections.length >= 3) {
+                    selections = m.mainSelections;
+                    break;
+                  }
+                }
+              }
+              if (home && away && home !== away && selections && selections.length >= 3 && !seenIds.has(node.matchId)) {
+                const hOdd = parseFloat(selections[0]?.odds);
+                const dOdd = parseFloat(selections[1]?.odds);
+                const aOdd = parseFloat(selections[2]?.odds);
+                if (hOdd >= 1.015 && dOdd >= 1.015 && aOdd >= 1.015) {
+                  const invSum = (1 / hOdd) + (1 / dOdd) + (1 / aOdd);
+                  if (invSum >= 1.015 && invSum <= 1.25) {
+                    seenIds.add(node.matchId);
+                    out.push({
+                      competition: cCode,
+                      homeTeam: home,
+                      awayTeam: away,
+                      dateStr: node.matchDateUtc || '',
+                      matchDateUtc: node.matchDateUtc || '',
+                      odds: { home: hOdd, draw: dOdd, away: aOdd }
+                    });
+                  }
+                }
+              }
+            }
+            for (const k of Object.keys(node)) {
+              walk(node[k]);
+            }
+          };
+          walk(state);
+          return out;
+        }, comp.code).catch(() => []);
+
+        ngMatches.forEach(registerMatch);
+
+        // Helper pour récolter les cartes actuellement hydratées dans le DOM (complément de secours)
         const harvestBatch = async () => {
           return await page.evaluate((compCode) => {
             const found = [];

@@ -451,14 +451,25 @@ def compile_data():
     # Auto-génération du cache compact analytics_cache.json & partitionnement public/data/
     try:
         from collections import defaultdict
-        refs = defaultdict(lambda: {'yellowTotal': 0, 'redTotal': 0, 'penaltyTotal': 0, 'matches': 0})
-        team_recent = defaultdict(list)
-        f_store = defaultdict(lambda: {
-            'matches': 0, 'yellowTotal': 0, 'redTotal': 0,
+        import unicodedata
+        import re
+
+        def norm_key_helper(s: str) -> str:
+            if not s: return ""
+            nfkd = unicodedata.normalize('NFD', str(s))
+            stripped = "".join([c for c in nfkd if not unicodedata.combining(c)])
+            cleaned = re.sub(r'[^a-zA-Z0-9\s]', ' ', stripped.lower())
+            return re.sub(r'\s+', ' ', cleaned).strip()
+
+        refs_raw = defaultdict(lambda: {'yellowCards': 0, 'redCards': 0, 'penalties': 0, 'matches': 0, 'fullName': ''})
+        raw_team_recent = defaultdict(list)
+        f_store_raw = defaultdict(lambda: {
+            'matches': 0, 'concededFirst': 0, 'comebacks': 0, 'redCards': 0,
             'trailingMatches': 0, 'comebackWins': 0, 'comebackDraws': 0,
             'leadingMatches': 0, 'lostLeads': 0
         })
-        h2h_map = defaultdict(lambda: {'homeWins': 0, 'draws': 0, 'awayWins': 0, 'matches': []})
+        h2h_lists = defaultdict(list)
+        h2h_stats = defaultdict(lambda: {'homeWins': 0, 'draws': 0, 'awayWins': 0, 'matches': []})
 
         history_dir = os.path.join(ROOT_DIR, "public", "data", "history")
         matches_dir = os.path.join(ROOT_DIR, "public", "data", "matches")
@@ -468,9 +479,9 @@ def compile_data():
         grouped_history = defaultdict(list)
         season_grouped = defaultdict(list)
 
+        # 1. Export fichiers détaillés et groupements (dans l'ordre chronologique)
         for m in unified_list:
             m_id = m['id']
-            # Match details into public/data/matches/
             detail_obj = {
                 'id': m_id,
                 'teamStats': m.get('teamStats'),
@@ -483,7 +494,6 @@ def compile_data():
             with open(os.path.join(matches_dir, f"{m_id}.json"), 'w', encoding='utf-8') as mf:
                 json.dump(detail_obj, mf, ensure_ascii=False, separators=(',', ':'))
 
-            # Lightweight history summary
             light_m = {
                 'id': m_id,
                 'league': m.get('league'),
@@ -506,42 +516,198 @@ def compile_data():
             grouped_history[f"{s}_{l}"].append(light_m)
             season_grouped[s].append(light_m)
 
-            # Analytics Cache metrics
+            # Statistiques Arbitres
             ref = m.get('referee')
             if ref and ref != 'Arbitre Officiel':
-                r = refs[ref]
+                r = refs_raw[ref]
+                r['fullName'] = ref
                 r['matches'] += 1
                 for card_item in m.get('cards', []):
-                    if card_item.get('type') == 'RED': r['redTotal'] += 1
-                    else: r['yellowTotal'] += 1
+                    if card_item.get('type') == 'RED':
+                        r['redCards'] += 1
+                    else:
+                        r['yellowCards'] += 1
                 for g in m.get('goals', []):
-                    if g.get('isPenalty'): r['penaltyTotal'] += 1
+                    if g.get('isPenalty'):
+                        r['penalties'] += 1
 
+            # Feature Store (Résilience et Cartons)
             ht, at = m.get('homeTeam'), m.get('awayTeam')
             hs, as_ = m.get('homeScore'), m.get('awayScore')
+            goals = m.get('goals') or []
+            cards = m.get('cards') or []
             if ht and at and hs is not None and as_ is not None:
-                pair_key = f"{ht} vs {at}"
-                h2h = h2h_map[pair_key]
-                if hs > as_: h2h['homeWins'] += 1
-                elif hs < as_: h2h['awayWins'] += 1
-                else: h2h['draws'] += 1
-                h2h['matches'].append({
-                    'id': m_id, 'date': m.get('date'), 'season': s, 'league': l,
-                    'homeTeam': ht, 'awayTeam': at, 'homeScore': hs, 'awayScore': as_,
-                    'homeXg': m.get('homeXg'), 'awayXg': m.get('awayXg')
-                })
+                for t_name, is_home in [(ht, True), (at, False)]:
+                    fst = f_store_raw[t_name]
+                    fst['matches'] += 1
+                    team_reds = sum(1 for c in cards if (c.get('team') == t_name or c.get('teamName') == t_name) and c.get('type') == 'RED')
+                    fst['redCards'] += team_reds
+                    if len(goals) > 1:
+                        first_g = goals[0]
+                        first_team = first_g.get('team') or first_g.get('teamName') or ''
+                        if first_team and first_team != t_name:
+                            fst['concededFirst'] += 1
+                            t_score = hs if is_home else as_
+                            opp_score = as_ if is_home else hs
+                            if t_score > opp_score:
+                                fst['comebacks'] += 1
+                                fst['comebackWins'] += 1
+                            elif t_score == opp_score:
+                                fst['comebacks'] += 1
+                                fst['comebackDraws'] += 1
 
-                for team_name, is_home in [(ht, True), (at, False)]:
-                    recent = team_recent[team_name]
-                    if len(recent) < 10:
-                        recent.append({
-                            'id': m_id, 'date': m.get('date'), 'isHome': is_home,
-                            'opponent': at if is_home else ht,
-                            'teamScore': hs if is_home else as_,
-                            'opponentScore': as_ if is_home else hs,
-                            'teamXg': m.get('homeXg') if is_home else m.get('awayXg'),
-                            'opponentXg': m.get('awayXg') if is_home else m.get('homeXg')
-                        })
+        # 2. Construction teamRecent & H2H dans l'ordre INVERSE (du plus récent au plus ancien)
+        for m in reversed(unified_list):
+            m_id = m['id']
+            ht, at = m.get('homeTeam'), m.get('awayTeam')
+            hs, as_ = m.get('homeScore'), m.get('awayScore')
+            if not (ht and at and hs is not None and as_ is not None):
+                continue
+            
+            s = m.get('season') or '2026-2027'
+            l = m.get('league') or 'FRA-L1'
+            h_xg = round(float(m.get('homeXg') or 0.0), 2) if m.get('homeXg') is not None else 1.2
+            a_xg = round(float(m.get('awayXg') or 0.0), 2) if m.get('awayXg') is not None else 1.0
+
+            light_m = {
+                'id': m_id,
+                'league': l,
+                'season': s,
+                'round': m.get('round'),
+                'date': m.get('date'),
+                'homeTeam': ht,
+                'awayTeam': at,
+                'homeScore': hs,
+                'awayScore': as_,
+                'homeXg': h_xg,
+                'awayXg': a_xg,
+                'referee': m.get('referee') or 'Arbitre Officiel',
+                'status': m.get('status'),
+                'goals': m.get('goals') or [],
+                'cards': m.get('cards') or []
+            }
+
+            # Clés H2H triées
+            norm_h = norm_key_helper(ht)
+            norm_a = norm_key_helper(at)
+            clean_nh = clean_team_str(normalize_team_name(ht))
+            clean_na = clean_team_str(normalize_team_name(at))
+            h2h_key_norm = "__".join(sorted([norm_h, norm_a]))
+            h2h_key_clean = "__".join(sorted([clean_nh, clean_na]))
+
+            h2h_entry = {
+                'id': m_id,
+                'date': m.get('date'),
+                'season': s,
+                'league': l,
+                'home': ht,
+                'away': at,
+                'homeTeam': ht,
+                'awayTeam': at,
+                'homeScore': hs,
+                'awayScore': as_,
+                'score': f"{hs}-{as_}",
+                'homeXg': h_xg,
+                'awayXg': a_xg,
+                'referee': m.get('referee') or 'Arbitre Officiel',
+                'goals': m.get('goals') or [],
+                'cards': m.get('cards') or [],
+                'fullMatch': light_m,
+                'rawMatch': light_m
+            }
+            if len(h2h_lists[h2h_key_norm]) < 10:
+                h2h_lists[h2h_key_norm].append(h2h_entry)
+            if h2h_key_clean != h2h_key_norm and len(h2h_lists[h2h_key_clean]) < 10:
+                h2h_lists[h2h_key_clean].append(h2h_entry)
+
+            # Remplissage de teamRecent (jusqu'à 10 matchs récents par club)
+            for team_name, is_home in [(ht, True), (at, False)]:
+                c_team = normalize_team_name(team_name)
+                recent_list = raw_team_recent[c_team]
+                if len(recent_list) < 10:
+                    goals_scored = hs if is_home else as_
+                    goals_conceded = as_ if is_home else hs
+                    t_xg = h_xg if is_home else a_xg
+                    opp_xg = a_xg if is_home else h_xg
+                    opp_team = at if is_home else ht
+                    venue_str = "Domicile" if is_home else "Extérieur"
+
+                    if goals_scored > goals_conceded:
+                        res_str = 'W'
+                        res_fr = 'V'
+                    elif goals_scored == goals_conceded:
+                        res_str = 'D_DRAW'
+                        res_fr = 'N'
+                    else:
+                        res_str = 'L'
+                        res_fr = 'D'
+
+                    diff_val = round(goals_scored - t_xg, 2)
+                    recent_list.append({
+                        'id': m_id,
+                        'date': m.get('date'),
+                        'season': s,
+                        'league': l,
+                        'isHome': is_home,
+                        'venue': venue_str,
+                        'opponent': opp_team,
+                        'teamScore': goals_scored,
+                        'opponentScore': goals_conceded,
+                        'realGoals': goals_scored,
+                        'concededGoals': goals_conceded,
+                        'xG': t_xg,
+                        'teamXg': t_xg,
+                        'opponentXg': opp_xg,
+                        'diff': diff_val,
+                        'result': res_str,
+                        'res': res_fr,
+                        'score': f"{goals_scored}-{goals_conceded}",
+                        'matchScore': f"{hs}-{as_}",
+                        'teamGoals': goals_scored,
+                        'oppGoals': goals_conceded,
+                        'home': ht,
+                        'away': at,
+                        'homeScore': hs,
+                        'awayScore': as_,
+                        'homeXg': h_xg,
+                        'awayXg': a_xg,
+                        'referee': m.get('referee') or 'Arbitre Officiel',
+                        'goals': m.get('goals') or [],
+                        'cards': m.get('cards') or [],
+                        'teamStats': m.get('teamStats') or {},
+                        'match': light_m,
+                        'fullMatch': light_m
+                    })
+
+        # Multi-indexation exhaustive pour teamRecent
+        final_team_recent = {}
+        for c_team, matches in raw_team_recent.items():
+            keys_to_index = {
+                c_team,
+                c_team.lower(),
+                c_team.strip(),
+                norm_key_helper(c_team),
+                clean_team_str(c_team),
+                clean_team_str(normalize_team_name(c_team))
+            }
+            for k in keys_to_index:
+                if k:
+                    final_team_recent[k] = matches
+
+        # Multi-indexation pour refs
+        final_refs = {}
+        for ref_name, stats in refs_raw.items():
+            final_refs[ref_name] = stats
+            final_refs[norm_key_helper(ref_name)] = stats
+            final_refs[ref_name.lower().strip()] = stats
+
+        # Multi-indexation pour featureStore
+        final_f_store = {}
+        for t_name, data in f_store_raw.items():
+            final_f_store[t_name] = data
+            final_f_store[t_name.lower().strip()] = data
+            final_f_store[norm_key_helper(t_name)] = data
+            final_f_store[clean_team_str(t_name)] = data
 
         for key, matches in grouped_history.items():
             with open(os.path.join(history_dir, f"{key}.json"), 'w', encoding='utf-8') as hf:
@@ -552,16 +718,16 @@ def compile_data():
                 json.dump(matches, hf, ensure_ascii=False, separators=(',', ':'))
 
         analytics_cache = {
-            'refs': dict(refs),
-            'teamRecent': dict(team_recent),
-            'featureStore': dict(f_store),
-            'h2hMap': dict(h2h_map)
+            'refs': final_refs,
+            'teamRecent': final_team_recent,
+            'featureStore': final_f_store,
+            'h2hMap': dict(h2h_lists)
         }
         cache_path = os.path.join(ROOT_DIR, "src", "data", "compiled", "analytics_cache.json")
         os.makedirs(os.path.dirname(cache_path), exist_ok=True)
         with open(cache_path, 'w', encoding='utf-8') as cf:
             json.dump(analytics_cache, cf, ensure_ascii=False, separators=(',', ':'))
-        print(f"✅ [Compiler] analytics_cache.json & archives public/data régénérés avec succès.")
+        print(f"✅ [Compiler] analytics_cache.json & archives public/data régénérés avec succès ({len(final_team_recent)} clés d'équipes indexées).")
         
         # Export du rapport de backtest ML vers public/data pour le monitoring frontend
         backtest_src = os.path.join(ROOT_DIR, "models", "training_evaluation_report.json")
@@ -603,6 +769,49 @@ def compile_data():
     for row in all_closing_odds:
         k = (clean_team_norm(row['home_team_name']), clean_team_norm(row['away_team_name']))
         closing_odds_by_teams[k] = row
+
+    # Fusion avec closing_odds_master.json pour préserver les cotes réelles
+    master_odds_path = os.path.join(ROOT_DIR, "src", "data", "compiled", "closing_odds_master.json")
+    if os.path.exists(master_odds_path):
+        try:
+            with open(master_odds_path, 'r', encoding='utf-8') as f_mo:
+                mo_data = json.load(f_mo)
+                for mid, item in mo_data.get('odds', {}).items():
+                    odds_val = item.get('odds')
+                    if odds_val and isinstance(odds_val, dict) and mid not in closing_odds_by_id:
+                        row_dict = {
+                            'match_id': mid,
+                            'competition_id': item.get('competitionId'),
+                            'home_team_name': item.get('homeTeam'),
+                            'away_team_name': item.get('awayTeam'),
+                            'closing_odd_1': odds_val.get('home'),
+                            'closing_odd_n': odds_val.get('draw'),
+                            'closing_odd_2': odds_val.get('away'),
+                            'closing_margin_pct': item.get('marginPct'),
+                            'odds_status': item.get('oddsStatus', 'ACTIVE')
+                        }
+                        closing_odds_by_id[mid] = row_dict
+                for tk, item in mo_data.get('byTeams', {}).items():
+                    parts = tk.split('__')
+                    odds_val = item.get('odds')
+                    if len(parts) == 2 and odds_val and isinstance(odds_val, dict):
+                        k = (parts[0], parts[1])
+                        if k not in closing_odds_by_teams:
+                            row_dict = {
+                                'match_id': item.get('matchId'),
+                                'competition_id': item.get('competitionId'),
+                                'home_team_name': item.get('homeTeam'),
+                                'away_team_name': item.get('awayTeam'),
+                                'closing_odd_1': odds_val.get('home'),
+                                'closing_odd_n': odds_val.get('draw'),
+                                'closing_odd_2': odds_val.get('away'),
+                                'closing_margin_pct': item.get('marginPct'),
+                                'odds_status': item.get('oddsStatus', 'ACTIVE')
+                            }
+                            closing_odds_by_teams[k] = row_dict
+            print(f"📦 [Compiler] Master odds synchronisées ({len(closing_odds_by_id)} cotes actives enregistrées).")
+        except Exception as e:
+            print(f"⚠️ [Compiler] Attention lecture closing_odds_master.json : {e}")
 
     app_data = {
         'supportedLeagues': [

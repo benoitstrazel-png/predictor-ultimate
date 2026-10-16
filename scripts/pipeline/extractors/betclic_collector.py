@@ -315,6 +315,18 @@ def ingest_betclic_odds_to_database_and_app_data():
 
     schedule = app_data.get('fullSchedule', [])
     
+    master_odds_path = os.path.join(ROOT_DIR, 'src', 'data', 'compiled', 'closing_odds_master.json')
+    master_odds = {'updatedAt': now_utc, 'odds': {}, 'byTeams': {}}
+    if os.path.exists(master_odds_path):
+        try:
+            with open(master_odds_path, 'r', encoding='utf-8') as f_mo:
+                loaded = json.load(f_mo)
+                if isinstance(loaded, dict):
+                    master_odds['odds'] = loaded.get('odds', {})
+                    master_odds['byTeams'] = loaded.get('byTeams', {})
+        except Exception:
+            pass
+
     for rm in raw_matches:
         raw_home = rm['homeTeam']
         raw_away = rm['awayTeam']
@@ -470,6 +482,21 @@ def ingest_betclic_odds_to_database_and_app_data():
                 updated_at = excluded.updated_at
         """, (match_id, comp_id, h_id, a_id, db_home_name, db_away_name, h_odd, d_odd, a_odd, now_utc, h_odd, d_odd, a_odd, margin_pct, now_utc, now_utc))
 
+        # Enregistrement persistant dans master_odds
+        master_odds['odds'][match_id] = {
+            'matchId': match_id,
+            'competitionId': comp_id,
+            'homeTeam': db_home_name,
+            'awayTeam': db_away_name,
+            'odds': {'home': h_odd, 'draw': d_odd, 'away': a_odd},
+            'marginPct': margin_pct,
+            'payoutTrj': payout_trj,
+            'oddsStatus': 'ACTIVE',
+            'updatedAt': now_utc
+        }
+        team_key = f"{clean_nh}__{clean_na}"
+        master_odds['byTeams'][team_key] = master_odds['odds'][match_id]
+
         if found_m:
             odds_obj = { 'home': h_odd, 'draw': d_odd, 'away': a_odd }
             found_m['betclicOdds'] = odds_obj
@@ -533,6 +560,12 @@ def ingest_betclic_odds_to_database_and_app_data():
 
     with open(APP_DATA_PATH, 'w', encoding='utf-8') as f:
         json.dump(app_data, f, ensure_ascii=False, separators=(',', ':'))
+
+    # Persistance de sécurité dans closing_odds_master.json
+    master_odds['updatedAt'] = now_utc
+    os.makedirs(os.path.dirname(master_odds_path), exist_ok=True)
+    with open(master_odds_path, 'w', encoding='utf-8') as f_mo:
+        json.dump(master_odds, f_mo, ensure_ascii=False, indent=2)
 
     print(f"\n=======================================================")
     print(f" [INGESTION REPORT] Synchronisation Cotes Betclic Réelles")

@@ -20,13 +20,16 @@ import { normalizeEntityKey } from './entityResolver';
 export function getTeamRecentMatches(teamName, limit = 5) {
   if (!teamName) return [];
   const normTarget = normalizeEntityKey(teamName);
+  const cleanTarget = normTarget.replace(/\s+/g, '');
+  const lowerTarget = teamName.toLowerCase().trim();
   const cache = ANALYTICS_CACHE?.teamRecent || {};
 
-  // Recherche directe ou approximative
-  let teamMatches = cache[normTarget];
+  // Recherche directe ou approximative multi-clés
+  let teamMatches = cache[teamName] || cache[normTarget] || cache[cleanTarget] || cache[lowerTarget];
   if (!teamMatches) {
     for (const [k, list] of Object.entries(cache)) {
-      if (k.includes(normTarget) || normTarget.includes(k)) {
+      const normK = normalizeEntityKey(k);
+      if (k === teamName || normK === normTarget || (normK.length >= 4 && normTarget.includes(normK)) || (normTarget.length >= 4 && normK.includes(normTarget))) {
         teamMatches = list;
         break;
       }
@@ -66,12 +69,15 @@ export function calculateTeamRadarMetrics(teamName) {
   let posCount = 0;
 
   recent.forEach(m => {
-    totalGoalsScored += m.realGoals;
-    totalGoalsConceded += m.concededGoals;
-    totalXg += m.xG;
-    if (m.concededGoals === 0) cleanSheets++;
-    if (m.result === 'W') points += 3;
-    else if (m.result === 'D_DRAW') points += 1;
+    const goalsScored = m.realGoals ?? m.teamScore ?? 0;
+    const goalsConceded = m.concededGoals ?? m.opponentScore ?? 0;
+    const xGVal = m.xG ?? m.teamXg ?? 1.2;
+    totalGoalsScored += goalsScored;
+    totalGoalsConceded += goalsConceded;
+    totalXg += xGVal;
+    if (goalsConceded === 0) cleanSheets++;
+    if (m.result === 'W' || m.res === 'V') points += 3;
+    else if (m.result === 'D_DRAW' || m.res === 'N') points += 1;
 
     const matchPos = m.isHome ? m.teamStats?.home?.possession : m.teamStats?.away?.possession;
     if (matchPos) {
