@@ -466,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored in their last 5 home matches."
+              "defaultText": "Hoffenheim have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
@@ -505,12 +505,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "12",
                 "4"
               ],
               "DefaultLabels": [
@@ -523,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Hoffenheim haven't drawn in their last 12 matches and Bayer Leverkusen in their last 4."
+              "Icon": "poll_stat_down",
+              "defaultText": "Hoffenheim haven't won a match in 4 attempts."
             }
           ]
         },
@@ -702,17 +700,17 @@
     },
     "weather": {
       "temperature": 15,
-      "windSpeed": 3,
-      "windDirectionCardinal": "WSW",
+      "windSpeed": 2,
+      "windDirectionCardinal": "SSW",
       "iconCode": 28,
-      "relativeHumidity": 61,
-      "precipChance": 12,
+      "relativeHumidity": 59,
+      "precipChance": 6,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 61,
+      "cloudCover": 63,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T15:00:04Z",
+      "lastUpdated": "2026-10-16T03:00:05Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -756,6 +754,18 @@
         "id": 8178,
         "name": "Bayer Leverkusen",
         "unavailable": [
+          {
+            "id": 770136,
+            "name": "Martin Terrier",
+            "unavailability": {
+              "injuryId": 6,
+              "lastUpdated": "2026-10-16T10:56:10Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Martin",
+            "lastName": "Terrier"
+          },
           {
             "id": 1393439,
             "name": "Eliesse Ben Seghir",

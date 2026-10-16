@@ -518,7 +518,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -529,19 +529,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sunderland have scored in their last 4 away matches."
+              "defaultText": "Sunderland have scored in their last 5 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -552,17 +553,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AFC Bournemouth have an average of 1 goals in their last three matches and Sunderland have an average of 1.33."
+              "defaultText": "AFC Bournemouth have scored 4 goals in their last 3 matches, while Sunderland have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "5"
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -575,7 +578,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sunderland haven't drawn in their last 5 matches."
+              "defaultText": "AFC Bournemouth haven't drawn in their last 4 matches and Sunderland in their last 6."
             }
           ]
         },
@@ -703,15 +706,15 @@
         },
         {
           "type": "player",
-          "playerId": 1364069,
+          "playerId": 207236,
           "teamId": 8472,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1364069,
-              "name": "Malick Fofana",
+              "value": 207236,
+              "name": "Granit Xhaka",
               "type": "player"
             },
             {
@@ -720,12 +723,12 @@
               "type": "team"
             },
             {
-              "value": 3.1,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Malick Fofana has the most shots on target per match for Sunderland (3.1)",
+          "text": "Granit Xhaka has created the most big chances for Sunderland (5)",
           "color": "#DC0814"
         }
       ],
@@ -838,17 +841,17 @@
     },
     "weather": {
       "temperature": 14,
-      "windSpeed": 7,
+      "windSpeed": 6,
       "windDirectionCardinal": "NNE",
       "iconCode": 30,
-      "relativeHumidity": 61,
-      "precipChance": 10,
+      "relativeHumidity": 57,
+      "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 45,
+      "cloudCover": 48,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T13:00:02Z",
+      "lastUpdated": "2026-10-16T01:00:03Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -1179,38 +1182,6 @@
           "isCoach": true
         },
         "unavailable": [
-          {
-            "id": 794253,
-            "age": 27,
-            "name": "Justin Kluivert",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 24480211,
-            "unavailability": {
-              "injuryId": 115,
-              "type": "injury",
-              "expectedReturn": "Mid October 2026"
-            },
-            "firstName": "Justin",
-            "lastName": "Kluivert",
-            "nationalTeamId": 6708
-          },
-          {
-            "id": 1079557,
-            "age": 26,
-            "name": "Amine Adli",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 24875171,
-            "unavailability": {
-              "injuryId": 101,
-              "type": "injury",
-              "expectedReturn": "A few days"
-            },
-            "firstName": "Amine",
-            "lastName": "Adli",
-            "nationalTeamId": 6262
-          },
           {
             "id": 1027447,
             "age": 25,
@@ -1601,38 +1572,6 @@
           "isCoach": true
         },
         "unavailable": [
-          {
-            "id": 940446,
-            "age": 24,
-            "name": "Brian Brobbey",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 40558471,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Brian",
-            "lastName": "Brobbey",
-            "nationalTeamId": 6708
-          },
-          {
-            "id": 1285866,
-            "age": 22,
-            "name": "Habib Diarra",
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 45896674,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Habib",
-            "lastName": "Diarra",
-            "nationalTeamId": 6395
-          },
           {
             "id": 974268,
             "age": 27,

@@ -486,16 +486,10 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "0",
-                "4",
                 "away_team",
-                "1",
-                "0",
                 "4"
               ],
               "DefaultLabels": [
@@ -508,8 +502,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Borussia Mönchengladbach have 1W, 0D, 4L in five matches while Hoffenheim have 1W, 0D, 4L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Hoffenheim have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -543,7 +537,7 @@
                 "away_team",
                 "3",
                 "7",
-                "3"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -554,19 +548,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Mönchengladbach have scored 7 goals in their last 3 matches, while Hoffenheim have scored 3."
+              "defaultText": "Borussia Mönchengladbach have scored 7 goals in their last 3 matches, while Hoffenheim have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "12",
-                "12"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -578,8 +570,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Borussia Mönchengladbach haven't drawn in their last 12 matches and Hoffenheim in their last 12."
+              "Icon": "poll_stat_down",
+              "defaultText": "Hoffenheim haven't won a match in 4 attempts."
             }
           ]
         },
@@ -831,20 +823,20 @@
       }
     },
     "weather": {
-      "temperature": 12,
+      "temperature": 11,
       "windSpeed": 3,
       "windDirectionCardinal": "NE",
-      "iconCode": 26,
-      "relativeHumidity": 77,
-      "precipChance": 13,
-      "precipitation": 0,
+      "iconCode": 11,
+      "relativeHumidity": 74,
+      "precipChance": 36,
+      "precipitation": 0.45,
       "snow": 0,
-      "cloudCover": 85,
-      "description": "Cloudy",
+      "cloudCover": 76,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-15T16:00:03Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-16T04:00:08Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5881190,
