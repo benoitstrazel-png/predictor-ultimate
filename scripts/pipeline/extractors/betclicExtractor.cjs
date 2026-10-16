@@ -52,17 +52,22 @@ async function extractBetclicMatches() {
       try {
         console.log(`[Extractor:Betclic] Ingestion de ${comp.name}...`);
         await page.goto(comp.url, { waitUntil: 'networkidle2', timeout: 35000 });
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 1500));
+
+        await page.evaluate(() => {
+          const btn = document.querySelector('#didomi-notice-agree-button, button[aria-label*="Accepter"], button[aria-label*="Continuer"]');
+          if (btn) btn.click();
+        }).catch(() => {});
 
         const harvestBatch = async () => {
           return await page.evaluate((compCode) => {
             const results = [];
-            const cards = document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card');
+            const cards = document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card, [class*="cardEvent"]');
 
             cards.forEach(card => {
               const aria = card.getAttribute('aria-label') || '';
-              const hEl = card.querySelector('[data-qa="contestant-1-label"], .scoreboard_contestant-1 .scoreboard_contestantLabel');
-              const aEl = card.querySelector('[data-qa="contestant-2-label"], .scoreboard_contestant-2 .scoreboard_contestantLabel');
+              const hEl = card.querySelector('[data-qa="contestant-1-label"], .scoreboard_contestant-1 .scoreboard_contestantLabel, .scoreboard_contestant-1');
+              const aEl = card.querySelector('[data-qa="contestant-2-label"], .scoreboard_contestant-2 .scoreboard_contestantLabel, .scoreboard_contestant-2');
               
               let home = hEl ? hEl.innerText.trim() : '';
               let away = aEl ? aEl.innerText.trim() : '';
@@ -114,7 +119,7 @@ async function extractBetclicMatches() {
 
               if (home && away && home !== away && oddsList.length >= 3) {
                 const invSum = (1 / oddsList[0]) + (1 / oddsList[1]) + (1 / oddsList[2]);
-                if (invSum >= 1.025 && invSum <= 1.16) {
+                if (invSum >= 1.015 && invSum <= 1.22) {
                   results.push({
                     league: compCode,
                     homeTeam: home,

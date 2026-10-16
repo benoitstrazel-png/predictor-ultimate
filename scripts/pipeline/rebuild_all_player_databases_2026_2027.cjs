@@ -34,21 +34,36 @@ const playerPhotos = {};
 
 let idCounter = 1;
 
+const MANIFEST_FILE = path.join(__dirname, '..', '..', 'src', 'data', 'squads_manifest.json');
+let manifestLeagueByClub = {};
+if (fs.existsSync(MANIFEST_FILE)) {
+  try {
+    const mf = JSON.parse(fs.readFileSync(MANIFEST_FILE, 'utf8'));
+    (mf.clubs || []).forEach(c => {
+      if (c.club_name && c.league) {
+        manifestLeagueByClub[c.club_name] = c.league;
+      }
+    });
+  } catch (e) {}
+}
+
+const LEAGUE_LABELS = {
+  'FRA-L1': 'fra Ligue 1',
+  'ENG-PL': 'eng Premier League',
+  'ESP-LL': 'esp La Liga',
+  'ITA-SA': 'ita Serie A',
+  'GER-BL': 'ger Bundesliga',
+  'EUR-CL': 'eur Champions League',
+  'EUR-EL': 'eur Europa League',
+  'EUR-ECL': 'eur Conference League'
+};
+
 clubs.forEach(club => {
   const squad = squads[club] || [];
 
-  // League identification
-  let league = 'fra Ligue 1';
-  let leagueCode = 'FRA-L1';
-  const plClubs = ['Manchester City', 'Arsenal', 'Liverpool', 'Chelsea', 'Manchester United', 'Tottenham Hotspur', 'Newcastle United', 'Aston Villa', 'Brighton', 'West Ham United', 'Everton', 'Brentford', 'Wolverhampton', 'Crystal Palace', 'Fulham', 'Nottingham Forest', 'Leicester City', 'Bournemouth', 'Southampton', 'Ipswich Town'];
-  const llClubs = ['Real Madrid', 'FC Barcelona', 'Atlético Madrid', 'Sevilla FC', 'Real Betis', 'Valencia CF', 'Athletic Club', 'Real Sociedad', 'Villarreal CF', 'Girona', 'Getafe CF', 'Celta Vigo', 'Osasuna', 'Las Palmas', 'Deportivo Alavés', 'Rayo Vallecano', 'Mallorca', 'Espanyol', 'Valladolid', 'Leganés'];
-  const saClubs = ['Inter Milan', 'AC Milan', 'Juventus', 'Napoli', 'AS Roma', 'Lazio', 'Atalanta', 'Fiorentina', 'Bologna', 'Como', 'Torino', 'Udinese', 'Genoa', 'Monza', 'Lecce', 'Hellas Verona', 'Cagliari', 'Empoli', 'Parma', 'Venezia'];
-  const blClubs = ['Bayern Munich', 'Borussia Dortmund', 'Bayer Leverkusen', 'RB Leipzig', 'Eintracht Frankfurt', 'VfL Wolfsburg', 'Borussia Mönchengladbach', 'Union Berlin', 'SC Freiburg', 'Hoffenheim', 'Mainz 05', 'Augsburg', 'Werder Bremen', 'VfL Bochum', 'Heidenheim', 'Stuttgart', 'FC St. Pauli', 'Holstein Kiel'];
-
-  if (plClubs.includes(club)) { league = 'eng Premier League'; leagueCode = 'ENG-PL'; }
-  else if (llClubs.includes(club)) { league = 'esp La Liga'; leagueCode = 'ESP-LL'; }
-  else if (saClubs.includes(club)) { league = 'ita Serie A'; leagueCode = 'ITA-SA'; }
-  else if (blClubs.includes(club)) { league = 'ger Bundesliga'; leagueCode = 'GER-BL'; }
+  // Dynamic League identification from manifest or player object
+  let leagueCode = manifestLeagueByClub[club] || (squad[0] && squad[0].league) || 'FRA-L1';
+  let league = LEAGUE_LABELS[leagueCode] || 'fra Ligue 1';
 
   squad.forEach(p => {
     const isAtt = p.position === 'A' || p.fullPos === 'Attaquant';
@@ -59,33 +74,35 @@ clubs.forEach(club => {
     const posCode = isAtt ? 'FW' : (isMid ? 'MF' : (isDef ? 'DF' : 'GK'));
     const fullPosName = isAtt ? 'Attaquant' : (isMid ? 'Milieu' : (isDef ? 'Défenseur' : 'Gardien'));
 
-    const rating = p.rating || 7.5;
-    const goals = p.goals !== undefined ? p.goals : (isAtt ? (rating > 9.0 ? 18 : rating > 8.5 ? 12 : 7) : (isMid ? (rating > 8.5 ? 6 : 3) : (isDef ? 1 : 0)));
-    const assists = p.assists !== undefined ? p.assists : (isMid ? (rating > 9.0 ? 14 : rating > 8.5 ? 8 : 4) : (isAtt ? (rating > 8.5 ? 7 : 4) : (isDef ? 2 : 0)));
-
-    const mp = 22;
-    const starts = rating > 8.2 ? 20 : 14;
+    const rating = p.rating || 7.2;
+    const goals = p.goals !== undefined ? p.goals : 0;
+    const assists = p.assists !== undefined ? p.assists : 0;
+    const mp = p.mj !== undefined && p.mj > 0 ? p.mj : 12;
+    const starts = Math.max(1, Math.min(mp, Math.round(mp * 0.8)));
     const min = starts * 82;
-    const xG = +(goals * 0.85 + (isAtt ? 2.5 : 0.8)).toFixed(1);
-    const npxG = +(xG * 0.88).toFixed(1);
-    const xAG = +(assists * 0.78 + (isMid ? 2.2 : 0.6)).toFixed(1);
+    const xG = +(goals * 0.88 + (isAtt ? 1.4 : isMid ? 0.6 : 0.2)).toFixed(1);
+    const npxG = +(xG * 0.90).toFixed(1);
+    const xAG = +(assists * 0.82 + (isMid ? 1.3 : isAtt ? 0.8 : 0.2)).toFixed(1);
 
     const xG90 = +(xG / (min / 90 || 1)).toFixed(2);
     const xA90 = +(xAG / (min / 90 || 1)).toFixed(2);
 
-    const oddScorer = +(isAtt ? (rating > 9.0 ? 1.65 : rating > 8.5 ? 2.05 : 2.70) : (isMid ? (rating > 8.5 ? 3.40 : 4.50) : 8.50)).toFixed(2);
-    const oddAssister = +(isMid ? (rating > 9.0 ? 1.95 : rating > 8.5 ? 2.50 : 3.20) : (isAtt ? 2.80 : 5.00)).toFixed(2);
+    const oddScorer = +(isAtt ? (rating > 8.2 ? 1.85 : rating > 7.5 ? 2.25 : 2.75) : (isMid ? (rating > 7.8 ? 3.50 : 4.50) : 8.50)).toFixed(2);
+    const oddAssister = +(isMid ? (rating > 8.2 ? 2.10 : rating > 7.5 ? 2.65 : 3.30) : (isAtt ? 2.90 : 5.20)).toFixed(2);
 
     const photoUrl = p.photoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=0D1220&color=C9A96E`;
+    const natCode = (p.nationality || 'FRA').toUpperCase().slice(0, 3);
+    const nationStr = `${natCode.toLowerCase().slice(0, 2)} ${natCode}`;
+    const playerAge = p.age || 25;
 
     // 1. Static Players format for PLAYERS_DB
     allStaticPlayers.push({
       Player: p.name,
-      Nation: 'fr FRA',
+      Nation: nationStr,
       Pos: posCode,
       Squad: club,
       League: league,
-      Age: 25,
+      Age: playerAge,
       MP: mp,
       Starts: starts,
       Min: min,
@@ -103,16 +120,20 @@ clubs.forEach(club => {
       team: club,
       league: leagueCode,
       pos: fullPosName,
+      number: p.number || 0,
+      nationality: p.nationality || 'FRA',
+      age: playerAge,
+      mj: mp,
       rating: rating,
       xG90: xG90,
       xA90: xA90,
       oddScorer: oddScorer,
       oddAssister: oddAssister,
-      confidence: Math.min(96, Math.round(rating * 10.1)),
+      confidence: Math.min(96, Math.round(rating * 11.2)),
       photoUrl: photoUrl,
       goals: goals,
       assists: assists,
-      value: p.value || '20M €'
+      value: p.value || '5.0M €'
     });
 
     // 3. TM Positions

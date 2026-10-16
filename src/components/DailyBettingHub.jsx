@@ -4,6 +4,7 @@ import ValueEdgeScatter from './ValueEdgeScatter';
 import MatchPrediction from './MatchPrediction';
 import TeamLogo from './ui/TeamLogo';
 import { fetchLiveMatchWeather } from '../services/weatherService';
+import { useMatch } from '../context/MatchContext';
 import { ShieldAlert, TrendingDown, TrendingUp, CloudRain, Sun, CheckCircle2, Star, Filter, Check, RefreshCw, AlertCircle } from 'lucide-react';
 
 const ALL_LEAGUES = [
@@ -19,6 +20,7 @@ const ALL_LEAGUES = [
 ];
 
 export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMatch }) {
+  const { updateMatch } = useMatch();
   const [minEdge, setMinEdge] = useState(2.0);
   const [selectedLeagues, setSelectedLeagues] = useState(['EUR-CL', 'EUR-EL', 'EUR-ECL', 'ENG-PL', 'FRA-L1', 'ESP-LL', 'ITA-SA', 'GER-BL', 'FRIENDLY']); // Multi-select array
   const [refreshingMatchId, setRefreshingMatchId] = useState(null);
@@ -39,11 +41,16 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
       if (res.ok) {
         const json = await res.json();
         if (json.data) {
-          match.betclicOdds = json.data.betclicOdds || null;
-          match.probabilities = json.data.probabilities || match.probabilities;
-          match.valueBets = json.data.valueBets || [];
-          match.oddsStatus = json.data.oddsStatus || (match.betclicOdds ? 'ACTIVE' : 'NOT_OPEN');
-          match.oddsMarginPct = json.data.oddsMarginPct || null;
+          const patch = {
+            betclicOdds: json.data.betclicOdds || null,
+            probabilities: json.data.probabilities || match.probabilities,
+            valueBets: json.data.valueBets || [],
+            oddsStatus: json.data.oddsStatus || (json.data.betclicOdds ? 'ACTIVE' : 'NOT_OPEN'),
+            oddsMarginPct: json.data.oddsMarginPct || null,
+            expectedGoals: json.data.expectedGoals || match.expectedGoals
+          };
+          Object.assign(match, patch);
+          if (updateMatch) updateMatch(match.id, patch);
         }
       }
     } catch (err) {

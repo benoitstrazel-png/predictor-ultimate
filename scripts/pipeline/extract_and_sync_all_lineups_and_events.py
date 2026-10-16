@@ -42,13 +42,23 @@ CARD_REASON_MAP = {
 }
 
 def get_role_category(pos_id, usual_pos):
-    if pos_id == 11 or usual_pos == 0:
+    try:
+        p_id = int(pos_id) if pos_id is not None else 0
+    except (ValueError, TypeError):
+        p_id = 0
+    try:
+        u_pos = int(usual_pos) if usual_pos is not None else -1
+    except (ValueError, TypeError):
+        u_pos = -1
+    if p_id == 11 or u_pos == 0:
         return 'G'
-    if pos_id in [1, 2, 3, 4, 31, 32, 33, 34, 35, 36] or usual_pos == 1:
+    if p_id in [1, 2, 3, 4] or (30 <= p_id <= 59) or u_pos == 1:
         return 'D'
-    if pos_id in [5, 6, 7, 8, 41, 42, 43, 44, 45, 46] or usual_pos == 2:
+    if p_id in [5, 6, 7, 8] or (60 <= p_id <= 99) or u_pos == 2:
         return 'M'
-    return 'A'
+    if p_id >= 100 or u_pos == 3:
+        return 'A'
+    return 'M'
 
 def run_extraction():
     print("=========================================================================")
@@ -100,7 +110,7 @@ def run_extraction():
     events_to_insert = []
 
     # Map existante des matchs par match_id
-    c.execute("SELECT match_id, competition_id, season, round_label, gameweek, home_team_name, away_team_name FROM fact_matches")
+    c.execute("SELECT match_id, competition_id, season, round_label, gameweek, home_team_name, away_team_name, home_team_id, away_team_id FROM fact_matches")
     match_meta = {}
     for r in c.fetchall():
         match_meta[r[0]] = {
@@ -109,7 +119,9 @@ def run_extraction():
             'round_label': r[3],
             'gameweek': r[4],
             'home': r[5],
-            'away': r[6]
+            'away': r[6],
+            'home_id': r[7] or r[5],
+            'away_id': r[8] or r[6]
         }
 
     raw_files_count = 0
@@ -147,9 +159,9 @@ def run_extraction():
             match_facts = content.get('matchFacts') or {}
 
             # Extraction des compositions
-            for is_h, team_key, t_name, opp_name in [
-                (True, 'homeTeam', meta['home'], meta['away']),
-                (False, 'awayTeam', meta['away'], meta['home'])
+            for is_h, team_key, t_id, opp_id in [
+                (True, 'homeTeam', meta['home_id'], meta['away_id']),
+                (False, 'awayTeam', meta['away_id'], meta['home_id'])
             ]:
                 t_data = lineup.get(team_key) or {}
                 starters = t_data.get('starters') or []
@@ -172,11 +184,11 @@ def run_extraction():
                     role_cat = get_role_category(p.get('positionId', 0), p.get('usualPlayingPositionId'))
                     is_captain = bool(p.get('isCaptain', False))
 
-                    lineup_sk = f"{match_sk}_{'H' if is_h else 'A'}_{p_id}"
+                    lineup_sk = f"{match_sk}_{t_id}_{p_id}"
                     lineups_to_insert.append((
                         lineup_sk, match_sk, comp_code, season, gameweek, round_label,
-                        t_name, opp_name, 1 if is_h else 0, p_id, p_name,
-                        'STARTER', str(p.get('usualPlayingPositionId') or 'POS'),
+                        t_id, opp_id, 1 if is_h else 0, p_id, p_name,
+                        'STARTER', str(p.get('usualPlayingPositionId') if p.get('usualPlayingPositionId') is not None else 'POS'),
                         role_cat, 1, 1, shirt_num, 1 if is_captain else 0,
                         rating, 90, 0, 0, 0, 0, None, None
                     ))
@@ -195,16 +207,17 @@ def run_extraction():
 
                     perf = p.get('performance') or {}
                     rating = perf.get('rating')
+                    role_cat = get_role_category(p.get('positionId', 0), p.get('usualPlayingPositionId'))
                     sub_events = perf.get('substitutionEvents') or []
                     sub_in_min = None
                     if sub_events and isinstance(sub_events[0], dict):
                         sub_in_min = sub_events[0].get('time')
 
-                    lineup_sk = f"{match_sk}_{'H' if is_h else 'A'}_{p_id}"
+                    lineup_sk = f"{match_sk}_{t_id}_{p_id}"
                     lineups_to_insert.append((
                         lineup_sk, match_sk, comp_code, season, gameweek, round_label,
-                        t_name, opp_name, 1 if is_h else 0, p_id, p_name,
-                        'SUBSTITUTE', 'SUB', 'M', 0, 0, shirt_num, 0,
+                        t_id, opp_id, 1 if is_h else 0, p_id, p_name,
+                        'SUBSTITUTE', 'SUB', role_cat, 0, 0, shirt_num, 0,
                         rating, max(0, 90 - sub_in_min) if sub_in_min else 0, 0, 0, 0, 0, sub_in_min, None
                     ))
 

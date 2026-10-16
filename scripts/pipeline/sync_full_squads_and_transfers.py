@@ -62,30 +62,36 @@ def main():
 
     run_step(
         1,
+        "Extraction des effectifs réels multi-saisons et blessures depuis data/raw",
+        f'"{sys.executable}" scripts/pipeline/sync_rosters_from_matches_and_api.py'
+    )
+
+    run_step(
+        2,
         "Réconciliation temporelle multi-saisons des effectifs",
         f'"{sys.executable}" scripts/pipeline/sync_transfers_and_deduplicate_rosters.py'
     )
 
     run_step(
-        2,
+        3,
         "Peuplement et enrichissement de la table fct_player_transfers",
         f'"{sys.executable}" scripts/pipeline/build_transfers_database.py'
     )
 
     run_step(
-        3,
+        4,
         "Ingestion du Master Squads & Contrats SCD2 dans SQLite",
         f'"{sys.executable}" scripts/pipeline/ingest_master_squads.py'
     )
 
     run_step(
-        4,
+        5,
         "Compilation des artefacts clients Fast-Layer (transfers & squads unified)",
         f'"{sys.executable}" scripts/pipeline/compile_client_rosters.py'
     )
 
     run_step(
-        5,
+        6,
         "Reconstruction des bases joueurs statiques (players_static.js, real_players.json)",
         "node scripts/pipeline/rebuild_all_player_databases_2026_2027.cjs"
     )

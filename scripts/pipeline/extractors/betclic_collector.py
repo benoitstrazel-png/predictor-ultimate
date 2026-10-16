@@ -249,6 +249,24 @@ TEAM_CANONICAL_MAP = {
 
 CLEAN_CANONICAL_MAP = {clean_team_str(k): v for k, v in TEAM_CANONICAL_MAP.items()}
 
+# Enrichissement dynamique depuis src/data/teams_master.json pour couvrir 100% des clubs et alias
+TEAMS_MASTER_PATH = os.path.join(ROOT_DIR, 'src', 'data', 'teams_master.json')
+if os.path.exists(TEAMS_MASTER_PATH):
+    try:
+        with open(TEAMS_MASTER_PATH, 'r', encoding='utf-8') as _tmf:
+            _tm_data = json.load(_tmf)
+            for _t in _tm_data.get('teams', []):
+                _canon = _t.get('short_name') or _t.get('canonical_name')
+                if not _canon:
+                    continue
+                for _alias in [_t.get('canonical_name'), _t.get('short_name'), _t.get('slug')] + (_t.get('aliases') or []):
+                    if _alias:
+                        _ck = clean_team_str(_alias)
+                        if _ck and _ck not in CLEAN_CANONICAL_MAP:
+                            CLEAN_CANONICAL_MAP[_ck] = _canon
+    except Exception:
+        pass
+
 def normalize_team_name(raw_name: str) -> str:
     if not raw_name:
         return ""
@@ -326,7 +344,7 @@ def ingest_betclic_odds_to_database_and_app_data():
         clean_nh = clean_team_str(norm_home)
         clean_na = clean_team_str(norm_away)
 
-        # 1. Recherche prioritaire dans app_data.json fullSchedule (priorité aux matchs dans les 5 jours)
+        # 1. Recherche prioritaire dans app_data.json fullSchedule (priorité aux matchs dans les 14 jours)
         found_m = None
         candidates_schedule = []
         for m in schedule:
@@ -335,8 +353,8 @@ def ingest_betclic_odds_to_database_and_app_data():
             m_h_clean = clean_team_str(m_h_norm)
             m_a_clean = clean_team_str(m_a_norm)
             
-            h_ok = (m_h_clean == clean_nh or clean_nh in m_h_clean or m_h_clean in clean_nh)
-            a_ok = (m_a_clean == clean_na or clean_na in m_a_clean or m_a_clean in clean_na)
+            h_ok = (m_h_clean == clean_nh or (len(clean_nh) >= 4 and clean_nh in m_h_clean) or (len(m_h_clean) >= 4 and m_h_clean in clean_nh))
+            a_ok = (m_a_clean == clean_na or (len(clean_na) >= 4 and clean_na in m_a_clean) or (len(m_a_clean) >= 4 and m_a_clean in clean_na))
             
             # Éviter faux positif Lille vs Lillestrøm
             if ('lille' in [clean_nh, m_h_clean]) and ('lillestrom' in [clean_nh, m_h_clean]):
@@ -353,10 +371,10 @@ def ingest_betclic_odds_to_database_and_app_data():
                     d_str = (item.get('matchDate') or item.get('date') or datetime.date.today().strftime('%Y-%m-%d'))[:10]
                     target_dt = datetime.datetime.strptime(d_str, '%Y-%m-%d').date()
                     delta = (target_dt - datetime.date.today()).days
-                    # Privilégier les matchs à venir entre 0 et 5 jours
-                    if 0 <= delta <= 5:
-                        return delta
-                    elif delta < 0:
+                    # Privilégier les matchs à venir entre -1 et 14 jours
+                    if -1 <= delta <= 14:
+                        return max(0, delta)
+                    elif delta < -1:
                         return 100 + abs(delta)
                     else:
                         return 20 + delta
@@ -381,8 +399,8 @@ def ingest_betclic_odds_to_database_and_app_data():
             cr_h = clean_team_str(normalize_team_name(r_hname))
             cr_a = clean_team_str(normalize_team_name(r_aname))
             
-            h_ok = (cr_h == clean_nh or clean_nh in cr_h or cr_h in clean_nh)
-            a_ok = (cr_a == clean_na or clean_na in cr_a or cr_a in clean_na)
+            h_ok = (cr_h == clean_nh or (len(clean_nh) >= 4 and clean_nh in cr_h) or (len(cr_h) >= 4 and cr_h in clean_nh))
+            a_ok = (cr_a == clean_na or (len(clean_na) >= 4 and clean_na in cr_a) or (len(cr_a) >= 4 and cr_a in clean_na))
             if ('lille' in [clean_nh, cr_h]) and ('lillestrom' in [clean_nh, cr_h]):
                 h_ok = False
             if ('lille' in [clean_na, cr_a]) and ('lillestrom' in [clean_na, cr_a]):
@@ -397,9 +415,9 @@ def ingest_betclic_odds_to_database_and_app_data():
                     d_str = (item[6] or datetime.date.today().strftime('%Y-%m-%d'))[:10]
                     target_dt = datetime.datetime.strptime(d_str, '%Y-%m-%d').date()
                     delta = (target_dt - datetime.date.today()).days
-                    if 0 <= delta <= 5:
-                        return delta
-                    elif delta < 0:
+                    if -1 <= delta <= 14:
+                        return max(0, delta)
+                    elif delta < -1:
                         return 100 + abs(delta)
                     else:
                         return 20 + delta

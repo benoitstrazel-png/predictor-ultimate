@@ -133,19 +133,18 @@ def main():
     init_db_schema_if_needed(conn)
     cursor = conn.cursor()
 
-    # 1. Clean player/contract tables only (PRESERVING dim_teams)
-    cursor.execute("DELETE FROM fct_player_availability;")
-    cursor.execute("DELETE FROM fct_match_lineups;")
+    # 1. Clean player/contract tables only (PRESERVING dim_teams, fct_match_lineups, and fct_player_availability)
     cursor.execute("DELETE FROM dim_player_aliases;")
     cursor.execute("DELETE FROM dim_player_contracts_scd2;")
     cursor.execute("DELETE FROM dim_players;")
     conn.commit()
 
     # 2. Ingest All Squad JSON Files (126 clubs)
-    squad_files = glob(os.path.join(SQUADS_DIR, "*.json"))
+    squad_files = sorted(glob(os.path.join(SQUADS_DIR, "*.json")))
     print(f"📂 [Ingest:Squads] Analyse de {len(squad_files)} fichiers clubs...", flush=True)
 
     player_master = {}
+    seen_tm_ids = set()
     contracts_list = []
     aliases_list = []
     real_players_dict = {}
@@ -182,24 +181,30 @@ def main():
         seasons = club_data.get('seasons', {})
         real_players_dict[club_name] = []
 
-        for season_name, players in seasons.items():
+        for season_name in ["2024-2025", "2025-2026", "2026-2027"]:
+            players = seasons.get(season_name, [])
             for p in players:
                 raw_name = p.get('name')
                 if not raw_name:
                     continue
 
-                tm_id = str(p.get('tm_id')) if p.get('tm_id') else None
+                raw_tm_id = str(p.get('tm_id')) if p.get('tm_id') else None
                 p_slug = slugify(raw_name)
-                player_id = f"ply_{p_slug}_{tm_id}" if tm_id else f"ply_{p_slug}"
+                if not p_slug:
+                    continue
+                player_id = f"ply_{p_slug}"
 
                 pos_code, role_cat = map_detailed_position(p.get('role_category'), p.get('position'))
                 
-                # Upsert into player_master
+                # Upsert into player_master (latest season updates profile attributes)
                 if player_id not in player_master:
+                    safe_tm_id = raw_tm_id if (raw_tm_id and raw_tm_id not in seen_tm_ids) else None
+                    if safe_tm_id:
+                        seen_tm_ids.add(safe_tm_id)
                     player_master[player_id] = {
                         'player_id': player_id,
-                        'tm_id': tm_id,
-                        'api_sports_id': None,
+                        'tm_id': safe_tm_id,
+                        'api_sports_id': int(raw_tm_id) if (raw_tm_id and raw_tm_id.isdigit()) else None,
                         'flashscore_slug': p_slug,
                         'full_name': raw_name,
                         'display_name': raw_name,
@@ -208,13 +213,27 @@ def main():
                         'role_category': role_cat,
                         'birth_date': p.get('dob'),
                         'age': p.get('age') or 25,
-                        'nationality': p.get('nationality') or 'France',
+                        'nationality': p.get('nationality') or 'FRA',
                         'photo_url': p.get('photo')
                     }
+                else:
+                    # Update with fresher season attributes
+                    pm = player_master[player_id]
+                    if raw_tm_id and not pm['tm_id'] and raw_tm_id not in seen_tm_ids:
+                        pm['tm_id'] = raw_tm_id
+                        seen_tm_ids.add(raw_tm_id)
+                    if p.get('age'):
+                        pm['age'] = p.get('age')
+                    if p.get('nationality'):
+                        pm['nationality'] = p.get('nationality')
+                    if p.get('photo') and ('defaults/' not in str(p.get('photo'))):
+                        pm['photo_url'] = p.get('photo')
+                    pm['primary_position'] = pos_code
+                    pm['role_category'] = role_cat
 
                 # Contract SCD2
                 m_val_eur = parse_market_value(p.get('market_value'))
-                joined_d = p.get('joined_date') or ('2024-07-01' if season_name == '2024-2025' else '2025-07-01' if season_name == '2025-2026' else '2026-07-01')
+                joined_d = p.get('joined_date') or ('2023-07-01' if season_name == '2024-2025' else '2025-07-01' if season_name == '2025-2026' else '2026-07-01')
                 left_d = p.get('left_date')
                 valid_from = joined_d
                 valid_to = left_d
@@ -256,14 +275,19 @@ def main():
                     p_stats = p.get('stats', {})
                     goals = p_stats.get('goals', 0)
                     assists = p_stats.get('assists', 0)
-                    apps = p_stats.get('appearances', 10)
-                    rating = round(min(9.8, max(7.0, 7.4 + (goals * 0.2) + (assists * 0.15))), 1)
+                    apps = p_stats.get('appearances', 1)
+                    raw_rating = p_stats.get('rating')
+                    rating = round(float(raw_rating), 2) if raw_rating else round(min(9.5, max(6.8, 7.1 + (goals * 0.15) + (assists * 0.10))), 2)
                     
                     real_players_dict[club_name].append({
                         "name": raw_name,
                         "position": role_cat,
+                        "fullPos": p.get('position') or ('Attaquant' if role_cat == 'A' else 'Milieu' if role_cat == 'M' else 'Défenseur' if role_cat == 'D' else 'Gardien'),
                         "number": p.get('number') or 0,
-                        "nationality": p.get('nationality') or 'France',
+                        "nationality": p.get('nationality') or 'FRA',
+                        "age": p.get('age') or 25,
+                        "league": league or 'FRA-L1',
+                        "value": p.get('market_value') or '5.0M €',
                         "rating": rating,
                         "mj": apps,
                         "goals": goals,

@@ -76,8 +76,10 @@ def refresh_single_match(
 
     h_name = target_match.get('homeTeam')
     a_name = target_match.get('awayTeam')
-    clean_target_h = clean_team_str(normalize_team_name(h_name))
-    clean_target_a = clean_team_str(normalize_team_name(a_name))
+    norm_h = normalize_team_name(h_name)
+    norm_a = normalize_team_name(a_name)
+    clean_target_h = clean_team_str(norm_h)
+    clean_target_a = clean_team_str(norm_a)
     found_match_id = target_match.get('id')
 
     # Si les cotes ne sont pas passees en argument, scrape Betclic en direct
@@ -98,25 +100,46 @@ def refresh_single_match(
             odd_away = float(matched_live['odds']['away'])
             print(f"Cotes ouvertes trouvees sur Betclic : 1:{odd_home} | N:{odd_draw} | 2:{odd_away}")
         else:
-            print("Cotes non encore ouvertes par Betclic pour cette rencontre.")
-            target_match['betclicOdds'] = None
-            target_match['oddsStatus'] = 'NOT_OPEN'
-            target_match['valueBets'] = []
-            target_match['lastOddsRefresh'] = now_utc
+            # Vérifier si une cote certifiée existe déjà en base SQLite avant de basculer en NOT_OPEN
+            db_cached = None
+            if os.path.exists(DB_PATH):
+                try:
+                    with sqlite3.connect(DB_PATH) as conn_check:
+                        cur_check = conn_check.cursor()
+                        cur_check.execute("""
+                            SELECT closing_odd_1, closing_odd_n, closing_odd_2
+                            FROM dim_match_closing_odds
+                            WHERE match_id = ? AND odds_status = 'ACTIVE' AND closing_odd_1 > 1.015
+                        """, (found_match_id,))
+                        db_cached = cur_check.fetchone()
+                except Exception:
+                    db_cached = None
 
-            with open(APP_DATA_PATH, 'w', encoding='utf-8') as f:
-                json.dump(app_data, f, ensure_ascii=False, indent=2)
+            if db_cached and db_cached[0] and db_cached[2]:
+                odd_home = float(db_cached[0])
+                odd_draw = float(db_cached[1])
+                odd_away = float(db_cached[2])
+                print(f"Cotes certifiees retrouvees en base SQLite : 1:{odd_home} | N:{odd_draw} | 2:{odd_away}")
+            else:
+                print("Cotes non encore ouvertes par Betclic pour cette rencontre.")
+                target_match['betclicOdds'] = None
+                target_match['oddsStatus'] = 'NOT_OPEN'
+                target_match['valueBets'] = []
+                target_match['lastOddsRefresh'] = now_utc
 
-            return {
-                'success': True,
-                'matchId': found_match_id,
-                'homeTeam': h_name,
-                'awayTeam': a_name,
-                'betclicOdds': None,
-                'oddsStatus': 'NOT_OPEN',
-                'valueBets': [],
-                'message': "Cotes non encore ouvertes par Betclic pour cette rencontre."
-            }
+                with open(APP_DATA_PATH, 'w', encoding='utf-8') as f:
+                    json.dump(app_data, f, ensure_ascii=False, separators=(',', ':'))
+
+                return {
+                    'success': True,
+                    'matchId': found_match_id,
+                    'homeTeam': h_name,
+                    'awayTeam': a_name,
+                    'betclicOdds': None,
+                    'oddsStatus': 'NOT_OPEN',
+                    'valueBets': [],
+                    'message': "Cotes non encore ouvertes par Betclic pour cette rencontre."
+                }
 
     # Validation Quality Gate stricte
     validation = validate_odds_record(norm_h, norm_a, odd_home, odd_draw, odd_away)
@@ -185,7 +208,7 @@ def refresh_single_match(
     target_match['lastOddsRefresh'] = now_utc
 
     with open(APP_DATA_PATH, 'w', encoding='utf-8') as f:
-        json.dump(app_data, f, ensure_ascii=False, indent=2)
+        json.dump(app_data, f, ensure_ascii=False, separators=(',', ':'))
 
     print(f"[ODDS REFRESH] {h_name} vs {a_name} actualise avec succes !")
     print(f"Cotes : 1:{odd_home} | N:{odd_draw} | 2:{odd_away} (Marge: {validation['margin_pct']}%)")

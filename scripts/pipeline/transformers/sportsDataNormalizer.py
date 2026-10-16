@@ -387,13 +387,31 @@ def normalize_match_payload(raw_fixture: dict, raw_details: dict, comp_code: str
         starters = team_data.get('starters') or []
         subs = team_data.get('subs') or []
         
+        def _map_fotmob_role(pos_id_val, usual_pos_val):
+            try:
+                p_id = int(pos_id_val) if pos_id_val is not None else 0
+            except (ValueError, TypeError):
+                p_id = 0
+            try:
+                u_pos = int(usual_pos_val) if usual_pos_val is not None else -1
+            except (ValueError, TypeError):
+                u_pos = -1
+            if p_id == 11 or u_pos == 0:
+                return 'G'
+            if p_id in [1, 2, 3, 4] or (30 <= p_id <= 59) or u_pos == 1:
+                return 'D'
+            if p_id in [5, 6, 7, 8] or (60 <= p_id <= 99) or u_pos == 2:
+                return 'M'
+            if p_id >= 100 or u_pos == 3:
+                return 'A'
+            return 'M'
+
         # Starters
         for p in starters:
             if not isinstance(p, dict):
                 continue
             perf = p.get('performance') or {}
-            pos_id = p.get('positionId', 0)
-            role_cat = 'G' if pos_id == 11 else ('D' if pos_id in [1, 2, 3, 4] else ('M' if pos_id in [5, 6, 7, 8] else 'A'))
+            role_cat = _map_fotmob_role(p.get('positionId'), p.get('usualPlayingPositionId'))
             p_name = p.get('name') or f"{p.get('firstName', '')} {p.get('lastName', '')}".strip()
             
             lineups_records.append({
@@ -409,7 +427,7 @@ def normalize_match_payload(raw_fixture: dict, raw_details: dict, comp_code: str
                 'player_id': str(p.get('id') or ''),
                 'player_name_match': p_name,
                 'lineup_type': 'STARTER',
-                'pitch_position_code': p.get('usualPlayingPositionId') or 'POS',
+                'pitch_position_code': str(p.get('usualPlayingPositionId') if p.get('usualPlayingPositionId') is not None else 'POS'),
                 'role_category': role_cat,
                 'grid_row': 1,
                 'grid_col': 1,
@@ -430,6 +448,7 @@ def normalize_match_payload(raw_fixture: dict, raw_details: dict, comp_code: str
             if not isinstance(p, dict):
                 continue
             perf = p.get('performance') or {}
+            role_cat = _map_fotmob_role(p.get('positionId'), p.get('usualPlayingPositionId'))
             p_name = p.get('name') or f"{p.get('firstName', '')} {p.get('lastName', '')}".strip()
             sub_events = perf.get('substitutionEvents') or []
             has_played = len(sub_events) > 0
@@ -449,7 +468,7 @@ def normalize_match_payload(raw_fixture: dict, raw_details: dict, comp_code: str
                 'player_name_match': p_name,
                 'lineup_type': 'SUBSTITUTE',
                 'pitch_position_code': 'SUB',
-                'role_category': 'M',
+                'role_category': role_cat,
                 'grid_row': 0,
                 'grid_col': 0,
                 'jersey_number': parse_int_safe(p.get('shirtNumber')),

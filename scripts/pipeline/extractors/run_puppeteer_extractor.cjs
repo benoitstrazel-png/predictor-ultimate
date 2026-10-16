@@ -26,9 +26,70 @@ const COMPETITIONS = [
   { code: 'TOP-EU', name: 'Top Football', url: 'https://www.betclic.fr/football-sfootball/top-football-europeen-p0' }
 ];
 
+function extractFromJsonNode(node, compCode, outList) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) {
+    for (const item of node) extractFromJsonNode(item, compCode, outList);
+    return;
+  }
+
+  // Detect Betclic event object (contestants + grouped_markets / markets)
+  const contestants = node.contestants || node.participants || node.competitors;
+  const markets = node.grouped_markets || node.markets || node.main_markets;
+  if (Array.isArray(contestants) && contestants.length >= 2 && Array.isArray(markets)) {
+    const home = (contestants[0]?.name || contestants[0]?.label || '').trim();
+    const away = (contestants[1]?.name || contestants[1]?.label || '').trim();
+    if (home && away && home !== away) {
+      const odds = [];
+      const scanSelections = (obj) => {
+        if (!obj || typeof obj !== 'object') return;
+        if (Array.isArray(obj)) {
+          obj.forEach(scanSelections);
+          return;
+        }
+        if (typeof obj.odds === 'number' && obj.odds >= 1.015 && obj.odds <= 80.0) {
+          odds.push(obj.odds);
+        }
+        for (const k of ['markets', 'selections', 'outcomes', 'items']) {
+          if (obj[k]) scanSelections(obj[k]);
+        }
+      };
+      scanSelections(markets);
+      if (odds.length >= 3) {
+        const invSum = (1 / odds[0]) + (1 / odds[1]) + (1 / odds[2]);
+        if (invSum >= 1.015 && invSum <= 1.22) {
+          outList.push({
+            competition: compCode,
+            homeTeam: home,
+            awayTeam: away,
+            odds: { home: odds[0], draw: odds[1], away: odds[2] }
+          });
+        }
+      }
+    }
+  }
+
+  for (const key of Object.keys(node)) {
+    const val = node[key];
+    if (val && typeof val === 'object') {
+      extractFromJsonNode(val, compCode, outList);
+    }
+  }
+}
+
 async function runCleanScraper() {
   const allResults = [];
   const seen = new Set();
+  let currentCompCode = 'TOP-EU';
+
+  const registerMatch = (m) => {
+    if (!m || !m.homeTeam || !m.awayTeam || m.homeTeam === m.awayTeam) return;
+    const k = `${m.homeTeam}_vs_${m.awayTeam}`;
+    if (!seen.has(k)) {
+      seen.add(k);
+      allResults.push(m);
+    }
+  };
 
   let browser;
   try {
@@ -47,21 +108,44 @@ async function runCleanScraper() {
     await page.setViewport({ width: 1366, height: 900 });
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36');
 
+    // Intercept Betclic background JSON API responses (offer.cdn.begmedia.com)
+    page.on('response', async (response) => {
+      try {
+        const url = response.url();
+        const ct = (response.headers()['content-type'] || '').toLowerCase();
+        if (ct.includes('json') && (url.includes('begmedia.com') || url.includes('betclic') || url.includes('matches') || url.includes('events'))) {
+          const json = await response.json().catch(() => null);
+          if (json) {
+            const apiMatches = [];
+            extractFromJsonNode(json, currentCompCode, apiMatches);
+            apiMatches.forEach(registerMatch);
+          }
+        }
+      } catch (_) {}
+    });
+
     for (const comp of COMPETITIONS) {
+      currentCompCode = comp.code;
       try {
         await page.goto(comp.url, { waitUntil: 'networkidle2', timeout: 35000 });
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 1500));
+
+        // Dismiss Didomi cookie consent modal if present
+        await page.evaluate(() => {
+          const btn = document.querySelector('#didomi-notice-agree-button, button[aria-label*="Accepter"], button[aria-label*="Continuer"]');
+          if (btn) btn.click();
+        }).catch(() => {});
 
         // Helper pour récolter les cartes actuellement hydratées dans le DOM
         const harvestBatch = async () => {
           return await page.evaluate((compCode) => {
             const found = [];
-            const cards = document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card');
+            const cards = document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card, [class*="cardEvent"]');
 
             cards.forEach(card => {
               const aria = card.getAttribute('aria-label') || '';
-              const hEl = card.querySelector('[data-qa="contestant-1-label"], .scoreboard_contestant-1 .scoreboard_contestantLabel');
-              const aEl = card.querySelector('[data-qa="contestant-2-label"], .scoreboard_contestant-2 .scoreboard_contestantLabel');
+              const hEl = card.querySelector('[data-qa="contestant-1-label"], .scoreboard_contestant-1 .scoreboard_contestantLabel, .scoreboard_contestant-1');
+              const aEl = card.querySelector('[data-qa="contestant-2-label"], .scoreboard_contestant-2 .scoreboard_contestantLabel, .scoreboard_contestant-2');
               
               let home = hEl ? hEl.innerText.trim() : '';
               let away = aEl ? aEl.innerText.trim() : '';
@@ -93,7 +177,7 @@ async function runCleanScraper() {
                 }
               }
 
-              const oddsEls = card.querySelectorAll('bcdk-bet-button-odds-animated, .oddValue, [class*="betButton"] [class*="odds"]');
+              const oddsEls = card.querySelectorAll('bcdk-bet-button-odds-animated, .oddValue, [class*="betButton"] [class*="odds"], .btn_label');
               const odds = [];
               oddsEls.forEach(el => {
                 const v = parseFloat(el.innerText.trim().replace(',', '.'));
@@ -102,7 +186,7 @@ async function runCleanScraper() {
 
               if (home && away && home !== away && odds.length >= 3) {
                 const invSum = (1 / odds[0]) + (1 / odds[1]) + (1 / odds[2]);
-                if (invSum >= 1.02 && invSum <= 1.22) {
+                if (invSum >= 1.015 && invSum <= 1.22) {
                   found.push({
                     competition: compCode,
                     homeTeam: home,
@@ -119,50 +203,35 @@ async function runCleanScraper() {
 
         // Première passe
         let batch = await harvestBatch();
-        batch.forEach(m => {
-          const k = `${m.homeTeam}_vs_${m.awayTeam}`;
-          if (!seen.has(k)) {
-            seen.add(k);
-            allResults.push(m);
-          }
-        });
+        batch.forEach(registerMatch);
 
         // Défilement progressif robuste sur le scroller virtuel Angular
         let cardIdx = 0;
         let endOfPageTries = 0;
 
-        while (cardIdx < 45 && endOfPageTries < 3) {
-          const totalCards = await page.evaluate(() => document.querySelectorAll('a.cardEvent').length);
+        while (cardIdx < 50 && endOfPageTries < 3) {
+          const totalCards = await page.evaluate(() => document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card').length);
 
           if (cardIdx < totalCards) {
             await page.evaluate((i) => {
-              const cards = document.querySelectorAll('a.cardEvent');
+              const cards = document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card');
               if (cards[i]) cards[i].scrollIntoView({ behavior: 'instant', block: 'center' });
             }, cardIdx);
-            await new Promise(r => setTimeout(r, 400));
+            await new Promise(r => setTimeout(r, 350));
             batch = await harvestBatch();
-            batch.forEach(m => {
-              const k = `${m.homeTeam}_vs_${m.awayTeam}`;
-              if (!seen.has(k)) {
-                seen.add(k);
-                allResults.push(m);
-              }
-            });
+            batch.forEach(registerMatch);
             cardIdx += 4;
             endOfPageTries = 0;
           } else {
-            // Au bout des cartes rendues : scroll container pour déclencher le chargement des jours suivants
-            await page.evaluate(() => window.scrollBy(0, 800));
-            await new Promise(r => setTimeout(r, 600));
-            batch = await harvestBatch();
-            batch.forEach(m => {
-              const k = `${m.homeTeam}_vs_${m.awayTeam}`;
-              if (!seen.has(k)) {
-                seen.add(k);
-                allResults.push(m);
-              }
+            await page.evaluate(() => {
+              const vp = document.querySelector('cdk-virtual-scroll-viewport');
+              if (vp) vp.scrollBy(0, 800);
+              window.scrollBy(0, 800);
             });
-            const newTotal = await page.evaluate(() => document.querySelectorAll('a.cardEvent').length);
+            await new Promise(r => setTimeout(r, 550));
+            batch = await harvestBatch();
+            batch.forEach(registerMatch);
+            const newTotal = await page.evaluate(() => document.querySelectorAll('a.cardEvent, sports-events-event, sports-event-card').length);
             if (newTotal > totalCards) {
               endOfPageTries = 0;
             } else {

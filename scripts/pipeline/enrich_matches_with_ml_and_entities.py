@@ -63,30 +63,31 @@ def build_coach_lookup():
         except Exception as e:
             print(f"Warning loading coaches SCD2: {e}")
 
-    # Explicit known signatures
+    # Explicit known fallback signatures (only if not already in coaches_unified_scd2.json)
     manual = {
         "liverpool": {"name": "Arne Slot", "winRate": "68%", "style": "Pressing Tout-Terrain & Verticalité", "formation": "4-3-3"},
-        "nottingham forest": {"name": "Oliver Glasner", "winRate": "52%", "style": "Pressing Agressif & Attaque Directe", "formation": "3-4-2-1"},
-        "bayer leverkusen": {"name": "Carles Martinez", "winRate": "55%", "style": "Construction depuis l'Arrière & Maîtrise", "formation": "3-4-2-1"},
-        "sv elversberg": {"name": "Vincent Wagner", "winRate": "48%", "style": "Organisation Rapprochée & Discipline", "formation": "4-3-3"},
-        "elversberg": {"name": "Vincent Wagner", "winRate": "48%", "style": "Organisation Rapprochée & Discipline", "formation": "4-3-3"},
+        "nottingham forest": {"name": "Nuno Espírito Santo", "winRate": "52%", "style": "Pressing Agressif & Attaque Directe", "formation": "4-2-3-1"},
+        "bayer leverkusen": {"name": "Xabi Alonso", "winRate": "68%", "style": "Construction depuis l'Arrière & Maîtrise", "formation": "3-4-2-1"},
+        "sv elversberg": {"name": "Horst Steffen", "winRate": "48%", "style": "Organisation Rapprochée & Discipline", "formation": "4-3-3"},
+        "elversberg": {"name": "Horst Steffen", "winRate": "48%", "style": "Organisation Rapprochée & Discipline", "formation": "4-3-3"},
         "paris saint germain": {"name": "Luis Enrique", "winRate": "71%", "style": "Possession Dominante & Tiki-Taka", "formation": "4-3-3"},
         "psg": {"name": "Luis Enrique", "winRate": "71%", "style": "Possession Dominante & Tiki-Taka", "formation": "4-3-3"},
-        "marseille": {"name": "Bruno Génésio", "winRate": "56%", "style": "Transitions Rapides & Flexibilité", "formation": "4-3-3"},
-        "olympique de marseille": {"name": "Bruno Génésio", "winRate": "56%", "style": "Transitions Rapides & Flexibilité", "formation": "4-3-3"},
+        "marseille": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Possession Proactive & Relance Courte", "formation": "4-2-3-1"},
+        "olympique de marseille": {"name": "Roberto De Zerbi", "winRate": "58%", "style": "Possession Proactive & Relance Courte", "formation": "4-2-3-1"},
         "manchester city": {"name": "Pep Guardiola", "winRate": "75%", "style": "Jeu de Position & Surcharge Axiale", "formation": "4-3-3"},
         "arsenal": {"name": "Mikel Arteta", "winRate": "67%", "style": "Contrôle Spatial & Pressing Synchronisé", "formation": "4-3-3"},
         "real madrid": {"name": "Carlo Ancelotti", "winRate": "72%", "style": "Adaptabilité & Liberté Créative", "formation": "4-3-3"},
         "barcelona": {"name": "Hansi Flick", "winRate": "76%", "style": "Ligne Haute & Gegenpressing Agressif", "formation": "4-2-3-1"},
         "bayern munich": {"name": "Vincent Kompany", "winRate": "69%", "style": "Possession Proactive & Largeur Maximale", "formation": "4-2-3-1"},
-        "borussia dortmund": {"name": "Nuri Sahin", "winRate": "58%", "style": "Transitions Éclair & Verticalité", "formation": "4-2-3-1"},
+        "borussia dortmund": {"name": "Niko Kovač", "winRate": "58%", "style": "Transitions Éclair & Verticalité", "formation": "4-2-3-1"},
         "inter": {"name": "Simone Inzaghi", "winRate": "66%", "style": "3-5-2 Fluide & Attaque des Demi-Espaces", "formation": "3-5-2"},
         "juventus": {"name": "Thiago Motta", "winRate": "60%", "style": "Jeu Combiné & Flexibilité Tactique", "formation": "4-2-3-1"},
         "como": {"name": "Cesc Fàbregas", "winRate": "52%", "style": "Construction depuis l'Arrière & Maîtrise", "formation": "4-2-3-1"},
         "come": {"name": "Cesc Fàbregas", "winRate": "52%", "style": "Construction depuis l'Arrière & Maîtrise", "formation": "4-2-3-1"},
     }
     for k, v in manual.items():
-        coach_map[k] = v
+        if k not in coach_map:
+            coach_map[k] = v
 
     return coach_map
 
@@ -162,6 +163,34 @@ def get_referee_details(ref_input, ref_map):
         "fifaBadge": False
     }
 
+def load_dynamic_absentees():
+    """Charge les blessés/suspendus réels depuis fct_player_availability dans SQLite."""
+    import sqlite3
+    db_path = os.path.join(ROOT_DIR, "predictor_v2.db")
+    abs_map = {}
+    if os.path.exists(db_path):
+        try:
+            with sqlite3.connect(db_path) as conn:
+                c = conn.cursor()
+                c.execute("""
+                    SELECT a.player_id, a.status, a.injury_nature, a.expected_return_date, COALESCE(t.name, a.team_id)
+                    FROM fct_player_availability a
+                    LEFT JOIN dim_teams t ON a.team_id = t.team_id
+                """)
+                for p_name, st, nature, exp_ret, t_name in c.fetchall():
+                    tk = normalize_key(t_name.replace('CLUB_', ''))
+                    if tk not in abs_map:
+                        abs_map[tk] = []
+                    abs_map[tk].append({
+                        "name": p_name,
+                        "status": st,
+                        "reason": "Suspendu" if st == "SUSPENDED" else "Blessé",
+                        "expectedReturn": exp_ret
+                    })
+        except Exception:
+            pass
+    return abs_map
+
 def main():
     print("🚀 [Enrichment] Début de l'enrichissement ML et entités de app_data.json...")
     
@@ -170,6 +199,7 @@ def main():
 
     coach_map = build_coach_lookup()
     ref_map = build_referee_lookup()
+    dynamic_abs_map = load_dynamic_absentees()
     bundle = load_bundle()
     dc_model = bundle.get("dixon_coles")
     
@@ -183,20 +213,20 @@ def main():
     known_absentees = {
         "psg": ["Lucas Hernandez", "Presnel Kimpembe"],
         "paris saint germain": ["Lucas Hernandez", "Presnel Kimpembe"],
-        "real madrid": ["Jude Bellingham", "Eduardo Camavinga"],
+        "real madrid": ["David Alaba", "Dani Carvajal"],
         "manchester city": ["Rodri", "Oscar Bobb"],
         "arsenal": ["Gabriel Jesus", "Takehiro Tomiyasu"],
-        "fc barcelona": ["Gavi", "Frenkie de Jong"],
-        "barcelona": ["Gavi", "Frenkie de Jong"],
-        "bayern munich": ["Leroy Sane", "Hiroki Ito"],
-        "borussia dortmund": ["Felix Nmecha"],
+        "fc barcelona": ["Marc-André ter Stegen", "Marc Bernal"],
+        "barcelona": ["Marc-André ter Stegen", "Marc Bernal"],
+        "bayern munich": ["Hiroki Ito", "Josip Stanišić"],
+        "borussia dortmund": ["Niklas Süle"],
         "inter": ["Tajon Buchanan"],
         "inter milan": ["Tajon Buchanan"],
-        "marseille": ["Valentin Carboni"],
-        "olympique de marseille": ["Valentin Carboni"],
-        "fc porto": ["Ivan Marcano"],
-        "porto": ["Ivan Marcano"],
-        "benfica": ["Alexander Bah"],
+        "marseille": ["Faris Moumbagna", "Rubén Blanco"],
+        "olympique de marseille": ["Faris Moumbagna", "Rubén Blanco"],
+        "fc porto": ["Iván Marcano"],
+        "porto": ["Iván Marcano"],
+        "benfica": ["Tiago Gouveia"],
         "copenhague": ["Roony Bardghji"],
     }
 
@@ -267,10 +297,21 @@ def main():
         norm_h = normalize_key(home)
         norm_a = normalize_key(away)
 
-        h_abs_list = known_absentees.get(norm_h, [])
-        a_abs_list = known_absentees.get(norm_a, [])
+        dyn_h = dynamic_abs_map.get(norm_h)
+        dyn_a = dynamic_abs_map.get(norm_a)
+        h_abs_list = [x['name'] for x in dyn_h] if dyn_h else known_absentees.get(norm_h, [])
+        a_abs_list = [x['name'] for x in dyn_a] if dyn_a else known_absentees.get(norm_a, [])
         h_abs_count = len(h_abs_list)
         a_abs_count = len(a_abs_list)
+
+        if dyn_h and match.get('status') in ('SCHEDULED', 'LIVE'):
+            if not isinstance(match.get('homeLineup'), dict):
+                match['homeLineup'] = {}
+            match['homeLineup']['keyAbsentees'] = dyn_h[:5]
+        if dyn_a and match.get('status') in ('SCHEDULED', 'LIVE'):
+            if not isinstance(match.get('awayLineup'), dict):
+                match['awayLineup'] = {}
+            match['awayLineup']['keyAbsentees'] = dyn_a[:5]
 
         weather_info = stadium_weather_lookup.get(norm_h, {"temp": 19.0, "rain": 0.0, "wind": 12.0})
 
@@ -373,10 +414,12 @@ def main():
             
             ml_success += 1
         except Exception as e:
-            # Fallback direct aux cotes implicites plutôt que 45% fixe
-            h_imp = round((1 / odd_h) * 88, 1)
-            a_imp = round((1 / odd_a) * 88, 1)
-            d_imp = round(max(10.0, 100.0 - h_imp - a_imp), 1)
+            if odd_h and odd_a and odd_h > 1.0 and odd_a > 1.0:
+                h_imp = round((1.0 / odd_h) * 88, 1)
+                a_imp = round((1.0 / odd_a) * 88, 1)
+                d_imp = round(max(10.0, 100.0 - h_imp - a_imp), 1)
+            else:
+                h_imp, d_imp, a_imp = 44.0, 28.0, 28.0
             match['probabilities'] = {
                 "home": f"{h_imp}%",
                 "draw": f"{d_imp}%",

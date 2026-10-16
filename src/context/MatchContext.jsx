@@ -12,14 +12,14 @@ import APP_DATA from '../data/app_data.json';
 const MatchContext = createContext(null);
 
 export const MatchProvider = ({ children }) => {
-  const allMatches = useMemo(() => APP_DATA?.fullSchedule || [], []);
+  const [allMatches, setAllMatches] = useState(() => APP_DATA?.fullSchedule || []);
 
   const [selectedMatchId, setSelectedMatchId] = useState(() => {
     if (APP_DATA.nextMatches && APP_DATA.nextMatches.length > 0) {
       return APP_DATA.nextMatches[0].id;
     }
-    const firstActive = allMatches.find(m => m.status === 'LIVE' || m.status === 'SCHEDULED');
-    return firstActive?.id || allMatches[0]?.id || 'M_100';
+    const firstActive = (APP_DATA?.fullSchedule || []).find(m => m.status === 'LIVE' || m.status === 'SCHEDULED');
+    return firstActive?.id || APP_DATA?.fullSchedule?.[0]?.id || 'M_100';
   });
 
   const selectedMatch = useMemo(() => {
@@ -33,14 +33,25 @@ export const MatchProvider = ({ children }) => {
     }
   };
 
+  const updateMatch = (matchId, patch) => {
+    if (!matchId || !patch) return;
+    setAllMatches(prev => prev.map(m => (m.id === matchId ? { ...m, ...patch } : m)));
+  };
+
+  const appDataReactive = useMemo(() => ({
+    ...APP_DATA,
+    fullSchedule: allMatches
+  }), [allMatches]);
+
   return (
     <MatchContext.Provider
       value={{
         selectedMatch,
         selectedMatchId,
         selectMatch,
+        updateMatch,
         allMatches,
-        appData: APP_DATA,
+        appData: appDataReactive,
       }}
     >
       {children}

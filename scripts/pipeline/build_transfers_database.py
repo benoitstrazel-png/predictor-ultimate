@@ -1794,7 +1794,7 @@ for p_norm, s_dict in player_seasons.items():
                     inserted += 1
                     known_keys.add(k)
 
-# 2. Nouvelles recrues et arrivées enregistrées dans chaque club
+# 2. Nouvelles recrues disposant explicitement d'un vrai club d'origine (Zéro 'Club Précédent' générique)
 for sf in squad_files:
     slug = os.path.basename(sf).replace('.json', '')
     with open(sf, 'r', encoding='utf-8') as f:
@@ -1807,6 +1807,9 @@ for sf in squad_files:
         for p in squad:
             p_name = p.get('name', '')
             p_norm = normalize_text(p_name)
+            from_club_raw = (p.get('from_club') or '').strip()
+            if not from_club_raw or from_club_raw.lower() in ('club précédent', 'club precedent', 'inconnu', 'unknown', club_name.lower()):
+                continue
             joined_d = p.get('joined_date') or ''
             status = p.get('status')
             s_year = s_name[:4]
@@ -1825,6 +1828,11 @@ for sf in squad_files:
                         pass
                     
                     flag, nat_code = COUNTRY_FLAGS.get(p.get('nationality', 'France'), ('🌍', 'FRA'))
+                    from_meta = team_map.get(from_club_raw.lower(), {
+                        'id': f"CLUB_{slugify(from_club_raw).upper()}", 'name': from_club_raw,
+                        'logo': f"https://media.api-sports.io/football/teams/{abs(hash(from_club_raw)) % 10000}.png",
+                        'league': LEAGUE_BY_TEAM.get(from_club_raw, 'AUTRE')
+                    })
                     to_meta = team_map.get(club_name.lower(), {
                         'id': f"CLUB_{slugify(club_name).upper()}", 'name': club_name,
                         'logo': f"https://media.api-sports.io/football/teams/{abs(hash(club_name)) % 10000}.png",
@@ -1832,7 +1840,7 @@ for sf in squad_files:
                     })
                     
                     tdate = joined_d if len(joined_d) == 10 else f"{s_year}-07-01"
-                    trf_id = f"trf_{slugify(p_name)}_{slugify(club_name)}_{tdate.replace('-', '_')}"
+                    trf_id = f"trf_{slugify(p_name)}_{slugify(from_club_raw)}_{slugify(club_name)}_{tdate.replace('-', '_')}"
                     
                     cursor.execute("""
                         INSERT OR REPLACE INTO fct_player_transfers (
@@ -1848,13 +1856,12 @@ for sf in squad_files:
                         trf_id, f"ply_{slugify(p_name)}", p_name, p_name, p.get('position', 'Milieu'),
                         p.get('role_category', 'M'), p.get('nationality', 'France'), nat_code, flag,
                         p.get('photo', '/assets/players/defaults/m_default.webp'),
-                        "CLUB_ANTERIEUR", "Club Précédent", "https://media.api-sports.io/football/teams/default.png", "AUTRE",
+                        from_meta['id'], from_meta['name'], from_meta['logo'], from_meta['league'],
                         to_meta['id'], to_meta['name'], to_meta['logo'], to_meta['league'], tdate,
-                        s_name, "SUMMER", "ACHAT_SEC" if status == 'NEW_SIGNING' else "ARRIVEE_OFFICIELLE",
-                        "💰 Recrue Officielle" if status == 'NEW_SIGNING' else "📋 Arrivée", mv_num,
+                        s_name, "SUMMER", "ACHAT_SEC", "💰 Achat Définitif", mv_num,
                         f"{mv_num/1000000:.2f} M€" if mv_num >= 1000000 else f"{mv_num/1000:.0f} k€",
                         mv_num, p.get('market_value', '8.0M €'), 0.0,
-                        p.get('age', 24), "Droitier", f"Recrue officielle enregistrée pour {club_name} ({s_name})"
+                        p.get('age', 24), "Droitier", f"Transfert officiel de {from_club_raw} vers {club_name} ({s_name})"
                     ))
                     inserted += 1
                     known_keys.add(k)
