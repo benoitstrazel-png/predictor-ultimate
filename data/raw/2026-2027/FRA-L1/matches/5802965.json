@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9851.png",
-            "linkToMatch": "/matches/le-mans-vs-rennes/2u9b4q#5802916",
-            "date": {
-              "utcTime": "2026-08-30T15:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/9851/overview/rennes",
-            "tooltipText": {
-              "utcTime": "2026-08-30T15:15:00.000Z",
-              "homeTeam": "Rennes",
-              "homeTeamId": 9851,
-              "homeScore": "3",
-              "awayTeam": "Le Mans",
-              "awayTeamId": 8682,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8682",
-              "name": "Le Mans",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
@@ -423,6 +393,36 @@
               "name": "Le Mans",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9941.png",
+            "linkToMatch": "/matches/le-mans-vs-toulouse/2v95dh#5802957",
+            "date": {
+              "utcTime": "2026-10-16T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9941/overview/toulouse",
+            "tooltipText": {
+              "utcTime": "2026-10-16T18:45:00.000Z",
+              "homeTeam": "Le Mans",
+              "homeTeamId": 8682,
+              "homeScore": "0",
+              "awayTeam": "Toulouse",
+              "awayTeamId": 9941,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8682",
+              "name": "Le Mans",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9941",
+              "name": "Toulouse",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -468,13 +468,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "12",
-                "away_team",
-                "12"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,20 +483,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored in their last 12 matches and Le Mans have scored in their last 12 matches."
+              "defaultText": "Auxerre have scored in their last 7 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -509,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored 4 goals in their last 3 matches, while Le Mans have scored 5."
+              "defaultText": "Auxerre have an average of 1.33 goals in their last three matches and Le Mans have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -594,24 +591,29 @@
         },
         {
           "type": "player",
-          "playerId": 1086647,
+          "playerId": 1401248,
           "teamId": 8583,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1086647,
-              "name": "Cameron Archer",
+              "value": 1401248,
+              "name": "Rémy Lascary",
               "type": "player"
             },
             {
-              "value": 4,
+              "value": 8583,
+              "name": "Auxerre",
+              "type": "team"
+            },
+            {
+              "value": 2.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Cameron Archer is the competition's top scorer (4)",
+          "text": "Rémy Lascary has the most shots on target per match for Auxerre (2.1)",
           "color": "#055DC6"
         },
         {
@@ -623,7 +625,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -633,7 +635,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#D60000"
         },
         {
@@ -662,12 +664,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#D60000"
         }
       ],

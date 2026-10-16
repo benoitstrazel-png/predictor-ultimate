@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8521.png",
-            "linkToMatch": "/matches/brest-vs-toulouse/2th5t2#5802911",
-            "date": {
-              "utcTime": "2026-08-29T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8521/overview/brest",
-            "tooltipText": {
-              "utcTime": "2026-08-29T18:45:00.000Z",
-              "homeTeam": "Brest",
-              "homeTeamId": 8521,
-              "homeScore": "2",
-              "awayTeam": "Toulouse",
-              "awayTeamId": 9941,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8521",
-              "name": "Brest",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9941",
-              "name": "Toulouse",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "9829",
               "name": "Monaco",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9941",
+              "name": "Toulouse",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8682.png",
+            "linkToMatch": "/matches/le-mans-vs-toulouse/2v95dh#5802957",
+            "date": {
+              "utcTime": "2026-10-16T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8682/overview/le-mans",
+            "tooltipText": {
+              "utcTime": "2026-10-16T18:45:00.000Z",
+              "homeTeam": "Le Mans",
+              "homeTeamId": 8682,
+              "homeScore": "0",
+              "awayTeam": "Toulouse",
+              "awayTeamId": 9941,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8682",
+              "name": "Le Mans",
               "isOurTeam": false
             },
             "away": {
@@ -462,12 +462,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "2.33",
+                "3",
+                "8",
                 "0"
               ],
               "DefaultLabels": [
@@ -479,16 +480,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have an average of 2.33 goals in their last three matches and Troyes have an average of 0."
+              "defaultText": "Toulouse have scored 8 goals in their last 3 matches, while Troyes have scored 0."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
-              "TextTemplateId": "goalless_team",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "away_team",
+                "home_team",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,8 +501,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_glove",
-              "defaultText": "Troyes haven't scored in their last 3 matches."
+              "Icon": "poll_goal",
+              "defaultText": "Toulouse have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -543,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -553,7 +555,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#5b417b"
         },
         {
@@ -595,29 +597,24 @@
         },
         {
           "type": "player",
-          "playerId": 845943,
+          "playerId": 1102240,
           "teamId": 9941,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 845943,
-              "name": "Cristian Cásseres",
+              "value": 1102240,
+              "name": "Casper Tengstedt",
               "type": "player"
             },
             {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Cristian Cásseres is ranked 1 in big chances created in the competition (6)",
+          "text": "Casper Tengstedt is the competition's top scorer (5)",
           "color": "#5b417b"
         },
         {

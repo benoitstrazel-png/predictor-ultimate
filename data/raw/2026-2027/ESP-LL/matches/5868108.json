@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8603.png",
-            "linkToMatch": "/matches/levante-vs-real-betis/2fwwtn#5868035",
-            "date": {
-              "utcTime": "2026-08-29T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8603/overview/real-betis",
-            "tooltipText": {
-              "utcTime": "2026-08-29T15:00:00.000Z",
-              "homeTeam": "Levante",
-              "homeTeamId": 8581,
-              "homeScore": "5",
-              "awayTeam": "Real Betis",
-              "awayTeamId": 8603,
-              "awayScore": "2"
-            },
-            "score": "5 - 2",
-            "home": {
-              "id": "8581",
-              "name": "Levante",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8603",
-              "name": "Real Betis",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9864.png",
@@ -423,6 +393,36 @@
               "name": "Sevilla",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783.png",
+            "linkToMatch": "/matches/levante-vs-deportivo-coruna/2sehb1#5868093",
+            "date": {
+              "utcTime": "2026-10-16T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
+            "tooltipText": {
+              "utcTime": "2026-10-16T19:00:00.000Z",
+              "homeTeam": "Deportivo A Coruña",
+              "homeTeamId": 9783,
+              "homeScore": "1",
+              "awayTeam": "Levante",
+              "awayTeamId": 8581,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9783",
+              "name": "Deportivo A Coruña",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8581",
+              "name": "Levante",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "1",
-                "2",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Real Sociedad have 2W, 1D, 2L in five matches while Levante have 1W, 2D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Levante haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -475,7 +469,7 @@
                 "away_team",
                 "3",
                 "4",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 4 goals in their last 3 matches, while Levante have scored 6."
+              "defaultText": "Real Sociedad have scored 4 goals in their last 3 matches, while Levante have scored 5."
             },
             {
               "OddsType": "ou",
@@ -499,7 +493,7 @@
                 "away_team",
                 "3",
                 "4",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 4 goals in their last 3 matches, while Levante have scored 6."
+              "defaultText": "Real Sociedad have scored 4 goals in their last 3 matches, while Levante have scored 5."
             },
             {
               "OddsType": "dc",
@@ -520,7 +514,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -533,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Levante haven't won a match in 4 attempts."
+              "defaultText": "Levante haven't won a match in 5 attempts."
             }
           ]
         },
@@ -619,7 +613,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -629,61 +623,51 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#335686"
         },
         {
-          "type": "player",
-          "playerId": 1131957,
+          "type": "team",
+          "playerId": null,
           "teamId": 8581,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 1131957,
-              "name": "Jon Olasagasti",
-              "type": "player"
-            },
-            {
-              "value": 8581,
-              "name": "Levante",
-              "type": "team"
-            },
-            {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Jon Olasagasti has created the most big chances for Levante (3)",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#335686"
         },
         {
           "type": "player",
-          "playerId": 1209441,
+          "playerId": 185644,
           "teamId": 8581,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 1209441,
-              "name": "Iván Romero",
+              "value": 185644,
+              "name": "Mathew Ryan",
               "type": "player"
             },
             {
-              "value": 8581,
-              "name": "Levante",
-              "type": "team"
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 1.7,
+              "value": 4,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Iván Romero has the most shots on target per match for Levante (1.7)",
+          "text": "Mathew Ryan is ranked 3 in saves per match in the competition (4)",
           "color": "#335686"
         }
       ],
