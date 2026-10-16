@@ -72,6 +72,7 @@
   "nav": [
     "matchfacts",
     "table",
+    "head to head",
     "injured"
   ],
   "ongoing": false,
@@ -104,8 +105,13 @@
           "round": "5"
         },
         "Stadium": {
-          "name": "Red Bull Arena Leipzig",
-          "country": ""
+          "name": "Red Bull Arena",
+          "city": "Leipzig",
+          "country": "Germany",
+          "lat": 51.345776141,
+          "long": 12.34828949,
+          "capacity": 47800,
+          "surface": "grass"
         },
         "Referee": {
           "text": "",
@@ -257,6 +263,18 @@
         "name": "RB Leipzig",
         "unavailable": [
           {
+            "id": 1412137,
+            "name": "Marc Guiu",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-09-18T14:24:55Z",
+              "type": "injury",
+              "expectedReturn": "A few weeks"
+            },
+            "firstName": "Marc",
+            "lastName": "Guiu"
+          },
+          {
             "id": 1486541,
             "name": "Assan Ouédraogo",
             "unavailability": {
@@ -269,25 +287,13 @@
             "lastName": "Ouédraogo"
           },
           {
-            "id": 1174726,
-            "name": "Rocco Reitz",
-            "unavailability": {
-              "injuryId": 69,
-              "lastUpdated": "2026-09-03T15:08:54Z",
-              "type": "injury",
-              "expectedReturn": "Late September 2026"
-            },
-            "firstName": "Rocco",
-            "lastName": "Reitz"
-          },
-          {
             "id": 747718,
             "name": "Christoph Baumgartner",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-11T21:32:58Z",
+              "lastUpdated": "2026-09-21T10:53:13Z",
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Mid October 2026"
             },
             "firstName": "Christoph",
             "lastName": "Baumgartner"
@@ -299,16 +305,28 @@
         "name": "Lens",
         "unavailable": [
           {
-            "id": 1288907,
-            "name": "Yacine Titraoui",
+            "id": 513072,
+            "name": "Jonathan Gradit",
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-07T11:30:43Z",
+              "lastUpdated": "2026-10-12T16:03:51Z",
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "About 1-2 weeks"
             },
-            "firstName": "Yacine",
-            "lastName": "Titraoui"
+            "firstName": "Jonathan",
+            "lastName": "Gradit"
+          },
+          {
+            "id": 1189856,
+            "name": "Abdallah Sima",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-10-06T19:40:27Z",
+              "type": "injury",
+              "expectedReturn": "Late November 2026"
+            },
+            "firstName": "Abdallah",
+            "lastName": "Sima"
           },
           {
             "id": 1053713,
@@ -323,40 +341,16 @@
             "lastName": "Nawrocki"
           },
           {
-            "id": 1002617,
-            "name": "Saud Abdulhamid",
-            "unavailability": {
-              "injuryId": 130,
-              "lastUpdated": "2026-09-03T15:10:34Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Saud",
-            "lastName": "Abdulhamid"
-          },
-          {
             "id": 1191194,
             "name": "Jhoanner Chávez",
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-11T10:34:21Z",
+              "lastUpdated": "2026-09-21T11:01:14Z",
               "type": "injury",
-              "expectedReturn": "Late September 2026"
+              "expectedReturn": "Mid October 2026"
             },
             "firstName": "Jhoanner",
             "lastName": "Chávez"
-          },
-          {
-            "id": 1276626,
-            "name": "Samson Baidoo",
-            "unavailability": {
-              "injuryId": 69,
-              "lastUpdated": "2026-07-29T09:57:59Z",
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Samson",
-            "lastName": "Baidoo"
           }
         ]
       }
@@ -373,7 +367,49 @@
       "parentLeagueId": 42,
       "countryCode": "INT-2"
     },
-    "h2h": false,
+    "h2h": {
+      "summary": [
+        0,
+        0,
+        1
+      ],
+      "matches": [
+        {
+          "time": {
+            "utcTime": "2025-08-09T16:00:00.000Z"
+          },
+          "matchUrl": "/matches/lens-vs-rb-leipzig/81cw95c#4818323",
+          "league": {
+            "name": "Club Friendlies",
+            "id": "489",
+            "pageUrl": "/leagues/489/overview/club-friendlies"
+          },
+          "home": {
+            "name": "Lens",
+            "id": "8588"
+          },
+          "status": {
+            "utcTime": "2025-08-09T16:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "awarded": false,
+            "scoreStr": "2 - 1",
+            "reason": {
+              "short": "FT",
+              "shortKey": "fulltime_short",
+              "long": "Full-Time",
+              "longKey": "finished"
+            }
+          },
+          "finished": false,
+          "away": {
+            "name": "RB Leipzig",
+            "id": "178475"
+          }
+        }
+      ]
+    },
     "momentum": false
   },
   "seo": {
@@ -411,11 +447,13 @@
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": {
         "@type": "Place",
-        "name": "Red Bull Arena Leipzig",
+        "name": "Red Bull Arena",
+        "latitude": 51.345776141,
+        "longitude": 12.34828949,
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "Unknown country",
-          "addressLocality": "Unknown city"
+          "addressCountry": "Germany",
+          "addressLocality": "Leipzig"
         }
       },
       "image": [
