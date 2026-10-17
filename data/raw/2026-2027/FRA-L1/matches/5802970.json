@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
-            "linkToMatch": "/matches/lens-vs-strasbourg/2t6vlu#5802917",
-            "date": {
-              "utcTime": "2026-08-29T15:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8588/overview/lens",
-            "tooltipText": {
-              "utcTime": "2026-08-29T15:15:00.000Z",
-              "homeTeam": "Strasbourg",
-              "homeTeamId": 9848,
-              "homeScore": "2",
-              "awayTeam": "Lens",
-              "awayTeamId": 8588,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "9848",
-              "name": "Strasbourg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8588",
-              "name": "Lens",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
             "linkToMatch": "/matches/strasbourg-vs-troyes/3c5scn#5802927",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Strasbourg",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+            "linkToMatch": "/matches/paris-saint-germain-vs-strasbourg/37hda8#5802962",
+            "date": {
+              "utcTime": "2026-10-17T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
+            "tooltipText": {
+              "utcTime": "2026-10-17T15:15:00.000Z",
+              "homeTeam": "Strasbourg",
+              "homeTeamId": 9848,
+              "homeScore": "1",
+              "awayTeam": "Paris Saint-Germain",
+              "awayTeamId": 9847,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "9848",
+              "name": "Strasbourg",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9847",
+              "name": "Paris Saint-Germain",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -508,12 +508,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Rennes and Strasbourg have not drawn any of their last 5 matches against each other."
+              "Icon": "poll_stat_down",
+              "defaultText": "Strasbourg haven't won a match in 4 attempts."
             }
           ]
         },
@@ -612,7 +611,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -622,7 +621,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 11 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
+          "color": "#294A92"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9848,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (3)",
           "color": "#294A92"
         },
         {
@@ -634,39 +650,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 20,
+              "value": 21,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 20 matches",
-          "color": "#294A92"
-        },
-        {
-          "type": "player",
-          "playerId": 1418073,
-          "teamId": 9848,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1418073,
-              "name": "Samuel Amo-Ameyaw",
-              "type": "player"
-            },
-            {
-              "value": 9848,
-              "name": "Strasbourg",
-              "type": "team"
-            },
-            {
-              "value": 2.1,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Samuel Amo-Ameyaw has the most shots on target per match for Strasbourg (2.1)",
+          "text": "Haven't kept a clean sheet in 21 matches",
           "color": "#294A92"
         }
       ],
@@ -688,18 +677,18 @@
       }
     },
     "weather": {
-      "temperature": 16,
+      "temperature": 14,
       "windSpeed": 6,
-      "windDirectionCardinal": "SSW",
+      "windDirectionCardinal": "WSW",
       "iconCode": 28,
-      "relativeHumidity": 75,
+      "relativeHumidity": 78,
       "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 78,
+      "cloudCover": 68,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-17T05:00:15Z",
+      "lastUpdated": "2026-10-17T17:00:14Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
