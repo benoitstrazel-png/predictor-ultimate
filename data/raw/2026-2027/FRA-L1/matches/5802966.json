@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9746.png",
-            "linkToMatch": "/matches/brest-vs-le-havre/2rceek#5802920",
-            "date": {
-              "utcTime": "2026-09-05T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9746/overview/le-havre",
-            "tooltipText": {
-              "utcTime": "2026-09-05T18:45:00.000Z",
-              "homeTeam": "Le Havre",
-              "homeTeamId": 9746,
-              "homeScore": "1",
-              "awayTeam": "Brest",
-              "awayTeamId": 8521,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9746",
-              "name": "Le Havre",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8521",
-              "name": "Brest",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
@@ -270,6 +240,36 @@
               "id": "8121",
               "name": "Angers",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
+            "linkToMatch": "/matches/brest-vs-lille/2fo2ub#5802958",
+            "date": {
+              "utcTime": "2026-10-17T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8639/overview/lille",
+            "tooltipText": {
+              "utcTime": "2026-10-17T18:45:00.000Z",
+              "homeTeam": "Lille",
+              "homeTeamId": 8639,
+              "homeScore": "1",
+              "awayTeam": "Brest",
+              "awayTeamId": 8521,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8639",
+              "name": "Lille",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8521",
+              "name": "Brest",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,8 +443,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
+                "2",
                 "2",
                 "away_team",
                 "2",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brest have 2W, 1D, 2L in five matches while Nice have 2W, 1D, 2L."
+              "defaultText": "Brest have 1W, 2D, 2L in five matches while Nice have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -515,8 +515,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
+                "2",
                 "2",
                 "away_team",
                 "2",
@@ -534,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brest have 2W, 1D, 2L in five matches while Nice have 2W, 1D, 2L."
+              "defaultText": "Brest have 1W, 2D, 2L in five matches while Nice have 2W, 1D, 2L."
             }
           ]
         },
@@ -554,7 +554,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -564,7 +564,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#ED1C24"
         },
         {
@@ -576,29 +576,39 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 21,
+              "value": 22,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 21 matches",
+          "text": "Haven't kept a clean sheet in 22 matches",
           "color": "#ED1C24"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1514456,
           "teamId": 8521,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 1514456,
+              "name": "Pathé Mboup",
+              "type": "player"
+            },
+            {
+              "value": 8521,
+              "name": "Brest",
+              "type": "team"
+            },
+            {
+              "value": 1.9,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Average 2 goals per match",
+          "text": "Pathé Mboup has the most shots on target per match for Brest (1.9)",
           "color": "#ED1C24"
         },
         {
@@ -686,18 +696,18 @@
       }
     },
     "weather": {
-      "temperature": 12,
-      "windSpeed": 8,
-      "windDirectionCardinal": "WSW",
+      "temperature": 11,
+      "windSpeed": 7,
+      "windDirectionCardinal": "W",
       "iconCode": 11,
-      "relativeHumidity": 72,
-      "precipChance": 31,
-      "precipitation": 0.2,
+      "relativeHumidity": 76,
+      "precipChance": 32,
+      "precipitation": 0.1,
       "snow": 0,
-      "cloudCover": 63,
+      "cloudCover": 59,
       "description": "Few Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-17T07:00:27Z",
+      "lastUpdated": "2026-10-17T19:00:19Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
