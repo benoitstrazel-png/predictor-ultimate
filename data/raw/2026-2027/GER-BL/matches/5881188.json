@@ -157,10 +157,10 @@
               "type": "fouls",
               "value": 21.48,
               "valueType": "perMatch",
-              "average": 21.16,
+              "average": 21.17,
               "total": 537,
               "averageType": "average",
-              "fillPercentage": 54.55,
+              "fillPercentage": 54.43,
               "averagePercentage": 50
             }
           ]
@@ -608,6 +608,43 @@
           "color": "#cf1e1e"
         },
         {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8178,
+          "priority": 9,
+          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+          "localizedTextId": "h2h_undefeated",
+          "statValues": [
+            {
+              "value": 8178,
+              "name": "Bayer Leverkusen",
+              "type": "team"
+            },
+            {
+              "value": 8358,
+              "name": "Freiburg",
+              "type": "team"
+            },
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 4,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Bayer Leverkusen haven't lost to Freiburg in their last 7 meetings (4W, 3D).",
+          "color": "#cf1e1e"
+        },
+        {
           "type": "player",
           "playerId": 540097,
           "teamId": 8178,
@@ -627,33 +664,6 @@
             }
           ],
           "text": "Patrik Schick is the competition's top scorer (5)",
-          "color": "#cf1e1e"
-        },
-        {
-          "type": "player",
-          "playerId": 942379,
-          "teamId": 8178,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
-          "statValues": [
-            {
-              "value": 942379,
-              "name": "Miguel Gutiérrez",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Miguel Gutiérrez is ranked 1 in big chances created in the competition (6)",
           "color": "#cf1e1e"
         },
         {
@@ -697,15 +707,15 @@
         },
         {
           "type": "player",
-          "playerId": 1210893,
+          "playerId": 864157,
           "teamId": 8358,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1210893,
-              "name": "Igor Matanović",
+              "value": 864157,
+              "name": "Jan-Niklas Beste",
               "type": "player"
             },
             {
@@ -714,12 +724,12 @@
               "type": "team"
             },
             {
-              "value": 2.3,
+              "value": 4,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Igor Matanović has the most shots on target per match for Freiburg (2.3)",
+          "text": "Jan-Niklas Beste has created the most big chances for Freiburg (4)",
           "color": "#BD1C2C"
         }
       ],
@@ -836,13 +846,13 @@
       "windDirectionCardinal": "NE",
       "iconCode": 26,
       "relativeHumidity": 72,
-      "precipChance": 12,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 95,
+      "cloudCover": 96,
       "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-16T20:00:17Z",
+      "lastUpdated": "2026-10-17T08:00:17Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -851,6 +861,7 @@
       "lineupType": "predicted",
       "source": "enetpulse",
       "availableFilters": [
+        "season",
         "marketValue",
         "age",
         "country"
@@ -882,6 +893,9 @@
               "width": 1
             },
             "marketValue": 4365132,
+            "performance": {
+              "seasonRating": 6.36
+            },
             "firstName": "Mark",
             "lastName": "Flekken",
             "nationalTeamId": 6708,
@@ -909,6 +923,11 @@
               "width": 0.25
             },
             "marketValue": 46311940,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 6.89
+            },
             "firstName": "Jarell",
             "lastName": "Quansah",
             "nationalTeamId": 8491,
@@ -936,6 +955,10 @@
               "width": 0.25
             },
             "marketValue": 39586692,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.72
+            },
             "firstName": "Edmond",
             "lastName": "Tapsoba",
             "nationalTeamId": 6323,
@@ -963,6 +986,10 @@
               "width": 0.25
             },
             "marketValue": 14476168,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.98
+            },
             "firstName": "Facundo",
             "lastName": "Medina",
             "nationalTeamId": 6706,
@@ -990,20 +1017,25 @@
               "width": 0.25
             },
             "marketValue": 22713894,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 3,
+              "seasonRating": 7.7
+            },
             "firstName": "Miguel",
             "lastName": "Gutiérrez",
             "nationalTeamId": 6720,
             "rankings": null
           },
           {
-            "id": 411851,
-            "age": 32,
-            "name": "Robert Andrich",
+            "id": 1199959,
+            "age": 24,
+            "name": "Equi Fernández",
             "positionId": 64,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "8",
-            "countryName": "Germany",
-            "countryCode": "GER",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.7,
@@ -1016,10 +1048,14 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 4603748,
-            "firstName": "Robert",
-            "lastName": "Andrich",
-            "nationalTeamId": 8570,
+            "marketValue": 23775306,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 7.44
+            },
+            "firstName": "Equi",
+            "lastName": "Fernández",
+            "nationalTeamId": 6706,
             "rankings": null
           },
           {
@@ -1044,6 +1080,10 @@
               "width": 0.4
             },
             "marketValue": 23977217,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 7.83
+            },
             "firstName": "Aleix",
             "lastName": "García",
             "nationalTeamId": 6720,
@@ -1071,6 +1111,10 @@
               "width": 0.325
             },
             "marketValue": 17401230,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 7.3
+            },
             "firstName": "Moussa",
             "lastName": "Diaby",
             "nationalTeamId": 6723,
@@ -1098,6 +1142,11 @@
               "width": 0.337
             },
             "marketValue": 30787109,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 7.42
+            },
             "firstName": "Ibrahim",
             "lastName": "Maza",
             "nationalTeamId": 6317,
@@ -1125,6 +1174,10 @@
               "width": 0.325
             },
             "marketValue": 4424587,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 7.11
+            },
             "firstName": "Afonso",
             "lastName": "Moreira",
             "nationalTeamId": 8361,
@@ -1152,6 +1205,11 @@
               "width": 1
             },
             "marketValue": 17017309,
+            "performance": {
+              "seasonGoals": 5,
+              "seasonAssists": 1,
+              "seasonRating": 7.96
+            },
             "firstName": "Patrik",
             "lastName": "Schick",
             "nationalTeamId": 8496,
@@ -1173,22 +1231,6 @@
           "isCoach": true
         },
         "unavailable": [
-          {
-            "id": 770136,
-            "age": 29,
-            "name": "Martin Terrier",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 7893034,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Early December 2026"
-            },
-            "firstName": "Martin",
-            "lastName": "Terrier",
-            "nationalTeamId": 6723
-          },
           {
             "id": 1793217,
             "age": 17,
@@ -1234,6 +1276,9 @@
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
+            "performance": {
+              "seasonRating": 6.49
+            },
             "firstName": "Guéla",
             "lastName": "Doué",
             "nationalTeamId": 6709
@@ -1256,6 +1301,26 @@
             "nationalTeamId": 6262
           },
           {
+            "id": 770136,
+            "age": 29,
+            "name": "Martin Terrier",
+            "positionId": 1000,
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 7893034,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "performance": {
+              "seasonRating": 6.41
+            },
+            "firstName": "Martin",
+            "lastName": "Terrier",
+            "nationalTeamId": 6723
+          },
+          {
             "id": 1705081,
             "age": 20,
             "name": "Christian Kofane",
@@ -1268,13 +1333,17 @@
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
+            "performance": {
+              "seasonGoals": 2,
+              "seasonRating": 6.59
+            },
             "firstName": "Christian",
             "lastName": "Kofane",
             "nationalTeamId": 6629
           }
         ],
-        "averageStarterAge": 27.2,
-        "totalStarterMarketValue": 225665026
+        "averageStarterAge": 26.5,
+        "totalStarterMarketValue": 244836584
       },
       "awayTeam": {
         "id": 8358,
@@ -1303,6 +1372,9 @@
               "width": 1
             },
             "marketValue": 11311985,
+            "performance": {
+              "seasonRating": 6.58
+            },
             "firstName": "Mio",
             "lastName": "Backhaus",
             "nationalTeamId": 8570,
@@ -1330,6 +1402,9 @@
               "width": 0.25
             },
             "marketValue": 13287699,
+            "performance": {
+              "seasonRating": 6.94
+            },
             "firstName": "Philipp",
             "lastName": "Treu",
             "nationalTeamId": 8570,
@@ -1357,6 +1432,10 @@
               "width": 0.25
             },
             "marketValue": 2235164,
+            "performance": {
+              "seasonAssists": 3,
+              "seasonRating": 7.95
+            },
             "firstName": "Matthias",
             "lastName": "Ginter",
             "nationalTeamId": 8570,
@@ -1384,6 +1463,9 @@
               "width": 0.25
             },
             "marketValue": 5578547,
+            "performance": {
+              "seasonRating": 7.29
+            },
             "firstName": "Philipp",
             "lastName": "Lienhart",
             "nationalTeamId": 8255,
@@ -1411,6 +1493,10 @@
               "width": 0.25
             },
             "marketValue": 5988478,
+            "performance": {
+              "seasonAssists": 2,
+              "seasonRating": 7.57
+            },
             "firstName": "Jordy",
             "lastName": "Makengo",
             "nationalTeamId": 6321,
@@ -1438,6 +1524,10 @@
               "width": 0.4
             },
             "marketValue": 6726276,
+            "performance": {
+              "seasonGoals": 3,
+              "seasonRating": 7.73
+            },
             "firstName": "Maximilian",
             "lastName": "Eggestein",
             "nationalTeamId": 8570,
@@ -1465,20 +1555,24 @@
               "width": 0.4
             },
             "marketValue": 6006747,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonRating": 7.28
+            },
             "firstName": "Yannik",
             "lastName": "Engelhardt",
             "nationalTeamId": 8570,
             "rankings": null
           },
           {
-            "id": 1526221,
-            "age": 21,
-            "name": "Cyriaque Irié",
+            "id": 864157,
+            "age": 27,
+            "name": "Jan-Niklas Beste",
             "positionId": 83,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "22",
-            "countryName": "Burkina Faso",
-            "countryCode": "BFA",
+            "shirtNumber": "19",
+            "countryName": "Germany",
+            "countryCode": "GER",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.837,
@@ -1491,21 +1585,25 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 7286573,
-            "firstName": "Cyriaque",
-            "lastName": "Irié",
-            "nationalTeamId": 6323,
+            "marketValue": 10438153,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 7.21
+            },
+            "firstName": "Jan-Niklas",
+            "lastName": "Beste",
+            "nationalTeamId": 8570,
             "rankings": null
           },
           {
-            "id": 400625,
-            "age": 33,
-            "name": "Vincenzo Grifo",
+            "id": 556524,
+            "age": 32,
+            "name": "Lucas Höler",
             "positionId": 85,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "32",
-            "countryName": "Italy",
-            "countryCode": "ITA",
+            "shirtNumber": "9",
+            "countryName": "Germany",
+            "countryCode": "GER",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.5,
@@ -1518,10 +1616,13 @@
               "height": 0.192,
               "width": 0.337
             },
-            "marketValue": 2240451,
-            "firstName": "Vincenzo",
-            "lastName": "Grifo",
-            "nationalTeamId": 8204,
+            "marketValue": 2143947,
+            "performance": {
+              "seasonRating": 6.36
+            },
+            "firstName": "Lucas",
+            "lastName": "Höler",
+            "nationalTeamId": 8570,
             "rankings": null
           },
           {
@@ -1546,6 +1647,11 @@
               "width": 0.325
             },
             "marketValue": 6206990,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 2,
+              "seasonRating": 7.38
+            },
             "firstName": "Derry",
             "lastName": "Scherhant",
             "nationalTeamId": 8570,
@@ -1573,6 +1679,11 @@
               "width": 1
             },
             "marketValue": 14902025,
+            "performance": {
+              "seasonGoals": 3,
+              "seasonAssists": 1,
+              "seasonRating": 7.86
+            },
             "firstName": "Igor",
             "lastName": "Matanović",
             "nationalTeamId": 10155,
@@ -1624,13 +1735,17 @@
               "expectedReturn": "Mid October 2026",
               "expectedReturnDate": "2026-10-18T15:30:00Z"
             },
+            "performance": {
+              "seasonGoals": 4,
+              "seasonRating": 7.58
+            },
             "firstName": "Yuito",
             "lastName": "Suzuki",
             "nationalTeamId": 6715
           }
         ],
-        "averageStarterAge": 26.8,
-        "totalStarterMarketValue": 81770935
+        "averageStarterAge": 27.2,
+        "totalStarterMarketValue": 84826011
       }
     },
     "hasPlayoff": false,
