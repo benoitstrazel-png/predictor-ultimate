@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
-            "linkToMatch": "/matches/venezia-vs-udinese/28v9yh#6003658",
-            "date": {
-              "utcTime": "2026-09-02T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8600/overview/udinese",
-            "tooltipText": {
-              "utcTime": "2026-09-02T16:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
             "linkToMatch": "/matches/venezia-vs-frosinone/2m17vl#5749664",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Venezia",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
+            "linkToMatch": "/matches/venezia-vs-napoli/2lv4jt#5749709",
+            "date": {
+              "utcTime": "2026-10-17T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9875/overview/napoli",
+            "tooltipText": {
+              "utcTime": "2026-10-17T13:00:00.000Z",
+              "homeTeam": "Venezia",
+              "homeTeamId": 7881,
+              "homeScore": "1",
+              "awayTeam": "Napoli",
+              "awayTeamId": 9875,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9875",
+              "name": "Napoli",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "1",
+                "2",
                 "away_team",
-                "7"
+                "1",
+                "0",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Venezia have lost their last 7 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Genoa have 2W, 1D, 2L in five matches while Venezia have 1W, 0D, 4L."
             },
             {
               "OddsType": "bts",
@@ -489,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "1.33",
-                "1"
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,17 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Genoa have an average of 1.33 goals in their last three matches and Venezia have an average of 1."
+              "defaultText": "Genoa have an average of 1.33 goals in their last three matches and Venezia have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +528,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Venezia haven't won a match in 7 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Venezia haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -585,15 +591,15 @@
         },
         {
           "type": "player",
-          "playerId": 161328,
+          "playerId": 1050163,
           "teamId": 10233,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 161328,
-              "name": "Stephan El Shaarawy",
+              "value": 1050163,
+              "name": "Lorenzo Colombo",
               "type": "player"
             },
             {
@@ -602,12 +608,12 @@
               "type": "team"
             },
             {
-              "value": 1.5,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Stephan El Shaarawy has the most shots on target per match for Genoa (1.5)",
+          "text": "Lorenzo Colombo has created the most big chances for Genoa (3)",
           "color": "#CB1111"
         },
         {
@@ -636,34 +642,44 @@
           "type": "team",
           "playerId": null,
           "teamId": 7881,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
             {
-              "value": 7,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 7 attempts",
+          "text": "Have conceded the most penalties this season (2)",
           "color": "#101010"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1130600,
           "teamId": 7881,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 10,
+              "value": 1130600,
+              "name": "Filip Stanković",
+              "type": "player"
+            },
+            {
+              "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 5.5,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Haven't kept a clean sheet in 10 matches",
+          "text": "Filip Stanković is ranked 1 in saves per match in the competition (5.5)",
           "color": "#101010"
         }
       ],
@@ -685,18 +701,18 @@
       }
     },
     "weather": {
-      "temperature": 19,
-      "windSpeed": 4,
-      "windDirectionCardinal": "N",
+      "temperature": 18,
+      "windSpeed": 3,
+      "windDirectionCardinal": "ESE",
       "iconCode": 30,
-      "relativeHumidity": 61,
-      "precipChance": 8,
+      "relativeHumidity": 65,
+      "precipChance": 10,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
+      "cloudCover": 56,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-17T02:00:23Z",
+      "lastUpdated": "2026-10-17T14:00:22Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -715,7 +731,7 @@
             "name": "Amorim",
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-10-10T09:29:32Z",
+              "lastUpdated": "2026-10-17T11:51:18Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -793,7 +809,7 @@
             "name": "Pasquale Mazzocchi",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-13T12:03:41Z",
+              "lastUpdated": "2026-10-17T14:20:55Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },

@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
-            "linkToMatch": "/matches/venezia-vs-udinese/28v9yh#6003658",
-            "date": {
-              "utcTime": "2026-09-02T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8600/overview/udinese",
-            "tooltipText": {
-              "utcTime": "2026-09-02T16:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
             "linkToMatch": "/matches/venezia-vs-frosinone/2m17vl#5749664",
             "date": {
@@ -270,6 +240,36 @@
               "id": "7881",
               "name": "Venezia",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
+            "linkToMatch": "/matches/venezia-vs-napoli/2lv4jt#5749709",
+            "date": {
+              "utcTime": "2026-10-17T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9875/overview/napoli",
+            "tooltipText": {
+              "utcTime": "2026-10-17T13:00:00.000Z",
+              "homeTeam": "Venezia",
+              "homeTeamId": 7881,
+              "homeScore": "1",
+              "awayTeam": "Napoli",
+              "awayTeamId": 9875,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9875",
+              "name": "Napoli",
+              "isOurTeam": false
             }
           }
         ],
@@ -506,11 +506,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +522,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Venezia haven't won a match in 7 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Venezia haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -560,34 +560,44 @@
           "type": "team",
           "playerId": null,
           "teamId": 7881,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
             {
-              "value": 7,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 7 attempts",
+          "text": "Have conceded the most penalties this season (2)",
           "color": "#101010"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1130600,
           "teamId": 7881,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 10,
+              "value": 1130600,
+              "name": "Filip Stanković",
+              "type": "player"
+            },
+            {
+              "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 5.5,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Haven't kept a clean sheet in 10 matches",
+          "text": "Filip Stanković is ranked 1 in saves per match in the competition (5.5)",
           "color": "#101010"
         },
         {
@@ -610,23 +620,6 @@
             }
           ],
           "text": "Have scored 14 goals in their last 5 matches",
-          "color": "#010E80"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8636,
-          "priority": 10,
-          "defaultText": "Have been awarded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_awarded",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have been awarded the most penalties this season (1)",
           "color": "#010E80"
         },
         {
@@ -664,6 +657,23 @@
             }
           ],
           "text": "Inter haven't lost to Venezia in their last 5 meetings (5W, 0D).",
+          "color": "#010E80"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8636,
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Average 3 goals per match",
           "color": "#010E80"
         }
       ],
@@ -715,7 +725,7 @@
             "name": "Pasquale Mazzocchi",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-13T12:03:41Z",
+              "lastUpdated": "2026-10-17T14:20:55Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -800,6 +810,18 @@
         "id": 8636,
         "name": "Inter",
         "unavailable": [
+          {
+            "id": 611223,
+            "name": "Benjamin Pavard",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-10-17T12:54:40Z",
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "firstName": "Benjamin",
+            "lastName": "Pavard"
+          },
           {
             "id": 690230,
             "name": "Lautaro Martínez",
