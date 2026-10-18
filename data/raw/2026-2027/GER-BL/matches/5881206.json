@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9788.png",
-            "linkToMatch": "/matches/freiburg-vs-borussia-monchengladbach/2q16jz#5881165",
-            "date": {
-              "utcTime": "2026-09-12T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9788/overview/borussia-monchengladbach",
-            "tooltipText": {
-              "utcTime": "2026-09-12T13:30:00.000Z",
-              "homeTeam": "Freiburg",
-              "homeTeamId": 8358,
-              "homeScore": "5",
-              "awayTeam": "Borussia Mönchengladbach",
-              "awayTeamId": 9788,
-              "awayScore": "0"
-            },
-            "score": "5 - 0",
-            "home": {
-              "id": "8358",
-              "name": "Freiburg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9788",
-              "name": "Borussia Mönchengladbach",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9810.png",
@@ -423,6 +393,36 @@
               "name": "Jablonec",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8178.png",
+            "linkToMatch": "/matches/bayer-leverkusen-vs-freiburg/29eqdu#5881188",
+            "date": {
+              "utcTime": "2026-10-18T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8178/overview/bayer-leverkusen",
+            "tooltipText": {
+              "utcTime": "2026-10-18T13:30:00.000Z",
+              "homeTeam": "Bayer Leverkusen",
+              "homeTeamId": 8178,
+              "homeScore": "2",
+              "awayTeam": "Freiburg",
+              "awayTeamId": 8358,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8178",
+              "name": "Bayer Leverkusen",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8358",
+              "name": "Freiburg",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -488,12 +488,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "7",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Freiburg have scored 9 goals in their last 3 matches."
+              "defaultText": "Augsburg have scored 7 goals in their last 3 matches, while Freiburg have scored 6."
             },
             {
               "OddsType": "dc",
@@ -603,7 +605,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 16,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -613,41 +615,51 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 16 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#BD1C2C"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8358,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 12,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 12 matches",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#BD1C2C"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 864157,
           "teamId": 8358,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 2.8,
+              "value": 864157,
+              "name": "Jan-Niklas Beste",
+              "type": "player"
+            },
+            {
+              "value": 8358,
+              "name": "Freiburg",
+              "type": "team"
+            },
+            {
+              "value": 4,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Average 2.8 goals per match",
+          "text": "Jan-Niklas Beste has created the most big chances for Freiburg (4)",
           "color": "#BD1C2C"
         }
       ],

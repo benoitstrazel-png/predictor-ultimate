@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9748.png",
-            "linkToMatch": "/matches/le-havre-vs-lyon/354y61#5802913",
-            "date": {
-              "utcTime": "2026-08-29T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9748/overview/lyon",
-            "tooltipText": {
-              "utcTime": "2026-08-29T18:45:00.000Z",
-              "homeTeam": "Lyon",
-              "homeTeamId": 9748,
-              "homeScore": "1",
-              "awayTeam": "Le Havre",
-              "awayTeamId": 9746,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9748",
-              "name": "Lyon",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9746",
-              "name": "Le Havre",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8521.png",
@@ -422,6 +392,36 @@
               "id": "9746",
               "name": "Le Havre",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
+            "linkToMatch": "/matches/auxerre-vs-le-havre/2s0psn#5802956",
+            "date": {
+              "utcTime": "2026-10-18T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/8583/overview/auxerre",
+            "tooltipText": {
+              "utcTime": "2026-10-18T15:15:00.000Z",
+              "homeTeam": "Le Havre",
+              "homeTeamId": 9746,
+              "homeScore": "1",
+              "awayTeam": "Auxerre",
+              "awayTeamId": 8583,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "9746",
+              "name": "Le Havre",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8583",
+              "name": "Auxerre",
+              "isOurTeam": false
             }
           }
         ]
@@ -599,25 +599,20 @@
           "color": "#0A60A8"
         },
         {
-          "type": "player",
-          "playerId": 844437,
+          "type": "team",
+          "playerId": null,
           "teamId": 8592,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 844437,
-              "name": "Amine Gouiri",
-              "type": "player"
-            },
-            {
-              "value": 5,
+              "value": 2,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Amine Gouiri is the competition's top scorer (5)",
+          "text": "Average 2 goals per match",
           "color": "#0A60A8"
         },
         {
@@ -651,39 +646,29 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 8 attempts",
+          "text": "Haven't won a match in 9 attempts",
           "color": "#6fb0d8"
         },
         {
-          "type": "player",
-          "playerId": 912286,
+          "type": "team",
+          "playerId": null,
           "teamId": 9746,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 912286,
-              "name": "Lionel Mpasi-Nzau",
-              "type": "player"
-            },
-            {
-              "value": 1,
+              "value": 3,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 6.4,
-              "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Lionel Mpasi-Nzau is ranked 1 in saves per match in the competition (6.4)",
+          "text": "Have lost their last 3 matches",
           "color": "#6fb0d8"
         }
       ],
@@ -705,120 +690,151 @@
       }
     },
     "weather": {
-      "temperature": 19,
-      "windSpeed": 6,
+      "temperature": 18,
+      "windSpeed": 5,
       "windDirectionCardinal": "WNW",
       "iconCode": 28,
-      "relativeHumidity": 61,
-      "precipChance": 3,
+      "relativeHumidity": 65,
+      "precipChance": 23,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 65,
+      "cloudCover": 66,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T05:00:22Z",
+      "lastUpdated": "2026-10-18T17:00:11Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5802968,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8592,
         "name": "Marseille",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 266523,
+            "age": 31,
             "name": "Pierre-Emile Højbjerg",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 14020317,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-08T19:30:27Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Pierre-Emile",
-            "lastName": "Højbjerg"
+            "lastName": "Højbjerg",
+            "nationalTeamId": 8238
           },
           {
             "id": 847629,
+            "age": 28,
             "name": "Derek Cornelius",
+            "countryName": "Canada",
+            "countryCode": "CAN",
+            "marketValue": 1679278,
             "unavailability": {
               "injuryId": 31,
-              "lastUpdated": "2026-09-26T09:55:56Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Derek",
-            "lastName": "Cornelius"
+            "lastName": "Cornelius",
+            "nationalTeamId": 5810
           }
         ]
       },
       "awayTeam": {
         "id": 9746,
         "name": "Le Havre",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1108603,
+            "age": 24,
             "name": "Timothée Pembélé",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1614661,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-10T10:57:09Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Timothée",
-            "lastName": "Pembélé"
+            "lastName": "Pembélé",
+            "nationalTeamId": 6723
           },
           {
             "id": 1305787,
+            "age": 23,
             "name": "Elias Jelert",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 4713020,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-10T10:56:29Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Elias",
-            "lastName": "Jelert"
+            "lastName": "Jelert",
+            "nationalTeamId": 8238
           },
           {
             "id": 912286,
+            "age": 32,
             "name": "Lionel Mpasi-Nzau",
+            "countryName": "DR Congo",
+            "countryCode": "COD",
+            "marketValue": 317028,
             "unavailability": {
               "injuryId": 73,
-              "lastUpdated": "2026-09-06T10:23:51Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Lionel",
-            "lastName": "Mpasi-Nzau"
+            "lastName": "Mpasi-Nzau",
+            "nationalTeamId": 6321
           },
           {
             "id": 942354,
+            "age": 25,
             "name": "Felix Mambimbi",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 461581,
             "unavailability": {
               "injuryId": 73,
-              "lastUpdated": "2026-10-11T11:57:19Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Felix",
-            "lastName": "Mambimbi"
+            "lastName": "Mambimbi",
+            "nationalTeamId": 6717
           },
           {
             "id": 1729826,
+            "age": 18,
             "name": "Stephan Zagadou",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 3012339,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T13:02:27Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Stephan",
-            "lastName": "Zagadou"
+            "lastName": "Zagadou",
+            "nationalTeamId": 6723
           }
         ]
       }

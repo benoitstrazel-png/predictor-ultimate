@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9788.png",
-            "linkToMatch": "/matches/freiburg-vs-borussia-monchengladbach/2q16jz#5881165",
-            "date": {
-              "utcTime": "2026-09-12T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9788/overview/borussia-monchengladbach",
-            "tooltipText": {
-              "utcTime": "2026-09-12T13:30:00.000Z",
-              "homeTeam": "Freiburg",
-              "homeTeamId": 8358,
-              "homeScore": "5",
-              "awayTeam": "Borussia Mönchengladbach",
-              "awayTeamId": 9788,
-              "awayScore": "0"
-            },
-            "score": "5 - 0",
-            "home": {
-              "id": "8358",
-              "name": "Freiburg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9788",
-              "name": "Borussia Mönchengladbach",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9810.png",
@@ -270,6 +240,36 @@
               "id": "7758",
               "name": "Jablonec",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8178.png",
+            "linkToMatch": "/matches/bayer-leverkusen-vs-freiburg/29eqdu#5881188",
+            "date": {
+              "utcTime": "2026-10-18T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8178/overview/bayer-leverkusen",
+            "tooltipText": {
+              "utcTime": "2026-10-18T13:30:00.000Z",
+              "homeTeam": "Bayer Leverkusen",
+              "homeTeamId": 8178,
+              "homeScore": "2",
+              "awayTeam": "Freiburg",
+              "awayTeamId": 8358,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8178",
+              "name": "Bayer Leverkusen",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8358",
+              "name": "Freiburg",
+              "isOurTeam": true
             }
           }
         ],
@@ -489,8 +489,8 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
-                "9",
+                "away_team",
+                "11",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,20 +502,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Freiburg have scored 9 goals in their last 3 matches."
+              "defaultText": "Bayern München have scored 11 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
                 "home_team",
-                "7",
-                "6",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayern München haven't lost to Freiburg in their last 7 meetings (6W, 1D)."
+              "defaultText": "Freiburg haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -548,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 16,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 16 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
+          "color": "#BD1C2C"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8358,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#BD1C2C"
         },
         {
@@ -576,23 +590,6 @@
             }
           ],
           "text": "Ranked 3 at home this season",
-          "color": "#BD1C2C"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8358,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 12,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 12 matches",
           "color": "#BD1C2C"
         },
         {
@@ -701,71 +698,86 @@
     },
     "weather": {
       "temperature": 13,
-      "windSpeed": 4,
+      "windSpeed": 5,
       "windDirectionCardinal": "SW",
       "iconCode": 11,
-      "relativeHumidity": 65,
-      "precipChance": 52,
-      "precipitation": 0.6,
+      "relativeHumidity": 67,
+      "precipChance": 49,
+      "precipitation": 0.5,
       "snow": 0,
-      "cloudCover": 80,
+      "cloudCover": 86,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T05:00:14Z",
+      "lastUpdated": "2026-10-18T17:00:06Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5881200,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8358,
         "name": "Freiburg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 848666,
+            "age": 28,
             "name": "Florent Muslija",
+            "countryName": "Kosovo",
+            "countryCode": "KVX",
+            "marketValue": 1240563,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-18T12:51:19Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
             "firstName": "Florent",
-            "lastName": "Muslija"
+            "lastName": "Muslija",
+            "nationalTeamId": 430156
           }
         ]
       },
       "awayTeam": {
         "id": 9823,
         "name": "Bayern München",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 27299,
+            "age": 40,
             "name": "Manuel Neuer",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 2219328,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-18T11:39:05Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Manuel",
-            "lastName": "Neuer"
+            "lastName": "Neuer",
+            "nationalTeamId": 8570
           },
           {
             "id": 1156141,
+            "age": 23,
             "name": "Jamal Musiala",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 137855653,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-25T12:09:14Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Jamal",
-            "lastName": "Musiala"
+            "lastName": "Musiala",
+            "nationalTeamId": 8570
           }
         ]
       }

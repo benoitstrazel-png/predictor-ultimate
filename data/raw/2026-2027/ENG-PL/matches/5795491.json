@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
-            "linkToMatch": "/matches/liverpool-vs-nottingham-forest/2xthvt#5795431",
-            "date": {
-              "utcTime": "2026-08-29T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8650/overview/liverpool",
-            "tooltipText": {
-              "utcTime": "2026-08-29T11:30:00.000Z",
-              "homeTeam": "Liverpool",
-              "homeTeamId": 8650,
-              "homeScore": "2",
-              "awayTeam": "Nottingham Forest",
-              "awayTeamId": 10203,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
             "linkToMatch": "/matches/tottenham-hotspur-vs-nottingham-forest/2x3odl#5795444",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Nottingham Forest",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
+            "linkToMatch": "/matches/arsenal-vs-nottingham-forest/3bf4p3#5795483",
+            "date": {
+              "utcTime": "2026-10-18T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9825/overview/arsenal",
+            "tooltipText": {
+              "utcTime": "2026-10-18T15:30:00.000Z",
+              "homeTeam": "Nottingham Forest",
+              "homeTeamId": 10203,
+              "homeScore": "0",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "10203",
+              "name": "Nottingham Forest",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -490,7 +490,7 @@
                 "home_team",
                 "away_team",
                 "1.33",
-                "1"
+                "0.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,17 +501,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ipswich Town have an average of 1.33 goals in their last three matches and Nottingham Forest have an average of 1."
+              "defaultText": "Ipswich Town have an average of 1.33 goals in their last three matches and Nottingham Forest have an average of 0.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Ipswich Town haven't drawn in their last 12 matches."
+              "defaultText": "Ipswich Town haven't drawn in their last 12 matches and Nottingham Forest in their last 4."
             }
           ]
         },
@@ -576,29 +578,29 @@
         },
         {
           "type": "player",
-          "playerId": 873559,
+          "playerId": 796398,
           "teamId": 9902,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 873559,
-              "name": "Zian Flemming",
+              "value": 796398,
+              "name": "Kjell Scherpen",
               "type": "player"
             },
             {
-              "value": 9902,
-              "name": "Ipswich Town",
-              "type": "team"
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 4.9,
+              "value": 3.8,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Zian Flemming has the most shots on target per match for Ipswich Town (4.9)",
+          "text": "Kjell Scherpen is ranked 3 in saves per match in the competition (3.8)",
           "color": "#0333A0"
         },
         {
@@ -610,7 +612,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -620,7 +622,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
           "color": "#C8102E"
         },
         {

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8592.png",
-            "linkToMatch": "/matches/marseille-vs-rennes/2t9n7h#5802935",
-            "date": {
-              "utcTime": "2026-09-11T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8592/overview/marseille",
-            "tooltipText": {
-              "utcTime": "2026-09-11T18:45:00.000Z",
-              "homeTeam": "Rennes",
-              "homeTeamId": 9851,
-              "homeScore": "1",
-              "awayTeam": "Marseille",
-              "awayTeamId": 8592,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8592",
-              "name": "Marseille",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10014.png",
@@ -270,6 +240,36 @@
               "id": "7753",
               "name": "OFI Crete",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6379.png",
+            "linkToMatch": "/matches/paris-fc-vs-rennes/26fb7k#5802961",
+            "date": {
+              "utcTime": "2026-10-18T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/6379/overview/paris-fc",
+            "tooltipText": {
+              "utcTime": "2026-10-18T15:15:00.000Z",
+              "homeTeam": "Paris FC",
+              "homeTeamId": 6379,
+              "homeScore": "4",
+              "awayTeam": "Rennes",
+              "awayTeamId": 9851,
+              "awayScore": "3"
+            },
+            "score": "4 - 3",
+            "home": {
+              "id": "6379",
+              "name": "Paris FC",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9851",
+              "name": "Rennes",
+              "isOurTeam": true
             }
           }
         ],
@@ -484,13 +484,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "6",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rennes have scored 6 goals in their last 3 matches, while Strasbourg have scored 3."
+              "defaultText": "Rennes have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -545,7 +543,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -555,51 +553,46 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#E13327"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 9851,
-          "priority": 8,
-          "defaultText": "{0} have won the previous {2} matches against {1}.",
-          "localizedTextId": "h2h_winstreak",
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
           "statValues": [
             {
-              "value": 9851,
-              "name": "Rennes",
-              "type": "team"
-            },
-            {
-              "value": 9848,
-              "name": "Strasbourg",
-              "type": "team"
-            },
-            {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Rennes have won the previous 3 matches against Strasbourg.",
+          "text": "Have been awarded the most penalties this season (4)",
           "color": "#E13327"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1280225,
           "teamId": 9851,
-          "priority": 7,
-          "defaultText": "Ranked {0} at home this season",
-          "localizedTextId": "insights_best_home",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 1,
+              "value": 1280225,
+              "name": "Estéban Lepaul",
+              "type": "player"
+            },
+            {
+              "value": 7,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 1 at home this season",
+          "text": "Estéban Lepaul is the competition's top scorer (7)",
           "color": "#E13327"
         },
         {
@@ -628,23 +621,6 @@
           "type": "team",
           "playerId": null,
           "teamId": 9848,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have conceded the most penalties this season (3)",
-          "color": "#294A92"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9848,
           "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
@@ -656,6 +632,23 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 21 matches",
+          "color": "#294A92"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9848,
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have lost their last 3 matches",
           "color": "#294A92"
         }
       ],
@@ -681,103 +674,129 @@
       "windSpeed": 6,
       "windDirectionCardinal": "WSW",
       "iconCode": 11,
-      "relativeHumidity": 76,
-      "precipChance": 40,
+      "relativeHumidity": 71,
+      "precipChance": 39,
       "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 78,
+      "cloudCover": 75,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T05:00:22Z",
+      "lastUpdated": "2026-10-18T17:00:11Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5802970,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9851,
         "name": "Rennes",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       },
       "awayTeam": {
         "id": 9848,
         "name": "Strasbourg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1666019,
+            "age": 21,
             "name": "Fabio Baldé",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 6827940,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-18T11:04:53Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Fabio",
-            "lastName": "Baldé"
+            "lastName": "Baldé",
+            "nationalTeamId": 8361
           },
           {
             "id": 1156569,
+            "age": 24,
             "name": "Sebastian Nanasi",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 18008922,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-12T12:33:41Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Sebastian",
-            "lastName": "Nanasi"
+            "lastName": "Nanasi",
+            "nationalTeamId": 8520
           },
           {
             "id": 1178332,
+            "age": 23,
             "name": "Ismaël Doukouré",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 21094019,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-09T16:55:45Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Ismaël",
-            "lastName": "Doukouré"
+            "lastName": "Doukouré",
+            "nationalTeamId": 6723
           },
           {
             "id": 1355526,
+            "age": 21,
             "name": "Maxi Oyedele",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 6758819,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-08-28T20:10:05Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Maxi",
-            "lastName": "Oyedele"
+            "lastName": "Oyedele",
+            "nationalTeamId": 8568
           },
           {
             "id": 1302715,
+            "age": 23,
             "name": "Martial Godo",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 11799646,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-10T17:22:17Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Martial",
-            "lastName": "Godo"
+            "lastName": "Godo",
+            "nationalTeamId": 6709
           },
           {
             "id": 1408580,
+            "age": 24,
             "name": "Joaquín Panichelli",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 27622171,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-05-18T13:01:41Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Joaquín",
-            "lastName": "Panichelli"
+            "lastName": "Panichelli",
+            "nationalTeamId": 6706
           }
         ]
       }

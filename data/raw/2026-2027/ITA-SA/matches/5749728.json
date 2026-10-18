@@ -463,13 +463,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,19 +481,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Torino have an average of 1 goals in their last three matches and Como have an average of 0.67."
+              "defaultText": "Torino have scored 3 goals in their last 3 matches, while Como have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Torino have an average of 1 goals in their last three matches and Como have an average of 0.67."
+              "defaultText": "Torino have scored 3 goals in their last 3 matches, while Como have scored 5."
             },
             {
               "OddsType": "dc",
@@ -579,15 +581,15 @@
         },
         {
           "type": "player",
-          "playerId": 1218556,
+          "playerId": 577911,
           "teamId": 9804,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1218556,
-              "name": "Kian Fitz-Jim",
+              "value": 577911,
+              "name": "Rolando Mandragora",
               "type": "player"
             },
             {
@@ -596,12 +598,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.4,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Kian Fitz-Jim has created the most big chances for Torino (2)",
+          "text": "Rolando Mandragora has the most shots on target per match for Torino (1.4)",
           "color": "#80110B"
         },
         {
@@ -631,23 +633,6 @@
           "playerId": null,
           "teamId": 10171,
           "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            }
-          ],
-          "text": "Ranked 1 away from home this season",
-          "color": "#005ea9"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10171,
-          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -668,6 +653,23 @@
             }
           ],
           "text": "Como have won the previous 3 matches against Torino.",
+          "color": "#005ea9"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10171,
+          "priority": 8,
+          "defaultText": "Ranked {0} away from home this season",
+          "localizedTextId": "insights_best_away",
+          "statValues": [
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            }
+          ],
+          "text": "Ranked 1 away from home this season",
           "color": "#005ea9"
         }
       ],
@@ -744,6 +746,18 @@
         "id": 10171,
         "name": "Como",
         "unavailable": [
+          {
+            "id": 793907,
+            "name": "Trevoh Chalobah",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-18T17:29:15Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Trevoh",
+            "lastName": "Chalobah"
+          },
           {
             "id": 1434889,
             "name": "Assane Diao",

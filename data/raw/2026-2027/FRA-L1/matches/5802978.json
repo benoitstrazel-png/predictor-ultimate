@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8592.png",
-            "linkToMatch": "/matches/marseille-vs-rennes/2t9n7h#5802935",
-            "date": {
-              "utcTime": "2026-09-11T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8592/overview/marseille",
-            "tooltipText": {
-              "utcTime": "2026-09-11T18:45:00.000Z",
-              "homeTeam": "Rennes",
-              "homeTeamId": 9851,
-              "homeScore": "1",
-              "awayTeam": "Marseille",
-              "awayTeamId": 8592,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8592",
-              "name": "Marseille",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10014.png",
@@ -423,6 +393,36 @@
               "name": "OFI Crete",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6379.png",
+            "linkToMatch": "/matches/paris-fc-vs-rennes/26fb7k#5802961",
+            "date": {
+              "utcTime": "2026-10-18T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/6379/overview/paris-fc",
+            "tooltipText": {
+              "utcTime": "2026-10-18T15:15:00.000Z",
+              "homeTeam": "Paris FC",
+              "homeTeamId": 6379,
+              "homeScore": "4",
+              "awayTeam": "Rennes",
+              "awayTeamId": 9851,
+              "awayScore": "3"
+            },
+            "score": "4 - 3",
+            "home": {
+              "id": "6379",
+              "name": "Paris FC",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9851",
+              "name": "Rennes",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,9 +447,9 @@
                 "1",
                 "2",
                 "away_team",
-                "3",
+                "2",
                 "1",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Nice have 2W, 1D, 2L in five matches while Rennes have 3W, 1D, 1L."
+              "defaultText": "Nice have 2W, 1D, 2L in five matches while Rennes have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,14 +489,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "4",
-                "6"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,18 +505,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Nice have scored 4 goals in their last 3 matches, while Rennes have scored 6."
+              "defaultText": "Rennes have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "8"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Nice and Rennes have not drawn any of their last 8 matches against each other."
+              "defaultText": "Rennes haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -585,17 +582,27 @@
           "type": "team",
           "playerId": null,
           "teamId": 9831,
-          "priority": 7,
-          "defaultText": "Ranked {0} at home this season",
-          "localizedTextId": "insights_best_home",
+          "priority": 6,
+          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+          "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
             {
-              "value": 3,
+              "value": 9831,
+              "name": "Nice",
+              "type": "team"
+            },
+            {
+              "value": 9851,
+              "name": "Rennes",
+              "type": "team"
+            },
+            {
+              "value": 8,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 3 at home this season",
+          "text": "Nice and Rennes have not drawn any of their last 8 matches against each other.",
           "color": "#181818"
         },
         {
@@ -607,7 +614,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -617,51 +624,46 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#E13327"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 9851,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
           "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Average 2 goals per match",
-          "color": "#E13327"
-        },
-        {
-          "type": "player",
-          "playerId": 693171,
-          "teamId": 9851,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 693171,
-              "name": "Ludovic Blas",
-              "type": "player"
-            },
-            {
-              "value": 9851,
-              "name": "Rennes",
-              "type": "team"
-            },
             {
               "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Ludovic Blas has created the most big chances for Rennes (4)",
+          "text": "Have been awarded the most penalties this season (4)",
+          "color": "#E13327"
+        },
+        {
+          "type": "player",
+          "playerId": 1280225,
+          "teamId": 9851,
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
+          "statValues": [
+            {
+              "value": 1280225,
+              "name": "Estéban Lepaul",
+              "type": "player"
+            },
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Estéban Lepaul is the competition's top scorer (7)",
           "color": "#E13327"
         }
       ],
@@ -685,18 +687,18 @@
     "weather": {
       "temperature": 20,
       "windSpeed": 3,
-      "windDirectionCardinal": "S",
-      "iconCode": 30,
-      "relativeHumidity": 68,
-      "precipChance": 24,
-      "precipitation": 0,
+      "windDirectionCardinal": "SE",
+      "iconCode": 11,
+      "relativeHumidity": 70,
+      "precipChance": 38,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 57,
-      "description": "Partly Cloudy",
+      "cloudCover": 50,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T05:00:22Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-18T17:00:11Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5802978,

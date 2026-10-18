@@ -558,30 +558,20 @@
           "color": "#051495"
         },
         {
-          "type": "player",
-          "playerId": 268375,
+          "type": "team",
+          "playerId": null,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 268375,
-              "name": "Emiliano Martínez",
-              "type": "player"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
+              "value": 2.4,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Emiliano Martínez is ranked 3 in saves per match in the competition (4.3)",
+          "text": "Average 2.4 goals per match",
           "color": "#051495"
         },
         {
@@ -655,16 +645,26 @@
           "playerId": null,
           "teamId": 10260,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 6,
+              "value": 10260,
+              "name": "Manchester United",
+              "type": "team"
+            },
+            {
+              "value": 8455,
+              "name": "Chelsea",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 6 attempts",
+          "text": "Manchester United have won the previous 2 matches against Chelsea.",
           "color": "#C70101"
         }
       ],
@@ -711,6 +711,18 @@
         "id": 8455,
         "name": "Chelsea",
         "unavailable": [
+          {
+            "id": 268375,
+            "name": "Emiliano Martínez",
+            "unavailability": {
+              "injuryId": 37,
+              "lastUpdated": "2026-10-18T17:44:44Z",
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "firstName": "Emiliano",
+            "lastName": "Martínez"
+          },
           {
             "id": 1113692,
             "name": "Jamie Gittens",
