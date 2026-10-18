@@ -504,11 +504,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Club Brugge haven't drawn in their last 12 matches."
+              "defaultText": "Club Brugge haven't drawn in their last 12 matches and Lens in their last 4."
             }
           ]
         },
@@ -567,6 +569,57 @@
           "color": "#d89f00"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 1334552,
+          "position": 3,
+          "matchesWithRating": 2,
+          "lastName": "Tresoldi",
+          "fullName": "Nicolò Tresoldi",
+          "stats": {
+            "goals": 4,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 3,
+            "motm": 1,
+            "gamesPlayed": 2,
+            "minsPlayed": 173,
+            "minsPlayedGoal": 43,
+            "expectedGoals": 3.2516000270843506,
+            "playerRating": 8.79
+          }
+        },
+        "awayPlayer": {
+          "playerId": 254308,
+          "position": 2,
+          "matchesWithRating": 2,
+          "lastName": "Thauvin",
+          "fullName": "Florian Thauvin",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 2.5,
+            "motm": 0,
+            "gamesPlayed": 2,
+            "minsPlayed": 180,
+            "minsPlayedGoal": 180,
+            "expectedGoals": 0.631600022315979,
+            "playerRating": 8.51
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -585,7 +638,6 @@
           "da",
           "el",
           "fa",
-          "fi",
           "hi",
           "id",
           "in",
@@ -624,18 +676,18 @@
       }
     },
     "weather": {
-      "temperature": 12,
-      "windSpeed": 5,
-      "windDirectionCardinal": "SW",
+      "temperature": 11,
+      "windSpeed": 6,
+      "windDirectionCardinal": "SSW",
       "iconCode": 11,
-      "relativeHumidity": 74,
-      "precipChance": 32,
-      "precipitation": 0.1,
+      "relativeHumidity": 75,
+      "precipChance": 36,
+      "precipitation": 0.11,
       "snow": 0,
-      "cloudCover": 68,
-      "description": "Few Showers",
+      "cloudCover": 79,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-17T19:00:30Z",
+      "lastUpdated": "2026-10-18T07:00:32Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },

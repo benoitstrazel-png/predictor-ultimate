@@ -465,14 +465,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "6"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,20 +482,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Valencia have scored 5 goals in their last 3 matches, while Villarreal have scored 6."
+              "defaultText": "Valencia have an average of 1.33 goals in their last three matches and Villarreal have an average of 1."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "6"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,17 +505,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Valencia have scored 5 goals in their last 3 matches, while Villarreal have scored 6."
+              "defaultText": "Valencia have an average of 1.33 goals in their last three matches and Villarreal have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
                 "away_team",
-                "8"
+                "home_team",
+                "5",
+                "3",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal haven't drawn in their last 8 matches."
+              "defaultText": "Villarreal haven't lost to Valencia in their last 5 meetings (3W, 2D)."
             }
           ]
         },
@@ -565,29 +566,29 @@
         },
         {
           "type": "player",
-          "playerId": 254241,
+          "playerId": 963964,
           "teamId": 10267,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 254241,
-              "name": "Stole Dimitrievski",
+              "value": 963964,
+              "name": "Harvey Elliott",
               "type": "player"
             },
             {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
+              "value": 10267,
+              "name": "Valencia",
+              "type": "team"
             },
             {
-              "value": 4,
+              "value": 0.7,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Stole Dimitrievski is ranked 3 in saves per match in the competition (4)",
+          "text": "Harvey Elliott has the most shots on target per match for Valencia (0.7)",
           "color": "#ff671f"
         },
         {
@@ -678,15 +679,15 @@
         },
         {
           "type": "player",
-          "playerId": 1184694,
+          "playerId": 1117069,
           "teamId": 10205,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1184694,
-              "name": "Alberto Moleiro",
+              "value": 1117069,
+              "name": "Georges Mikautadze",
               "type": "player"
             },
             {
@@ -695,12 +696,12 @@
               "type": "team"
             },
             {
-              "value": 4,
+              "value": 2.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Alberto Moleiro has created the most big chances for Villarreal (4)",
+          "text": "Georges Mikautadze has the most shots on target per match for Villarreal (2.1)",
           "color": "#e19d00"
         }
       ],
@@ -723,17 +724,17 @@
     },
     "weather": {
       "temperature": 22,
-      "windSpeed": 3,
+      "windSpeed": 4,
       "windDirectionCardinal": "SE",
       "iconCode": 30,
       "relativeHumidity": 55,
-      "precipChance": 2,
+      "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 34,
+      "cloudCover": 31,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-17T17:00:19Z",
+      "lastUpdated": "2026-10-18T05:00:29Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -748,22 +749,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 638070,
-            "age": 33,
-            "name": "Luis Rioja",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1198809,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Luis",
-            "lastName": "Rioja",
-            "nationalTeamId": 6720
-          },
           {
             "id": 261609,
             "age": 33,
@@ -852,22 +837,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 151001,
-            "age": 36,
-            "name": "Péter Gulácsi",
-            "countryName": "Hungary",
-            "countryCode": "HUN",
-            "marketValue": 1146109,
-            "unavailability": {
-              "injuryId": 121,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Péter",
-            "lastName": "Gulácsi",
-            "nationalTeamId": 8565
-          },
           {
             "id": 575735,
             "age": 31,
