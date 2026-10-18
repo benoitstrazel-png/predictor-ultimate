@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-udinese/28v9yh#6003658",
-            "date": {
-              "utcTime": "2026-09-02T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7881/overview/venezia",
-            "tooltipText": {
-              "utcTime": "2026-09-02T16:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8543.png",
@@ -270,6 +240,36 @@
               "id": "8600",
               "name": "Udinese",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
+            "linkToMatch": "/matches/udinese-vs-lecce/2trgf0#5749708",
+            "date": {
+              "utcTime": "2026-10-18T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9888/overview/lecce",
+            "tooltipText": {
+              "utcTime": "2026-10-18T10:30:00.000Z",
+              "homeTeam": "Udinese",
+              "homeTeamId": 8600,
+              "homeScore": "0",
+              "awayTeam": "Lecce",
+              "awayTeamId": 9888,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,20 +456,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese have lost their last 4 matches."
+              "defaultText": "Udinese have lost their last 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "0.33",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,20 +479,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Udinese have scored 4 goals in their last 3 matches, while Roma have scored 5."
+              "defaultText": "Udinese have an average of 0.33 goals in their last three matches and Roma have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "0.33",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Udinese have scored 4 goals in their last 3 matches, while Roma have scored 5."
+              "defaultText": "Udinese have an average of 0.33 goals in their last three matches and Roma have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -514,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese haven't won a match in 4 attempts."
+              "defaultText": "Udinese haven't won a match in 5 attempts."
             }
           ]
         },
@@ -547,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -557,7 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
+          "color": "#101010"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8600,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 5 attempts",
           "color": "#101010"
         },
         {
@@ -569,29 +584,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
-          "color": "#101010"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8600,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
-          "statValues": [
-            {
-              "value": 4,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have lost their last 4 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#101010"
         },
         {

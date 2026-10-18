@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-udinese/28v9yh#6003658",
-            "date": {
-              "utcTime": "2026-09-02T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7881/overview/venezia",
-            "tooltipText": {
-              "utcTime": "2026-09-02T16:00:00.000Z",
-              "homeTeam": "Udinese",
-              "homeTeamId": 8600,
-              "homeScore": "2",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8543.png",
@@ -270,6 +240,36 @@
               "id": "8600",
               "name": "Udinese",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
+            "linkToMatch": "/matches/udinese-vs-lecce/2trgf0#5749708",
+            "date": {
+              "utcTime": "2026-10-18T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9888/overview/lecce",
+            "tooltipText": {
+              "utcTime": "2026-10-18T10:30:00.000Z",
+              "homeTeam": "Udinese",
+              "homeTeamId": 8600,
+              "homeScore": "0",
+              "awayTeam": "Lecce",
+              "awayTeamId": 9888,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese have lost their last 4 matches."
+              "defaultText": "Udinese have lost their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -509,7 +509,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese haven't won a match in 4 attempts."
+              "defaultText": "Udinese haven't won a match in 5 attempts."
             }
           ]
         },
@@ -542,7 +542,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -552,7 +552,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#101010"
         },
         {
@@ -564,29 +564,29 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#101010"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8600,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 4 matches",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#101010"
         },
         {
@@ -640,15 +640,15 @@
         },
         {
           "type": "player",
-          "playerId": 1342754,
+          "playerId": 688300,
           "teamId": 8564,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1342754,
-              "name": "Diego Moreira",
+              "value": 688300,
+              "name": "Samuel Chukwueze",
               "type": "player"
             },
             {
@@ -657,12 +657,12 @@
               "type": "team"
             },
             {
-              "value": 1.7,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Diego Moreira has the most shots on target per match for Milan (1.7)",
+          "text": "Samuel Chukwueze has created the most big chances for Milan (5)",
           "color": "#CF2C27"
         }
       ],

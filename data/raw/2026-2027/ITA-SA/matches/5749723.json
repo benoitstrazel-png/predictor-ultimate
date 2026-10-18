@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
-            "linkToMatch": "/matches/roma-vs-lecce/2upm4p#5749656",
-            "date": {
-              "utcTime": "2026-08-31T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8686/overview/roma",
-            "tooltipText": {
-              "utcTime": "2026-08-31T16:30:00.000Z",
-              "homeTeam": "Lecce",
-              "homeTeamId": 9888,
-              "homeScore": "0",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "4"
-            },
-            "score": "0 - 4",
-            "home": {
-              "id": "9888",
-              "name": "Lecce",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
             "linkToMatch": "/matches/cagliari-vs-lecce/2szdhl#5749662",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Bologna",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
+            "linkToMatch": "/matches/udinese-vs-lecce/2trgf0#5749708",
+            "date": {
+              "utcTime": "2026-10-18T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8600/overview/udinese",
+            "tooltipText": {
+              "utcTime": "2026-10-18T10:30:00.000Z",
+              "homeTeam": "Udinese",
+              "homeTeamId": 8600,
+              "homeScore": "0",
+              "awayTeam": "Lecce",
+              "awayTeamId": 9888,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,9 +447,9 @@
                 "1",
                 "1",
                 "away_team",
-                "1",
+                "2",
                 "0",
-                "4"
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Frosinone have 3W, 1D, 1L in five matches while Lecce have 1W, 0D, 4L."
+              "defaultText": "Frosinone have 3W, 1D, 1L in five matches while Lecce have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -517,7 +517,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lecce haven't drawn in their last 7 matches."
+              "defaultText": "Lecce haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -611,7 +611,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -621,7 +621,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#e12300"
         },
         {
@@ -662,20 +662,30 @@
           "color": "#e12300"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 362200,
           "teamId": 9888,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 5,
+              "value": 362200,
+              "name": "Wladimiro Falcone",
+              "type": "player"
+            },
+            {
+              "value": 1,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 5.3,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Wladimiro Falcone is ranked 1 in saves per match in the competition (5.3)",
           "color": "#e12300"
         }
       ],

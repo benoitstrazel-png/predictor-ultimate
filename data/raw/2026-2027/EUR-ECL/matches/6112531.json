@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8071.png",
-            "linkToMatch": "/matches/agf-vs-nordsjaelland/2repp4#5739511",
-            "date": {
-              "utcTime": "2026-09-13T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8071/overview/agf",
-            "tooltipText": {
-              "utcTime": "2026-09-13T16:00:00.000Z",
-              "homeTeam": "Nordsjælland",
-              "homeTeamId": 10202,
-              "homeScore": "2",
-              "awayTeam": "AGF",
-              "awayTeamId": 8071,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "10202",
-              "name": "Nordsjælland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8071",
-              "name": "AGF",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/329242.png",
             "linkToMatch": "/matches/nordsjaelland-vs-vatanspor/qgsgti4#6133878",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Nordsjælland",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9907.png",
+            "linkToMatch": "/matches/lyngby-vs-nordsjaelland/3cdz2m#5739527",
+            "date": {
+              "utcTime": "2026-10-18T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9907/overview/lyngby",
+            "tooltipText": {
+              "utcTime": "2026-10-18T12:00:00.000Z",
+              "homeTeam": "Lyngby",
+              "homeTeamId": 9907,
+              "homeScore": "3",
+              "awayTeam": "Nordsjælland",
+              "awayTeamId": 10202,
+              "awayScore": "3"
+            },
+            "score": "3 - 3",
+            "home": {
+              "id": "9907",
+              "name": "Lyngby",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10202",
+              "name": "Nordsjælland",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/944173.png",
-            "linkToMatch": "/matches/cska-sofia-vs-arda-kardzhali/5t6upmp4#5760492",
-            "date": {
-              "utcTime": "2026-09-12T18:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/944173/overview/arda-kardzhali",
-            "tooltipText": {
-              "utcTime": "2026-09-12T18:15:00.000Z",
-              "homeTeam": "CSKA Sofia",
-              "homeTeamId": 10144,
-              "homeScore": "4",
-              "awayTeam": "Arda Kardzhali",
-              "awayTeamId": 944173,
-              "awayScore": "1"
-            },
-            "score": "4 - 1",
-            "home": {
-              "id": "10144",
-              "name": "CSKA Sofia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "944173",
-              "name": "Arda Kardzhali",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Monaco",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10149.png",
+            "linkToMatch": "/matches/cska-sofia-vs-nesebar/3elndg#6306797",
+            "date": {
+              "utcTime": "2026-10-18T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10149/overview/nesebar",
+            "tooltipText": {
+              "utcTime": "2026-10-18T12:00:00.000Z",
+              "homeTeam": "Nesebar",
+              "homeTeamId": 10149,
+              "homeScore": "0",
+              "awayTeam": "CSKA Sofia",
+              "awayTeamId": 10144,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "10149",
+              "name": "Nesebar",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10144",
+              "name": "CSKA Sofia",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -472,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,19 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "CSKA Sofia have scored in their last 5 away matches."
+              "defaultText": "CSKA Sofia have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "2",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Nordsjælland have an average of 0.67 goals in their last three matches and CSKA Sofia have an average of 1.67."
+              "defaultText": "Nordsjælland have scored 2 goals in their last 3 matches, while CSKA Sofia have scored 6."
             },
             {
               "OddsType": "dc",

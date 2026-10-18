@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9851.png",
-            "linkToMatch": "/matches/marseille-vs-rennes/2t9n7h#5802935",
-            "date": {
-              "utcTime": "2026-09-11T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9851/overview/rennes",
-            "tooltipText": {
-              "utcTime": "2026-09-11T18:45:00.000Z",
-              "homeTeam": "Rennes",
-              "homeTeamId": 9851,
-              "homeScore": "1",
-              "awayTeam": "Marseille",
-              "awayTeamId": 8592,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8592",
-              "name": "Marseille",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10188.png",
             "linkToMatch": "/matches/marseille-vs-besiktas/2x01xi#6112354",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8638",
               "name": "Olympiacos",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8121.png",
+            "linkToMatch": "/matches/angers-vs-marseille/2b5t3x#5802955",
+            "date": {
+              "utcTime": "2026-10-18T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8121/overview/angers",
+            "tooltipText": {
+              "utcTime": "2026-10-18T13:00:00.000Z",
+              "homeTeam": "Angers",
+              "homeTeamId": 8121,
+              "homeScore": "2",
+              "awayTeam": "Marseille",
+              "awayTeamId": 8592,
+              "awayScore": "5"
+            },
+            "score": "2 - 5",
+            "home": {
+              "id": "8121",
+              "name": "Angers",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8592",
+              "name": "Marseille",
+              "isOurTeam": true
             }
           }
         ],
@@ -463,13 +463,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "7",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,19 +481,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Marseille have an average of 1 goals in their last three matches and Le Havre have an average of 0.67."
+              "defaultText": "Marseille have scored 7 goals in their last 3 matches, while Le Havre have scored 2."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "7",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Marseille have an average of 1 goals in their last three matches and Le Havre have an average of 0.67."
+              "defaultText": "Marseille have scored 7 goals in their last 3 matches, while Le Havre have scored 2."
             },
             {
               "OddsType": "dc",
@@ -546,7 +548,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -556,7 +558,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#0A60A8"
         },
         {
@@ -598,29 +600,24 @@
         },
         {
           "type": "player",
-          "playerId": 687868,
+          "playerId": 844437,
           "teamId": 8592,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 687868,
-              "name": "Jeffrey De Lange",
+              "value": 844437,
+              "name": "Amine Gouiri",
               "type": "player"
             },
             {
-              "value": 3,
+              "value": 5,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
-              "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Jeffrey De Lange is ranked 3 in saves per match in the competition (4.3)",
+          "text": "Amine Gouiri is the competition's top scorer (5)",
           "color": "#0A60A8"
         },
         {

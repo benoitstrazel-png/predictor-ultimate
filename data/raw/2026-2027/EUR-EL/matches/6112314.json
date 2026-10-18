@@ -276,36 +276,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9851.png",
-            "linkToMatch": "/matches/marseille-vs-rennes/2t9n7h#5802935",
-            "date": {
-              "utcTime": "2026-09-11T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9851/overview/rennes",
-            "tooltipText": {
-              "utcTime": "2026-09-11T18:45:00.000Z",
-              "homeTeam": "Rennes",
-              "homeTeamId": 9851,
-              "homeScore": "1",
-              "awayTeam": "Marseille",
-              "awayTeamId": 8592,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8592",
-              "name": "Marseille",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10188.png",
             "linkToMatch": "/matches/marseille-vs-besiktas/2x01xi#6112354",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Olympiacos",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8121.png",
+            "linkToMatch": "/matches/angers-vs-marseille/2b5t3x#5802955",
+            "date": {
+              "utcTime": "2026-10-18T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8121/overview/angers",
+            "tooltipText": {
+              "utcTime": "2026-10-18T13:00:00.000Z",
+              "homeTeam": "Angers",
+              "homeTeamId": 8121,
+              "homeScore": "2",
+              "awayTeam": "Marseille",
+              "awayTeamId": 8592,
+              "awayScore": "5"
+            },
+            "score": "2 - 5",
+            "home": {
+              "id": "8121",
+              "name": "Angers",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8592",
+              "name": "Marseille",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -446,9 +446,9 @@
                 "1",
                 "2",
                 "away_team",
-                "1",
+                "2",
                 "0",
-                "4"
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,19 +461,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sturm Graz have 2W, 1D, 2L in five matches while Marseille have 1W, 0D, 4L."
+              "defaultText": "Sturm Graz have 2W, 1D, 2L in five matches while Marseille have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "0.67",
-                "1"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -484,19 +482,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sturm Graz have an average of 0.67 goals in their last three matches and Marseille have an average of 1."
+              "defaultText": "Marseille have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1"
+                "3",
+                "2",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sturm Graz have an average of 0.67 goals in their last three matches and Marseille have an average of 1."
+              "defaultText": "Sturm Graz have scored 2 goals in their last 3 matches, while Marseille have scored 7."
             },
             {
               "OddsType": "dc",

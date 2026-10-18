@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9984.png",
-            "linkToMatch": "/matches/cercle-brugge-vs-gent/3aseub#5811751",
-            "date": {
-              "utcTime": "2026-09-06T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9984/overview/cercle-brugge",
-            "tooltipText": {
-              "utcTime": "2026-09-06T11:30:00.000Z",
-              "homeTeam": "Cercle Brugge",
-              "homeTeamId": 9984,
-              "homeScore": "0",
-              "awayTeam": "Gent",
-              "awayTeamId": 9991,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "9984",
-              "name": "Cercle Brugge",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9991",
-              "name": "Gent",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9987.png",
@@ -423,6 +393,36 @@
               "name": "AGF",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1661053.png",
+            "linkToMatch": "/matches/gent-vs-union-rochefortoise/hteidkup#6361398",
+            "date": {
+              "utcTime": "2026-10-18T11:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/1661053/overview/union-rochefortoise",
+            "tooltipText": {
+              "utcTime": "2026-10-18T11:30:00.000Z",
+              "homeTeam": "Union Rochefortoise",
+              "homeTeamId": 1661053,
+              "homeScore": "3",
+              "awayTeam": "Gent",
+              "awayTeamId": 9991,
+              "awayScore": "3"
+            },
+            "score": "3 - 3",
+            "home": {
+              "id": "1661053",
+              "name": "Union Rochefortoise",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9991",
+              "name": "Gent",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
                 "away_team",
-                "12"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Gent haven't lost in 12 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Braga have 1W, 1D, 3L in five matches while Gent have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -489,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "0.33",
-                "1.67"
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,23 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Braga have an average of 0.33 goals in their last three matches and Gent have an average of 1.67."
+              "defaultText": "Braga have an average of 0.33 goals in their last three matches and Gent have an average of 2."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "1",
-                "3",
                 "away_team",
-                "4",
-                "1",
-                "0"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Braga have 1W, 1D, 3L in five matches while Gent have 4W, 1D, 0L."
+              "defaultText": "Gent haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -539,25 +539,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9991,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 13,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 13 matches",
-          "color": "#004898"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },

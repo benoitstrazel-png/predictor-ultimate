@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2182.png",
-            "linkToMatch": "/matches/lech-poznan-vs-crystal-palace/16xlva#6112324",
-            "date": {
-              "utcTime": "2026-09-17T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/2182/overview/lech-poznan",
-            "tooltipText": {
-              "utcTime": "2026-09-17T19:00:00.000Z",
-              "homeTeam": "Crystal Palace",
-              "homeTeamId": 9826,
-              "homeScore": "4",
-              "awayTeam": "Lech Poznań",
-              "awayTeamId": 2182,
-              "awayScore": "0"
-            },
-            "score": "4 - 0",
-            "home": {
-              "id": "9826",
-              "name": "Crystal Palace",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "2182",
-              "name": "Lech Poznań",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8463.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "9748",
               "name": "Lyon",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
+            "linkToMatch": "/matches/crystal-palace-vs-brighton-hove-albion/3bfzlv#5795477",
+            "date": {
+              "utcTime": "2026-10-18T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "tooltipText": {
+              "utcTime": "2026-10-18T13:00:00.000Z",
+              "homeTeam": "Brighton & Hove Albion",
+              "homeTeamId": 10204,
+              "homeScore": "5",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "0"
+            },
+            "score": "5 - 0",
+            "home": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
               "isOurTeam": false
             },
             "away": {
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
-                "2",
+                "1",
+                "3",
                 "away_team",
                 "2",
                 "0",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Crystal Palace have 2W, 1D, 2L in five matches while Newcastle United have 2W, 0D, 3L."
+              "defaultText": "Crystal Palace have 1W, 1D, 3L in five matches while Newcastle United have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -513,10 +513,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -530,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Newcastle United haven't drawn in their last 5 matches."
+              "defaultText": "Crystal Palace haven't drawn in their last 4 matches and Newcastle United in their last 5."
             }
           ]
         },
@@ -550,7 +552,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -560,7 +562,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#0055A5"
         },
         {
@@ -592,29 +594,29 @@
         },
         {
           "type": "player",
-          "playerId": 719330,
+          "playerId": 448897,
           "teamId": 9826,
           "priority": 4,
           "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
           "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 719330,
-              "name": "Dean Henderson",
+              "value": 448897,
+              "name": "Walter Benítez",
               "type": "player"
             },
             {
-              "value": 3,
+              "value": 1,
               "name": null,
               "type": "ordinal"
             },
             {
-              "value": 4,
+              "value": 4.7,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Dean Henderson is ranked 3 in saves per match in the competition (4)",
+          "text": "Walter Benítez is ranked 1 in saves per match in the competition (4.7)",
           "color": "#0055A5"
         },
         {
@@ -705,141 +707,180 @@
       "temperature": 13,
       "windSpeed": 7,
       "windDirectionCardinal": "WSW",
-      "iconCode": 26,
+      "iconCode": 11,
       "relativeHumidity": 71,
-      "precipChance": 24,
-      "precipitation": 0,
+      "precipChance": 46,
+      "precipitation": 0.3,
       "snow": 0,
-      "cloudCover": 82,
-      "description": "Cloudy",
+      "cloudCover": 71,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T02:00:03Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-18T14:00:02Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5795489,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9826,
         "name": "Crystal Palace",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 672469,
+            "age": 29,
             "name": "Ben Chilwell",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 6839859,
             "unavailability": {
               "injuryId": 121,
-              "lastUpdated": "2026-10-17T00:38:55Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Ben",
-            "lastName": "Chilwell"
+            "lastName": "Chilwell",
+            "nationalTeamId": 8491
           },
           {
             "id": 664444,
+            "age": 27,
             "name": "Takehiro Tomiyasu",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 2281539,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-17T00:39:38Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Takehiro",
-            "lastName": "Tomiyasu"
+            "lastName": "Tomiyasu",
+            "nationalTeamId": 6715
           },
           {
             "id": 719330,
+            "age": 29,
             "name": "Dean Henderson",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 34320034,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-17T00:39:21Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Dean",
-            "lastName": "Henderson"
+            "lastName": "Henderson",
+            "nationalTeamId": 8491
           },
           {
             "id": 706297,
+            "age": 29,
             "name": "Jean-Philippe Mateta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 26968341,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-17T00:39:31Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Jean-Philippe",
-            "lastName": "Mateta"
+            "lastName": "Mateta",
+            "nationalTeamId": 6723
           },
           {
             "id": 1187506,
+            "age": 23,
             "name": "Chadi Riad",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 24605311,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-28T16:50:12Z",
               "type": "injury",
               "expectedReturn": "Late June 2027"
             },
             "firstName": "Chadi",
-            "lastName": "Riad"
+            "lastName": "Riad",
+            "nationalTeamId": 6262
           }
         ]
       },
       "awayTeam": {
         "id": 10261,
         "name": "Newcastle United",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1438570,
+            "age": 20,
             "name": "Ewen Jaouen",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 5141703,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-11T07:40:19Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Ewen",
-            "lastName": "Jaouen"
+            "lastName": "Jaouen",
+            "nationalTeamId": 6723
           },
           {
             "id": 1107910,
+            "age": 23,
             "name": "Valentino Livramento",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 50504643,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-17T00:07:55Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Valentino",
-            "lastName": "Livramento"
+            "lastName": "Livramento",
+            "nationalTeamId": 8491
           },
           {
             "id": 1021929,
+            "age": 25,
             "name": "Jacob Ramsey",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 43991151,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-17T00:10:00Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jacob",
-            "lastName": "Ramsey"
+            "lastName": "Ramsey",
+            "nationalTeamId": 8491
           },
           {
             "id": 1050166,
+            "age": 24,
             "name": "Anthony Elanga",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 41658677,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-09-15T13:02:09Z",
               "type": "injury",
               "expectedReturn": "Mid October 2026"
             },
             "firstName": "Anthony",
-            "lastName": "Elanga"
+            "lastName": "Elanga",
+            "nationalTeamId": 8520
           }
         ]
       }
