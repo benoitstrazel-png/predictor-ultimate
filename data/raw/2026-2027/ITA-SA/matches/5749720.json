@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "2",
-                "2",
-                "1",
-                "away_team",
-                "1",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Milan have 2W, 2D, 1L in five matches while Bologna have 1W, 2D, 2L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Milan haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -583,30 +577,30 @@
           "color": "#CF2C27"
         },
         {
-          "type": "player",
-          "playerId": 688300,
+          "type": "team",
+          "playerId": null,
           "teamId": 8564,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 8,
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 688300,
-              "name": "Samuel Chukwueze",
-              "type": "player"
+              "value": 8564,
+              "name": "Milan",
+              "type": "team"
             },
             {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
+              "value": 9857,
+              "name": "Bologna",
+              "type": "team"
             },
             {
-              "value": 5,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Samuel Chukwueze is ranked 3 in big chances created in the competition (5)",
+          "text": "Milan have won the previous 2 matches against Bologna.",
           "color": "#CF2C27"
         },
         {
@@ -650,15 +644,15 @@
         },
         {
           "type": "player",
-          "playerId": 414245,
+          "playerId": 873956,
           "teamId": 9857,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 414245,
-              "name": "Federico Bernardeschi",
+              "value": 873956,
+              "name": "Juan Miranda",
               "type": "player"
             },
             {
@@ -667,12 +661,12 @@
               "type": "team"
             },
             {
-              "value": 1.4,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Federico Bernardeschi has the most shots on target per match for Bologna (1.4)",
+          "text": "Juan Miranda has created the most big chances for Bologna (3)",
           "color": "#102880"
         }
       ],

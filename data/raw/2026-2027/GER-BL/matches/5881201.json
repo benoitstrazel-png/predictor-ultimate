@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,17 +456,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bayer Leverkusen have won their last 4 matches."
+              "defaultText": "Bayer Leverkusen have won their last 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "4",
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored in their last 6 home matches."
+              "defaultText": "Hoffenheim have scored in their last 4 matches and Bayer Leverkusen have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -505,11 +507,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "away_team",
+                "12",
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,8 +525,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Hoffenheim haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Hoffenheim haven't drawn in their last 12 matches and Bayer Leverkusen in their last 5."
             }
           ]
         },
@@ -560,23 +564,6 @@
           "playerId": null,
           "teamId": 8226,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#005098"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8226,
-          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -597,6 +584,23 @@
             }
           ],
           "text": "Hoffenheim have won the previous 2 matches against Bayer Leverkusen.",
+          "color": "#005098"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8226,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#005098"
         },
         {

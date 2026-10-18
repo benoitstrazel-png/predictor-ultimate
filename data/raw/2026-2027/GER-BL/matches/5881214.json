@@ -463,10 +463,12 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "10",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -478,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored in their last 4 home matches."
+              "defaultText": "Werder Bremen have scored in their last 10 matches and Hoffenheim have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -491,7 +493,7 @@
                 "away_team",
                 "3",
                 "7",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,17 +504,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored 7 goals in their last 3 matches, while Hoffenheim have scored 5."
+              "defaultText": "Werder Bremen have scored 7 goals in their last 3 matches, while Hoffenheim have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,8 +526,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Hoffenheim haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Hoffenheim haven't drawn in their last 12 matches."
             }
           ]
         },

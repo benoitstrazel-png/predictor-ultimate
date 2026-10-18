@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "9"
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,18 +461,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Monaco haven't lost in 9 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Paris FC have 3W, 1D, 1L in five matches while Monaco have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "5"
+                "3",
+                "6",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monaco have scored in their last 5 away matches."
+              "defaultText": "Paris FC have scored 6 goals in their last 3 matches, while Monaco have scored 4."
             },
             {
               "OddsType": "ou",
@@ -490,7 +499,7 @@
                 "away_team",
                 "3",
                 "6",
-                "6"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris FC have scored 6 goals in their last 3 matches, while Monaco have scored 6."
+              "defaultText": "Paris FC have scored 6 goals in their last 3 matches, while Monaco have scored 4."
             },
             {
               "OddsType": "dc",
@@ -515,9 +524,9 @@
                 "1",
                 "1",
                 "away_team",
-                "3",
                 "2",
-                "0"
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +539,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris FC have 3W, 1D, 1L in five matches while Monaco have 3W, 2D, 0L."
+              "defaultText": "Paris FC have 3W, 1D, 1L in five matches while Monaco have 2W, 2D, 1L."
             }
           ]
         },
@@ -634,23 +643,6 @@
           "playerId": null,
           "teamId": 9829,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 6 matches",
-          "color": "#C80C13"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9829,
-          "priority": 8,
           "defaultText": "Ranked {0} away from home this season",
           "localizedTextId": "insights_best_away",
           "statValues": [
@@ -661,6 +653,23 @@
             }
           ],
           "text": "Ranked 2 away from home this season",
+          "color": "#C80C13"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9829,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#C80C13"
         }
       ],

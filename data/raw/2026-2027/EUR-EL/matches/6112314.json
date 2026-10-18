@@ -488,14 +488,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "2",
-                "7"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,16 +504,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sturm Graz have scored 2 goals in their last 3 matches, while Marseille have scored 7."
+              "defaultText": "Sturm Graz have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "12"
               ],
               "DefaultLabels": [
@@ -529,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Marseille haven't drawn in their last 12 matches."
+              "defaultText": "Sturm Graz haven't drawn in their last 4 matches and Marseille in their last 12."
             }
           ]
         },

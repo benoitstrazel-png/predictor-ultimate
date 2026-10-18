@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9755.png",
-            "linkToMatch": "/matches/hapoel-beer-sheva-vs-hapoel-petah-tikva/35b7w2#1000015272",
-            "date": {
-              "utcTime": "2026-09-13T17:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9755/overview/hapoel-petah-tikva",
-            "tooltipText": {
-              "utcTime": "2026-09-13T17:30:00.000Z",
-              "homeTeam": "Hapoel Petah Tikva",
-              "homeTeamId": 9755,
-              "homeScore": "0",
-              "awayTeam": "Hapoel Beer Sheva",
-              "awayTeamId": 9754,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "9755",
-              "name": "Hapoel Petah Tikva",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9754",
-              "name": "Hapoel Beer Sheva",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10156.png",
@@ -422,6 +392,36 @@
               "name": "Hapoel Beer Sheva",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/459591.png",
+            "linkToMatch": "/matches/hapoel-beer-sheva-vs-hapoel-jerusalem-fc/1elk2cyz#1000015290",
+            "date": {
+              "utcTime": "2026-10-18T17:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/459591/overview/hapoel-jerusalem-fc",
+            "tooltipText": {
+              "utcTime": "2026-10-18T17:15:00.000Z",
+              "homeTeam": "Hapoel Beer Sheva",
+              "homeTeamId": 9754,
+              "homeScore": "2",
+              "awayTeam": "Hapoel Jerusalem FC",
+              "awayTeamId": 459591,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "9754",
+              "name": "Hapoel Beer Sheva",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "459591",
+              "name": "Hapoel Jerusalem FC",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -461,11 +461,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "9",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Union St.Gilloise have scored in their last 5 home matches."
+              "defaultText": "Union St.Gilloise have scored in their last 9 matches and Hapoel Beer Sheva have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -489,7 +491,7 @@
                 "away_team",
                 "3",
                 "5",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,23 +502,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Union St.Gilloise have scored 5 goals in their last 3 matches, while Hapoel Beer Sheva have scored 4."
+              "defaultText": "Union St.Gilloise have scored 5 goals in their last 3 matches, while Hapoel Beer Sheva have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "3",
-                "2",
-                "0",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Union St.Gilloise have 3W, 2D, 0L in five matches while Hapoel Beer Sheva have 3W, 1D, 1L."
+              "defaultText": "Hapoel Beer Sheva haven't drawn in their last 4 matches."
             }
           ]
         },
