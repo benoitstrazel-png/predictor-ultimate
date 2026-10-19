@@ -511,10 +511,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -528,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Rennes haven't drawn in their last 4 matches."
+              "defaultText": "Nice haven't drawn in their last 4 matches and Rennes in their last 4."
             }
           ]
         },
@@ -685,20 +687,20 @@
       }
     },
     "weather": {
-      "temperature": 20,
+      "temperature": 19,
       "windSpeed": 3,
       "windDirectionCardinal": "SE",
-      "iconCode": 11,
-      "relativeHumidity": 70,
-      "precipChance": 38,
-      "precipitation": 0.2,
+      "iconCode": 34,
+      "relativeHumidity": 68,
+      "precipChance": 5,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 50,
-      "description": "Showers",
+      "cloudCover": 26,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T17:00:11Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-19T05:00:13Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5802978,
@@ -721,18 +723,6 @@
             },
             "firstName": "Ali",
             "lastName": "Abdi"
-          },
-          {
-            "id": 1763598,
-            "name": "Djibril Coulibaly",
-            "unavailability": {
-              "injuryId": 92,
-              "lastUpdated": "2026-10-18T11:36:53Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Djibril",
-            "lastName": "Coulibaly"
           },
           {
             "id": 1254147,
@@ -759,18 +749,6 @@
             "lastName": "Bombito"
           },
           {
-            "id": 355901,
-            "name": "Morgan Sanson",
-            "unavailability": {
-              "injuryId": 140,
-              "lastUpdated": "2026-10-18T11:37:06Z",
-              "type": "injury",
-              "expectedReturn": "Mid October 2026"
-            },
-            "firstName": "Morgan",
-            "lastName": "Sanson"
-          },
-          {
             "id": 413525,
             "name": "Laurent Abergel",
             "unavailability": {
@@ -787,7 +765,20 @@
       "awayTeam": {
         "id": 9851,
         "name": "Rennes",
-        "unavailable": []
+        "unavailable": [
+          {
+            "id": 1280225,
+            "name": "Estéban Lepaul",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-10-19T00:07:54Z",
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "Estéban",
+            "lastName": "Lepaul"
+          }
+        ]
       }
     },
     "hasPlayoff": false,

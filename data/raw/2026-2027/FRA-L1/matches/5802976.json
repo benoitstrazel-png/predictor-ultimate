@@ -469,7 +469,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,18 +480,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored in their last 6 home matches."
+              "defaultText": "Lyon have scored in their last 7 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "6",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored 8 goals in their last 3 matches."
+              "defaultText": "Lyon have scored 6 goals in their last 3 matches, while Angers have scored 5."
             },
             {
               "OddsType": "dc",
@@ -512,7 +514,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lyon haven't drawn in their last 4 matches."
+              "defaultText": "Lyon haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -663,15 +665,15 @@
         },
         {
           "type": "player",
-          "playerId": 1748405,
+          "playerId": 1242587,
           "teamId": 8121,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1748405,
-              "name": "Prosper Peter",
+              "value": 1242587,
+              "name": "Amine Sbaï",
               "type": "player"
             },
             {
@@ -680,12 +682,12 @@
               "type": "team"
             },
             {
-              "value": 1.8,
+              "value": 6,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Prosper Peter has the most shots on target per match for Angers (1.8)",
+          "text": "Amine Sbaï has created the most big chances for Angers (6)",
           "color": "#000000"
         }
       ],
@@ -708,17 +710,17 @@
     },
     "weather": {
       "temperature": 11,
-      "windSpeed": 2,
-      "windDirectionCardinal": "N",
+      "windSpeed": 3,
+      "windDirectionCardinal": "NW",
       "iconCode": 29,
       "relativeHumidity": 84,
-      "precipChance": 21,
+      "precipChance": 20,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 33,
+      "cloudCover": 40,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-18T20:00:14Z",
+      "lastUpdated": "2026-10-19T08:00:12Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -785,18 +787,6 @@
             },
             "firstName": "Ousmane",
             "lastName": "Camara"
-          },
-          {
-            "id": 1169692,
-            "name": "Usman Simbakoli",
-            "unavailability": {
-              "injuryId": 47,
-              "lastUpdated": "2026-10-18T11:33:58Z",
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Usman",
-            "lastName": "Simbakoli"
           }
         ]
       }
