@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9804.png",
-            "linkToMatch": "/matches/roma-vs-torino/2ts8vv#5749678",
-            "date": {
-              "utcTime": "2026-09-14T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9804/overview/torino",
-            "tooltipText": {
-              "utcTime": "2026-09-14T16:30:00.000Z",
-              "homeTeam": "Torino",
-              "homeTeamId": 9804,
-              "homeScore": "0",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "9804",
-              "name": "Torino",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "10233",
               "name": "Genoa",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6019.png",
+            "linkToMatch": "/matches/slovan-bratislava-vs-roma/1sdp5j#6106277",
+            "date": {
+              "utcTime": "2026-10-20T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/6019/overview/slovan-bratislava",
+            "tooltipText": {
+              "utcTime": "2026-10-20T19:00:00.000Z",
+              "homeTeam": "Roma",
+              "homeTeamId": 8686,
+              "homeScore": "4",
+              "awayTeam": "Slovan Bratislava",
+              "awayTeamId": 6019,
+              "awayScore": "0"
+            },
+            "score": "4 - 0",
+            "home": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "6019",
+              "name": "Slovan Bratislava",
               "isOurTeam": false
             }
           }
@@ -472,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,19 +483,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 5 home matches."
+              "defaultText": "Roma have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "1.67",
-                "0.67"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have an average of 1.67 goals in their last three matches and Cagliari have an average of 0.67."
+              "defaultText": "Roma have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -555,7 +554,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -565,7 +564,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#96092B"
         },
         {
@@ -653,15 +652,15 @@
         },
         {
           "type": "player",
-          "playerId": 1166344,
+          "playerId": 1329487,
           "teamId": 8529,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1166344,
-              "name": "Kevin Carlos",
+              "value": 1329487,
+              "name": "Jacopo Fazzini",
               "type": "player"
             },
             {
@@ -670,12 +669,12 @@
               "type": "team"
             },
             {
-              "value": 1.8,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Kevin Carlos has the most shots on target per match for Cagliari (1.8)",
+          "text": "Jacopo Fazzini has created the most big chances for Cagliari (2)",
           "color": "#B51F2B"
         }
       ],
@@ -714,103 +713,150 @@
     },
     "lineup": {
       "matchId": 5749721,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8686,
         "name": "Roma",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 540307,
+            "age": 30,
+            "name": "Lorenzo Pellegrini",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 4404060,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Lorenzo",
+            "lastName": "Pellegrini",
+            "nationalTeamId": 8204
+          },
+          {
             "id": 325916,
+            "age": 32,
             "name": "Paulo Dybala",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 2326109,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-19T14:44:26Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Paulo",
-            "lastName": "Dybala"
+            "lastName": "Dybala",
+            "nationalTeamId": 6706
           },
           {
             "id": 1016132,
+            "age": 25,
             "name": "Manu Koné",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 56079759,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-17T09:28:56Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Manu",
-            "lastName": "Koné"
+            "lastName": "Koné",
+            "nationalTeamId": 6723
           },
           {
             "id": 768474,
+            "age": 27,
             "name": "Mile Svilar",
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 41012463,
             "unavailability": {
               "injuryId": 16,
-              "lastUpdated": "2026-10-10T20:39:21Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Mile",
-            "lastName": "Svilar"
+            "lastName": "Svilar",
+            "nationalTeamId": 8205
           },
           {
             "id": 299799,
+            "age": 31,
             "name": "Bryan Cristante",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 6594315,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-20T14:29:35Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Bryan",
-            "lastName": "Cristante"
+            "lastName": "Cristante",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 8529,
         "name": "Cagliari",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1021302,
+            "age": 25,
             "name": "Mattia Felici",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 1549637,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-09T12:44:51Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Mattia",
-            "lastName": "Felici"
+            "lastName": "Felici",
+            "nationalTeamId": 8204
           },
           {
             "id": 1861022,
+            "age": 20,
             "name": "Yael Trepy",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1085416,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-30T20:19:21Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Yael",
-            "lastName": "Trepy"
+            "lastName": "Trepy",
+            "nationalTeamId": 6723
           },
           {
             "id": 1668219,
+            "age": 21,
             "name": "Riyad Idrissi",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 5960579,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:35:50Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Riyad",
-            "lastName": "Idrissi"
+            "lastName": "Idrissi",
+            "nationalTeamId": 8204
           }
         ]
       }
