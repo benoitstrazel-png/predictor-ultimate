@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9876.png",
-            "linkToMatch": "/matches/cagliari-vs-hellas-verona/2sun03#6003656",
-            "date": {
-              "utcTime": "2026-09-03T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9876/overview/hellas-verona",
-            "tooltipText": {
-              "utcTime": "2026-09-03T19:00:00.000Z",
-              "homeTeam": "Cagliari",
-              "homeTeamId": 8529,
-              "homeScore": "1",
-              "awayTeam": "Hellas Verona",
-              "awayTeamId": 9876,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8529",
-              "name": "Cagliari",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9876",
-              "name": "Hellas Verona",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
@@ -423,6 +393,36 @@
               "name": "Juventus",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6504.png",
+            "linkToMatch": "/matches/monza-vs-cagliari/1va8au#5749706",
+            "date": {
+              "utcTime": "2026-10-19T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/6504/overview/monza",
+            "tooltipText": {
+              "utcTime": "2026-10-19T16:30:00.000Z",
+              "homeTeam": "Monza",
+              "homeTeamId": 6504,
+              "homeScore": "4",
+              "awayTeam": "Cagliari",
+              "awayTeamId": 8529,
+              "awayScore": "0"
+            },
+            "score": "4 - 0",
+            "home": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8529",
+              "name": "Cagliari",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "4"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Cagliari haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Roma have 2W, 2D, 1L in five matches while Cagliari have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -483,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "4"
+                "1.67",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored 5 goals in their last 3 matches, while Cagliari have scored 4."
+              "defaultText": "Roma have an average of 1.67 goals in their last three matches and Cagliari have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -616,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -626,7 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#B51F2B"
         },
         {
@@ -648,29 +653,29 @@
         },
         {
           "type": "player",
-          "playerId": 958422,
+          "playerId": 1329487,
           "teamId": 8529,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 958422,
-              "name": "Elia Caprile",
+              "value": 1329487,
+              "name": "Jacopo Fazzini",
               "type": "player"
+            },
+            {
+              "value": 8529,
+              "name": "Cagliari",
+              "type": "team"
             },
             {
               "value": 2,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.7,
-              "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Elia Caprile is ranked 2 in saves per match in the competition (4.7)",
+          "text": "Jacopo Fazzini has created the most big chances for Cagliari (2)",
           "color": "#B51F2B"
         }
       ],
@@ -692,18 +697,18 @@
       }
     },
     "weather": {
-      "temperature": 15,
-      "windSpeed": 2,
-      "windDirectionCardinal": "NE",
-      "iconCode": 31,
-      "relativeHumidity": 76,
-      "precipChance": 5,
+      "temperature": 14,
+      "windSpeed": 3,
+      "windDirectionCardinal": "NNE",
+      "iconCode": 33,
+      "relativeHumidity": 72,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 15,
-      "description": "Clear",
+      "cloudCover": 24,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-19T08:00:10Z",
+      "lastUpdated": "2026-10-20T08:00:16Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
@@ -722,9 +727,9 @@
             "name": "Paulo Dybala",
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-16T14:57:18Z",
+              "lastUpdated": "2026-10-19T14:44:26Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Paulo",
             "lastName": "Dybala"
@@ -758,7 +763,7 @@
             "name": "Bryan Cristante",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-16T14:57:55Z",
+              "lastUpdated": "2026-10-19T13:48:48Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },

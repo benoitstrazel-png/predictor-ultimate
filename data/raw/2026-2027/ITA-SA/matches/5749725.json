@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
-            "linkToMatch": "/matches/monza-vs-parma/2aqqjc#5749668",
-            "date": {
-              "utcTime": "2026-09-06T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10167/overview/parma",
-            "tooltipText": {
-              "utcTime": "2026-09-06T13:00:00.000Z",
-              "homeTeam": "Parma",
-              "homeTeamId": 10167,
-              "homeScore": "1",
-              "awayTeam": "Monza",
-              "awayTeamId": 6504,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "6504",
-              "name": "Monza",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
@@ -270,6 +240,36 @@
               "id": "6504",
               "name": "Monza",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
+            "linkToMatch": "/matches/monza-vs-cagliari/1va8au#5749706",
+            "date": {
+              "utcTime": "2026-10-19T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8529/overview/cagliari",
+            "tooltipText": {
+              "utcTime": "2026-10-19T16:30:00.000Z",
+              "homeTeam": "Monza",
+              "homeTeamId": 6504,
+              "homeScore": "4",
+              "awayTeam": "Cagliari",
+              "awayTeamId": 8529,
+              "awayScore": "0"
+            },
+            "score": "4 - 0",
+            "home": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8529",
+              "name": "Cagliari",
+              "isOurTeam": false
             }
           }
         ],
@@ -467,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored in their last 4 home matches."
+              "defaultText": "Monza have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +490,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "7",
                 "4"
               ],
               "DefaultLabels": [
@@ -502,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored 5 goals in their last 3 matches, while Napoli have scored 4."
+              "defaultText": "Monza have scored 7 goals in their last 3 matches, while Napoli have scored 4."
             },
             {
               "OddsType": "dc",
@@ -548,7 +548,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -558,24 +558,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
-          "color": "#e10032"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 6504,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#e10032"
         },
         {
@@ -603,6 +586,33 @@
             }
           ],
           "text": "Ricardo Mangas has created the most big chances for Monza (4)",
+          "color": "#e10032"
+        },
+        {
+          "type": "player",
+          "playerId": 1122424,
+          "teamId": 6504,
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "statValues": [
+            {
+              "value": 1122424,
+              "name": "Noel Törnqvist",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 5.3,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Noel Törnqvist is ranked 1 in saves per match in the competition (5.3)",
           "color": "#e10032"
         },
         {
@@ -692,16 +702,16 @@
     "weather": {
       "temperature": 12,
       "windSpeed": 1,
-      "windDirectionCardinal": "NNE",
+      "windDirectionCardinal": "N",
       "iconCode": 33,
       "relativeHumidity": 87,
-      "precipChance": 5,
+      "precipChance": 14,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 28,
+      "cloudCover": 29,
       "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-19T08:00:10Z",
+      "lastUpdated": "2026-10-20T08:00:16Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
@@ -716,28 +726,28 @@
         "name": "Monza",
         "unavailable": [
           {
+            "id": 1830551,
+            "name": "Yvan Kouadio Maye",
+            "unavailability": {
+              "injuryId": 121,
+              "lastUpdated": "2026-10-20T12:05:21Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Yvan Kouadio",
+            "lastName": "Maye"
+          },
+          {
             "id": 1511063,
             "name": "Jan Ziólkowski",
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-18T17:27:22Z",
+              "lastUpdated": "2026-10-20T12:36:27Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Jan",
             "lastName": "Ziólkowski"
-          },
-          {
-            "id": 480021,
-            "name": "Patrick Ciurria",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-09-10T21:35:35Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Patrick",
-            "lastName": "Ciurria"
           },
           {
             "id": 731600,
@@ -756,9 +766,9 @@
             "name": "Matteo Pessina",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-09T17:14:37Z",
+              "lastUpdated": "2026-10-20T12:39:02Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Matteo",
             "lastName": "Pessina"
@@ -774,9 +784,9 @@
             "name": "Alisson Santos",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-17T18:37:31Z",
+              "lastUpdated": "2026-10-19T14:01:22Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Alisson",
             "lastName": "Santos"
@@ -822,9 +832,9 @@
             "name": "Alessandro Buongiorno",
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-10-09T17:13:03Z",
+              "lastUpdated": "2026-10-20T12:39:37Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Alessandro",
             "lastName": "Buongiorno"
