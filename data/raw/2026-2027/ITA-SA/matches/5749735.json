@@ -468,13 +468,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,19 +486,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have an average of 1 goals in their last three matches and Napoli have an average of 1.33."
+              "defaultText": "Juventus have scored 3 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,23 +510,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have an average of 1 goals in their last three matches and Napoli have an average of 1.33."
+              "defaultText": "Juventus have scored 3 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -537,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Juventus have 2W, 1D, 2L in five matches while Napoli have 2W, 1D, 2L."
+              "defaultText": "Napoli haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -599,15 +595,15 @@
         },
         {
           "type": "player",
-          "playerId": 862616,
+          "playerId": 787350,
           "teamId": 9885,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 862616,
-              "name": "Edon Zhegrova",
+              "value": 787350,
+              "name": "Douglas Luiz",
               "type": "player"
             },
             {
@@ -616,12 +612,12 @@
               "type": "team"
             },
             {
-              "value": 4.5,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Edon Zhegrova has the most shots on target per match for Juventus (4.5)",
+          "text": "Douglas Luiz has created the most big chances for Juventus (3)",
           "color": "#000001"
         },
         {
@@ -665,15 +661,15 @@
         },
         {
           "type": "player",
-          "playerId": 1355574,
+          "playerId": 1355552,
           "teamId": 9875,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1355574,
-              "name": "Giovane Nascimento",
+              "value": 1355552,
+              "name": "Alisson Santos",
               "type": "player"
             },
             {
@@ -682,12 +678,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.7,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Giovane Nascimento has created the most big chances for Napoli (2)",
+          "text": "Alisson Santos has the most shots on target per match for Napoli (1.7)",
           "color": "#12A0D7"
         }
       ],
@@ -713,14 +709,14 @@
       "windSpeed": 2,
       "windDirectionCardinal": "NNW",
       "iconCode": 29,
-      "relativeHumidity": 81,
-      "precipChance": 11,
+      "relativeHumidity": 84,
+      "precipChance": 19,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 41,
+      "cloudCover": 54,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-20T20:00:16Z",
+      "lastUpdated": "2026-10-21T08:00:14Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

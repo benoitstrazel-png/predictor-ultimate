@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "7"
+                "7",
+                "12"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bayern München have won their last 7 matches."
+              "defaultText": "Atlético Madrid haven't lost in their last 7 matches, and Bayern München in their last 12."
             },
             {
               "OddsType": "bts",
@@ -466,9 +468,9 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "9",
+                "8",
                 "away_team",
-                "12"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +481,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored in their last 9 matches and Bayern München have scored in their last 12 matches."
+              "defaultText": "Atlético Madrid have scored in their last 8 matches and Bayern München have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
@@ -507,11 +509,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "4",
+                "1",
+                "0",
                 "away_team",
-                "11"
+                "3",
+                "2",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayern München haven't drawn in their last 11 matches."
+              "defaultText": "Atlético Madrid have 4W, 1D, 0L in five matches while Bayern München have 3W, 2D, 0L."
             }
           ]
         },
@@ -538,7 +546,7 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 9823,
+          "teamId": 9906,
           "priority": 1343,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
@@ -550,40 +558,23 @@
             }
           ],
           "text": "Haven't lost in 7 matches",
-          "color": "#C60428"
+          "color": "#C63527"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 9823,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 15,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
-          "color": "#C60428"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9823,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have won their last 7 matches",
+          "text": "Haven't lost in 15 matches",
           "color": "#C60428"
         }
       ],
@@ -605,18 +596,18 @@
       }
     },
     "weather": {
-      "temperature": 13,
+      "temperature": 12,
       "windSpeed": 2,
-      "windDirectionCardinal": "NNE",
+      "windDirectionCardinal": "NE",
       "iconCode": 29,
       "relativeHumidity": 66,
       "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 58,
+      "cloudCover": 46,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-20T20:00:24Z",
+      "lastUpdated": "2026-10-21T08:00:21Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -672,18 +663,6 @@
         "id": 9823,
         "name": "Bayern München",
         "unavailable": [
-          {
-            "id": 27299,
-            "name": "Manuel Neuer",
-            "unavailability": {
-              "injuryId": 21,
-              "lastUpdated": "2026-10-20T20:08:36Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Manuel",
-            "lastName": "Neuer"
-          },
           {
             "id": 1156141,
             "name": "Jamal Musiala",

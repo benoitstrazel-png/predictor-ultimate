@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
-                "2",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,42 +455,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Manchester United have 2W, 1D, 2L in five matches while Roma have 2W, 1D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Manchester United haven't won a match in 6 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
-              "StatValues": [
-                "home_team",
-                "4"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Manchester United have scored in their last 4 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
               "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
               "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
                 "3",
-                "3",
-                "6"
+                "2",
+                "9"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,23 +480,39 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester United have scored 3 goals in their last 3 matches, while Roma have scored 6."
+              "defaultText": "Manchester United have scored 2 goals in their last 3 matches, while Roma have scored 9."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "away_team",
+                "9",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Roma have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
-                "2",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -535,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Manchester United have 2W, 1D, 2L in five matches while Roma have 2W, 1D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Manchester United haven't won a match in 6 attempts."
             }
           ]
         },
@@ -583,12 +572,29 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
+          "color": "#C70101"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10260,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 6 attempts",
           "color": "#C70101"
         }
       ],
@@ -611,19 +617,19 @@
     },
     "weather": {
       "temperature": 9,
-      "windSpeed": 2,
+      "windSpeed": 3,
       "windDirectionCardinal": "SSE",
-      "iconCode": 11,
-      "relativeHumidity": 87,
-      "precipChance": 34,
-      "precipitation": 0.1,
+      "iconCode": 29,
+      "relativeHumidity": 88,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 73,
-      "description": "Few Showers",
+      "cloudCover": 54,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-20T20:00:25Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-21T08:00:22Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106291,
@@ -730,7 +736,7 @@
             "name": "Lorenzo Pellegrini",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-20T22:49:18Z",
+              "lastUpdated": "2026-10-21T11:53:39Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
@@ -742,7 +748,7 @@
             "name": "Paulo Dybala",
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-19T14:44:26Z",
+              "lastUpdated": "2026-10-21T11:53:36Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
@@ -754,7 +760,7 @@
             "name": "Manu Koné",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-17T09:28:56Z",
+              "lastUpdated": "2026-10-21T11:53:16Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
@@ -766,24 +772,12 @@
             "name": "Mile Svilar",
             "unavailability": {
               "injuryId": 16,
-              "lastUpdated": "2026-10-10T20:39:21Z",
+              "lastUpdated": "2026-10-21T11:53:44Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Mile",
             "lastName": "Svilar"
-          },
-          {
-            "id": 299799,
-            "name": "Bryan Cristante",
-            "unavailability": {
-              "injuryId": 14,
-              "lastUpdated": "2026-10-20T14:29:35Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Bryan",
-            "lastName": "Cristante"
           }
         ]
       }
