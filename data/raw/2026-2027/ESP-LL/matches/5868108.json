@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9864.png",
-            "linkToMatch": "/matches/levante-vs-malaga/2tafoj#5868047",
-            "date": {
-              "utcTime": "2026-09-06T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9864/overview/malaga",
-            "tooltipText": {
-              "utcTime": "2026-09-06T16:30:00.000Z",
-              "homeTeam": "Málaga",
-              "homeTeamId": 9864,
-              "homeScore": "0",
-              "awayTeam": "Levante",
-              "awayTeamId": 8581,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8581",
-              "name": "Levante",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png",
@@ -423,6 +393,36 @@
               "name": "Levante",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
+            "linkToMatch": "/matches/athletic-club-vs-levante/2czq11#5868067",
+            "date": {
+              "utcTime": "2026-10-21T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8315/overview/athletic-club",
+            "tooltipText": {
+              "utcTime": "2026-10-21T18:00:00.000Z",
+              "homeTeam": "Levante",
+              "homeTeamId": 8581,
+              "homeScore": "3",
+              "awayTeam": "Athletic Club",
+              "awayTeamId": 8315,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8581",
+              "name": "Levante",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8315",
+              "name": "Athletic Club",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "5"
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Levante haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Real Sociedad have 3W, 1D, 1L in five matches while Levante have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -469,7 +475,7 @@
                 "away_team",
                 "3",
                 "9",
-                "5"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches, while Levante have scored 5."
+              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches, while Levante have scored 7."
             },
             {
               "OddsType": "ou",
@@ -508,11 +514,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "5"
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,8 +536,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Levante haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Real Sociedad have 3W, 1D, 1L in five matches while Levante have 1W, 2D, 2L."
             }
           ]
         },
@@ -611,7 +623,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -621,7 +633,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#335686"
         },
         {
@@ -629,8 +641,8 @@
           "playerId": null,
           "teamId": 8581,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
               "value": 5,
@@ -638,20 +650,20 @@
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#335686"
         },
         {
           "type": "player",
-          "playerId": 1209441,
+          "playerId": 1131957,
           "teamId": 8581,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1209441,
-              "name": "Iván Romero",
+              "value": 1131957,
+              "name": "Jon Olasagasti",
               "type": "player"
             },
             {
@@ -660,12 +672,12 @@
               "type": "team"
             },
             {
-              "value": 1.4,
+              "value": 4,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Iván Romero has the most shots on target per match for Levante (1.4)",
+          "text": "Jon Olasagasti has created the most big chances for Levante (4)",
           "color": "#335686"
         }
       ],
@@ -687,18 +699,18 @@
       }
     },
     "weather": {
-      "temperature": 18,
+      "temperature": 19,
       "windSpeed": 3,
       "windDirectionCardinal": "W",
       "iconCode": 11,
-      "relativeHumidity": 76,
-      "precipChance": 38,
-      "precipitation": 0.2,
+      "relativeHumidity": 77,
+      "precipChance": 45,
+      "precipitation": 0.3,
       "snow": 0,
-      "cloudCover": 96,
-      "description": "Light Rain",
+      "cloudCover": 78,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-21T06:00:12Z",
+      "lastUpdated": "2026-10-21T18:00:14Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -1210,7 +1222,7 @@
             "unavailability": {
               "injuryId": 101,
               "type": "injury",
-              "expectedReturn": "Back in training"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Yangel",
             "lastName": "Herrera",

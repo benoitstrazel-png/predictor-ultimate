@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
-            "linkToMatch": "/matches/lille-vs-troyes/2y4ti8#5802932",
-            "date": {
-              "utcTime": "2026-09-13T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10242/overview/troyes",
-            "tooltipText": {
-              "utcTime": "2026-09-13T13:00:00.000Z",
-              "homeTeam": "Lille",
-              "homeTeamId": 8639,
-              "homeScore": "2",
-              "awayTeam": "Troyes",
-              "awayTeamId": 10242,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8639",
-              "name": "Lille",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10242",
-              "name": "Troyes",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
@@ -270,6 +240,36 @@
             "away": {
               "id": "8521",
               "name": "Brest",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png",
+            "linkToMatch": "/matches/galatasaray-vs-lille/2guw05#6106312",
+            "date": {
+              "utcTime": "2026-10-21T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8637/overview/galatasaray",
+            "tooltipText": {
+              "utcTime": "2026-10-21T16:45:00.000Z",
+              "homeTeam": "Lille",
+              "homeTeamId": 8639,
+              "homeScore": "2",
+              "awayTeam": "Galatasaray",
+              "awayTeamId": 8637,
+              "awayScore": "4"
+            },
+            "score": "2 - 4",
+            "home": {
+              "id": "8639",
+              "name": "Lille",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8637",
+              "name": "Galatasaray",
               "isOurTeam": false
             }
           }
@@ -444,9 +444,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
-                "2",
+                "1",
+                "3",
                 "away_team",
                 "2",
                 "1",
@@ -463,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lille have 2W, 1D, 2L in five matches while Lens have 2W, 1D, 2L."
+              "defaultText": "Lille have 1W, 1D, 3L in five matches while Lens have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -473,6 +473,30 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
+                "6"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Lille have scored in their last 6 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "3",
                 "5"
               ],
               "DefaultLabels": [
@@ -484,30 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lille have scored in their last 5 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "0.67",
-                "1.67"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Lille have an average of 0.67 goals in their last three matches and Lens have an average of 1.67."
+              "defaultText": "Lille have scored 3 goals in their last 3 matches, while Lens have scored 5."
             },
             {
               "OddsType": "dc",
@@ -834,9 +835,9 @@
             "name": "Jhoanner Chávez",
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-09-21T11:01:14Z",
+              "lastUpdated": "2026-10-21T22:00:17Z",
               "type": "injury",
-              "expectedReturn": "Mid October 2026"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Jhoanner",
             "lastName": "Chávez"
