@@ -2,7 +2,7 @@
   "general": {
     "matchId": "6106420",
     "matchName": "Viking-vs-Sabah FK_Wed, Nov 4, 2026, 20:00 UTC",
-    "matchRound": "League Stage - Round 4",
+    "matchRound": "4",
     "teamColors": {
       "darkMode": {
         "home": "#244d89",
@@ -21,11 +21,11 @@
         "away": "rgba(255, 255, 255, 1.0)"
       }
     },
-    "leagueId": 42,
-    "leagueName": "UEFA Champions League",
-    "leagueRoundName": "League Stage - Round 4",
+    "leagueId": 943230,
+    "leagueName": "Champions League",
+    "leagueRoundName": "4",
     "parentLeagueId": 42,
-    "countryCode": "INT",
+    "countryCode": "INT-2",
     "homeTeam": {
       "name": "Viking",
       "id": 8478
@@ -71,7 +71,6 @@
   },
   "nav": [
     "matchfacts",
-    "liveticker",
     "table",
     "injured"
   ],
@@ -97,12 +96,12 @@
           "isDateCorrect": true
         },
         "Tournament": {
-          "id": 42,
+          "id": 943230,
           "parentLeagueId": 42,
-          "link": "/leagues/42/overview/uefa-champions-league",
-          "leagueName": "UEFA Champions League",
-          "roundName": "League Stage - Round 4",
-          "round": "League Stage - Round 4"
+          "link": "/leagues/42/overview/champions-league",
+          "leagueName": "Champions League",
+          "roundName": "4",
+          "round": "4"
         },
         "Stadium": {
           "name": "Lyse Arena",
@@ -113,41 +112,15 @@
           "capacity": 15900,
           "surface": "artificial turf"
         },
-        "Referee": null,
+        "Referee": {
+          "text": "",
+          "countryCode": "",
+          "country": ""
+        },
         "Attendance": null
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8476.png",
-            "linkToMatch": "/matches/lillestrom-vs-viking/2dkrf1#5105015",
-            "date": {
-              "utcTime": "2026-09-20T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8476/overview/lillestrom",
-            "tooltipText": {
-              "utcTime": "2026-09-20T15:00:00.000Z",
-              "homeTeam": "Viking",
-              "homeTeamId": 8478,
-              "homeScore": "3",
-              "awayTeam": "Lillestrøm",
-              "awayTeamId": 8476,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8478",
-              "name": "Viking",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8476",
-              "name": "Lillestrøm",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -266,6 +239,36 @@
               "id": "8417",
               "name": "Fredrikstad",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
+            "linkToMatch": "/matches/viking-vs-aston-villa/2wfy91#6106285",
+            "date": {
+              "utcTime": "2026-10-21T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10252/overview/aston-villa",
+            "tooltipText": {
+              "utcTime": "2026-10-21T19:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "3",
+              "awayTeam": "Viking",
+              "awayTeamId": 8478,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8478",
+              "name": "Viking",
+              "isOurTeam": true
             }
           }
         ],
@@ -444,8 +447,8 @@
                 "1",
                 "away_team",
                 "3",
-                "0",
-                "2"
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -458,19 +461,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Viking have 3W, 1D, 1L in five matches while Sabah FK have 3W, 0D, 2L."
+              "defaultText": "Viking have 3W, 1D, 1L in five matches while Sabah FK have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "8",
-                "away_team",
-                "11"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,18 +482,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Viking have scored in their last 8 matches and Sabah FK have scored in their last 11 matches."
+              "defaultText": "Viking have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "7",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,17 +506,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sabah FK have scored 8 goals in their last 3 matches."
+              "defaultText": "Viking have scored 7 goals in their last 3 matches, while Sabah FK have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "12"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sabah FK haven't drawn in their last 12 matches."
+              "defaultText": "Viking have 3W, 1D, 1L in five matches while Sabah FK have 3W, 1D, 1L."
             }
           ]
         },
@@ -536,16 +545,10 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "countryCode": "INT",
+      "countryCode": "INT-2",
       "QAData": []
     },
-    "liveticker": {
-      "langs": "de",
-      "teams": [
-        "Viking",
-        "Sabah FK"
-      ]
-    },
+    "liveticker": false,
     "superlive": {
       "superLiveUrl": null,
       "showSuperLive": false
@@ -560,18 +563,18 @@
       }
     },
     "weather": {
-      "temperature": 8,
-      "windSpeed": 4,
-      "windDirectionCardinal": "SSW",
+      "temperature": 7,
+      "windSpeed": 3,
+      "windDirectionCardinal": "SSE",
       "iconCode": 11,
       "relativeHumidity": 78,
-      "precipChance": 42,
+      "precipChance": 45,
       "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 55,
+      "cloudCover": 65,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-21T20:00:25Z",
+      "lastUpdated": "2026-10-22T08:00:22Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -602,9 +605,9 @@
             "name": "Nicholas D'Agostino",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-21T11:07:37Z",
+              "lastUpdated": "2026-10-21T22:22:17Z",
               "type": "injury",
-              "expectedReturn": "Mid October 2026"
+              "expectedReturn": "Late October 2026"
             },
             "firstName": "Nicholas",
             "lastName": "D'Agostino"
@@ -626,9 +629,9 @@
             "name": "Veton Berisha",
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-21T11:06:18Z",
+              "lastUpdated": "2026-10-21T22:12:28Z",
               "type": "injury",
-              "expectedReturn": "Mid October 2026"
+              "expectedReturn": "Late October 2026"
             },
             "firstName": "Veton",
             "lastName": "Berisha"
@@ -653,17 +656,17 @@
         "unavailable": []
       }
     },
-    "hasPlayoff": false,
+    "hasPlayoff": true,
     "table": {
-      "leagueId": "42",
-      "url": "https://data.fotmob.com/tables.ext.42.fot.gz",
+      "leagueId": "943230",
+      "url": "https://data.fotmob.com/tables.ext.943230.fot.gz",
       "teams": [
         8478,
         951893
       ],
-      "tournamentNameForUrl": "UEFA Champions League",
+      "tournamentNameForUrl": "Champions League",
       "parentLeagueId": 42,
-      "countryCode": "INT"
+      "countryCode": "INT-2"
     },
     "h2h": false,
     "momentum": false
@@ -757,8 +760,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
@@ -781,8 +784,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
@@ -811,8 +814,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",

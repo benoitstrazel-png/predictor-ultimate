@@ -134,7 +134,7 @@
               "average": 3.75,
               "total": 122,
               "averageType": "average",
-              "fillPercentage": 50.87,
+              "fillPercentage": 50.9,
               "averagePercentage": 50
             },
             {
@@ -534,11 +534,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "9",
+                "away_team",
+                "3",
+                "7",
                 "3"
               ],
               "DefaultLabels": [
@@ -550,23 +552,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored 9 goals in their last 3 matches."
+              "defaultText": "Inter have scored 7 goals in their last 3 matches, while Fiorentina have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -579,7 +575,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Inter have 3W, 1D, 1L in five matches while Fiorentina have 2W, 1D, 2L."
+              "defaultText": "Inter haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -599,7 +595,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 16,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -609,7 +605,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 16 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#010E80"
         },
         {
@@ -733,6 +729,57 @@
           "color": "#5F259F"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 621562,
+          "position": 3,
+          "matchesWithRating": 6,
+          "lastName": "Thuram",
+          "fullName": "Marcus Thuram",
+          "stats": {
+            "goals": 4,
+            "goalAssist": 2,
+            "ontargetScoringAtt": 1.4,
+            "motm": 1,
+            "gamesPlayed": 6,
+            "minsPlayed": 369,
+            "minsPlayedGoal": 92,
+            "expectedGoals": 2.8585000038146973,
+            "playerRating": 7.68
+          }
+        },
+        "awayPlayer": {
+          "playerId": 1607566,
+          "position": 3,
+          "matchesWithRating": 7,
+          "lastName": "Mastantuono",
+          "fullName": "Franco Mastantuono",
+          "stats": {
+            "goals": 3,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.8,
+            "motm": 1,
+            "gamesPlayed": 7,
+            "minsPlayed": 536,
+            "minsPlayedGoal": 179,
+            "expectedGoals": 2.479599952697754,
+            "playerRating": 7.22
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ITA",
       "QAData": [],
       "matchInsightsConfig": {
@@ -792,16 +839,16 @@
     "weather": {
       "temperature": 13,
       "windSpeed": 2,
-      "windDirectionCardinal": "SE",
+      "windDirectionCardinal": "SW",
       "iconCode": 28,
-      "relativeHumidity": 65,
+      "relativeHumidity": 60,
       "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 72,
+      "cloudCover": 60,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-21T12:00:13Z",
+      "lastUpdated": "2026-10-22T00:00:35Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -822,6 +869,7 @@
           {
             "id": 772168,
             "age": 28,
+            "optaId": "231188",
             "name": "Josep Martínez",
             "positionId": 11,
             "usualPlayingPositionId": 0,
@@ -847,14 +895,15 @@
             "rankings": null
           },
           {
-            "id": 889535,
-            "age": 25,
-            "name": "Yann Aurel Bisseck",
+            "id": 521318,
+            "age": 31,
+            "optaId": "211975",
+            "name": "Manuel Akanji",
             "positionId": 33,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "31",
-            "countryName": "Germany",
-            "countryCode": "GER",
+            "shirtNumber": "25",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
             "horizontalLayout": {
               "x": 0.357,
               "y": 0.79,
@@ -863,33 +912,6 @@
             },
             "verticalLayout": {
               "x": 0.21,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.29
-            },
-            "marketValue": 56227872,
-            "firstName": "Yann Aurel",
-            "lastName": "Bisseck",
-            "nationalTeamId": 8570,
-            "rankings": null
-          },
-          {
-            "id": 521318,
-            "age": 31,
-            "name": "Manuel Akanji",
-            "positionId": 35,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "25",
-            "countryName": "Switzerland",
-            "countryCode": "SUI",
-            "horizontalLayout": {
-              "x": 0.357,
-              "y": 0.5,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.5,
               "y": 0.357,
               "height": 0.2,
               "width": 0.29
@@ -903,12 +925,41 @@
           {
             "id": 805451,
             "age": 27,
+            "optaId": "215977",
             "name": "Alessandro Bastoni",
-            "positionId": 37,
+            "positionId": 35,
             "usualPlayingPositionId": 1,
             "shirtNumber": "95",
             "countryName": "Italy",
             "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.5,
+              "height": 0.195,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 58220687,
+            "firstName": "Alessandro",
+            "lastName": "Bastoni",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 940829,
+            "age": 27,
+            "optaId": "230843",
+            "name": "Carlos Augusto",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "30",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
             "horizontalLayout": {
               "x": 0.357,
               "y": 0.21,
@@ -921,21 +972,22 @@
               "height": 0.2,
               "width": 0.29
             },
-            "marketValue": 58220687,
-            "firstName": "Alessandro",
-            "lastName": "Bastoni",
-            "nationalTeamId": 8204,
+            "marketValue": 17450712,
+            "firstName": "Carlos",
+            "lastName": "Augusto",
+            "nationalTeamId": 8256,
             "rankings": null
           },
           {
-            "id": 1114635,
-            "age": 24,
-            "name": "Luis Henrique",
+            "id": 894803,
+            "age": 26,
+            "optaId": "232859",
+            "name": "Djed Spence",
             "positionId": 71,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "11",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
+            "shirtNumber": "99",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.613,
               "y": 0.89,
@@ -948,15 +1000,16 @@
               "height": 0.2,
               "width": 0.195
             },
-            "marketValue": 23109471,
-            "firstName": "Luis",
-            "lastName": "Henrique",
-            "nationalTeamId": 8256,
+            "marketValue": 41693425,
+            "firstName": "Djed",
+            "lastName": "Spence",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
             "id": 541820,
             "age": 29,
+            "optaId": "171384",
             "name": "Nicolò Barella",
             "positionId": 73,
             "usualPlayingPositionId": 2,
@@ -983,14 +1036,15 @@
             "rankings": null
           },
           {
-            "id": 362212,
+            "id": 304733,
             "age": 32,
-            "name": "Piotr Zieliński",
+            "optaId": "111732",
+            "name": "Hakan Çalhanoglu",
             "positionId": 75,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "7",
-            "countryName": "Poland",
-            "countryCode": "POL",
+            "shirtNumber": "20",
+            "countryName": "Türkiye",
+            "countryCode": "TUR",
             "horizontalLayout": {
               "x": 0.613,
               "y": 0.5,
@@ -1003,15 +1057,16 @@
               "height": 0.2,
               "width": 0.195
             },
-            "marketValue": 7796524,
-            "firstName": "Piotr",
-            "lastName": "Zieliński",
-            "nationalTeamId": 8568,
+            "marketValue": 9039467,
+            "firstName": "Hakan",
+            "lastName": "Çalhanoglu",
+            "nationalTeamId": 6595,
             "rankings": null
           },
           {
             "id": 1382000,
             "age": 23,
+            "optaId": "581229",
             "name": "Petar Sučić",
             "positionId": 77,
             "usualPlayingPositionId": 2,
@@ -1039,6 +1094,7 @@
           {
             "id": 605224,
             "age": 28,
+            "optaId": "161919",
             "name": "Federico Dimarco",
             "positionId": 79,
             "usualPlayingPositionId": 2,
@@ -1066,6 +1122,7 @@
           {
             "id": 621562,
             "age": 29,
+            "optaId": "205880",
             "name": "Marcus Thuram",
             "positionId": 104,
             "usualPlayingPositionId": 3,
@@ -1091,14 +1148,15 @@
             "rankings": null
           },
           {
-            "id": 1367618,
-            "age": 21,
-            "name": "Francesco Pio Esposito",
+            "id": 1199383,
+            "age": 23,
+            "optaId": "518531",
+            "name": "Ange-Yoan Bonny",
             "positionId": 106,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "94",
-            "countryName": "Italy",
-            "countryCode": "ITA",
+            "shirtNumber": "14",
+            "countryName": "Côte d'Ivoire",
+            "countryCode": "CIV",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.3,
@@ -1111,16 +1169,17 @@
               "height": 0.2,
               "width": 0.4
             },
-            "marketValue": 34331370,
-            "firstName": "Francesco Pio",
-            "lastName": "Esposito",
-            "nationalTeamId": 8204,
+            "marketValue": 41492236,
+            "firstName": "Ange-Yoan",
+            "lastName": "Bonny",
+            "nationalTeamId": 6709,
             "rankings": null
           }
         ],
         "coach": {
           "id": 27692,
           "age": 45,
+          "optaId": "30",
           "name": "Cristian Chivu",
           "countryName": "Romania",
           "countryCode": "ROU",
@@ -1134,22 +1193,9 @@
         },
         "subs": [
           {
-            "id": 364822,
-            "age": 32,
-            "name": "Ivan Provedel",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "49",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 2572959,
-            "firstName": "Ivan",
-            "lastName": "Provedel",
-            "nationalTeamId": 8204,
-            "rankings": null
-          },
-          {
             "id": 417743,
             "age": 33,
+            "optaId": "149261",
             "name": "Raffaele Di Gennaro",
             "usualPlayingPositionId": 0,
             "shirtNumber": "12",
@@ -1162,36 +1208,54 @@
             "rankings": null
           },
           {
-            "id": 940829,
-            "age": 27,
-            "name": "Carlos Augusto",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "30",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 17450712,
-            "firstName": "Carlos",
-            "lastName": "Augusto",
-            "nationalTeamId": 8256,
+            "id": 364822,
+            "age": 32,
+            "optaId": "151923",
+            "name": "Ivan Provedel",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "49",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2572959,
+            "firstName": "Ivan",
+            "lastName": "Provedel",
+            "nationalTeamId": 8204,
             "rankings": null
           },
           {
-            "id": 894803,
-            "age": 26,
-            "name": "Djed Spence",
+            "id": 889535,
+            "age": 25,
+            "optaId": "438261",
+            "name": "Yann Aurel Bisseck",
             "usualPlayingPositionId": 1,
-            "shirtNumber": "99",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 41693425,
-            "firstName": "Djed",
-            "lastName": "Spence",
-            "nationalTeamId": 8491,
+            "shirtNumber": "31",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 56227872,
+            "firstName": "Yann Aurel",
+            "lastName": "Bisseck",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1413923,
+            "age": 21,
+            "optaId": "593128",
+            "name": "Francesco Stante",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "45",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 436980,
+            "firstName": "Francesco",
+            "lastName": "Stante",
+            "nationalTeamId": 8204,
             "rankings": null
           },
           {
             "id": 1830575,
             "age": 18,
+            "optaId": "631126",
             "name": "Leonardo Bovio",
             "usualPlayingPositionId": 1,
             "shirtNumber": "46",
@@ -1205,6 +1269,7 @@
           {
             "id": 1410437,
             "age": 21,
+            "optaId": "563722",
             "name": "Aleksandar Stanković",
             "usualPlayingPositionId": 2,
             "shirtNumber": "5",
@@ -1217,36 +1282,9 @@
             "rankings": null
           },
           {
-            "id": 1254297,
-            "age": 23,
-            "name": "Andy Diouf",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "17",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 23842465,
-            "firstName": "Andy",
-            "lastName": "Diouf",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 304733,
-            "age": 32,
-            "name": "Hakan Çalhanoglu",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "20",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 9039467,
-            "firstName": "Hakan",
-            "lastName": "Çalhanoglu",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
             "id": 73167,
             "age": 37,
+            "optaId": "57249",
             "name": "Henrikh Mkhitaryan",
             "usualPlayingPositionId": 2,
             "shirtNumber": "22",
@@ -1259,22 +1297,69 @@
             "rankings": null
           },
           {
-            "id": 1199383,
+            "id": 1254297,
             "age": 23,
-            "name": "Ange-Yoan Bonny",
+            "optaId": "503696",
+            "name": "Andy Diouf",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "17",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 23842465,
+            "firstName": "Andy",
+            "lastName": "Diouf",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 362212,
+            "age": 32,
+            "optaId": "126440",
+            "name": "Piotr Zieliński",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 7796524,
+            "firstName": "Piotr",
+            "lastName": "Zieliński",
+            "nationalTeamId": 8568,
+            "rankings": null
+          },
+          {
+            "id": 1367618,
+            "age": 21,
+            "optaId": "551444",
+            "name": "Francesco Pio Esposito",
             "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Ivory Coast",
-            "countryCode": "CIV",
-            "marketValue": 41492236,
-            "firstName": "Ange-Yoan",
-            "lastName": "Bonny",
-            "nationalTeamId": 6709,
+            "shirtNumber": "94",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 34331370,
+            "firstName": "Francesco Pio",
+            "lastName": "Esposito",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 1114635,
+            "age": 24,
+            "optaId": "478270",
+            "name": "Luis Henrique",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 23109471,
+            "firstName": "Luis",
+            "lastName": "Henrique",
+            "nationalTeamId": 8256,
             "rankings": null
           },
           {
             "id": 1646520,
             "age": 19,
+            "optaId": "577696",
             "name": "Mattia Mosconi",
             "usualPlayingPositionId": 3,
             "shirtNumber": "48",
@@ -1292,7 +1377,6 @@
             "id": 611223,
             "age": 30,
             "name": "Benjamin Pavard",
-            "positionId": 1000,
             "countryName": "France",
             "countryCode": "FRA",
             "marketValue": 12593423,
@@ -1306,27 +1390,25 @@
             "nationalTeamId": 6723
           },
           {
-            "id": 263653,
-            "age": 32,
-            "name": "John Stones",
-            "positionId": 1000,
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 9075353,
+            "id": 690230,
+            "age": 29,
+            "name": "Lautaro Martínez",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 76856759,
             "unavailability": {
               "injuryId": 69,
               "type": "injury",
-              "expectedReturn": "Early November 2026"
+              "expectedReturn": "Mid November 2026"
             },
-            "firstName": "John",
-            "lastName": "Stones",
-            "nationalTeamId": 8491
+            "firstName": "Lautaro",
+            "lastName": "Martínez",
+            "nationalTeamId": 6706
           },
           {
             "id": 933768,
             "age": 25,
             "name": "Curtis Jones",
-            "positionId": 1000,
             "countryName": "England",
             "countryCode": "ENG",
             "marketValue": 39440749,
@@ -1340,34 +1422,33 @@
             "nationalTeamId": 8491
           },
           {
-            "id": 690230,
-            "age": 29,
-            "name": "Lautaro Martínez",
-            "positionId": 1000,
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 76856759,
+            "id": 263653,
+            "age": 32,
+            "name": "John Stones",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 9075353,
             "unavailability": {
               "injuryId": 69,
               "type": "injury",
-              "expectedReturn": "Mid November 2026"
+              "expectedReturn": "Early November 2026"
             },
-            "firstName": "Lautaro",
-            "lastName": "Martínez",
-            "nationalTeamId": 6706
+            "firstName": "John",
+            "lastName": "Stones",
+            "nationalTeamId": 8491
           }
         ],
-        "averageStarterAge": 27.5,
-        "totalStarterMarketValue": 385962425,
+        "averageStarterAge": 28,
+        "totalStarterMarketValue": 374173028,
         "lastMatch": {
-          "matchId": 5749702,
-          "homeTeamId": 9857,
-          "awayTeamId": 8636,
-          "homeTeamName": "Bologna",
-          "awayTeamName": "Inter",
+          "matchId": 6106252,
+          "homeTeamId": 8636,
+          "awayTeamId": 9728,
+          "homeTeamName": "Inter",
+          "awayTeamName": "Shakhtar Donetsk",
           "homeScore": 1,
-          "awayScore": 3,
-          "matchDate": "2026-10-17T18:00:00"
+          "awayScore": 0,
+          "matchDate": "2026-10-21T21:00:00"
         }
       },
       "awayTeam": {

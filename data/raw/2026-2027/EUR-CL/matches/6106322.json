@@ -2,7 +2,7 @@
   "general": {
     "matchId": "6106322",
     "matchName": "RB Leipzig-vs-Manchester City_Wed, Nov 4, 2026, 20:00 UTC",
-    "matchRound": "League Stage - Round 4",
+    "matchRound": "4",
     "teamColors": {
       "darkMode": {
         "home": "#FFFFFF",
@@ -21,11 +21,11 @@
         "away": "rgba(255, 255, 255, 1.0)"
       }
     },
-    "leagueId": 42,
-    "leagueName": "UEFA Champions League",
-    "leagueRoundName": "League Stage - Round 4",
+    "leagueId": 943230,
+    "leagueName": "Champions League",
+    "leagueRoundName": "4",
     "parentLeagueId": 42,
-    "countryCode": "INT",
+    "countryCode": "INT-2",
     "homeTeam": {
       "name": "RB Leipzig",
       "id": 178475
@@ -71,7 +71,6 @@
   },
   "nav": [
     "matchfacts",
-    "liveticker",
     "table",
     "head to head",
     "injured"
@@ -98,12 +97,12 @@
           "isDateCorrect": true
         },
         "Tournament": {
-          "id": 42,
+          "id": 943230,
           "parentLeagueId": 42,
-          "link": "/leagues/42/overview/uefa-champions-league",
-          "leagueName": "UEFA Champions League",
-          "roundName": "League Stage - Round 4",
-          "round": "League Stage - Round 4"
+          "link": "/leagues/42/overview/champions-league",
+          "leagueName": "Champions League",
+          "roundName": "4",
+          "round": "4"
         },
         "Stadium": {
           "name": "Red Bull Arena",
@@ -114,41 +113,15 @@
           "capacity": 47800,
           "surface": "grass"
         },
-        "Referee": null,
+        "Referee": {
+          "text": "",
+          "countryCode": "",
+          "country": ""
+        },
         "Attendance": null
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9790.png",
-            "linkToMatch": "/matches/hamburger-sv-vs-rb-leipzig/853733v#5881168",
-            "date": {
-              "utcTime": "2026-09-13T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9790/overview/hamburger-sv",
-            "tooltipText": {
-              "utcTime": "2026-09-13T13:30:00.000Z",
-              "homeTeam": "RB Leipzig",
-              "homeTeamId": 178475,
-              "homeScore": "5",
-              "awayTeam": "Hamburger SV",
-              "awayTeamId": 9790,
-              "awayScore": "0"
-            },
-            "score": "5 - 0",
-            "home": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9790",
-              "name": "Hamburger SV",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -261,6 +234,36 @@
             "home": {
               "id": "9823",
               "name": "Bayern München",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "178475",
+              "name": "RB Leipzig",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png",
+            "linkToMatch": "/matches/real-madrid-vs-rb-leipzig/81hwp83#6106244",
+            "date": {
+              "utcTime": "2026-10-21T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8633/overview/real-madrid",
+            "tooltipText": {
+              "utcTime": "2026-10-21T19:00:00.000Z",
+              "homeTeam": "Real Madrid",
+              "homeTeamId": 8633,
+              "homeScore": "4",
+              "awayTeam": "RB Leipzig",
+              "awayTeamId": 178475,
+              "awayScore": "1"
+            },
+            "score": "4 - 1",
+            "home": {
+              "id": "8633",
+              "name": "Real Madrid",
               "isOurTeam": false
             },
             "away": {
@@ -460,10 +463,34 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
+                "away_team",
+                "11"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "RB Leipzig have scored in their last 4 matches and Manchester City have scored in their last 11 matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "away_team",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -475,31 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "RB Leipzig have scored in their last 3 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "7",
-                "6"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "RB Leipzig have scored 7 goals in their last 3 matches, while Manchester City have scored 6."
+              "defaultText": "Manchester City have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -511,7 +514,7 @@
                 "home_team",
                 "away_team",
                 "12",
-                "7"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "RB Leipzig haven't drawn in their last 12 matches and Manchester City in their last 7."
+              "defaultText": "RB Leipzig haven't drawn in their last 12 matches and Manchester City in their last 12."
             }
           ]
         },
@@ -539,7 +542,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 8456,
-          "priority": 1345,
+          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -561,35 +564,12 @@
           ],
           "text": "Manchester City have won the previous 3 matches against RB Leipzig.",
           "color": "#69A8D8"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8456,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#69A8D8"
         }
       ],
-      "countryCode": "INT",
+      "countryCode": "INT-2",
       "QAData": []
     },
-    "liveticker": {
-      "langs": "de",
-      "teams": [
-        "RB Leipzig",
-        "Manchester City"
-      ]
-    },
+    "liveticker": false,
     "superlive": {
       "superLiveUrl": null,
       "showSuperLive": false
@@ -604,18 +584,18 @@
       }
     },
     "weather": {
-      "temperature": 6,
-      "windSpeed": 4,
-      "windDirectionCardinal": "SSW",
+      "temperature": 5,
+      "windSpeed": 3,
+      "windDirectionCardinal": "SSE",
       "iconCode": 27,
-      "relativeHumidity": 88,
-      "precipChance": 23,
+      "relativeHumidity": 90,
+      "precipChance": 19,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 70,
+      "cloudCover": 69,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-21T20:00:25Z",
+      "lastUpdated": "2026-10-22T08:00:22Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -710,17 +690,17 @@
         ]
       }
     },
-    "hasPlayoff": false,
+    "hasPlayoff": true,
     "table": {
-      "leagueId": "42",
-      "url": "https://data.fotmob.com/tables.ext.42.fot.gz",
+      "leagueId": "943230",
+      "url": "https://data.fotmob.com/tables.ext.943230.fot.gz",
       "teams": [
         178475,
         8456
       ],
-      "tournamentNameForUrl": "UEFA Champions League",
+      "tournamentNameForUrl": "Champions League",
       "parentLeagueId": 42,
-      "countryCode": "INT"
+      "countryCode": "INT-2"
     },
     "h2h": {
       "summary": [
@@ -735,9 +715,9 @@
           },
           "matchUrl": "/matches/manchester-city-vs-rb-leipzig/80y7706#4314981",
           "league": {
-            "name": "Champions League Grp. G",
+            "name": "Champions League",
             "id": "42",
-            "pageUrl": "/leagues/42/overview/champions-league-grp-g"
+            "pageUrl": "/leagues/42/overview/champions-league"
           },
           "home": {
             "name": "Manchester City",
@@ -769,9 +749,9 @@
           },
           "matchUrl": "/matches/manchester-city-vs-rb-leipzig/80y7706#4314975",
           "league": {
-            "name": "Champions League Grp. G",
+            "name": "Champions League",
             "id": "42",
-            "pageUrl": "/leagues/42/overview/champions-league-grp-g"
+            "pageUrl": "/leagues/42/overview/champions-league"
           },
           "home": {
             "name": "RB Leipzig",
@@ -871,9 +851,9 @@
           },
           "matchUrl": "/matches/manchester-city-vs-rb-leipzig/80y7706#3714009",
           "league": {
-            "name": "Champions League Grp. A",
+            "name": "Champions League",
             "id": "42",
-            "pageUrl": "/leagues/42/overview/champions-league-grp"
+            "pageUrl": "/leagues/42/overview/champions-league"
           },
           "home": {
             "name": "RB Leipzig",
@@ -905,9 +885,9 @@
           },
           "matchUrl": "/matches/manchester-city-vs-rb-leipzig/80y7706#3713998",
           "league": {
-            "name": "Champions League Grp. A",
+            "name": "Champions League",
             "id": "42",
-            "pageUrl": "/leagues/42/overview/champions-league-grp"
+            "pageUrl": "/leagues/42/overview/champions-league"
           },
           "home": {
             "name": "Manchester City",
@@ -1026,8 +1006,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
@@ -1050,8 +1030,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
@@ -1080,8 +1060,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",

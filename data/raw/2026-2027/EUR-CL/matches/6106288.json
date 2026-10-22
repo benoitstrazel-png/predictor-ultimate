@@ -2,7 +2,7 @@
   "general": {
     "matchId": "6106288",
     "matchName": "FC Porto-vs-Napoli_Wed, Nov 4, 2026, 20:00 UTC",
-    "matchRound": "League Stage - Round 4",
+    "matchRound": "4",
     "teamColors": {
       "darkMode": {
         "home": "#005898",
@@ -21,11 +21,11 @@
         "away": "rgba(255, 255, 255, 1.0)"
       }
     },
-    "leagueId": 42,
-    "leagueName": "UEFA Champions League",
-    "leagueRoundName": "League Stage - Round 4",
+    "leagueId": 943230,
+    "leagueName": "Champions League",
+    "leagueRoundName": "4",
     "parentLeagueId": 42,
-    "countryCode": "INT",
+    "countryCode": "INT-2",
     "homeTeam": {
       "name": "FC Porto",
       "id": 9773
@@ -71,7 +71,6 @@
   },
   "nav": [
     "matchfacts",
-    "liveticker",
     "table",
     "head to head",
     "injured"
@@ -98,12 +97,12 @@
           "isDateCorrect": true
         },
         "Tournament": {
-          "id": 42,
+          "id": 943230,
           "parentLeagueId": 42,
-          "link": "/leagues/42/overview/uefa-champions-league",
-          "leagueName": "UEFA Champions League",
-          "roundName": "League Stage - Round 4",
-          "round": "League Stage - Round 4"
+          "link": "/leagues/42/overview/champions-league",
+          "leagueName": "Champions League",
+          "roundName": "4",
+          "round": "4"
         },
         "Stadium": {
           "name": "Estádio Do Dragão",
@@ -114,7 +113,11 @@
           "capacity": 50399,
           "surface": "grass"
         },
-        "Referee": null,
+        "Referee": {
+          "text": "",
+          "countryCode": "",
+          "country": ""
+        },
         "Attendance": null
       },
       "teamForm": [
@@ -436,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "0",
+                "2",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -452,20 +461,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "FC Porto have won their last 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "FC Porto have 3W, 0D, 2L in five matches while Napoli have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "5",
                 "away_team",
-                "9"
+                "3",
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,18 +486,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Porto have scored in their last 5 matches and Napoli have scored in their last 9 matches."
+              "defaultText": "FC Porto have scored 4 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "4",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -498,17 +510,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Napoli have scored 9 goals in their last 3 matches."
+              "defaultText": "FC Porto have scored 4 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "10"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC Porto haven't drawn in their last 10 matches."
+              "defaultText": "FC Porto haven't drawn in their last 12 matches and Napoli in their last 4."
             }
           ]
         },
@@ -536,47 +550,24 @@
           "type": "team",
           "playerId": null,
           "teamId": 9773,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#005898"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9875,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#12A0D7"
         }
       ],
-      "countryCode": "INT",
+      "countryCode": "INT-2",
       "QAData": []
     },
-    "liveticker": {
-      "langs": "de",
-      "teams": [
-        "FC Porto",
-        "Napoli"
-      ]
-    },
+    "liveticker": false,
     "superlive": {
       "superLiveUrl": null,
       "showSuperLive": false
@@ -592,19 +583,19 @@
     },
     "weather": {
       "temperature": 14,
-      "windSpeed": 1,
+      "windSpeed": 3,
       "windDirectionCardinal": "ENE",
-      "iconCode": 27,
-      "relativeHumidity": 77,
+      "iconCode": 29,
+      "relativeHumidity": 75,
       "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 60,
-      "description": "Mostly Cloudy",
+      "cloudCover": 36,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-21T20:00:25Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-22T08:00:22Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106288,
@@ -709,17 +700,17 @@
         ]
       }
     },
-    "hasPlayoff": false,
+    "hasPlayoff": true,
     "table": {
-      "leagueId": "42",
-      "url": "https://data.fotmob.com/tables.ext.42.fot.gz",
+      "leagueId": "943230",
+      "url": "https://data.fotmob.com/tables.ext.943230.fot.gz",
       "teams": [
         9773,
         9875
       ],
-      "tournamentNameForUrl": "UEFA Champions League",
+      "tournamentNameForUrl": "Champions League",
       "parentLeagueId": 42,
-      "countryCode": "INT"
+      "countryCode": "INT-2"
     },
     "h2h": {
       "summary": [
@@ -957,8 +948,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
@@ -981,8 +972,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
@@ -1011,8 +1002,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "UEFA Champions League",
-            "item": "https://www.fotmob.com/leagues/42/overview/uefa-champions-league"
+            "name": "Champions League",
+            "item": "https://www.fotmob.com/leagues/42/overview/champions-league"
           },
           {
             "@type": "ListItem",
