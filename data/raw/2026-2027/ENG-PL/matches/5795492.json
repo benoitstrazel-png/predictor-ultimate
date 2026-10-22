@@ -323,36 +323,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
-            "linkToMatch": "/matches/brighton-hove-albion-vs-manchester-united/3goccs#6099329",
-            "date": {
-              "utcTime": "2026-09-16T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10260/overview/manchester-united",
-            "tooltipText": {
-              "utcTime": "2026-09-16T19:00:00.000Z",
-              "homeTeam": "Manchester United",
-              "homeTeamId": 10260,
-              "homeScore": "2",
-              "awayTeam": "Brighton & Hove Albion",
-              "awayTeamId": 10204,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10204",
-              "name": "Brighton & Hove Albion",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
             "linkToMatch": "/matches/arsenal-vs-brighton-hove-albion/3bfk5g#5795457",
             "date": {
@@ -469,6 +439,36 @@
               "name": "Crystal Palace",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7758.png",
+            "linkToMatch": "/matches/jablonec-vs-brighton-hove-albion/2o1xp1#6112526",
+            "date": {
+              "utcTime": "2026-10-22T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/7758/overview/jablonec",
+            "tooltipText": {
+              "utcTime": "2026-10-22T16:45:00.000Z",
+              "homeTeam": "Jablonec",
+              "homeTeamId": 7758,
+              "homeScore": "0",
+              "awayTeam": "Brighton & Hove Albion",
+              "awayTeamId": 10204,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "7758",
+              "name": "Jablonec",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -485,11 +485,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -502,17 +502,20 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Brighton & Hove Albion have won their last 6 matches."
+              "defaultText": "Brighton & Hove Albion haven't lost in 8 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "3",
+                "12",
+                "9"
               ],
               "DefaultLabels": [
                 "yes",
@@ -523,7 +526,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brighton & Hove Albion have scored in their last 4 away matches."
+              "defaultText": "Liverpool have scored 12 goals in their last 3 matches, while Brighton & Hove Albion have scored 9."
             },
             {
               "OddsType": "ou",
@@ -551,12 +554,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "6",
                 "6"
               ],
               "DefaultLabels": [
@@ -570,7 +571,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool haven't drawn in their last 6 matches and Brighton & Hove Albion in their last 6."
+              "defaultText": "Liverpool haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -632,15 +633,15 @@
         },
         {
           "type": "player",
-          "playerId": 846005,
+          "playerId": 1364042,
           "teamId": 8650,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 846005,
-              "name": "Dominik Szoboszlai",
+              "value": 1364042,
+              "name": "Lewis Koumas",
               "type": "player"
             },
             {
@@ -649,12 +650,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 2.5,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Dominik Szoboszlai has created the most big chances for Liverpool (3)",
+          "text": "Lewis Koumas has the most shots on target per match for Liverpool (2.5)",
           "color": "#911712"
         },
         {
@@ -666,7 +667,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 17,
+              "value": 14,
               "name": null,
               "type": "integer"
             },
@@ -676,7 +677,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 17 goals in their last 5 matches",
+          "text": "Have scored 14 goals in their last 5 matches",
           "color": "#0850A0"
         },
         {

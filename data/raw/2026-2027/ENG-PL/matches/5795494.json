@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -169,36 +169,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10229.png",
-            "linkToMatch": "/matches/sunderland-vs-az-alkmaar/2w4bg3#6112330",
-            "date": {
-              "utcTime": "2026-09-16T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10229/overview/az-alkmaar",
-            "tooltipText": {
-              "utcTime": "2026-09-16T19:00:00.000Z",
-              "homeTeam": "Sunderland",
-              "homeTeamId": 8472,
-              "homeScore": "1",
-              "awayTeam": "AZ Alkmaar",
-              "awayTeamId": 10229,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8472",
-              "name": "Sunderland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10229",
-              "name": "AZ Alkmaar",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -311,6 +281,36 @@
             "home": {
               "id": "8678",
               "name": "AFC Bournemouth",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8472",
+              "name": "Sunderland",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2182.png",
+            "linkToMatch": "/matches/lech-poznan-vs-sunderland/xsq7d#6112320",
+            "date": {
+              "utcTime": "2026-10-22T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/2182/overview/lech-poznan",
+            "tooltipText": {
+              "utcTime": "2026-10-22T16:45:00.000Z",
+              "homeTeam": "Lech Poznań",
+              "homeTeamId": 2182,
+              "homeScore": "1",
+              "awayTeam": "Sunderland",
+              "awayTeamId": 8472,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "2182",
+              "name": "Lech Poznań",
               "isOurTeam": false
             },
             "away": {
@@ -490,8 +490,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "0",
+                "1",
+                "1",
                 "3",
                 "away_team",
                 "1",
@@ -509,7 +509,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sunderland have 2W, 0D, 3L in five matches while Leeds United have 1W, 2D, 2L."
+              "defaultText": "Sunderland have 1W, 1D, 3L in five matches while Leeds United have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -541,7 +541,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
+                "1",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -553,17 +553,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sunderland have an average of 0.67 goals in their last three matches and Leeds United have an average of 0.67."
+              "defaultText": "Sunderland have an average of 1 goals in their last three matches and Leeds United have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "1",
+                "1",
+                "3",
+                "away_team",
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -576,7 +582,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sunderland haven't drawn in their last 7 matches."
+              "defaultText": "Sunderland have 1W, 1D, 3L in five matches while Leeds United have 1W, 2D, 2L."
             }
           ]
         },
@@ -627,30 +633,20 @@
           "color": "#DC0814"
         },
         {
-          "type": "player",
-          "playerId": 1364069,
+          "type": "team",
+          "playerId": null,
           "teamId": 8472,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 1364069,
-              "name": "Malick Fofana",
-              "type": "player"
-            },
-            {
-              "value": 8472,
-              "name": "Sunderland",
-              "type": "team"
-            },
-            {
-              "value": 3.1,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Malick Fofana has the most shots on target per match for Sunderland (3.1)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#DC0814"
         },
         {
@@ -839,24 +835,24 @@
     },
     "weather": {
       "temperature": 11,
-      "windSpeed": 11,
+      "windSpeed": 12,
       "windDirectionCardinal": "W",
       "iconCode": 24,
       "relativeHumidity": 60,
       "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 25,
+      "cloudCover": 26,
       "description": "Mostly Sunny/Wind",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-22T05:00:04Z",
+      "lastUpdated": "2026-10-22T17:00:02Z",
       "localizedKey": "weather_condition_windy",
       "defaultTitle": "Windy"
     },
     "lineup": {
       "matchId": 5795494,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -922,14 +918,14 @@
             "rankings": null
           },
           {
-            "id": 754126,
-            "age": 28,
-            "name": "Kevin Danso",
+            "id": 480253,
+            "age": 31,
+            "name": "Luke O'Nien",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "4",
-            "countryName": "Austria",
-            "countryCode": "AUT",
+            "shirtNumber": "13",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.625,
@@ -942,10 +938,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 18680638,
-            "firstName": "Kevin",
-            "lastName": "Danso",
-            "nationalTeamId": 8255,
+            "marketValue": 809005,
+            "firstName": "Luke",
+            "lastName": "O'Nien",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
@@ -1009,7 +1005,6 @@
             "positionId": 64,
             "usualPlayingPositionId": 2,
             "shirtNumber": "34",
-            "isCaptain": true,
             "countryName": "Switzerland",
             "countryCode": "SUI",
             "horizontalLayout": {
@@ -1179,150 +1174,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1186615,
-            "age": 23,
-            "name": "Melker Ellborg",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "31",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 1534663,
-            "firstName": "Melker",
-            "lastName": "Ellborg",
-            "nationalTeamId": 8520,
-            "rankings": null
-          },
-          {
-            "id": 480253,
-            "age": 31,
-            "name": "Luke O'Nien",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "13",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 809005,
-            "firstName": "Luke",
-            "lastName": "O'Nien",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1664716,
-            "age": 20,
-            "name": "Dayann Méthalie",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "6",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 14714476,
-            "firstName": "Dayann",
-            "lastName": "Méthalie",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1285866,
-            "age": 22,
-            "name": "Habib Diarra",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "19",
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 45896674,
-            "firstName": "Habib",
-            "lastName": "Diarra",
-            "nationalTeamId": 6395,
-            "rankings": null
-          },
-          {
-            "id": 1811265,
-            "age": 20,
-            "name": "Jules Ahoka",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "29",
-            "countryName": "DR Congo",
-            "countryCode": "COD",
-            "firstName": "Jules",
-            "lastName": "Ahoka",
-            "nationalTeamId": 6321,
-            "rankings": null
-          },
-          {
-            "id": 1368654,
-            "age": 21,
-            "name": "Chemsdine Talbi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 29736105,
-            "firstName": "Chemsdine",
-            "lastName": "Talbi",
-            "nationalTeamId": 6262,
-            "rankings": null
-          },
-          {
-            "id": 1829355,
-            "age": 18,
-            "name": "Juan Riquelme Angulo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "50",
-            "countryName": "Ecuador",
-            "countryCode": "ECU",
-            "marketValue": 955547,
-            "firstName": "Juan Riquelme",
-            "lastName": "Angulo",
-            "nationalTeamId": 6707,
-            "rankings": null
-          },
-          {
-            "id": 1364069,
-            "age": 21,
-            "name": "Malick Fofana",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "39",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 32833229,
-            "firstName": "Malick",
-            "lastName": "Fofana",
-            "nationalTeamId": 8263,
-            "rankings": null
-          },
-          {
-            "id": 1287010,
-            "age": 23,
-            "name": "Nilson Angulo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Ecuador",
-            "countryCode": "ECU",
-            "marketValue": 12619104,
-            "firstName": "Nilson",
-            "lastName": "Angulo",
-            "nationalTeamId": 6707,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 754126,
-            "age": 28,
-            "name": "Kevin Danso",
-            "countryName": "Austria",
-            "countryCode": "AUT",
-            "marketValue": 18680638,
-            "unavailability": {
-              "type": "suspension",
-              "expectedReturn": "Late October 2026",
-              "expectedReturnDate": "2026-10-25T18:30:00Z"
-            },
-            "firstName": "Kevin",
-            "lastName": "Danso",
-            "nationalTeamId": 8255
-          },
           {
             "id": 887703,
             "age": 26,
@@ -1338,22 +1190,6 @@
             "firstName": "Wilson",
             "lastName": "Isidor",
             "nationalTeamId": 5934
-          },
-          {
-            "id": 940446,
-            "age": 24,
-            "name": "Brian Brobbey",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 40558471,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Brian",
-            "lastName": "Brobbey",
-            "nationalTeamId": 6708
           },
           {
             "id": 974268,
@@ -1373,6 +1209,23 @@
             "nationalTeamId": 10259
           },
           {
+            "id": 754126,
+            "age": 28,
+            "name": "Kevin Danso",
+            "positionId": 1100,
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 18680638,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Late October 2026",
+              "expectedReturnDate": "2026-10-25T18:30:00Z"
+            },
+            "firstName": "Kevin",
+            "lastName": "Danso",
+            "nationalTeamId": 8255
+          },
+          {
             "id": 277771,
             "age": 35,
             "name": "Thomas Meunier",
@@ -1388,6 +1241,23 @@
             "firstName": "Thomas",
             "lastName": "Meunier",
             "nationalTeamId": 8263
+          },
+          {
+            "id": 940446,
+            "age": 24,
+            "name": "Brian Brobbey",
+            "positionId": 1000,
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 40558471,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Brian",
+            "lastName": "Brobbey",
+            "nationalTeamId": 6708
           },
           {
             "id": 1123947,
@@ -1407,18 +1277,8 @@
             "nationalTeamId": 8491
           }
         ],
-        "averageStarterAge": 26.5,
-        "totalStarterMarketValue": 217636235,
-        "lastMatch": {
-          "matchId": 5795475,
-          "homeTeamId": 8678,
-          "awayTeamId": 8472,
-          "homeTeamName": "AFC Bournemouth",
-          "awayTeamName": "Sunderland",
-          "homeScore": 2,
-          "awayScore": 0,
-          "matchDate": "2026-10-18T15:00:00"
-        }
+        "averageStarterAge": 26.8,
+        "totalStarterMarketValue": 199764602
       },
       "awayTeam": {
         "id": 8463,
@@ -1567,7 +1427,6 @@
             "positionId": 64,
             "usualPlayingPositionId": 2,
             "shirtNumber": "4",
-            "isCaptain": true,
             "countryName": "Wales",
             "countryCode": "WAL",
             "horizontalLayout": {
@@ -1738,134 +1597,6 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 432435,
-            "age": 31,
-            "name": "Michael Zetterer",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "16",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 3951405,
-            "firstName": "Michael",
-            "lastName": "Zetterer",
-            "nationalTeamId": 8570,
-            "rankings": null
-          },
-          {
-            "id": 861805,
-            "age": 27,
-            "name": "Jaka Bijol",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "countryName": "Slovenia",
-            "countryCode": "SVN",
-            "marketValue": 25980974,
-            "firstName": "Jaka",
-            "lastName": "Bijol",
-            "nationalTeamId": 5787,
-            "rankings": null
-          },
-          {
-            "id": 1092403,
-            "age": 25,
-            "name": "Melvin Bard",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "26",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 10655866,
-            "firstName": "Melvin",
-            "lastName": "Bard",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 952322,
-            "age": 26,
-            "name": "Brenden Aaronson",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "11",
-            "countryName": "USA",
-            "countryCode": "USA",
-            "marketValue": 19145980,
-            "firstName": "Brenden",
-            "lastName": "Aaronson",
-            "nationalTeamId": 6713,
-            "rankings": null
-          },
-          {
-            "id": 1080983,
-            "age": 26,
-            "name": "Ilia Gruev",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "44",
-            "countryName": "Bulgaria",
-            "countryCode": "BUL",
-            "marketValue": 12979892,
-            "firstName": "Ilia",
-            "lastName": "Gruev",
-            "nationalTeamId": 10150,
-            "rankings": null
-          },
-          {
-            "id": 820024,
-            "age": 28,
-            "name": "Sean Longstaff",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 17212742,
-            "firstName": "Sean",
-            "lastName": "Longstaff",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 494417,
-            "age": 29,
-            "name": "Harry Wilson",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 26406004,
-            "firstName": "Harry",
-            "lastName": "Wilson",
-            "nationalTeamId": 5790,
-            "rankings": null
-          },
-          {
-            "id": 1393672,
-            "age": 21,
-            "name": "Jean-Mattéo Bahoya",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "23",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 27110355,
-            "firstName": "Jean-Mattéo",
-            "lastName": "Bahoya",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 861197,
-            "age": 27,
-            "name": "Lukas Nmecha",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 10546498,
-            "firstName": "Lukas",
-            "lastName": "Nmecha",
-            "nationalTeamId": 8570,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 717176,
@@ -1919,17 +1650,7 @@
           }
         ],
         "averageStarterAge": 27.1,
-        "totalStarterMarketValue": 246295813,
-        "lastMatch": {
-          "matchId": 5795480,
-          "homeTeamId": 8463,
-          "awayTeamId": 10260,
-          "homeTeamName": "Leeds United",
-          "awayTeamName": "Manchester United",
-          "homeScore": 1,
-          "awayScore": 1,
-          "matchDate": "2026-10-18T15:00:00"
-        }
+        "totalStarterMarketValue": 246295813
       }
     },
     "hasPlayoff": false,

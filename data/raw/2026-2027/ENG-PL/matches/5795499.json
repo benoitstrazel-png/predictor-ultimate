@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10229.png",
-            "linkToMatch": "/matches/sunderland-vs-az-alkmaar/2w4bg3#6112330",
-            "date": {
-              "utcTime": "2026-09-16T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10229/overview/az-alkmaar",
-            "tooltipText": {
-              "utcTime": "2026-09-16T19:00:00.000Z",
-              "homeTeam": "Sunderland",
-              "homeTeamId": 8472,
-              "homeScore": "1",
-              "awayTeam": "AZ Alkmaar",
-              "awayTeamId": 10229,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8472",
-              "name": "Sunderland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10229",
-              "name": "AZ Alkmaar",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
@@ -423,6 +393,36 @@
               "name": "Sunderland",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2182.png",
+            "linkToMatch": "/matches/lech-poznan-vs-sunderland/xsq7d#6112320",
+            "date": {
+              "utcTime": "2026-10-22T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/2182/overview/lech-poznan",
+            "tooltipText": {
+              "utcTime": "2026-10-22T16:45:00.000Z",
+              "homeTeam": "Lech Poznań",
+              "homeTeamId": 2182,
+              "homeScore": "1",
+              "awayTeam": "Sunderland",
+              "awayTeamId": 8472,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "2182",
+              "name": "Lech Poznań",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8472",
+              "name": "Sunderland",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "0",
                 "3",
                 "away_team",
-                "2",
-                "0",
+                "1",
+                "1",
                 "3"
               ],
               "DefaultLabels": [
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Coventry City have 2W, 0D, 3L in five matches while Sunderland have 2W, 0D, 3L."
+              "defaultText": "Coventry City have 2W, 0D, 3L in five matches while Sunderland have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -475,7 +475,7 @@
                 "away_team",
                 "3",
                 "6",
-                "2"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Coventry City have scored 6 goals in their last 3 matches, while Sunderland have scored 2."
+              "defaultText": "Coventry City have scored 6 goals in their last 3 matches, while Sunderland have scored 3."
             },
             {
               "OddsType": "ou",
@@ -499,7 +499,7 @@
                 "away_team",
                 "3",
                 "6",
-                "2"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,19 +510,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Coventry City have scored 6 goals in their last 3 matches, while Sunderland have scored 2."
+              "defaultText": "Coventry City have scored 6 goals in their last 3 matches, while Sunderland have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "11",
-                "7"
+                "11"
               ],
               "DefaultLabels": [
                 "1x",
@@ -535,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Coventry City haven't drawn in their last 11 matches and Sunderland in their last 7."
+              "defaultText": "Coventry City haven't drawn in their last 11 matches."
             }
           ]
         },
@@ -662,30 +660,20 @@
           "color": "#DC0814"
         },
         {
-          "type": "player",
-          "playerId": 207236,
+          "type": "team",
+          "playerId": null,
           "teamId": 8472,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
-            {
-              "value": 207236,
-              "name": "Granit Xhaka",
-              "type": "player"
-            },
-            {
-              "value": 8472,
-              "name": "Sunderland",
-              "type": "team"
-            },
             {
               "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Granit Xhaka has created the most big chances for Sunderland (5)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#DC0814"
         }
       ],

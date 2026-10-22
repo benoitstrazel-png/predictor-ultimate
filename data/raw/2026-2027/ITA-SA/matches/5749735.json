@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
-            "linkToMatch": "/matches/atalanta-vs-juventus/2sw7tm#5749685",
-            "date": {
-              "utcTime": "2026-09-20T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8524/overview/atalanta",
-            "tooltipText": {
-              "utcTime": "2026-09-20T16:00:00.000Z",
-              "homeTeam": "Juventus",
-              "homeTeamId": 9885,
-              "homeScore": "2",
-              "awayTeam": "Atalanta",
-              "awayTeamId": 8524,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9885",
-              "name": "Juventus",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7801.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "8543",
               "name": "Lazio",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9851.png",
+            "linkToMatch": "/matches/rennes-vs-juventus/37yp1l#6112251",
+            "date": {
+              "utcTime": "2026-10-22T16:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9851/overview/rennes",
+            "tooltipText": {
+              "utcTime": "2026-10-22T16:45:00.000Z",
+              "homeTeam": "Juventus",
+              "homeTeamId": 9885,
+              "homeScore": "2",
+              "awayTeam": "Rennes",
+              "awayTeamId": 9851,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9851",
+              "name": "Rennes",
               "isOurTeam": false
             }
           }
@@ -443,8 +443,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
+                "2",
                 "2",
                 "away_team",
                 "2",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Juventus have 2W, 1D, 2L in five matches while Napoli have 2W, 1D, 2L."
+              "defaultText": "Juventus have 1W, 2D, 2L in five matches while Napoli have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -474,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "3",
+                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -486,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 3 goals in their last 3 matches, while Napoli have scored 5."
+              "defaultText": "Juventus have scored 4 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "ou",
@@ -498,7 +498,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "3",
+                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -510,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 3 goals in their last 3 matches, while Napoli have scored 5."
+              "defaultText": "Juventus have scored 4 goals in their last 3 matches, while Napoli have scored 5."
             },
             {
               "OddsType": "dc",
@@ -570,6 +570,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 9885,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#000001"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9885,
           "priority": 6,
           "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
           "localizedTextId": "h2h_no_draws_v2",
@@ -591,33 +608,6 @@
             }
           ],
           "text": "Juventus and Napoli have not drawn any of their last 3 matches against each other.",
-          "color": "#000001"
-        },
-        {
-          "type": "player",
-          "playerId": 862616,
-          "teamId": 9885,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 862616,
-              "name": "Edon Zhegrova",
-              "type": "player"
-            },
-            {
-              "value": 9885,
-              "name": "Juventus",
-              "type": "team"
-            },
-            {
-              "value": 4.5,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Edon Zhegrova has the most shots on target per match for Juventus (4.5)",
           "color": "#000001"
         },
         {
@@ -661,15 +651,15 @@
         },
         {
           "type": "player",
-          "playerId": 1355574,
+          "playerId": 1355552,
           "teamId": 9875,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1355574,
-              "name": "Giovane Nascimento",
+              "value": 1355552,
+              "name": "Alisson Santos",
               "type": "player"
             },
             {
@@ -678,12 +668,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.7,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Giovane Nascimento has created the most big chances for Napoli (2)",
+          "text": "Alisson Santos has the most shots on target per match for Napoli (1.7)",
           "color": "#12A0D7"
         }
       ],
@@ -713,10 +703,10 @@
       "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
+      "cloudCover": 51,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-22T08:00:13Z",
+      "lastUpdated": "2026-10-22T20:00:20Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
