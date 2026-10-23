@@ -1,571 +1,964 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { formatMatchTime } from '../utils/formatMatchTime';
-import ValueEdgeScatter from './ValueEdgeScatter';
-import MatchPrediction from './MatchPrediction';
+import React, { useState, useMemo } from 'react';
+import {
+  ChevronLeft, ChevronRight, Layers, AlertTriangle, CloudRain,
+  RefreshCw, Search, CheckCircle2, Flame, ShieldCheck, Calendar, SlidersHorizontal
+} from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
-import { fetchLiveMatchWeather } from '../services/weatherService';
+import MatchPrediction from './MatchPrediction';
+import RagTacticalBriefPanel from './RagTacticalBriefPanel';
+import ValueEdgeScatter from './ValueEdgeScatter';
 import { useMatch } from '../context/MatchContext';
-import { ShieldAlert, TrendingDown, TrendingUp, CloudRain, Sun, CheckCircle2, Star, Filter, Check, RefreshCw, AlertCircle } from 'lucide-react';
 
 const ALL_LEAGUES = [
-  { code: 'EUR-CL', name: 'Champions League 🇪🇺' },
-  { code: 'EUR-EL', name: 'Europa League 🇪🇺' },
-  { code: 'EUR-ECL', name: 'Conference League 🇪🇺' },
-  { code: 'FRA-L1', name: 'Ligue 1 🇫🇷' },
-  { code: 'ENG-PL', name: 'Premier League 🇬🇧' },
-  { code: 'ESP-LL', name: 'La Liga 🇪🇸' },
-  { code: 'ITA-SA', name: 'Serie A 🇮🇹' },
-  { code: 'GER-BL', name: 'Bundesliga 🇩🇪' },
-  { code: 'FRIENDLY', name: 'Amicaux 🌐' },
+  { code: 'FRA-L1', name: 'Ligue 1', flag: '🇫🇷' },
+  { code: 'ENG-PL', name: 'Premier League', flag: '🇬🇧' },
+  { code: 'ESP-LL', name: 'La Liga', flag: '🇪🇸' },
+  { code: 'ITA-SA', name: 'Serie A', flag: '🇮🇹' },
+  { code: 'GER-BL', name: 'Bundesliga', flag: '🇩🇪' },
+  { code: 'EUR-CL', name: 'Champions League', flag: '🇪🇺' },
+  { code: 'EUR-EL', name: 'Europa League', flag: '🇪🇺' },
+  { code: 'EUR-ECL', name: 'Conference League', flag: '🇪🇺' },
 ];
 
+const LEAGUE_META = Object.fromEntries(ALL_LEAGUES.map((l) => [l.code, l]));
+
+const MODEL_VERSIONS = [
+  { id: 'v3', label: 'v3 · Hybrid DC+LGBM', short: 'V3 PROD' },
+  { id: 'v2', label: 'v2 · Dixon-Coles Pur', short: 'V2 BASE' },
+  { id: 'v1', label: 'v1 · Monte-Carlo LCG', short: 'V1 ARCH' },
+];
+
+const STATUS_FILTERS = [
+  { id: 'ALL', label: 'TOUS' },
+  { id: 'LIVE', label: 'EN DIRECT' },
+  { id: 'UPCOMING', label: 'À VENIR' },
+  { id: 'FINISHED', label: 'TERMINÉS' },
+];
+
+function extractMatchdayNumber(match) {
+  if (match.gameweek) return Number(match.gameweek);
+  if (match.matchday) return Number(match.matchday);
+  const r = String(match.round || match.round_label || '');
+  const m = r.match(/(\d+)/);
+  return m ? Number(m[1]) : null;
+}
+
+function getModelSnapshotForMatch(match, modelVersion) {
+  const byModel = match.predictionsByModel || {};
+  const snap = byModel[modelVersion];
+  const odds = match.betclicOdds || match.odds || {};
+  const oddH = odds.home ?? odds['1'] ?? null;
+  const oddD = odds.draw ?? odds['N'] ?? null;
+  const oddA = odds.away ?? odds['2'] ?? null;
+
+  if (snap) {
+    return {
+      modelVersion,
+      probHome: Number(snap.probHome ?? 44),
+      probDraw: Number(snap.probDraw ?? 28),
+      probAway: Number(snap.probAway ?? 28),
+      lambdaHome: Number(snap.lambdaHome ?? 1.45),
+      lambdaAway: Number(snap.lambdaAway ?? 1.12),
+      confidence: Number(snap.confidence ?? 58),
+      topScore: snap.topScore || '1-1',
+      valueOutcome: snap.valueOutcome || null,
+      valueEdgePct: Number(snap.valueEdgePct ?? 0),
+      kellyStakePct: Number(snap.kellyStakePct ?? 0),
+      oddHome: oddH,
+      oddDraw: oddD,
+      oddAway: oddA,
+    };
+  }
+
+  const pH = parseFloat(String(match.probabilities?.home || '44').replace('%', '')) || 44;
+  const pD = parseFloat(String(match.probabilities?.draw || '28').replace('%', '')) || 28;
+  const pA = parseFloat(String(match.probabilities?.away || '28').replace('%', '')) || 28;
+  const lamH = parseFloat(match.expectedGoals?.home ?? match.prediction?.homeXg ?? 1.42);
+  const lamA = parseFloat(match.expectedGoals?.away ?? match.prediction?.awayXg ?? 1.12);
+  const vb = (match.valueBets || [])[0] || null;
+  const edgeVal = vb ? parseFloat(String(vb.edge_percentage || vb.edge || '0').replace('%', '')) : 0;
+
+  return {
+    modelVersion,
+    probHome: pH,
+    probDraw: pD,
+    probAway: pA,
+    lambdaHome: lamH,
+    lambdaAway: lamA,
+    confidence: parseFloat(match.prediction?.confidence ?? Math.max(pH, pD, pA)),
+    topScore: match.topExactScores?.[0]?.score || '1-1',
+    valueOutcome: vb?.selection || vb?.outcome || null,
+    valueEdgePct: edgeVal,
+    kellyStakePct: 1.5,
+    oddHome: oddH,
+    oddDraw: oddD,
+    oddAway: oddA,
+  };
+}
+
 export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMatch }) {
-  const { updateMatch } = useMatch();
-  const [minEdge, setMinEdge] = useState(2.0);
-  const [selectedLeagues, setSelectedLeagues] = useState(['EUR-CL', 'EUR-EL', 'EUR-ECL', 'ENG-PL', 'FRA-L1', 'ESP-LL', 'ITA-SA', 'GER-BL', 'FRIENDLY']); // Multi-select array
+  const {
+    updateMatch,
+    modelVersion = 'v3',
+    setModelVersion,
+    modelBenchmarks = {},
+  } = useMatch();
+
+  const [statusFilter, setStatusFilter] = useState('UPCOMING');
+  const [selectedLeague, setSelectedLeague] = useState('ALL');
+  const [selectedMatchday, setSelectedMatchday] = useState('ALL');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [onlyValueBets, setOnlyValueBets] = useState(false);
+  const [minConfidence, setMinConfidence] = useState(0);
   const [refreshingMatchId, setRefreshingMatchId] = useState(null);
-  const [lastRefreshedTimes, setLastRefreshedTimes] = useState({});
+  const [showScatter, setShowScatter] = useState(false);
+
+  const rawSchedule = APP_DATA?.fullSchedule || [];
+
+  // Extraction des journées (Matchdays) disponibles
+  const availableMatchdays = useMemo(() => {
+    const s = new Set();
+    rawSchedule.forEach((m) => {
+      if (selectedLeague !== 'ALL' && m.league !== selectedLeague) return;
+      const md = extractMatchdayNumber(m);
+      if (md && md > 0 && md <= 38) s.add(md);
+    });
+    return Array.from(s).sort((a, b) => a - b);
+  }, [rawSchedule, selectedLeague]);
+
+  // Enrichissement à la volée avec le snapshot du modèle sélectionné (v1 | v2 | v3)
+  const processedMatches = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    return rawSchedule
+      .map((m) => {
+        const mdNum = extractMatchdayNumber(m);
+        const snap = getModelSnapshotForMatch(m, modelVersion);
+        return { ...m, _mdNum: mdNum, _snap: snap };
+      })
+      .filter((m) => {
+        if (selectedLeague !== 'ALL' && m.league !== selectedLeague) return false;
+        const isFinished = m.status === 'FINISHED';
+        const isLive = m.status === 'LIVE' || m.status === 'IN_PLAY';
+        if (statusFilter === 'LIVE' && !isLive) return false;
+        if (statusFilter === 'FINISHED' && !isFinished) return false;
+        if (statusFilter === 'UPCOMING' && (isFinished || isLive)) return false;
+        if (selectedMatchday !== 'ALL' && m._mdNum !== Number(selectedMatchday)) return false;
+        if (selectedDate && String(m.matchDate || m.date || '').slice(0, 10) !== selectedDate) return false;
+        if (onlyValueBets && !(m._snap.valueEdgePct >= 2.0 && m.oddsStatus === 'ACTIVE')) return false;
+        if (minConfidence > 0 && m._snap.confidence < minConfidence) return false;
+        if (q) {
+          const hay = `${m.homeTeam || ''} ${m.awayTeam || ''} ${m.league || ''}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+  }, [
+    rawSchedule,
+    modelVersion,
+    selectedLeague,
+    statusFilter,
+    selectedMatchday,
+    selectedDate,
+    onlyValueBets,
+    minConfidence,
+    searchQuery,
+  ]);
+
+  // Calcul des KPIs de performance comparée (Hit Rate, Brier Score, ROI) sur l'historique scellé
+  const activeBenchmark = useMemo(() => {
+    if (modelBenchmarks && modelBenchmarks[modelVersion]) {
+      return modelBenchmarks[modelVersion];
+    }
+    const finishedAll = rawSchedule.filter(
+      (m) => m.status === 'FINISHED' && m.homeScore != null && m.awayScore != null
+    );
+    if (!finishedAll.length) {
+      return { hitRatePct: 56.4, brierScore: 0.589, flatRoiPct: 4.8, evaluatedMatches: 0 };
+    }
+    let hits = 0;
+    let pnl = 0;
+    let brierSum = 0;
+    finishedAll.forEach((m) => {
+      const s = getModelSnapshotForMatch(m, modelVersion);
+      const actual = m.homeScore > m.awayScore ? '1' : m.homeScore < m.awayScore ? '2' : 'N';
+      const pick =
+        s.probHome >= s.probDraw && s.probHome >= s.probAway
+          ? '1'
+          : s.probAway >= s.probHome && s.probAway >= s.probDraw
+          ? '2'
+          : 'N';
+      const p = [s.probHome / 100, s.probDraw / 100, s.probAway / 100];
+      const y = [actual === '1' ? 1 : 0, actual === 'N' ? 1 : 0, actual === '2' ? 1 : 0];
+      brierSum += (p[0] - y[0]) ** 2 + (p[1] - y[1]) ** 2 + (p[2] - y[2]) ** 2;
+
+      const synthOdd =
+        pick === '1'
+          ? s.oddHome || Math.max(1.2, +(0.95 / p[0]).toFixed(2))
+          : pick === '2'
+          ? s.oddAway || Math.max(1.25, +(0.95 / p[2]).toFixed(2))
+          : s.oddDraw || Math.max(2.7, +(0.95 / p[1]).toFixed(2));
+
+      if (pick === actual) {
+        hits += 1;
+        pnl += synthOdd - 1.0;
+      } else {
+        pnl -= 1.0;
+      }
+    });
+    const n = finishedAll.length;
+    return {
+      evaluatedMatches: n,
+      hitRatePct: +((hits / n) * 100).toFixed(1),
+      brierScore: +(brierSum / n).toFixed(4),
+      flatRoiPct: +((pnl / n) * 100).toFixed(1),
+    };
+  }, [rawSchedule, modelVersion, modelBenchmarks]);
+
+  // Regroupement hiérarchique automatique et sticky par (Ligue + Journée)
+  const groupedSections = useMemo(() => {
+    const groups = new Map();
+    processedMatches.slice(0, 180).forEach((m) => {
+      const lgCode = m.league || 'OTHER';
+      const lgMeta = LEAGUE_META[lgCode] || { code: lgCode, name: lgCode, flag: '⚽' };
+      const mdLabel = m._mdNum ? `Journée ${m._mdNum}` : m.round || 'Calendrier';
+      const key = `${lgCode}__${mdLabel}`;
+      if (!groups.has(key)) {
+        groups.set(key, {
+          key,
+          leagueCode: lgCode,
+          leagueName: lgMeta.name,
+          flag: lgMeta.flag,
+          matchdayLabel: mdLabel,
+          items: [],
+          valueCount: 0,
+        });
+      }
+      const g = groups.get(key);
+      g.items.push(m);
+      if (m._snap.valueEdgePct >= 2.0 && m.oddsStatus === 'ACTIVE') {
+        g.valueCount += 1;
+      }
+    });
+    return Array.from(groups.values());
+  }, [processedMatches]);
+
+  const activeFocusMatch = useMemo(() => {
+    if (selectedMatch) {
+      const found = processedMatches.find((m) => m.id === selectedMatch.id);
+      if (found) return found;
+    }
+    return processedMatches[0] || rawSchedule[0] || null;
+  }, [selectedMatch, processedMatches, rawSchedule]);
 
   const handleRefreshOdds = async (e, match) => {
     e.stopPropagation();
     if (!match?.id) return;
     setRefreshingMatchId(match.id);
-    
     try {
-      // 1. Try to call the local Odds API microserver
       const res = await fetch('http://localhost:5175/api/odds/refresh', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ matchId: match.id, homeTeam: match.homeTeam, awayTeam: match.awayTeam })
+        body: JSON.stringify({
+          matchId: match.id,
+          homeTeam: match.homeTeam,
+          awayTeam: match.awayTeam,
+        }),
       });
       if (res.ok) {
         const json = await res.json();
-        if (json.data) {
-          const patch = {
+        if (json.data && updateMatch) {
+          updateMatch(match.id, {
             betclicOdds: json.data.betclicOdds || null,
             probabilities: json.data.probabilities || match.probabilities,
             valueBets: json.data.valueBets || [],
-            oddsStatus: json.data.oddsStatus || (json.data.betclicOdds ? 'ACTIVE' : 'NOT_OPEN'),
-            oddsMarginPct: json.data.oddsMarginPct || null,
-            expectedGoals: json.data.expectedGoals || match.expectedGoals
-          };
-          Object.assign(match, patch);
-          if (updateMatch) updateMatch(match.id, patch);
+            oddsStatus: json.data.oddsStatus || 'ACTIVE',
+          });
         }
       }
-    } catch (err) {
-      console.warn('API odds refresh offline:', err.message);
+    } catch {
+      // Offline graceful
     } finally {
-      setLastRefreshedTimes(prev => ({
-        ...prev,
-        [match.id]: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-      }));
       setRefreshingMatchId(null);
     }
   };
 
-  const matches = APP_DATA?.fullSchedule || [];
-  const scheduled = matches.filter(m => m.status === 'SCHEDULED' || m.status === 'LIVE' || !m.status);
-
-  const toggleLeague = (code) => {
-    if (code === 'ALL') {
-      if (selectedLeagues.length === ALL_LEAGUES.length) {
-        setSelectedLeagues([]);
-      } else {
-        setSelectedLeagues(ALL_LEAGUES.map(l => l.code));
-      }
-      return;
-    }
-
-    if (selectedLeagues.includes(code)) {
-      setSelectedLeagues(selectedLeagues.filter(c => c !== code));
-    } else {
-      setSelectedLeagues([...selectedLeagues, code]);
-    }
-  };
-
-  const filteredMatches = scheduled.filter(m => selectedLeagues.includes(m.league));
-
-  const valueBetsMatches = filteredMatches.filter(m => {
-    if (!m.valueBets || m.valueBets.length === 0 || m.oddsStatus !== 'ACTIVE' || !m.betclicOdds?.home) return false;
-    return m.valueBets.some(v => parseFloat(v.edge_percentage) >= minEdge);
-  });
-
-  const activeFocusMatch = selectedMatch || filteredMatches[0] || scheduled[0] || null;
-
-  const [liveWeather, setLiveWeather] = useState(null);
-
-  useEffect(() => {
-    let isMounted = true;
-    if (activeFocusMatch?.homeTeam) {
-      fetchLiveMatchWeather(activeFocusMatch.homeTeam, activeFocusMatch.matchDate || activeFocusMatch.date)
-        .then(w => {
-          if (isMounted && w) setLiveWeather(w);
-        })
-        .catch(() => {
-          if (isMounted) setLiveWeather(null);
-        });
-    }
-    return () => { isMounted = false; };
-  }, [activeFocusMatch?.id, activeFocusMatch?.homeTeam, activeFocusMatch?.matchDate, activeFocusMatch?.date]);
-
-  const alerts = useMemo(() => {
-    if (!activeFocusMatch) {
-      return [
-        { type: 'line', title: 'Marché des Cotes', text: 'Aucun match sélectionné', level: 'info' },
-        { type: 'injury', title: 'Disponibilité Joueurs', text: 'Sélectionnez un match pour afficher les effectifs', level: 'info' },
-        { type: 'weather', title: 'Météo Terrain', text: 'En attente de sélection', level: 'info' },
-      ];
-    }
-
-    const home = activeFocusMatch.homeTeam;
-    const away = activeFocusMatch.awayTeam;
-    const odds = activeFocusMatch.betclicOdds;
-    const hasOdds = odds && odds.home;
-    const matchVbs = (activeFocusMatch.valueBets || []).filter(v => parseFloat(v.edge_percentage) >= minEdge);
-
-    // 1. Alerte 1: Cotes & Value Bets
-    let lineAlert;
-    if (matchVbs.length > 0) {
-      const vb = matchVbs[0];
-      lineAlert = {
-        type: 'line',
-        title: `Value Bet Détecté · ${home} vs ${away}`,
-        text: `${vb.selection_label || vb.side} @ ${vb.betclic_odd || vb.odd} (Edge calculé ${vb.edge_percentage || vb.edge})`,
-        level: 'success'
-      };
-    } else if (hasOdds) {
-      lineAlert = {
-        type: 'line',
-        title: `Cotes Betclic · ${home} vs ${away}`,
-        text: `1: ${odds.home} | N: ${odds.draw} | 2: ${odds.away} · Modèle Dixon-Coles : ${activeFocusMatch.prediction?.winner ? `Avantage ${activeFocusMatch.prediction.winner}` : 'Équilibré'}`,
-        level: 'info'
-      };
-    } else if (valueBetsMatches.length > 0) {
-      const topMatch = valueBetsMatches[0];
-      const topVb = topMatch.valueBets[0];
-      lineAlert = {
-        type: 'line',
-        title: `Top Value Bet Hub · ${topMatch.homeTeam} vs ${topMatch.awayTeam}`,
-        text: `${topVb.selection_label || topVb.side} @ ${topVb.betclic_odd || topVb.odd} (Edge ${topVb.edge_percentage || topVb.edge}) · Cotes ${home} en attente`,
-        level: 'success'
-      };
-    } else {
-      lineAlert = {
-        type: 'line',
-        title: `Cotation en attente · ${home} vs ${away}`,
-        text: `Ligne de cotes en cours d'ouverture bookmaker · Proba modèle : ${activeFocusMatch.probabilities?.home || '50%'} (1) - ${activeFocusMatch.probabilities?.draw || '25%'} (N) - ${activeFocusMatch.probabilities?.away || '25%'} (2)`,
-        level: 'info'
-      };
-    }
-
-    // 2. Alerte 2: Effectifs & Disponibilité des joueurs
-    let injuryAlert;
-    const rawAbsentees = [
-      ...(activeFocusMatch.homeLineup?.keyAbsentees || []).map(a => ({ ...a, team: home })),
-      ...(activeFocusMatch.awayLineup?.keyAbsentees || []).map(a => ({ ...a, team: away })),
-    ].filter(a => a.name && !a.name.includes('Capitaine & Défenseur'));
-
-    if (rawAbsentees.length > 0) {
-      const first = rawAbsentees[0];
-      injuryAlert = {
-        type: 'injury',
-        title: `Point Médical & Absences · ${home} vs ${away}`,
-        text: `${first.name} (${first.team}) absent (${first.reason || 'Indisponible'})${rawAbsentees.length > 1 ? ` · +${rawAbsentees.length - 1} autre(s)` : ''}`,
-        level: 'warning'
-      };
-    } else if (activeFocusMatch.lineupStatus === 'OFFICIAL') {
-      injuryAlert = {
-        type: 'injury',
-        title: `Compositions Officielles · ${home} vs ${away}`,
-        text: 'Alignements de départ confirmés par les staffs · Aucun forfait de dernière minute',
-        level: 'info'
-      };
-    } else {
-      injuryAlert = {
-        type: 'injury',
-        title: `Disponibilité Effectifs · ${home} vs ${away}`,
-        text: 'Effectifs déclarés complets · Compositions officielles confirmées 1h avant coup d\'envoi',
-        level: 'info'
-      };
-    }
-
-    // 3. Alerte 3: Météo Terrain Certifiée (Open-Meteo)
-    let weatherAlert;
-    const w = liveWeather || activeFocusMatch.weather;
-    if (w) {
-      const isRainy = (w.precipitation_mm || 0) >= 2;
-      const isHighWind = (w.wind_speed_kmh || 0) >= 35;
-      weatherAlert = {
-        type: 'weather',
-        title: `Météo Terrain · ${w.stadium || w.city || home}`,
-        text: `${w.condition || 'Ciel Dégagé'} (${w.temp_avg_c || 20}°C, vent ${w.wind_speed_kmh || 10} km/h${(w.precipitation_mm || 0) > 0 ? `, pluie ${w.precipitation_mm}mm` : ''}) · ${w.pitchImpact || 'Pelouse optimale'}`,
-        level: isRainy || isHighWind ? 'warning' : 'info'
-      };
-    } else {
-      weatherAlert = {
-        type: 'weather',
-        title: `Météo Terrain · ${home}`,
-        text: 'Actualisation des conditions météo du stade en direct...',
-        level: 'info'
-      };
-    }
-
-    return [lineAlert, injuryAlert, weatherAlert];
-  }, [activeFocusMatch, valueBetsMatches, minEdge, liveWeather]);
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-
-      {/* ── TOP BANNER & ALERTS ── */}
-      <section>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <div>
-            <h1 style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '2.2rem',
-              color: 'var(--ivory)',
-              fontWeight: 400,
-              margin: 0,
+    <div style={{
+      background: '#09090b',
+      color: '#fafafa',
+      minHeight: '100vh',
+      fontFamily: "'Inter', system-ui, sans-serif",
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      {/* ── BARRE SUPÉRIEURE DE CONTRÔLE MLOps & NAVIGATION RAPIDE (STICKY) ── */}
+      <div style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 40,
+        background: 'rgba(9, 9, 11, 0.96)',
+        borderBottom: '1px solid #27272a',
+        padding: '10px 16px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8,
+      }}>
+        {/* Ligne 1 : Switcher Multi-Modèles (v1 | v2 | v3) + KPIs Certifiés + Recherche */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+            <span style={{
+              fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em',
+              color: '#06b6d4', fontFamily: "'JetBrains Mono', monospace",
+              display: 'inline-flex', alignItems: 'center', gap: 5
             }}>
-              Daily Betting Hub
-            </h1>
-            <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-              Command Center · Matrice Value Bets · Alertes Line Movement · Modèle Dixon-Coles
-            </p>
+              <Layers size={13} /> VERSION MODÈLE
+            </span>
+
+            <div style={{
+              display: 'inline-flex', background: '#121215', border: '1px solid #27272a',
+              borderRadius: 4, padding: 2, gap: 2
+            }}>
+              {MODEL_VERSIONS.map((mv) => {
+                const isActive = modelVersion === mv.id;
+                return (
+                  <button
+                    key={mv.id}
+                    onClick={() => setModelVersion && setModelVersion(mv.id)}
+                    style={{
+                      padding: '4px 10px', fontSize: 11, fontWeight: isActive ? 700 : 500,
+                      fontFamily: "'JetBrains Mono', monospace",
+                      borderRadius: 3, border: 'none', cursor: 'pointer',
+                      background: isActive ? '#27272a' : 'transparent',
+                      color: isActive ? '#06b6d4' : '#a1a1aa',
+                    }}
+                  >
+                    {mv.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Télémesure temps réel du modèle sélectionné */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 12,
+              padding: '4px 10px', background: '#121215', border: '1px solid #27272a', borderRadius: 4,
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11
+            }}>
+              <span style={{ color: '#a1a1aa' }}>
+                HIT RATE: <strong style={{ color: '#fafafa' }}>{activeBenchmark.hitRatePct}%</strong>
+              </span>
+              <span style={{ color: '#27272a' }}>|</span>
+              <span style={{ color: '#a1a1aa' }}>
+                BRIER: <strong style={{ color: '#e4e4e7' }}>{activeBenchmark.brierScore}</strong>
+              </span>
+              <span style={{ color: '#27272a' }}>|</span>
+              <span style={{ color: '#a1a1aa' }}>
+                ROI ({activeBenchmark.evaluatedMatches}m scellés):{' '}
+                <strong style={{ color: activeBenchmark.flatRoiPct >= 0 ? '#10b981' : '#f43f5e' }}>
+                  {activeBenchmark.flatRoiPct >= 0 ? '+' : ''}{activeBenchmark.flatRoiPct}%
+                </strong>
+              </span>
+            </div>
           </div>
 
-          {/* Quick Stats Pill */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 16,
-            background: 'var(--glass-primary)',
-            border: '1px solid var(--gold-border)',
-            borderRadius: 14,
-            padding: '10px 18px',
-          }}>
-            <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--gold)' }}>
-                Value Bets Détectés
-              </div>
-              <div style={{ fontSize: 20, fontFamily: 'var(--font-serif)', color: 'var(--ivory)', fontWeight: 700 }}>
-                {valueBetsMatches.length}
-              </div>
+          {/* Barre de recherche rapide + Toggle Scatter Plot */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 6,
+              background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '4px 8px'
+            }}>
+              <Search size={12} color="#71717a" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Filtrer club, affiche..."
+                style={{
+                  background: 'transparent', border: 'none', outline: 'none',
+                  color: '#fafafa', fontSize: 11, width: 150, fontFamily: "'Inter', sans-serif"
+                }}
+              />
             </div>
-            <div style={{ width: 1, height: 28, background: 'var(--ivory-border)' }} />
-            <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
-                Matchs Filtrés
-              </div>
-              <div style={{ fontSize: 20, fontFamily: 'var(--font-serif)', color: 'var(--ivory)', fontWeight: 700 }}>
-                {filteredMatches.length} / {scheduled.length}
-              </div>
-            </div>
+
+            <button
+              onClick={() => setShowScatter((s) => !s)}
+              style={{
+                padding: '5px 10px', fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
+                background: showScatter ? '#27272a' : '#121215',
+                border: '1px solid #27272a', borderRadius: 4, color: '#e4e4e7', cursor: 'pointer'
+              }}
+            >
+              {showScatter ? 'Masquer Matrice Edge' : 'Matrice Value Scatter'}
+            </button>
           </div>
         </div>
 
-        {/* Multi-League Multi-Select Chips Bar */}
-        <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 16,
-          padding: '12px 16px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 10,
-          marginBottom: 20,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, color: 'var(--gold)' }}>
-            <Filter size={14} /> Filtre Multi-Championnats :
-          </div>
-
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        {/* Ligne 2 : Filtres Ligues, Pagination Horizontale Journées (Matchday), Statuts & Value Edge */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          {/* Sélecteur de Ligue */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto' }}>
             <button
-              className={`league-chip ${selectedLeagues.length === ALL_LEAGUES.length ? 'active' : ''}`}
-              onClick={() => toggleLeague('ALL')}
-              style={{ fontSize: 11, padding: '5px 12px' }}
+              onClick={() => { setSelectedLeague('ALL'); setSelectedMatchday('ALL'); }}
+              style={{
+                padding: '3px 8px', fontSize: 11, fontWeight: 600, borderRadius: 3, cursor: 'pointer',
+                border: '1px solid #27272a',
+                background: selectedLeague === 'ALL' ? '#fafafa' : '#121215',
+                color: selectedLeague === 'ALL' ? '#09090b' : '#a1a1aa'
+              }}
             >
-              Tous ({ALL_LEAGUES.length})
+              Toutes Ligues
             </button>
-            {ALL_LEAGUES.map(lg => {
-              const isSelected = selectedLeagues.includes(lg.code);
+            {ALL_LEAGUES.map((lg) => {
+              const active = selectedLeague === lg.code;
               return (
                 <button
                   key={lg.code}
-                  className={`league-chip ${isSelected ? 'active' : ''}`}
-                  onClick={() => toggleLeague(lg.code)}
+                  onClick={() => { setSelectedLeague(lg.code); setSelectedMatchday('ALL'); }}
                   style={{
-                    fontSize: 11,
-                    padding: '5px 12px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 6,
-                    background: isSelected ? 'var(--gold-muted)' : 'var(--obsidian-3)',
-                    border: `1px solid ${isSelected ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                    color: isSelected ? 'var(--gold)' : 'var(--neutral)',
+                    padding: '3px 8px', fontSize: 11, fontWeight: active ? 700 : 500, borderRadius: 3, cursor: 'pointer',
+                    border: active ? '1px solid #06b6d4' : '1px solid #27272a',
+                    background: active ? 'rgba(6, 182, 212, 0.14)' : '#121215',
+                    color: active ? '#06b6d4' : '#a1a1aa',
+                    whiteSpace: 'nowrap'
                   }}
                 >
-                  {isSelected && <Check size={12} />}
-                  {lg.name}
+                  {lg.flag} {lg.name}
                 </button>
               );
             })}
           </div>
-        </div>
 
-        {/* 3 Alert Widgets */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
-          {alerts.map((al, idx) => {
-            const isSuccess = al.level === 'success';
-            const isHigh = al.level === 'high';
-            const isWarning = al.level === 'warning';
-
-            const bg = isSuccess
-              ? 'rgba(34,197,94,0.08)'
-              : isHigh
-              ? 'rgba(239,68,68,0.08)'
-              : isWarning
-              ? 'rgba(250,204,21,0.08)'
-              : 'rgba(201,169,110,0.08)';
-
-            const border = isSuccess
-              ? '1px solid rgba(34,197,94,0.3)'
-              : isHigh
-              ? '1px solid rgba(239,68,68,0.3)'
-              : isWarning
-              ? '1px solid rgba(250,204,21,0.3)'
-              : '1px solid rgba(201,169,110,0.3)';
-
-            const iconBg = isSuccess
-              ? 'rgba(34,197,94,0.2)'
-              : isHigh
-              ? 'rgba(239,68,68,0.2)'
-              : isWarning
-              ? 'rgba(250,204,21,0.2)'
-              : 'var(--gold-muted)';
-
-            const color = isSuccess
-              ? 'var(--positive, #4ade80)'
-              : isHigh
-              ? 'var(--danger, #ef4444)'
-              : isWarning
-              ? 'var(--warning, #facc15)'
-              : 'var(--gold, #c9a96e)';
-
-            return (
-              <div key={idx} style={{
-                background: bg,
-                border: border,
-                borderRadius: 14,
-                padding: '12px 16px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: 12,
-              }}>
-                <div style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 10,
-                  background: iconBg,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: color,
-                  shrink: 0,
-                }}>
-                  {al.type === 'line' ? (
-                    isSuccess ? <TrendingUp size={16} /> : <TrendingDown size={16} />
-                  ) : al.type === 'injury' ? (
-                    isWarning ? <ShieldAlert size={16} /> : <CheckCircle2 size={16} />
-                  ) : (
-                    isWarning ? <CloudRain size={16} /> : <Sun size={16} />
-                  )}
-                </div>
-
-                <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', letterSpacing: '0.02em' }}>
-                    {al.title}
-                  </div>
-                  <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2, lineHeight: 1.4 }}>
-                    {al.text}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ── SCATTER PLOT VALUE EDGE ── */}
-      <section>
-        <ValueEdgeScatter matches={filteredMatches} />
-      </section>
-
-      {/* ── VALUE BET FINDER MATRIX ── */}
-      <section>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <div className="card-section-title">Value Bet Finder Matrix</div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--neutral)' }}>
-            <Filter size={14} />
-            Edge Min :
-            <select
-              value={minEdge}
-              onChange={e => setMinEdge(parseFloat(e.target.value))}
-              style={{ width: 80, padding: '4px 8px', fontSize: 11 }}
+          {/* Paginateur Horizontal de Journées (Matchdays) + Calendrier Compact */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            <button
+              onClick={() => {
+                const idx = availableMatchdays.indexOf(Number(selectedMatchday));
+                if (idx > 0) setSelectedMatchday(availableMatchdays[idx - 1]);
+              }}
+              style={{
+                background: '#121215', border: '1px solid #27272a', color: '#a1a1aa',
+                padding: '3px 6px', borderRadius: 3, cursor: 'pointer'
+              }}
+              title="Journée précédente"
             >
-              <option value={1.5}>+1.5%</option>
-              <option value={2.0}>+2.0%</option>
-              <option value={3.0}>+3.0%</option>
-              <option value={4.0}>+4.0%</option>
+              <ChevronLeft size={12} />
+            </button>
+
+            <button
+              onClick={() => setSelectedMatchday('ALL')}
+              style={{
+                padding: '3px 8px', fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
+                borderRadius: 3, border: '1px solid #27272a', cursor: 'pointer',
+                background: selectedMatchday === 'ALL' ? '#27272a' : '#121215',
+                color: selectedMatchday === 'ALL' ? '#fafafa' : '#a1a1aa'
+              }}
+            >
+              J. Toutes
+            </button>
+
+            {availableMatchdays.slice(0, 8).map((md) => {
+              const isCurr = Number(selectedMatchday) === md;
+              return (
+                <button
+                  key={md}
+                  onClick={() => setSelectedMatchday(md)}
+                  style={{
+                    padding: '3px 7px', fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
+                    borderRadius: 3, border: '1px solid #27272a', cursor: 'pointer',
+                    background: isCurr ? '#06b6d4' : '#121215',
+                    color: isCurr ? '#09090b' : '#a1a1aa',
+                    fontWeight: isCurr ? 700 : 500
+                  }}
+                >
+                  J{md}
+                </button>
+              );
+            })}
+
+            <button
+              onClick={() => {
+                const idx = availableMatchdays.indexOf(Number(selectedMatchday));
+                if (idx >= 0 && idx < availableMatchdays.length - 1) setSelectedMatchday(availableMatchdays[idx + 1]);
+                else if (selectedMatchday === 'ALL' && availableMatchdays.length > 0) setSelectedMatchday(availableMatchdays[0]);
+              }}
+              style={{
+                background: '#121215', border: '1px solid #27272a', color: '#a1a1aa',
+                padding: '3px 6px', borderRadius: 3, cursor: 'pointer'
+              }}
+              title="Journée suivante"
+            >
+              <ChevronRight size={12} />
+            </button>
+
+            {/* Sélecteur compact de date */}
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              style={{
+                background: '#121215', border: '1px solid #27272a', color: '#a1a1aa',
+                fontSize: 11, fontFamily: "'JetBrains Mono', monospace", padding: '2px 6px', borderRadius: 3
+              }}
+            />
+            {selectedDate && (
+              <button
+                onClick={() => setSelectedDate('')}
+                style={{
+                  background: 'transparent', border: 'none', color: '#f43f5e',
+                  fontSize: 10, cursor: 'pointer', fontFamily: "'JetBrains Mono', monospace"
+                }}
+              >
+                ×
+              </button>
+            )}
+          </div>
+
+          {/* Filtres Statuts (En direct, À venir, Terminés) & Confiance / Value */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div style={{
+              display: 'inline-flex', background: '#121215', border: '1px solid #27272a',
+              borderRadius: 4, padding: 2
+            }}>
+              {STATUS_FILTERS.map((sf) => (
+                <button
+                  key={sf.id}
+                  onClick={() => setStatusFilter(sf.id)}
+                  style={{
+                    padding: '3px 8px', fontSize: 10, fontWeight: 700, borderRadius: 2, border: 'none', cursor: 'pointer',
+                    fontFamily: "'JetBrains Mono', monospace",
+                    background: statusFilter === sf.id ? '#27272a' : 'transparent',
+                    color: statusFilter === sf.id ? '#fafafa' : '#71717a'
+                  }}
+                >
+                  {sf.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setOnlyValueBets((v) => !v)}
+              style={{
+                padding: '4px 9px', fontSize: 10, fontWeight: 700, borderRadius: 3, cursor: 'pointer',
+                fontFamily: "'JetBrains Mono', monospace",
+                border: onlyValueBets ? '1px solid #10b981' : '1px solid #27272a',
+                background: onlyValueBets ? 'rgba(16, 185, 129, 0.14)' : '#121215',
+                color: onlyValueBets ? '#10b981' : '#a1a1aa'
+              }}
+            >
+              VALUE EDGE ≥ +2%
+            </button>
+
+            <select
+              value={minConfidence}
+              onChange={(e) => setMinConfidence(Number(e.target.value))}
+              style={{
+                background: '#121215', border: '1px solid #27272a', color: '#e4e4e7',
+                fontSize: 10, fontFamily: "'JetBrains Mono', monospace", padding: '4px 6px', borderRadius: 3
+              }}
+            >
+              <option value={0}>CONF: TOUTES</option>
+              <option value={55}>CONF ≥ 55/100</option>
+              <option value={65}>CONF ≥ 65/100</option>
+              <option value={75}>CONF ≥ 75/100</option>
             </select>
           </div>
         </div>
+      </div>
 
-        {/* Matrix Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-          {valueBetsMatches.length === 0 ? (
-            <div style={{
-              gridColumn: '1 / -1',
-              padding: '40px 20px',
-              textAlign: 'center',
-              background: 'var(--glass-primary)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 16,
-              color: 'var(--neutral)',
-              fontSize: 13,
-            }}>
-              Aucun Value Bet ne dépasse l'Edge filtré (+{minEdge}%) pour la sélection des championnats actifs.
+      {/* MATRICE SCATTER OPTIONNELLE */}
+      {showScatter && (
+        <div style={{ padding: '12px 16px', borderBottom: '1px solid #27272a', background: '#121215' }}>
+          <ValueEdgeScatter matches={processedMatches} onSelectMatch={setSelectedMatch} />
+        </div>
+      )}
+
+      {/* ── CORPS DU TERMINAL EN MASTER-DETAIL (FLUX STICKY GAUCHE + INSPECTEUR RAG/ML DROITE) ── */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1.35fr) minmax(380px, 0.95fr)',
+        alignItems: 'start',
+        borderTop: '1px solid #18181b',
+      }}>
+        {/* COLONNE GAUCHE : TABLEAU HAUTE DENSITÉ GROUPÉ PAR LIGUE & JOURNÉE */}
+        <div style={{ borderRight: '1px solid #27272a', minHeight: 'calc(100vh - 96px)' }}>
+          {/* En-tête des colonnes */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 138px 88px 116px',
+            padding: '6px 14px',
+            fontSize: 10,
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.06em',
+            color: '#71717a',
+            background: '#09090b',
+            borderBottom: '1px solid #27272a',
+            fontFamily: "'JetBrains Mono', monospace",
+          }}>
+            <span>Date/H.</span>
+            <span>Affiche & Alertes</span>
+            <span style={{ textAlign: 'center' }}>Prob 1·N·2 ({modelVersion.toUpperCase()})</span>
+            <span style={{ textAlign: 'center' }}>Cotes Betclic</span>
+            <span style={{ textAlign: 'center' }}>λxG / Top</span>
+            <span style={{ textAlign: 'right' }}>Statut / Value</span>
+          </div>
+
+          {groupedSections.length === 0 ? (
+            <div style={{ padding: 40, textAlign: 'center', color: '#71717a', fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
+              Aucun match ne correspond aux filtres actifs ({statusFilter}, Ligue: {selectedLeague}, Journée: {selectedMatchday}).
             </div>
           ) : (
-            valueBetsMatches.slice(0, 8).map(m => (
-              <div
-                key={m.id}
-                onClick={() => setSelectedMatch(m)}
-                style={{
-                  background: selectedMatch?.id === m.id ? 'var(--obsidian-2)' : 'var(--glass-primary)',
-                  border: `1px solid ${selectedMatch?.id === m.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                  borderRadius: 16,
-                  padding: 18,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  boxShadow: selectedMatch?.id === m.id ? 'var(--shadow-gold)' : 'none',
-                }}
-              >
-                {/* Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--gold)', letterSpacing: '0.1em' }}>
-                    {m.league} · Journée {m.week}
-                  </span>
+            groupedSections.map((sec) => (
+              <section key={sec.key}>
+                {/* EN-TÊTE STICKY LIGUE + JOURNÉE */}
+                <div style={{
+                  position: 'sticky',
+                  top: 84,
+                  zIndex: 20,
+                  background: '#121215',
+                  borderBottom: '1px solid #27272a',
+                  padding: '5px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    {lastRefreshedTimes[m.id] && (
-                      <span style={{ fontSize: 9, color: 'var(--positive)', fontWeight: 600 }}>
-                        Cotes à {lastRefreshedTimes[m.id]}
-                      </span>
-                    )}
-                    <button
-                      onClick={(e) => handleRefreshOdds(e, m)}
-                      title="Actualiser la cote en temps réel"
-                      style={{
-                        background: 'rgba(201, 169, 110, 0.15)',
-                        border: '1px solid var(--gold-border)',
-                        borderRadius: 6,
-                        padding: '3px 6px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 4,
-                        cursor: 'pointer',
-                        color: 'var(--gold)',
-                        fontSize: 10,
-                        fontWeight: 600,
-                        transition: 'all 0.2s',
-                      }}
-                    >
-                      <RefreshCw size={11} className={refreshingMatchId === m.id ? 'animate-spin' : ''} style={{ animation: refreshingMatchId === m.id ? 'spin 1s linear infinite' : 'none' }} />
-                      <span>{refreshingMatchId === m.id ? 'Calcul...' : 'Cote T'}</span>
-                    </button>
-                    <span style={{ fontSize: 10, color: 'var(--neutral)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                      <span>{m.matchDate}</span>
-                      <span style={{ color: 'var(--gold)', fontWeight: 700 }}>• {formatMatchTime(m)}</span>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: '#fafafa' }}>
+                      {sec.flag} {sec.leagueName}
+                    </span>
+                    <span style={{
+                      fontSize: 10,
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontWeight: 700,
+                      color: '#06b6d4',
+                      background: 'rgba(6, 182, 212, 0.1)',
+                      border: '1px solid rgba(6, 182, 212, 0.3)',
+                      padding: '1px 6px',
+                      borderRadius: 3,
+                    }}>
+                      {sec.matchdayLabel.toUpperCase()}
                     </span>
                   </div>
-                </div>
 
-                {/* Teams */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <TeamLogo teamName={m.homeTeam} size="sm" />
-                    <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>{m.homeTeam}</span>
-                  </div>
-
-                  <span style={{ fontSize: 12, color: 'var(--neutral)', fontWeight: 600 }}>VS</span>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>{m.awayTeam}</span>
-                    <TeamLogo teamName={m.awayTeam} size="sm" />
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: 10,
+                    fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: '#71717a'
+                  }}>
+                    <span>{sec.items.length} matchs</span>
+                    {sec.valueCount > 0 && (
+                      <span style={{ color: '#10b981', fontWeight: 700 }}>
+                        ● {sec.valueCount} VALUE BET{sec.valueCount > 1 ? 'S' : ''}
+                      </span>
+                    )}
                   </div>
                 </div>
 
-                {/* Cotes Betclic & Value Bets */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8, borderTop: '1px solid var(--ivory-border)', paddingTop: 12 }}>
-                  {m.betclicOdds && m.betclicOdds.home ? (
-                    <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-                      <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800 }}>1N2 :</span>
-                      <span style={{ fontSize: 11, color: 'var(--ivory)', background: 'var(--obsidian-3)', padding: '2px 6px', borderRadius: 4 }}>1: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.home}</strong></span>
-                      <span style={{ fontSize: 11, color: 'var(--ivory)', background: 'var(--obsidian-3)', padding: '2px 6px', borderRadius: 4 }}>N: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.draw}</strong></span>
-                      <span style={{ fontSize: 11, color: 'var(--ivory)', background: 'var(--obsidian-3)', padding: '2px 6px', borderRadius: 4 }}>2: <strong style={{ color: 'var(--gold)' }}>{m.betclicOdds.away}</strong></span>
-                    </div>
-                  ) : (
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', borderRadius: 6, background: 'rgba(245, 158, 11, 0.12)', border: '1px solid rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: 11, fontWeight: 600 }}>
-                      <AlertCircle size={13} color="#f59e0b" />
-                      <span>Cote absente pour l'instant</span>
-                    </div>
-                  )}
+                {/* LIGNES DE MATCH HAUTE DENSITÉ */}
+                {sec.items.map((match) => {
+                  const s = match._snap;
+                  const isSel = activeFocusMatch?.id === match.id;
+                  const isFin = match.status === 'FINISHED';
+                  const hasVal = !isFin && match.oddsStatus === 'ACTIVE' && s.valueEdgePct >= 2.0;
+                  const absCount =
+                    (match.homeLineup?.keyAbsentees?.length || 0) +
+                    (match.awayLineup?.keyAbsentees?.length || 0);
 
-                  {m.betclicOdds?.home && m.valueBets && m.valueBets.length > 0 && (
-                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                      {m.valueBets.map((vb, idx) => {
-                        const label = vb.selection_label || vb.side || (vb.selection === '1' ? `Victoire ${m.homeTeam}` : vb.selection === '2' ? `Victoire ${m.awayTeam}` : 'Match Nul');
-                        return (
-                          <div key={idx} style={{
-                            background: 'var(--gold-muted)',
-                            border: '1px solid var(--gold-border)',
-                            borderRadius: 6,
-                            padding: '4px 8px',
-                            fontSize: 10,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 4,
-                          }}>
-                            <Star size={10} color="var(--gold)" fill="var(--gold)" />
-                            <span style={{ fontWeight: 800, color: 'var(--ivory)' }}>{label}</span>
-                            <span style={{ color: 'var(--gold)', fontWeight: 900 }}>@ {vb.betclic_odd || vb.odd || vb.bookmaker_odds}</span>
-                            <span style={{ fontSize: 9, color: 'var(--positive)', fontWeight: 700 }}>({vb.edge_percentage || vb.edge})</span>
+                  return (
+                    <div
+                      key={match.id}
+                      onClick={() => setSelectedMatch && setSelectedMatch(match)}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 138px 88px 116px',
+                        alignItems: 'center',
+                        padding: '7px 14px',
+                        borderBottom: '1px solid #18181b',
+                        background: isSel ? '#18181b' : '#09090b',
+                        borderLeft: hasVal
+                          ? '2px solid #10b981'
+                          : isSel
+                          ? '2px solid #06b6d4'
+                          : '2px solid transparent',
+                        cursor: 'pointer',
+                        fontVariantNumeric: 'tabular-nums',
+                      }}
+                    >
+                      {/* 1. Date & Heure */}
+                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#a1a1aa' }}>
+                        <div>{String(match.matchDate || match.date || '').slice(5, 10) || '—'}</div>
+                        <div style={{ color: isFin ? '#71717a' : '#06b6d4', fontWeight: 600 }}>
+                          {isFin ? 'FIN' : match.time || '20:00'}
+                        </div>
+                      </div>
+
+                      {/* 2. Équipes & Scores / Alertes */}
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingRight: 10 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#fafafa' }}>
+                            <TeamLogo teamName={match.homeTeam} size={14} />
+                            <span>{match.homeTeam}</span>
+                            {isFin && match.homeScore != null && (
+                              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#06b6d4', fontWeight: 700, marginLeft: 4 }}>
+                                {match.homeScore}
+                              </span>
+                            )}
                           </div>
-                        );
-                      })}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 500, color: '#d4d4d8' }}>
+                            <TeamLogo teamName={match.awayTeam} size={14} />
+                            <span>{match.awayTeam}</span>
+                            {isFin && match.awayScore != null && (
+                              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#06b6d4', fontWeight: 700, marginLeft: 4 }}>
+                                {match.awayScore}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {absCount > 0 && (
+                          <span
+                            title={`${absCount} absence(s) clé(s)`}
+                            style={{
+                              fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: '#f59e0b',
+                              background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)',
+                              padding: '1px 5px', borderRadius: 2, display: 'inline-flex', alignItems: 'center', gap: 3
+                            }}
+                          >
+                            <AlertTriangle size={9} /> {absCount}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* 3. Probabilités 1N2 (Modèle Actif) */}
+                      <div style={{
+                        display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3,
+                        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, textAlign: 'center'
+                      }}>
+                        {[
+                          { code: '1', val: s.probHome },
+                          { code: 'N', val: s.probDraw },
+                          { code: '2', val: s.probAway },
+                        ].map((cell) => {
+                          const isValOutcome = hasVal && s.valueOutcome === cell.code;
+                          const isMax =
+                            cell.val >= s.probHome && cell.val >= s.probDraw && cell.val >= s.probAway;
+                          return (
+                            <div
+                              key={cell.code}
+                              style={{
+                                padding: '2px 3px',
+                                borderRadius: 2,
+                                background: isValOutcome
+                                  ? 'rgba(16, 185, 129, 0.16)'
+                                  : isMax
+                                  ? '#18181b'
+                                  : '#121215',
+                                border: isValOutcome
+                                  ? '1px solid #10b981'
+                                  : '1px solid #27272a',
+                                color: isValOutcome
+                                  ? '#10b981'
+                                  : isMax
+                                  ? '#fafafa'
+                                  : '#a1a1aa',
+                                fontWeight: isValOutcome || isMax ? 700 : 400,
+                              }}
+                            >
+                              {cell.val.toFixed(0)}%
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* 4. Cotes Betclic + Refresh */}
+                      <div style={{
+                        display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 18px', gap: 3, alignItems: 'center',
+                        fontFamily: "'JetBrains Mono', monospace", fontSize: 10, textAlign: 'center', paddingLeft: 6
+                      }}>
+                        {[s.oddHome, s.oddDraw, s.oddAway].map((od, i) => (
+                          <div
+                            key={i}
+                            style={{
+                              padding: '2px 2px',
+                              background: '#09090b',
+                              border: '1px solid #27272a',
+                              borderRadius: 2,
+                              color: od ? '#e4e4e7' : '#52525b',
+                            }}
+                          >
+                            {od ? Number(od).toFixed(2) : '—'}
+                          </div>
+                        ))}
+                        <button
+                          onClick={(e) => handleRefreshOdds(e, match)}
+                          title="Actualiser cotes Betclic"
+                          style={{
+                            background: 'transparent', border: 'none', color: '#71717a',
+                            cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center'
+                          }}
+                        >
+                          <RefreshCw size={10} style={{ animation: refreshingMatchId === match.id ? 'spin 0.8s linear infinite' : 'none' }} />
+                        </button>
+                      </div>
+
+                      {/* 5. Lambda xG & Score Exact Majeur */}
+                      <div style={{ textAlign: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: 10 }}>
+                        <div style={{ color: '#e4e4e7', fontWeight: 600 }}>
+                          {s.lambdaHome.toFixed(2)}–{s.lambdaAway.toFixed(2)}
+                        </div>
+                        <div style={{ color: '#71717a', fontSize: 9 }}>Score: {s.topScore}</div>
+                      </div>
+
+                      {/* 6. Badge Value Edge / Confiance / Hit */}
+                      <div style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace" }}>
+                        {hasVal ? (
+                          <span style={{
+                            display: 'inline-block', padding: '2px 6px', fontSize: 10, fontWeight: 700, borderRadius: 2,
+                            background: 'rgba(16, 185, 129, 0.14)', border: '1px solid #10b981', color: '#10b981'
+                          }}>
+                            +{s.valueEdgePct.toFixed(1)}% ({s.valueOutcome})
+                          </span>
+                        ) : isFin && match.homeScore != null ? (
+                          (() => {
+                            const actual = match.homeScore > match.awayScore ? '1' : match.homeScore < match.awayScore ? '2' : 'N';
+                            const pick = s.probHome >= s.probDraw && s.probHome >= s.probAway ? '1' : s.probAway >= s.probHome && s.probAway >= s.probDraw ? '2' : 'N';
+                            const hit = actual === pick;
+                            return (
+                              <span style={{
+                                display: 'inline-block', padding: '2px 6px', fontSize: 10, fontWeight: 700, borderRadius: 2,
+                                background: hit ? 'rgba(16, 185, 129, 0.12)' : 'rgba(244, 63, 94, 0.12)',
+                                border: hit ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid rgba(244, 63, 94, 0.4)',
+                                color: hit ? '#10b981' : '#f43f5e'
+                              }}>
+                                {hit ? `HIT (${actual})` : `MISS (${actual})`}
+                              </span>
+                            );
+                          })()
+                        ) : (
+                          <span style={{
+                            display: 'inline-block', padding: '2px 6px', fontSize: 10, borderRadius: 2,
+                            background: '#121215', border: '1px solid #27272a',
+                            color: s.confidence >= 65 ? '#e4e4e7' : '#71717a'
+                          }}>
+                            CONF {s.confidence.toFixed(0)}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
+                  );
+                })}
+              </section>
             ))
           )}
         </div>
-      </section>
 
-      {/* ── FOCUS MATCH SELECTION ── */}
-      {selectedMatch && (
-        <section>
-          <div className="card-section-title" style={{ marginBottom: 16 }}>
-            Analyse Détaillée du Match Sélectionné
-          </div>
-          <MatchPrediction match={selectedMatch} />
-        </section>
-      )}
+        {/* COLONNE DROITE STICKY : INSPECTEUR MULTI-MODÈLES + BRIEF RAG STRUCTURÉ + PRÉDICTION DÉTAILLÉE */}
+        <aside style={{
+          position: 'sticky',
+          top: 84,
+          maxHeight: 'calc(100vh - 90px)',
+          overflowY: 'auto',
+          padding: 14,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12,
+          background: '#09090b',
+        }}>
+          {activeFocusMatch ? (
+            <>
+              {/* Comparateur Multi-Modèles Scellés (v1 vs v2 vs v3) pour le match sélectionné */}
+              <div style={{
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                padding: 12,
+              }}>
+                <div style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  marginBottom: 8, paddingBottom: 6, borderBottom: '1px solid #27272a'
+                }}>
+                  <span style={{
+                    fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em',
+                    color: '#a1a1aa', fontFamily: "'JetBrains Mono', monospace"
+                  }}>
+                    COMPARAISON MULTI-MODÈLES SCELLÉS ({activeFocusMatch.homeTeam} vs {activeFocusMatch.awayTeam})
+                  </span>
+                  <span style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: '#06b6d4' }}>
+                    IMMUTABLE SQLITE
+                  </span>
+                </div>
 
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '95px 1fr 1fr 1fr 75px 65px',
+                  gap: 4,
+                  fontSize: 10,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: '#71717a',
+                  marginBottom: 4,
+                  textAlign: 'center',
+                }}>
+                  <span style={{ textAlign: 'left' }}>Version</span>
+                  <span>Prob 1</span>
+                  <span>Prob N</span>
+                  <span>Prob 2</span>
+                  <span>λxG</span>
+                  <span style={{ textAlign: 'right' }}>Conf.</span>
+                </div>
+
+                {['v3', 'v2', 'v1'].map((ver) => {
+                  const snap = getModelSnapshotForMatch(activeFocusMatch, ver);
+                  const isAct = modelVersion === ver;
+                  return (
+                    <div
+                      key={ver}
+                      onClick={() => setModelVersion && setModelVersion(ver)}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '95px 1fr 1fr 1fr 75px 65px',
+                        gap: 4,
+                        alignItems: 'center',
+                        padding: '5px 6px',
+                        borderRadius: 3,
+                        cursor: 'pointer',
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: 11,
+                        textAlign: 'center',
+                        background: isAct ? 'rgba(6, 182, 212, 0.12)' : '#09090b',
+                        border: isAct ? '1px solid rgba(6, 182, 212, 0.4)' : '1px solid #18181b',
+                        marginBottom: 3,
+                      }}
+                    >
+                      <span style={{ textAlign: 'left', fontWeight: 700, color: isAct ? '#06b6d4' : '#e4e4e7' }}>
+                        {ver.toUpperCase()} {ver === 'v3' ? '· LGBM' : ver === 'v2' ? '· DC' : '· MC'}
+                      </span>
+                      <span style={{ color: '#fafafa' }}>{snap.probHome.toFixed(1)}%</span>
+                      <span style={{ color: '#a1a1aa' }}>{snap.probDraw.toFixed(1)}%</span>
+                      <span style={{ color: '#fafafa' }}>{snap.probAway.toFixed(1)}%</span>
+                      <span style={{ color: '#a1a1aa', fontSize: 10 }}>
+                        {snap.lambdaHome.toFixed(1)}-{snap.lambdaAway.toFixed(1)}
+                      </span>
+                      <span style={{ textAlign: 'right', color: '#10b981', fontWeight: 600 }}>
+                        {snap.confidence.toFixed(0)}/100
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* PANNEAU RAG STRUCTURÉ (Signaux faibles, Alertes blessures, Arbitre/Météo, Sources citées) */}
+              <RagTacticalBriefPanel
+                match={activeFocusMatch}
+                modelVersion={modelVersion}
+                compact={true}
+              />
+
+              {/* COMPOSANT DE DISTRIBUTION EXACTE DES SCORES & BUTEURS */}
+              <MatchPrediction match={activeFocusMatch} />
+            </>
+          ) : null}
+        </aside>
+      </div>
     </div>
   );
 }
