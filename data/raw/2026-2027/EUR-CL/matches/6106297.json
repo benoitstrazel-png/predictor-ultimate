@@ -65,7 +65,7 @@
       "halfs": {
         "firstHalfStarted": "21.10.2026 21:00:44",
         "firstHalfEnded": "21.10.2026 21:49:35",
-        "secondHalfStarted": "21.10.2026 22:04:50",
+        "secondHalfStarted": "21.10.2026 22:05:00",
         "secondHalfEnded": "21.10.2026 22:52:14",
         "firstExtraHalfStarted": "",
         "secondExtraHalfStarted": "",
@@ -485,6 +485,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 12159,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -574,7 +588,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 5,
+                  "value": 7,
                   "type": "integer"
                 }
               },
@@ -713,6 +727,65 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 12159,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2641,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 6715,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2675,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 128,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 5,
+                  "type": "integer"
+                }
               }
             }
           }
@@ -1427,8 +1500,7 @@
           "Assist",
           "Half",
           "Substitution",
-          "Yellow",
-          "Injuries"
+          "Yellow"
         ],
         "penaltyShootoutEvents": null
       },
@@ -3076,6 +3148,121 @@
                     }
                   ],
                   "format": "double",
+                  "type": "text",
+                  "highlighted": "home"
+                }
+              ]
+            },
+            {
+              "title": "Physical performance",
+              "key": "physical_metrics",
+              "stats": [
+                {
+                  "title": "Physical performance",
+                  "key": "physical_metrics",
+                  "stats": [
+                    null,
+                    null
+                  ],
+                  "rawStats": [
+                    null,
+                    null
+                  ],
+                  "type": "title",
+                  "highlighted": "equal"
+                },
+                {
+                  "title": "Distance covered",
+                  "key": "physical_metrics_distance_covered",
+                  "stats": [
+                    122608,
+                    125681
+                  ],
+                  "rawStats": [
+                    {
+                      "value": 122608
+                    },
+                    {
+                      "value": 125681
+                    }
+                  ],
+                  "format": "distance",
+                  "type": "text",
+                  "highlighted": "away"
+                },
+                {
+                  "title": "Walking distance",
+                  "key": "physical_metrics_walking",
+                  "stats": [
+                    32413,
+                    31556
+                  ],
+                  "rawStats": [
+                    {
+                      "value": 32413
+                    },
+                    {
+                      "value": 31556
+                    }
+                  ],
+                  "format": "distance",
+                  "type": "text",
+                  "highlighted": "home"
+                },
+                {
+                  "title": "Running distance",
+                  "key": "physical_metrics_running",
+                  "stats": [
+                    87497,
+                    91667
+                  ],
+                  "rawStats": [
+                    {
+                      "value": 87497
+                    },
+                    {
+                      "value": 91667
+                    }
+                  ],
+                  "format": "distance",
+                  "type": "text",
+                  "highlighted": "away"
+                },
+                {
+                  "title": "Sprinting distance",
+                  "key": "physical_metrics_sprinting",
+                  "stats": [
+                    2698,
+                    2458
+                  ],
+                  "rawStats": [
+                    {
+                      "value": 2698
+                    },
+                    {
+                      "value": 2458
+                    }
+                  ],
+                  "format": "distance",
+                  "type": "text",
+                  "highlighted": "home"
+                },
+                {
+                  "title": "Number of sprints",
+                  "key": "physical_metrics_number_of_sprints",
+                  "stats": [
+                    127,
+                    119
+                  ],
+                  "rawStats": [
+                    {
+                      "value": 127
+                    },
+                    {
+                      "value": 119
+                    }
+                  ],
+                  "format": "integer",
                   "type": "text",
                   "highlighted": "home"
                 }
@@ -5734,7 +5921,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 1,
+                  "value": 3,
                   "type": "integer"
                 },
                 "hideInPopupCard": true
@@ -5746,6 +5933,58 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 22.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 5186,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 3582,
+                  "total": 5186,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 1476,
+                  "total": 5186,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 125,
+                  "total": 5186,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 3,
+                  "total": 5186,
+                  "type": "distanceWithPercentage"
+                }
               }
             }
           }
@@ -5844,6 +6083,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 12159,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -5933,7 +6186,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 5,
+                  "value": 7,
                   "type": "integer"
                 }
               },
@@ -6072,6 +6325,65 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 12159,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2641,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 6715,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2675,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 128,
+                  "total": 12159,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 5,
+                  "type": "integer"
+                }
               }
             }
           }
@@ -6233,6 +6545,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.299999237060547,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 4578,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -6321,6 +6647,13 @@
               },
               "Passes into final third": {
                 "key": "passes_into_final_third",
+                "stat": {
+                  "value": 2,
+                  "type": "integer"
+                }
+              },
+              "Line breaking passes": {
+                "key": "line_breaking_passes",
                 "stat": {
                   "value": 2,
                   "type": "integer"
@@ -6462,6 +6795,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.299999237060547,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 4578,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1067,
+                  "total": 4578,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 2376,
+                  "total": 4578,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1049,
+                  "total": 4578,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 86,
+                  "total": 4578,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 5,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -6576,6 +6968,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 7866,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -6821,6 +7227,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 7866,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1851,
+                  "total": 7866,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 3933,
+                  "total": 7866,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1908,
+                  "total": 7866,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 174,
+                  "total": 7866,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 9,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -6990,6 +7455,20 @@
                   "type": "double"
                 }
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.200000762939453,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10973,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -7049,7 +7528,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 7,
+                  "value": 11,
                   "type": "integer"
                 }
               },
@@ -7182,6 +7661,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.200000762939453,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10973,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2927,
+                  "total": 10973,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 6154,
+                  "total": 10973,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1788,
+                  "total": 10973,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 104,
+                  "total": 10973,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 6,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -7287,6 +7825,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10883,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -7376,7 +7928,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 1,
+                  "value": 5,
                   "type": "integer"
                 }
               },
@@ -7517,6 +8069,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10883,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2429,
+                  "total": 10883,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5879,
+                  "total": 10883,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2283,
+                  "total": 10883,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 292,
+                  "total": 10883,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 14,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -7637,6 +8248,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 28.600000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 4266,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -7844,6 +8469,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 28.600000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 4266,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1058,
+                  "total": 4266,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 2382,
+                  "total": 4266,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 784,
+                  "total": 4266,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 42,
+                  "total": 4266,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 3,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -7959,6 +8643,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11421,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -8040,7 +8738,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 5,
+                  "value": 6,
                   "type": "integer"
                 }
               },
@@ -8178,6 +8876,65 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11421,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2769,
+                  "total": 11421,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 6535,
+                  "total": 11421,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1911,
+                  "total": 11421,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 206,
+                  "total": 11421,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 8,
+                  "type": "integer"
+                }
               }
             }
           }
@@ -8326,6 +9083,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10202,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -8548,6 +9319,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10202,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1900,
+                  "total": 10202,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5671,
+                  "total": 10202,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2493,
+                  "total": 10202,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 138,
+                  "total": 10202,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 8,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -8694,6 +9524,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 3561,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -8917,6 +9761,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.899999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 3561,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 726,
+                  "total": 3561,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 1782,
+                  "total": 3561,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 958,
+                  "total": 3561,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 95,
+                  "total": 3561,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 5,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -9031,6 +9934,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.100000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 12914,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -9126,7 +10043,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 3,
+                  "value": 9,
                   "type": "integer"
                 }
               },
@@ -9267,6 +10184,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.100000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 12914,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2457,
+                  "total": 12914,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 7039,
+                  "total": 12914,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 3305,
+                  "total": 12914,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 113,
+                  "total": 12914,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 8,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -9315,6 +10291,15 @@
             "valueFormat": "integer",
             "isPositive": true,
             "statKey": "chances_created"
+          },
+          {
+            "translationKey": "fun_fact_most_distance_covered",
+            "liveTranslationKey": "fun_fact_most_distance_covered_live",
+            "fallbackText": "Covered the most distance (%1$s) in the match",
+            "value": 12914,
+            "valueFormat": "distance",
+            "isPositive": true,
+            "statKey": "physical_metrics_distance_covered"
           }
         ]
       },
@@ -9392,6 +10377,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10903,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -9488,7 +10487,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 7,
+                  "value": 10,
                   "type": "integer"
                 }
               },
@@ -9629,6 +10628,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10903,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 3024,
+                  "total": 10903,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5176,
+                  "total": 10903,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2408,
+                  "total": 10903,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 295,
+                  "total": 10903,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 14,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -9737,6 +10795,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.20000076293945,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 5840,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -9953,6 +11025,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.20000076293945,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 5840,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1485,
+                  "total": 5840,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 3059,
+                  "total": 5840,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1134,
+                  "total": 5840,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 162,
+                  "total": 5840,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 6,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -10067,6 +11198,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.400001525878906,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11129,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -10155,7 +11300,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 1,
+                  "value": 3,
                   "type": "integer"
                 }
               },
@@ -10297,6 +11442,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.400001525878906,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11129,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2926,
+                  "total": 11129,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5519,
+                  "total": 11129,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2297,
+                  "total": 11129,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 387,
+                  "total": 11129,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 16,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -10368,6 +11572,20 @@
                 "stat": {
                   "value": 0,
                   "type": "integer"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 28.5,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1568,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -10533,6 +11751,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 28.5,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1568,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 286,
+                  "total": 1568,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 778,
+                  "total": 1568,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 466,
+                  "total": 1568,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 38,
+                  "total": 1568,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 2,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -10614,6 +11891,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 34,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 9373,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -10705,6 +11996,13 @@
                 "key": "passes_into_final_third",
                 "stat": {
                   "value": 4,
+                  "type": "integer"
+                }
+              },
+              "Line breaking passes": {
+                "key": "line_breaking_passes",
+                "stat": {
+                  "value": 1,
                   "type": "integer"
                 }
               },
@@ -10853,6 +12151,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 34,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 9373,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2916,
+                  "total": 9373,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 4393,
+                  "total": 9373,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1632,
+                  "total": 9373,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 432,
+                  "total": 9373,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 18,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -10893,6 +12250,15 @@
         "positionId": 103,
         "usualPosition": 3,
         "funFacts": [
+          {
+            "translationKey": "fun_fact_highest_top_speed",
+            "liveTranslationKey": "fun_fact_highest_top_speed_live",
+            "fallbackText": "Had the highest top speed in the match (%1$s)",
+            "value": 34,
+            "valueFormat": "speed",
+            "isPositive": true,
+            "statKey": "physical_metrics_topspeed"
+          },
           {
             "translationKey": "fun_fact_opp_box_touches",
             "liveTranslationKey": "fun_fact_opp_box_touches_live",
@@ -10946,6 +12312,20 @@
                   "type": "integer"
                 }
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30.200000762939453,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1550,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -10997,6 +12377,13 @@
               },
               "Passes into final third": {
                 "key": "passes_into_final_third",
+                "stat": {
+                  "value": 1,
+                  "type": "integer"
+                }
+              },
+              "Line breaking passes": {
+                "key": "line_breaking_passes",
                 "stat": {
                   "value": 1,
                   "type": "integer"
@@ -11115,6 +12502,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30.200000762939453,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1550,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 298,
+                  "total": 1550,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 799,
+                  "total": 1550,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 403,
+                  "total": 1550,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 50,
+                  "total": 1550,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 3,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -11173,6 +12619,20 @@
                 "stat": {
                   "value": 0.04,
                   "type": "double"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.700000762939453,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11469,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -11242,7 +12702,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 4,
+                  "value": 8,
                   "type": "integer"
                 }
               },
@@ -11369,6 +12829,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.700000762939453,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11469,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2739,
+                  "total": 11469,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 6463,
+                  "total": 11469,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2128,
+                  "total": 11469,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 139,
+                  "total": 11469,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 8,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -11428,6 +12947,20 @@
                 "stat": {
                   "value": 0.02,
                   "type": "double"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10396,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -11497,7 +13030,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 7,
+                  "value": 10,
                   "type": "integer"
                 }
               },
@@ -11638,6 +13171,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10396,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2506,
+                  "total": 10396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5148,
+                  "total": 10396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2446,
+                  "total": 10396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 296,
+                  "total": 10396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 14,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -11711,6 +13303,20 @@
                   "type": "double"
                 }
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.100000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11157,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -11770,7 +13376,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 6,
+                  "value": 9,
                   "type": "integer"
                 }
               },
@@ -11910,6 +13516,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.100000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11157,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2786,
+                  "total": 11157,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 6251,
+                  "total": 11157,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1971,
+                  "total": 11157,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 149,
+                  "total": 11157,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 8,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -11966,6 +13631,20 @@
                 "stat": {
                   "value": 0,
                   "type": "integer"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 5635,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -12146,6 +13825,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 5635,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1444,
+                  "total": 5635,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 3128,
+                  "total": 5635,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 995,
+                  "total": 5635,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 68,
+                  "total": 5635,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 4,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -12205,6 +13943,20 @@
                 "stat": {
                   "value": 0.02,
                   "type": "double"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.600000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 9865,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -12274,7 +14026,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 2,
+                  "value": 3,
                   "type": "integer"
                 }
               },
@@ -12392,6 +14144,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.600000381469727,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 9865,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1898,
+                  "total": 9865,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5358,
+                  "total": 9865,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2457,
+                  "total": 9865,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 152,
+                  "total": 9865,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 7,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -12437,6 +14248,20 @@
                 "stat": {
                   "value": 0,
                   "type": "integer"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 3453,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -12611,6 +14436,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 30.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 3453,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 612,
+                  "total": 3453,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 1803,
+                  "total": 3453,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 970,
+                  "total": 3453,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 68,
+                  "total": 3453,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 3,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -12705,6 +14589,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11302,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -12796,6 +14694,13 @@
                   "value": 1,
                   "total": 5,
                   "type": "fractionWithPercentage"
+                }
+              },
+              "Line breaking passes": {
+                "key": "line_breaking_passes",
+                "stat": {
+                  "value": 1,
+                  "type": "integer"
                 }
               },
               "Accurate crosses": {
@@ -12933,6 +14838,65 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11302,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2978,
+                  "total": 11302,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5599,
+                  "total": 11302,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2504,
+                  "total": 11302,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 221,
+                  "total": 11302,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 12,
+                  "type": "integer"
+                }
               }
             }
           }
@@ -13125,6 +15089,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10646,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -13335,6 +15313,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 10646,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2662,
+                  "total": 10646,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5121,
+                  "total": 10646,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2546,
+                  "total": 10646,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 317,
+                  "total": 10646,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 15,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -13438,6 +15475,20 @@
                 "stat": {
                   "value": 0,
                   "type": "integer"
+                }
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1580,
+                  "type": "distance"
                 }
               },
               "Accurate passes": {
@@ -13582,6 +15633,65 @@
                 "key": "fouls",
                 "stat": {
                   "value": 0,
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 29.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1580,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 280,
+                  "total": 1580,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 754,
+                  "total": 1580,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 491,
+                  "total": 1580,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 55,
+                  "total": 1580,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 3,
                   "type": "integer"
                 }
               }
@@ -13774,7 +15884,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 4,
+                  "value": 6,
                   "type": "integer"
                 },
                 "hideInPopupCard": true
@@ -13786,6 +15896,58 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 24,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 5614,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 3552,
+                  "total": 5614,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 1761,
+                  "total": 5614,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 299,
+                  "total": 5614,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 2,
+                  "total": 5614,
+                  "type": "distanceWithPercentage"
+                }
               }
             }
           }
@@ -13869,6 +16031,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.5,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 8219,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -14099,6 +16275,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 31.5,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 8219,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 1694,
+                  "total": 8219,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 4731,
+                  "total": 8219,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 1604,
+                  "total": 8219,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 190,
+                  "total": 8219,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 11,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -14245,6 +16480,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 2396,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -14453,6 +16702,65 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.29999923706055,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 2396,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 660,
+                  "total": 2396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 1199,
+                  "total": 2396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 464,
+                  "total": 2396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 73,
+                  "total": 2396,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 3,
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "shotmap": [
@@ -14600,6 +16908,20 @@
                 },
                 "hideInPopupCard": true
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.099998474121094,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11504,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -14696,7 +17018,7 @@
               "Line breaking passes": {
                 "key": "line_breaking_passes",
                 "stat": {
-                  "value": 1,
+                  "value": 2,
                   "type": "integer"
                 }
               },
@@ -14843,6 +17165,65 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.099998474121094,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 11504,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 3058,
+                  "total": 11504,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 5628,
+                  "total": 11504,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2469,
+                  "total": 11504,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 349,
+                  "total": 11504,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 17,
+                  "type": "integer"
+                }
               }
             }
           }
@@ -14998,6 +17379,20 @@
                   "type": "integer"
                 }
               },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 23.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1416,
+                  "type": "distance"
+                }
+              },
               "Accurate passes": {
                 "key": "accurate_passes",
                 "stat": {
@@ -15044,6 +17439,13 @@
                 "key": "touches_opp_box",
                 "stat": {
                   "value": 0,
+                  "type": "integer"
+                }
+              },
+              "Line breaking passes": {
+                "key": "line_breaking_passes",
+                "stat": {
+                  "value": 1,
                   "type": "integer"
                 }
               },
@@ -15153,6 +17555,58 @@
                 "hideInPopupCard": true
               }
             }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 23.399999618530273,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 1416,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 303,
+                  "total": 1416,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 821,
+                  "total": 1416,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 287,
+                  "total": 1416,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 5,
+                  "total": 1416,
+                  "type": "distanceWithPercentage"
+                }
+              }
+            }
           }
         ],
         "shotmap": [],
@@ -15233,6 +17687,20 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              },
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.400001525878906,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 9191,
+                  "type": "distance"
+                }
               },
               "Accurate passes": {
                 "key": "accurate_passes",
@@ -15454,6 +17922,65 @@
                   "type": "integer"
                 },
                 "hideInPopupCard": true
+              }
+            }
+          },
+          {
+            "title": "Physical metrics",
+            "key": "physical_metrics",
+            "stats": {
+              "Top speed": {
+                "key": "physical_metrics_topspeed",
+                "stat": {
+                  "value": 32.400001525878906,
+                  "type": "speed"
+                }
+              },
+              "Distance covered": {
+                "key": "physical_metrics_distance_covered",
+                "stat": {
+                  "value": 9191,
+                  "type": "distance"
+                }
+              },
+              "Walking": {
+                "key": "physical_metrics_walking",
+                "stat": {
+                  "value": 2443,
+                  "total": 9191,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Jogging": {
+                "key": "physical_metrics_jogging",
+                "stat": {
+                  "value": 4195,
+                  "total": 9191,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Running": {
+                "key": "physical_metrics_running",
+                "stat": {
+                  "value": 2243,
+                  "total": 9191,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Sprinting": {
+                "key": "physical_metrics_sprinting",
+                "stat": {
+                  "value": 310,
+                  "total": 9191,
+                  "type": "distanceWithPercentage"
+                }
+              },
+              "Number of sprints": {
+                "key": "physical_metrics_number_of_sprints",
+                "stat": {
+                  "value": 14,
+                  "type": "integer"
+                }
               }
             }
           }
@@ -18727,6 +21254,8 @@
       "lineupType": "standard",
       "source": "enetpulse",
       "availableFilters": [
+        "distance",
+        "speed",
         "marketValue",
         "match",
         "age",
@@ -18761,12 +21290,23 @@
             },
             "marketValue": 1905269,
             "performance": {
-              "rating": 8.7
+              "rating": 8.7,
+              "totalDistanceCovered": 5186,
+              "topSpeed": 22.899999618530273
             },
             "firstName": "Yann",
             "lastName": "Sommer",
             "nationalTeamId": 6717,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 23,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 32,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1227590,
@@ -18798,12 +21338,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 10396,
+              "topSpeed": 31.399999618530273
             },
             "firstName": "Kyriani",
             "lastName": "Sabbe",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 13,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 13,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1233418,
@@ -18828,12 +21379,23 @@
             },
             "marketValue": 3726891,
             "performance": {
-              "rating": 8.1
+              "rating": 8.1,
+              "totalDistanceCovered": 11157,
+              "topSpeed": 31.100000381469727
             },
             "firstName": "Jorne",
             "lastName": "Spileers",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 7,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 14,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 445873,
@@ -18858,12 +21420,23 @@
             },
             "marketValue": 2406781,
             "performance": {
-              "rating": 8
+              "rating": 8,
+              "totalDistanceCovered": 10973,
+              "topSpeed": 29.200000762939453
             },
             "firstName": "Brandon",
             "lastName": "Mechele",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 9,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 26,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1489449,
@@ -18893,12 +21466,23 @@
                 {
                   "type": "goal"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 11504,
+              "topSpeed": 32.099998474121094
             },
             "firstName": "Joaquin",
             "lastName": "Seys",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 3,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 9,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1284071,
@@ -18935,12 +21519,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 9865,
+              "topSpeed": 29.600000381469727
             },
             "firstName": "Félix",
             "lastName": "Lemaréchal",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 15,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 23,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1206287,
@@ -18965,12 +21560,23 @@
             },
             "marketValue": 12610397,
             "performance": {
-              "rating": 7.2
+              "rating": 7.2,
+              "totalDistanceCovered": 11469,
+              "topSpeed": 29.700000762939453
             },
             "firstName": "Freddie",
             "lastName": "Potts",
             "nationalTeamId": 8491,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 4,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 22,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 203666,
@@ -19002,12 +21608,23 @@
                   "type": "goal"
                 }
               ],
+              "totalDistanceCovered": 12159,
+              "topSpeed": 29.899999618530273,
               "playerOfTheMatch": true
             },
             "firstName": "Hans",
             "lastName": "Vanaken",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 2,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 20,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1186529,
@@ -19044,12 +21661,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 9373,
+              "topSpeed": 34
             },
             "firstName": "Carlos",
             "lastName": "Forbs",
             "nationalTeamId": 8361,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 16,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 1,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1334552,
@@ -19081,12 +21709,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 10646,
+              "topSpeed": 32.29999923706055
             },
             "firstName": "Nicolò",
             "lastName": "Tresoldi",
             "nationalTeamId": 8570,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 12,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 6,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1690093,
@@ -19118,12 +21757,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 9191,
+              "topSpeed": 32.400001525878906
             },
             "firstName": "Jan",
             "lastName": "Virgili",
             "nationalTeamId": 6720,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 17,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 3,
+                "totalPlayers": 32
+              }
+            }
           }
         ],
         "coach": {
@@ -19166,12 +21816,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 3561,
+              "topSpeed": 29.899999618530273
             },
             "firstName": "Hugo",
             "lastName": "Vetlesen",
             "nationalTeamId": 8492,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 26,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 21,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1484998,
@@ -19190,12 +21851,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 2396,
+              "topSpeed": 32.29999923706055
             },
             "firstName": "Mamadou",
             "lastName": "Diakhon",
             "nationalTeamId": 6395,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 28,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 7,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1202888,
@@ -19213,12 +21885,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 1550,
+              "topSpeed": 30.200000762939453
             },
             "firstName": "Hugo",
             "lastName": "Siquet",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 31,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 16,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1355523,
@@ -19236,12 +21919,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 1580,
+              "topSpeed": 29.399999618530273
             },
             "firstName": "Milan",
             "lastName": "Robberechts",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 29,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 24,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1178453,
@@ -19259,12 +21953,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 1568,
+              "topSpeed": 28.5
             },
             "firstName": "Romeo",
             "lastName": "Vermant",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 30,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 29,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1553027,
@@ -19372,25 +22077,7 @@
             "rankings": null
           }
         ],
-        "unavailable": [
-          {
-            "id": 1354085,
-            "age": 22,
-            "name": "Joel Ordóñez",
-            "positionId": 1000,
-            "countryName": "Ecuador",
-            "countryCode": "ECU",
-            "marketValue": 41686016,
-            "unavailability": {
-              "injuryId": 21,
-              "type": "injury",
-              "expectedReturn": "Day to day"
-            },
-            "firstName": "Joel",
-            "lastName": "Ordóñez",
-            "nationalTeamId": 6707
-          }
-        ],
+        "unavailable": [],
         "averageStarterAge": 25.6,
         "totalStarterMarketValue": 122077269
       },
@@ -19423,12 +22110,23 @@
             },
             "marketValue": 18292630,
             "performance": {
-              "rating": 6.1
+              "rating": 6.1,
+              "totalDistanceCovered": 5614,
+              "topSpeed": 24
             },
             "firstName": "Robin",
             "lastName": "Risser",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 22,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 30,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 561046,
@@ -19460,12 +22158,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 10883,
+              "topSpeed": 32.29999923706055
             },
             "firstName": "Ruben",
             "lastName": "Aguilar",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 11,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 5,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1276626,
@@ -19497,12 +22206,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 5635,
+              "topSpeed": 30
             },
             "firstName": "Samson",
             "lastName": "Baidoo",
             "nationalTeamId": 8255,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 21,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 19,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 660326,
@@ -19533,12 +22253,23 @@
                 {
                   "type": "yellowCard"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 11421,
+              "topSpeed": 31.899999618530273
             },
             "firstName": "Matthieu",
             "lastName": "Udol",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 5,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 10,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1002617,
@@ -19563,12 +22294,23 @@
             },
             "marketValue": 6369931,
             "performance": {
-              "rating": 6.5
+              "rating": 6.5,
+              "totalDistanceCovered": 11129,
+              "topSpeed": 32.400001525878906
             },
             "firstName": "Saud",
             "lastName": "Abdulhamid",
             "nationalTeamId": 7795,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 8,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 2,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 861445,
@@ -19593,12 +22335,23 @@
             },
             "marketValue": 3152690,
             "performance": {
-              "rating": 7.6
+              "rating": 7.6,
+              "totalDistanceCovered": 12914,
+              "topSpeed": 29.100000381469727
             },
             "firstName": "Michaël",
             "lastName": "Cuisance",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 1,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 27,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 688830,
@@ -19630,12 +22383,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 10202,
+              "topSpeed": 30
             },
             "firstName": "Amadou",
             "lastName": "Haidara",
             "nationalTeamId": 5815,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 14,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 17,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 954190,
@@ -19665,12 +22429,23 @@
                 {
                   "type": "yellowCard"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 10903,
+              "topSpeed": 32.29999923706055
             },
             "firstName": "Michał",
             "lastName": "Skóras",
             "nationalTeamId": 8568,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 10,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 4,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1334534,
@@ -19695,12 +22470,23 @@
             },
             "marketValue": 1406920,
             "performance": {
-              "rating": 6.6
+              "rating": 6.6,
+              "totalDistanceCovered": 11302,
+              "topSpeed": 31.399999618530273
             },
             "firstName": "Junior",
             "lastName": "Kadile",
             "nationalTeamId": 6321,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 6,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 12,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 264190,
@@ -19732,12 +22518,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 7866,
+              "topSpeed": 30
             },
             "firstName": "Thorgan",
             "lastName": "Hazard",
             "nationalTeamId": 8263,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 19,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 18,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1406419,
@@ -19769,12 +22566,23 @@
                   "type": "subOut",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 8219,
+              "topSpeed": 31.5
             },
             "firstName": "Franjo",
             "lastName": "Ivanović",
             "nationalTeamId": 10155,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 18,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 11,
+                "totalPlayers": 32
+              }
+            }
           }
         ],
         "coach": {
@@ -19809,12 +22617,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 5840,
+              "topSpeed": 32.20000076293945
             },
             "firstName": "Jean-Clair",
             "lastName": "Todibo",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 20,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 8,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 254308,
@@ -19833,12 +22652,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 4578,
+              "topSpeed": 29.299999237060547
             },
             "firstName": "Florian",
             "lastName": "Thauvin",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 24,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 25,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 637746,
@@ -19857,12 +22687,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 4266,
+              "topSpeed": 28.600000381469727
             },
             "firstName": "Odsonne",
             "lastName": "Édouard",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 25,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 28,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1288907,
@@ -19881,12 +22722,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 3453,
+              "topSpeed": 30.399999618530273
             },
             "firstName": "Yacine",
             "lastName": "Titraoui",
             "nationalTeamId": 6317,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 27,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 15,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 1685514,
@@ -19904,12 +22756,23 @@
                   "type": "subIn",
                   "reason": "tactical"
                 }
-              ]
+              ],
+              "totalDistanceCovered": 1416,
+              "topSpeed": 23.399999618530273
             },
             "firstName": "Kyllian",
             "lastName": "Antonio",
             "nationalTeamId": 6723,
-            "rankings": null
+            "rankings": {
+              "totalDistanceCovered": {
+                "rank": 32,
+                "totalPlayers": 32
+              },
+              "topSpeed": {
+                "rank": 31,
+                "totalPlayers": 32
+              }
+            }
           },
           {
             "id": 186811,
@@ -20016,91 +22879,7 @@
             "rankings": null
           }
         ],
-        "unavailable": [
-          {
-            "id": 1053713,
-            "age": 25,
-            "name": "Maik Nawrocki",
-            "countryName": "Poland",
-            "countryCode": "POL",
-            "marketValue": 1364483,
-            "unavailability": {
-              "injuryId": 76,
-              "type": "injury",
-              "expectedReturn": "Mid May 2027"
-            },
-            "firstName": "Maik",
-            "lastName": "Nawrocki",
-            "nationalTeamId": 8568
-          },
-          {
-            "id": 1191194,
-            "age": 24,
-            "name": "Jhoanner Chávez",
-            "countryName": "Ecuador",
-            "countryCode": "ECU",
-            "marketValue": 1919250,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Early November 2026"
-            },
-            "firstName": "Jhoanner",
-            "lastName": "Chávez",
-            "nationalTeamId": 6707
-          },
-          {
-            "id": 513072,
-            "age": 33,
-            "name": "Jonathan Gradit",
-            "positionId": 1000,
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 1673302,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Jonathan",
-            "lastName": "Gradit",
-            "nationalTeamId": 6723
-          },
-          {
-            "id": 1406645,
-            "age": 21,
-            "name": "Ismaëlo Ganiou",
-            "positionId": 1000,
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 6225024,
-            "unavailability": {
-              "injuryId": 14,
-              "type": "injury",
-              "expectedReturn": "Early November 2026"
-            },
-            "firstName": "Ismaëlo",
-            "lastName": "Ganiou",
-            "nationalTeamId": 6723
-          },
-          {
-            "id": 1189856,
-            "age": 25,
-            "name": "Abdallah Sima",
-            "positionId": 1000,
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 5670089,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Late November 2026"
-            },
-            "firstName": "Abdallah",
-            "lastName": "Sima",
-            "nationalTeamId": 6395
-          }
-        ],
+        "unavailable": [],
         "averageStarterAge": 27.2,
         "totalStarterMarketValue": 91665162
       }
