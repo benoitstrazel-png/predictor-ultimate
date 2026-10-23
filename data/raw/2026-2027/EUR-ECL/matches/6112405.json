@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "2",
+                "2",
+                "1",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +461,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "FC Midtjylland haven't lost in 12 matches."
+              "Icon": "poll_teams",
+              "defaultText": "FC Midtjylland have 2W, 2D, 1L in five matches while Ajax have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "12",
                 "away_team",
-                "12"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,20 +483,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Midtjylland have scored in their last 12 matches and Ajax have scored in their last 12 matches."
+              "defaultText": "Ajax have scored in their last 5 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "5",
-                "7"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Midtjylland have scored 5 goals in their last 3 matches, while Ajax have scored 7."
+              "defaultText": "Ajax have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -513,9 +515,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
                 "2",
-                "0",
+                "2",
+                "1",
                 "away_team",
                 "2",
                 "2",
@@ -532,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC Midtjylland have 3W, 2D, 0L in five matches while Ajax have 2W, 2D, 1L."
+              "defaultText": "FC Midtjylland have 2W, 2D, 1L in five matches while Ajax have 2W, 2D, 1L."
             }
           ]
         },
@@ -607,17 +609,17 @@
     },
     "weather": {
       "temperature": 7,
-      "windSpeed": 3,
-      "windDirectionCardinal": "SSW",
+      "windSpeed": 4,
+      "windDirectionCardinal": "SSE",
       "iconCode": 29,
-      "relativeHumidity": 91,
-      "precipChance": 20,
+      "relativeHumidity": 92,
+      "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
       "cloudCover": 55,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-22T18:00:35Z",
+      "lastUpdated": "2026-10-23T06:00:27Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -642,18 +644,6 @@
             },
             "firstName": "Denil",
             "lastName": "Castillo"
-          },
-          {
-            "id": 1273298,
-            "name": "Victor Bak",
-            "unavailability": {
-              "injuryId": 6,
-              "lastUpdated": "2026-10-22T10:49:12Z",
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "firstName": "Victor",
-            "lastName": "Bak"
           },
           {
             "id": 768860,
