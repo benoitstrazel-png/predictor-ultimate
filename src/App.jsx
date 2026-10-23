@@ -2,12 +2,12 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import SidebarRail from './components/SidebarRail';
 import MobileNavbar from './components/MobileNavbar';
-import HeroSpotlight from './components/HeroSpotlight';
 import FixturesDrawer from './components/FixturesDrawer';
 import AiPredictorModal from './components/AiPredictorModal';
-import DynamicIsland from './components/DynamicIsland';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Terminal, Sparkles, Database, Calendar } from 'lucide-react';
+import TeamLogo from './components/ui/TeamLogo';
 
 // Lazy-loaded cockpit views for fast initial load
 const DailyBettingHub = lazy(() => import('./components/DailyBettingHub'));
@@ -21,11 +21,16 @@ const BankrollTracking = lazy(() => import('./components/BankrollTracking'));
 import { MatchProvider, useMatch } from './context/MatchContext';
 import { calculateCalibration } from './utils/calibration';
 
-const TEAM_STATS = {};
-
 function AppContent() {
   const navigate = useNavigate();
-  const { selectedMatch, selectMatch, allMatches, appData } = useMatch();
+  const {
+    selectedMatch,
+    selectMatch,
+    allMatches,
+    appData,
+    modelVersion,
+    setModelVersion,
+  } = useMatch();
 
   const [teams, setTeams] = useState([]);
   const [calibration, setCalibration] = useState({});
@@ -35,15 +40,14 @@ function AppContent() {
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isFixturesOpen, setIsFixturesOpen] = useState(false);
 
-  // Prochains matchs pour le carrousel Spotlight
-  const upcomingMatches = allMatches.filter(m => m.status === 'LIVE' || m.status === 'SCHEDULED');
+  const upcomingMatches = allMatches.filter(
+    (m) => m.status === 'LIVE' || m.status === 'SCHEDULED'
+  );
   const [heroIdx, setHeroIdx] = useState(0);
-  const heroMatch = selectedMatch || upcomingMatches[heroIdx];
 
-  // Synchroniser l'index du carrousel avec le match sélectionné
   useEffect(() => {
     if (selectedMatch && upcomingMatches.length > 0) {
-      const idx = upcomingMatches.findIndex(m => m.id === selectedMatch.id);
+      const idx = upcomingMatches.findIndex((m) => m.id === selectedMatch.id);
       if (idx !== -1 && idx !== heroIdx) {
         setHeroIdx(idx);
       }
@@ -53,7 +57,7 @@ function AppContent() {
   useEffect(() => {
     if (allMatches && allMatches.length > 0) {
       const uniqueTeams = new Set();
-      allMatches.forEach(match => {
+      allMatches.forEach((match) => {
         if (match.homeTeam) uniqueTeams.add(match.homeTeam);
         if (match.awayTeam) uniqueTeams.add(match.awayTeam);
       });
@@ -62,42 +66,82 @@ function AppContent() {
     }
   }, [allMatches, appData]);
 
-  const handleNextMatch = () => {
-    if (upcomingMatches.length === 0) return;
-    const nextI = (heroIdx + 1) % upcomingMatches.length;
-    setHeroIdx(nextI);
-    selectMatch(upcomingMatches[nextI]);
-  };
-
-  const handlePrevMatch = () => {
-    if (upcomingMatches.length === 0) return;
-    const prevI = (heroIdx - 1 + upcomingMatches.length) % upcomingMatches.length;
-    setHeroIdx(prevI);
-    selectMatch(upcomingMatches[prevI]);
-  };
-
   return (
-    <div className="app-shell">
-      {/* ── 1. Dynamic Island (Top Center) ── */}
-      <DynamicIsland />
-
-      {/* ── 2. Left Sidebar Rail ── */}
+    <div className="app-shell" style={{ background: '#09090b', color: '#fafafa' }}>
+      {/* ── 1. Left Sidebar Rail ── */}
       <SidebarRail onOpenAiModal={() => setIsAiModalOpen(true)} />
 
-      {/* ── 3. Center Main Cockpit Area ── */}
-      <main className="main-content">
+      {/* ── 2. Center Main Terminal Area (Zero 56vh Hero Banner) ── */}
+      <main className="main-content" style={{ background: '#09090b' }}>
         <div className="main-scroll">
-          {/* Cinematic Hero Spotlight Stage */}
-          <HeroSpotlight
-            key={`hero-${heroMatch?.id}`}
-            selectedMatch={heroMatch}
-            onOpenAiModal={() => setIsAiModalOpen(true)}
-            onNextMatch={handleNextMatch}
-            onPrevMatch={handlePrevMatch}
-          />
+          {/* Top Compact Terminal Status Ticker (38px height) */}
+          <div style={{
+            height: 38,
+            background: '#121215',
+            borderBottom: '1px solid #27272a',
+            padding: '0 16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                color: '#06b6d4', fontWeight: 700, letterSpacing: '0.04em'
+              }}>
+                <Terminal size={13} /> PREDICTOR QUANT TERMINAL
+              </span>
+              <span style={{ color: '#27272a' }}>|</span>
+              {selectedMatch && (
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#e4e4e7' }}>
+                  <span style={{ color: '#71717a' }}>FOCUS:</span>
+                  <TeamLogo teamName={selectedMatch.homeTeam} size={13} />
+                  <strong>{selectedMatch.homeTeam}</strong>
+                  <span style={{ color: '#71717a' }}>vs</span>
+                  <TeamLogo teamName={selectedMatch.awayTeam} size={13} />
+                  <strong>{selectedMatch.awayTeam}</strong>
+                  <span style={{
+                    padding: '1px 5px', borderRadius: 2,
+                    background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.35)',
+                    color: '#10b981', fontSize: 10
+                  }}>
+                    1N2: {selectedMatch.probabilities?.home} / {selectedMatch.probabilities?.draw} / {selectedMatch.probabilities?.away}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ color: '#71717a', fontSize: 10, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <Database size={11} color="#10b981" /> SQLITE/LIBSQL SEALED ({modelVersion.toUpperCase()})
+              </span>
+              <button
+                onClick={() => setIsFixturesOpen((prev) => !prev)}
+                style={{
+                  background: '#18181b', border: '1px solid #27272a', color: '#e4e4e7',
+                  padding: '3px 8px', borderRadius: 3, fontSize: 10, cursor: 'pointer',
+                  fontFamily: "'JetBrains Mono', monospace", display: 'inline-flex', alignItems: 'center', gap: 4
+                }}
+              >
+                <Calendar size={11} /> Calendrier ({allMatches.length})
+              </button>
+              <button
+                onClick={() => setIsAiModalOpen(true)}
+                style={{
+                  background: 'rgba(6, 182, 212, 0.14)', border: '1px solid #06b6d4', color: '#06b6d4',
+                  padding: '3px 9px', borderRadius: 3, fontSize: 10, fontWeight: 700, cursor: 'pointer',
+                  fontFamily: "'JetBrains Mono', monospace", display: 'inline-flex', alignItems: 'center', gap: 4
+                }}
+              >
+                <Sparkles size={11} /> Brief RAG Structuré
+              </button>
+            </div>
+          </div>
 
           {/* Cockpit Content Views */}
-          <div style={{ padding: '28px 32px 48px' }}>
+          <div>
             <Suspense
               fallback={
                 <div style={{
@@ -106,25 +150,17 @@ function AppContent() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   minHeight: '400px',
-                  gap: '16px',
-                  color: 'var(--cucinelli-sand, #c5a059)'
+                  gap: '12px',
+                  color: '#06b6d4'
                 }}>
-                  <div style={{
-                    width: '36px',
-                    height: '36px',
-                    border: '2px solid rgba(197, 160, 89, 0.2)',
-                    borderTopColor: '#c5a059',
-                    borderRadius: '50%',
-                    animation: 'spin 0.8s linear infinite'
-                  }} />
                   <span style={{
                     fontSize: '11px',
-                    letterSpacing: '0.15em',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: '#8b8478',
-                    fontFamily: 'var(--font-mono, monospace)'
+                    color: '#a1a1aa',
+                    fontFamily: "'JetBrains Mono', monospace"
                   }}>
-                    Chargement du cockpit...
+                    Initialisation du terminal quantitatif...
                   </span>
                 </div>
               }
@@ -132,12 +168,11 @@ function AppContent() {
               <Routes>
                 <Route path="/" element={<Navigate to="/main" replace />} />
 
-                {/* Tab 1: Daily Betting Hub & Value Bets */}
+                {/* Tab 1: Terminal Match Feed & Multi-Model Switcher */}
                 <Route
                   path="/main"
                   element={
                     <DailyBettingHub
-                      key={`daily-${selectedMatch?.id}`}
                       APP_DATA={appData}
                       selectedMatch={selectedMatch}
                       setSelectedMatch={selectMatch}
@@ -150,7 +185,7 @@ function AppContent() {
                   path="/match-deep-dive"
                   element={
                     <MatchDeepDive
-                      key={`dive-${selectedMatch?.id}`}
+                      key={`dive-${selectedMatch?.id}-${modelVersion}`}
                       selectedMatch={selectedMatch}
                       APP_DATA={appData}
                       teams={teams}
@@ -161,7 +196,7 @@ function AppContent() {
                 {/* Tab 3: Focus Championnat & Stats */}
                 <Route path="/league-focus" element={<LeagueFocusHub />} />
 
-                {/* Tab 4: Historique & Résumés IA (Moteur Buteurs) */}
+                {/* Tab 4: Historique & Résumés IA */}
                 <Route path="/history" element={<MatchHistoryHub />} />
 
                 {/* Tab 5: Squads, Mercato & Player Props */}
@@ -195,7 +230,7 @@ function AppContent() {
         </div>
       </main>
 
-      {/* ── 4. Right Fixtures Drawer ── */}
+      {/* ── 3. Right Fixtures Drawer ── */}
       <FixturesDrawer
         isOpen={isFixturesOpen}
         onClose={() => setIsFixturesOpen(false)}
@@ -203,21 +238,21 @@ function AppContent() {
         onSelectLeague={setSelectedLeague}
         onSelectMatch={(fixture) => {
           selectMatch(fixture);
-          const idx = upcomingMatches.findIndex(m => m.id === fixture.id);
+          const idx = upcomingMatches.findIndex((m) => m.id === fixture.id);
           if (idx !== -1) setHeroIdx(idx);
           setIsFixturesOpen(false);
           navigate('/match-deep-dive');
         }}
       />
 
-      {/* ── 5. Mobile / Tablet Bottom Navigation Bar ── */}
+      {/* ── 4. Mobile / Tablet Bottom Navigation Bar ── */}
       <MobileNavbar
         onOpenAiModal={() => setIsAiModalOpen(true)}
-        onToggleFixtures={() => setIsFixturesOpen(prev => !prev)}
+        onToggleFixtures={() => setIsFixturesOpen((prev) => !prev)}
         isFixturesOpen={isFixturesOpen}
       />
 
-      {/* ── 6. RAG AI Modal ── */}
+      {/* ── 5. Structured RAG Tactical Brief Modal ── */}
       <AiPredictorModal
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}

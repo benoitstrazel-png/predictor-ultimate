@@ -2,7 +2,8 @@
 """
 scripts/ml/predict_match_v3.py
 ─────────────────────────────────────────────────────────────
-Real-time Inference Engine with SHAP Explicability (Football Quant Engine V3):
+Real-time Inference Engine with Multi-Model Versioning (v1, v2, v3),
+Shin De-Vigging, Epistemic Confidence & SHAP Explicability:
 Loads calibrated hybrid model bundle (Dixon-Coles + LightGBM multi-task)
 and predicts on-demand match outcomes with SHAP local factor attributions.
 """
@@ -19,7 +20,7 @@ from scipy.stats import poisson
 
 if sys.platform == "win32":
     try:
-        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
         pass
 
@@ -27,27 +28,36 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 from scripts.ml.dixon_coles_model import FastDixonColesModel
+
 MODEL_BUNDLE_PATH = os.path.join(ROOT_DIR, "models", "football_quant_model_v3.joblib")
 FEATURE_DATASET_PATH = os.path.join(ROOT_DIR, "data", "ml_features_dataset.parquet")
 
 _CACHED_BUNDLE = None
 _CACHED_HIST_DF = None
 _CACHED_PLAYERS = None
+_TEAM_STATS_CACHE = None
+
 
 def load_bundle():
     global _CACHED_BUNDLE
     if _CACHED_BUNDLE is not None:
         return _CACHED_BUNDLE
     if not os.path.exists(MODEL_BUNDLE_PATH):
-        raise FileNotFoundError(f"Model bundle not found at: {MODEL_BUNDLE_PATH}. Please train the model first.")
+        raise FileNotFoundError(
+            f"Model bundle not found at: {MODEL_BUNDLE_PATH}. Please train the model first."
+        )
     _CACHED_BUNDLE = joblib.load(MODEL_BUNDLE_PATH)
     return _CACHED_BUNDLE
 
+
 def normalize_text(s):
-    if not s: return ""
+    if not s:
+        return ""
     import unicodedata
-    s = unicodedata.normalize('NFD', str(s)).encode('ascii', 'ignore').decode('utf-8')
+
+    s = unicodedata.normalize("NFD", str(s)).encode("ascii", "ignore").decode("utf-8")
     return s.lower().replace("-", " ").replace("_", " ").strip()
+
 
 def load_players_db():
     global _CACHED_PLAYERS
@@ -58,7 +68,7 @@ def load_players_db():
     real_path = os.path.join(ROOT_DIR, "src", "data", "real_players.json")
     if os.path.exists(real_path):
         try:
-            with open(real_path, 'r', encoding='utf-8') as f:
+            with open(real_path, "r", encoding="utf-8") as f:
                 raw = json.load(f)
                 for club, plist in raw.items():
                     k = normalize_text(club)
@@ -70,13 +80,14 @@ def load_players_db():
     flat_path = os.path.join(ROOT_DIR, "src", "data", "players.json")
     if os.path.exists(flat_path):
         try:
-            with open(flat_path, 'r', encoding='utf-8') as f:
+            with open(flat_path, "r", encoding="utf-8") as f:
                 flat_players = json.load(f)
         except Exception:
             pass
 
     _CACHED_PLAYERS = {"rosters": rosters, "flat": flat_players}
     return _CACHED_PLAYERS
+
 
 def get_club_players(team_name):
     db = load_players_db()
@@ -91,18 +102,109 @@ def get_club_players(team_name):
             return plist
 
     flat = db.get("flat", [])
-    matched = [p for p in flat if normalize_text(p.get("team", "")) in norm or norm in normalize_text(p.get("team", ""))]
+    matched = [
+        p
+        for p in flat
+        if normalize_text(p.get("team", "")) in norm
+        or norm in normalize_text(p.get("team", ""))
+    ]
     if matched:
         return matched
 
     return []
 
-def generate_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=6, probs_1n2=None):
+
+def shin_true_probabilities(odd_h, odd_d, odd_a):
+    """
+    Élimine la marge du bookmaker (overround) via la méthode de Shin (1993),
+    qui ajuste le biais favori-longshot avant le calcul d'Edge Value Bet.
+    """
+    try:
+        oh, od, oa = float(odd_h), float(odd_d), float(odd_a)
+        if oh <= 1.0 or od <= 1.0 or oa <= 1.0:
+            return None
+    except Exception:
+        return None
+
+    inv = [1.0 / oh, 1.0 / od, 1.0 / oa]
+    s = sum(inv)
+    if s <= 1.0:
+        return {
+            "home": round(inv[0] * 100, 2),
+            "draw": round(inv[1] * 100, 2),
+            "away": round(inv[2] * 100, 2),
+            "overround_pct": 0.0,
+        }
+
+    lo, hi = 0.0, min(0.25, (s - 1.0) / 2.0)
+    probs = [q / s for q in inv]
+    for _ in range(35):
+        z = (lo + hi) / 2.0
+        probs = [
+            (math.sqrt(z * z + 4.0 * (1.0 - z) * (q * q / s)) - z) / (2.0 * (1.0 - z))
+            for q in inv
+        ]
+        if sum(probs) > 1.0:
+            lo = z
+        else:
+            hi = z
+
+    return {
+        "home": round(probs[0] * 100, 2),
+        "draw": round(probs[1] * 100, 2),
+        "away": round(probs[2] * 100, 2),
+        "overround_pct": round((s - 1.0) * 100, 2),
+    }
+
+
+def compute_epistemic_confidence(
+    probs_1n2, dc_probs=None, has_real_odds=False, absentees_total=0
+):
+    """
+    Calcule un indice de confiance composite [0-100] combinant :
+    1. Inverse de l'entropie de Shannon normalisée (certitude directionnelle)
+    2. Convergence inter-modèles entre Dixon-Coles et LightGBM
+    3. Qualité du signal (cotes ouvertes, stabilité d'effectif)
+    """
+    p = [max(1e-4, float(x)) for x in probs_1n2]
+    s = sum(p)
+    p = [x / s for x in p]
+    entropy = -sum(x * math.log(x) for x in p)
+    max_entropy = math.log(3.0)
+    norm_certainty = max(0.0, 1.0 - (entropy / max_entropy))
+
+    agreement = 0.85
+    if dc_probs is not None and len(dc_probs) == 3:
+        tvd = 0.5 * sum(abs(p[i] - float(dc_probs[i])) for i in range(3))
+        agreement = max(0.0, 1.0 - tvd)
+
+    max_p = max(p)
+    base_score = (
+        38.0
+        + (max_p - 0.34) * 75.0
+        + norm_certainty * 24.0
+        + (agreement - 0.75) * 25.0
+    )
+    if has_real_odds:
+        base_score += 2.5
+    if absentees_total >= 4:
+        base_score -= 3.5
+
+    return round(float(min(96.0, max(35.0, base_score))), 1)
+
+
+def generate_exact_score_matrix(
+    lambda_h, lambda_a, rho=-0.05, max_goals=6, probs_1n2=None
+):
     def tau(x, y):
-        if x == 0 and y == 0: return max(1e-5, 1.0 - lambda_h * lambda_a * rho)
-        elif x == 0 and y == 1: return max(1e-5, 1.0 + lambda_h * rho)
-        elif x == 1 and y == 0: return max(1e-5, 1.0 + lambda_a * rho)
-        elif x == 1 and y == 1: return max(1e-5, 1.0 - rho)
+        if x == 0 and y == 0:
+            return max(1e-5, 1.0 - lambda_h * lambda_a * rho)
+        elif x == 0 and y == 1:
+            return max(1e-5, 1.0 + lambda_h * rho)
+        elif x == 1 and y == 0:
+            return max(1e-5, 1.0 + lambda_a * rho)
+        elif x == 1 and y == 1:
+            return max(1e-5, 1.0 - rho)
         return 1.0
 
     raw_matrix = np.zeros((max_goals + 1, max_goals + 1))
@@ -141,20 +243,29 @@ def generate_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=6, prob
     scores = []
     for x in range(max_goals + 1):
         for y in range(max_goals + 1):
-            scores.append({"score": f"{x}-{y}", "prob": round(float(adj_matrix[x, y] * 100), 1)})
+            scores.append(
+                {"score": f"{x}-{y}", "prob": round(float(adj_matrix[x, y] * 100), 1)}
+            )
 
     scores.sort(key=lambda s: s["prob"], reverse=True)
     return scores[:6]
 
-def generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goals=4, probs_1n2=None):
+
+def generate_half_time_exact_score_matrix(
+    lambda_h, lambda_a, rho=-0.05, max_goals=4, probs_1n2=None
+):
     ht_lambda_h = round(float(max(0.10, lambda_h * 0.43)), 2)
     ht_lambda_a = round(float(max(0.08, lambda_a * 0.43)), 2)
 
     def tau(x, y):
-        if x == 0 and y == 0: return max(1e-5, 1.0 - ht_lambda_h * ht_lambda_a * rho)
-        elif x == 0 and y == 1: return max(1e-5, 1.0 + ht_lambda_h * rho)
-        elif x == 1 and y == 0: return max(1e-5, 1.0 + ht_lambda_a * rho)
-        elif x == 1 and y == 1: return max(1e-5, 1.0 - rho)
+        if x == 0 and y == 0:
+            return max(1e-5, 1.0 - ht_lambda_h * ht_lambda_a * rho)
+        elif x == 0 and y == 1:
+            return max(1e-5, 1.0 + ht_lambda_h * rho)
+        elif x == 1 and y == 0:
+            return max(1e-5, 1.0 + ht_lambda_a * rho)
+        elif x == 1 and y == 1:
+            return max(1e-5, 1.0 - rho)
         return 1.0
 
     raw_matrix = np.zeros((max_goals + 1, max_goals + 1))
@@ -169,7 +280,6 @@ def generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goa
         p_lgb_d = max(0.01, float(probs_1n2[1]))
         p_lgb_a = max(0.01, float(probs_1n2[2]))
 
-        # Half time weights draw slightly more, but scale towards full time 1n2 direction
         p_pois_h = float(np.sum(np.tril(raw_matrix, -1)))
         p_pois_d = float(np.sum(np.diag(raw_matrix)))
         p_pois_a = float(np.sum(np.triu(raw_matrix, 1)))
@@ -194,20 +304,58 @@ def generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=-0.05, max_goa
     scores = []
     for x in range(max_goals + 1):
         for y in range(max_goals + 1):
-            scores.append({"score": f"{x}-{y}", "prob": round(float(adj_matrix[x, y] * 100), 1)})
+            scores.append(
+                {"score": f"{x}-{y}", "prob": round(float(adj_matrix[x, y] * 100), 1)}
+            )
 
     scores.sort(key=lambda s: s["prob"], reverse=True)
     return scores[:5]
+
 
 def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
     players = get_club_players(team_name)
     if not players:
         def_players = [
-            {"name": f"Buteur ({team_name})", "pos": "Attaquant", "position": "FW", "rating": 7.8, "goals": 10, "assists": 4},
-            {"name": f"Ailier ({team_name})", "pos": "Attaquant", "position": "FW", "rating": 7.5, "goals": 7, "assists": 6},
-            {"name": f"Meneur de Jeu ({team_name})", "pos": "Milieu", "position": "MF", "rating": 7.6, "goals": 4, "assists": 8},
-            {"name": f"Ailier Droit ({team_name})", "pos": "Attaquant", "position": "FW", "rating": 7.3, "goals": 5, "assists": 5},
-            {"name": f"Milieu Relayeur ({team_name})", "pos": "Milieu", "position": "MF", "rating": 7.2, "goals": 3, "assists": 4},
+            {
+                "name": f"Buteur ({team_name})",
+                "pos": "Attaquant",
+                "position": "FW",
+                "rating": 7.8,
+                "goals": 10,
+                "assists": 4,
+            },
+            {
+                "name": f"Ailier ({team_name})",
+                "pos": "Attaquant",
+                "position": "FW",
+                "rating": 7.5,
+                "goals": 7,
+                "assists": 6,
+            },
+            {
+                "name": f"Meneur de Jeu ({team_name})",
+                "pos": "Milieu",
+                "position": "MF",
+                "rating": 7.6,
+                "goals": 4,
+                "assists": 8,
+            },
+            {
+                "name": f"Ailier Droit ({team_name})",
+                "pos": "Attaquant",
+                "position": "FW",
+                "rating": 7.3,
+                "goals": 5,
+                "assists": 5,
+            },
+            {
+                "name": f"Milieu Relayeur ({team_name})",
+                "pos": "Milieu",
+                "position": "MF",
+                "rating": 7.2,
+                "goals": 3,
+                "assists": 4,
+            },
         ]
         players = def_players
 
@@ -222,37 +370,59 @@ def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
         raw_pos = str(p.get("position") or p.get("pos") or "MF").upper().strip()
         if raw_pos in ["G", "GK", "GARDIEN"]:
             continue
-        
-        is_fw = (raw_pos == "A") or any(k in raw_pos for k in ["FW", "ATT", "AILIER", "BU", "AG", "AD", "AVANT", "ST", "CF"])
-        is_mf = (raw_pos == "M") or any(k in raw_pos for k in ["MF", "MIL", "MC", "MDC", "MOC", "MD", "MG"])
-        is_df = (raw_pos == "D") or any(k in raw_pos for k in ["DF", "DEF", "DC", "DD", "DG", "LAT", "CB", "LB", "RB"])
+
+        is_fw = (raw_pos == "A") or any(
+            k in raw_pos
+            for k in ["FW", "ATT", "AILIER", "BU", "AG", "AD", "AVANT", "ST", "CF"]
+        )
+        is_mf = (raw_pos == "M") or any(
+            k in raw_pos for k in ["MF", "MIL", "MC", "MDC", "MOC", "MD", "MG"]
+        )
 
         pos_weight_goal = 1.0 if is_fw else (0.35 if is_mf else 0.08)
         pos_weight_ast = 0.80 if is_fw else (1.0 if is_mf else 0.20)
 
         goals = float(p.get("goals", p.get("Gls", 0)) or 0)
         assists = float(p.get("assists", p.get("Ast", 0)) or 0)
-        xg90 = float(p.get("xG90", p.get("xG", 0.25 if is_fw else (0.12 if is_mf else 0.04))) or 0.15)
-        xa90 = float(p.get("xA90", p.get("xAG", 0.20 if is_mf else (0.15 if is_fw else 0.05))) or 0.10)
+        xg90 = float(
+            p.get(
+                "xG90",
+                p.get("xG", 0.25 if is_fw else (0.12 if is_mf else 0.04)),
+            )
+            or 0.15
+        )
+        xa90 = float(
+            p.get(
+                "xA90",
+                p.get("xAG", 0.20 if is_mf else (0.15 if is_fw else 0.05)),
+            )
+            or 0.10
+        )
         rating = float(p.get("rating", 7.0) or 7.0)
 
-        w_goal = pos_weight_goal * (1.0 + goals * 0.20 + xg90 * 2.0 + (rating - 7.0) * 0.15)
-        w_ast = pos_weight_ast * (1.0 + assists * 0.25 + xa90 * 2.2 + (rating - 7.0) * 0.15)
+        w_goal = pos_weight_goal * (
+            1.0 + goals * 0.20 + xg90 * 2.0 + (rating - 7.0) * 0.15
+        )
+        w_ast = pos_weight_ast * (
+            1.0 + assists * 0.25 + xa90 * 2.2 + (rating - 7.0) * 0.15
+        )
 
         photo_url = p.get("photoUrl", "")
         pos_code = "FW" if is_fw else ("MF" if is_mf else "DF")
 
-        outfield.append({
-            "name": p_name,
-            "pos": pos_code,
-            "photoUrl": photo_url,
-            "w_goal": max(0.05, w_goal),
-            "w_ast": max(0.05, w_ast),
-            "goals": int(goals),
-            "assists": int(assists),
-            "xg90": round(xg90, 2),
-            "xa90": round(xa90, 2)
-        })
+        outfield.append(
+            {
+                "name": p_name,
+                "pos": pos_code,
+                "photoUrl": photo_url,
+                "w_goal": max(0.05, w_goal),
+                "w_ast": max(0.05, w_ast),
+                "goals": int(goals),
+                "assists": int(assists),
+                "xg90": round(xg90, 2),
+                "xa90": round(xa90, 2),
+            }
+        )
 
     tot_w_goal = sum(o["w_goal"] for o in outfield) or 1.0
     tot_w_ast = sum(o["w_ast"] for o in outfield) or 1.0
@@ -265,78 +435,270 @@ def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
         p_goal = min(0.85, 1.0 - math.exp(-exp_g))
         odd_g = max(1.20, round(1.0 / (p_goal * 0.90), 2)) if p_goal > 0 else 9.0
 
-        scorers.append({
-            "name": o["name"],
-            "team": team_name,
-            "position": o["pos"],
-            "photoUrl": o["photoUrl"],
-            "goalProb": f"{round(p_goal * 100, 1)}%",
-            "goalProbVal": round(p_goal * 100, 1),
-            "oddScorer": odd_g,
-            "xGMatch": round(exp_g, 2),
-            "seasonGoals": o["goals"]
-        })
+        scorers.append(
+            {
+                "name": o["name"],
+                "team": team_name,
+                "position": o["pos"],
+                "photoUrl": o["photoUrl"],
+                "goalProb": f"{round(p_goal * 100, 1)}%",
+                "goalProbVal": round(p_goal * 100, 1),
+                "oddScorer": odd_g,
+                "xGMatch": round(exp_g, 2),
+                "seasonGoals": o["goals"],
+            }
+        )
 
         exp_a = (lambda_team * 0.70) * (o["w_ast"] / tot_w_ast)
         p_ast = min(0.70, 1.0 - math.exp(-exp_a))
         odd_a = max(1.40, round(1.0 / (p_ast * 0.90), 2)) if p_ast > 0 else 12.0
 
-        assisters.append({
-            "name": o["name"],
-            "team": team_name,
-            "position": o["pos"],
-            "photoUrl": o["photoUrl"],
-            "assistProb": f"{round(p_ast * 100, 1)}%",
-            "assistProbVal": round(p_ast * 100, 1),
-            "oddAssist": odd_a,
-            "xAMatch": round(exp_a, 2),
-            "seasonAssists": o["assists"]
-        })
+        assisters.append(
+            {
+                "name": o["name"],
+                "team": team_name,
+                "position": o["pos"],
+                "photoUrl": o["photoUrl"],
+                "assistProb": f"{round(p_ast * 100, 1)}%",
+                "assistProbVal": round(p_ast * 100, 1),
+                "oddAssist": odd_a,
+                "xAMatch": round(exp_a, 2),
+                "seasonAssists": o["assists"],
+            }
+        )
 
     scorers.sort(key=lambda s: s["goalProbVal"], reverse=True)
     assisters.sort(key=lambda a: a["assistProbVal"], reverse=True)
 
     return scorers[:4], assisters[:3]
 
-_TEAM_STATS_CACHE = None
 
 def get_team_rolling_stats():
     global _TEAM_STATS_CACHE
     if _TEAM_STATS_CACHE is not None:
         return _TEAM_STATS_CACHE
-    
+
     _TEAM_STATS_CACHE = {}
     if os.path.exists(FEATURE_DATASET_PATH):
         try:
             df = pd.read_parquet(FEATURE_DATASET_PATH)
+            if "match_date" in df.columns:
+                df = df.sort_values("match_date", ascending=True)
             for _, row in df.iterrows():
-                ht = row.get('home_team')
+                ht = row.get("home_team")
                 if ht:
-                    _TEAM_STATS_CACHE[ht] = {
-                        "h_pts": float(row.get("feat_h_rolling_pts", 1.8)),
-                        "h_xg_for": float(row.get("feat_h_rolling_xg_for", 1.9)),
-                        "h_xg_against": float(row.get("feat_h_rolling_xg_against", 1.0)),
-                        "h_xg_diff": float(row.get("feat_h_rolling_xg_diff", 0.9)),
-                    }
-                at = row.get('away_team')
+                    prev = _TEAM_STATS_CACHE.get(ht, {})
+                    prev.update(
+                        {
+                            "h_pts": float(row.get("feat_h_rolling_pts", 1.8)),
+                            "h_xg_for": float(row.get("feat_h_rolling_xg_for", 1.9)),
+                            "h_xg_against": float(
+                                row.get("feat_h_rolling_xg_against", 1.0)
+                            ),
+                            "h_xg_diff": float(row.get("feat_h_rolling_xg_diff", 0.9)),
+                            "h_rot": float(row.get("feat_h_rotation_rate", 0.14)),
+                        }
+                    )
+                    _TEAM_STATS_CACHE[ht] = prev
+                at = row.get("away_team")
                 if at:
-                    if at not in _TEAM_STATS_CACHE:
-                        _TEAM_STATS_CACHE[at] = {}
-                    _TEAM_STATS_CACHE[at].update({
-                        "a_pts": float(row.get("feat_a_rolling_pts", 1.2)),
-                        "a_xg_for": float(row.get("feat_a_rolling_xg_for", 1.3)),
-                        "a_xg_against": float(row.get("feat_a_rolling_xg_against", 1.4)),
-                        "a_xg_diff": float(row.get("feat_a_rolling_xg_diff", -0.1)),
-                    })
+                    prev_a = _TEAM_STATS_CACHE.get(at, {})
+                    prev_a.update(
+                        {
+                            "a_pts": float(row.get("feat_a_rolling_pts", 1.2)),
+                            "a_xg_for": float(row.get("feat_a_rolling_xg_for", 1.3)),
+                            "a_xg_against": float(
+                                row.get("feat_a_rolling_xg_against", 1.4)
+                            ),
+                            "a_xg_diff": float(row.get("feat_a_rolling_xg_diff", -0.1)),
+                            "a_rot": float(row.get("feat_a_rotation_rate", 0.16)),
+                        }
+                    )
+                    _TEAM_STATS_CACHE[at] = prev_a
         except Exception:
             pass
     return _TEAM_STATS_CACHE
 
-def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd_away=None,
-                         weather_temp=18.0, weather_rain=0.0, weather_wind=12.0,
-                         referee_name="Clément Turpin", home_formation="4-3-3", away_formation="4-2-3-1",
-                         h_absentees=0, a_absentees=0, rest_days_h=7, rest_days_a=7,
-                         compute_shap=True):
+
+def evaluate_value_bets_with_shin(probs_1n2, home_team, away_team, odd_home, odd_draw, odd_away):
+    """
+    Évalue les Value Bets en comparant les probabilités du modèle à la fois aux cotes Betclic
+    et aux probabilités vraies dé-marginées par la méthode de Shin (Edge réel >= 2.0%).
+    """
+    value_bets = []
+    shin = shin_true_probabilities(odd_home, odd_draw, odd_away)
+    if not shin:
+        return value_bets, None
+
+    p_h = round(float(probs_1n2[0] * 100), 1)
+    p_d = round(float(probs_1n2[1] * 100), 1)
+    p_a = round(float(probs_1n2[2] * 100), 1)
+
+    candidates = [
+        ("1", f"Victoire {home_team} (1)", f"1 (Victoire {home_team})", home_team, p_h, shin["home"], float(odd_home)),
+        ("N", "Match Nul (N)", "N (Match Nul)", "Match Nul", p_d, shin["draw"], float(odd_draw)),
+        ("2", f"Victoire {away_team} (2)", f"2 (Victoire {away_team})", away_team, p_a, shin["away"], float(odd_away)),
+    ]
+
+    for code, sel_label, side_label, team_lbl, mod_pct, shin_pct, odd_val in candidates:
+        ev_pct = ((mod_pct / 100.0) * odd_val - 1.0) * 100.0
+        shin_edge_pct = mod_pct - shin_pct
+        effective_edge = max(ev_pct, shin_edge_pct)
+        if ev_pct >= 2.0 or shin_edge_pct >= 2.5:
+            # Quarter-Kelly fractionnaire
+            b = max(0.1, odd_val - 1.0)
+            p = mod_pct / 100.0
+            q = 1.0 - p
+            kelly_quarter = max(0.5, min(5.0, ((b * p - q) / b) * 25.0))
+            value_bets.append(
+                {
+                    "market": "1N2",
+                    "selection": code,
+                    "outcome": code,
+                    "selection_label": sel_label,
+                    "side": side_label,
+                    "team": team_lbl,
+                    "model_prob": f"{mod_pct}%",
+                    "model_probability": f"{mod_pct}%",
+                    "shin_fair_prob": f"{shin_pct}%",
+                    "odd": odd_val,
+                    "bookmaker_odds": odd_val,
+                    "betclic_odd": odd_val,
+                    "edge": f"+{round(effective_edge, 1)}%",
+                    "edge_percentage": f"+{round(effective_edge, 1)}%",
+                    "edge_val": round(effective_edge, 2),
+                    "stake_recommendation": f"{round(kelly_quarter, 1)}%",
+                    "kelly_pct": round(kelly_quarter, 2),
+                    "is_value": True,
+                }
+            )
+
+    value_bets.sort(key=lambda v: v["edge_val"], reverse=True)
+    return value_bets, shin
+
+
+def predict_match_v1_monte_carlo(home_team, away_team, odd_home=None, odd_draw=None, odd_away=None):
+    """
+    Modèle v1 (Archive Historique) : Poisson Classique basé sur les moyennes
+    offensives/défensives glissantes et l'avantage domicile standard (sans Dixon-Coles ni LightGBM).
+    """
+    team_stats = get_team_rolling_stats()
+    h_s = team_stats.get(home_team, {})
+    a_s = team_stats.get(away_team, {})
+
+    h_xg_f = float(h_s.get("h_xg_for", 1.55))
+    h_xg_a = float(h_s.get("h_xg_against", 1.15))
+    a_xg_f = float(a_s.get("a_xg_for", 1.25))
+    a_xg_a = float(a_s.get("a_xg_against", 1.35))
+
+    lam_h = round(max(0.35, min(3.5, (h_xg_f * 0.55 + a_xg_a * 0.45) * 1.09)), 2)
+    lam_a = round(max(0.25, min(3.1, (a_xg_f * 0.55 + h_xg_a * 0.45) * 0.93)), 2)
+
+    raw_matrix = np.zeros((7, 7))
+    for x in range(7):
+        for y in range(7):
+            raw_matrix[x, y] = poisson.pmf(x, lam_h) * poisson.pmf(y, lam_a)
+    total_p = raw_matrix.sum() or 1.0
+    raw_matrix /= total_p
+
+    probs = [
+        float(np.sum(np.tril(raw_matrix, -1))),
+        float(np.sum(np.diag(raw_matrix))),
+        float(np.sum(np.triu(raw_matrix, 1))),
+    ]
+    p_h = round(probs[0] * 100, 1)
+    p_d = round(probs[1] * 100, 1)
+    p_a = round(max(0.1, 100.0 - p_h - p_d), 1)
+
+    scores = []
+    for x in range(7):
+        for y in range(7):
+            scores.append(
+                {"score": f"{x}-{y}", "prob": round(float(raw_matrix[x, y] * 100), 1)}
+            )
+    scores.sort(key=lambda s: s["prob"], reverse=True)
+
+    vbs, shin = evaluate_value_bets_with_shin(probs, home_team, away_team, odd_home, odd_draw, odd_away)
+    best_vb = vbs[0] if vbs else None
+    conf = round(max(p_h, p_d, p_a), 1)
+
+    return {
+        "modelVersion": "v1",
+        "probHome": p_h,
+        "probDraw": p_d,
+        "probAway": p_a,
+        "lambdaHome": lam_h,
+        "lambdaAway": lam_a,
+        "confidence": conf,
+        "topScore": scores[0]["score"] if scores else "1-1",
+        "exactScores": scores[:6],
+        "valueOutcome": best_vb["outcome"] if best_vb else None,
+        "valueEdgePct": best_vb["edge_val"] if best_vb else 0.0,
+        "kellyStakePct": best_vb["kelly_pct"] if best_vb else 0.0,
+        "overroundPct": shin["overround_pct"] if shin else None,
+    }
+
+
+def predict_match_v2_dixon_coles(home_team, away_team, odd_home=None, odd_draw=None, odd_away=None):
+    """
+    Modèle v2 (Baseline Statistique) : Modèle bivarié de Dixon-Coles pur
+    avec paramètre d'interaction rho sur les petits scores et décroissance temporelle.
+    """
+    bundle = load_bundle()
+    dc_model = bundle["dixon_coles"]
+    dc_pred = dc_model.predict_match(home_team, away_team)
+
+    lam_h = round(float(dc_pred["lambda_home"]), 2)
+    lam_a = round(float(dc_pred["lambda_away"]), 2)
+    probs = [
+        float(dc_pred["prob_home"]),
+        float(dc_pred["prob_draw"]),
+        float(dc_pred["prob_away"]),
+    ]
+    p_h = round(probs[0] * 100, 1)
+    p_d = round(probs[1] * 100, 1)
+    p_a = round(max(0.1, 100.0 - p_h - p_d), 1)
+
+    scores = generate_exact_score_matrix(lam_h, lam_a, rho=dc_model.rho, probs_1n2=probs)
+    vbs, shin = evaluate_value_bets_with_shin(probs, home_team, away_team, odd_home, odd_draw, odd_away)
+    best_vb = vbs[0] if vbs else None
+    conf = compute_epistemic_confidence(probs, dc_probs=probs, has_real_odds=bool(shin))
+
+    return {
+        "modelVersion": "v2",
+        "probHome": p_h,
+        "probDraw": p_d,
+        "probAway": p_a,
+        "lambdaHome": lam_h,
+        "lambdaAway": lam_a,
+        "confidence": conf,
+        "topScore": scores[0]["score"] if scores else "1-1",
+        "exactScores": scores[:6],
+        "valueOutcome": best_vb["outcome"] if best_vb else None,
+        "valueEdgePct": best_vb["edge_val"] if best_vb else 0.0,
+        "kellyStakePct": best_vb["kelly_pct"] if best_vb else 0.0,
+        "overroundPct": shin["overround_pct"] if shin else None,
+    }
+
+
+def predict_single_match(
+    home_team,
+    away_team,
+    odd_home=None,
+    odd_draw=None,
+    odd_away=None,
+    weather_temp=18.0,
+    weather_rain=0.0,
+    weather_wind=12.0,
+    referee_name="Clément Turpin",
+    home_formation="4-3-3",
+    away_formation="4-2-3-1",
+    h_absentees=0,
+    a_absentees=0,
+    rest_days_h=7,
+    rest_days_a=7,
+    compute_shap=True,
+):
     bundle = load_bundle()
     dc_model = bundle["dixon_coles"]
     clf_1n2 = bundle["lgb_1n2_classifier"]
@@ -348,10 +710,15 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
 
     # 1. Base Dixon-Coles prior
     dc_pred = dc_model.predict_match(home_team, away_team)
+    dc_probs = [
+        float(dc_pred["prob_home"]),
+        float(dc_pred["prob_draw"]),
+        float(dc_pred["prob_away"]),
+    ]
 
     # 2. Build feature vector
     feat_dict = {f: 0.0 for f in feature_names}
-    
+
     # Weather
     feat_dict["feat_weather_temp_norm"] = (weather_temp - 15.0) / 8.0
     feat_dict["feat_weather_wind_norm"] = (weather_wind - 12.0) / 7.0
@@ -359,19 +726,38 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
     feat_dict["feat_weather_is_freezing"] = 1.0 if weather_temp <= 0.0 else 0.0
     feat_dict["feat_weather_is_heavy_rain"] = 1.0 if weather_rain >= 4.0 else 0.0
     feat_dict["feat_weather_is_high_wind"] = 1.0 if weather_wind >= 30.0 else 0.0
-    feat_dict["feat_weather_friction_index"] = 0.45 * feat_dict["feat_weather_is_heavy_rain"] + 0.35 * feat_dict["feat_weather_is_high_wind"] + 0.20 * feat_dict["feat_weather_is_freezing"]
+    feat_dict["feat_weather_friction_index"] = (
+        0.45 * feat_dict["feat_weather_is_heavy_rain"]
+        + 0.35 * feat_dict["feat_weather_is_high_wind"]
+        + 0.20 * feat_dict["feat_weather_is_freezing"]
+    )
 
     # Referee
-    is_strict = any(n in referee_name for n in ["Turpin", "Oliver", "Gil", "Kovacs", "Letexier"])
+    is_strict = any(
+        n in referee_name for n in ["Turpin", "Oliver", "Gil", "Kovacs", "Letexier"]
+    )
     feat_dict["feat_ref_severity_index"] = 0.8 if is_strict else 0.0
     feat_dict["feat_ref_z_yellow"] = 0.7 if is_strict else 0.0
 
-    # Tactics & Effectif
-    feat_dict["feat_h_rotation_rate"] = 0.15
-    feat_dict["feat_a_rotation_rate"] = 0.15
+    # Fast cache lookup for team rolling stats
+    team_stats = get_team_rolling_stats()
+    h_s = team_stats.get(home_team, {})
+    a_s = team_stats.get(away_team, {})
+
+    # Tactics & Effectif (alimentés par les vraies stats glissantes au lieu de constantes figées)
+    feat_dict["feat_h_rotation_rate"] = float(h_s.get("h_rot", 0.14))
+    feat_dict["feat_a_rotation_rate"] = float(a_s.get("a_rot", 0.16))
     feat_dict["feat_h_absentees_count"] = float(h_absentees)
     feat_dict["feat_a_absentees_count"] = float(a_absentees)
     feat_dict["feat_absentees_delta"] = float(h_absentees - a_absentees)
+
+    tactical_edge = 0.0
+    if home_formation in ("4-3-3", "3-4-2-1") and away_formation in ("4-4-2", "5-3-2"):
+        tactical_edge = 0.12
+    elif away_formation in ("4-3-3", "3-4-2-1") and home_formation in ("4-4-2", "5-3-2"):
+        tactical_edge = -0.10
+    if "feat_tactical_formation_edge" in feat_dict:
+        feat_dict["feat_tactical_formation_edge"] = tactical_edge
 
     # Rest
     feat_dict["feat_h_rest_days"] = float(rest_days_h)
@@ -384,11 +770,6 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
     feat_dict["feat_dc_prob_home"] = dc_pred["prob_home"]
     feat_dict["feat_dc_prob_draw"] = dc_pred["prob_draw"]
     feat_dict["feat_dc_prob_away"] = dc_pred["prob_away"]
-
-    # Fast cache lookup for team rolling stats
-    team_stats = get_team_rolling_stats()
-    h_s = team_stats.get(home_team, {})
-    a_s = team_stats.get(away_team, {})
 
     h_pts = h_s.get("h_pts", 1.8)
     h_xg_f = h_s.get("h_xg_for", 1.9)
@@ -415,106 +796,125 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
 
     X = np.array([[feat_dict[f] for f in feature_names]])
 
-    # 3. Model Predictions
-    probs_1n2 = clf_1n2.predict_proba(X)[0]
+    # 3. Model Predictions (Ensemble Shrinkage 65% LightGBM + 35% Dixon-Coles Structural Prior
+    # pour éliminer l'overfitting constaté sur le Brier Score et battre la baseline DC pure)
+    raw_lgb_probs = clf_1n2.predict_proba(X)[0]
+    blended_probs = [
+        0.65 * float(raw_lgb_probs[0]) + 0.35 * dc_probs[0],
+        0.65 * float(raw_lgb_probs[1]) + 0.35 * dc_probs[1],
+        0.65 * float(raw_lgb_probs[2]) + 0.35 * dc_probs[2],
+    ]
+    # Ajustement dynamique d'absences clés et de fatigue
+    abs_penalty_h = max(-0.08, min(0.08, (a_absentees - h_absentees) * 0.018))
+    blended_probs[0] = max(0.03, blended_probs[0] + abs_penalty_h)
+    blended_probs[2] = max(0.03, blended_probs[2] - abs_penalty_h)
+    norm_s = sum(blended_probs) or 1.0
+    probs_1n2 = [x / norm_s for x in blended_probs]
+
     p_h = round(float(probs_1n2[0] * 100), 1)
     p_d = round(float(probs_1n2[1] * 100), 1)
-    p_a = round(float(probs_1n2[2] * 100), 1)
+    p_a = round(max(0.1, 100.0 - p_h - p_d), 1)
 
-    lambda_h = round(float(max(0.2, reg_h.predict(X)[0])), 2)
-    lambda_a = round(float(max(0.1, reg_a.predict(X)[0])), 2)
+    raw_lam_h = float(max(0.2, reg_h.predict(X)[0]))
+    raw_lam_a = float(max(0.1, reg_a.predict(X)[0]))
+    lambda_h = round(0.60 * raw_lam_h + 0.40 * float(dc_pred["lambda_home"]), 2)
+    lambda_a = round(0.60 * raw_lam_a + 0.40 * float(dc_pred["lambda_away"]), 2)
 
     p_over25 = round(float(clf_over25.predict_proba(X)[0, 1] * 100), 1)
     p_under25 = round(100.0 - p_over25, 1)
 
-    top_ft_scores = generate_exact_score_matrix(lambda_h, lambda_a, rho=dc_model.rho, probs_1n2=probs_1n2)
-    top_ht_scores = generate_half_time_exact_score_matrix(lambda_h, lambda_a, rho=dc_model.rho, probs_1n2=probs_1n2)
+    top_ft_scores = generate_exact_score_matrix(
+        lambda_h, lambda_a, rho=dc_model.rho, probs_1n2=probs_1n2
+    )
+    top_ht_scores = generate_half_time_exact_score_matrix(
+        lambda_h, lambda_a, rho=dc_model.rho, probs_1n2=probs_1n2
+    )
 
     # Calculate most probable score conditional on predicted winner
     top_conditional_score = None
     if p_h >= p_a and p_h >= p_d:
-        # Most likely score if Home wins
-        home_win_scores = [s for s in top_ft_scores if int(s['score'].split('-')[0]) > int(s['score'].split('-')[1])]
+        home_win_scores = [
+            s
+            for s in top_ft_scores
+            if int(s["score"].split("-")[0]) > int(s["score"].split("-")[1])
+        ]
         if home_win_scores:
-            top_conditional_score = {"scenario": f"Victoire {home_team}", "score": home_win_scores[0]['score'], "prob": home_win_scores[0]['prob']}
+            top_conditional_score = {
+                "scenario": f"Victoire {home_team}",
+                "score": home_win_scores[0]["score"],
+                "prob": home_win_scores[0]["prob"],
+            }
     elif p_a >= p_h and p_a >= p_d:
-        # Most likely score if Away wins
-        away_win_scores = [s for s in top_ft_scores if int(s['score'].split('-')[0]) < int(s['score'].split('-')[1])]
+        away_win_scores = [
+            s
+            for s in top_ft_scores
+            if int(s["score"].split("-")[0]) < int(s["score"].split("-")[1])
+        ]
         if away_win_scores:
-            top_conditional_score = {"scenario": f"Victoire {away_team}", "score": away_win_scores[0]['score'], "prob": away_win_scores[0]['prob']}
+            top_conditional_score = {
+                "scenario": f"Victoire {away_team}",
+                "score": away_win_scores[0]["score"],
+                "prob": away_win_scores[0]["prob"],
+            }
     else:
-        # Most likely score if Draw
-        draw_scores = [s for s in top_ft_scores if int(s['score'].split('-')[0]) == int(s['score'].split('-')[1])]
+        draw_scores = [
+            s
+            for s in top_ft_scores
+            if int(s["score"].split("-")[0]) == int(s["score"].split("-")[1])
+        ]
         if draw_scores:
-            top_conditional_score = {"scenario": "Match Nul", "score": draw_scores[0]['score'], "prob": draw_scores[0]['prob']}
+            top_conditional_score = {
+                "scenario": "Match Nul",
+                "score": draw_scores[0]["score"],
+                "prob": draw_scores[0]["prob"],
+            }
 
-    home_scorers, home_assists = predict_team_scorers_and_assists(home_team, lambda_h, is_home=True)
-    away_scorers, away_assists = predict_team_scorers_and_assists(away_team, lambda_a, is_home=False)
+    home_scorers, home_assists = predict_team_scorers_and_assists(
+        home_team, lambda_h, is_home=True
+    )
+    away_scorers, away_assists = predict_team_scorers_and_assists(
+        away_team, lambda_a, is_home=False
+    )
 
-    # 4. Strict Certified Value Bet Evaluation (Edge >= 2.0%)
-    value_bets = []
-    if odd_home and float(odd_home) > 1.0:
-        edge_h = (probs_1n2[0] * float(odd_home) - 1.0) * 100
-        if edge_h >= 2.0:
-            value_bets.append({
-                "market": "1N2",
-                "selection": "1",
-                "selection_label": f"Victoire {home_team} (1)",
-                "side": f"1 (Victoire {home_team})",
-                "team": home_team,
-                "model_prob": f"{p_h}%",
-                "model_probability": f"{p_h}%",
-                "odd": float(odd_home),
-                "bookmaker_odds": float(odd_home),
-                "betclic_odd": float(odd_home),
-                "edge": f"+{round(edge_h, 1)}%",
-                "edge_percentage": f"+{round(edge_h, 1)}%",
-                "stake_recommendation": f"{round(1.0 + edge_h * 0.25, 1)}%",
-                "is_value": True
-            })
-    if odd_draw and float(odd_draw) > 1.0:
-        edge_d = (probs_1n2[1] * float(odd_draw) - 1.0) * 100
-        if edge_d >= 2.0:
-            value_bets.append({
-                "market": "1N2",
-                "selection": "N",
-                "selection_label": "Match Nul (N)",
-                "side": "N (Match Nul)",
-                "team": "Match Nul",
-                "model_prob": f"{p_d}%",
-                "model_probability": f"{p_d}%",
-                "odd": float(odd_draw),
-                "bookmaker_odds": float(odd_draw),
-                "betclic_odd": float(odd_draw),
-                "edge": f"+{round(edge_d, 1)}%",
-                "edge_percentage": f"+{round(edge_d, 1)}%",
-                "stake_recommendation": f"{round(1.0 + edge_d * 0.25, 1)}%",
-                "is_value": True
-            })
-    if odd_away and float(odd_away) > 1.0:
-        edge_a = (probs_1n2[2] * float(odd_away) - 1.0) * 100
-        if edge_a >= 2.0:
-            value_bets.append({
-                "market": "1N2",
-                "selection": "2",
-                "selection_label": f"Victoire {away_team} (2)",
-                "side": f"2 (Victoire {away_team})",
-                "team": away_team,
-                "model_prob": f"{p_a}%",
-                "model_probability": f"{p_a}%",
-                "odd": float(odd_away),
-                "bookmaker_odds": float(odd_away),
-                "betclic_odd": float(odd_away),
-                "edge": f"+{round(edge_a, 1)}%",
-                "edge_percentage": f"+{round(edge_a, 1)}%",
-                "stake_recommendation": f"{round(1.0 + edge_a * 0.25, 1)}%",
-                "is_value": True
-            })
+    # 4. Strict Certified Value Bet Evaluation with Shin De-Vigging (Edge >= 2.0%)
+    value_bets, shin_info = evaluate_value_bets_with_shin(
+        probs_1n2, home_team, away_team, odd_home, odd_draw, odd_away
+    )
+    confidence_v3 = compute_epistemic_confidence(
+        probs_1n2,
+        dc_probs=dc_probs,
+        has_real_odds=bool(shin_info),
+        absentees_total=(h_absentees + a_absentees),
+    )
 
-    # 5. Tree-SHAP Factor Attributions
-    b_lgb = base_lgb.estimator if hasattr(base_lgb, 'estimator') else base_lgb
-    booster = b_lgb.booster_ if hasattr(b_lgb, 'booster_') else None
-    
+    # 5. Multi-Model Snapshots (v1, v2, v3)
+    v1_snap = predict_match_v1_monte_carlo(
+        home_team, away_team, odd_home=odd_home, odd_draw=odd_draw, odd_away=odd_away
+    )
+    v2_snap = predict_match_v2_dixon_coles(
+        home_team, away_team, odd_home=odd_home, odd_draw=odd_draw, odd_away=odd_away
+    )
+    best_vb_v3 = value_bets[0] if value_bets else None
+    v3_snap = {
+        "modelVersion": "v3",
+        "probHome": p_h,
+        "probDraw": p_d,
+        "probAway": p_a,
+        "lambdaHome": lambda_h,
+        "lambdaAway": lambda_a,
+        "confidence": confidence_v3,
+        "topScore": top_ft_scores[0]["score"] if top_ft_scores else "1-1",
+        "exactScores": top_ft_scores,
+        "valueOutcome": best_vb_v3["outcome"] if best_vb_v3 else None,
+        "valueEdgePct": best_vb_v3["edge_val"] if best_vb_v3 else 0.0,
+        "kellyStakePct": best_vb_v3["kelly_pct"] if best_vb_v3 else 0.0,
+        "overroundPct": shin_info["overround_pct"] if shin_info else None,
+    }
+
+    # 6. Tree-SHAP Factor Attributions
+    b_lgb = base_lgb.estimator if hasattr(base_lgb, "estimator") else base_lgb
+    booster = b_lgb.booster_ if hasattr(b_lgb, "booster_") else None
+
     factor_explanations = []
     FEATURE_LABELS = {
         "feat_dc_prob_home": "Poids Fondamental Historique (Dixon-Coles)",
@@ -527,14 +927,14 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
         "feat_rest_delta": "Fraîcheur Physique & Jours de Repos",
         "feat_tactical_formation_edge": "Confrontation des Schémas Tactiques",
         "feat_h_rolling_xg_for": "Potentiel Offensif Récent (Home)",
-        "feat_a_rolling_xg_for": "Potentiel Offensif Récent (Away)"
+        "feat_a_rolling_xg_for": "Potentiel Offensif Récent (Away)",
     }
 
     if booster and compute_shap:
         raw_shap = booster.predict(X, pred_contrib=True)
         n_f = len(feature_names)
         win_class = 0 if p_h >= p_a else 2
-        
+
         if raw_shap.shape[1] == (n_f + 1) * 3:
             reshaped = raw_shap.reshape(-1, 3, n_f + 1)
             class_shap = reshaped[0, win_class, :n_f]
@@ -549,46 +949,53 @@ def predict_single_match(home_team, away_team, odd_home=None, odd_draw=None, odd
             if abs(impact_pct) >= 0.3:
                 label = FEATURE_LABELS.get(fname, fname)
                 sign = "+" if impact_pct > 0 else ""
-                factor_explanations.append({
-                    "factor": label,
-                    "impact": f"{sign}{impact_pct}%",
-                    "direction": "FAVORABLE" if impact_pct > 0 else "DEFAVORABLE"
-                })
+                factor_explanations.append(
+                    {
+                        "factor": label,
+                        "impact": f"{sign}{impact_pct}%",
+                        "direction": "FAVORABLE" if impact_pct > 0 else "DEFAVORABLE",
+                    }
+                )
 
     return {
         "match": f"{home_team} vs {away_team}",
+        "model_version": "v3",
+        "confidence_score": confidence_v3,
+        "shin_de_vig": shin_info,
         "probabilities_1n2": {
             "1_home_win": f"{p_h}%",
             "N_draw": f"{p_d}%",
-            "2_away_win": f"{p_a}%"
+            "2_away_win": f"{p_a}%",
         },
         "expected_goals": {
             "home_xg": lambda_h,
             "away_xg": lambda_a,
-            "total_xg": round(lambda_h + lambda_a, 2)
+            "total_xg": round(lambda_h + lambda_a, 2),
         },
         "over_under_2_5": {
             "over_2_5_prob": f"{p_over25}%",
             "under_2_5_prob": f"{p_under25}%",
-            "prediction": "Over 2.5" if p_over25 > 50 else "Under 2.5"
+            "prediction": "Over 2.5" if p_over25 > 50 else "Under 2.5",
         },
         "top_exact_scores": top_ft_scores,
         "top_half_time_scores": top_ht_scores,
         "top_conditional_score": top_conditional_score,
-        "potential_scorers": {
-            "home": home_scorers,
-            "away": away_scorers
-        },
-        "potential_assists": {
-            "home": home_assists,
-            "away": away_assists
-        },
+        "potential_scorers": {"home": home_scorers, "away": away_scorers},
+        "potential_assists": {"home": home_assists, "away": away_assists},
         "value_bets_detected": value_bets,
-        "xai_shap_factors": factor_explanations
+        "xai_shap_factors": factor_explanations,
+        "predictions_by_model": {
+            "v1": v1_snap,
+            "v2": v2_snap,
+            "v3": v3_snap,
+        },
     }
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Predict match outcome with Football Quant Engine V3")
+    parser = argparse.ArgumentParser(
+        description="Predict match outcome with Football Quant Engine V3"
+    )
     parser.add_argument("--home", type=str, default="PSG")
     parser.add_argument("--away", type=str, default="Marseille")
     parser.add_argument("--odd_home", type=float, default=1.65)
@@ -614,10 +1021,11 @@ def main():
         weather_wind=args.wind,
         referee_name=args.referee,
         h_absentees=args.h_absent,
-        a_absentees=args.a_absent
+        a_absentees=args.a_absent,
     )
 
     print(json.dumps(result, indent=2, ensure_ascii=False))
+
 
 if __name__ == "__main__":
     main()
