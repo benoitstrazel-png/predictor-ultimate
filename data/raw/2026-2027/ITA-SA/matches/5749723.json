@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
-            "linkToMatch": "/matches/roma-vs-lecce/2upm4p#5749656",
-            "date": {
-              "utcTime": "2026-08-31T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8686/overview/roma",
-            "tooltipText": {
-              "utcTime": "2026-08-31T16:30:00.000Z",
-              "homeTeam": "Lecce",
-              "homeTeamId": 9888,
-              "homeScore": "0",
-              "awayTeam": "Roma",
-              "awayTeamId": 8686,
-              "awayScore": "4"
-            },
-            "score": "0 - 4",
-            "home": {
-              "id": "9888",
-              "name": "Lecce",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
             "linkToMatch": "/matches/cagliari-vs-lecce/2szdhl#5749662",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Bologna",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
+            "linkToMatch": "/matches/udinese-vs-lecce/2trgf0#5749708",
+            "date": {
+              "utcTime": "2026-10-18T10:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8600/overview/udinese",
+            "tooltipText": {
+              "utcTime": "2026-10-18T10:30:00.000Z",
+              "homeTeam": "Udinese",
+              "homeTeamId": 8600,
+              "homeScore": "0",
+              "awayTeam": "Lecce",
+              "awayTeamId": 9888,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,9 +447,9 @@
                 "1",
                 "1",
                 "away_team",
-                "1",
+                "2",
                 "0",
-                "4"
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Frosinone have 3W, 1D, 1L in five matches while Lecce have 1W, 0D, 4L."
+              "defaultText": "Frosinone have 3W, 1D, 1L in five matches while Lecce have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
@@ -517,7 +517,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lecce haven't drawn in their last 7 matches."
+              "defaultText": "Lecce haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -564,20 +564,30 @@
           "color": "#d5a300"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 746829,
           "teamId": 9891,
-          "priority": 10,
-          "defaultText": "Have conceded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_conceded",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 746829,
+              "name": "Giacomo Calò",
+              "type": "player"
+            },
+            {
+              "value": 9891,
+              "name": "Frosinone",
+              "type": "team"
+            },
+            {
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have conceded the most penalties this season (2)",
+          "text": "Giacomo Calò has created the most big chances for Frosinone (5)",
           "color": "#d5a300"
         },
         {
@@ -611,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -621,7 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#e12300"
         },
         {
@@ -662,20 +672,30 @@
           "color": "#e12300"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1306664,
           "teamId": 9888,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 1306664,
+              "name": "Danilo Veiga",
+              "type": "player"
+            },
+            {
+              "value": 9888,
+              "name": "Lecce",
+              "type": "team"
+            },
+            {
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Danilo Veiga has created the most big chances for Lecce (3)",
           "color": "#e12300"
         }
       ],
@@ -697,72 +717,103 @@
       }
     },
     "weather": {
-      "temperature": 18,
+      "temperature": 17,
       "windSpeed": 2,
-      "windDirectionCardinal": "E",
+      "windDirectionCardinal": "WNW",
       "iconCode": 29,
-      "relativeHumidity": 73,
-      "precipChance": 20,
+      "relativeHumidity": 69,
+      "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 50,
+      "cloudCover": 37,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-17T06:00:29Z",
+      "lastUpdated": "2026-10-23T06:00:17Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5749723,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9891,
         "name": "Frosinone",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 617044,
+            "age": 31,
             "name": "Florian Grillitsch",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 1361206,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-09-26T10:42:58Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Florian",
-            "lastName": "Grillitsch"
+            "lastName": "Grillitsch",
+            "nationalTeamId": 8255
           }
         ]
       },
       "awayTeam": {
         "id": 9888,
         "name": "Lecce",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 664587,
+            "age": 30,
+            "name": "Lassana Coulibaly",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "marketValue": 1496461,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "firstName": "Lassana",
+            "lastName": "Coulibaly",
+            "nationalTeamId": 5815
+          },
+          {
             "id": 1036182,
+            "age": 25,
             "name": "Ivan Ilić",
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 5981953,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-13T20:16:04Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Ivan",
-            "lastName": "Ilić"
+            "lastName": "Ilić",
+            "nationalTeamId": 8205
           },
           {
             "id": 1395728,
+            "age": 23,
             "name": "Medon Berisha",
+            "countryName": "Albania",
+            "countryCode": "ALB",
+            "marketValue": 5577691,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-10T20:50:33Z",
               "type": "injury",
-              "expectedReturn": "Late October 2026"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Medon",
-            "lastName": "Berisha"
+            "lastName": "Berisha",
+            "nationalTeamId": 10024
           }
         ]
       }
