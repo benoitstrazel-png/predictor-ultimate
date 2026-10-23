@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6597.png",
-            "linkToMatch": "/matches/kups-vs-vps/kgq7s#6145874",
-            "date": {
-              "utcTime": "2026-09-19T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6597/overview/vps",
-            "tooltipText": {
-              "utcTime": "2026-09-19T14:00:00.000Z",
-              "homeTeam": "VPS",
-              "homeTeamId": 6597,
-              "homeScore": "0",
-              "awayTeam": "KuPS",
-              "awayTeamId": 1693,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "6597",
-              "name": "VPS",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "1693",
-              "name": "KuPS",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/4449.png",
@@ -270,39 +240,39 @@
               "name": "VPS",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9987.png",
-            "linkToMatch": "/matches/genk-vs-gent/3atp32#5811761",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10116.png",
+            "linkToMatch": "/matches/kups-vs-borac-banja-luka/15imz2#6112487",
             "date": {
-              "utcTime": "2026-09-13T14:00:00.000Z"
+              "utcTime": "2026-10-22T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9987/overview/genk",
+            "teamPageUrl": "/teams/10116/overview/borac-banja-luka",
             "tooltipText": {
-              "utcTime": "2026-09-13T14:00:00.000Z",
-              "homeTeam": "Genk",
-              "homeTeamId": 9987,
-              "homeScore": "1",
-              "awayTeam": "Gent",
-              "awayTeamId": 9991,
-              "awayScore": "1"
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Borac Banja Luka",
+              "homeTeamId": 10116,
+              "homeScore": "2",
+              "awayTeam": "KuPS",
+              "awayTeamId": 1693,
+              "awayScore": "0"
             },
-            "score": "1 - 1",
+            "score": "2 - 0",
             "home": {
-              "id": "9987",
-              "name": "Genk",
+              "id": "10116",
+              "name": "Borac Banja Luka",
               "isOurTeam": false
             },
             "away": {
-              "id": "9991",
-              "name": "Gent",
+              "id": "1693",
+              "name": "KuPS",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -422,6 +392,36 @@
               "name": "Gent",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png",
+            "linkToMatch": "/matches/gent-vs-braga/3e54s7#6112390",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10264/overview/braga",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Braga",
+              "homeTeamId": 10264,
+              "homeScore": "2",
+              "awayTeam": "Gent",
+              "awayTeamId": 9991,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10264",
+              "name": "Braga",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9991",
+              "name": "Gent",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "3",
                 "away_team",
                 "3",
-                "1",
-                "1"
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,17 +461,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "KuPS have 2W, 0D, 3L in five matches while Gent have 3W, 1D, 1L."
+              "defaultText": "KuPS have 2W, 0D, 3L in five matches while Gent have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "6"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Gent have scored in their last 6 away matches."
+              "defaultText": "KuPS have scored 4 goals in their last 3 matches, while Gent have scored 4."
             },
             {
               "OddsType": "ou",
@@ -495,7 +498,7 @@
                 "away_team",
                 "3",
                 "4",
-                "6"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "KuPS have scored 4 goals in their last 3 matches, while Gent have scored 6."
+              "defaultText": "KuPS have scored 4 goals in their last 3 matches, while Gent have scored 4."
             },
             {
               "OddsType": "dc",
@@ -518,7 +521,7 @@
                 "home_team",
                 "away_team",
                 "5",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "KuPS haven't drawn in their last 5 matches and Gent in their last 4."
+              "defaultText": "KuPS haven't drawn in their last 5 matches and Gent in their last 5."
             }
           ]
         },

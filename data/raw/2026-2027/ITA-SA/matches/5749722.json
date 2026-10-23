@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
-            "linkToMatch": "/matches/atalanta-vs-cagliari/2ekudg#5749670",
-            "date": {
-              "utcTime": "2026-09-12T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8529/overview/cagliari",
-            "tooltipText": {
-              "utcTime": "2026-09-12T18:45:00.000Z",
-              "homeTeam": "Atalanta",
-              "homeTeamId": 8524,
-              "homeScore": "1",
-              "awayTeam": "Cagliari",
-              "awayTeamId": 8529,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8529",
-              "name": "Cagliari",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9885.png",
             "linkToMatch": "/matches/atalanta-vs-juventus/2sw7tm#5749685",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Atalanta",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8593.png",
+            "linkToMatch": "/matches/atalanta-vs-ajax/2f8a5g#6112393",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8593/overview/ajax",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Ajax",
+              "homeTeamId": 8593,
+              "homeScore": "2",
+              "awayTeam": "Atalanta",
+              "awayTeamId": 8524,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8593",
+              "name": "Ajax",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -489,12 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atalanta have scored 8 goals in their last 3 matches."
+              "defaultText": "Fiorentina have scored 3 goals in their last 3 matches, while Atalanta have scored 5."
             },
             {
               "OddsType": "dc",
@@ -515,7 +517,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atalanta haven't drawn in their last 9 matches."
+              "defaultText": "Atalanta haven't drawn in their last 10 matches."
             }
           ]
         },
@@ -624,7 +626,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -634,7 +636,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#004ca6"
         },
         {
@@ -663,12 +665,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#004ca6"
         }
       ],
@@ -707,151 +709,198 @@
     },
     "lineup": {
       "matchId": 5749722,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8535,
         "name": "Fiorentina",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 935406,
+            "age": 27,
             "name": "Luca Ranieri",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 6602023,
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-10-18T19:47:35Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Luca",
-            "lastName": "Ranieri"
+            "lastName": "Ranieri",
+            "nationalTeamId": 8204
           },
           {
             "id": 1428426,
+            "age": 23,
             "name": "Arthur Atta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 25949449,
             "unavailability": {
               "injuryId": 114,
-              "lastUpdated": "2026-10-09T17:03:31Z",
               "type": "injury",
               "expectedReturn": "A few days"
             },
             "firstName": "Arthur",
-            "lastName": "Atta"
+            "lastName": "Atta",
+            "nationalTeamId": 6723
           },
           {
             "id": 1093285,
+            "age": 25,
             "name": "Fabiano Parisi",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 6964775,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-01T13:38:03Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Fabiano",
-            "lastName": "Parisi"
+            "lastName": "Parisi",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 8524,
         "name": "Atalanta",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 304345,
+            "age": 33,
             "name": "Sead Kolašinac",
+            "countryName": "Bosnia and Herzegovina",
+            "countryCode": "BIH",
+            "marketValue": 2175437,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-21T11:51:39Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Sead",
-            "lastName": "Kolašinac"
+            "lastName": "Kolašinac",
+            "nationalTeamId": 10106
           },
           {
             "id": 951743,
+            "age": 26,
             "name": "Giacomo Raspadori",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 22295051,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-20T12:37:06Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Giacomo",
-            "lastName": "Raspadori"
+            "lastName": "Raspadori",
+            "nationalTeamId": 8204
           },
           {
             "id": 579747,
+            "age": 29,
             "name": "Franck Kessié",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 11935741,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-20T12:37:37Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Franck",
-            "lastName": "Kessié"
+            "lastName": "Kessié",
+            "nationalTeamId": 6709
           },
           {
             "id": 1202358,
+            "age": 22,
             "name": "Giorgio Scalvini",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 41104345,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-20T12:38:06Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Giorgio",
-            "lastName": "Scalvini"
+            "lastName": "Scalvini",
+            "nationalTeamId": 8204
           },
           {
             "id": 2189043,
+            "age": 20,
             "name": "Thomas Pompei",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 457127,
             "unavailability": {
               "injuryId": 16,
-              "lastUpdated": "2026-10-20T12:40:17Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Thomas",
-            "lastName": "Pompei"
+            "lastName": "Pompei",
+            "nationalTeamId": 8204
           },
           {
             "id": 1014496,
+            "age": 25,
             "name": "Odilon Kossounou",
+            "countryName": "Ivory Coast",
+            "countryCode": "CIV",
+            "marketValue": 17564300,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-20T12:39:11Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Odilon",
-            "lastName": "Kossounou"
+            "lastName": "Kossounou",
+            "nationalTeamId": 6709
           },
           {
             "id": 1130691,
+            "age": 24,
             "name": "Kamaldeen Sulemana",
+            "countryName": "Ghana",
+            "countryCode": "GHA",
+            "marketValue": 17294361,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-20T12:39:30Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Kamaldeen",
-            "lastName": "Sulemana"
+            "lastName": "Sulemana",
+            "nationalTeamId": 6714
           },
           {
             "id": 939780,
+            "age": 27,
             "name": "Isak Hien",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 17830087,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-22T20:07:44Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Isak",
-            "lastName": "Hien"
+            "lastName": "Hien",
+            "nationalTeamId": 8520
           }
         ]
       }

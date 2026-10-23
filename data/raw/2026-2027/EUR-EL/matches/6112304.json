@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/866109.png",
-            "linkToMatch": "/matches/sparta-prague-vs-ararat-armenia/4weoewh3#6112383",
-            "date": {
-              "utcTime": "2026-09-16T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/866109/overview/ararat-armenia",
-            "tooltipText": {
-              "utcTime": "2026-09-16T16:45:00.000Z",
-              "homeTeam": "Ararat Armenia",
-              "homeTeamId": 866109,
-              "homeScore": "1",
-              "awayTeam": "Sparta Prague",
-              "awayTeamId": 10247,
-              "awayScore": "4"
-            },
-            "score": "1 - 4",
-            "home": {
-              "id": "866109",
-              "name": "Ararat Armenia",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10247",
-              "name": "Sparta Prague",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6461.png",
             "linkToMatch": "/matches/sigma-olomouc-vs-sparta-prague/2b3yzr#5831178",
             "date": {
@@ -270,39 +240,39 @@
               "name": "Sparta Prague",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
-            "linkToMatch": "/matches/real-sociedad-vs-afc-bournemouth/2ggu0z#6112272",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8638.png",
+            "linkToMatch": "/matches/olympiacos-vs-sparta-prague/2y6fsd#6112267",
             "date": {
-              "utcTime": "2026-09-17T19:00:00.000Z"
+              "utcTime": "2026-10-22T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/8560/overview/real-sociedad",
+            "teamPageUrl": "/teams/8638/overview/olympiacos",
             "tooltipText": {
-              "utcTime": "2026-09-17T19:00:00.000Z",
-              "homeTeam": "Real Sociedad",
-              "homeTeamId": 8560,
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Olympiacos",
+              "homeTeamId": 8638,
               "homeScore": "1",
-              "awayTeam": "AFC Bournemouth",
-              "awayTeamId": 8678,
-              "awayScore": "2"
+              "awayTeam": "Sparta Prague",
+              "awayTeamId": 10247,
+              "awayScore": "0"
             },
-            "score": "1 - 2",
+            "score": "1 - 0",
             "home": {
-              "id": "8560",
-              "name": "Real Sociedad",
+              "id": "8638",
+              "name": "Olympiacos",
               "isOurTeam": false
             },
             "away": {
-              "id": "8678",
-              "name": "AFC Bournemouth",
+              "id": "10247",
+              "name": "Sparta Prague",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -422,6 +392,36 @@
               "name": "Sunderland",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
+            "linkToMatch": "/matches/milan-vs-afc-bournemouth/2gib8l#6112326",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8564/overview/milan",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "AFC Bournemouth",
+              "homeTeamId": 8678,
+              "homeScore": "3",
+              "awayTeam": "Milan",
+              "awayTeamId": 8564,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8678",
+              "name": "AFC Bournemouth",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8564",
+              "name": "Milan",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "2",
+                "2",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Sparta Prague haven't lost in 7 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Sparta Prague have 2W, 2D, 1L in five matches while AFC Bournemouth have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -482,14 +488,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "6"
+                "0.33",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sparta Prague have scored 3 goals in their last 3 matches, while AFC Bournemouth have scored 6."
+              "defaultText": "Sparta Prague have an average of 0.33 goals in their last three matches and AFC Bournemouth have an average of 2."
             },
             {
               "OddsType": "dc",
@@ -538,17 +543,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 10247,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 7 matches",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#8E192B"
         }
       ],

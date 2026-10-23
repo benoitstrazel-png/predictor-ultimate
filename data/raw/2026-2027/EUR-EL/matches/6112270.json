@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10267.png",
-            "linkToMatch": "/matches/real-sociedad-vs-valencia/2xizua#5868079",
-            "date": {
-              "utcTime": "2026-09-20T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10267/overview/valencia",
-            "tooltipText": {
-              "utcTime": "2026-09-20T19:00:00.000Z",
-              "homeTeam": "Valencia",
-              "homeTeamId": 10267,
-              "homeScore": "2",
-              "awayTeam": "Real Sociedad",
-              "awayTeamId": 8560,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "10267",
-              "name": "Valencia",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
@@ -271,39 +241,39 @@
               "name": "Real Sociedad",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8635.png",
-            "linkToMatch": "/matches/anderlecht-vs-lyon/2slyng#6112310",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8476.png",
+            "linkToMatch": "/matches/lillestrom-vs-real-sociedad/2eemta#6112374",
             "date": {
-              "utcTime": "2026-09-16T19:00:00.000Z"
+              "utcTime": "2026-10-22T19:00:00.000Z"
             },
-            "teamPageUrl": "/teams/8635/overview/anderlecht",
+            "teamPageUrl": "/teams/8476/overview/lillestrom",
             "tooltipText": {
-              "utcTime": "2026-09-16T19:00:00.000Z",
-              "homeTeam": "Anderlecht",
-              "homeTeamId": 8635,
-              "homeScore": "1",
-              "awayTeam": "Lyon",
-              "awayTeamId": 9748,
-              "awayScore": "2"
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Lillestrøm",
+              "homeTeamId": 8476,
+              "homeScore": "0",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "6"
             },
-            "score": "1 - 2",
+            "score": "0 - 6",
             "home": {
-              "id": "8635",
-              "name": "Anderlecht",
+              "id": "8476",
+              "name": "Lillestrøm",
               "isOurTeam": false
             },
             "away": {
-              "id": "9748",
-              "name": "Lyon",
+              "id": "8560",
+              "name": "Real Sociedad",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Nice",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226.png",
+            "linkToMatch": "/matches/hoffenheim-vs-lyon/2o6llt#6112350",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8226/overview/hoffenheim",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Hoffenheim",
+              "homeTeamId": 8226,
+              "homeScore": "3",
+              "awayTeam": "Lyon",
+              "awayTeamId": 9748,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8226",
+              "name": "Hoffenheim",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9748",
+              "name": "Lyon",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "4",
-                "0",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,21 +455,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Real Sociedad have 3W, 1D, 1L in five matches while Lyon have 4W, 0D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Real Sociedad haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
                 "away_team",
-                "3",
-                "9",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches, while Lyon have scored 6."
+              "defaultText": "Real Sociedad have scored in their last 4 matches and Lyon have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -496,7 +489,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "9",
+                "12",
                 "3"
               ],
               "DefaultLabels": [
@@ -508,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches."
+              "defaultText": "Real Sociedad have scored 12 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -542,23 +535,6 @@
         "awayTopPlayers": []
       },
       "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8560,
-          "priority": 1345,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#0056B3"
-        },
         {
           "type": "team",
           "playerId": null,

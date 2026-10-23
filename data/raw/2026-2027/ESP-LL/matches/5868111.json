@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10267.png",
-            "linkToMatch": "/matches/real-sociedad-vs-valencia/2xizua#5868079",
-            "date": {
-              "utcTime": "2026-09-20T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10267/overview/valencia",
-            "tooltipText": {
-              "utcTime": "2026-09-20T19:00:00.000Z",
-              "homeTeam": "Valencia",
-              "homeTeamId": 10267,
-              "homeScore": "2",
-              "awayTeam": "Real Sociedad",
-              "awayTeamId": 8560,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "10267",
-              "name": "Valencia",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
@@ -423,6 +393,36 @@
               "name": "Real Sociedad",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8476.png",
+            "linkToMatch": "/matches/lillestrom-vs-real-sociedad/2eemta#6112374",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8476/overview/lillestrom",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Lillestrøm",
+              "homeTeamId": 8476,
+              "homeScore": "0",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "6"
+            },
+            "score": "0 - 6",
+            "home": {
+              "id": "8476",
+              "name": "Lillestrøm",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "3",
-                "1",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Athletic Club have 1W, 3D, 1L in five matches while Real Sociedad have 3W, 1D, 1L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Real Sociedad haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -472,7 +466,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored in their last 5 away matches."
+              "defaultText": "Real Sociedad have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
@@ -493,7 +487,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "9",
+                "12",
                 "3"
               ],
               "DefaultLabels": [
@@ -505,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches."
+              "defaultText": "Real Sociedad have scored 12 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -620,7 +614,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 12,
+              "value": 15,
               "name": null,
               "type": "integer"
             },
@@ -630,24 +624,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 12 goals in their last 5 matches",
-          "color": "#0056B3"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8560,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Have scored 15 goals in their last 5 matches",
           "color": "#0056B3"
         },
         {
@@ -665,6 +642,33 @@
             }
           ],
           "text": "Ranked 3 away from home this season",
+          "color": "#0056B3"
+        },
+        {
+          "type": "player",
+          "playerId": 616539,
+          "teamId": 8560,
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "statValues": [
+            {
+              "value": 616539,
+              "name": "Alex Remiro",
+              "type": "player"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4.1,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Alex Remiro is ranked 2 in saves per match in the competition (4.1)",
           "color": "#0056B3"
         }
       ],

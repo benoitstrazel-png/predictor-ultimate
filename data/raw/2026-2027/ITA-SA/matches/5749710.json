@@ -171,36 +171,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
-            "linkToMatch": "/matches/atalanta-vs-cagliari/2ekudg#5749670",
-            "date": {
-              "utcTime": "2026-09-12T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8529/overview/cagliari",
-            "tooltipText": {
-              "utcTime": "2026-09-12T18:45:00.000Z",
-              "homeTeam": "Atalanta",
-              "homeTeamId": 8524,
-              "homeScore": "1",
-              "awayTeam": "Cagliari",
-              "awayTeamId": 8529,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8529",
-              "name": "Cagliari",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9885.png",
             "linkToMatch": "/matches/atalanta-vs-juventus/2sw7tm#5749685",
             "date": {
@@ -310,6 +280,36 @@
             "home": {
               "id": "8564",
               "name": "Milan",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8593.png",
+            "linkToMatch": "/matches/atalanta-vs-ajax/2f8a5g#6112393",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8593/overview/ajax",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Ajax",
+              "homeTeamId": 8593,
+              "homeScore": "2",
+              "awayTeam": "Atalanta",
+              "awayTeamId": 8524,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8593",
+              "name": "Ajax",
               "isOurTeam": false
             },
             "away": {
@@ -535,12 +535,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -551,7 +553,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atalanta have scored 8 goals in their last 3 matches."
+              "defaultText": "Atalanta have scored 5 goals in their last 3 matches, while Frosinone have scored 6."
             },
             {
               "OddsType": "dc",
@@ -561,7 +563,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -574,7 +576,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Atalanta haven't drawn in their last 9 matches."
+              "defaultText": "Atalanta haven't drawn in their last 10 matches."
             }
           ]
         },
@@ -594,7 +596,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -604,7 +606,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#004ca6"
         },
         {
@@ -633,12 +635,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#004ca6"
         },
         {
@@ -665,33 +667,6 @@
         },
         {
           "type": "player",
-          "playerId": 746829,
-          "teamId": 9891,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 746829,
-              "name": "Giacomo Calò",
-              "type": "player"
-            },
-            {
-              "value": 9891,
-              "name": "Frosinone",
-              "type": "team"
-            },
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Giacomo Calò has created the most big chances for Frosinone (5)",
-          "color": "#d5a300"
-        },
-        {
-          "type": "player",
           "playerId": 1256534,
           "teamId": 9891,
           "priority": 10,
@@ -710,6 +685,33 @@
             }
           ],
           "text": "Antonio Raimondo is the competition's top scorer (7)",
+          "color": "#d5a300"
+        },
+        {
+          "type": "player",
+          "playerId": 1256534,
+          "teamId": 9891,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1256534,
+              "name": "Antonio Raimondo",
+              "type": "player"
+            },
+            {
+              "value": 9891,
+              "name": "Frosinone",
+              "type": "team"
+            },
+            {
+              "value": 1.6,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Antonio Raimondo has the most shots on target per match for Frosinone (1.6)",
           "color": "#d5a300"
         }
       ],

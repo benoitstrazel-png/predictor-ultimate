@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
-            "linkToMatch": "/matches/omonia-nicosia-vs-celta-vigo/2nywi1#6112344",
-            "date": {
-              "utcTime": "2026-09-16T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9910/overview/celta-vigo",
-            "tooltipText": {
-              "utcTime": "2026-09-16T16:45:00.000Z",
-              "homeTeam": "Omonia Nicosia",
-              "homeTeamId": 8044,
-              "homeScore": "1",
-              "awayTeam": "Celta Vigo",
-              "awayTeamId": 9910,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8044",
-              "name": "Omonia Nicosia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9910",
-              "name": "Celta Vigo",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1075325.png",
             "linkToMatch": "/matches/omonia-nicosia-vs-krasava-ypsonas-fc/7hlc7j3d#5975406",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Olympiakos Nicosia",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png",
+            "linkToMatch": "/matches/omonia-nicosia-vs-benfica/2mhzx4#6112342",
+            "date": {
+              "utcTime": "2026-10-22T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9772/overview/benfica",
+            "tooltipText": {
+              "utcTime": "2026-10-22T19:00:00.000Z",
+              "homeTeam": "Omonia Nicosia",
+              "homeTeamId": 8044,
+              "homeScore": "1",
+              "awayTeam": "Benfica",
+              "awayTeamId": 9772,
+              "awayScore": "4"
+            },
+            "score": "1 - 4",
+            "home": {
+              "id": "8044",
+              "name": "Omonia Nicosia",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9772",
+              "name": "Benfica",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,13 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
-              "TextTemplateId": "undefeated_both_unequal",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "5",
-                "7"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -457,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "NEC Nijmegen haven't lost in their last 5 matches, and Omonia Nicosia in their last 7."
+              "defaultText": "NEC Nijmegen haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
@@ -469,7 +467,7 @@
                 "home_team",
                 "5",
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,18 +478,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "NEC Nijmegen have scored in their last 5 matches and Omonia Nicosia have scored in their last 5 matches."
+              "defaultText": "NEC Nijmegen have scored in their last 5 matches and Omonia Nicosia have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "7",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Omonia Nicosia have scored 8 goals in their last 3 matches."
+              "defaultText": "NEC Nijmegen have scored 7 goals in their last 3 matches, while Omonia Nicosia have scored 6."
             },
             {
               "OddsType": "dc",
@@ -516,9 +516,9 @@
                 "4",
                 "0",
                 "away_team",
-                "4",
+                "3",
                 "1",
-                "0"
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "NEC Nijmegen have 1W, 4D, 0L in five matches while Omonia Nicosia have 4W, 1D, 0L."
+              "defaultText": "NEC Nijmegen have 1W, 4D, 0L in five matches while Omonia Nicosia have 3W, 1D, 1L."
             }
           ]
         },
@@ -562,19 +562,19 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 8044,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "teamId": 8464,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 15,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 7 matches",
-          "color": "#0B582C"
+          "text": "Haven't kept a clean sheet in 15 matches",
+          "color": "#ED1C24"
         }
       ],
       "countryCode": "INT-2",
