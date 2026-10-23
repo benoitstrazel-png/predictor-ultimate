@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
-            "linkToMatch": "/matches/brest-vs-paris-saint-germain/2sg21j#5802929",
-            "date": {
-              "utcTime": "2026-09-13T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
-            "tooltipText": {
-              "utcTime": "2026-09-13T18:45:00.000Z",
-              "homeTeam": "Brest",
-              "homeTeamId": 8521,
-              "homeScore": "0",
-              "awayTeam": "Paris Saint-Germain",
-              "awayTeamId": 9847,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8521",
-              "name": "Brest",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9847",
-              "name": "Paris Saint-Germain",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
             "linkToMatch": "/matches/brest-vs-auxerre/2f3ii7#5802938",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Brest",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
+            "linkToMatch": "/matches/brest-vs-nice/2s9rcv#5802966",
+            "date": {
+              "utcTime": "2026-10-23T18:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9831/overview/nice",
+            "tooltipText": {
+              "utcTime": "2026-10-23T18:45:00.000Z",
+              "homeTeam": "Brest",
+              "homeTeamId": 8521,
+              "homeScore": "1",
+              "awayTeam": "Nice",
+              "awayTeamId": 9831,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "8521",
+              "name": "Brest",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9831",
+              "name": "Nice",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -471,7 +471,7 @@
                 "home_team",
                 "6",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,18 +482,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lorient have scored in their last 6 matches and Brest have scored in their last 4 matches."
+              "defaultText": "Lorient have scored in their last 6 matches and Brest have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "3",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have scored 8 goals in their last 3 matches."
+              "defaultText": "Lorient have scored 3 goals in their last 3 matches, while Brest have scored 7."
             },
             {
               "OddsType": "dc",
@@ -582,15 +584,15 @@
         },
         {
           "type": "player",
-          "playerId": 1427808,
+          "playerId": 1888816,
           "teamId": 8689,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1427808,
-              "name": "Panos Katseris",
+              "value": 1888816,
+              "name": "Mamadou Koné",
               "type": "player"
             },
             {
@@ -599,12 +601,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.9,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Panos Katseris has created the most big chances for Lorient (2)",
+          "text": "Mamadou Koné has the most shots on target per match for Lorient (1.9)",
           "color": "#F05330"
         },
         {
@@ -616,7 +618,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -626,7 +628,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#ED1C24"
         },
         {
@@ -675,12 +677,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 22,
+              "value": 23,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 22 matches",
+          "text": "Haven't kept a clean sheet in 23 matches",
           "color": "#ED1C24"
         }
       ],
@@ -702,18 +704,18 @@
       }
     },
     "weather": {
-      "temperature": 12,
+      "temperature": 11,
       "windSpeed": 4,
-      "windDirectionCardinal": "NNE",
+      "windDirectionCardinal": "N",
       "iconCode": 29,
-      "relativeHumidity": 93,
-      "precipChance": 13,
+      "relativeHumidity": 85,
+      "precipChance": 6,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 40,
+      "cloudCover": 36,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-23T08:00:26Z",
+      "lastUpdated": "2026-10-23T20:00:24Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
