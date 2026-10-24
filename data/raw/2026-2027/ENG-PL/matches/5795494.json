@@ -135,7 +135,7 @@
               "average": 3.89,
               "total": 203,
               "averageType": "above",
-              "fillPercentage": 96.87,
+              "fillPercentage": 97.19,
               "averagePercentage": 50
             },
             {
@@ -160,7 +160,7 @@
               "average": 21.88,
               "total": 970,
               "averageType": "average",
-              "fillPercentage": 51.87,
+              "fillPercentage": 51.9,
               "averagePercentage": 50
             }
           ]
@@ -673,33 +673,6 @@
         },
         {
           "type": "player",
-          "playerId": 612150,
-          "teamId": 8463,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 612150,
-              "name": "Dominic Calvert-Lewin",
-              "type": "player"
-            },
-            {
-              "value": 8463,
-              "name": "Leeds United",
-              "type": "team"
-            },
-            {
-              "value": 1.2,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Dominic Calvert-Lewin has the most shots on target per match for Leeds United (1.2)",
-          "color": "#0060AA"
-        },
-        {
-          "type": "player",
           "playerId": 1187213,
           "teamId": 8463,
           "priority": 4,
@@ -723,6 +696,33 @@
             }
           ],
           "text": "James Trafford is ranked 3 in saves per match in the competition (3.7)",
+          "color": "#0060AA"
+        },
+        {
+          "type": "player",
+          "playerId": 1250485,
+          "teamId": 8463,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1250485,
+              "name": "Tarik Muharemović",
+              "type": "player"
+            },
+            {
+              "value": 8463,
+              "name": "Leeds United",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Tarik Muharemović has created the most big chances for Leeds United (2)",
           "color": "#0060AA"
         }
       ],
@@ -838,14 +838,14 @@
       "windSpeed": 12,
       "windDirectionCardinal": "W",
       "iconCode": 24,
-      "relativeHumidity": 60,
+      "relativeHumidity": 59,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 42,
-      "description": "Partly Cloudy/Wind",
+      "cloudCover": 27,
+      "description": "Mostly Sunny/Wind",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-23T23:00:04Z",
+      "lastUpdated": "2026-10-24T05:00:04Z",
       "localizedKey": "weather_condition_windy",
       "defaultTitle": "Windy"
     },
@@ -854,6 +854,7 @@
       "lineupType": "predicted",
       "source": "enetpulse",
       "availableFilters": [
+        "season",
         "marketValue",
         "age",
         "country"
@@ -885,6 +886,9 @@
               "width": 1
             },
             "marketValue": 36422953,
+            "performance": {
+              "seasonRating": 6.25
+            },
             "firstName": "Robin",
             "lastName": "Roefs",
             "nationalTeamId": 6708,
@@ -912,6 +916,9 @@
               "width": 0.25
             },
             "marketValue": 29775462,
+            "performance": {
+              "seasonRating": 6.66
+            },
             "firstName": "Trai",
             "lastName": "Hume",
             "nationalTeamId": 10259,
@@ -939,6 +946,9 @@
               "width": 0.25
             },
             "marketValue": 19252707,
+            "performance": {
+              "seasonRating": 6.93
+            },
             "firstName": "Nordi",
             "lastName": "Mukiele",
             "nationalTeamId": 6723,
@@ -966,6 +976,9 @@
               "width": 0.25
             },
             "marketValue": 809005,
+            "performance": {
+              "seasonRating": 5.96
+            },
             "firstName": "Luke",
             "lastName": "O'Nien",
             "nationalTeamId": 8491,
@@ -993,6 +1006,9 @@
               "width": 0.25
             },
             "marketValue": 2487651,
+            "performance": {
+              "seasonRating": 6.87
+            },
             "firstName": "",
             "lastName": "Reinildo",
             "nationalTeamId": 5965,
@@ -1020,6 +1036,9 @@
               "width": 0.4
             },
             "marketValue": 11235376,
+            "performance": {
+              "seasonRating": 7.26
+            },
             "firstName": "Granit",
             "lastName": "Xhaka",
             "nationalTeamId": 6717,
@@ -1047,6 +1066,9 @@
               "width": 0.4
             },
             "marketValue": 45745156,
+            "performance": {
+              "seasonRating": 6.76
+            },
             "firstName": "Noah",
             "lastName": "Sadiki",
             "nationalTeamId": 6321,
@@ -1074,6 +1096,11 @@
               "width": 0.325
             },
             "marketValue": 12619104,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 6.76
+            },
             "firstName": "Nilson",
             "lastName": "Angulo",
             "nationalTeamId": 6707,
@@ -1101,6 +1128,10 @@
               "width": 0.337
             },
             "marketValue": 45896674,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.22
+            },
             "firstName": "Habib",
             "lastName": "Diarra",
             "nationalTeamId": 6395,
@@ -1128,20 +1159,25 @@
               "width": 0.325
             },
             "marketValue": 36496289,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 7.11
+            },
             "firstName": "Enzo",
             "lastName": "Le Fée",
             "nationalTeamId": 6723,
             "rankings": null
           },
           {
-            "id": 1421003,
-            "age": 21,
-            "name": "Timur Tuterov",
+            "id": 940446,
+            "age": 24,
+            "name": "Brian Brobbey",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "57",
-            "countryName": "Ukraine",
-            "countryCode": "UKR",
+            "shirtNumber": "9",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -1154,10 +1190,14 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 374865,
-            "firstName": "Timur",
-            "lastName": "Tuterov",
-            "nationalTeamId": 6718,
+            "marketValue": 40558471,
+            "performance": {
+              "seasonGoals": 3,
+              "seasonRating": 7
+            },
+            "firstName": "Brian",
+            "lastName": "Brobbey",
+            "nationalTeamId": 6708,
             "rankings": null
           }
         ],
@@ -1177,22 +1217,6 @@
         },
         "unavailable": [
           {
-            "id": 887703,
-            "age": 26,
-            "name": "Wilson Isidor",
-            "countryName": "Haiti",
-            "countryCode": "HAI",
-            "marketValue": 21441211,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Wilson",
-            "lastName": "Isidor",
-            "nationalTeamId": 5934
-          },
-          {
             "id": 974268,
             "age": 27,
             "name": "Daniel Ballard",
@@ -1204,6 +1228,9 @@
               "injuryId": 42,
               "type": "injury",
               "expectedReturn": "Doubtful"
+            },
+            "performance": {
+              "seasonRating": 6.76
             },
             "firstName": "Daniel",
             "lastName": "Ballard",
@@ -1222,6 +1249,9 @@
               "expectedReturn": "Late October 2026",
               "expectedReturnDate": "2026-10-25T18:30:00Z"
             },
+            "performance": {
+              "seasonRating": 5.43
+            },
             "firstName": "Kevin",
             "lastName": "Danso",
             "nationalTeamId": 8255
@@ -1239,26 +1269,13 @@
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.68
+            },
             "firstName": "Thomas",
             "lastName": "Meunier",
             "nationalTeamId": 8263
-          },
-          {
-            "id": 940446,
-            "age": 24,
-            "name": "Brian Brobbey",
-            "positionId": 1000,
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 40558471,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Brian",
-            "lastName": "Brobbey",
-            "nationalTeamId": 6708
           },
           {
             "id": 1123947,
@@ -1276,10 +1293,31 @@
             "firstName": "Romaine",
             "lastName": "Mundle",
             "nationalTeamId": 8491
+          },
+          {
+            "id": 887703,
+            "age": 26,
+            "name": "Wilson Isidor",
+            "positionId": 1000,
+            "countryName": "Haiti",
+            "countryCode": "HAI",
+            "marketValue": 21441211,
+            "unavailability": {
+              "injuryId": 130,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.25
+            },
+            "firstName": "Wilson",
+            "lastName": "Isidor",
+            "nationalTeamId": 5934
           }
         ],
-        "averageStarterAge": 26.6,
-        "totalStarterMarketValue": 241115242
+        "averageStarterAge": 26.9,
+        "totalStarterMarketValue": 281298848
       },
       "awayTeam": {
         "id": 8463,
@@ -1308,6 +1346,9 @@
               "width": 1
             },
             "marketValue": 21483080,
+            "performance": {
+              "seasonRating": 7.31
+            },
             "firstName": "James",
             "lastName": "Trafford",
             "nationalTeamId": 8491,
@@ -1335,6 +1376,11 @@
               "width": 0.29
             },
             "marketValue": 19737640,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonAssists": 1,
+              "seasonRating": 7.38
+            },
             "firstName": "James",
             "lastName": "Justin",
             "nationalTeamId": 8491,
@@ -1362,6 +1408,9 @@
               "width": 0.29
             },
             "marketValue": 4958620,
+            "performance": {
+              "seasonRating": 6.87
+            },
             "firstName": "Nico",
             "lastName": "Elvedi",
             "nationalTeamId": 6717,
@@ -1389,6 +1438,10 @@
               "width": 0.29
             },
             "marketValue": 23786274,
+            "performance": {
+              "seasonAssists": 2,
+              "seasonRating": 7.36
+            },
             "firstName": "Tarik",
             "lastName": "Muharemović",
             "nationalTeamId": 10106,
@@ -1416,6 +1469,10 @@
               "width": 0.25
             },
             "marketValue": 17415386,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.84
+            },
             "firstName": "Jayden",
             "lastName": "Bogle",
             "nationalTeamId": 8491,
@@ -1443,6 +1500,9 @@
               "width": 0.25
             },
             "marketValue": 34304732,
+            "performance": {
+              "seasonRating": 7.08
+            },
             "firstName": "Ethan",
             "lastName": "Ampadu",
             "nationalTeamId": 5790,
@@ -1470,6 +1530,10 @@
               "width": 0.25
             },
             "marketValue": 13602204,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.84
+            },
             "firstName": "Ao",
             "lastName": "Tanaka",
             "nationalTeamId": 6715,
@@ -1497,6 +1561,10 @@
               "width": 0.25
             },
             "marketValue": 29510503,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.9
+            },
             "firstName": "Gabriel",
             "lastName": "Gudmundsson",
             "nationalTeamId": 8520,
@@ -1524,6 +1592,9 @@
               "width": 0.4
             },
             "marketValue": 26406004,
+            "performance": {
+              "seasonRating": 6.4
+            },
             "firstName": "Harry",
             "lastName": "Wilson",
             "nationalTeamId": 5790,
@@ -1551,6 +1622,9 @@
               "width": 0.4
             },
             "marketValue": 19145980,
+            "performance": {
+              "seasonRating": 6.21
+            },
             "firstName": "Brenden",
             "lastName": "Aaronson",
             "nationalTeamId": 6713,
@@ -1578,6 +1652,10 @@
               "width": 1
             },
             "marketValue": 10546498,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.27
+            },
             "firstName": "Lukas",
             "lastName": "Nmecha",
             "nationalTeamId": 8570,
@@ -1600,61 +1678,9 @@
         },
         "unavailable": [
           {
-            "id": 717174,
-            "age": 29,
-            "name": "Joe Rodon",
-            "positionId": 1000,
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 17655448,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Early November 2026"
-            },
-            "firstName": "Joe",
-            "lastName": "Rodon",
-            "nationalTeamId": 5790
-          },
-          {
-            "id": 881735,
-            "age": 27,
-            "name": "Anton Stach",
-            "positionId": 1000,
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 32440745,
-            "unavailability": {
-              "injuryId": 47,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Anton",
-            "lastName": "Stach",
-            "nationalTeamId": 8570
-          },
-          {
-            "id": 717176,
-            "age": 28,
-            "name": "Daniel James",
-            "positionId": 1000,
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 11789560,
-            "unavailability": {
-              "injuryId": 45,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Daniel",
-            "lastName": "James",
-            "nationalTeamId": 5790
-          },
-          {
             "id": 612150,
             "age": 29,
             "name": "Dominic Calvert-Lewin",
-            "positionId": 1000,
             "countryName": "England",
             "countryCode": "ENG",
             "marketValue": 22357213,
@@ -1663,9 +1689,91 @@
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
+            "performance": {
+              "seasonGoals": 4,
+              "seasonRating": 7.21
+            },
             "firstName": "Dominic",
             "lastName": "Calvert-Lewin",
             "nationalTeamId": 8491
+          },
+          {
+            "id": 881735,
+            "age": 27,
+            "name": "Anton Stach",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 32440745,
+            "unavailability": {
+              "injuryId": 47,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 7.32
+            },
+            "firstName": "Anton",
+            "lastName": "Stach",
+            "nationalTeamId": 8570
+          },
+          {
+            "id": 915797,
+            "age": 26,
+            "name": "Noah Okafor",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 26699416,
+            "unavailability": {
+              "injuryId": 47,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.8
+            },
+            "firstName": "Noah",
+            "lastName": "Okafor",
+            "nationalTeamId": 6717
+          },
+          {
+            "id": 717176,
+            "age": 28,
+            "name": "Daniel James",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "marketValue": 11789560,
+            "unavailability": {
+              "injuryId": 45,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "performance": {
+              "seasonRating": 5.93
+            },
+            "firstName": "Daniel",
+            "lastName": "James",
+            "nationalTeamId": 5790
+          },
+          {
+            "id": 717174,
+            "age": 29,
+            "name": "Joe Rodon",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "marketValue": 17655448,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "performance": {
+              "seasonRating": 6.69
+            },
+            "firstName": "Joe",
+            "lastName": "Rodon",
+            "nationalTeamId": 5790
           },
           {
             "id": 1344677,
@@ -1683,23 +1791,6 @@
             "firstName": "Mateo",
             "lastName": "Joseph",
             "nationalTeamId": 6720
-          },
-          {
-            "id": 915797,
-            "age": 26,
-            "name": "Noah Okafor",
-            "positionId": 1000,
-            "countryName": "Switzerland",
-            "countryCode": "SUI",
-            "marketValue": 26699416,
-            "unavailability": {
-              "injuryId": 47,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Noah",
-            "lastName": "Okafor",
-            "nationalTeamId": 6717
           }
         ],
         "averageStarterAge": 27.1,
