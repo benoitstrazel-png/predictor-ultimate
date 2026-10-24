@@ -62,6 +62,7 @@ jobs:
       - name: Ingest Betclic Deep Multi-Markets & Init Schema (8 Sections)
         run: |
           python scripts/db/init_betclic_markets_schema.py
+          node scripts/pipeline/extractors/scrape_betclic_real_match_markets.cjs ALL || true
           python scripts/pipeline/extractors/betclic_deep_markets_collector.py || true
 
       - name: Ingest Master Coaches & SCD2 Contracts

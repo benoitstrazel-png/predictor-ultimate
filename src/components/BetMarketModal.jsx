@@ -573,8 +573,8 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
 
                   {/* Grille des sélections par équipe pour les Joueurs ou Grille standard */}
                   {isPlayersSection ? (() => {
-                    const homeSelections = market.selections.filter((s) => s.team === homeTeam || s.key.includes('_H_'));
-                    const awaySelections = market.selections.filter((s) => s.team === awayTeam || s.key.includes('_A_'));
+                    const homeSelections = market.selections.filter((s) => s.team === homeTeam || s.key?.startsWith('H_') || s.key?.includes('_H_'));
+                    const awaySelections = market.selections.filter((s) => s.team === awayTeam || s.key?.startsWith('A_') || s.key?.includes('_A_'));
                     const otherSelections = market.selections.filter(
                       (s) => !homeSelections.includes(s) && !awaySelections.includes(s)
                     );
