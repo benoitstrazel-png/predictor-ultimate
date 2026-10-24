@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6033.png",
-            "linkToMatch": "/matches/viktoria-plzen-vs-slavia-prague/1kv4oh#5831179",
-            "date": {
-              "utcTime": "2026-09-20T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6033/overview/viktoria-plzen",
-            "tooltipText": {
-              "utcTime": "2026-09-20T16:00:00.000Z",
-              "homeTeam": "Slavia Prague",
-              "homeTeamId": 7787,
-              "homeScore": "2",
-              "awayTeam": "Viktoria Plzeň",
-              "awayTeamId": 6033,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "7787",
-              "name": "Slavia Prague",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6033",
-              "name": "Viktoria Plzeň",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1860.png",
             "linkToMatch": "/matches/fc-zlin-vs-slavia-prague/rpmab#5831188",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Slavia Prague",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10180.png",
+            "linkToMatch": "/matches/slavia-prague-vs-mlada-boleslav/2o3v0z#5831201",
+            "date": {
+              "utcTime": "2026-10-24T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10180/overview/mlada-boleslav",
+            "tooltipText": {
+              "utcTime": "2026-10-24T16:00:00.000Z",
+              "homeTeam": "Slavia Prague",
+              "homeTeamId": 7787,
+              "homeScore": "1",
+              "awayTeam": "Mladá Boleslav",
+              "awayTeamId": 10180,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "7787",
+              "name": "Slavia Prague",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10180",
+              "name": "Mladá Boleslav",
+              "isOurTeam": false
+            }
           }
         ],
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
-            "linkToMatch": "/matches/arsenal-vs-brighton-hove-albion/3bfk5g#5795457",
-            "date": {
-              "utcTime": "2026-09-19T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
-            "tooltipText": {
-              "utcTime": "2026-09-19T14:00:00.000Z",
-              "homeTeam": "Brighton & Hove Albion",
-              "homeTeamId": 10204,
-              "homeScore": "3",
-              "awayTeam": "Arsenal",
-              "awayTeamId": 9825,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "10204",
-              "name": "Brighton & Hove Albion",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9825",
-              "name": "Arsenal",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Arsenal",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
+            "linkToMatch": "/matches/everton-vs-arsenal/2ttfpg#5795485",
+            "date": {
+              "utcTime": "2026-10-24T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8668/overview/everton",
+            "tooltipText": {
+              "utcTime": "2026-10-24T14:00:00.000Z",
+              "homeTeam": "Arsenal",
+              "homeTeamId": 9825,
+              "homeScore": "2",
+              "awayTeam": "Everton",
+              "awayTeamId": 8668,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8668",
+              "name": "Everton",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,20 +456,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Arsenal haven't lost in 4 matches."
+              "defaultText": "Arsenal haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,20 +479,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Slavia Prague have scored 2 goals in their last 3 matches, while Arsenal have scored 6."
+              "defaultText": "Slavia Prague have an average of 0.67 goals in their last three matches and Arsenal have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Slavia Prague have scored 2 goals in their last 3 matches, while Arsenal have scored 6."
+              "defaultText": "Slavia Prague have an average of 0.67 goals in their last three matches and Arsenal have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -518,9 +516,9 @@
                 "2",
                 "1",
                 "away_team",
-                "3",
+                "4",
                 "1",
-                "1"
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -533,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Slavia Prague have 2W, 2D, 1L in five matches while Arsenal have 3W, 1D, 1L."
+              "defaultText": "Slavia Prague have 2W, 2D, 1L in five matches while Arsenal have 4W, 1D, 0L."
             }
           ]
         },
@@ -544,6 +542,23 @@
         "awayTopPlayers": []
       },
       "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9825,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#bd0510"
+        },
         {
           "type": "team",
           "playerId": null,

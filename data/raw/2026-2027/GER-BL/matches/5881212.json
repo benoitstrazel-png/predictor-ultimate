@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8149.png",
-            "linkToMatch": "/matches/union-berlin-vs-schalke-04/2s47vs#5881169",
-            "date": {
-              "utcTime": "2026-09-11T18:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8149/overview/union-berlin",
-            "tooltipText": {
-              "utcTime": "2026-09-11T18:30:00.000Z",
-              "homeTeam": "Union Berlin",
-              "homeTeamId": 8149,
-              "homeScore": "1",
-              "awayTeam": "Schalke 04",
-              "awayTeamId": 10189,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8149",
-              "name": "Union Berlin",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10189",
-              "name": "Schalke 04",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8232.png",
@@ -271,39 +241,39 @@
               "name": "Mainz 05",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8178.png",
-            "linkToMatch": "/matches/bayer-leverkusen-vs-rb-leipzig/803a6n9#5881170",
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8722.png",
+            "linkToMatch": "/matches/1-fc-koln-vs-schalke-04/2ygyzm#5881199",
             "date": {
-              "utcTime": "2026-09-20T13:30:00.000Z"
+              "utcTime": "2026-10-24T13:30:00.000Z"
             },
-            "teamPageUrl": "/teams/8178/overview/bayer-leverkusen",
+            "teamPageUrl": "/teams/8722/overview/1-fc-koln",
             "tooltipText": {
-              "utcTime": "2026-09-20T13:30:00.000Z",
-              "homeTeam": "Bayer Leverkusen",
-              "homeTeamId": 8178,
-              "homeScore": "2",
-              "awayTeam": "RB Leipzig",
-              "awayTeamId": 178475,
+              "utcTime": "2026-10-24T13:30:00.000Z",
+              "homeTeam": "1. FC Köln",
+              "homeTeamId": 8722,
+              "homeScore": "0",
+              "awayTeam": "Schalke 04",
+              "awayTeamId": 10189,
               "awayScore": "0"
             },
-            "score": "2 - 0",
+            "score": "0 - 0",
             "home": {
-              "id": "8178",
-              "name": "Bayer Leverkusen",
+              "id": "8722",
+              "name": "1. FC Köln",
               "isOurTeam": false
             },
             "away": {
-              "id": "178475",
-              "name": "RB Leipzig",
+              "id": "10189",
+              "name": "Schalke 04",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "RB Leipzig",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8232.png",
+            "linkToMatch": "/matches/elversberg-vs-rb-leipzig/809a91i#5881204",
+            "date": {
+              "utcTime": "2026-10-24T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8232/overview/elversberg",
+            "tooltipText": {
+              "utcTime": "2026-10-24T13:30:00.000Z",
+              "homeTeam": "RB Leipzig",
+              "homeTeamId": 178475,
+              "homeScore": "4",
+              "awayTeam": "Elversberg",
+              "awayTeamId": 8232,
+              "awayScore": "0"
+            },
+            "score": "4 - 0",
+            "home": {
+              "id": "178475",
+              "name": "RB Leipzig",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8232",
+              "name": "Elversberg",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,13 +443,13 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
                 "2",
-                "away_team",
                 "2",
+                "away_team",
+                "3",
                 "0",
-                "3"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Schalke 04 have 2W, 1D, 2L in five matches while RB Leipzig have 2W, 0D, 3L."
+              "defaultText": "Schalke 04 have 1W, 2D, 2L in five matches while RB Leipzig have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,14 +489,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} haven't scored at home for {1} matches.",
+              "TextTemplateId": "goalless_home",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "6",
-                "3"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,8 +503,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Schalke 04 have scored 6 goals in their last 3 matches, while RB Leipzig have scored 3."
+              "Icon": "poll_glove",
+              "defaultText": "Schalke 04 haven't scored at home for 5 matches."
             },
             {
               "OddsType": "dc",
@@ -550,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -560,7 +557,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
+          "color": "#083890"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10189,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#083890"
         },
         {
@@ -582,39 +596,12 @@
               "type": "ordinal"
             },
             {
-              "value": 5.2,
+              "value": 5,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Loris Karius is ranked 3 in saves per match in the competition (5.2)",
-          "color": "#083890"
-        },
-        {
-          "type": "player",
-          "playerId": 1047664,
-          "teamId": 10189,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1047664,
-              "name": "Adil Aouchiche",
-              "type": "player"
-            },
-            {
-              "value": 10189,
-              "name": "Schalke 04",
-              "type": "team"
-            },
-            {
-              "value": 1.1,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Adil Aouchiche has the most shots on target per match for Schalke 04 (1.1)",
+          "text": "Loris Karius is ranked 3 in saves per match in the competition (5)",
           "color": "#083890"
         },
         {
@@ -626,7 +613,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 13,
               "name": null,
               "type": "integer"
             },
@@ -636,7 +623,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 13 goals in their last 5 matches",
           "color": "#DD0741"
         },
         {
@@ -678,15 +665,15 @@
         },
         {
           "type": "player",
-          "playerId": 972200,
+          "playerId": 1248482,
           "teamId": 178475,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 972200,
-              "name": "Maarten Vandevoordt",
+              "value": 1248482,
+              "name": "Antonio Nusa",
               "type": "player"
             },
             {
@@ -697,10 +684,10 @@
             {
               "value": 6,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Maarten Vandevoordt is ranked 1 in saves per match in the competition (6)",
+          "text": "Antonio Nusa is ranked 1 in big chances created in the competition (6)",
           "color": "#DD0741"
         }
       ],
@@ -739,139 +726,181 @@
     },
     "lineup": {
       "matchId": 5881212,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10189,
         "name": "Schalke 04",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 469763,
+            "age": 32,
             "name": "Kenan Karaman",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
+            "marketValue": 1176653,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-22T14:31:29Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Kenan",
-            "lastName": "Karaman"
+            "lastName": "Karaman",
+            "nationalTeamId": 6595
           },
           {
             "id": 701149,
+            "age": 28,
             "name": "Maximilian Wöber",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 1602101,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-22T19:44:21Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Maximilian",
-            "lastName": "Wöber"
+            "lastName": "Wöber",
+            "nationalTeamId": 8255
           },
           {
             "id": 820974,
+            "age": 28,
             "name": "Ron Schallenberg",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1337063,
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-10-20T12:32:58Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Ron",
-            "lastName": "Schallenberg"
+            "lastName": "Schallenberg",
+            "nationalTeamId": 8570
           },
           {
             "id": 860056,
+            "age": 26,
             "name": "Moussa Sylla",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "marketValue": 4707869,
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-10-15T11:17:04Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Moussa",
-            "lastName": "Sylla"
+            "lastName": "Sylla",
+            "nationalTeamId": 5815
           },
           {
             "id": 861668,
+            "age": 29,
             "name": "Dejan Ljubičić",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 2081856,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-11T11:57:12Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Dejan",
-            "lastName": "Ljubičić"
+            "lastName": "Ljubičić",
+            "nationalTeamId": 8255
           },
           {
             "id": 1816238,
+            "age": 20,
             "name": "Ayman Gülasi",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
             "unavailability": {
               "injuryId": 142,
-              "lastUpdated": "2026-08-26T06:51:24Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
             "firstName": "Ayman",
-            "lastName": "Gülasi"
+            "lastName": "Gülasi",
+            "nationalTeamId": 6595
           },
           {
             "id": 815566,
+            "age": 27,
             "name": "Bryan Lasme",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 365300,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-24T14:41:34Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Bryan",
-            "lastName": "Lasme"
+            "lastName": "Lasme",
+            "nationalTeamId": 6723
           }
         ]
       },
       "awayTeam": {
         "id": 178475,
         "name": "RB Leipzig",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 704523,
+            "age": 28,
             "name": "Christopher Nkunku",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 24099503,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-23T21:05:36Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Christopher",
-            "lastName": "Nkunku"
+            "lastName": "Nkunku",
+            "nationalTeamId": 6723
           },
           {
             "id": 1412137,
+            "age": 20,
             "name": "Marc Guiu",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 20186451,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-18T14:24:55Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Marc",
-            "lastName": "Guiu"
+            "lastName": "Guiu",
+            "nationalTeamId": 6720
           },
           {
             "id": 1486541,
+            "age": 20,
             "name": "Assan Ouédraogo",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 23794034,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-09-15T15:45:37Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
             "firstName": "Assan",
-            "lastName": "Ouédraogo"
+            "lastName": "Ouédraogo",
+            "nationalTeamId": 8570
           }
         ]
       }

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
-            "linkToMatch": "/matches/tottenham-hotspur-vs-everton/2gmqxt#5795454",
-            "date": {
-              "utcTime": "2026-09-12T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8586/overview/tottenham-hotspur",
-            "tooltipText": {
-              "utcTime": "2026-09-12T16:30:00.000Z",
-              "homeTeam": "Tottenham Hotspur",
-              "homeTeamId": 8586,
-              "homeScore": "0",
-              "awayTeam": "Everton",
-              "awayTeamId": 8668,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "8586",
-              "name": "Tottenham Hotspur",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8602.png",
@@ -271,39 +241,39 @@
               "name": "Chelsea",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
-            "linkToMatch": "/matches/coventry-city-vs-brighton-hove-albion/2y1l02#5795448",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
+            "linkToMatch": "/matches/everton-vs-arsenal/2ttfpg#5795485",
             "date": {
-              "utcTime": "2026-09-13T13:00:00.000Z"
+              "utcTime": "2026-10-24T14:00:00.000Z"
             },
-            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "teamPageUrl": "/teams/9825/overview/arsenal",
             "tooltipText": {
-              "utcTime": "2026-09-13T13:00:00.000Z",
-              "homeTeam": "Coventry City",
-              "homeTeamId": 8669,
-              "homeScore": "0",
-              "awayTeam": "Brighton & Hove Albion",
-              "awayTeamId": 10204,
-              "awayScore": "5"
+              "utcTime": "2026-10-24T14:00:00.000Z",
+              "homeTeam": "Arsenal",
+              "homeTeamId": 9825,
+              "homeScore": "2",
+              "awayTeam": "Everton",
+              "awayTeamId": 8668,
+              "awayScore": "0"
             },
-            "score": "0 - 5",
+            "score": "2 - 0",
             "home": {
-              "id": "8669",
-              "name": "Coventry City",
-              "isOurTeam": true
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": false
             },
             "away": {
-              "id": "10204",
-              "name": "Brighton & Hove Albion",
-              "isOurTeam": false
+              "id": "8668",
+              "name": "Everton",
+              "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -423,6 +393,36 @@
               "name": "Coventry City",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
+            "linkToMatch": "/matches/coventry-city-vs-fulham/2uf9qx#5795488",
+            "date": {
+              "utcTime": "2026-10-24T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9879/overview/fulham",
+            "tooltipText": {
+              "utcTime": "2026-10-24T14:00:00.000Z",
+              "homeTeam": "Coventry City",
+              "homeTeamId": 8669,
+              "homeScore": "0",
+              "awayTeam": "Fulham",
+              "awayTeamId": 9879,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "8669",
+              "name": "Coventry City",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "2",
                 "1",
+                "2",
                 "away_team",
                 "2",
                 "0",
@@ -462,20 +462,19 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Everton have 2W, 2D, 1L in five matches while Coventry City have 2W, 0D, 3L."
+              "defaultText": "Everton have 2W, 1D, 2L in five matches while Coventry City have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "6"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,20 +485,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Everton have scored 3 goals in their last 3 matches, while Coventry City have scored 6."
+              "defaultText": "Everton have an average of 0.67 goals in their last three matches and Coventry City have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "6"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Everton have scored 3 goals in their last 3 matches, while Coventry City have scored 6."
+              "defaultText": "Everton have an average of 0.67 goals in their last three matches and Coventry City have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -520,7 +518,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "11"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -533,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Coventry City haven't drawn in their last 11 matches."
+              "defaultText": "Coventry City haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -567,30 +565,20 @@
           "color": "#00359C"
         },
         {
-          "type": "player",
-          "playerId": 886016,
+          "type": "team",
+          "playerId": null,
           "teamId": 8668,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 886016,
-              "name": "Kiernan Dewsbury-Hall",
-              "type": "player"
-            },
-            {
-              "value": 8668,
-              "name": "Everton",
-              "type": "team"
-            },
-            {
-              "value": 4,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Kiernan Dewsbury-Hall has created the most big chances for Everton (4)",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#00359C"
         },
         {
@@ -612,12 +600,12 @@
               "type": "team"
             },
             {
-              "value": 1.7,
+              "value": 1.6,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Thierno Barry has the most shots on target per match for Everton (1.7)",
+          "text": "Thierno Barry has the most shots on target per match for Everton (1.6)",
           "color": "#00359C"
         },
         {

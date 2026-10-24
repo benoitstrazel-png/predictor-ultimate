@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -275,36 +276,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
-            "linkToMatch": "/matches/fiorentina-vs-napoli/2swm0q#5749683",
-            "date": {
-              "utcTime": "2026-09-20T10:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8535/overview/fiorentina",
-            "tooltipText": {
-              "utcTime": "2026-09-20T10:30:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "1",
-              "awayTeam": "Napoli",
-              "awayTeamId": 9875,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
@@ -423,6 +394,36 @@
               "name": "Bodø/Glimt",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
+            "linkToMatch": "/matches/roma-vs-napoli/2ukfv8#5749717",
+            "date": {
+              "utcTime": "2026-10-24T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8686/overview/roma",
+            "tooltipText": {
+              "utcTime": "2026-10-24T16:00:00.000Z",
+              "homeTeam": "Napoli",
+              "homeTeamId": 9875,
+              "homeScore": "3",
+              "awayTeam": "Roma",
+              "awayTeamId": 8686,
+              "awayScore": "3"
+            },
+            "score": "3 - 3",
+            "home": {
+              "id": "9875",
+              "name": "Napoli",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8686",
+              "name": "Roma",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -491,7 +492,7 @@
                 "away_team",
                 "3",
                 "7",
-                "5"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,17 +503,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored 7 goals in their last 3 matches, while Napoli have scored 5."
+              "defaultText": "Monza have scored 7 goals in their last 3 matches, while Napoli have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
                 "away_team",
-                "4"
+                "home_team",
+                "4",
+                "3",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Napoli haven't drawn in their last 4 matches."
+              "defaultText": "Napoli haven't lost to Monza in their last 4 meetings (3W, 1D)."
             }
           ]
         },
@@ -560,15 +564,15 @@
         },
         {
           "type": "player",
-          "playerId": 737339,
+          "playerId": 824655,
           "teamId": 6504,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 737339,
-              "name": "Dany Mota",
+              "value": 824655,
+              "name": "Ricardo Mangas",
               "type": "player"
             },
             {
@@ -577,12 +581,12 @@
               "type": "team"
             },
             {
-              "value": 2.2,
+              "value": 4,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Dany Mota has the most shots on target per match for Monza (2.2)",
+          "text": "Ricardo Mangas has created the most big chances for Monza (4)",
           "color": "#e10032"
         },
         {
@@ -621,7 +625,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -631,7 +635,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#12A0D7"
         },
         {
@@ -1749,6 +1753,53 @@
           }
         ],
         "unavailable": [
+          {
+            "id": 129745,
+            "age": 59,
+            "name": "Massimiliano Allegri",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Late October 2026",
+              "expectedReturnDate": "2026-10-28T20:45:00Z"
+            },
+            "firstName": "Massimiliano",
+            "lastName": "Allegri",
+            "nationalTeamId": 8204
+          },
+          {
+            "id": 955376,
+            "age": 25,
+            "name": "Benoît Badiashile",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 16775464,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Benoît",
+            "lastName": "Badiashile",
+            "nationalTeamId": 6723
+          },
+          {
+            "id": 544693,
+            "age": 32,
+            "name": "Amir Rrahmani",
+            "countryName": "Kosovo",
+            "countryCode": "KVX",
+            "marketValue": 6518096,
+            "unavailability": {
+              "injuryId": 121,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Amir",
+            "lastName": "Rrahmani",
+            "nationalTeamId": 430156
+          },
           {
             "id": 823018,
             "age": 27,

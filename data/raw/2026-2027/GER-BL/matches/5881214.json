@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png",
-            "linkToMatch": "/matches/werder-bremen-vs-rb-leipzig/81p1es3#5881160",
-            "date": {
-              "utcTime": "2026-09-05T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
-            "tooltipText": {
-              "utcTime": "2026-09-05T13:30:00.000Z",
-              "homeTeam": "Werder Bremen",
-              "homeTeamId": 8697,
-              "homeScore": "3",
-              "awayTeam": "RB Leipzig",
-              "awayTeamId": 178475,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "8697",
-              "name": "Werder Bremen",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8722.png",
@@ -270,6 +240,36 @@
               "id": "8460",
               "name": "Paderborn",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9905.png",
+            "linkToMatch": "/matches/werder-bremen-vs-mainz-05/2v0rqw#5881202",
+            "date": {
+              "utcTime": "2026-10-24T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9905/overview/mainz-05",
+            "tooltipText": {
+              "utcTime": "2026-10-24T13:30:00.000Z",
+              "homeTeam": "Mainz 05",
+              "homeTeamId": 9905,
+              "homeScore": "2",
+              "awayTeam": "Werder Bremen",
+              "awayTeamId": 8697,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "9905",
+              "name": "Mainz 05",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8697",
+              "name": "Werder Bremen",
+              "isOurTeam": true
             }
           }
         ],
@@ -467,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "10",
+                "11",
                 "away_team",
                 "5"
               ],
@@ -480,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored in their last 10 matches and Hoffenheim have scored in their last 5 matches."
+              "defaultText": "Werder Bremen have scored in their last 11 matches and Hoffenheim have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -564,34 +564,39 @@
           "type": "team",
           "playerId": null,
           "teamId": 8697,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
           "statValues": [
             {
-              "value": 6,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Have been awarded the most penalties this season (3)",
           "color": "#007642"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 276791,
           "teamId": 8697,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 5,
+              "value": 276791,
+              "name": "Niclas Füllkrug",
+              "type": "player"
+            },
+            {
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Niclas Füllkrug is the competition's top scorer (8)",
           "color": "#007642"
         },
         {
@@ -655,15 +660,15 @@
         },
         {
           "type": "player",
-          "playerId": 1486537,
+          "playerId": 1353000,
           "teamId": 8226,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1486537,
-              "name": "Max Moerstedt",
+              "value": 1353000,
+              "name": "Adam Daghim",
               "type": "player"
             },
             {
@@ -672,12 +677,12 @@
               "type": "team"
             },
             {
-              "value": 1.7,
+              "value": 6,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Max Moerstedt has the most shots on target per match for Hoffenheim (1.7)",
+          "text": "Adam Daghim has created the most big chances for Hoffenheim (6)",
           "color": "#005098"
         }
       ],
@@ -716,139 +721,198 @@
     },
     "lineup": {
       "matchId": 5881214,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8697,
         "name": "Werder Bremen",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1393480,
+            "age": 24,
             "name": "Skelly Alvero",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1620695,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-06T13:33:32Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Skelly",
-            "lastName": "Alvero"
+            "lastName": "Alvero",
+            "nationalTeamId": 6723
           },
           {
             "id": 1646629,
+            "age": 20,
             "name": "Salim Musah",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 401314,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-29T17:03:42Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Salim",
-            "lastName": "Musah"
+            "lastName": "Musah",
+            "nationalTeamId": 8570
           },
           {
             "id": 1053674,
+            "age": 24,
             "name": "Moussa N'Diaye",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 2193108,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-11T11:59:17Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Moussa",
-            "lastName": "N'Diaye"
+            "lastName": "N'Diaye",
+            "nationalTeamId": 6395
           },
           {
             "id": 1137364,
+            "age": 25,
             "name": "Justin Njinmah",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 5526606,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-01T19:56:28Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Justin",
-            "lastName": "Njinmah"
+            "lastName": "Njinmah",
+            "nationalTeamId": 8570
           },
           {
             "id": 528811,
+            "age": 29,
             "name": "Jens Stage",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 11836698,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-30T15:54:40Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jens",
-            "lastName": "Stage"
+            "lastName": "Stage",
+            "nationalTeamId": 8238
           },
           {
             "id": 937368,
+            "age": 27,
             "name": "Felix Agu",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 2406420,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-21T22:04:51Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Felix",
-            "lastName": "Agu"
+            "lastName": "Agu",
+            "nationalTeamId": 6346
           },
           {
             "id": 1319717,
+            "age": 22,
             "name": "Keke Topp",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 4572428,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-24T10:15:52Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Keke",
-            "lastName": "Topp"
+            "lastName": "Topp",
+            "nationalTeamId": 8570
           }
         ]
       },
       "awayTeam": {
         "id": 8226,
         "name": "Hoffenheim",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
+            "id": 1338957,
+            "age": 23,
+            "name": "Bambasé Conté",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 2348340,
+            "unavailability": {
+              "injuryId": 6,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Bambasé",
+            "lastName": "Conté",
+            "nationalTeamId": 8570
+          },
+          {
             "id": 1664759,
+            "age": 18,
             "name": "Nathan De Cat",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 11223939,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-10-18T18:09:33Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Nathan",
-            "lastName": "De Cat"
+            "lastName": "De Cat",
+            "nationalTeamId": 8263
           },
           {
             "id": 1186015,
+            "age": 23,
             "name": "Albian Hajdari",
+            "countryName": "Kosovo",
+            "countryCode": "KVX",
+            "marketValue": 26163429,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-14T16:40:03Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Albian",
-            "lastName": "Hajdari"
+            "lastName": "Hajdari",
+            "nationalTeamId": 430156
           },
           {
             "id": 1073498,
+            "age": 25,
             "name": "Patrick Wimmer",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 13520437,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-11T12:44:58Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Patrick",
-            "lastName": "Wimmer"
+            "lastName": "Wimmer",
+            "nationalTeamId": 8255
           }
         ]
       }
