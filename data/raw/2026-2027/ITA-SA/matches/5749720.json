@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943.png",
-            "linkToMatch": "/matches/sassuolo-vs-bologna/2mbw4l#5749661",
-            "date": {
-              "utcTime": "2026-09-06T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7943/overview/sassuolo",
-            "tooltipText": {
-              "utcTime": "2026-09-06T16:00:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "2",
-              "awayTeam": "Sassuolo",
-              "awayTeamId": 7943,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7943",
-              "name": "Sassuolo",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
@@ -423,6 +393,36 @@
               "name": "Inter",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
+            "linkToMatch": "/matches/cagliari-vs-bologna/2sn5ak#5749711",
+            "date": {
+              "utcTime": "2026-10-24T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8529/overview/cagliari",
+            "tooltipText": {
+              "utcTime": "2026-10-24T13:00:00.000Z",
+              "homeTeam": "Cagliari",
+              "homeTeamId": 8529,
+              "homeScore": "0",
+              "awayTeam": "Bologna",
+              "awayTeamId": 9857,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8529",
+              "name": "Cagliari",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "1",
                 "1",
                 "away_team",
-                "1",
                 "2",
+                "1",
                 "2"
               ],
               "DefaultLabels": [
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Milan have 3W, 1D, 1L in five matches while Bologna have 1W, 2D, 2L."
+              "defaultText": "Milan have 3W, 1D, 1L in five matches while Bologna have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -475,7 +475,7 @@
                 "away_team",
                 "3",
                 "7",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have scored 7 goals in their last 3 matches, while Bologna have scored 4."
+              "defaultText": "Milan have scored 7 goals in their last 3 matches, while Bologna have scored 5."
             },
             {
               "OddsType": "ou",
@@ -499,7 +499,7 @@
                 "away_team",
                 "3",
                 "7",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have scored 7 goals in their last 3 matches, while Bologna have scored 4."
+              "defaultText": "Milan have scored 7 goals in their last 3 matches, while Bologna have scored 5."
             },
             {
               "OddsType": "dc",
@@ -634,33 +634,43 @@
           "color": "#102880"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 873956,
           "teamId": 9857,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
-              "value": 9,
+              "value": 873956,
+              "name": "Juan Miranda",
+              "type": "player"
+            },
+            {
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Juan Miranda is ranked 3 in big chances created in the competition (5)",
           "color": "#102880"
         },
         {
           "type": "player",
-          "playerId": 414245,
+          "playerId": 873956,
           "teamId": 9857,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 414245,
-              "name": "Federico Bernardeschi",
+              "value": 873956,
+              "name": "Juan Miranda",
               "type": "player"
             },
             {
@@ -669,12 +679,12 @@
               "type": "team"
             },
             {
-              "value": 1.4,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Federico Bernardeschi has the most shots on target per match for Bologna (1.4)",
+          "text": "Juan Miranda has created the most big chances for Bologna (5)",
           "color": "#102880"
         }
       ],

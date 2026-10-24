@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8696.png",
-            "linkToMatch": "/matches/rayo-vallecano-vs-racing-santander/2eplmn#5868048",
-            "date": {
-              "utcTime": "2026-09-05T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8696/overview/racing-santander",
-            "tooltipText": {
-              "utcTime": "2026-09-05T16:30:00.000Z",
-              "homeTeam": "Rayo Vallecano",
-              "homeTeamId": 8370,
-              "homeScore": "3",
-              "awayTeam": "Racing Santander",
-              "awayTeamId": 8696,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "8370",
-              "name": "Rayo Vallecano",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8696",
-              "name": "Racing Santander",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png",
@@ -270,6 +240,36 @@
               "id": "8370",
               "name": "Rayo Vallecano",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10268.png",
+            "linkToMatch": "/matches/rayo-vallecano-vs-elche/2vf3sr#5868107",
+            "date": {
+              "utcTime": "2026-10-24T12:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10268/overview/elche",
+            "tooltipText": {
+              "utcTime": "2026-10-24T12:00:00.000Z",
+              "homeTeam": "Rayo Vallecano",
+              "homeTeamId": 8370,
+              "homeScore": "0",
+              "awayTeam": "Elche",
+              "awayTeamId": 10268,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8370",
+              "name": "Rayo Vallecano",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10268",
+              "name": "Elche",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "2",
                 "1",
+                "2",
+                "2",
                 "away_team",
                 "3",
                 "1",
@@ -462,17 +462,19 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Rayo Vallecano have 2W, 2D, 1L in five matches while Celta Vigo have 3W, 1D, 1L."
+              "defaultText": "Rayo Vallecano have 1W, 2D, 2L in five matches while Celta Vigo have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "3"
+                "away_team",
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,20 +485,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rayo Vallecano have scored in their last 3 home matches."
+              "defaultText": "Rayo Vallecano have an average of 0.67 goals in their last three matches and Celta Vigo have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rayo Vallecano have scored 4 goals in their last 3 matches, while Celta Vigo have scored 5."
+              "defaultText": "Rayo Vallecano have an average of 0.67 goals in their last three matches and Celta Vigo have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -517,9 +518,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "2",
                 "1",
+                "2",
+                "2",
                 "away_team",
                 "3",
                 "1",
@@ -536,7 +537,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Rayo Vallecano have 2W, 2D, 1L in five matches while Celta Vigo have 3W, 1D, 1L."
+              "defaultText": "Rayo Vallecano have 1W, 2D, 2L in five matches while Celta Vigo have 3W, 1D, 1L."
             }
           ]
         },
@@ -556,7 +557,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -566,7 +567,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
+          "color": "#EB3A32"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8370,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (5)",
           "color": "#EB3A32"
         },
         {
@@ -578,39 +596,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 14,
+              "value": 15,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 14 matches",
-          "color": "#EB3A32"
-        },
-        {
-          "type": "player",
-          "playerId": 571615,
-          "teamId": 8370,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 571615,
-              "name": "Unai López",
-              "type": "player"
-            },
-            {
-              "value": 8370,
-              "name": "Rayo Vallecano",
-              "type": "team"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Unai López has created the most big chances for Rayo Vallecano (3)",
+          "text": "Haven't kept a clean sheet in 15 matches",
           "color": "#EB3A32"
         },
         {
@@ -734,6 +725,18 @@
         "name": "Rayo Vallecano",
         "unavailable": [
           {
+            "id": 1041445,
+            "name": "Dani Cárdenas",
+            "unavailability": {
+              "injuryId": 92,
+              "lastUpdated": "2026-10-24T13:48:34Z",
+              "type": "injury",
+              "expectedReturn": "A few days"
+            },
+            "firstName": "Dani",
+            "lastName": "Cárdenas"
+          },
+          {
             "id": 915264,
             "name": "Randy Nteka",
             "unavailability": {
@@ -762,9 +765,9 @@
             "name": "Andrei Rațiu",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-22T17:52:32Z",
+              "lastUpdated": "2026-10-24T13:44:27Z",
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "Early November 2026"
             },
             "firstName": "Andrei",
             "lastName": "Rațiu"

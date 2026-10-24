@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9857.png",
-            "linkToMatch": "/matches/sassuolo-vs-bologna/2mbw4l#5749661",
-            "date": {
-              "utcTime": "2026-09-06T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9857/overview/bologna",
-            "tooltipText": {
-              "utcTime": "2026-09-06T16:00:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "2",
-              "awayTeam": "Sassuolo",
-              "awayTeamId": 7943,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7943",
-              "name": "Sassuolo",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9885.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "9891",
               "name": "Frosinone",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "7943",
+              "name": "Sassuolo",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
+            "linkToMatch": "/matches/sassuolo-vs-como/2popgq#5749712",
+            "date": {
+              "utcTime": "2026-10-24T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10171/overview/como",
+            "tooltipText": {
+              "utcTime": "2026-10-24T13:00:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "2",
+              "awayTeam": "Sassuolo",
+              "awayTeamId": 7943,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
               "isOurTeam": false
             },
             "away": {
@@ -462,13 +462,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "11",
-                "away_team",
-                "9"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sassuolo have scored in their last 11 matches and Lazio have scored in their last 9 matches."
+              "defaultText": "Sassuolo have scored in their last 7 home matches."
             },
             {
               "OddsType": "ou",
@@ -507,17 +505,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "4",
-                "1",
-                "0"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Sassuolo have 1W, 2D, 2L in five matches while Lazio have 4W, 1D, 0L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Sassuolo haven't won a match in 4 attempts."
             }
           ]
         },
@@ -550,7 +542,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -560,7 +552,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#009A44"
         },
         {
@@ -572,12 +564,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#009A44"
         },
         {
@@ -647,30 +639,20 @@
           "color": "#75acd4"
         },
         {
-          "type": "player",
-          "playerId": 541555,
+          "type": "team",
+          "playerId": null,
           "teamId": 8543,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 541555,
-              "name": "Mattia Zaccagni",
-              "type": "player"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 5,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Mattia Zaccagni is ranked 3 in big chances created in the competition (5)",
+          "text": "Haven't lost in 9 matches",
           "color": "#75acd4"
         }
       ],

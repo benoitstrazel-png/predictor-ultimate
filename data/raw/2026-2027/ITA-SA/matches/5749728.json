@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
-            "linkToMatch": "/matches/frosinone-vs-como/3btqms#5749684",
-            "date": {
-              "utcTime": "2026-09-20T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9891/overview/frosinone",
-            "tooltipText": {
-              "utcTime": "2026-09-20T13:00:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "2",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
@@ -423,6 +393,36 @@
               "name": "Manchester United",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943.png",
+            "linkToMatch": "/matches/sassuolo-vs-como/2popgq#5749712",
+            "date": {
+              "utcTime": "2026-10-24T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/7943/overview/sassuolo",
+            "tooltipText": {
+              "utcTime": "2026-10-24T13:00:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "2",
+              "awayTeam": "Sassuolo",
+              "awayTeamId": 7943,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7943",
+              "name": "Sassuolo",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -463,14 +463,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
                 "away_team",
-                "3",
-                "8",
-                "9"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Torino have scored 8 goals in their last 3 matches, while Como have scored 9."
+              "defaultText": "Torino have scored in their last 4 matches and Como have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -509,10 +508,9 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
                 "4"
               ],
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Torino and Como have not drawn any of their last 4 matches against each other."
+              "defaultText": "Como haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -623,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -633,24 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
-          "color": "#005ea9"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10171,
-          "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
-            }
-          ],
-          "text": "Ranked 2 away from home this season",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#005ea9"
         },
         {
@@ -678,6 +659,23 @@
             }
           ],
           "text": "Como have won the previous 3 matches against Torino.",
+          "color": "#005ea9"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10171,
+          "priority": 8,
+          "defaultText": "Ranked {0} away from home this season",
+          "localizedTextId": "insights_best_away",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
+            }
+          ],
+          "text": "Ranked 2 away from home this season",
           "color": "#005ea9"
         }
       ],

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9891.png",
-            "linkToMatch": "/matches/frosinone-vs-como/3btqms#5749684",
-            "date": {
-              "utcTime": "2026-09-20T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9891/overview/frosinone",
-            "tooltipText": {
-              "utcTime": "2026-09-20T13:00:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "2",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "10260",
               "name": "Manchester United",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943.png",
+            "linkToMatch": "/matches/sassuolo-vs-como/2popgq#5749712",
+            "date": {
+              "utcTime": "2026-10-24T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/7943/overview/sassuolo",
+            "tooltipText": {
+              "utcTime": "2026-10-24T13:00:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "2",
+              "awayTeam": "Sassuolo",
+              "awayTeamId": 7943,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7943",
+              "name": "Sassuolo",
               "isOurTeam": false
             }
           }
@@ -506,10 +506,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "9"
               ],
               "DefaultLabels": [
@@ -523,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Venezia haven't drawn in their last 9 matches."
+              "defaultText": "Como haven't drawn in their last 4 matches and Venezia in their last 9."
             }
           ]
         },
@@ -543,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -553,7 +555,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#005ea9"
         },
         {
@@ -585,15 +587,15 @@
         },
         {
           "type": "player",
-          "playerId": 1434889,
+          "playerId": 846000,
           "teamId": 10171,
           "priority": 1,
           "defaultText": "{0} has created the most big chances for {1} ({2})",
           "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1434889,
-              "name": "Assane Diao",
+              "value": 846000,
+              "name": "Maxence Caqueret",
               "type": "player"
             },
             {
@@ -602,12 +604,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Assane Diao has created the most big chances for Como (3)",
+          "text": "Maxence Caqueret has created the most big chances for Como (4)",
           "color": "#005ea9"
         },
         {
@@ -661,15 +663,15 @@
         },
         {
           "type": "player",
-          "playerId": 1290968,
+          "playerId": 1379468,
           "teamId": 7881,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1290968,
-              "name": "Antoine Hainaut",
+              "value": 1379468,
+              "name": "Albion Rrahmani",
               "type": "player"
             },
             {
@@ -678,12 +680,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 1.7,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Antoine Hainaut has created the most big chances for Venezia (3)",
+          "text": "Albion Rrahmani has the most shots on target per match for Venezia (1.7)",
           "color": "#101010"
         }
       ],
@@ -705,20 +707,20 @@
       }
     },
     "weather": {
-      "temperature": 14,
+      "temperature": 13,
       "windSpeed": 2,
       "windDirectionCardinal": "SSE",
-      "iconCode": 30,
-      "relativeHumidity": 66,
-      "precipChance": 3,
+      "iconCode": 34,
+      "relativeHumidity": 62,
+      "precipChance": 1,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 32,
-      "description": "Partly Cloudy",
+      "cloudCover": 24,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-24T00:00:12Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-24T12:00:18Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749733,
