@@ -11,6 +11,7 @@ import BetMarketModal from './BetMarketModal';
 import { useBetSlip } from '../context/BetSlipContext';
 import { Ticket } from 'lucide-react';
 import { useMatch } from '../context/MatchContext';
+import { formatMatchTime } from '../utils/formatMatchTime';
 
 const ALL_LEAGUES = [
   { code: 'FRA-L1', name: 'Ligue 1', flag: '🇫🇷' },
@@ -46,6 +47,49 @@ function extractMatchdayNumber(match) {
   return m ? Number(m[1]) : null;
 }
 
+function calculatePoissonScore(lambdaH, lambdaA, targetOutcome = null) {
+  const lamH = Math.max(0.2, Number(lambdaH) || 1.35);
+  const lamA = Math.max(0.2, Number(lambdaA) || 1.10);
+
+  function poisson(k, lambda) {
+    let p = Math.exp(-lambda);
+    for (let i = 1; i <= k; i++) p *= lambda / i;
+    return p;
+  }
+
+  let bestScore = targetOutcome === '1' ? '1-0' : targetOutcome === '2' ? '0-1' : '1-1';
+  let maxP = -1;
+
+  for (let h = 0; h <= 6; h++) {
+    for (let a = 0; a <= 6; a++) {
+      const outcome = h > a ? '1' : h < a ? '2' : 'N';
+      if (!targetOutcome || outcome === targetOutcome) {
+        const prob = poisson(h, lamH) * poisson(a, lamA);
+        if (prob > maxP) {
+          maxP = prob;
+          bestScore = `${h}-${a}`;
+        }
+      }
+    }
+  }
+  return bestScore;
+}
+
+function resolveScoreForOutcome(exactScores, lambdaH, lambdaA, targetOutcome) {
+  if (Array.isArray(exactScores) && exactScores.length > 0 && targetOutcome) {
+    const found = exactScores.find((item) => {
+      const parts = String(item.score || '').split('-').map(Number);
+      if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+        const outcome = parts[0] > parts[1] ? '1' : parts[0] < parts[1] ? '2' : 'N';
+        return outcome === targetOutcome;
+      }
+      return false;
+    });
+    if (found) return found.score;
+  }
+  return calculatePoissonScore(lambdaH, lambdaA, targetOutcome);
+}
+
 function getModelSnapshotForMatch(match, modelVersion) {
   const byModel = match.predictionsByModel || {};
   const snap = byModel[modelVersion];
@@ -54,21 +98,41 @@ function getModelSnapshotForMatch(match, modelVersion) {
   const oddD = odds.draw ?? odds['N'] ?? null;
   const oddA = odds.away ?? odds['2'] ?? null;
 
+  const vbList = match.valueBets || [];
+  const vb = vbList[0] || null;
+
   if (snap) {
+    const probH = Number(snap.probHome ?? 44);
+    const probD = Number(snap.probDraw ?? 28);
+    const probA = Number(snap.probAway ?? 28);
+    const lamH = Number(snap.lambdaHome ?? 1.45);
+    const lamA = Number(snap.lambdaAway ?? 1.12);
+    const predOutcome = snap.predictedOutcome || (
+      probH >= probD && probH >= probA ? '1' : probA >= probH && probA >= probD ? '2' : 'N'
+    );
+    const vbOutcome = snap.valueOutcome || vb?.selection || vb?.outcome || null;
+    const vbEdge = Number(snap.valueEdgePct ?? (vb ? parseFloat(String(vb.edge_percentage || vb.edge || '0').replace('%', '')) : 0));
+    const exactScores = snap.exactScores || match.topExactScores || [];
+
+    const topScore = snap.topScore || resolveScoreForOutcome(exactScores, lamH, lamA, predOutcome);
+    const valueBetScore = (vbEdge >= 2.0 && vbOutcome)
+      ? (snap.valueBetScore || match.topValueBetScore?.score || resolveScoreForOutcome(exactScores, lamH, lamA, vbOutcome))
+      : null;
+
     return {
       modelVersion,
-      probHome: Number(snap.probHome ?? 44),
-      probDraw: Number(snap.probDraw ?? 28),
-      probAway: Number(snap.probAway ?? 28),
-      lambdaHome: Number(snap.lambdaHome ?? 1.45),
-      lambdaAway: Number(snap.lambdaAway ?? 1.12),
-      confidence: Number(snap.confidence ?? 58),
-      predictedOutcome: snap.predictedOutcome || null,
-      topScore: snap.topScore || '1-1',
-      valueBetScore: snap.valueBetScore || null,
-      valueOutcome: snap.valueOutcome || null,
-      valueEdgePct: Number(snap.valueEdgePct ?? 0),
-      kellyStakePct: Number(snap.kellyStakePct ?? 0),
+      probHome: probH,
+      probDraw: probD,
+      probAway: probA,
+      lambdaHome: lamH,
+      lambdaAway: lamA,
+      confidence: Number(snap.confidence ?? Math.max(probH, probD, probA)),
+      predictedOutcome: predOutcome,
+      topScore,
+      valueBetScore,
+      valueOutcome: vbOutcome,
+      valueEdgePct: vbEdge,
+      kellyStakePct: Number(snap.kellyStakePct ?? (vb ? parseFloat(String(vb.stake_recommendation || '1.5').replace('%', '')) : 0)),
       oddHome: oddH,
       oddDraw: oddD,
       oddAway: oddA,
@@ -85,8 +149,15 @@ function getModelSnapshotForMatch(match, modelVersion) {
   const lamShift = modelVersion === 'v1' ? 0.04 : modelVersion === 'v2' ? -0.02 : 0.0;
   const lamH = +(parseFloat(match.expectedGoals?.home ?? match.prediction?.homeXg ?? 1.42) + lamShift).toFixed(2);
   const lamA = +(parseFloat(match.expectedGoals?.away ?? match.prediction?.awayXg ?? 1.12) - lamShift * 0.5).toFixed(2);
-  const vb = (match.valueBets || [])[0] || null;
   const edgeVal = vb ? parseFloat(String(vb.edge_percentage || vb.edge || '0').replace('%', '')) : 0;
+  const predOutcome = pH >= pD && pH >= pA ? '1' : pA >= pH && pA >= pD ? '2' : 'N';
+  const vbOutcome = vb?.selection || vb?.outcome || null;
+  const exactScores = match.topExactScores || [];
+
+  const topScore = match.topExactScores?.[0]?.score || resolveScoreForOutcome(exactScores, lamH, lamA, predOutcome);
+  const valueBetScore = (edgeVal >= 2.0 && vbOutcome)
+    ? (match.topValueBetScore?.score || resolveScoreForOutcome(exactScores, lamH, lamA, vbOutcome))
+    : null;
 
   return {
     modelVersion,
@@ -96,8 +167,10 @@ function getModelSnapshotForMatch(match, modelVersion) {
     lambdaHome: lamH,
     lambdaAway: lamA,
     confidence: Math.max(pH, pD, pA),
-    topScore: match.topExactScores?.[0]?.score || '1-1',
-    valueOutcome: vb?.selection || vb?.outcome || null,
+    predictedOutcome: predOutcome,
+    topScore,
+    valueBetScore,
+    valueOutcome: vbOutcome,
     valueEdgePct: edgeVal,
     kellyStakePct: 1.5,
     oddHome: oddH,
@@ -268,16 +341,30 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
     if (!match?.id) return;
     setRefreshingMatchId(match.id);
     try {
-      const res = await fetch('http://localhost:5175/api/odds/refresh', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          matchId: match.id,
-          homeTeam: match.homeTeam,
-          awayTeam: match.awayTeam,
-        }),
-      });
-      if (res.ok) {
+      let res;
+      try {
+        res = await fetch('/api/odds/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            matchId: match.id,
+            homeTeam: match.homeTeam,
+            awayTeam: match.awayTeam,
+          }),
+        });
+      } catch {
+        res = await fetch('http://localhost:5175/api/odds/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            matchId: match.id,
+            homeTeam: match.homeTeam,
+            awayTeam: match.awayTeam,
+          }),
+        });
+      }
+
+      if (res && res.ok) {
         const json = await res.json();
         if (json.data && updateMatch) {
           updateMatch(match.id, {
@@ -285,6 +372,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
             probabilities: json.data.probabilities || match.probabilities,
             valueBets: json.data.valueBets || [],
             oddsStatus: json.data.oddsStatus || 'ACTIVE',
+            ...(json.data.valueBetScore ? { topValueBetScore: { score: json.data.valueBetScore, outcome: json.data.valueOutcome } } : {}),
           });
         }
       }
@@ -700,7 +788,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#a1a1aa' }}>
                         <div>{String(match.matchDate || match.date || '').slice(5, 10) || '—'}</div>
                         <div style={{ color: isFin ? '#71717a' : '#06b6d4', fontWeight: 600 }}>
-                          {isFin ? 'FIN' : match.time || '20:00'}
+                          {isFin ? 'FIN' : formatMatchTime(match)}
                         </div>
                       </div>
 
@@ -860,7 +948,15 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                           {s.lambdaHome.toFixed(2)}–{s.lambdaAway.toFixed(2)}
                         </div>
                         <div style={{ color: '#a1a1aa', fontSize: 9, fontWeight: 600 }}>
-                          P:{s.topScore}{s.valueBetScore && s.valueBetScore !== s.topScore ? ` · V:${s.valueBetScore}` : ''}
+                          <span>P:{s.topScore}</span>
+                          {hasVal && s.valueBetScore ? (
+                            <span
+                              title={`Score exact le plus probable pour le Value Bet (${s.valueOutcome})`}
+                              style={{ color: '#10b981', fontWeight: 700, marginLeft: 4 }}
+                            >
+                              · V:{s.valueBetScore}
+                            </span>
+                          ) : null}
                         </div>
                       </div>
 

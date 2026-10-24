@@ -1,9 +1,47 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+function oddsApiDevPlugin() {
+  return {
+    name: 'odds-api-dev-server',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (req.url && req.url.startsWith('/api/odds/refresh') && req.method === 'POST') {
+          try {
+            let body = '';
+            for await (const chunk of req) {
+              body += chunk;
+            }
+            const parsedBody = body ? JSON.parse(body) : {};
+            const { handleRefreshOddsServerless } = await import('./api/odds/refresh.js');
+            const mockReq = { method: 'POST', body: parsedBody, headers: req.headers };
+            const mockRes = {
+              statusCode: 200,
+              setHeader(k, v) { res.setHeader(k, v); },
+              status(code) { this.statusCode = code; return this; },
+              json(payload) {
+                res.statusCode = this.statusCode || 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(payload));
+              },
+              end() { res.end(); }
+            };
+            return await handleRefreshOddsServerless(mockReq, mockRes);
+          } catch (err) {
+            console.error('[Vite Dev Odds Middleware Error]', err);
+            next(err);
+          }
+        } else {
+          next();
+        }
+      });
+    }
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), oddsApiDevPlugin()],
   json: {
     stringify: true,
   },
