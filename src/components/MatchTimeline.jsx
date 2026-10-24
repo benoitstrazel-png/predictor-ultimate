@@ -119,7 +119,7 @@ export default function MatchTimeline({ match }) {
           gap: 20,
           alignItems: 'center',
           padding: '7px 12px',
-          borderRadius: 8,
+          borderRadius: 4,
           transition: 'background 0.15s ease',
         }}
         className="timeline-row hover:bg-white/[0.03]"
@@ -132,7 +132,7 @@ export default function MatchTimeline({ match }) {
               <span style={{
                 fontSize: 13,
                 fontWeight: 800,
-                color: 'var(--ivory)',
+                color: '#fafafa',
                 minWidth: 32,
                 fontFamily: 'monospace'
               }}>
@@ -155,15 +155,15 @@ export default function MatchTimeline({ match }) {
                     ⚽
                   </div>
                   {ev.score && (
-                    <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--gold)' }}>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: '#06b6d4' }}>
                       {ev.score}
                     </span>
                   )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.player}
                   </span>
                   {ev.assist && (
-                    <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                    <span style={{ fontSize: 12, color: '#71717a' }}>
                       ({ev.assist})
                     </span>
                   )}
@@ -194,9 +194,9 @@ export default function MatchTimeline({ match }) {
                     <span style={{
                       fontSize: 10,
                       fontWeight: 800,
-                      color: 'var(--gold)',
+                      color: '#06b6d4',
                       background: 'rgba(201, 169, 110, 0.15)',
-                      border: '1px solid var(--gold-border)',
+                      border: '1px solid rgba(6, 182, 212, 0.35)',
                       padding: '1px 6px',
                       borderRadius: 4,
                       display: 'inline-flex',
@@ -206,11 +206,11 @@ export default function MatchTimeline({ match }) {
                       👔 Entraîneur
                     </span>
                   )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.player}
                   </span>
                   {ev.reason && (
-                    <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                    <span style={{ fontSize: 12, color: '#71717a' }}>
                       ({ev.reason})
                     </span>
                   )}
@@ -238,9 +238,9 @@ export default function MatchTimeline({ match }) {
                     <span style={{
                       fontSize: 10,
                       fontWeight: 800,
-                      color: 'var(--gold)',
+                      color: '#06b6d4',
                       background: 'rgba(201, 169, 110, 0.15)',
-                      border: '1px solid var(--gold-border)',
+                      border: '1px solid rgba(6, 182, 212, 0.35)',
                       padding: '1px 6px',
                       borderRadius: 4,
                       display: 'inline-flex',
@@ -250,7 +250,7 @@ export default function MatchTimeline({ match }) {
                       👔 Entraîneur
                     </span>
                   )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.player}
                   </span>
                   {ev.reason && (
@@ -275,10 +275,10 @@ export default function MatchTimeline({ match }) {
                   }}>
                     <ArrowRightLeft size={13} />
                   </div>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.playerIn}
                   </span>
-                  <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                  <span style={{ fontSize: 12, color: '#71717a' }}>
                     {ev.playerOut}
                   </span>
                   {ev.isInjury && (
@@ -298,12 +298,12 @@ export default function MatchTimeline({ match }) {
                     borderRadius: 4,
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'var(--ivory)',
+                    color: '#fafafa',
                     letterSpacing: '0.05em',
                   }}>
                     VAR
                   </span>
-                  <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                  <span style={{ fontSize: 12, color: '#71717a' }}>
                     {ev.detail || 'Décision arbitrale vérifiée'}
                   </span>
                 </div>
@@ -330,15 +330,15 @@ export default function MatchTimeline({ match }) {
                     </span>
                   )}
                   {ev.assist && (
-                    <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                    <span style={{ fontSize: 12, color: '#71717a' }}>
                       ({ev.assist})
                     </span>
                   )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.player}
                   </span>
                   {ev.score && (
-                    <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--gold)' }}>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: '#06b6d4' }}>
                       {ev.score}
                     </span>
                   )}
@@ -360,20 +360,20 @@ export default function MatchTimeline({ match }) {
               {isYellow && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {ev.reason && (
-                    <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                    <span style={{ fontSize: 12, color: '#71717a' }}>
                       ({ev.reason})
                     </span>
                   )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.player}
                   </span>
                   {(ev.isCoach || ev.reason?.toLowerCase().includes('entraîneur') || ev.reason?.toLowerCase().includes('entraineur')) && (
                     <span style={{
                       fontSize: 10,
                       fontWeight: 800,
-                      color: 'var(--gold)',
+                      color: '#06b6d4',
                       background: 'rgba(201, 169, 110, 0.15)',
-                      border: '1px solid var(--gold-border)',
+                      border: '1px solid rgba(6, 182, 212, 0.35)',
                       padding: '1px 6px',
                       borderRadius: 4,
                       display: 'inline-flex',
@@ -401,16 +401,16 @@ export default function MatchTimeline({ match }) {
                       ({ev.reason})
                     </span>
                   )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.player}
                   </span>
                   {(ev.isCoach || ev.reason?.toLowerCase().includes('entraîneur') || ev.reason?.toLowerCase().includes('entraineur')) && (
                     <span style={{
                       fontSize: 10,
                       fontWeight: 800,
-                      color: 'var(--gold)',
+                      color: '#06b6d4',
                       background: 'rgba(201, 169, 110, 0.15)',
-                      border: '1px solid var(--gold-border)',
+                      border: '1px solid rgba(6, 182, 212, 0.35)',
                       padding: '1px 6px',
                       borderRadius: 4,
                       display: 'inline-flex',
@@ -445,10 +445,10 @@ export default function MatchTimeline({ match }) {
                       (Blessure)
                     </span>
                   )}
-                  <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                  <span style={{ fontSize: 12, color: '#71717a' }}>
                     {ev.playerOut}
                   </span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                     {ev.playerIn}
                   </span>
                   <div style={{
@@ -468,7 +468,7 @@ export default function MatchTimeline({ match }) {
 
               {isVar && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span style={{ fontSize: 12, color: 'var(--neutral)' }}>
+                  <span style={{ fontSize: 12, color: '#71717a' }}>
                     {ev.detail || 'Décision arbitrale vérifiée'}
                   </span>
                   <span style={{
@@ -478,7 +478,7 @@ export default function MatchTimeline({ match }) {
                     borderRadius: 4,
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'var(--ivory)',
+                    color: '#fafafa',
                     letterSpacing: '0.05em',
                   }}>
                     VAR
@@ -490,7 +490,7 @@ export default function MatchTimeline({ match }) {
               <span style={{
                 fontSize: 13,
                 fontWeight: 800,
-                color: 'var(--ivory)',
+                color: '#fafafa',
                 minWidth: 32,
                 textAlign: 'right',
                 fontFamily: 'monospace'
@@ -510,9 +510,9 @@ export default function MatchTimeline({ match }) {
       flexDirection: 'column',
       gap: 16,
       background: 'rgba(13, 18, 32, 0.65)',
-      borderRadius: 16,
+      borderRadius: 6,
       padding: '20px 16px',
-      border: '1px solid var(--ivory-border)',
+      border: '1px solid #27272a',
     }}>
       {/* ── 1ST HALF SECTION ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -522,13 +522,13 @@ export default function MatchTimeline({ match }) {
           justifyContent: 'space-between',
           padding: '8px 16px',
           background: 'rgba(255, 255, 255, 0.04)',
-          borderRadius: 8,
+          borderRadius: 4,
           border: '1px solid rgba(255, 255, 255, 0.05)',
         }}>
           <span style={{
             fontSize: 11,
             fontWeight: 800,
-            color: 'var(--ivory-dim)',
+            color: '#a1a1aa',
             letterSpacing: '0.08em',
             textTransform: 'uppercase'
           }}>
@@ -537,7 +537,7 @@ export default function MatchTimeline({ match }) {
           <span style={{
             fontSize: 12,
             fontWeight: 800,
-            color: 'var(--gold)',
+            color: '#06b6d4',
             fontFamily: 'monospace'
           }}>
             {htScore}
@@ -548,7 +548,7 @@ export default function MatchTimeline({ match }) {
           {firstHalfEvents.length > 0 ? (
             firstHalfEvents.map(renderEventRow)
           ) : (
-            <div style={{ textAlign: 'center', padding: '12px 0', fontSize: 11, color: 'var(--neutral)', fontStyle: 'italic' }}>
+            <div style={{ textAlign: 'center', padding: '12px 0', fontSize: 11, color: '#71717a', fontStyle: 'italic' }}>
               Aucun événement marquant en première mi-temps.
             </div>
           )}
@@ -563,13 +563,13 @@ export default function MatchTimeline({ match }) {
           justifyContent: 'space-between',
           padding: '8px 16px',
           background: 'rgba(255, 255, 255, 0.04)',
-          borderRadius: 8,
+          borderRadius: 4,
           border: '1px solid rgba(255, 255, 255, 0.05)',
         }}>
           <span style={{
             fontSize: 11,
             fontWeight: 800,
-            color: 'var(--ivory-dim)',
+            color: '#a1a1aa',
             letterSpacing: '0.08em',
             textTransform: 'uppercase'
           }}>
@@ -578,7 +578,7 @@ export default function MatchTimeline({ match }) {
           <span style={{
             fontSize: 12,
             fontWeight: 800,
-            color: 'var(--gold)',
+            color: '#06b6d4',
             fontFamily: 'monospace'
           }}>
             {ftScore}
@@ -589,7 +589,7 @@ export default function MatchTimeline({ match }) {
           {secondHalfEvents.length > 0 ? (
             secondHalfEvents.map(renderEventRow)
           ) : (
-            <div style={{ textAlign: 'center', padding: '12px 0', fontSize: 11, color: 'var(--neutral)', fontStyle: 'italic' }}>
+            <div style={{ textAlign: 'center', padding: '12px 0', fontSize: 11, color: '#71717a', fontStyle: 'italic' }}>
               Aucun événement marquant en seconde mi-temps.
             </div>
           )}
@@ -605,13 +605,13 @@ export default function MatchTimeline({ match }) {
             justifyContent: 'space-between',
             padding: '8px 16px',
             background: 'rgba(255, 255, 255, 0.04)',
-            borderRadius: 8,
+            borderRadius: 4,
             border: '1px solid rgba(255, 255, 255, 0.05)',
           }}>
             <span style={{
               fontSize: 11,
               fontWeight: 800,
-              color: 'var(--gold)',
+              color: '#06b6d4',
               letterSpacing: '0.08em',
               textTransform: 'uppercase'
             }}>
@@ -620,7 +620,7 @@ export default function MatchTimeline({ match }) {
             <span style={{
               fontSize: 12,
               fontWeight: 800,
-              color: 'var(--gold)',
+              color: '#06b6d4',
               fontFamily: 'monospace'
             }}>
               {ftScore}

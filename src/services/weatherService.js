@@ -2,146 +2,15 @@
  * src/services/weatherService.js
  * ─────────────────────────────────────────────────────────────
  * Service Météo Live connecté à l'API Open-Meteo :
- * - Coordonnées GPS certifiées des stades des 5 grands championnats européens
+ * - Coordonnées GPS certifiées des stades via src/data/stadiums_master.json
  * - Traduction des codes météo WMO en français avec icônes adaptées
  * - Analyse d'impact tactique sur la pelouse et le style de jeu
- * - Cache mémoire réactif pour éviter les requêtes redondantes
+ * - Cache mémoire réactif + persistance sessionStorage (TTL 30 min)
  */
 
-export const STADIA_COORDINATES = {
-  // ── Ligue 1 (France) ──
-  "PSG": { lat: 48.8414, lon: 2.2530, city: "Paris", stadium: "Parc des Princes" },
-  "Paris Saint-Germain": { lat: 48.8414, lon: 2.2530, city: "Paris", stadium: "Parc des Princes" },
-  "Marseille": { lat: 43.2698, lon: 5.3959, city: "Marseille", stadium: "Orange Vélodrome" },
-  "Olympique de Marseille": { lat: 43.2698, lon: 5.3959, city: "Marseille", stadium: "Orange Vélodrome" },
-  "Lyon": { lat: 45.7653, lon: 4.9820, city: "Décines-Charpieu", stadium: "Groupama Stadium" },
-  "Olympique Lyonnais": { lat: 45.7653, lon: 4.9820, city: "Décines-Charpieu", stadium: "Groupama Stadium" },
-  "Monaco": { lat: 43.7276, lon: 7.4156, city: "Monaco", stadium: "Stade Louis II" },
-  "AS Monaco": { lat: 43.7276, lon: 7.4156, city: "Monaco", stadium: "Stade Louis II" },
-  "Lille": { lat: 50.6119, lon: 3.1305, city: "Villeneuve-d'Ascq", stadium: "Decathlon Arena" },
-  "LOSC Lille": { lat: 50.6119, lon: 3.1305, city: "Villeneuve-d'Ascq", stadium: "Decathlon Arena" },
-  "Nice": { lat: 43.6702, lon: 7.1925, city: "Nice", stadium: "Allianz Riviera" },
-  "OGC Nice": { lat: 43.6702, lon: 7.1925, city: "Nice", stadium: "Allianz Riviera" },
-  "Rennes": { lat: 48.1075, lon: -1.7029, city: "Rennes", stadium: "Roazhon Park" },
-  "Stade Rennais": { lat: 48.1075, lon: -1.7029, city: "Rennes", stadium: "Roazhon Park" },
-  "Lens": { lat: 50.4328, lon: 2.8149, city: "Lens", stadium: "Stade Bollaert-Delelis" },
-  "RC Lens": { lat: 50.4328, lon: 2.8149, city: "Lens", stadium: "Stade Bollaert-Delelis" },
-  "Strasbourg": { lat: 48.5599, lon: 7.7543, city: "Strasbourg", stadium: "Stade de la Meinau" },
-  "RC Strasbourg": { lat: 48.5599, lon: 7.7543, city: "Strasbourg", stadium: "Stade de la Meinau" },
-  "Nantes": { lat: 47.2560, lon: -1.5247, city: "Nantes", stadium: "Stade de la Beaujoire" },
-  "FC Nantes": { lat: 47.2560, lon: -1.5247, city: "Nantes", stadium: "Stade de la Beaujoire" },
-  "Montpellier": { lat: 43.6225, lon: 3.8122, city: "Montpellier", stadium: "Stade de la Mosson" },
-  "Montpellier HSC": { lat: 43.6225, lon: 3.8122, city: "Montpellier", stadium: "Stade de la Mosson" },
-  "Toulouse": { lat: 43.5831, lon: 1.4341, city: "Toulouse", stadium: "Stadium de Toulouse" },
-  "Toulouse FC": { lat: 43.5831, lon: 1.4341, city: "Toulouse", stadium: "Stadium de Toulouse" },
-  "Brest": { lat: 48.4036, lon: -4.4608, city: "Brest", stadium: "Stade Francis-Le Blé" },
-  "Stade Brestois 29": { lat: 48.4036, lon: -4.4608, city: "Brest", stadium: "Stade Francis-Le Blé" },
-  "Reims": { lat: 49.2467, lon: 4.0253, city: "Reims", stadium: "Stade Auguste-Delaune" },
-  "Stade de Reims": { lat: 49.2467, lon: 4.0253, city: "Reims", stadium: "Stade Auguste-Delaune" },
-  "Saint-Etienne": { lat: 45.4608, lon: 4.3902, city: "Saint-Étienne", stadium: "Stade Geoffroy-Guichard" },
-  "AS Saint-Étienne": { lat: 45.4608, lon: 4.3902, city: "Saint-Étienne", stadium: "Stade Geoffroy-Guichard" },
-  "Angers": { lat: 47.4600, lon: -0.5306, city: "Angers", stadium: "Stade Raymond Kopa" },
-  "Angers SCO": { lat: 47.4600, lon: -0.5306, city: "Angers", stadium: "Stade Raymond Kopa" },
-  "Le Havre": { lat: 49.4986, lon: 0.1697, city: "Le Havre", stadium: "Stade Océane" },
-  "Le Havre AC": { lat: 49.4986, lon: 0.1697, city: "Le Havre", stadium: "Stade Océane" },
-  "Auxerre": { lat: 47.7867, lon: 3.5886, city: "Auxerre", stadium: "Stade de l'Abbé-Deschamps" },
-  "AJ Auxerre": { lat: 47.7867, lon: 3.5886, city: "Auxerre", stadium: "Stade de l'Abbé-Deschamps" },
-  "Paris FC": { lat: 48.8189, lon: 2.3475, city: "Paris", stadium: "Stade Charléty" },
+import STADIA_MASTER from '../data/stadiums_master.json';
 
-  // ── Premier League (England) ──
-  "Liverpool": { lat: 53.4308, lon: -2.9608, city: "Liverpool", stadium: "Anfield" },
-  "Nottingham Forest": { lat: 52.9400, lon: -1.1328, city: "Nottingham", stadium: "City Ground" },
-  "Manchester City": { lat: 53.4831, lon: -2.2004, city: "Manchester", stadium: "Etihad Stadium" },
-  "Arsenal": { lat: 51.5549, lon: -0.1084, city: "Londres", stadium: "Emirates Stadium" },
-  "Chelsea": { lat: 51.4817, lon: -0.1910, city: "Londres", stadium: "Stamford Bridge" },
-  "Manchester United": { lat: 53.4631, lon: -2.2913, city: "Manchester", stadium: "Old Trafford" },
-  "Tottenham": { lat: 51.6043, lon: -0.0664, city: "Londres", stadium: "Tottenham Hotspur Stadium" },
-  "Tottenham Hotspur": { lat: 51.6043, lon: -0.0664, city: "Londres", stadium: "Tottenham Hotspur Stadium" },
-  "Newcastle": { lat: 54.9756, lon: -1.6217, city: "Newcastle", stadium: "St James' Park" },
-  "Newcastle United": { lat: 54.9756, lon: -1.6217, city: "Newcastle", stadium: "St James' Park" },
-  "Aston Villa": { lat: 52.5092, lon: -1.8847, city: "Birmingham", stadium: "Villa Park" },
-  "Brighton": { lat: 50.8618, lon: -0.0837, city: "Brighton", stadium: "Amex Stadium" },
-  "Brighton & Hove Albion": { lat: 50.8618, lon: -0.0837, city: "Brighton", stadium: "Amex Stadium" },
-  "West Ham": { lat: 51.5387, lon: -0.0166, city: "Londres", stadium: "London Stadium" },
-  "West Ham United": { lat: 51.5387, lon: -0.0166, city: "Londres", stadium: "London Stadium" },
-  "Everton": { lat: 53.4389, lon: -2.9664, city: "Liverpool", stadium: "Goodison Park" },
-  "Brentford": { lat: 51.4908, lon: -0.2886, city: "Londres", stadium: "Gtech Community Stadium" },
-  "Wolves": { lat: 52.5902, lon: -2.1304, city: "Wolverhampton", stadium: "Molineux Stadium" },
-  "Wolverhampton": { lat: 52.5902, lon: -2.1304, city: "Wolverhampton", stadium: "Molineux Stadium" },
-  "Wolverhampton Wanderers": { lat: 52.5902, lon: -2.1304, city: "Wolverhampton", stadium: "Molineux Stadium" },
-  "Crystal Palace": { lat: 51.3983, lon: -0.0856, city: "Londres", stadium: "Selhurst Park" },
-  "Fulham": { lat: 51.4749, lon: -0.2217, city: "Londres", stadium: "Craven Cottage" },
-  "Leicester": { lat: 52.6203, lon: -1.1422, city: "Leicester", stadium: "King Power Stadium" },
-  "Leicester City": { lat: 52.6203, lon: -1.1422, city: "Leicester", stadium: "King Power Stadium" },
-  "Bournemouth": { lat: 50.7352, lon: -1.8383, city: "Bournemouth", stadium: "Vitality Stadium" },
-  "AFC Bournemouth": { lat: 50.7352, lon: -1.8383, city: "Bournemouth", stadium: "Vitality Stadium" },
-  "Southampton": { lat: 50.9058, lon: -1.3911, city: "Southampton", stadium: "St Mary's Stadium" },
-  "Ipswich": { lat: 52.0548, lon: 1.1448, city: "Ipswich", stadium: "Portman Road" },
-  "Ipswich Town": { lat: 52.0548, lon: 1.1448, city: "Ipswich", stadium: "Portman Road" },
-
-  // ── La Liga (Spain) ──
-  "Real Madrid": { lat: 40.4531, lon: -3.6883, city: "Madrid", stadium: "Santiago Bernabéu" },
-  "Barcelona": { lat: 41.3809, lon: 2.1228, city: "Barcelone", stadium: "Camp Nou / Montjuïc" },
-  "FC Barcelona": { lat: 41.3809, lon: 2.1228, city: "Barcelone", stadium: "Camp Nou / Montjuïc" },
-  "Atletico Madrid": { lat: 40.4362, lon: -3.5995, city: "Madrid", stadium: "Cívitas Metropolitano" },
-  "Atlético Madrid": { lat: 40.4362, lon: -3.5995, city: "Madrid", stadium: "Cívitas Metropolitano" },
-  "Sevilla": { lat: 37.3840, lon: -5.9705, city: "Séville", stadium: "Ramón Sánchez-Pizjuán" },
-  "Sevilla FC": { lat: 37.3840, lon: -5.9705, city: "Séville", stadium: "Ramón Sánchez-Pizjuán" },
-  "Real Betis": { lat: 37.3565, lon: -5.9817, city: "Séville", stadium: "Benito Villamarín" },
-  "Betis": { lat: 37.3565, lon: -5.9817, city: "Séville", stadium: "Benito Villamarín" },
-  "Valencia": { lat: 39.4746, lon: -0.3582, city: "Valence", stadium: "Mestalla" },
-  "Valencia CF": { lat: 39.4746, lon: -0.3582, city: "Valence", stadium: "Mestalla" },
-  "Athletic Club": { lat: 43.2642, lon: -2.9494, city: "Bilbao", stadium: "San Mamés" },
-  "Athletic Bilbao": { lat: 43.2642, lon: -2.9494, city: "Bilbao", stadium: "San Mamés" },
-  "Real Sociedad": { lat: 43.3014, lon: -1.9736, city: "Saint-Sébastien", stadium: "Reale Arena" },
-  "Villarreal": { lat: 39.9442, lon: -0.1036, city: "Villarreal", stadium: "Estadio de la Cerámica" },
-  "Villarreal CF": { lat: 39.9442, lon: -0.1036, city: "Villarreal", stadium: "Estadio de la Cerámica" },
-  "Girona": { lat: 41.9614, lon: 2.8184, city: "Gérone", stadium: "Montilivi" },
-
-  // ── Serie A (Italy) ──
-  "Inter": { lat: 45.4781, lon: 9.1240, city: "Milan", stadium: "San Siro" },
-  "Inter Milan": { lat: 45.4781, lon: 9.1240, city: "Milan", stadium: "San Siro" },
-  "AC Milan": { lat: 45.4781, lon: 9.1240, city: "Milan", stadium: "San Siro" },
-  "Milan": { lat: 45.4781, lon: 9.1240, city: "Milan", stadium: "San Siro" },
-  "Juventus": { lat: 45.1096, lon: 7.6413, city: "Turin", stadium: "Allianz Stadium" },
-  "Napoli": { lat: 40.8279, lon: 14.1930, city: "Naples", stadium: "Stadio Diego Armando Maradona" },
-  "Roma": { lat: 41.9341, lon: 12.4547, city: "Rome", stadium: "Stadio Olimpico" },
-  "AS Roma": { lat: 41.9341, lon: 12.4547, city: "Rome", stadium: "Stadio Olimpico" },
-  "Lazio": { lat: 41.9341, lon: 12.4547, city: "Rome", stadium: "Stadio Olimpico" },
-  "Atalanta": { lat: 45.7092, lon: 9.6808, city: "Bergame", stadium: "Gewiss Stadium" },
-
-  // ── Bundesliga (Germany) ──
-  "Bayern Munich": { lat: 48.2188, lon: 11.6247, city: "Munich", stadium: "Allianz Arena" },
-  "Bayern": { lat: 48.2188, lon: 11.6247, city: "Munich", stadium: "Allianz Arena" },
-  "Dortmund": { lat: 51.4926, lon: 7.4518, city: "Dortmund", stadium: "Signal Iduna Park" },
-  "Borussia Dortmund": { lat: 51.4926, lon: 7.4518, city: "Dortmund", stadium: "Signal Iduna Park" },
-  "Bayer Leverkusen": { lat: 51.0383, lon: 6.9831, city: "Leverkusen", stadium: "BayArena" },
-  "Leverkusen": { lat: 51.0383, lon: 6.9831, city: "Leverkusen", stadium: "BayArena" },
-  "RB Leipzig": { lat: 51.3458, lon: 12.3483, city: "Leipzig", stadium: "Red Bull Arena" },
-  "Leipzig": { lat: 51.3458, lon: 12.3483, city: "Leipzig", stadium: "Red Bull Arena" },
-  "Eintracht Frankfurt": { lat: 50.0686, lon: 8.6455, city: "Francfort", stadium: "Deutsche Bank Park" },
-  "Stuttgart": { lat: 48.7922, lon: 9.2322, city: "Stuttgart", stadium: "MHPArena" },
-
-  // ── European Competitions (UEFA) ──
-  "AEK Athens": { lat: 38.0375, lon: 23.7431, city: "Athènes", stadium: "OPAP Arena" },
-  "LASK": { lat: 48.2936, lon: 14.2831, city: "Linz", stadium: "Raiffeisen Arena" },
-  "Benfica": { lat: 38.7527, lon: -9.1847, city: "Lisbonne", stadium: "Estádio da Luz" },
-  "Sporting CP": { lat: 38.7612, lon: -9.1606, city: "Lisbonne", stadium: "Estádio José Alvalade" },
-  "Porto": { lat: 41.1618, lon: -8.5836, city: "Porto", stadium: "Estádio do Dragão" },
-  "FC Porto": { lat: 41.1618, lon: -8.5836, city: "Porto", stadium: "Estádio do Dragão" },
-  "Ajax": { lat: 52.3144, lon: 4.9419, city: "Amsterdam", stadium: "Johan Cruijff ArenA" },
-  "PSV": { lat: 51.4417, lon: 5.4674, city: "Eindhoven", stadium: "Philips Stadion" },
-  "PSV Eindhoven": { lat: 51.4417, lon: 5.4674, city: "Eindhoven", stadium: "Philips Stadion" },
-  "Feyenoord": { lat: 51.8939, lon: 4.5231, city: "Rotterdam", stadium: "De Kuip" },
-  "Celtic": { lat: 55.8497, lon: -4.2055, city: "Glasgow", stadium: "Celtic Park" },
-  "Rangers": { lat: 55.8532, lon: -4.3093, city: "Glasgow", stadium: "Ibrox Stadium" },
-  "Galatasaray": { lat: 41.1034, lon: 28.9912, city: "Istanbul", stadium: "RAMS Park" },
-  "Fenerbahce": { lat: 40.9880, lon: 29.0370, city: "Istanbul", stadium: "Şükrü Saracoğlu" },
-  "Fenerbahçe": { lat: 40.9880, lon: 29.0370, city: "Istanbul", stadium: "Şükrü Saracoğlu" },
-  "Besiktas": { lat: 41.0394, lon: 29.0016, city: "Istanbul", stadium: "Tüpraş Stadyumu" },
-  "Olympiacos": { lat: 37.9464, lon: 23.6644, city: "Le Pirée", stadium: "Stade Karaïskakis" },
-  "Panathinaikos": { lat: 37.9872, lon: 23.7542, city: "Athènes", stadium: "Apostolos Nikolaidis" },
-};
+export const STADIA_COORDINATES = STADIA_MASTER;
 
 export const WMO_FR_CONDITIONS = {
   0: { label: "Ciel Dégagé", icon: "Sun", impact: "Excellentes conditions de jeu · Terrain sec et rapide" },
@@ -167,12 +36,43 @@ export const WMO_FR_CONDITIONS = {
 
 // Cache mémoire des requêtes météo pour éviter les appels en boucle
 const weatherCache = new Map();
+const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+function getCachedWeather(cacheKey) {
+  if (weatherCache.has(cacheKey)) {
+    const entry = weatherCache.get(cacheKey);
+    if (Date.now() - entry.ts < CACHE_TTL_MS) return entry.data;
+  }
+  if (typeof window !== 'undefined' && window.sessionStorage) {
+    try {
+      const raw = window.sessionStorage.getItem(`weather_${cacheKey}`);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Date.now() - parsed.ts < CACHE_TTL_MS) {
+          weatherCache.set(cacheKey, parsed);
+          return parsed.data;
+        }
+      }
+    } catch (_) {}
+  }
+  return null;
+}
+
+function setCachedWeather(cacheKey, data) {
+  const entry = { data, ts: Date.now() };
+  weatherCache.set(cacheKey, entry);
+  if (typeof window !== 'undefined' && window.sessionStorage) {
+    try {
+      window.sessionStorage.setItem(`weather_${cacheKey}`, JSON.stringify(entry));
+    } catch (_) {}
+  }
+}
 
 /**
  * Résout les coordonnées géographiques du club hôte
  */
 export function getTeamStadiumCoords(teamName) {
-  if (!teamName) return { lat: 53.4308, lon: -2.9608, city: "Liverpool", stadium: "Anfield" };
+  if (!teamName) return { lat: 53.4308, lon: -2.9608, city: "Liverpool", stadium: "Anfield", country: "Angleterre" };
   const clean = teamName.trim();
   
   if (STADIA_COORDINATES[clean]) return STADIA_COORDINATES[clean];
@@ -185,8 +85,8 @@ export function getTeamStadiumCoords(teamName) {
     }
   }
 
-  // Fallback par défaut (Paris / Europe)
-  return { lat: 48.8566, lon: 2.3522, city: clean, stadium: `Stade de ${clean}` };
+  // Fallback explicite sans coordonnées GPS masquées
+  return { lat: null, lon: null, city: clean, stadium: `Stade de ${clean}`, isUnknown: true };
 }
 
 /**
@@ -202,13 +102,30 @@ export async function fetchLiveMatchWeather(homeTeam, matchDate) {
     ? matchDate.split('T')[0] 
     : now.toISOString().split('T')[0];
   
+  // Si le stade est inconnu et sans coordonnées valides, renvoyer une estimation climatique sans tromper sur la localisation
+  if (stadiumInfo.isUnknown || stadiumInfo.lat === null || stadiumInfo.lon === null) {
+    return {
+      isLive: false,
+      isUnknownCoords: true,
+      city: stadiumInfo.city,
+      stadium: stadiumInfo.stadium,
+      condition: "Climat Tempéré Estimé",
+      conditionKey: "CloudSun",
+      pitchImpact: "Conditions de jeu standards estimées · Coordonnées GPS non référencées",
+      weatherCode: 2,
+      temp_avg_c: 16.0,
+      precipitation_mm: 0.0,
+      wind_speed_kmh: 12,
+      updatedAt: "Estimation"
+    };
+  }
+
   const targetDate = new Date(targetDateStr);
   const diffDays = Math.round((targetDate - now) / (1000 * 60 * 60 * 24));
   const cacheKey = `${stadiumInfo.lat}_${stadiumInfo.lon}_${targetDateStr}`;
 
-  if (weatherCache.has(cacheKey)) {
-    return weatherCache.get(cacheKey);
-  }
+  const cached = getCachedWeather(cacheKey);
+  if (cached) return cached;
 
   let url;
   if (diffDays < -5) {
@@ -231,7 +148,7 @@ export async function fetchLiveMatchWeather(homeTeam, matchDate) {
       wind_speed_kmh: 12,
       updatedAt: `Projection J+${diffDays}`
     };
-    weatherCache.set(cacheKey, projResult);
+    setCachedWeather(cacheKey, projResult);
     return projResult;
   } else {
     // Fenêtre active Live / Forecast [-5 jours, +14 jours]
@@ -276,7 +193,7 @@ export async function fetchLiveMatchWeather(homeTeam, matchDate) {
       updatedAt: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
     };
 
-    weatherCache.set(cacheKey, result);
+    setCachedWeather(cacheKey, result);
     return result;
   } catch (err) {
     console.warn(`[WeatherService] Fallback actif (${stadiumInfo.city}) :`, err.message);

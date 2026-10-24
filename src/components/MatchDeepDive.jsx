@@ -8,7 +8,7 @@ import TeamLogo from './ui/TeamLogo';
 import {
   Calendar, CloudRain, Shield, Award, ChevronDown, ChevronUp,
   Users, Trophy, Zap, Wind, Droplets, ArrowUpRight, TrendingUp,
-  CheckCircle2, AlertTriangle, ExternalLink, RefreshCw, Activity
+  CheckCircle2, AlertTriangle, ExternalLink, RefreshCw, Activity, Swords
 } from 'lucide-react';
 import ANALYTICS_CACHE from '../data/compiled/analytics_cache.json';
 import { resolveRefereeDetails } from '../utils/refereeResolver';
@@ -150,44 +150,49 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-      {/* ── HEADER TITLE ── */}
-      <section>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-          <div>
-            <h1 style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '2.2rem',
-              color: 'var(--ivory)',
-              fontWeight: 400,
-              margin: 0,
-            }}>
-              Match Deep Dive & H2H
-            </h1>
-            <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-              Analyse Tactique Détaillée · 11 Probables · Météo Live & Arbitre · Duel d'Entraîneurs · xG Momentum
-            </p>
-          </div>
+{/* ── HEADER TITLE (QUANT TERMINAL TOOLBAR) ── */}
+      <section style={{
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
+        padding: '10px 14px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        fontFamily: "'JetBrains Mono', monospace",
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.06em',
+            color: '#06b6d4', textTransform: 'uppercase',
+          }}>
+            <Swords size={13} /> MATCH DEEP DIVE & TACTICAL COCKPIT
+          </span>
+          <span style={{ color: '#27272a' }}>|</span>
+          <span style={{ fontSize: 11, color: '#71717a' }}>
+            H2H 2 ANS · 11 PROBABLES · RADAR 6D · XG MOMENTUM
+          </span>
+        </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{
-              background: 'var(--glass-primary)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 14,
-              padding: '10px 18px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
-            }}>
-              <TeamLogo teamName={home} size="sm" />
-              <span style={{ fontSize: 14, fontWeight: 800, color: 'var(--ivory)' }}>{home}</span>
-              <span style={{ fontSize: 11, color: 'var(--gold)', fontWeight: 900 }}>VS</span>
-              <span style={{ fontSize: 14, fontWeight: 800, color: 'var(--ivory)' }}>{away}</span>
-              <TeamLogo teamName={away} size="sm" />
-            </div>
-          </div>
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 10,
+          background: '#18181b',
+          border: '1px solid #27272a',
+          borderRadius: 4,
+          padding: '4px 10px',
+        }}>
+          <TeamLogo teamName={home} size="xs" />
+          <strong style={{ color: '#fafafa', fontSize: 12 }}>{home}</strong>
+          <span style={{ color: '#06b6d4', fontSize: 10, fontWeight: 700 }}>VS</span>
+          <TeamLogo teamName={away} size="xs" />
+          <strong style={{ color: '#fafafa', fontSize: 12 }}>{away}</strong>
         </div>
       </section>
 
@@ -196,15 +201,15 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
         {/* 1. Météo & Impact Pelouse */}
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 16,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 18,
           position: 'relative',
           overflow: 'hidden',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#06b6d4', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               <CloudRain size={16} /> Météo & Terrain ({weatherData?.city || home})
             </div>
             {weatherData?.isLive && (
@@ -226,22 +231,22 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
             )}
           </div>
 
-          <div style={{ fontSize: 18, fontFamily: 'var(--font-serif)', color: 'var(--ivory)', fontWeight: 700 }}>
+          <div style={{ fontSize: 18, fontFamily: 'Inter, system-ui, sans-serif', color: '#fafafa', fontWeight: 700 }}>
             {weatherData?.condition || selectedMatch?.weather?.condition || 'Chargement...'}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginTop: 10, fontSize: 11, color: 'var(--neutral)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginTop: 10, fontSize: 11, color: '#71717a' }}>
             <div>
               Température<br />
-              <strong style={{ color: 'var(--ivory)', fontSize: 13 }}>{weatherData?.temp_avg_c ?? selectedMatch?.weather?.temp_avg_c ?? 16.8}°C</strong>
+              <strong style={{ color: '#fafafa', fontSize: 13 }}>{weatherData?.temp_avg_c ?? selectedMatch?.weather?.temp_avg_c ?? 16.8}°C</strong>
             </div>
             <div>
               Vent<br />
-              <strong style={{ color: 'var(--ivory)', fontSize: 13 }}>{weatherData?.wind_speed_kmh ?? selectedMatch?.weather?.wind_speed_kmh ?? 12} km/h</strong>
+              <strong style={{ color: '#fafafa', fontSize: 13 }}>{weatherData?.wind_speed_kmh ?? selectedMatch?.weather?.wind_speed_kmh ?? 12} km/h</strong>
             </div>
             <div>
               Précipitations<br />
-              <strong style={{ color: (weatherData?.precipitation_mm || 0) > 0 ? '#60a5fa' : 'var(--ivory)', fontSize: 13 }}>
+              <strong style={{ color: (weatherData?.precipitation_mm || 0) > 0 ? '#60a5fa' : '#fafafa', fontSize: 13 }}>
                 {weatherData?.precipitation_mm ?? selectedMatch?.weather?.precipitation_mm ?? 0.0} mm
               </strong>
             </div>
@@ -251,11 +256,11 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
             <div style={{
               marginTop: 10,
               padding: '6px 10px',
-              borderRadius: 8,
-              background: 'rgba(201, 169, 110, 0.08)',
-              border: '1px solid rgba(201, 169, 110, 0.2)',
+              borderRadius: 4,
+              background: 'rgba(6, 182, 212, 0.08)',
+              border: '1px solid rgba(6, 182, 212, 0.25)',
               fontSize: 10,
-              color: 'var(--gold-light, #E6CA65)',
+              color: '#22d3ee',
             }}>
               🏟️ <strong>Impact Terrain :</strong> {weatherData.pitchImpact}
             </div>
@@ -264,71 +269,71 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
         {/* 2. Arbitre Officiel */}
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 16,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 18,
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#06b6d4', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>
             <Shield size={16} /> Arbitre de la rencontre
           </div>
-          <div style={{ fontSize: 18, fontFamily: 'var(--font-serif)', color: 'var(--ivory)', fontWeight: 700 }}>
+          <div style={{ fontSize: 18, fontFamily: 'Inter, system-ui, sans-serif', color: '#fafafa', fontWeight: 700 }}>
             {referee.name}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginTop: 10, fontSize: 11, color: 'var(--neutral)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginTop: 10, fontSize: 11, color: '#71717a' }}>
             <div>
               Sévérité<br />
-              <strong style={{ color: 'var(--danger)', fontSize: 13 }}>{referee.severity}</strong>
+              <strong style={{ color: '#ef4444', fontSize: 13 }}>{referee.severity}</strong>
             </div>
             <div>
               Cartons Jaunes<br />
-              <strong style={{ color: 'var(--ivory)', fontSize: 13 }}>{referee.yellowAvg}/m</strong>
+              <strong style={{ color: '#fafafa', fontSize: 13 }}>{referee.yellowAvg}/m</strong>
             </div>
             <div>
               Pénaltys<br />
-              <strong style={{ color: 'var(--gold)', fontSize: 13 }}>{referee.penaltyRatio}</strong>
+              <strong style={{ color: '#06b6d4', fontSize: 13 }}>{referee.penaltyRatio}</strong>
             </div>
           </div>
         </div>
 
         {/* 3. Duel d'Entraîneurs */}
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 16,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 18,
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#06b6d4', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>
             <Award size={16} /> Duel d'Entraîneurs
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontSize: 12, color: 'var(--ivory)', fontWeight: 800 }}>
-                  {homeCoach.nationalityFlag} {homeCoach.name} <span style={{ color: 'var(--gold)', fontSize: 11 }}>({homeCoach.winRate})</span>
+                <div style={{ fontSize: 12, color: '#fafafa', fontWeight: 800 }}>
+                  {homeCoach.nationalityFlag} {homeCoach.name} <span style={{ color: '#06b6d4', fontSize: 11 }}>({homeCoach.winRate})</span>
                 </div>
-                <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 1 }}>
-                  {home} · <span style={{ color: 'var(--ivory-dim)' }}>{homeCoach.style}</span>
+                <div style={{ fontSize: 10, color: '#71717a', marginTop: 1 }}>
+                  {home} · <span style={{ color: '#a1a1aa' }}>{homeCoach.style}</span>
                 </div>
               </div>
-              <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, background: 'var(--obsidian-3)', color: 'var(--gold)' }}>
+              <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, background: '#18181b', color: '#06b6d4' }}>
                 {homeCoach.formation}
               </span>
             </div>
 
-            <div style={{ width: '100%', height: 1, background: 'var(--ivory-border)' }} />
+            <div style={{ width: '100%', height: 1, background: '#27272a' }} />
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontSize: 12, color: 'var(--ivory)', fontWeight: 800 }}>
-                  {awayCoach.nationalityFlag} {awayCoach.name} <span style={{ color: 'var(--gold)', fontSize: 11 }}>({awayCoach.winRate})</span>
+                <div style={{ fontSize: 12, color: '#fafafa', fontWeight: 800 }}>
+                  {awayCoach.nationalityFlag} {awayCoach.name} <span style={{ color: '#06b6d4', fontSize: 11 }}>({awayCoach.winRate})</span>
                 </div>
-                <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 1 }}>
-                  {away} · <span style={{ color: 'var(--ivory-dim)' }}>{awayCoach.style}</span>
+                <div style={{ fontSize: 10, color: '#71717a', marginTop: 1 }}>
+                  {away} · <span style={{ color: '#a1a1aa' }}>{awayCoach.style}</span>
                 </div>
               </div>
-              <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, background: 'var(--obsidian-3)', color: 'var(--gold)' }}>
+              <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, background: '#18181b', color: '#06b6d4' }}>
                 {awayCoach.formation}
               </span>
             </div>
@@ -339,18 +344,18 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
       {/* ── PROJECTIONS TACTIQUES : 11 PROBABLES (PITCH MAP) & FORCES / FAIBLESSES ── */}
       <section style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 24,
       }}>
         {/* Section Header with Team Selector */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#06b6d4', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               <Users size={16} /> Projections Tactiques & 11 Probables
             </div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Compositions projetées, schéma tactique certifié et cartographie interactive du terrain
             </div>
           </div>
@@ -358,9 +363,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {/* Team Toggle for Pitch Map */}
             <div style={{
-              background: 'var(--obsidian-2)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 10,
+              background: '#121215',
+              border: '1px solid #27272a',
+              borderRadius: 4,
               padding: 3,
               display: 'flex',
               gap: 4,
@@ -369,9 +374,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                 onClick={() => setTacticalTeamTab('home')}
                 style={{
                   background: tacticalTeamTab === 'home' ? 'var(--positive-bg, rgba(34, 197, 94, 0.2))' : 'transparent',
-                  color: tacticalTeamTab === 'home' ? 'var(--positive)' : 'var(--neutral)',
+                  color: tacticalTeamTab === 'home' ? '#10b981' : '#71717a',
                   border: tacticalTeamTab === 'home' ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid transparent',
-                  borderRadius: 8,
+                  borderRadius: 4,
                   padding: '5px 12px',
                   fontSize: 11,
                   fontWeight: 700,
@@ -389,9 +394,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                 onClick={() => setTacticalTeamTab('away')}
                 style={{
                   background: tacticalTeamTab === 'away' ? 'rgba(239, 68, 68, 0.2)' : 'transparent',
-                  color: tacticalTeamTab === 'away' ? 'var(--danger)' : 'var(--neutral)',
+                  color: tacticalTeamTab === 'away' ? '#ef4444' : '#71717a',
                   border: tacticalTeamTab === 'away' ? '1px solid rgba(239, 68, 68, 0.4)' : '1px solid transparent',
-                  borderRadius: 8,
+                  borderRadius: 4,
                   padding: '5px 12px',
                   fontSize: 11,
                   fontWeight: 700,
@@ -413,9 +418,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
           
           {/* Left: Pitch Map */}
           <div style={{
-            background: 'var(--obsidian-3)',
-            border: '1px solid var(--ivory-border)',
-            borderRadius: 16,
+            background: '#18181b',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: 16,
             display: 'flex',
             flexDirection: 'column',
@@ -425,10 +430,10 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <TeamLogo teamName={tacticalTeamTab === 'home' ? home : away} size="sm" />
                 <div>
-                  <strong style={{ color: 'var(--ivory)', fontSize: 14 }}>
+                  <strong style={{ color: '#fafafa', fontSize: 14 }}>
                     {tacticalTeamTab === 'home' ? home : away}
                   </strong>
-                  <span style={{ fontSize: 11, color: 'var(--gold)', marginLeft: 8, fontWeight: 700 }}>
+                  <span style={{ fontSize: 11, color: '#06b6d4', marginLeft: 8, fontWeight: 700 }}>
                     Schéma : {tacticalTeamTab === 'home' ? homeCoach.formation : awayCoach.formation}
                   </span>
                 </div>
@@ -437,7 +442,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
               <span style={{
                 fontSize: 10,
                 fontWeight: 700,
-                color: 'var(--positive)',
+                color: '#10b981',
                 background: 'rgba(34,197,94,0.12)',
                 padding: '3px 8px',
                 borderRadius: 6,
@@ -465,25 +470,25 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
             {/* 1. Forces & Faiblesses Tactiques Card */}
             <div style={{
-              background: 'var(--obsidian-3)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 14,
+              background: '#18181b',
+              border: '1px solid #27272a',
+              borderRadius: 6,
               padding: 16,
             }}>
-              <div style={{ fontSize: 12, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>
+              <div style={{ fontSize: 12, color: '#06b6d4', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>
                 Diagnostic Tactique ({tacticalTeamTab === 'home' ? home : away})
               </div>
 
               {/* Strengths */}
               <div style={{ marginBottom: 12 }}>
-                <div style={{ fontSize: 11, color: 'var(--positive)', fontWeight: 700, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div style={{ fontSize: 11, color: '#10b981', fontWeight: 700, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
                   <CheckCircle2 size={14} /> Forces & Pression
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                   {(tacticalTeamTab === 'home' ? homeTactics.strengths : awayTactics.strengths).map((s, idx) => (
                     <div key={idx} style={{
                       fontSize: 11,
-                      color: 'var(--ivory)',
+                      color: '#fafafa',
                       background: 'rgba(34, 197, 94, 0.08)',
                       border: '1px solid rgba(34, 197, 94, 0.2)',
                       padding: '5px 10px',
@@ -497,14 +502,14 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
               {/* Weaknesses */}
               <div>
-                <div style={{ fontSize: 11, color: 'var(--danger)', fontWeight: 700, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div style={{ fontSize: 11, color: '#ef4444', fontWeight: 700, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
                   <AlertTriangle size={14} /> Vulnérabilités Détectées
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                   {(tacticalTeamTab === 'home' ? homeTactics.weaknesses : awayTactics.weaknesses).map((w, idx) => (
                     <div key={idx} style={{
                       fontSize: 11,
-                      color: 'var(--ivory)',
+                      color: '#fafafa',
                       background: 'rgba(239, 68, 68, 0.08)',
                       border: '1px solid rgba(239, 68, 68, 0.2)',
                       padding: '5px 10px',
@@ -519,12 +524,12 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
             {/* 2. Key Absentees & Impact Effectif */}
             <div style={{
-              background: 'var(--obsidian-3)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 14,
+              background: '#18181b',
+              border: '1px solid #27272a',
+              borderRadius: 6,
               padding: 16,
             }}>
-              <div style={{ fontSize: 12, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>
+              <div style={{ fontSize: 12, color: '#06b6d4', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>
                 État des Absences ({tacticalTeamTab === 'home' ? home : away})
               </div>
 
@@ -534,10 +539,10 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                     <div key={idx} style={{
                       fontSize: 11,
                       padding: '6px 10px',
-                      borderRadius: 8,
+                      borderRadius: 4,
                       background: 'rgba(239, 68, 68, 0.08)',
                       border: '1px solid rgba(239, 68, 68, 0.2)',
-                      color: 'var(--ivory)',
+                      color: '#fafafa',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between'
@@ -545,20 +550,20 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                       <span>
                         <strong style={{ color: '#f87171' }}>● {a.name}</strong> ({a.pos})
                       </span>
-                      <span style={{ fontSize: 10, color: 'var(--neutral)' }}>{a.reason}</span>
+                      <span style={{ fontSize: 10, color: '#71717a' }}>{a.reason}</span>
                     </div>
                   ))}
                 </div>
               ) : (
                 <div style={{
                   fontSize: 11,
-                  color: 'var(--positive)',
+                  color: '#10b981',
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
                   padding: '8px 12px',
                   background: 'rgba(34, 197, 94, 0.08)',
-                  borderRadius: 8,
+                  borderRadius: 4,
                   border: '1px solid rgba(34, 197, 94, 0.2)'
                 }}>
                   <CheckCircle2 size={14} /> Effectif complet sans suspension ni absence majeure déclarée
@@ -568,16 +573,16 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
             {/* 3. Style & Directives de l'Entraîneur */}
             <div style={{
-              background: 'var(--obsidian-3)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 14,
+              background: '#18181b',
+              border: '1px solid #27272a',
+              borderRadius: 6,
               padding: 16,
             }}>
-              <div style={{ fontSize: 12, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 6 }}>
+              <div style={{ fontSize: 12, color: '#06b6d4', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 6 }}>
                 Directives Techniques : {(tacticalTeamTab === 'home' ? homeCoach : awayCoach).name}
               </div>
-              <p style={{ fontSize: 11, color: 'var(--ivory-dim)', lineHeight: 1.6, margin: 0 }}>
-                Schéma préférentiel en <strong style={{ color: 'var(--gold)' }}>{(tacticalTeamTab === 'home' ? homeCoach : awayCoach).formation}</strong> avec une philosophie axée sur <strong style={{ color: 'var(--ivory)' }}>{(tacticalTeamTab === 'home' ? homeCoach : awayCoach).style}</strong>. Taux de succès historique certifié de <strong style={{ color: 'var(--positive)' }}>{(tacticalTeamTab === 'home' ? homeCoach : awayCoach).winRate}</strong>.
+              <p style={{ fontSize: 11, color: '#a1a1aa', lineHeight: 1.6, margin: 0 }}>
+                Schéma préférentiel en <strong style={{ color: '#06b6d4' }}>{(tacticalTeamTab === 'home' ? homeCoach : awayCoach).formation}</strong> avec une philosophie axée sur <strong style={{ color: '#fafafa' }}>{(tacticalTeamTab === 'home' ? homeCoach : awayCoach).style}</strong>. Taux de succès historique certifié de <strong style={{ color: '#10b981' }}>{(tacticalTeamTab === 'home' ? homeCoach : awayCoach).winRate}</strong>.
               </p>
             </div>
 
@@ -603,15 +608,15 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
 
       {/* ── FORME GLOBALE : 5 DERNIERS MATCHS DE CHAQUE ÉQUIPE (TOUTES COMPÉTITIONS) ── */}
       <section style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 24,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
           <div>
             <div className="card-section-title">Forme Récente Globale (5 Derniers Matchs Officiels)</div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Détail des résultats, xG créés/concédés et accès direct à la feuille de match complète
             </div>
           </div>
@@ -624,7 +629,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <TeamLogo teamName={home} size="xs" />
-                <strong style={{ color: 'var(--ivory)', fontSize: 13 }}>{home} (5 derniers matchs)</strong>
+                <strong style={{ color: '#fafafa', fontSize: 13 }}>{home} (5 derniers matchs)</strong>
               </div>
               <div style={{ display: 'flex', gap: 4 }}>
                 {homeRecentMatches.map((m, i) => (
@@ -634,7 +639,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                     padding: '2px 6px',
                     borderRadius: 4,
                     background: m.result === 'W' ? 'rgba(34, 197, 94, 0.2)' : m.result === 'D_DRAW' ? 'rgba(234, 179, 8, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                    color: m.result === 'W' ? 'var(--positive)' : m.result === 'D_DRAW' ? 'var(--warning)' : 'var(--danger)',
+                    color: m.result === 'W' ? '#10b981' : m.result === 'D_DRAW' ? '#f59e0b' : '#ef4444',
                     border: `1px solid ${m.result === 'W' ? 'rgba(34, 197, 94, 0.4)' : m.result === 'D_DRAW' ? 'rgba(234, 179, 8, 0.4)' : 'rgba(239, 68, 68, 0.4)'}`,
                   }}>
                     {m.result === 'W' ? 'V' : m.result === 'D_DRAW' ? 'N' : 'D'}
@@ -647,9 +652,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
               <div
                 key={idx}
                 style={{
-                  background: 'var(--obsidian-3)',
-                  border: '1px solid var(--ivory-border)',
-                  borderRadius: 12,
+                  background: '#18181b',
+                  border: '1px solid #27272a',
+                  borderRadius: 4,
                   padding: '12px 16px',
                   display: 'flex',
                   alignItems: 'center',
@@ -664,19 +669,19 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                     padding: '3px 7px',
                     borderRadius: 6,
                     background: m.result === 'W' ? 'rgba(34, 197, 94, 0.15)' : m.result === 'D_DRAW' ? 'rgba(234, 179, 8, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-                    color: m.result === 'W' ? 'var(--positive)' : m.result === 'D_DRAW' ? 'var(--warning)' : 'var(--danger)',
+                    color: m.result === 'W' ? '#10b981' : m.result === 'D_DRAW' ? '#f59e0b' : '#ef4444',
                   }}>
                     {m.result === 'W' ? 'VICTOIRE' : m.result === 'D_DRAW' ? 'NUL' : 'DÉFAITE'}
                   </span>
 
                   <div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#fafafa', display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span>{m.venue === 'Domicile' ? 'vs' : '@'}</span>
                       <TeamLogo teamName={m.opponent} size="xs" />
                       <span>{m.opponent}</span>
-                      <strong style={{ color: 'var(--gold)', marginLeft: 4 }}>({m.score})</strong>
+                      <strong style={{ color: '#06b6d4', marginLeft: 4 }}>({m.score})</strong>
                     </div>
-                    <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 2 }}>
+                    <div style={{ fontSize: 10, color: '#71717a', marginTop: 2 }}>
                       {m.date} · {m.venue} · xG : {m.xG}
                     </div>
                   </div>
@@ -685,11 +690,11 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                 <button
                   onClick={() => handleOpenMatchDetails(m.match)}
                   style={{
-                    background: 'var(--obsidian-2)',
-                    border: '1px solid var(--gold-border)',
-                    borderRadius: 8,
+                    background: '#121215',
+                    border: '1px solid rgba(6, 182, 212, 0.3)',
+                    borderRadius: 4,
                     padding: '5px 10px',
-                    color: 'var(--gold)',
+                    color: '#06b6d4',
                     fontSize: 10,
                     fontWeight: 700,
                     cursor: 'pointer',
@@ -709,7 +714,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <TeamLogo teamName={away} size="xs" />
-                <strong style={{ color: 'var(--ivory)', fontSize: 13 }}>{away} (5 derniers matchs)</strong>
+                <strong style={{ color: '#fafafa', fontSize: 13 }}>{away} (5 derniers matchs)</strong>
               </div>
               <div style={{ display: 'flex', gap: 4 }}>
                 {awayRecentMatches.map((m, i) => (
@@ -719,7 +724,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                     padding: '2px 6px',
                     borderRadius: 4,
                     background: m.result === 'W' ? 'rgba(34, 197, 94, 0.2)' : m.result === 'D_DRAW' ? 'rgba(234, 179, 8, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                    color: m.result === 'W' ? 'var(--positive)' : m.result === 'D_DRAW' ? 'var(--warning)' : 'var(--danger)',
+                    color: m.result === 'W' ? '#10b981' : m.result === 'D_DRAW' ? '#f59e0b' : '#ef4444',
                     border: `1px solid ${m.result === 'W' ? 'rgba(34, 197, 94, 0.4)' : m.result === 'D_DRAW' ? 'rgba(234, 179, 8, 0.4)' : 'rgba(239, 68, 68, 0.4)'}`,
                   }}>
                     {m.result === 'W' ? 'V' : m.result === 'D_DRAW' ? 'N' : 'D'}
@@ -732,9 +737,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
               <div
                 key={idx}
                 style={{
-                  background: 'var(--obsidian-3)',
-                  border: '1px solid var(--ivory-border)',
-                  borderRadius: 12,
+                  background: '#18181b',
+                  border: '1px solid #27272a',
+                  borderRadius: 4,
                   padding: '12px 16px',
                   display: 'flex',
                   alignItems: 'center',
@@ -749,19 +754,19 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                     padding: '3px 7px',
                     borderRadius: 6,
                     background: m.result === 'W' ? 'rgba(34, 197, 94, 0.15)' : m.result === 'D_DRAW' ? 'rgba(234, 179, 8, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-                    color: m.result === 'W' ? 'var(--positive)' : m.result === 'D_DRAW' ? 'var(--warning)' : 'var(--danger)',
+                    color: m.result === 'W' ? '#10b981' : m.result === 'D_DRAW' ? '#f59e0b' : '#ef4444',
                   }}>
                     {m.result === 'W' ? 'VICTOIRE' : m.result === 'D_DRAW' ? 'NUL' : 'DÉFAITE'}
                   </span>
 
                   <div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#fafafa', display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span>{m.venue === 'Domicile' ? 'vs' : '@'}</span>
                       <TeamLogo teamName={m.opponent} size="xs" />
                       <span>{m.opponent}</span>
-                      <strong style={{ color: 'var(--gold)', marginLeft: 4 }}>({m.score})</strong>
+                      <strong style={{ color: '#06b6d4', marginLeft: 4 }}>({m.score})</strong>
                     </div>
-                    <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 2 }}>
+                    <div style={{ fontSize: 10, color: '#71717a', marginTop: 2 }}>
                       {m.date} · {m.venue} · xG : {m.xG}
                     </div>
                   </div>
@@ -770,11 +775,11 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                 <button
                   onClick={() => handleOpenMatchDetails(m.match)}
                   style={{
-                    background: 'var(--obsidian-2)',
-                    border: '1px solid var(--gold-border)',
-                    borderRadius: 8,
+                    background: '#121215',
+                    border: '1px solid rgba(6, 182, 212, 0.3)',
+                    borderRadius: 4,
                     padding: '5px 10px',
-                    color: 'var(--gold)',
+                    color: '#06b6d4',
                     fontSize: 10,
                     fontWeight: 700,
                     cursor: 'pointer',
@@ -797,7 +802,7 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
           <div>
             <div className="card-section-title">Historique des Confrontations Directes H2H (2 Ans)</div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Vue chronologique filtrable avec scores réels, xG accumulés et accès à la feuille complète
             </div>
           </div>
@@ -825,9 +830,9 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {filteredH2H.map((m, idx) => (
             <div key={idx} style={{
-              background: 'var(--glass-primary)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 14,
+              background: '#121215',
+              border: '1px solid #27272a',
+              borderRadius: 6,
               overflow: 'hidden',
             }}>
               {/* Accordion Bar */}
@@ -839,33 +844,33 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   cursor: 'pointer',
-                  background: openAccordions[idx] ? 'var(--obsidian-2)' : 'transparent',
+                  background: openAccordions[idx] ? '#121215' : 'transparent',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <Calendar size={16} color="var(--gold)" />
-                  <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)' }}>{m.date}</span>
-                  <span style={{ fontSize: 11, color: 'var(--neutral)' }}>|</span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
-                    {m.home} <strong style={{ color: 'var(--gold)' }}>{m.homeScore} - {m.awayScore}</strong> {m.away}
+                  <Calendar size={16} color="#06b6d4" />
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#fafafa' }}>{m.date}</span>
+                  <span style={{ fontSize: 11, color: '#71717a' }}>|</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
+                    {m.home} <strong style={{ color: '#06b6d4' }}>{m.homeScore} - {m.awayScore}</strong> {m.away}
                   </span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ fontSize: 11, color: 'var(--neutral)' }}>
+                  <span style={{ fontSize: 11, color: '#71717a' }}>
                     xG : {m.homeXg} - {m.awayXg}
                   </span>
-                  {openAccordions[idx] ? <ChevronUp size={16} color="var(--gold)" /> : <ChevronDown size={16} color="var(--neutral)" />}
+                  {openAccordions[idx] ? <ChevronUp size={16} color="#06b6d4" /> : <ChevronDown size={16} color="#71717a" />}
                 </div>
               </div>
 
               {/* Accordion Content */}
               {openAccordions[idx] && (
-                <div style={{ padding: '16px 20px', borderTop: '1px solid var(--ivory-border)', background: 'var(--obsidian-3)', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, fontSize: 11, color: 'var(--neutral)' }}>
-                    <div>Contexte : <strong style={{ color: 'var(--ivory)' }}>{m.round || 'Journée'} · {m.venue === 'home' ? 'Match à Domicile' : 'Extérieur'}</strong></div>
-                    <div>Arbitre : <strong style={{ color: 'var(--gold)' }}>{m.referee}</strong></div>
-                    <div>Dominance xG : <strong style={{ color: m.homeXg > m.awayXg ? 'var(--positive)' : 'var(--danger)' }}>{m.homeXg > m.awayXg ? m.home : m.away} (+{(Math.abs(m.homeXg - m.awayXg)).toFixed(1)} xG)</strong></div>
+                <div style={{ padding: '16px 20px', borderTop: '1px solid #27272a', background: '#18181b', display: 'flex', flexDirection: 'column', gap: 14 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, fontSize: 11, color: '#71717a' }}>
+                    <div>Contexte : <strong style={{ color: '#fafafa' }}>{m.round || 'Journée'} · {m.venue === 'home' ? 'Match à Domicile' : 'Extérieur'}</strong></div>
+                    <div>Arbitre : <strong style={{ color: '#06b6d4' }}>{m.referee}</strong></div>
+                    <div>Dominance xG : <strong style={{ color: m.homeXg > m.awayXg ? '#10b981' : '#ef4444' }}>{m.homeXg > m.awayXg ? m.home : m.away} (+{(Math.abs(m.homeXg - m.awayXg)).toFixed(1)} xG)</strong></div>
                   </div>
 
                   {/* Scorers & Passes */}
@@ -873,14 +878,14 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                     <div style={{
                       padding: '10px 14px',
                       background: 'rgba(0,0,0,0.3)',
-                      borderRadius: 8,
+                      borderRadius: 4,
                       border: '1px solid rgba(255,255,255,0.05)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: 8,
                       flexWrap: 'wrap',
                     }}>
-                      <span style={{ fontSize: 11, color: 'var(--gold)', fontWeight: 800 }}>⚽ Buteurs & Passes :</span>
+                      <span style={{ fontSize: 11, color: '#06b6d4', fontWeight: 800 }}>⚽ Buteurs & Passes :</span>
                       {m.goals.map((g, gIdx) => {
                         const isAssist = g.detail && g.detail.startsWith('Assist:');
                         const assistName = isAssist ? g.detail.replace('Assist:', '').trim() : null;
@@ -888,25 +893,25 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                         return (
                           <span key={gIdx} style={{
                             fontSize: 11,
-                            background: 'var(--obsidian-2)',
-                            border: '1px solid var(--ivory-border)',
+                            background: '#121215',
+                            border: '1px solid #27272a',
                             padding: '3px 8px',
                             borderRadius: 6,
-                            color: 'var(--ivory)',
+                            color: '#fafafa',
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: 5
                           }}>
-                            <strong style={{ color: 'var(--ivory)' }}>{g.player}</strong>
-                            <span style={{ color: 'var(--gold)', fontSize: 10, fontWeight: 700 }}>({g.time}')</span>
+                            <strong style={{ color: '#fafafa' }}>{g.player}</strong>
+                            <span style={{ color: '#06b6d4', fontSize: 10, fontWeight: 700 }}>({g.time}')</span>
                             {isAssist && assistName ? (
                               <span style={{
                                 fontSize: 10,
-                                background: 'rgba(201,169,110,0.12)',
-                                border: '1px solid rgba(201,169,110,0.3)',
+                                background: 'rgba(6, 182, 212, 0.12)',
+                                border: '1px solid rgba(6, 182, 212, 0.3)',
                                 padding: '1px 5px',
                                 borderRadius: 4,
-                                color: 'var(--gold-light, #E6CA65)',
+                                color: '#22d3ee',
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: 3
@@ -915,14 +920,14 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                                 <strong>{assistName}</strong>
                               </span>
                             ) : g.detail ? (
-                              <span style={{ color: 'var(--neutral)', fontSize: 9 }}>· {g.detail}</span>
+                              <span style={{ color: '#71717a', fontSize: 9 }}>· {g.detail}</span>
                             ) : null}
                           </span>
                         );
                       })}
                     </div>
                   ) : (
-                    <div style={{ fontSize: 11, color: 'var(--neutral)', fontStyle: 'italic' }}>
+                    <div style={{ fontSize: 11, color: '#71717a', fontStyle: 'italic' }}>
                       🛡️ Score Vierge (0-0) · Défenses Inviolées
                     </div>
                   )}
@@ -930,19 +935,19 @@ export default function MatchDeepDive({ selectedMatch, APP_DATA, teams }) {
                   {/* AI Summary and Action Button to Open Full Match Details Modal */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
                     {m.aiSummary ? (
-                      <div style={{ fontSize: 11, color: 'var(--neutral)', background: 'rgba(255,255,255,0.02)', padding: '6px 10px', borderRadius: 6, flex: 1 }}>
-                        🤖 <strong style={{ color: 'var(--ivory-dim)' }}>{m.aiSummary}</strong>
+                      <div style={{ fontSize: 11, color: '#71717a', background: 'rgba(255,255,255,0.02)', padding: '6px 10px', borderRadius: 6, flex: 1 }}>
+                        🤖 <strong style={{ color: '#a1a1aa' }}>{m.aiSummary}</strong>
                       </div>
                     ) : <div />}
 
                     <button
                       onClick={() => handleOpenMatchDetails(m.rawMatch || m)}
                       style={{
-                        background: 'var(--obsidian-2)',
-                        border: '1px solid var(--gold-border)',
-                        borderRadius: 8,
+                        background: '#121215',
+                        border: '1px solid rgba(6, 182, 212, 0.3)',
+                        borderRadius: 4,
                         padding: '6px 12px',
-                        color: 'var(--gold)',
+                        color: '#06b6d4',
                         fontSize: 11,
                         fontWeight: 700,
                         cursor: 'pointer',

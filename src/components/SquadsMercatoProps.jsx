@@ -344,7 +344,7 @@ export default function SquadsMercatoProps({ targetMatch }) {
       case 'D': return { label: '🛡️ Défenseur', bg: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: 'rgba(59, 130, 246, 0.3)' };
       case 'M': return { label: '⚙️ Milieu', bg: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: 'rgba(168, 85, 247, 0.3)' };
       case 'A': return { label: '⚡ Attaquant', bg: 'rgba(239, 68, 68, 0.15)', color: '#f87171', border: 'rgba(239, 68, 68, 0.3)' };
-      default: return { label: 'Joueur', bg: 'rgba(255, 255, 255, 0.1)', color: 'var(--ivory)', border: 'var(--ivory-border)' };
+      default: return { label: 'Joueur', bg: 'rgba(255, 255, 255, 0.1)', color: '#fafafa', border: '#27272a' };
     }
   };
 
@@ -358,57 +358,67 @@ export default function SquadsMercatoProps({ targetMatch }) {
     if (status === 'LOANED_OUT') {
       return <span style={{ padding: '3px 8px', borderRadius: 6, fontSize: 10, fontWeight: 700, background: 'rgba(168, 85, 247, 0.2)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.4)' }}>🔄 PRÊT</span>;
     }
-    return <span style={{ padding: '3px 8px', borderRadius: 6, fontSize: 10, fontWeight: 600, background: 'rgba(255, 255, 255, 0.05)', color: 'var(--neutral)', border: '1px solid var(--ivory-border)' }}>✅ ACTIF</span>;
+    return <span style={{ padding: '3px 8px', borderRadius: 6, fontSize: 10, fontWeight: 600, background: 'rgba(255, 255, 255, 0.05)', color: '#71717a', border: '1px solid #27272a' }}>✅ ACTIF</span>;
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-      {/* ── HEADER ── */}
-      <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-        <div>
-          <h1 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '2.2rem',
-            color: 'var(--ivory)',
-            fontWeight: 400,
-            margin: 0,
+      {/* ── HEADER (QUANT TERMINAL TOOLBAR) ── */}
+      <section style={{
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
+        padding: '10px 14px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        fontFamily: "'JetBrains Mono', monospace",
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.06em',
+            color: '#06b6d4', textTransform: 'uppercase',
           }}>
-            Effectifs & Mercato Multi-Saisons (Transfermarkt)
-          </h1>
-          <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-            Référentiel Officiel 3 Saisons (2024-2027) · Traçabilité SCD Type 2 · Dates d'Entrée/Sortie & Valeurs Marchandes
-          </p>
+            <Users size={13} /> SQUADS & MERCATO SCD TYPE 2
+          </span>
+          <span style={{ color: '#27272a' }}>|</span>
+          <span style={{ fontSize: 11, color: '#71717a' }}>
+            RÉFÉRENTIEL 3 SAISONS · TRANSFERMARKT · PROPS & PASSES
+          </span>
         </div>
 
         {/* Sub-Navigation Switcher */}
         <div style={{
           display: 'flex',
-          background: 'var(--obsidian-2)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 14,
-          padding: 4,
-          gap: 4,
+          background: '#18181b',
+          border: '1px solid #27272a',
+          borderRadius: 4,
+          padding: 2,
+          gap: 2,
         }}>
           <button
             onClick={() => setActiveSubTab('roster')}
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              padding: '8px 16px',
-              borderRadius: 10,
-              fontSize: 12,
+              gap: 6,
+              padding: '4px 10px',
+              borderRadius: 3,
+              fontSize: 11,
               fontWeight: activeSubTab === 'roster' ? 700 : 500,
-              background: activeSubTab === 'roster' ? 'var(--gold-muted)' : 'transparent',
-              color: activeSubTab === 'roster' ? 'var(--gold)' : 'var(--neutral)',
-              border: activeSubTab === 'roster' ? '1px solid var(--gold-border)' : '1px solid transparent',
+              background: activeSubTab === 'roster' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeSubTab === 'roster' ? '#06b6d4' : '#71717a',
+              border: activeSubTab === 'roster' ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid transparent',
               cursor: 'pointer',
-              transition: 'all 0.2s',
+              fontFamily: "'JetBrains Mono', monospace",
             }}
           >
-            <Users size={15} />
-            <span>Explorateur Effectif (3 Saisons)</span>
+            <Users size={12} />
+            <span>Effectifs (3 Saisons)</span>
           </button>
 
           <button
@@ -416,20 +426,20 @@ export default function SquadsMercatoProps({ targetMatch }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              padding: '8px 16px',
-              borderRadius: 10,
-              fontSize: 12,
+              gap: 6,
+              padding: '4px 10px',
+              borderRadius: 3,
+              fontSize: 11,
               fontWeight: activeSubTab === 'mercato' ? 700 : 500,
-              background: activeSubTab === 'mercato' ? 'var(--gold-muted)' : 'transparent',
-              color: activeSubTab === 'mercato' ? 'var(--gold)' : 'var(--neutral)',
-              border: activeSubTab === 'mercato' ? '1px solid var(--gold-border)' : '1px solid transparent',
+              background: activeSubTab === 'mercato' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeSubTab === 'mercato' ? '#06b6d4' : '#71717a',
+              border: activeSubTab === 'mercato' ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid transparent',
               cursor: 'pointer',
-              transition: 'all 0.2s',
+              fontFamily: "'JetBrains Mono', monospace",
             }}
           >
-            <TrendingUp size={15} />
-            <span>Focus Transferts ({filteredTransfers.length})</span>
+            <TrendingUp size={12} />
+            <span>Transferts ({filteredTransfers.length})</span>
           </button>
 
           <button
@@ -437,20 +447,20 @@ export default function SquadsMercatoProps({ targetMatch }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              padding: '8px 16px',
-              borderRadius: 10,
-              fontSize: 12,
+              gap: 6,
+              padding: '4px 10px',
+              borderRadius: 3,
+              fontSize: 11,
               fontWeight: activeSubTab === 'props' ? 700 : 500,
-              background: activeSubTab === 'props' ? 'var(--gold-muted)' : 'transparent',
-              color: activeSubTab === 'props' ? 'var(--gold)' : 'var(--neutral)',
-              border: activeSubTab === 'props' ? '1px solid var(--gold-border)' : '1px solid transparent',
+              background: activeSubTab === 'props' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeSubTab === 'props' ? '#06b6d4' : '#71717a',
+              border: activeSubTab === 'props' ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid transparent',
               cursor: 'pointer',
-              transition: 'all 0.2s',
+              fontFamily: "'JetBrains Mono', monospace",
             }}
           >
-            <TrendingUp size={15} />
-            <span>Réseaux de Passes & Props</span>
+            <Sparkles size={12} />
+            <span>Passes & Props</span>
           </button>
         </div>
       </section>
@@ -463,9 +473,9 @@ export default function SquadsMercatoProps({ targetMatch }) {
           
           {/* 3-Tier Controls Bar */}
           <div style={{
-            background: 'var(--glass-primary)',
-            border: '1px solid var(--ivory-border)',
-            borderRadius: 16,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: 20,
             display: 'flex',
             flexDirection: 'column',
@@ -475,7 +485,7 @@ export default function SquadsMercatoProps({ targetMatch }) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 14 }}>
               {/* League Selector Chips */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Championnat :</span>
+                <span style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Championnat :</span>
                 {leaguesList.map(lg => (
                   <button
                     key={lg.id}
@@ -484,12 +494,12 @@ export default function SquadsMercatoProps({ targetMatch }) {
                     }}
                     style={{
                       padding: '6px 14px',
-                      borderRadius: 10,
+                      borderRadius: 4,
                       fontSize: 12,
                       fontWeight: rosterLeague === lg.id ? 700 : 500,
-                      background: rosterLeague === lg.id ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                      border: `1px solid ${rosterLeague === lg.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                      color: rosterLeague === lg.id ? 'var(--gold)' : 'var(--ivory)',
+                      background: rosterLeague === lg.id ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                      border: `1px solid ${rosterLeague === lg.id ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                      color: rosterLeague === lg.id ? '#06b6d4' : '#fafafa',
                       cursor: 'pointer',
                       transition: 'all 0.2s'
                     }}
@@ -501,19 +511,19 @@ export default function SquadsMercatoProps({ targetMatch }) {
 
               {/* Season Selector */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Saison :</span>
-                <div style={{ display: 'flex', background: 'var(--obsidian-2)', borderRadius: 10, padding: 3, border: '1px solid var(--ivory-border)', gap: 3 }}>
+                <span style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Saison :</span>
+                <div style={{ display: 'flex', background: '#121215', borderRadius: 4, padding: 3, border: '1px solid #27272a', gap: 3 }}>
                   {availableSeasons.map(s => (
                     <button
                       key={s.id}
                       onClick={() => setSelectedSeason(s.id)}
                       style={{
                         padding: '6px 12px',
-                        borderRadius: 8,
+                        borderRadius: 4,
                         fontSize: 11,
                         fontWeight: selectedSeason === s.id ? 700 : 500,
-                        background: selectedSeason === s.id ? 'var(--gold-muted)' : 'transparent',
-                        color: selectedSeason === s.id ? 'var(--gold)' : 'var(--neutral)',
+                        background: selectedSeason === s.id ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                        color: selectedSeason === s.id ? '#06b6d4' : '#71717a',
                         border: 'none',
                         cursor: 'pointer',
                         transition: 'all 0.2s'
@@ -528,7 +538,7 @@ export default function SquadsMercatoProps({ targetMatch }) {
 
             {/* Club Selection Scrollable Row */}
             <div>
-              <div style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8, fontWeight: 600 }}>
+              <div style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8, fontWeight: 600 }}>
                 Sélection du Club ({leagueClubs.length} clubs répertoriés) :
               </div>
               <div style={{
@@ -548,10 +558,10 @@ export default function SquadsMercatoProps({ targetMatch }) {
                         alignItems: 'center',
                         gap: 8,
                         padding: '8px 14px',
-                        borderRadius: 12,
-                        background: isSelected ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                        border: `1px solid ${isSelected ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                        color: isSelected ? 'var(--gold)' : 'var(--ivory)',
+                        borderRadius: 4,
+                        background: isSelected ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                        border: `1px solid ${isSelected ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                        color: isSelected ? '#06b6d4' : '#fafafa',
                         cursor: 'pointer',
                         whiteSpace: 'nowrap',
                         fontWeight: isSelected ? 700 : 400,
@@ -572,8 +582,8 @@ export default function SquadsMercatoProps({ targetMatch }) {
           {currentClubSquad && (
             <div style={{
               background: 'linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(20,20,20,0.6) 100%)',
-              border: '1px solid var(--gold-border)',
-              borderRadius: 16,
+              border: '1px solid rgba(6, 182, 212, 0.35)',
+              borderRadius: 6,
               padding: 20,
               display: 'flex',
               alignItems: 'center',
@@ -585,50 +595,50 @@ export default function SquadsMercatoProps({ targetMatch }) {
                 <TeamLogo teamName={currentClubSquad.club_name} size="lg" />
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <h2 style={{ fontSize: '1.6rem', color: 'var(--ivory)', margin: 0, fontFamily: 'var(--font-serif)' }}>
+                    <h2 style={{ fontSize: '1.6rem', color: '#fafafa', margin: 0, fontFamily: 'Inter, system-ui, sans-serif' }}>
                       {currentClubSquad.club_name}
                     </h2>
-                    <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 6, background: 'var(--obsidian-2)', color: 'var(--gold)', border: '1px solid var(--ivory-border)' }}>
+                    <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 6, background: '#121215', color: '#06b6d4', border: '1px solid #27272a' }}>
                       Saison {selectedSeason}
                     </span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 4, fontSize: 12, color: 'var(--neutral)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 4, fontSize: 12, color: '#71717a' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <MapPin size={13} color="var(--gold)" />
+                      <MapPin size={13} color="#06b6d4" />
                       {currentClubSquad.stadium} ({currentClubSquad.country})
                     </span>
                     <span>·</span>
-                    <span>Championnat : <strong style={{ color: 'var(--ivory)' }}>{currentClubSquad.league}</strong></span>
+                    <span>Championnat : <strong style={{ color: '#fafafa' }}>{currentClubSquad.league}</strong></span>
                   </div>
                 </div>
               </div>
 
               {/* KPI Badges */}
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '10px 16px', textAlign: 'center' }}>
-                  <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Effectif</div>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--ivory)', marginTop: 2 }}>{squadStats.total} <span style={{ fontSize: 11, color: 'var(--neutral)' }}>joueurs</span></div>
+                <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '10px 16px', textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase' }}>Effectif</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: '#fafafa', marginTop: 2 }}>{squadStats.total} <span style={{ fontSize: 11, color: '#71717a' }}>joueurs</span></div>
                 </div>
 
-                <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '10px 16px', textAlign: 'center' }}>
-                  <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Âge Moyen</div>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--gold)', marginTop: 2 }}>{squadStats.avgAge} <span style={{ fontSize: 11, color: 'var(--neutral)' }}>ans</span></div>
+                <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '10px 16px', textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase' }}>Âge Moyen</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: '#06b6d4', marginTop: 2 }}>{squadStats.avgAge} <span style={{ fontSize: 11, color: '#71717a' }}>ans</span></div>
                 </div>
 
-                <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '10px 16px', textAlign: 'center' }}>
-                  <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Valeur Totale</div>
+                <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '10px 16px', textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase' }}>Valeur Totale</div>
                   <div style={{ fontSize: 18, fontWeight: 700, color: '#4ade80', marginTop: 2 }}>{squadStats.totalVal}</div>
                 </div>
 
                 {squadStats.arrivals > 0 && (
-                  <div style={{ background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)', borderRadius: 12, padding: '10px 16px', textAlign: 'center' }}>
+                  <div style={{ background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)', borderRadius: 4, padding: '10px 16px', textAlign: 'center' }}>
                     <div style={{ fontSize: 10, color: '#4ade80', textTransform: 'uppercase' }}>Nouvelles Recrues</div>
                     <div style={{ fontSize: 18, fontWeight: 700, color: '#4ade80', marginTop: 2 }}>+{squadStats.arrivals}</div>
                   </div>
                 )}
 
                 {squadStats.departures > 0 && (
-                  <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: 12, padding: '10px 16px', textAlign: 'center' }}>
+                  <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: 4, padding: '10px 16px', textAlign: 'center' }}>
                     <div style={{ fontSize: 10, color: '#f87171', textTransform: 'uppercase' }}>Départs / Transferts</div>
                     <div style={{ fontSize: 18, fontWeight: 700, color: '#f87171', marginTop: 2 }}>-{squadStats.departures}</div>
                   </div>
@@ -640,9 +650,9 @@ export default function SquadsMercatoProps({ targetMatch }) {
           {/* Head Coach / Staff Technique Card */}
           {currentClubCoach && (
             <div style={{
-              background: 'var(--glass-primary)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 14,
+              background: '#121215',
+              border: '1px solid #27272a',
+              borderRadius: 6,
               padding: '14px 18px',
               display: 'flex',
               alignItems: 'center',
@@ -654,7 +664,7 @@ export default function SquadsMercatoProps({ targetMatch }) {
                 <PlayerAvatar name={currentClubCoach.coach_name} photoUrl={currentClubCoach.photo_url} size={46} />
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: '#fafafa' }}>
                       {currentClubCoach.coach_name}
                     </span>
                     <span style={{ fontSize: 13 }} title={currentClubCoach.nationality}>
@@ -672,25 +682,25 @@ export default function SquadsMercatoProps({ targetMatch }) {
                       {currentClubCoach.is_current ? '👔 En Poste (Actuel)' : '👔 Ancien Mandat'}
                     </span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 3, fontSize: 11, color: 'var(--neutral)', flexWrap: 'wrap' }}>
-                    <span>{currentClubCoach.nationality} · <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.age} ans</strong></span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 3, fontSize: 11, color: '#71717a', flexWrap: 'wrap' }}>
+                    <span>{currentClubCoach.nationality} · <strong style={{ color: '#fafafa' }}>{currentClubCoach.age} ans</strong></span>
                     <span>·</span>
-                    <span>Schéma type : <strong style={{ color: 'var(--gold)' }}>{currentClubCoach.preferred_formation}</strong></span>
+                    <span>Schéma type : <strong style={{ color: '#06b6d4' }}>{currentClubCoach.preferred_formation}</strong></span>
                     <span>·</span>
-                    <span>Mandat : <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.valid_from}</strong> ➔ <strong style={{ color: currentClubCoach.valid_to ? '#f87171' : '#4ade80' }}>{currentClubCoach.valid_to || 'Présent'}</strong></span>
+                    <span>Mandat : <strong style={{ color: '#fafafa' }}>{currentClubCoach.valid_from}</strong> ➔ <strong style={{ color: currentClubCoach.valid_to ? '#f87171' : '#4ade80' }}>{currentClubCoach.valid_to || 'Présent'}</strong></span>
                   </div>
                 </div>
               </div>
 
               {/* Coach Stats */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, background: 'var(--obsidian-2)', padding: '8px 14px', borderRadius: 10, border: '1px solid var(--ivory-border)', flexWrap: 'wrap' }}>
-                <span>🏟️ <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.matches_count}</strong> matchs</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, background: '#121215', padding: '8px 14px', borderRadius: 4, border: '1px solid #27272a', flexWrap: 'wrap' }}>
+                <span>🏟️ <strong style={{ color: '#fafafa' }}>{currentClubCoach.matches_count}</strong> matchs</span>
                 <span>·</span>
                 <span>🏆 <strong style={{ color: '#4ade80' }}>{currentClubCoach.wins}V</strong> - {currentClubCoach.draws}N - {currentClubCoach.losses}D</span>
                 <span>·</span>
-                <span>📈 <strong style={{ color: 'var(--gold)' }}>{currentClubCoach.win_rate_pct}%</strong> victoires</span>
+                <span>📈 <strong style={{ color: '#06b6d4' }}>{currentClubCoach.win_rate_pct}%</strong> victoires</span>
                 <span>·</span>
-                <span>⚡ <strong style={{ color: 'var(--ivory)' }}>{currentClubCoach.points_per_match}</strong> PPM</span>
+                <span>⚡ <strong style={{ color: '#fafafa' }}>{currentClubCoach.points_per_match}</strong> PPM</span>
               </div>
             </div>
           )}
@@ -712,12 +722,12 @@ export default function SquadsMercatoProps({ targetMatch }) {
                   onClick={() => setRosterPosition(pos.id)}
                   style={{
                     padding: '6px 14px',
-                    borderRadius: 10,
+                    borderRadius: 4,
                     fontSize: 12,
                     fontWeight: 600,
-                    border: `1px solid ${rosterPosition === pos.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                    background: rosterPosition === pos.id ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                    color: rosterPosition === pos.id ? 'var(--gold)' : 'var(--neutral)',
+                    border: `1px solid ${rosterPosition === pos.id ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                    background: rosterPosition === pos.id ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                    color: rosterPosition === pos.id ? '#06b6d4' : '#71717a',
                     cursor: 'pointer',
                     transition: 'all 0.2s'
                   }}
@@ -730,19 +740,19 @@ export default function SquadsMercatoProps({ targetMatch }) {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              background: 'var(--obsidian-2)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 10,
+              background: '#121215',
+              border: '1px solid #27272a',
+              borderRadius: 4,
               padding: '8px 14px',
               width: 280,
             }}>
-              <Search size={14} color="var(--gold)" style={{ marginRight: 8 }} />
+              <Search size={14} color="#06b6d4" style={{ marginRight: 8 }} />
               <input
                 type="text"
                 value={rosterSearch}
                 onChange={e => setRosterSearch(e.target.value)}
                 placeholder="Rechercher joueur, n°, poste..."
-                style={{ width: '100%', background: 'transparent', border: 'none', fontSize: 12, color: 'var(--ivory)', outline: 'none' }}
+                style={{ width: '100%', background: 'transparent', border: 'none', fontSize: 12, color: '#fafafa', outline: 'none' }}
               />
             </div>
           </div>
@@ -759,9 +769,9 @@ export default function SquadsMercatoProps({ targetMatch }) {
                 <div
                   key={player.id}
                   style={{
-                    background: 'var(--glass-primary)',
-                    border: '1px solid var(--ivory-border)',
-                    borderRadius: 16,
+                    background: '#121215',
+                    border: '1px solid #27272a',
+                    borderRadius: 6,
                     padding: 16,
                     display: 'flex',
                     flexDirection: 'column',
@@ -777,10 +787,10 @@ export default function SquadsMercatoProps({ targetMatch }) {
                       <span style={{
                         width: 28,
                         height: 28,
-                        borderRadius: 8,
-                        background: 'var(--obsidian-2)',
-                        border: '1px solid var(--ivory-border)',
-                        color: 'var(--gold)',
+                        borderRadius: 4,
+                        background: '#121215',
+                        border: '1px solid #27272a',
+                        color: '#06b6d4',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -811,13 +821,13 @@ export default function SquadsMercatoProps({ targetMatch }) {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                     <PlayerAvatar name={player.name} photoUrl={player.photo} size={50} />
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: '#fafafa', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {player.name}
                       </div>
-                      <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
-                        {player.nationality} · <strong style={{ color: 'var(--ivory)' }}>{player.age} ans</strong>
+                      <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
+                        {player.nationality} · <strong style={{ color: '#fafafa' }}>{player.age} ans</strong>
                       </div>
-                      <div style={{ fontSize: 11, color: 'var(--gold)', fontWeight: 600, marginTop: 2 }}>
+                      <div style={{ fontSize: 11, color: '#06b6d4', fontWeight: 600, marginTop: 2 }}>
                         {player.position}
                       </div>
                     </div>
@@ -825,9 +835,9 @@ export default function SquadsMercatoProps({ targetMatch }) {
 
                   {/* Transfermarkt Dates & Value Box */}
                   <div style={{
-                    background: 'var(--obsidian-2)',
-                    border: '1px solid var(--ivory-border)',
-                    borderRadius: 12,
+                    background: '#121215',
+                    border: '1px solid #27272a',
+                    borderRadius: 4,
                     padding: 10,
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
@@ -835,46 +845,46 @@ export default function SquadsMercatoProps({ targetMatch }) {
                     fontSize: 11
                   }}>
                     <div>
-                      <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>Arrivée Club</span>
-                      <strong style={{ color: 'var(--ivory)' }}>{player.joined_date || '01/07/2024'}</strong>
+                      <span style={{ color: '#71717a', display: 'block', fontSize: 10 }}>Arrivée Club</span>
+                      <strong style={{ color: '#fafafa' }}>{player.joined_date || '01/07/2024'}</strong>
                     </div>
 
                     <div>
-                      <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>
+                      <span style={{ color: '#71717a', display: 'block', fontSize: 10 }}>
                         {player.left_date ? 'Date de Départ' : 'Fin Contrat'}
                       </span>
-                      <strong style={{ color: player.left_date ? '#f87171' : 'var(--gold)' }}>
+                      <strong style={{ color: player.left_date ? '#f87171' : '#06b6d4' }}>
                         {player.left_date || player.contract_until || '2028-06-30'}
                       </strong>
                     </div>
 
-                    <div style={{ gridColumn: '1 / -1', borderTop: '1px solid var(--ivory-border)', paddingTop: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ color: 'var(--neutral)', fontSize: 10 }}>Valeur Marchande Transfermarkt</span>
+                    <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #27272a', paddingTop: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#71717a', fontSize: 10 }}>Valeur Marchande Transfermarkt</span>
                       <span style={{ color: '#4ade80', fontWeight: 700, fontSize: 12 }}>
                         {player.market_value}
                       </span>
                     </div>
 
                     {player.destination_club && (
-                      <div style={{ gridColumn: '1 / -1', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: 8, padding: '6px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ gridColumn: '1 / -1', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: 4, padding: '6px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ color: '#f87171', fontSize: 11, fontWeight: 600 }}>➔ Vers {player.destination_club}</span>
-                        <span style={{ color: 'var(--gold)', fontSize: 11, fontWeight: 700 }}>{player.fee_display}</span>
+                        <span style={{ color: '#06b6d4', fontSize: 11, fontWeight: 700 }}>{player.fee_display}</span>
                       </div>
                     )}
 
                     {player.from_club && (
-                      <div style={{ gridColumn: '1 / -1', background: 'rgba(34, 197, 94, 0.08)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: 8, padding: '6px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ gridColumn: '1 / -1', background: 'rgba(34, 197, 94, 0.08)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: 4, padding: '6px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ color: '#4ade80', fontSize: 11, fontWeight: 600 }}>✨ Depuis {player.from_club}</span>
-                        <span style={{ color: 'var(--gold)', fontSize: 11, fontWeight: 700 }}>{player.fee_display}</span>
+                        <span style={{ color: '#06b6d4', fontSize: 11, fontWeight: 700 }}>{player.fee_display}</span>
                       </div>
                     )}
                   </div>
 
                   {/* Season Stats mini-bar */}
-                  <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', fontSize: 11, color: 'var(--neutral)', background: 'rgba(255,255,255,0.02)', padding: '6px 8px', borderRadius: 8 }}>
-                    <span>🏟️ <strong style={{ color: 'var(--ivory)' }}>{player.stats?.appearances || 0}</strong> matchs</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', fontSize: 11, color: '#71717a', background: 'rgba(255,255,255,0.02)', padding: '6px 8px', borderRadius: 4 }}>
+                    <span>🏟️ <strong style={{ color: '#fafafa' }}>{player.stats?.appearances || 0}</strong> matchs</span>
                     <span>⚽ <strong style={{ color: '#4ade80' }}>{player.stats?.goals || 0}</strong> buts</span>
-                    <span>🎯 <strong style={{ color: 'var(--gold)' }}>{player.stats?.assists || 0}</strong> passes</span>
+                    <span>🎯 <strong style={{ color: '#06b6d4' }}>{player.stats?.assists || 0}</strong> passes</span>
                   </div>
                 </div>
               );
@@ -882,10 +892,10 @@ export default function SquadsMercatoProps({ targetMatch }) {
           </div>
 
           {filteredRoster.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '40px 20px', background: 'var(--glass-primary)', borderRadius: 16, border: '1px solid var(--ivory-border)' }}>
-              <Users size={32} color="var(--neutral)" style={{ margin: '0 auto 12px' }} />
-              <div style={{ fontSize: 14, color: 'var(--ivory)', fontWeight: 600 }}>Aucun joueur trouvé pour ce filtre</div>
-              <div style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>Essayez de modifier votre terme de recherche ou le filtre de poste.</div>
+            <div style={{ textAlign: 'center', padding: '40px 20px', background: '#121215', borderRadius: 6, border: '1px solid #27272a' }}>
+              <Users size={32} color="#71717a" style={{ margin: '0 auto 12px' }} />
+              <div style={{ fontSize: 14, color: '#fafafa', fontWeight: 600 }}>Aucun joueur trouvé pour ce filtre</div>
+              <div style={{ fontSize: 12, color: '#71717a', marginTop: 4 }}>Essayez de modifier votre terme de recherche ou le filtre de poste.</div>
             </div>
           )}
         </div>
@@ -900,40 +910,40 @@ export default function SquadsMercatoProps({ targetMatch }) {
           {/* ── 1. KPI SUMMARY BAR ── */}
           <div style={{
             background: 'linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(20,20,20,0.6) 100%)',
-            border: '1px solid var(--gold-border)',
-            borderRadius: 16,
+            border: '1px solid rgba(6, 182, 212, 0.35)',
+            borderRadius: 6,
             padding: 20,
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
             gap: 16,
           }}>
-            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mouvements Suivis</div>
-              <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--ivory)', marginTop: 4 }}>
-                {transferStats.total} <span style={{ fontSize: 12, color: 'var(--gold)' }}>transferts</span>
+            <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mouvements Suivis</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: '#fafafa', marginTop: 4 }}>
+                {transferStats.total} <span style={{ fontSize: 12, color: '#06b6d4' }}>transferts</span>
               </div>
             </div>
 
-            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Volume Financier Total</div>
+            <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Volume Financier Total</div>
               <div style={{ fontSize: 20, fontWeight: 700, color: '#4ade80', marginTop: 4 }}>
                 {transferStats.totalFeeM}
               </div>
             </div>
 
-            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Âge Moyen au Transfert</div>
-              <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>
+            <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Âge Moyen au Transfert</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: '#06b6d4', marginTop: 4 }}>
                 {transferStats.avgAge}
               </div>
             </div>
 
-            <div style={{ background: 'var(--obsidian-2)', border: '1px solid var(--ivory-border)', borderRadius: 12, padding: '12px 16px' }}>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Transfert Record</div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--gold)', marginTop: 4, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 4, padding: '12px 16px' }}>
+              <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Transfert Record</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: '#06b6d4', marginTop: 4, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {transferStats.recordFee}
               </div>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <div style={{ fontSize: 10, color: '#71717a', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {transferStats.recordPlayer}
               </div>
             </div>
@@ -941,9 +951,9 @@ export default function SquadsMercatoProps({ targetMatch }) {
 
           {/* ── 2. MULTI-DIMENSIONAL CONTROLS & FILTER BAR ── */}
           <div style={{
-            background: 'var(--glass-primary)',
-            border: '1px solid var(--ivory-border)',
-            borderRadius: 16,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: 18,
             display: 'flex',
             flexDirection: 'column',
@@ -964,12 +974,12 @@ export default function SquadsMercatoProps({ targetMatch }) {
                     onClick={() => setTransferSeason(s.id)}
                     style={{
                       padding: '7px 14px',
-                      borderRadius: 10,
+                      borderRadius: 4,
                       fontSize: 12,
                       fontWeight: 600,
-                      border: `1px solid ${transferSeason === s.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                      background: transferSeason === s.id ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                      color: transferSeason === s.id ? 'var(--gold)' : 'var(--neutral)',
+                      border: `1px solid ${transferSeason === s.id ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                      background: transferSeason === s.id ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                      color: transferSeason === s.id ? '#06b6d4' : '#71717a',
                       cursor: 'pointer',
                       transition: 'all 0.2s',
                     }}
@@ -981,15 +991,15 @@ export default function SquadsMercatoProps({ targetMatch }) {
 
               {/* Sort Selector */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ fontSize: 11, color: 'var(--neutral)' }}>Trier par :</span>
+                <span style={{ fontSize: 11, color: '#71717a' }}>Trier par :</span>
                 <select
                   value={transferSort}
                   onChange={e => setTransferSort(e.target.value)}
                   style={{
-                    background: 'var(--obsidian-2)',
-                    border: '1px solid var(--ivory-border)',
-                    borderRadius: 10,
-                    color: 'var(--ivory)',
+                    background: '#121215',
+                    border: '1px solid #27272a',
+                    borderRadius: 4,
+                    color: '#fafafa',
                     padding: '6px 12px',
                     fontSize: 11,
                     outline: 'none',
@@ -1019,12 +1029,12 @@ export default function SquadsMercatoProps({ targetMatch }) {
                     onClick={() => setTransferRole(r.id)}
                     style={{
                       padding: '5px 12px',
-                      borderRadius: 8,
+                      borderRadius: 4,
                       fontSize: 11,
                       fontWeight: 600,
-                      border: `1px solid ${transferRole === r.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                      background: transferRole === r.id ? 'var(--gold-muted)' : 'rgba(255,255,255,0.02)',
-                      color: transferRole === r.id ? 'var(--gold)' : 'var(--neutral)',
+                      border: `1px solid ${transferRole === r.id ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                      background: transferRole === r.id ? 'rgba(6, 182, 212, 0.12)' : 'rgba(255,255,255,0.02)',
+                      color: transferRole === r.id ? '#06b6d4' : '#71717a',
                       cursor: 'pointer',
                     }}
                   >
@@ -1047,12 +1057,12 @@ export default function SquadsMercatoProps({ targetMatch }) {
                     onClick={() => setTransferFeeRange(f.id)}
                     style={{
                       padding: '5px 10px',
-                      borderRadius: 8,
+                      borderRadius: 4,
                       fontSize: 11,
                       fontWeight: 600,
-                      border: `1px solid ${transferFeeRange === f.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
+                      border: `1px solid ${transferFeeRange === f.id ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
                       background: transferFeeRange === f.id ? 'rgba(74, 222, 128, 0.15)' : 'rgba(255,255,255,0.02)',
-                      color: transferFeeRange === f.id ? '#4ade80' : 'var(--neutral)',
+                      color: transferFeeRange === f.id ? '#4ade80' : '#71717a',
                       cursor: 'pointer',
                     }}
                   >
@@ -1066,23 +1076,23 @@ export default function SquadsMercatoProps({ targetMatch }) {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              background: 'var(--obsidian-2)',
-              border: '1px solid var(--ivory-border)',
-              borderRadius: 10,
+              background: '#121215',
+              border: '1px solid #27272a',
+              borderRadius: 4,
               padding: '8px 14px',
             }}>
-              <Search size={14} color="var(--gold)" style={{ marginRight: 10 }} />
+              <Search size={14} color="#06b6d4" style={{ marginRight: 10 }} />
               <input
                 type="text"
                 value={transferSearch}
                 onChange={e => setTransferSearch(e.target.value)}
                 placeholder="Rechercher joueur, club vendeur/acheteur, nationalité (ex: Mbappé, PSG, Man City, France)..."
-                style={{ width: '100%', background: 'transparent', border: 'none', fontSize: 12, color: 'var(--ivory)', outline: 'none' }}
+                style={{ width: '100%', background: 'transparent', border: 'none', fontSize: 12, color: '#fafafa', outline: 'none' }}
               />
               {transferSearch && (
                 <button
                   onClick={() => setTransferSearch('')}
-                  style={{ background: 'transparent', border: 'none', color: 'var(--neutral)', cursor: 'pointer', fontSize: 11 }}
+                  style={{ background: 'transparent', border: 'none', color: '#71717a', cursor: 'pointer', fontSize: 11 }}
                 >
                   Effacer
                 </button>
@@ -1107,11 +1117,11 @@ export default function SquadsMercatoProps({ targetMatch }) {
               <button
                 onClick={() => setTransferDisplayLimit(prev => prev + 36)}
                 style={{
-                  background: 'var(--obsidian-2)',
-                  border: '1px solid var(--gold-border)',
-                  color: 'var(--gold)',
+                  background: '#121215',
+                  border: '1px solid rgba(6, 182, 212, 0.35)',
+                  color: '#06b6d4',
                   padding: '10px 24px',
-                  borderRadius: 12,
+                  borderRadius: 4,
                   fontSize: 13,
                   fontWeight: 700,
                   cursor: 'pointer',
@@ -1129,10 +1139,10 @@ export default function SquadsMercatoProps({ targetMatch }) {
           )}
 
           {filteredTransfers.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '40px 20px', background: 'var(--glass-primary)', borderRadius: 16, border: '1px solid var(--ivory-border)' }}>
-              <Users size={32} color="var(--neutral)" style={{ margin: '0 auto 12px' }} />
-              <div style={{ fontSize: 14, color: 'var(--ivory)', fontWeight: 600 }}>Aucun mouvement trouvé pour ces critères</div>
-              <div style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>Modifiez les filtres de saison, de poste ou la recherche pour explorer les transferts.</div>
+            <div style={{ textAlign: 'center', padding: '40px 20px', background: '#121215', borderRadius: 6, border: '1px solid #27272a' }}>
+              <Users size={32} color="#71717a" style={{ margin: '0 auto 12px' }} />
+              <div style={{ fontSize: 14, color: '#fafafa', fontWeight: 600 }}>Aucun mouvement trouvé pour ces critères</div>
+              <div style={{ fontSize: 12, color: '#71717a', marginTop: 4 }}>Modifiez les filtres de saison, de poste ou la recherche pour explorer les transferts.</div>
             </div>
           )}
         </div>

@@ -33,14 +33,14 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
           flexWrap: 'wrap',
           gap: 12,
           padding: '14px 18px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           backdropFilter: 'blur(10px)',
         }}
       >
         {/* Toggle Joueurs / Fair-play Équipes */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0, 0, 0, 0.3)', padding: 4, borderRadius: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#18181b', padding: 4, borderRadius: 4 }}>
           <button
             onClick={() => setActiveTab('PLAYERS')}
             style={{
@@ -48,18 +48,18 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
               alignItems: 'center',
               gap: 8,
               padding: '8px 18px',
-              borderRadius: 8,
+              borderRadius: 4,
               fontSize: 13,
               fontWeight: activeTab === 'PLAYERS' ? 700 : 500,
               cursor: 'pointer',
               border: 'none',
               transition: 'all 0.2s',
-              background: activeTab === 'PLAYERS' ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.2))' : 'transparent',
-              color: activeTab === 'PLAYERS' ? '#f5d77f' : 'rgba(245, 240, 232, 0.6)',
-              boxShadow: activeTab === 'PLAYERS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(212, 175, 55, 0.4)' : 'none',
+              background: activeTab === 'PLAYERS' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeTab === 'PLAYERS' ? '#06b6d4' : '#71717a',
+              boxShadow: activeTab === 'PLAYERS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(6, 182, 212, 0.35)' : 'none',
             }}
           >
-            <ShieldAlert size={15} color={activeTab === 'PLAYERS' ? '#f5d77f' : 'currentColor'} />
+            <ShieldAlert size={15} color={activeTab === 'PLAYERS' ? '#06b6d4' : 'currentColor'} />
             Cartons Individuels ({players.length})
           </button>
 
@@ -70,18 +70,18 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
               alignItems: 'center',
               gap: 8,
               padding: '8px 18px',
-              borderRadius: 8,
+              borderRadius: 4,
               fontSize: 13,
               fontWeight: activeTab === 'TEAMS' ? 700 : 500,
               cursor: 'pointer',
               border: 'none',
               transition: 'all 0.2s',
-              background: activeTab === 'TEAMS' ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.2))' : 'transparent',
-              color: activeTab === 'TEAMS' ? '#f5d77f' : 'rgba(245, 240, 232, 0.6)',
-              boxShadow: activeTab === 'TEAMS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(212, 175, 55, 0.4)' : 'none',
+              background: activeTab === 'TEAMS' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeTab === 'TEAMS' ? '#06b6d4' : '#71717a',
+              boxShadow: activeTab === 'TEAMS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(6, 182, 212, 0.35)' : 'none',
             }}
           >
-            <ShieldCheck size={15} color={activeTab === 'TEAMS' ? '#f5d77f' : 'currentColor'} />
+            <ShieldCheck size={15} color={activeTab === 'TEAMS' ? '#06b6d4' : 'currentColor'} />
             Fair-Play & Fautes par Équipe ({teams.length})
           </button>
         </div>
@@ -95,7 +95,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
               left: 12,
               top: '50%',
               transform: 'translateY(-50%)',
-              color: 'rgba(245, 240, 232, 0.4)',
+              color: '#71717a',
             }}
           />
           <input
@@ -106,15 +106,15 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
             style={{
               width: '100%',
               padding: '8px 12px 8px 34px',
-              borderRadius: 10,
+              borderRadius: 4,
               fontSize: 13,
-              background: 'rgba(0, 0, 0, 0.35)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              color: 'var(--ivory)',
+              background: '#18181b',
+              border: '1px solid #27272a',
+              color: '#fafafa',
               outline: 'none',
             }}
-            onFocus={(e) => (e.target.style.borderColor = 'rgba(212, 175, 55, 0.5)')}
-            onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.08)')}
+            onFocus={(e) => (e.target.style.borderColor = 'rgba(6, 182, 212, 0.4)')}
+            onBlur={(e) => (e.target.style.borderColor = '#27272a')}
           />
         </div>
       </div>
@@ -125,10 +125,10 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
         <div
           style={{
             background: 'linear-gradient(180deg, rgba(20, 26, 38, 0.85) 0%, rgba(13, 17, 26, 0.95) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 16,
+            border: '1px solid #27272a',
+            borderRadius: 6,
             overflow: 'hidden',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+            boxShadow: '0 8px 32px #18181b',
           }}
         >
           <div style={{ overflowX: 'auto' }}>
@@ -136,8 +136,8 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
               <thead>
                 <tr
                   style={{
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                    background: 'rgba(255, 255, 255, 0.02)',
+                    borderBottom: '1px solid #27272a',
+                    background: '#121215',
                     fontSize: 11,
                     fontFamily: 'var(--font-mono)',
                     letterSpacing: '0.06em',
@@ -151,7 +151,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                   <th style={{ padding: '14px 14px', textAlign: 'center', width: 90 }}>🟨 Jaunes</th>
                   <th style={{ padding: '14px 14px', textAlign: 'center', width: 90 }}>🟥 Rouges</th>
                   <th style={{ padding: '14px 14px', textAlign: 'center', width: 90 }}>Total</th>
-                  <th style={{ padding: '14px 14px', textAlign: 'center', width: 90, color: '#f5d77f' }}>Points</th>
+                  <th style={{ padding: '14px 14px', textAlign: 'center', width: 90, color: '#06b6d4' }}>Points</th>
                   <th style={{ padding: '14px 16px', textAlign: 'center', width: 90 }}>Matchs</th>
                 </tr>
               </thead>
@@ -160,7 +160,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                   <tr
                     key={`${player.name}_${player.team}`}
                     style={{
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                      borderBottom: '1px solid #18181b',
                       transition: 'background 0.15s ease',
                       fontSize: 13,
                     }}
@@ -188,7 +188,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                             height: 30,
                             borderRadius: '50%',
                             overflow: 'hidden',
-                            background: 'rgba(255, 255, 255, 0.05)',
+                            background: '#18181b',
                             border: '1px solid rgba(255, 255, 255, 0.1)',
                             display: 'flex',
                             alignItems: 'center',
@@ -204,12 +204,12 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                               onError={(e) => (e.target.style.display = 'none')}
                             />
                           ) : (
-                            <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--gold)' }}>
+                            <span style={{ fontSize: 10, fontWeight: 700, color: '#06b6d4' }}>
                               {player.name.substring(0, 2).toUpperCase()}
                             </span>
                           )}
                         </div>
-                        <span style={{ fontWeight: 600, color: 'var(--ivory)' }}>
+                        <span style={{ fontWeight: 600, color: '#fafafa' }}>
                           {player.name}
                         </span>
                       </div>
@@ -232,7 +232,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                       {player.redCards}
                     </td>
 
-                    <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--ivory)' }}>
+                    <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 600, color: '#fafafa' }}>
                       {player.totalCards}
                     </td>
 
@@ -254,7 +254,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                       </div>
                     </td>
 
-                    <td style={{ padding: '12px 16px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'rgba(245, 240, 232, 0.6)' }}>
+                    <td style={{ padding: '12px 16px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: '#71717a' }}>
                       {player.matchesCount}
                     </td>
                   </tr>
@@ -268,10 +268,10 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
         <div
           style={{
             background: 'linear-gradient(180deg, rgba(20, 26, 38, 0.85) 0%, rgba(13, 17, 26, 0.95) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 16,
+            border: '1px solid #27272a',
+            borderRadius: 6,
             overflow: 'hidden',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+            boxShadow: '0 8px 32px #18181b',
           }}
         >
           <div style={{ overflowX: 'auto' }}>
@@ -279,8 +279,8 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
               <thead>
                 <tr
                   style={{
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                    background: 'rgba(255, 255, 255, 0.02)',
+                    borderBottom: '1px solid #27272a',
+                    background: '#121215',
                     fontSize: 11,
                     fontFamily: 'var(--font-mono)',
                     letterSpacing: '0.06em',
@@ -307,7 +307,7 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                     <tr
                       key={teamData.team}
                       style={{
-                        borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                        borderBottom: '1px solid #18181b',
                         transition: 'background 0.15s ease',
                         fontSize: 13,
                       }}
@@ -330,13 +330,13 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                       <td style={{ padding: '12px 16px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                           <TeamLogo teamName={teamData.team} size="sm" />
-                          <span style={{ fontWeight: 600, color: 'var(--ivory)' }}>
+                          <span style={{ fontWeight: 600, color: '#fafafa' }}>
                             {teamData.team}
                           </span>
                         </div>
                       </td>
 
-                      <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'rgba(245, 240, 232, 0.6)' }}>
+                      <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: '#71717a' }}>
                         {teamData.matchesCount}
                       </td>
 
@@ -361,17 +361,17 @@ export default function DisciplineView({ disciplineData = { players: [], teams: 
                           style={{
                             display: 'inline-block',
                             padding: '4px 10px',
-                            borderRadius: 8,
+                            borderRadius: 4,
                             background: isCleanTop3
                               ? 'rgba(16, 185, 129, 0.15)'
                               : isPenaltyHeavy
                               ? 'rgba(239, 68, 68, 0.15)'
-                              : 'rgba(255, 255, 255, 0.05)',
+                              : '#18181b',
                             border: `1px solid ${isCleanTop3 ? 'rgba(16, 185, 129, 0.4)' : isPenaltyHeavy ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.1)'}`,
                             fontFamily: 'var(--font-mono)',
                             fontWeight: 700,
                             fontSize: 12,
-                            color: isCleanTop3 ? '#34d399' : isPenaltyHeavy ? '#f87171' : 'var(--ivory)',
+                            color: isCleanTop3 ? '#34d399' : isPenaltyHeavy ? '#f87171' : '#fafafa',
                           }}
                         >
                           {teamData.points} pts

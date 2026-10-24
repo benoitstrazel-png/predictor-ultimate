@@ -17,8 +17,11 @@ const MatchHistoryHub = lazy(() => import('./components/MatchHistoryHub'));
 const SquadsMercatoProps = lazy(() => import('./components/SquadsMercatoProps'));
 const CopilotView = lazy(() => import('./components/CopilotView'));
 const BankrollTracking = lazy(() => import('./components/BankrollTracking'));
+const MyBetsHub = lazy(() => import('./components/MyBetsHub'));
 
 import { MatchProvider, useMatch } from './context/MatchContext';
+import { BetSlipProvider } from './context/BetSlipContext';
+import BetSlipDrawer from './components/BetSlipDrawer';
 import { calculateCalibration } from './utils/calibration';
 
 function AppContent() {
@@ -217,6 +220,10 @@ function AppContent() {
                 <Route path="/model-tracking" element={<BankrollTracking APP_DATA={appData} />} />
                 <Route path="/bankroll" element={<Navigate to="/model-tracking" replace />} />
 
+                {/* Tab 8: Mes Paris & Tickets Tracker */}
+                <Route path="/my-bets" element={<MyBetsHub />} />
+                <Route path="/tickets" element={<Navigate to="/my-bets" replace />} />
+
                 {/* Legacy route fallbacks & Catch-all */}
                 <Route path="/match-focus" element={<Navigate to="/match-deep-dive" replace />} />
                 <Route path="/players" element={<Navigate to="/squads-mercato" replace />} />
@@ -229,6 +236,9 @@ function AppContent() {
           </div>
         </div>
       </main>
+
+      {/* ── 2.5. Floating Persistent BetSlip Drawer ── */}
+      <BetSlipDrawer />
 
       {/* ── 3. Right Fixtures Drawer ── */}
       <FixturesDrawer
@@ -266,9 +276,11 @@ function AppContent() {
 function App() {
   return (
     <MatchProvider>
-      <AppContent />
-      <Analytics />
-      <SpeedInsights />
+      <BetSlipProvider>
+        <AppContent />
+        <Analytics />
+        <SpeedInsights />
+      </BetSlipProvider>
     </MatchProvider>
   );
 }

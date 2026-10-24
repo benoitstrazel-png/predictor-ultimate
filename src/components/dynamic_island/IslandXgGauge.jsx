@@ -44,7 +44,7 @@ function IslandXgGauge({ homeXg = 0, awayXg = 0, homeTeam = 'Dom.', awayTeam = '
         }}
       >
         <span style={{ color: 'var(--ivory, #F5F0E8)', fontWeight: 600 }}>
-          <strong style={{ fontSize: '13px', color: leader === 'home' ? 'var(--positive, #4ADE80)' : 'var(--ivory)' }}>
+          <strong style={{ fontSize: '13px', color: leader === 'home' ? 'var(--positive, #4ADE80)' : '#fafafa' }}>
             {hVal}
           </strong>{' '}
           <span style={{ fontSize: '10px', color: 'var(--neutral, #94A3B8)' }}>xG</span>
@@ -64,7 +64,7 @@ function IslandXgGauge({ homeXg = 0, awayXg = 0, homeTeam = 'Dom.', awayTeam = '
 
         <span style={{ color: 'var(--ivory, #F5F0E8)', fontWeight: 600 }}>
           <span style={{ fontSize: '10px', color: 'var(--neutral, #94A3B8)' }}>xG</span>{' '}
-          <strong style={{ fontSize: '13px', color: leader === 'away' ? 'var(--positive, #4ADE80)' : 'var(--ivory)' }}>
+          <strong style={{ fontSize: '13px', color: leader === 'away' ? 'var(--positive, #4ADE80)' : '#fafafa' }}>
             {aVal}
           </strong>
         </span>

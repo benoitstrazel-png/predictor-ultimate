@@ -144,21 +144,21 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
             width: '100%',
             maxWidth: 820,
             maxHeight: '92vh',
-            background: 'var(--obsidian-2)',
-            border: '1px solid var(--gold-border)',
-            borderRadius: 24,
+            background: '#121215',
+            border: '1px solid rgba(6, 182, 212, 0.35)',
+            borderRadius: 4,
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
-            boxShadow: '0 25px 70px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(201, 169, 110, 0.15)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.85)',
           }}
         >
           {/* ── MODAL HEADER / SCOREBOARD ── */}
           <div style={{
             position: 'relative',
-            background: 'linear-gradient(180deg, rgba(26, 34, 54, 0.9) 0%, rgba(13, 18, 32, 0.95) 100%)',
+            background: '#18181b',
             padding: '24px 28px 18px',
-            borderBottom: '1px solid var(--ivory-border)',
+            borderBottom: '1px solid #27272a',
           }}>
             {/* Close Button */}
             <button
@@ -168,14 +168,14 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 top: 18,
                 right: 18,
                 background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid var(--ivory-border)',
+                border: '1px solid #27272a',
                 borderRadius: '50%',
                 width: 34,
                 height: 34,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--ivory)',
+                color: '#fafafa',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease',
               }}
@@ -190,8 +190,8 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 fontSize: 10,
                 padding: '3px 9px',
                 borderRadius: 6,
-                background: 'var(--gold-muted)',
-                color: 'var(--gold)',
+                background: 'rgba(6, 182, 212, 0.12)',
+                color: '#06b6d4',
                 fontWeight: 800,
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase'
@@ -203,15 +203,15 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 padding: '3px 9px',
                 borderRadius: 6,
                 background: 'rgba(255, 255, 255, 0.05)',
-                color: 'var(--ivory-dim)',
-                border: '1px solid var(--ivory-border)',
+                color: '#a1a1aa',
+                border: '1px solid #27272a',
                 fontWeight: 600
               }}>
                 {targetMatch.round || 'Journée 1'} · {targetMatch.season || '2026-2027'}
               </span>
-              <span style={{ fontSize: 11, color: 'var(--neutral)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+              <span style={{ fontSize: 11, color: '#71717a', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                 <Calendar size={12} /> {targetMatch.date || targetMatch.matchDate || 'Date officielle'}
-                <span style={{ color: 'var(--gold)', fontWeight: 700, marginLeft: 4 }}>• <Clock size={11} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 2 }} />{formatMatchTime(targetMatch)}</span>
+                <span style={{ color: '#06b6d4', fontWeight: 700, marginLeft: 4 }}>• <Clock size={11} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 2 }} />{formatMatchTime(targetMatch)}</span>
               </span>
             </div>
 
@@ -226,10 +226,10 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, justifyContent: 'flex-start' }}>
                 <TeamLogo teamName={homeTeam} size="lg" />
                 <div>
-                  <h2 style={{ fontSize: 18, fontWeight: 800, color: 'var(--ivory)', margin: 0 }}>
+                  <h2 style={{ fontSize: 18, fontWeight: 800, color: '#fafafa', margin: 0 }}>
                     {homeTeam}
                   </h2>
-                  <div style={{ fontSize: 11, color: 'var(--gold)', marginTop: 2, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                  <div style={{ fontSize: 11, color: '#06b6d4', marginTop: 2, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                     <span>👔 {homeCoach}</span>
                     <span>·</span>
                     <span>{homeFormation}</span>
@@ -246,21 +246,21 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 justifyContent: 'center',
                 padding: '8px 18px',
                 background: 'var(--obsidian)',
-                border: '1px solid var(--gold-border)',
-                borderRadius: 14,
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                borderRadius: 6,
                 boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
               }}>
                 <span style={{
                   fontSize: 26,
                   fontWeight: 900,
-                  color: isLive ? '#4ade80' : 'var(--ivory)',
+                  color: isLive ? '#4ade80' : '#fafafa',
                   fontFamily: 'monospace',
                   letterSpacing: '0.05em'
                 }}>
                   {scoreDisplay}
                 </span>
                 {targetMatch.halfTimeScore && (
-                  <span style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 2 }}>
+                  <span style={{ fontSize: 10, color: '#71717a', marginTop: 2 }}>
                     (Mi-temps : {targetMatch.halfTimeScore})
                   </span>
                 )}
@@ -274,10 +274,10 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
               {/* Away Team */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, justifyContent: 'flex-end', textAlign: 'right' }}>
                 <div>
-                  <h2 style={{ fontSize: 18, fontWeight: 800, color: 'var(--ivory)', margin: 0 }}>
+                  <h2 style={{ fontSize: 18, fontWeight: 800, color: '#fafafa', margin: 0 }}>
                     {awayTeam}
                   </h2>
-                  <div style={{ fontSize: 11, color: 'var(--gold)', marginTop: 2, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                  <div style={{ fontSize: 11, color: '#06b6d4', marginTop: 2, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     {targetMatch.awayXg ? <span>{targetMatch.awayXg} xG ·</span> : null}
                     <span>{awayFormation}</span>
                     <span>·</span>
@@ -297,15 +297,15 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
               paddingTop: 10,
               borderTop: '1px solid rgba(255, 255, 255, 0.05)',
               fontSize: 11,
-              color: 'var(--neutral)',
+              color: '#71717a',
               flexWrap: 'wrap',
               gap: 8,
             }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                <MapPin size={13} color="var(--gold)" /> {stadiumName}
+                <MapPin size={13} color="#06b6d4" /> {stadiumName}
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                <Shield size={13} color="var(--gold)" /> Arbitre : <strong style={{ color: 'var(--ivory)' }}>{refereeName}</strong>
+                <Shield size={13} color="#06b6d4" /> Arbitre : <strong style={{ color: '#fafafa' }}>{refereeName}</strong>
               </span>
             </div>
           </div>
@@ -315,7 +315,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
             display: 'flex',
             alignItems: 'center',
             background: 'var(--obsidian)',
-            borderBottom: '1px solid var(--ivory-border)',
+            borderBottom: '1px solid #27272a',
             padding: '0 20px',
             gap: 8,
             overflowX: 'auto',
@@ -339,8 +339,8 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                     padding: '12px 16px',
                     fontSize: 12,
                     fontWeight: isActive ? 800 : 500,
-                    color: isActive ? 'var(--gold)' : 'var(--neutral)',
-                    borderBottom: `2px solid ${isActive ? 'var(--gold)' : 'transparent'}`,
+                    color: isActive ? '#06b6d4' : '#71717a',
+                    borderBottom: `2px solid ${isActive ? '#06b6d4' : 'transparent'}`,
                     background: 'transparent',
                     borderLeft: 'none',
                     borderRight: 'none',
@@ -383,16 +383,16 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                   {/* Home Team Lineup */}
                   <div style={{
                     background: 'rgba(13, 18, 32, 0.65)',
-                    borderRadius: 16,
+                    borderRadius: 6,
                     padding: 18,
-                    border: '1px solid var(--ivory-border)',
+                    border: '1px solid #27272a',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <TeamLogo teamName={homeTeam} size="xs" />
-                        <span style={{ fontSize: 14, fontWeight: 800, color: 'var(--ivory)' }}>{homeTeam}</span>
+                        <span style={{ fontSize: 14, fontWeight: 800, color: '#fafafa' }}>{homeTeam}</span>
                       </div>
-                      <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800 }}>Titulaires (XI)</span>
+                      <span style={{ fontSize: 10, color: '#06b6d4', fontWeight: 800 }}>Titulaires (XI)</span>
                     </div>
 
                     {/* Home Coach & Formation Card */}
@@ -402,16 +402,16 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                       justifyContent: 'space-between',
                       padding: '8px 12px',
                       background: 'rgba(201, 169, 110, 0.08)',
-                      border: '1px solid var(--gold-border)',
-                      borderRadius: 10,
+                      border: '1px solid rgba(6, 182, 212, 0.35)',
+                      borderRadius: 4,
                       marginBottom: 12,
                       fontSize: 11,
                     }}>
-                      <span style={{ color: 'var(--gold)', fontWeight: 800 }}>
+                      <span style={{ color: '#06b6d4', fontWeight: 800 }}>
                         📐 {homeFormation}
                       </span>
-                      <span style={{ color: 'var(--ivory)', fontWeight: 700 }}>
-                        👔 Entraîneur : <strong style={{ color: 'var(--gold)' }}>{homeCoach}</strong>
+                      <span style={{ color: '#fafafa', fontWeight: 700 }}>
+                        👔 Entraîneur : <strong style={{ color: '#06b6d4' }}>{homeCoach}</strong>
                       </span>
                     </div>
 
@@ -435,10 +435,10 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                               }}
                             >
                               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                <span style={{ width: 18, fontSize: 10, color: 'var(--neutral)', fontFamily: 'monospace' }}>
+                                <span style={{ width: 18, fontSize: 10, color: '#71717a', fontFamily: 'monospace' }}>
                                   #{p.num || idx + 1}
                                 </span>
-                                <span style={{ fontWeight: 600, color: 'var(--ivory)' }}>
+                                <span style={{ fontWeight: 600, color: '#fafafa' }}>
                                   {p.name} {p.captain ? ' (C)' : ''}
                                 </span>
                                 <span style={{
@@ -456,7 +456,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                                 <span style={{
                                   fontSize: 11,
                                   fontWeight: 800,
-                                  color: p.rating >= 7.5 ? 'var(--gold)' : (p.rating >= 6.5 ? 'var(--positive)' : 'var(--neutral)'),
+                                  color: p.rating >= 7.5 ? '#06b6d4' : (p.rating >= 6.5 ? '#10b981' : '#71717a'),
                                   background: 'rgba(0,0,0,0.3)',
                                   padding: '2px 6px',
                                   borderRadius: 4,
@@ -468,7 +468,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                           );
                         })
                       ) : (
-                        <div style={{ fontSize: 11, color: 'var(--neutral)', fontStyle: 'italic', textAlign: 'center', padding: '12px 0' }}>
+                        <div style={{ fontSize: 11, color: '#71717a', fontStyle: 'italic', textAlign: 'center', padding: '12px 0' }}>
                           Composition officielle non renseignée.
                         </div>
                       )}
@@ -477,7 +477,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                     {/* Home Bench */}
                     {homeBench.length > 0 && (
                       <div style={{ marginTop: 14, paddingTop: 10, borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                        <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', marginBottom: 8, fontWeight: 700 }}>
+                        <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase', marginBottom: 8, fontWeight: 700 }}>
                           Remplaçants :
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -487,7 +487,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                               padding: '3px 8px',
                               borderRadius: 6,
                               background: 'rgba(255, 255, 255, 0.04)',
-                              color: 'var(--ivory-dim)',
+                              color: '#a1a1aa',
                             }}>
                               {p.name} {p.subIn ? `(${p.subIn}')` : ''} {p.rating ? `· ★${p.rating}` : ''}
                             </span>
@@ -500,16 +500,16 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                   {/* Away Team Lineup */}
                   <div style={{
                     background: 'rgba(13, 18, 32, 0.65)',
-                    borderRadius: 16,
+                    borderRadius: 6,
                     padding: 18,
-                    border: '1px solid var(--ivory-border)',
+                    border: '1px solid #27272a',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <TeamLogo teamName={awayTeam} size="xs" />
-                        <span style={{ fontSize: 14, fontWeight: 800, color: 'var(--ivory)' }}>{awayTeam}</span>
+                        <span style={{ fontSize: 14, fontWeight: 800, color: '#fafafa' }}>{awayTeam}</span>
                       </div>
-                      <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800 }}>Titulaires (XI)</span>
+                      <span style={{ fontSize: 10, color: '#06b6d4', fontWeight: 800 }}>Titulaires (XI)</span>
                     </div>
 
                     {/* Away Coach & Formation Card */}
@@ -519,16 +519,16 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                       justifyContent: 'space-between',
                       padding: '8px 12px',
                       background: 'rgba(201, 169, 110, 0.08)',
-                      border: '1px solid var(--gold-border)',
-                      borderRadius: 10,
+                      border: '1px solid rgba(6, 182, 212, 0.35)',
+                      borderRadius: 4,
                       marginBottom: 12,
                       fontSize: 11,
                     }}>
-                      <span style={{ color: 'var(--gold)', fontWeight: 800 }}>
+                      <span style={{ color: '#06b6d4', fontWeight: 800 }}>
                         📐 {awayFormation}
                       </span>
-                      <span style={{ color: 'var(--ivory)', fontWeight: 700 }}>
-                        👔 Entraîneur : <strong style={{ color: 'var(--gold)' }}>{awayCoach}</strong>
+                      <span style={{ color: '#fafafa', fontWeight: 700 }}>
+                        👔 Entraîneur : <strong style={{ color: '#06b6d4' }}>{awayCoach}</strong>
                       </span>
                     </div>
 
@@ -552,10 +552,10 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                               }}
                             >
                               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                <span style={{ width: 18, fontSize: 10, color: 'var(--neutral)', fontFamily: 'monospace' }}>
+                                <span style={{ width: 18, fontSize: 10, color: '#71717a', fontFamily: 'monospace' }}>
                                   #{p.num || idx + 1}
                                 </span>
-                                <span style={{ fontWeight: 600, color: 'var(--ivory)' }}>
+                                <span style={{ fontWeight: 600, color: '#fafafa' }}>
                                   {p.name} {p.captain ? ' (C)' : ''}
                                 </span>
                                 <span style={{
@@ -573,7 +573,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                                 <span style={{
                                   fontSize: 11,
                                   fontWeight: 800,
-                                  color: p.rating >= 7.5 ? 'var(--gold)' : (p.rating >= 6.5 ? 'var(--positive)' : 'var(--neutral)'),
+                                  color: p.rating >= 7.5 ? '#06b6d4' : (p.rating >= 6.5 ? '#10b981' : '#71717a'),
                                   background: 'rgba(0,0,0,0.3)',
                                   padding: '2px 6px',
                                   borderRadius: 4,
@@ -585,7 +585,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                           );
                         })
                       ) : (
-                        <div style={{ fontSize: 11, color: 'var(--neutral)', fontStyle: 'italic', textAlign: 'center', padding: '12px 0' }}>
+                        <div style={{ fontSize: 11, color: '#71717a', fontStyle: 'italic', textAlign: 'center', padding: '12px 0' }}>
                           Composition officielle non renseignée.
                         </div>
                       )}
@@ -594,7 +594,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                     {/* Away Bench */}
                     {awayBench.length > 0 && (
                       <div style={{ marginTop: 14, paddingTop: 10, borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                        <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase', marginBottom: 8, fontWeight: 700 }}>
+                        <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase', marginBottom: 8, fontWeight: 700 }}>
                           Remplaçants :
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -604,7 +604,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                               padding: '3px 8px',
                               borderRadius: 6,
                               background: 'rgba(255, 255, 255, 0.04)',
-                              color: 'var(--ivory-dim)',
+                              color: '#a1a1aa',
                             }}>
                               {p.name} {p.subIn ? `(${p.subIn}')` : ''} {p.rating ? `· ★${p.rating}` : ''}
                             </span>
@@ -629,7 +629,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                     <div style={{
                       background: evalRes.isCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
                       border: `1px solid ${evalRes.isCorrect ? 'rgba(34,197,94,0.35)' : 'rgba(239,68,68,0.35)'}`,
-                      borderRadius: 16,
+                      borderRadius: 6,
                       padding: '16px 20px',
                       display: 'flex',
                       alignItems: 'center',
@@ -641,7 +641,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                         <div style={{
                           width: 36,
                           height: 36,
-                          borderRadius: 10,
+                          borderRadius: 4,
                           background: evalRes.isCorrect ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)',
                           display: 'flex',
                           alignItems: 'center',
@@ -654,8 +654,8 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                           <div style={{ fontSize: 13, fontWeight: 800, color: evalRes.isCorrect ? '#4ade80' : '#f87171' }}>
                             {evalRes.isCorrect ? '✔ Prédiction 1N2 Validée par le Modèle' : '✖ Prédiction 1N2 Non Confirmée'}
                           </div>
-                          <div style={{ fontSize: 11, color: 'var(--ivory-dim)', marginTop: 2 }}>
-                            Prédit : <strong style={{ color: 'var(--ivory)' }}>{evalRes.predictedLabel} ({evalRes.predictedProb})</strong> · Résultat final officiel : <strong style={{ color: 'var(--gold)' }}>{evalRes.realScore} ({evalRes.realOutcome === '1' ? 'Victoire Dom' : evalRes.realOutcome === '2' ? 'Victoire Ext' : 'Nul'})</strong>
+                          <div style={{ fontSize: 11, color: '#a1a1aa', marginTop: 2 }}>
+                            Prédit : <strong style={{ color: '#fafafa' }}>{evalRes.predictedLabel} ({evalRes.predictedProb})</strong> · Résultat final officiel : <strong style={{ color: '#06b6d4' }}>{evalRes.realScore} ({evalRes.realOutcome === '1' ? 'Victoire Dom' : evalRes.realOutcome === '2' ? 'Victoire Ext' : 'Nul'})</strong>
                           </div>
                         </div>
                       </div>
@@ -663,7 +663,7 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                       {evalRes.valueBet && (
                         <div style={{
                           padding: '4px 10px',
-                          borderRadius: 8,
+                          borderRadius: 4,
                           background: evalRes.valueBetWon ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)',
                           border: `1px solid ${evalRes.valueBetWon ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)'}`,
                           fontSize: 11,
@@ -680,14 +680,14 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
                 {/* AI Summary Card */}
                 <div style={{
                   background: 'rgba(13, 18, 32, 0.65)',
-                  borderRadius: 16,
+                  borderRadius: 6,
                   padding: 20,
-                  border: '1px solid var(--ivory-border)',
+                  border: '1px solid #27272a',
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', marginBottom: 10 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#06b6d4', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', marginBottom: 10 }}>
                     <Sparkles size={16} /> Résumé Analytique & Contexte de la Rencontre
                   </div>
-                  <p style={{ fontSize: 13, color: 'var(--ivory)', lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ fontSize: 13, color: '#fafafa', lineHeight: 1.6, margin: 0 }}>
                     {targetMatch.aiSummary || `Rencontre officielle ${targetMatch.league || 'Ligue'} ${targetMatch.season || '2026-2027'} : ${homeTeam} ${targetMatch.score || 'VS'} ${awayTeam}.`}
                   </p>
                 </div>

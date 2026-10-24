@@ -9,7 +9,7 @@ const ProbBar = ({ home, draw, away }) => {
   return (
     <div style={{ borderRadius: 8, overflow: 'hidden', display: 'flex', height: 8, marginTop: 6, marginBottom: 4 }}>
       <div style={{ width: `${h}%`, background: 'var(--positive)', transition: 'width 0.6s ease' }} />
-      <div style={{ width: `${d}%`, background: 'rgba(201,169,110,0.6)', transition: 'width 0.6s ease' }} />
+      <div style={{ width: `${d}%`, background: 'rgba(6, 182, 212, 0.6)', transition: 'width 0.6s ease' }} />
       <div style={{ width: `${a}%`, background: 'var(--danger)', transition: 'width 0.6s ease' }} />
     </div>
   );
@@ -26,11 +26,11 @@ const ValueBadge = ({ edge }) => (
     textTransform: 'uppercase',
     padding: '3px 8px',
     borderRadius: 6,
-    background: 'rgba(201,169,110,0.2)',
-    border: '1px solid rgba(201,169,110,0.4)',
-    color: 'var(--gold)',
+    background: 'rgba(6, 182, 212, 0.14)',
+    border: '1px solid rgba(6, 182, 212, 0.35)',
+    color: '#06b6d4',
   }}>
-    <Star size={10} fill="var(--gold)" />
+    <Star size={10} fill="#06b6d4" />
     VALUE BET {edge}
   </span>
 );
@@ -177,9 +177,9 @@ const MatchPrediction = ({ match }) => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
       {/* ── Probabilités 1N2 ── */}
-      <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: '16px 18px' }}>
+      <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 16, padding: '16px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>
+          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#06b6d4' }}>
             Probabilités 1N2 · Dixon-Coles & Quant ML
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -193,10 +193,10 @@ const MatchPrediction = ({ match }) => {
               title="Rafraîchir la cote en temps réel"
               style={{
                 background: 'rgba(201,169,110,0.15)',
-                border: '1px solid var(--gold-border)',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
                 borderRadius: 6,
                 padding: '4px 10px',
-                color: 'var(--gold)',
+                color: '#06b6d4',
                 fontSize: 10,
                 fontWeight: 700,
                 display: 'flex',
@@ -214,14 +214,14 @@ const MatchPrediction = ({ match }) => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 10 }}>
           {[
             { label: `1 · ${match?.homeTeam || 'Domicile'}`, value: homeProb, color: 'var(--positive)' },
-            { label: 'N · Match Nul', value: drawProb, color: 'var(--gold)' },
+            { label: 'N · Match Nul', value: drawProb, color: '#06b6d4' },
             { label: `2 · ${match?.awayTeam || 'Extérieur'}`, value: awayProb, color: 'var(--danger)' },
           ].map(({ label, value, color }) => (
             <div key={label} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 22, fontFamily: 'var(--font-serif)', fontWeight: 700, color, lineHeight: 1.1 }}>
+              <div style={{ fontSize: 22, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 700, color, lineHeight: 1.1 }}>
                 {value.toFixed(1)}%
               </div>
-              <div style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 3, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <div style={{ fontSize: 9, color: '#71717a', marginTop: 3, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {label}
               </div>
             </div>
@@ -229,9 +229,9 @@ const MatchPrediction = ({ match }) => {
         </div>
 
         <ProbBar home={homeProb} draw={drawProb} away={awayProb} />
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: 'var(--neutral)', marginTop: 4 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: '#71717a', marginTop: 4 }}>
           <span style={{ color: 'var(--positive)', fontWeight: 700 }}>{homeProb.toFixed(1)}%</span>
-          <span style={{ color: 'var(--gold)', fontWeight: 700 }}>{drawProb.toFixed(1)}%</span>
+          <span style={{ color: '#06b6d4', fontWeight: 700 }}>{drawProb.toFixed(1)}%</span>
           <span style={{ color: 'var(--danger)', fontWeight: 700 }}>{awayProb.toFixed(1)}%</span>
         </div>
       </div>
@@ -243,16 +243,16 @@ const MatchPrediction = ({ match }) => {
           { label: `xG ${match?.awayTeam || 'Extérieur'}`, value: lambdaA, color: 'var(--danger)' },
         ].map(({ label, value, color }) => (
           <div key={label} style={{
-            background: 'var(--glass-primary)',
-            border: '1px solid var(--ivory-border)',
+            background: '#121215',
+            border: '1px solid #27272a',
             borderRadius: 14,
             padding: '12px 16px',
             textAlign: 'center',
           }}>
-            <div style={{ fontSize: 20, fontFamily: 'var(--font-serif)', color, fontWeight: 700 }}>
+            <div style={{ fontSize: 20, fontFamily: 'Inter, system-ui, sans-serif', color, fontWeight: 700 }}>
               {(+value || 0).toFixed(2)}
             </div>
-            <div style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 3, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
+            <div style={{ fontSize: 9, color: '#71717a', marginTop: 3, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
               {label}
             </div>
           </div>
@@ -261,29 +261,29 @@ const MatchPrediction = ({ match }) => {
 
       {/* ── Cotes Betclic (1N2) ── */}
       {odds.home || odds.draw || odds.away ? (
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: '14px 18px' }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 16, padding: '14px 18px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#06b6d4' }}>
               🎲 Cotes Officielles Betclic (1N2)
             </div>
             {match?.oddsMarginPct && (
-              <span style={{ fontSize: 10, color: 'var(--neutral)' }}>Marge : {match.oddsMarginPct}%</span>
+              <span style={{ fontSize: 10, color: '#71717a' }}>Marge : {match.oddsMarginPct}%</span>
             )}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
             {[
               { label: `1 (${match?.homeTeam || 'Dom'})`, value: odds.home, color: 'var(--positive)' },
-              { label: 'N (Nul)', value: odds.draw, color: 'var(--gold)' },
+              { label: 'N (Nul)', value: odds.draw, color: '#06b6d4' },
               { label: `2 (${match?.awayTeam || 'Ext'})`, value: odds.away, color: 'var(--danger)' },
             ].map(({ label, value, color }) => (
               <div key={label} style={{
-                background: 'var(--obsidian-3)',
-                border: '1px solid var(--ivory-border)',
+                background: '#18181b',
+                border: '1px solid #27272a',
                 borderRadius: 10,
                 padding: '10px 8px',
                 textAlign: 'center',
               }}>
-                <div style={{ fontSize: 9, color: 'var(--neutral)', fontWeight: 700, letterSpacing: '0.05em' }}>{label}</div>
+                <div style={{ fontSize: 9, color: '#71717a', fontWeight: 700, letterSpacing: '0.05em' }}>{label}</div>
                 <div style={{ fontSize: 18, fontWeight: 800, color, marginTop: 3, fontFamily: 'var(--font-ui)' }}>
                   {value ? (+value).toFixed(2) : '—'}
                 </div>
@@ -292,12 +292,12 @@ const MatchPrediction = ({ match }) => {
           </div>
         </div>
       ) : (
-        <div style={{ background: 'var(--glass-primary)', border: '1px dashed rgba(245, 158, 11, 0.3)', borderRadius: 14, padding: '14px 16px', textAlign: 'center' }}>
+        <div style={{ background: '#121215', border: '1px dashed rgba(245, 158, 11, 0.3)', borderRadius: 14, padding: '14px 16px', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f59e0b', fontSize: 12, fontWeight: 700, marginBottom: 6 }}>
             <AlertCircle size={15} color="#f59e0b" />
             <span>Cote absente pour l'instant</span>
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 10 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginBottom: 10 }}>
             Marché Betclic non encore ouvert pour cette rencontre
           </div>
           <button
@@ -323,26 +323,26 @@ const MatchPrediction = ({ match }) => {
       {odds.home && bestValueBet ? (
         <div style={{
           background: 'linear-gradient(135deg, rgba(201, 169, 110, 0.15) 0%, rgba(139, 106, 60, 0.1) 100%)',
-          border: '1px solid var(--gold-border)',
+          border: '1px solid rgba(6, 182, 212, 0.35)',
           borderRadius: 16,
           padding: '16px 18px',
           boxShadow: '0 4px 20px rgba(201, 169, 110, 0.1)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
             <ValueBadge edge={bestValueBet.edge_percentage || bestValueBet.edge} />
-            <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800 }}>
+            <span style={{ fontSize: 10, color: '#06b6d4', fontWeight: 800 }}>
               Mise conseillée : {bestValueBet.stake_recommendation || '2.0%'}
             </span>
           </div>
 
-          <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--ivory)', marginTop: 4, fontFamily: 'var(--font-serif)' }}>
-            🎯 Opportunité : <strong style={{ color: 'var(--gold)' }}>{valueBetExplicitText}</strong>
+          <div style={{ fontSize: 15, fontWeight: 800, color: '#fafafa', marginTop: 4, fontFamily: 'Inter, system-ui, sans-serif' }}>
+            🎯 Opportunité : <strong style={{ color: '#06b6d4' }}>{valueBetExplicitText}</strong>
           </div>
 
-          <div style={{ display: 'flex', gap: 16, marginTop: 8, fontSize: 11, color: 'var(--neutral)' }}>
-            <span>Cote Betclic : <strong style={{ color: 'var(--ivory)' }}>{bestValueBet.betclic_odd || bestValueBet.odd || bestValueBet.bookmaker_odds}</strong></span>
+          <div style={{ display: 'flex', gap: 16, marginTop: 8, fontSize: 11, color: '#71717a' }}>
+            <span>Cote Betclic : <strong style={{ color: '#fafafa' }}>{bestValueBet.betclic_odd || bestValueBet.odd || bestValueBet.bookmaker_odds}</strong></span>
             <span>Probabilité Modèle : <strong style={{ color: 'var(--positive)' }}>{bestValueBet.model_probability || bestValueBet.model_prob}</strong></span>
-            <span>Edge Net : <strong style={{ color: 'var(--gold)' }}>{bestValueBet.edge_percentage || bestValueBet.edge}</strong></span>
+            <span>Edge Net : <strong style={{ color: '#06b6d4' }}>{bestValueBet.edge_percentage || bestValueBet.edge}</strong></span>
           </div>
         </div>
       ) : (
@@ -355,18 +355,18 @@ const MatchPrediction = ({ match }) => {
           alignItems: 'center',
           gap: 8,
           fontSize: 11,
-          color: 'var(--neutral)',
+          color: '#71717a',
         }}>
-          <ShieldCheck size={14} color="var(--neutral)" />
+          <ShieldCheck size={14} color="#71717a" />
           <span>Aucun Value Bet détecté sur ce match (Cotes bookmakers alignées avec le modèle).</span>
         </div>
       )}
 
       {/* ── SCORES EXACTS PROBABLES (Mi-temps & Fin de Match) ── */}
-      <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: '16px 18px' }}>
+      <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 16, padding: '16px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#06b6d4' }}>
               Scores les plus probables
             </div>
             {match?.topConditionalScore && (
@@ -379,18 +379,31 @@ const MatchPrediction = ({ match }) => {
                 padding: '2px 8px',
                 borderRadius: 6,
               }}>
-                Scénario Algo : {match.topConditionalScore.score} ({match.topConditionalScore.scenario})
+                Score Prédit (Principal) : {match.topConditionalScore.score} ({match.topConditionalScore.scenario})
+              </span>
+            )}
+            {(match?.topValueBetScore || bestValueBet?.recommended_score) && (
+              <span style={{
+                fontSize: 9,
+                fontWeight: 700,
+                color: '#06b6d4',
+                background: 'rgba(6, 182, 212, 0.14)',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                padding: '2px 8px',
+                borderRadius: 6,
+              }}>
+                🎯 Score Value Bet : {match?.topValueBetScore?.score || bestValueBet?.recommended_score} ({match?.topValueBetScore?.scenario || valueBetExplicitText})
               </span>
             )}
           </div>
 
           {/* Toggle FT / HT */}
-          <div style={{ display: 'flex', gap: 4, background: 'var(--obsidian-3)', padding: 3, borderRadius: 8, border: '1px solid var(--ivory-border)' }}>
+          <div style={{ display: 'flex', gap: 4, background: '#18181b', padding: 3, borderRadius: 8, border: '1px solid #27272a' }}>
             <button
               onClick={() => setScoreViewMode('FT')}
               style={{
-                background: scoreViewMode === 'FT' ? 'var(--gold-muted)' : 'transparent',
-                color: scoreViewMode === 'FT' ? 'var(--gold)' : 'var(--neutral)',
+                background: scoreViewMode === 'FT' ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                color: scoreViewMode === 'FT' ? '#06b6d4' : '#71717a',
                 border: 'none',
                 borderRadius: 6,
                 padding: '3px 10px',
@@ -405,8 +418,8 @@ const MatchPrediction = ({ match }) => {
             <button
               onClick={() => setScoreViewMode('HT')}
               style={{
-                background: scoreViewMode === 'HT' ? 'var(--gold-muted)' : 'transparent',
-                color: scoreViewMode === 'HT' ? 'var(--gold)' : 'var(--neutral)',
+                background: scoreViewMode === 'HT' ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                color: scoreViewMode === 'HT' ? '#06b6d4' : '#71717a',
                 border: 'none',
                 borderRadius: 6,
                 padding: '3px 10px',
@@ -424,8 +437,8 @@ const MatchPrediction = ({ match }) => {
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {displayedScores.map(({ score, prob }, idx) => (
             <div key={score} style={{
-              background: idx === 0 ? 'var(--gold-muted)' : 'var(--obsidian-3)',
-              border: `1px solid ${idx === 0 ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
+              background: idx === 0 ? 'rgba(6, 182, 212, 0.12)' : '#18181b',
+              border: `1px solid ${idx === 0 ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
               borderRadius: 10,
               padding: '8px 14px',
               textAlign: 'center',
@@ -435,12 +448,12 @@ const MatchPrediction = ({ match }) => {
               <div style={{
                 fontSize: 16,
                 fontWeight: 900,
-                color: idx === 0 ? 'var(--gold)' : 'var(--ivory)',
+                color: idx === 0 ? '#06b6d4' : '#fafafa',
                 fontFamily: 'var(--font-ui)',
               }}>
                 {score}
               </div>
-              <div style={{ fontSize: 9, color: idx === 0 ? 'var(--gold)' : 'var(--neutral)', marginTop: 2, fontWeight: 700 }}>
+              <div style={{ fontSize: 9, color: idx === 0 ? '#06b6d4' : '#71717a', marginTop: 2, fontWeight: 700 }}>
                 {prob.toFixed(1)}%
               </div>
             </div>
@@ -449,19 +462,19 @@ const MatchPrediction = ({ match }) => {
       </div>
 
       {/* ── BUTEURS & PASSEURS POTENTIELS ── */}
-      <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: '16px 18px' }}>
+      <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 16, padding: '16px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>
-            {playerViewMode === 'SCORERS' ? <Flame size={13} color="var(--gold)" /> : <Target size={13} color="var(--gold)" />}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#06b6d4' }}>
+            {playerViewMode === 'SCORERS' ? <Flame size={13} color="#06b6d4" /> : <Target size={13} color="#06b6d4" />}
             {playerViewMode === 'SCORERS' ? 'Probables Buteurs (Anytime)' : 'Probables Passeurs Décisifs'}
           </div>
 
-          <div style={{ display: 'flex', gap: 4, background: 'var(--obsidian-3)', padding: 3, borderRadius: 8, border: '1px solid var(--ivory-border)' }}>
+          <div style={{ display: 'flex', gap: 4, background: '#18181b', padding: 3, borderRadius: 8, border: '1px solid #27272a' }}>
             <button
               onClick={() => setPlayerViewMode('SCORERS')}
               style={{
-                background: playerViewMode === 'SCORERS' ? 'var(--gold-muted)' : 'transparent',
-                color: playerViewMode === 'SCORERS' ? 'var(--gold)' : 'var(--neutral)',
+                background: playerViewMode === 'SCORERS' ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                color: playerViewMode === 'SCORERS' ? '#06b6d4' : '#71717a',
                 border: 'none',
                 borderRadius: 6,
                 padding: '3px 10px',
@@ -475,8 +488,8 @@ const MatchPrediction = ({ match }) => {
             <button
               onClick={() => setPlayerViewMode('ASSISTS')}
               style={{
-                background: playerViewMode === 'ASSISTS' ? 'var(--gold-muted)' : 'transparent',
-                color: playerViewMode === 'ASSISTS' ? 'var(--gold)' : 'var(--neutral)',
+                background: playerViewMode === 'ASSISTS' ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                color: playerViewMode === 'ASSISTS' ? '#06b6d4' : '#71717a',
                 border: 'none',
                 borderRadius: 6,
                 padding: '3px 10px',
@@ -496,7 +509,7 @@ const MatchPrediction = ({ match }) => {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, paddingBottom: 4, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
               <TeamLogo teamName={match?.homeTeam} size="xs" />
-              <span style={{ fontSize: 11, fontWeight: 800, color: 'var(--ivory)' }}>{match?.homeTeam}</span>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#fafafa' }}>{match?.homeTeam}</span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -505,8 +518,8 @@ const MatchPrediction = ({ match }) => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  background: 'var(--obsidian-3)',
-                  border: '1px solid var(--ivory-border)',
+                  background: '#18181b',
+                  border: '1px solid #27272a',
                   borderRadius: 8,
                   padding: '6px 10px',
                 }}>
@@ -522,7 +535,7 @@ const MatchPrediction = ({ match }) => {
                       {p.position || 'FW'}
                     </span>
                     <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: '#fafafa', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.name}
                       </span>
                       {playerViewMode === 'SCORERS' && (p.seasonGoals !== undefined && p.seasonGoals > 0) && (
@@ -538,10 +551,10 @@ const MatchPrediction = ({ match }) => {
                     </div>
                   </div>
                   <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--gold)' }}>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: '#06b6d4' }}>
                       {playerViewMode === 'SCORERS' ? (p.goalProb || `${p.goalProbVal}%`) : (p.assistProb || `${p.assistProbVal}%`)}
                     </div>
-                    <div style={{ fontSize: 8, color: 'var(--neutral)' }} title="Cote théorique calculée par le modèle">
+                    <div style={{ fontSize: 8, color: '#71717a' }} title="Cote théorique calculée par le modèle">
                       {playerViewMode === 'SCORERS' ? `Cote est. @ ${p.oddScorer || '2.20'}` : `Cote est. @ ${p.oddAssist || '2.80'}`}
                     </div>
                   </div>
@@ -554,7 +567,7 @@ const MatchPrediction = ({ match }) => {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, paddingBottom: 4, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
               <TeamLogo teamName={match?.awayTeam} size="xs" />
-              <span style={{ fontSize: 11, fontWeight: 800, color: 'var(--ivory)' }}>{match?.awayTeam}</span>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#fafafa' }}>{match?.awayTeam}</span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -563,8 +576,8 @@ const MatchPrediction = ({ match }) => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  background: 'var(--obsidian-3)',
-                  border: '1px solid var(--ivory-border)',
+                  background: '#18181b',
+                  border: '1px solid #27272a',
                   borderRadius: 8,
                   padding: '6px 10px',
                 }}>
@@ -580,7 +593,7 @@ const MatchPrediction = ({ match }) => {
                       {p.position || 'FW'}
                     </span>
                     <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ivory)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: '#fafafa', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.name}
                       </span>
                       {playerViewMode === 'SCORERS' && (p.seasonGoals !== undefined && p.seasonGoals > 0) && (
@@ -596,10 +609,10 @@ const MatchPrediction = ({ match }) => {
                     </div>
                   </div>
                   <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--gold)' }}>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: '#06b6d4' }}>
                       {playerViewMode === 'SCORERS' ? (p.goalProb || `${p.goalProbVal}%`) : (p.assistProb || `${p.assistProbVal}%`)}
                     </div>
-                    <div style={{ fontSize: 8, color: 'var(--neutral)' }} title="Cote théorique calculée par le modèle">
+                    <div style={{ fontSize: 8, color: '#71717a' }} title="Cote théorique calculée par le modèle">
                       {playerViewMode === 'SCORERS' ? `Cote est. @ ${p.oddScorer || '2.20'}` : `Cote est. @ ${p.oddAssist || '2.80'}`}
                     </div>
                   </div>
@@ -612,8 +625,8 @@ const MatchPrediction = ({ match }) => {
 
       {/* ── Conseil IA ── */}
       <div style={{
-        background: 'var(--gold-muted)',
-        border: '1px solid var(--gold-border)',
+        background: 'rgba(6, 182, 212, 0.12)',
+        border: '1px solid rgba(6, 182, 212, 0.35)',
         borderRadius: 16,
         padding: '14px 18px',
         display: 'flex',
@@ -622,10 +635,10 @@ const MatchPrediction = ({ match }) => {
         gap: 12,
       }}>
         <div>
-          <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 3 }}>
+          <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#06b6d4', marginBottom: 3 }}>
             Conseil AI · Confiance {confidence.toFixed(0)}%
           </div>
-          <div style={{ fontSize: 14, fontFamily: 'var(--font-serif)', color: 'var(--ivory)', fontWeight: 500 }}>
+          <div style={{ fontSize: 14, fontFamily: 'Inter, system-ui, sans-serif', color: '#fafafa', fontWeight: 500 }}>
             {advice}
           </div>
         </div>

@@ -202,6 +202,49 @@ def main():
     dynamic_abs_map = load_dynamic_absentees()
     bundle = load_bundle()
     dc_model = bundle.get("dixon_coles")
+
+    sealed_by_match = {}
+    benchmarks_db = {}
+    db_path = os.path.join(ROOT_DIR, "predictor_v2.db")
+    if os.path.exists(db_path):
+        try:
+            import sqlite3
+            from scripts.pipeline.backfill_and_seal_all_models import load_existing_sealed_predictions
+            with sqlite3.connect(db_path) as conn:
+                sealed_by_match = load_existing_sealed_predictions(conn)
+                cur = conn.cursor()
+                cur.execute(
+                    """
+                    SELECT f.model_version,
+                           r.model_name,
+                           COUNT(f.prediction_id) AS total_sealed,
+                           SUM(CASE WHEN f.actual_outcome IS NOT NULL THEN 1 ELSE 0 END) AS evaluated_matches,
+                           ROUND(AVG(CASE WHEN f.actual_outcome IS NOT NULL THEN f.is_hit * 100.0 END), 2) AS hit_rate_pct,
+                           ROUND(AVG(f.brier_score), 4) AS avg_brier,
+                           ROUND(AVG(f.log_loss), 4) AS avg_log_loss,
+                           ROUND(SUM(COALESCE(f.flat_stake_pnl, 0.0)), 2) AS total_flat_pnl_u,
+                           ROUND(AVG(CASE WHEN f.actual_outcome IS NOT NULL THEN f.flat_stake_pnl * 100.0 END), 2) AS flat_roi_pct
+                    FROM fact_model_predictions f
+                    JOIN dim_model_registry r ON f.model_version = r.model_version
+                    GROUP BY f.model_version, r.model_name
+                    ORDER BY f.model_version
+                    """
+                )
+                for row in cur.fetchall():
+                    mver, mname, tot_s, eval_m, hr, brier, lloss, pnl_u, roi_pct = row
+                    benchmarks_db[mver] = {
+                        "modelVersion": mver,
+                        "modelName": mname,
+                        "totalSealed": tot_s,
+                        "evaluatedMatches": eval_m or 0,
+                        "hitRatePct": hr or 0.0,
+                        "brierScore": brier or 0.0,
+                        "logLoss": lloss or 0.0,
+                        "flatPnlUnits": pnl_u or 0.0,
+                        "flatRoiPct": roi_pct or 0.0,
+                    }
+        except Exception as e:
+            print(f"⚠️ Warning loading sealed predictions from SQLite: {e}")
     
     full_schedule = app_data.get('fullSchedule', [])
     print(f"   - {len(full_schedule)} rencontres dans fullSchedule.")
@@ -401,15 +444,55 @@ def main():
             match['potentialAssists'] = pred.get('potential_assists', {})
             match['overUnder25'] = pred.get('over_under_2_5', {})
             match['shapFactors'] = pred.get('xai_shap_factors', [])
+
+            match_id_str = str(match.get('id') or f"M_{idx}")
+            if match_id_str in sealed_by_match and all(v in sealed_by_match[match_id_str] for v in ("v1", "v2", "v3")):
+                preds_by_model = sealed_by_match[match_id_str]
+            else:
+                preds_by_model = pred.get("predictions_by_model", {})
+
+            if preds_by_model:
+                match["modelVersion"] = "v3"
+                match["predictionsByModel"] = {
+                    ver: {
+                        "modelVersion": ver,
+                        "probHome": s["probHome"],
+                        "probDraw": s["probDraw"],
+                        "probAway": s["probAway"],
+                        "lambdaHome": s["lambdaHome"],
+                        "lambdaAway": s["lambdaAway"],
+                        "confidence": s["confidence"],
+                        "topScore": s["topScore"],
+                        "exactScores": s.get("exactScores", [])[:5],
+                        "valueOutcome": s.get("valueOutcome"),
+                        "valueEdgePct": s.get("valueEdgePct", 0.0),
+                        "kellyStakePct": s.get("kellyStakePct", 0.0),
+                    }
+                    for ver, s in preds_by_model.items()
+                }
+                if "v3" in preds_by_model:
+                    v3_s = preds_by_model["v3"]
+                    p_h = f"{v3_s['probHome']}%"
+                    p_d = f"{v3_s['probDraw']}%"
+                    p_a = f"{v3_s['probAway']}%"
+                    h_xg = v3_s["lambdaHome"]
+                    a_xg = v3_s["lambdaAway"]
+                    match['probabilities'] = {"home": p_h, "draw": p_d, "away": p_a}
+                    match['expectedGoals'] = {"home": h_xg, "away": a_xg}
+                    if v3_s.get("exactScores"):
+                        match['topExactScores'] = v3_s["exactScores"]
+
+            v3_conf = preds_by_model.get("v3", {}).get("confidence") if preds_by_model else None
             match['prediction'] = {
-                "winner": home if float(p_h.replace('%','')) > float(p_a.replace('%','')) else away,
-                "confidence": max(float(p_h.replace('%','')), float(p_d.replace('%','')), float(p_a.replace('%',''))),
+                "model_version": "v3",
+                "winner": home if float(p_h.replace('%','')) >= float(p_a.replace('%','')) else away,
+                "confidence": v3_conf if v3_conf is not None else max(float(p_h.replace('%','')), float(p_d.replace('%','')), float(p_a.replace('%',''))),
                 "homeProb": p_h,
                 "drawProb": p_d,
                 "awayProb": p_a,
                 "homeXg": h_xg,
                 "awayXg": a_xg,
-                "advice": f"Tendance {home}" if float(p_h.replace('%','')) > 55 else ("Tendance " + away if float(p_a.replace('%','')) > 55 else "Duel équilibré")
+                "advice": f"Tendance {home}" if float(p_h.replace('%','')) > 54 else ("Tendance " + away if float(p_a.replace('%','')) > 54 else "Duel équilibré")
             }
             
             ml_success += 1
@@ -438,6 +521,9 @@ def main():
             print(f"   - {idx}/{len(full_schedule)} matchs traités...")
 
     # Mettre à jour nextMatches et seasonStats avec les versions fraîchement enrichies
+    if benchmarks_db:
+        app_data['modelBenchmarks'] = benchmarks_db
+    app_data['activeModelDefault'] = app_data.get('activeModelDefault') or 'v3'
     app_data['fullSchedule'] = full_schedule
     today_str = datetime.now().strftime('%Y-%m-%d')
     upcoming_from_today = [m for m in full_schedule if (m.get('matchDate') or m.get('date') or '') >= today_str and m.get('status') in ['LIVE', 'SCHEDULED']]

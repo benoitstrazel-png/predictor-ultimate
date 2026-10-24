@@ -30,14 +30,14 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
           flexWrap: 'wrap',
           gap: 12,
           padding: '14px 18px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           backdropFilter: 'blur(10px)',
         }}
       >
         {/* Toggle Buteurs / Passeurs */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0, 0, 0, 0.3)', padding: 4, borderRadius: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#18181b', padding: 4, borderRadius: 4 }}>
           <button
             onClick={() => setActiveTab('SCORERS')}
             style={{
@@ -45,18 +45,18 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
               alignItems: 'center',
               gap: 8,
               padding: '8px 18px',
-              borderRadius: 8,
+              borderRadius: 4,
               fontSize: 13,
               fontWeight: activeTab === 'SCORERS' ? 700 : 500,
               cursor: 'pointer',
               border: 'none',
               transition: 'all 0.2s',
-              background: activeTab === 'SCORERS' ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.2))' : 'transparent',
-              color: activeTab === 'SCORERS' ? '#f5d77f' : 'rgba(245, 240, 232, 0.6)',
-              boxShadow: activeTab === 'SCORERS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(212, 175, 55, 0.4)' : 'none',
+              background: activeTab === 'SCORERS' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeTab === 'SCORERS' ? '#06b6d4' : '#71717a',
+              boxShadow: activeTab === 'SCORERS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(6, 182, 212, 0.35)' : 'none',
             }}
           >
-            <Flame size={15} color={activeTab === 'SCORERS' ? '#f5d77f' : 'currentColor'} />
+            <Flame size={15} color={activeTab === 'SCORERS' ? '#06b6d4' : 'currentColor'} />
             Classement des Buteurs ({scorers.length})
           </button>
 
@@ -67,18 +67,18 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
               alignItems: 'center',
               gap: 8,
               padding: '8px 18px',
-              borderRadius: 8,
+              borderRadius: 4,
               fontSize: 13,
               fontWeight: activeTab === 'ASSISTS' ? 700 : 500,
               cursor: 'pointer',
               border: 'none',
               transition: 'all 0.2s',
-              background: activeTab === 'ASSISTS' ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.2))' : 'transparent',
-              color: activeTab === 'ASSISTS' ? '#f5d77f' : 'rgba(245, 240, 232, 0.6)',
-              boxShadow: activeTab === 'ASSISTS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(212, 175, 55, 0.4)' : 'none',
+              background: activeTab === 'ASSISTS' ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+              color: activeTab === 'ASSISTS' ? '#06b6d4' : '#71717a',
+              boxShadow: activeTab === 'ASSISTS' ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(6, 182, 212, 0.35)' : 'none',
             }}
           >
-            <Target size={15} color={activeTab === 'ASSISTS' ? '#f5d77f' : 'currentColor'} />
+            <Target size={15} color={activeTab === 'ASSISTS' ? '#06b6d4' : 'currentColor'} />
             Classement des Passeurs ({assists.length})
           </button>
         </div>
@@ -92,7 +92,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
               left: 12,
               top: '50%',
               transform: 'translateY(-50%)',
-              color: 'rgba(245, 240, 232, 0.4)',
+              color: '#71717a',
             }}
           />
           <input
@@ -103,15 +103,15 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
             style={{
               width: '100%',
               padding: '8px 12px 8px 34px',
-              borderRadius: 10,
+              borderRadius: 4,
               fontSize: 13,
-              background: 'rgba(0, 0, 0, 0.35)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              color: 'var(--ivory)',
+              background: '#18181b',
+              border: '1px solid #27272a',
+              color: '#fafafa',
               outline: 'none',
             }}
-            onFocus={(e) => (e.target.style.borderColor = 'rgba(212, 175, 55, 0.5)')}
-            onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.08)')}
+            onFocus={(e) => (e.target.style.borderColor = 'rgba(6, 182, 212, 0.4)')}
+            onBlur={(e) => (e.target.style.borderColor = '#27272a')}
           />
         </div>
       </div>
@@ -149,13 +149,13 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                 style={{
                   background: bgGrad,
                   border: `1px solid ${borderGlow}`,
-                  borderRadius: 16,
+                  borderRadius: 6,
                   padding: 20,
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
                   overflow: 'hidden',
-                  boxShadow: `0 8px 24px rgba(0, 0, 0, 0.3), inset 0 0 20px ${borderGlow}`,
+                  boxShadow: `0 8px 24px #18181b, inset 0 0 20px ${borderGlow}`,
                   transition: 'transform 0.2s',
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
@@ -170,7 +170,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                       gap: 6,
                       padding: '4px 10px',
                       borderRadius: 20,
-                      background: 'rgba(0, 0, 0, 0.4)',
+                      background: '#18181b',
                       border: `1px solid ${crownColor}55`,
                       fontSize: 11,
                       fontWeight: 800,
@@ -193,7 +193,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                       height: 54,
                       borderRadius: '50%',
                       overflow: 'hidden',
-                      background: 'rgba(255, 255, 255, 0.05)',
+                      background: '#18181b',
                       border: `2px solid ${crownColor}`,
                       display: 'flex',
                       alignItems: 'center',
@@ -216,10 +216,10 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--ivory)' }}>
+                    <span style={{ fontSize: 16, fontWeight: 700, color: '#fafafa' }}>
                       {player.name}
                     </span>
-                    <span style={{ fontSize: 12, color: 'rgba(245, 240, 232, 0.6)' }}>
+                    <span style={{ fontSize: 12, color: '#71717a' }}>
                       {player.team}
                     </span>
                   </div>
@@ -230,19 +230,19 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                   style={{
                     marginTop: 'auto',
                     padding: '12px 14px',
-                    background: 'rgba(0, 0, 0, 0.3)',
-                    borderRadius: 12,
+                    background: '#18181b',
+                    borderRadius: 4,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    border: '1px solid #18181b',
                   }}
                 >
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: 10, color: 'rgba(245, 240, 232, 0.5)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                       {statLabel}
                     </span>
-                    <span style={{ fontSize: 24, fontWeight: 900, color: '#f5d77f', fontFamily: 'var(--font-mono)', lineHeight: 1.1 }}>
+                    <span style={{ fontSize: 24, fontWeight: 900, color: '#06b6d4', fontFamily: 'var(--font-mono)', lineHeight: 1.1 }}>
                       {statValue}
                     </span>
                   </div>
@@ -273,10 +273,10 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
       <div
         style={{
           background: 'linear-gradient(180deg, rgba(20, 26, 38, 0.85) 0%, rgba(13, 17, 26, 0.95) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: 16,
+          border: '1px solid #27272a',
+          borderRadius: 6,
           overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+          boxShadow: '0 8px 32px #18181b',
         }}
       >
         <div style={{ overflowX: 'auto' }}>
@@ -284,8 +284,8 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
             <thead>
               <tr
                 style={{
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  borderBottom: '1px solid #27272a',
+                  background: '#121215',
                   fontSize: 11,
                   fontFamily: 'var(--font-mono)',
                   letterSpacing: '0.06em',
@@ -296,7 +296,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                 <th style={{ padding: '14px 16px', width: 50, textAlign: 'center' }}>#</th>
                 <th style={{ padding: '14px 16px', minWidth: 200 }}>Joueur</th>
                 <th style={{ padding: '14px 16px', minWidth: 160 }}>Club</th>
-                <th style={{ padding: '14px 14px', textAlign: 'center', color: '#f5d77f' }}>
+                <th style={{ padding: '14px 14px', textAlign: 'center', color: '#06b6d4' }}>
                   {activeTab === 'SCORERS' ? 'Buts' : 'Passes'}
                 </th>
                 {activeTab === 'SCORERS' && (
@@ -317,7 +317,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                   <tr
                     key={`${player.name}_${player.team}`}
                     style={{
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                      borderBottom: '1px solid #18181b',
                       transition: 'background 0.15s ease',
                       fontSize: 13,
                     }}
@@ -330,7 +330,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                         style={{
                           fontWeight: 700,
                           fontFamily: 'var(--font-mono)',
-                          color: player.rank <= 3 ? '#f5d77f' : 'rgba(245, 240, 232, 0.7)',
+                          color: player.rank <= 3 ? '#06b6d4' : 'rgba(245, 240, 232, 0.7)',
                           fontSize: 12,
                         }}
                       >
@@ -347,7 +347,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                             height: 32,
                             borderRadius: '50%',
                             overflow: 'hidden',
-                            background: 'rgba(255, 255, 255, 0.05)',
+                            background: '#18181b',
                             border: '1px solid rgba(255, 255, 255, 0.1)',
                             display: 'flex',
                             alignItems: 'center',
@@ -363,12 +363,12 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                               onError={(e) => (e.target.style.display = 'none')}
                             />
                           ) : (
-                            <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--gold)' }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: '#06b6d4' }}>
                               {player.name.substring(0, 2).toUpperCase()}
                             </span>
                           )}
                         </div>
-                        <span style={{ fontWeight: 600, color: 'var(--ivory)' }}>
+                        <span style={{ fontWeight: 600, color: '#fafafa' }}>
                           {player.name}
                         </span>
                       </div>
@@ -391,7 +391,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                           fontWeight: 800,
                           fontSize: 14,
                           fontFamily: 'var(--font-mono)',
-                          color: '#f5d77f',
+                          color: '#06b6d4',
                         }}
                       >
                         {statValue}
@@ -400,7 +400,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
 
                     {/* Penalties */}
                     {activeTab === 'SCORERS' && (
-                      <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'rgba(245, 240, 232, 0.6)' }}>
+                      <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: '#71717a' }}>
                         {player.penalties || 0}
                       </td>
                     )}
@@ -413,7 +413,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
                     )}
 
                     {/* Matches */}
-                    <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'rgba(245, 240, 232, 0.6)' }}>
+                    <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: '#71717a' }}>
                       {player.matchesCount}
                     </td>
 
@@ -427,7 +427,7 @@ export default function ScorersAssistsView({ scorers = [], assists = [], leagueI
 
               {filteredList.length === 0 && (
                 <tr>
-                  <td colSpan={8} style={{ padding: '32px 16px', textAlign: 'center', color: 'rgba(245, 240, 232, 0.4)' }}>
+                  <td colSpan={8} style={{ padding: '32px 16px', textAlign: 'center', color: '#71717a' }}>
                     Aucun joueur trouvé pour cette recherche.
                   </td>
                 </tr>

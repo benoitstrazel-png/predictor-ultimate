@@ -23,14 +23,14 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
           flexWrap: 'wrap',
           gap: 12,
           padding: '14px 18px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           backdropFilter: 'blur(10px)',
         }}
       >
         {/* Toggle Général / Domicile / Extérieur */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0, 0, 0, 0.3)', padding: 4, borderRadius: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#18181b', padding: 4, borderRadius: 4 }}>
           {[
             { key: 'ALL', label: 'Général' },
             { key: 'HOME', label: 'Domicile' },
@@ -43,16 +43,16 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                 onClick={() => setViewMode(key)}
                 style={{
                   padding: '6px 16px',
-                  borderRadius: 8,
+                  borderRadius: 4,
                   fontSize: 13,
                   fontWeight: active ? 700 : 500,
                   fontFamily: 'var(--font-ui)',
                   cursor: 'pointer',
                   border: 'none',
                   transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                  background: active ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.2))' : 'transparent',
-                  color: active ? '#f5d77f' : 'rgba(245, 240, 232, 0.6)',
-                  boxShadow: active ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(212, 175, 55, 0.4)' : 'none',
+                  background: active ? 'rgba(6, 182, 212, 0.14)' : 'transparent',
+                  color: active ? '#06b6d4' : '#71717a',
+                  boxShadow: active ? '0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(6, 182, 212, 0.35)' : 'none',
                 }}
               >
                 {label}
@@ -70,7 +70,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
               left: 12,
               top: '50%',
               transform: 'translateY(-50%)',
-              color: 'rgba(245, 240, 232, 0.4)',
+              color: '#71717a',
             }}
           />
           <input
@@ -81,16 +81,16 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
             style={{
               width: '100%',
               padding: '8px 12px 8px 34px',
-              borderRadius: 10,
+              borderRadius: 4,
               fontSize: 13,
-              background: 'rgba(0, 0, 0, 0.35)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              color: 'var(--ivory)',
+              background: '#18181b',
+              border: '1px solid #27272a',
+              color: '#fafafa',
               outline: 'none',
               transition: 'border-color 0.2s',
             }}
-            onFocus={(e) => (e.target.style.borderColor = 'rgba(212, 175, 55, 0.5)')}
-            onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.08)')}
+            onFocus={(e) => (e.target.style.borderColor = 'rgba(6, 182, 212, 0.4)')}
+            onBlur={(e) => (e.target.style.borderColor = '#27272a')}
           />
         </div>
       </div>
@@ -99,10 +99,10 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
       <div
         style={{
           background: 'linear-gradient(180deg, rgba(20, 26, 38, 0.85) 0%, rgba(13, 17, 26, 0.95) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          border: '1px solid #27272a',
           borderRadius: 16,
           overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+          boxShadow: '0 8px 32px #18181b',
         }}
       >
         <div style={{ overflowX: 'auto' }}>
@@ -110,8 +110,8 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
             <thead>
               <tr
                 style={{
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  borderBottom: '1px solid #27272a',
+                  background: '#121215',
                   fontSize: 11,
                   fontFamily: 'var(--font-mono)',
                   letterSpacing: '0.06em',
@@ -128,7 +128,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                 <th style={{ padding: '14px 10px', textAlign: 'center', width: 55 }}>BP</th>
                 <th style={{ padding: '14px 10px', textAlign: 'center', width: 55 }}>BC</th>
                 <th style={{ padding: '14px 10px', textAlign: 'center', width: 60 }}>Diff</th>
-                <th style={{ padding: '14px 14px', textAlign: 'center', width: 65, color: '#f5d77f' }}>Pts</th>
+                <th style={{ padding: '14px 14px', textAlign: 'center', width: 65, color: '#06b6d4' }}>Pts</th>
                 <th style={{ padding: '14px 12px', textAlign: 'center', width: 75 }}>xG +/-</th>
                 <th style={{ padding: '14px 16px', textAlign: 'center', width: 140 }}>Forme (5D)</th>
               </tr>
@@ -144,7 +144,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                   <tr
                     key={team}
                     style={{
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                      borderBottom: '1px solid #18181b',
                       transition: 'background 0.15s ease',
                       fontSize: 13,
                     }}
@@ -172,7 +172,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                         style={{
                           fontWeight: 700,
                           fontFamily: 'var(--font-mono)',
-                          color: rank <= 3 ? '#f5d77f' : 'rgba(245, 240, 232, 0.8)',
+                          color: rank <= 3 ? '#06b6d4' : 'rgba(245, 240, 232, 0.8)',
                           fontSize: 12,
                         }}
                       >
@@ -185,7 +185,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                         <TeamLogo teamName={team} size="sm" />
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                          <span style={{ fontWeight: 600, color: 'var(--ivory)', letterSpacing: '-0.01em' }}>
+                          <span style={{ fontWeight: 600, color: '#fafafa', letterSpacing: '-0.01em' }}>
                             {team}
                           </span>
                           {zone && (
@@ -216,7 +216,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                     </td>
 
                     {/* Nuls */}
-                    <td style={{ padding: '12px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'rgba(245, 240, 232, 0.6)' }}>
+                    <td style={{ padding: '12px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: '#71717a' }}>
                       {drawn}
                     </td>
 
@@ -231,7 +231,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                     </td>
 
                     {/* Buts Contre */}
-                    <td style={{ padding: '12px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'rgba(245, 240, 232, 0.6)' }}>
+                    <td style={{ padding: '12px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: '#71717a' }}>
                       {goalsAgainst}
                     </td>
 
@@ -254,13 +254,13 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
                         style={{
                           display: 'inline-block',
                           padding: '4px 10px',
-                          borderRadius: 8,
+                          borderRadius: 4,
                           background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 106, 60, 0.15))',
                           border: '1px solid rgba(212, 175, 55, 0.35)',
                           fontFamily: 'var(--font-mono)',
                           fontWeight: 800,
                           fontSize: 13,
-                          color: '#f5d77f',
+                          color: '#06b6d4',
                         }}
                       >
                         {points}
@@ -321,7 +321,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
         <div
           style={{
             padding: '16px 20px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            borderTop: '1px solid #27272a',
             background: 'rgba(0, 0, 0, 0.25)',
             display: 'flex',
             alignItems: 'center',
@@ -355,7 +355,7 @@ export default function StandingsTable({ standings = [], viewMode, setViewMode, 
             </div>
           </div>
 
-          <div style={{ color: 'rgba(245, 240, 232, 0.4)', fontFamily: 'var(--font-mono)' }}>
+          <div style={{ color: '#71717a', fontFamily: 'var(--font-mono)' }}>
             Départage : Pts &gt; Diff &gt; Buts Marqués
           </div>
         </div>

@@ -17,9 +17,9 @@ const NextMatchRadar = ({ homeTeam = 'Liverpool', awayTeam = 'Nottingham Forest'
 
   return (
     <div style={{
-      background: 'var(--glass-primary)',
-      border: '1px solid var(--ivory-border)',
-      borderRadius: 18,
+      background: '#121215',
+      border: '1px solid #27272a',
+      borderRadius: 6,
       padding: 20,
       display: 'flex',
       flexDirection: 'column',
@@ -28,18 +28,18 @@ const NextMatchRadar = ({ homeTeam = 'Liverpool', awayTeam = 'Nottingham Forest'
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <div>
           <div className="card-section-title">Profil Tactique Comparatif (Radar 6D)</div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
             Métriques certifiées normalisées (0-100) basées sur la saison officielle
           </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, fontWeight: 700 }}>
-          <span style={{ color: 'var(--positive)', display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--positive)' }} />
+          <span style={{ color: '#06b6d4', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#06b6d4' }} />
             {homeTeam}
           </span>
-          <span style={{ color: 'var(--danger)', display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--danger)' }} />
+          <span style={{ color: '#f59e0b', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} />
             {awayTeam}
           </span>
         </div>
@@ -48,34 +48,34 @@ const NextMatchRadar = ({ homeTeam = 'Liverpool', awayTeam = 'Nottingham Forest'
       <div style={{ width: '100%', height: 260 }}>
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="72%" data={data}>
-            <PolarGrid stroke="rgba(245, 240, 232, 0.08)" />
+            <PolarGrid stroke="#27272a" />
             <PolarAngleAxis
               dataKey="subject"
-              tick={{ fill: 'rgba(245, 240, 232, 0.7)', fontSize: 10, fontWeight: 600 }}
+              tick={{ fill: '#a1a1aa', fontSize: 10, fontWeight: 600 }}
             />
             <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
             <Tooltip
               contentStyle={{
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--gold-border)',
-                borderRadius: 10,
+                background: '#18181b',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                borderRadius: 4,
                 fontSize: 11,
-                color: 'var(--ivory)',
+                color: '#fafafa',
               }}
             />
             <Radar
               name={homeTeam}
               dataKey={homeTeam}
-              stroke="var(--positive)"
-              fill="var(--positive)"
+              stroke="#06b6d4"
+              fill="#06b6d4"
               fillOpacity={0.35}
               strokeWidth={2}
             />
             <Radar
               name={awayTeam}
               dataKey={awayTeam}
-              stroke="var(--danger)"
-              fill="var(--danger)"
+              stroke="#f59e0b"
+              fill="#f59e0b"
               fillOpacity={0.35}
               strokeWidth={2}
             />

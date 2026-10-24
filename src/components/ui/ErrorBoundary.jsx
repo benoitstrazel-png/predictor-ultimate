@@ -38,15 +38,15 @@ class ErrorBoundary extends React.Component {
           alignItems: 'center',
           justifyContent: 'center',
           background: 'radial-gradient(ellipse at top, #111827, #080B14)',
-          color: 'var(--ivory)',
+          color: '#fafafa',
           padding: '24px',
           fontFamily: 'var(--font-ui)',
         }}>
           <div style={{
             maxWidth: 520,
             width: '100%',
-            background: 'var(--glass-primary)',
-            border: '1px solid var(--gold-border)',
+            background: '#121215',
+            border: '1px solid rgba(6, 182, 212, 0.35)',
             borderRadius: 24,
             padding: 36,
             textAlign: 'center',
@@ -69,9 +69,9 @@ class ErrorBoundary extends React.Component {
             </div>
 
             <h2 style={{
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'Inter, system-ui, sans-serif',
               fontSize: '1.8rem',
-              color: 'var(--ivory)',
+              color: '#fafafa',
               margin: '0 0 8px',
             }}>
               Interruption Temporaire d'Affichage
@@ -79,7 +79,7 @@ class ErrorBoundary extends React.Component {
 
             <p style={{
               fontSize: 13,
-              color: 'var(--neutral)',
+              color: '#71717a',
               lineHeight: 1.6,
               marginBottom: 28,
             }}>
@@ -92,7 +92,7 @@ class ErrorBoundary extends React.Component {
                 style={{
                   padding: '10px 20px',
                   borderRadius: 12,
-                  background: 'linear-gradient(135deg, var(--gold), #8B6A3C)',
+                  background: 'linear-gradient(135deg, #06b6d4, #8B6A3C)',
                   color: 'var(--obsidian)',
                   fontWeight: 700,
                   fontSize: 12,
@@ -112,8 +112,8 @@ class ErrorBoundary extends React.Component {
                   padding: '10px 20px',
                   borderRadius: 12,
                   background: 'var(--ivory-ghost)',
-                  border: '1px solid var(--ivory-border)',
-                  color: 'var(--ivory)',
+                  border: '1px solid #27272a',
+                  color: '#fafafa',
                   fontWeight: 600,
                   fontSize: 12,
                   cursor: 'pointer',
@@ -133,7 +133,7 @@ class ErrorBoundary extends React.Component {
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: 'var(--gold)',
+                    color: '#06b6d4',
                     fontSize: 11,
                     textDecoration: 'underline',
                     cursor: 'pointer',
@@ -161,7 +161,7 @@ class ErrorBoundary extends React.Component {
                   }}>
                     <strong>{this.state.error.toString()}</strong>
                     {this.state.errorInfo?.componentStack && (
-                      <div style={{ color: 'var(--neutral)', marginTop: 6, fontSize: 10 }}>
+                      <div style={{ color: '#71717a', marginTop: 6, fontSize: 10 }}>
                         {this.state.errorInfo.componentStack}
                       </div>
                     )}

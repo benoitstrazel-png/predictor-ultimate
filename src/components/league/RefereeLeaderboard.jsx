@@ -40,9 +40,9 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
       >
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 26, 38, 0.8) 0%, rgba(14, 18, 26, 0.9) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 14,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: '16px 18px',
             display: 'flex',
             alignItems: 'center',
@@ -53,7 +53,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             style={{
               width: 42,
               height: 42,
-              borderRadius: 10,
+              borderRadius: 4,
               background: 'rgba(59, 130, 246, 0.15)',
               border: '1px solid rgba(59, 130, 246, 0.3)',
               display: 'flex',
@@ -68,7 +68,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             <div style={{ fontSize: 11, color: 'rgba(245, 240, 232, 0.5)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Arbitres Actifs
             </div>
-            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--ivory)', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: '#fafafa', fontFamily: 'var(--font-mono)' }}>
               {refereeStats.length}
             </div>
           </div>
@@ -76,9 +76,9 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
 
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 26, 38, 0.8) 0%, rgba(14, 18, 26, 0.9) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 14,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: '16px 18px',
             display: 'flex',
             alignItems: 'center',
@@ -89,7 +89,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             style={{
               width: 42,
               height: 42,
-              borderRadius: 10,
+              borderRadius: 4,
               background: 'rgba(56, 189, 248, 0.15)',
               border: '1px solid rgba(56, 189, 248, 0.3)',
               display: 'flex',
@@ -112,9 +112,9 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
 
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 26, 38, 0.8) 0%, rgba(14, 18, 26, 0.9) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 14,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: '16px 18px',
             display: 'flex',
             alignItems: 'center',
@@ -125,7 +125,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             style={{
               width: 42,
               height: 42,
-              borderRadius: 10,
+              borderRadius: 4,
               background: 'rgba(250, 204, 21, 0.15)',
               border: '1px solid rgba(250, 204, 21, 0.3)',
               display: 'flex',
@@ -148,9 +148,9 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
 
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 26, 38, 0.8) 0%, rgba(14, 18, 26, 0.9) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 14,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: '16px 18px',
             display: 'flex',
             alignItems: 'center',
@@ -161,13 +161,13 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             style={{
               width: 42,
               height: 42,
-              borderRadius: 10,
+              borderRadius: 4,
               background: 'rgba(212, 175, 55, 0.15)',
               border: '1px solid rgba(212, 175, 55, 0.3)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#f5d77f',
+              color: '#06b6d4',
             }}
           >
             <AlertOctagon size={20} />
@@ -176,7 +176,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             <div style={{ fontSize: 11, color: 'rgba(245, 240, 232, 0.5)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Penaltys Accordés
             </div>
-            <div style={{ fontSize: 20, fontWeight: 800, color: '#f5d77f', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: '#06b6d4', fontFamily: 'var(--font-mono)' }}>
               {summaryKpis.totalPenalties}
             </div>
           </div>
@@ -192,13 +192,13 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
           flexWrap: 'wrap',
           gap: 12,
           padding: '14px 18px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           backdropFilter: 'blur(10px)',
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--ivory)' }}>
+        <span style={{ fontSize: 14, fontWeight: 600, color: '#fafafa' }}>
           Baromètre & Profils d'Arbitrage
         </span>
 
@@ -210,7 +210,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
               left: 12,
               top: '50%',
               transform: 'translateY(-50%)',
-              color: 'rgba(245, 240, 232, 0.4)',
+              color: '#71717a',
             }}
           />
           <input
@@ -221,15 +221,15 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             style={{
               width: '100%',
               padding: '8px 12px 8px 34px',
-              borderRadius: 10,
+              borderRadius: 4,
               fontSize: 13,
-              background: 'rgba(0, 0, 0, 0.35)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              color: 'var(--ivory)',
+              background: '#18181b',
+              border: '1px solid #27272a',
+              color: '#fafafa',
               outline: 'none',
             }}
-            onFocus={(e) => (e.target.style.borderColor = 'rgba(212, 175, 55, 0.5)')}
-            onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.08)')}
+            onFocus={(e) => (e.target.style.borderColor = 'rgba(6, 182, 212, 0.4)')}
+            onBlur={(e) => (e.target.style.borderColor = '#27272a')}
           />
         </div>
       </div>
@@ -238,10 +238,10 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
       <div
         style={{
           background: 'linear-gradient(180deg, rgba(20, 26, 38, 0.85) 0%, rgba(13, 17, 26, 0.95) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: 16,
+          border: '1px solid #27272a',
+          borderRadius: 6,
           overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+          boxShadow: '0 8px 32px #18181b',
         }}
       >
         <div style={{ overflowX: 'auto' }}>
@@ -249,8 +249,8 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
             <thead>
               <tr
                 style={{
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  borderBottom: '1px solid #27272a',
+                  background: '#121215',
                   fontSize: 11,
                   fontFamily: 'var(--font-mono)',
                   letterSpacing: '0.06em',
@@ -278,7 +278,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
                   <tr
                     key={ref.name}
                     style={{
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                      borderBottom: '1px solid #18181b',
                       transition: 'background 0.15s ease',
                       fontSize: 13,
                     }}
@@ -310,7 +310,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#f5d77f',
+                            color: '#06b6d4',
                             fontWeight: 800,
                             fontSize: 11,
                             flexShrink: 0,
@@ -318,13 +318,13 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
                         >
                           <Scale size={14} />
                         </div>
-                        <span style={{ fontWeight: 600, color: 'var(--ivory)' }}>
+                        <span style={{ fontWeight: 600, color: '#fafafa' }}>
                           {ref.name}
                         </span>
                       </div>
                     </td>
 
-                    <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 600, color: '#f5d77f' }}>
+                    <td style={{ padding: '12px 14px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 600, color: '#06b6d4' }}>
                       {ref.matchesCount}
                     </td>
 
@@ -383,7 +383,7 @@ export default function RefereeLeaderboard({ refereeStats = [], leagueId, season
 
               {filteredReferees.length === 0 && (
                 <tr>
-                  <td colSpan={8} style={{ padding: '32px 16px', textAlign: 'center', color: 'rgba(245, 240, 232, 0.4)' }}>
+                  <td colSpan={8} style={{ padding: '32px 16px', textAlign: 'center', color: '#71717a' }}>
                     Aucun arbitre trouvé pour cette recherche.
                   </td>
                 </tr>

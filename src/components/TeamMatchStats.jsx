@@ -167,10 +167,10 @@ export default function TeamMatchStats({ match }) {
       display: 'flex',
       flexDirection: 'column',
       gap: 16,
-      background: 'rgba(13, 18, 32, 0.65)',
-      borderRadius: 16,
+      background: '#121215',
+      borderRadius: 6,
       padding: '24px 20px',
-      border: '1px solid var(--ivory-border)',
+      border: '1px solid #27272a',
     }}>
       {/* ── HEADER CLUBS COMPARISON ── */}
       <div style={{
@@ -178,21 +178,21 @@ export default function TeamMatchStats({ match }) {
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingBottom: 16,
-        borderBottom: '1px solid var(--ivory-border)',
+        borderBottom: '1px solid #27272a',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <TeamLogo teamName={homeTeam} size="sm" />
-          <span style={{ fontSize: 14, fontWeight: 800, color: 'var(--ivory)' }}>{homeTeam}</span>
+          <span style={{ fontSize: 14, fontWeight: 800, color: '#fafafa' }}>{homeTeam}</span>
         </div>
 
         <div style={{
           fontSize: 11,
           fontWeight: 800,
-          color: 'var(--gold)',
+          color: '#06b6d4',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
           background: 'rgba(201, 169, 110, 0.1)',
-          border: '1px solid var(--gold-border)',
+          border: '1px solid rgba(6, 182, 212, 0.35)',
           padding: '4px 12px',
           borderRadius: 20,
         }}>
@@ -200,7 +200,7 @@ export default function TeamMatchStats({ match }) {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: 14, fontWeight: 800, color: 'var(--ivory)' }}>{awayTeam}</span>
+          <span style={{ fontSize: 14, fontWeight: 800, color: '#fafafa' }}>{awayTeam}</span>
           <TeamLogo teamName={awayTeam} size="sm" />
         </div>
       </div>
@@ -219,7 +219,7 @@ export default function TeamMatchStats({ match }) {
               {/* Home Value */}
               <span style={{
                 fontWeight: m.dominant === 'H' ? 800 : 600,
-                color: m.dominant === 'H' ? 'var(--gold)' : 'var(--ivory-dim)',
+                color: m.dominant === 'H' ? '#06b6d4' : '#a1a1aa',
                 minWidth: 80,
                 textAlign: 'left'
               }}>
@@ -229,7 +229,7 @@ export default function TeamMatchStats({ match }) {
               {/* Metric Label */}
               <span style={{
                 fontSize: 11,
-                color: m.highlight ? 'var(--ivory)' : 'var(--neutral)',
+                color: m.highlight ? '#fafafa' : '#71717a',
                 fontWeight: m.highlight ? 700 : 500,
                 textAlign: 'center',
                 letterSpacing: '0.02em',
@@ -237,14 +237,14 @@ export default function TeamMatchStats({ match }) {
                 alignItems: 'center',
                 gap: 4
               }}>
-                {m.highlight && <Flame size={12} color="var(--gold)" />}
+                {m.highlight && <Flame size={12} color="#06b6d4" />}
                 {m.label}
               </span>
 
               {/* Away Value */}
               <span style={{
                 fontWeight: m.dominant === 'A' ? 800 : 600,
-                color: m.dominant === 'A' ? 'var(--gold)' : 'var(--ivory-dim)',
+                color: m.dominant === 'A' ? '#06b6d4' : '#a1a1aa',
                 minWidth: 80,
                 textAlign: 'right'
               }}>
@@ -265,7 +265,7 @@ export default function TeamMatchStats({ match }) {
               {/* Home Left Bar */}
               <div style={{
                 width: `${m.pctH}%`,
-                background: m.dominant === 'H' ? 'linear-gradient(90deg, #996515, var(--gold))' : 'rgba(255, 255, 255, 0.2)',
+                background: m.dominant === 'H' ? 'linear-gradient(90deg, #996515, #06b6d4)' : 'rgba(255, 255, 255, 0.2)',
                 borderRadius: '3px 0 0 3px',
                 transition: 'width 0.5s ease',
               }} />
@@ -273,7 +273,7 @@ export default function TeamMatchStats({ match }) {
               {/* Away Right Bar */}
               <div style={{
                 width: `${m.pctA}%`,
-                background: m.dominant === 'A' ? 'linear-gradient(90deg, var(--gold), #e2c99a)' : 'rgba(255, 255, 255, 0.2)',
+                background: m.dominant === 'A' ? 'linear-gradient(90deg, #06b6d4, #e2c99a)' : 'rgba(255, 255, 255, 0.2)',
                 borderRadius: '0 3px 3px 0',
                 transition: 'width 0.5s ease',
               }} />

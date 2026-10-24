@@ -19,9 +19,9 @@ export default function TransferCard({ transfer }) {
 
   return (
     <div style={{
-      background: 'var(--glass-primary)',
-      border: isHighValue ? '1px solid var(--gold-border)' : '1px solid var(--ivory-border)',
-      borderRadius: 16,
+      background: '#121215',
+      border: isHighValue ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid #27272a',
+      borderRadius: 6,
       padding: 18,
       display: 'flex',
       flexDirection: 'column',
@@ -29,7 +29,7 @@ export default function TransferCard({ transfer }) {
       position: 'relative',
       overflow: 'hidden',
       transition: 'transform 0.2s, box-shadow 0.2s',
-      boxShadow: isHighValue ? '0 8px 24px rgba(212, 175, 55, 0.12)' : 'none'
+      boxShadow: 'none'
     }}>
       {/* ── 1. EN-TÊTE : PROFIL COMPLET DU JOUEUR ── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
@@ -43,14 +43,14 @@ export default function TransferCard({ transfer }) {
           />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--ivory)' }}>
+              <span style={{ fontSize: 15, fontWeight: 700, color: '#fafafa' }}>
                 {transfer.player_name}
               </span>
               <span style={{ fontSize: 13 }} title={transfer.player_nationality}>
                 {transfer.player_nationality_flag || '🌍'}
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: 11, color: 'var(--neutral)', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: 11, color: '#71717a', flexWrap: 'wrap' }}>
               <span style={{
                 padding: '2px 6px',
                 borderRadius: 4,
@@ -62,9 +62,9 @@ export default function TransferCard({ transfer }) {
                 {transfer.player_position}
               </span>
               <span>·</span>
-              <span>Âge au transfert : <strong style={{ color: 'var(--ivory)' }}>{transfer.age_at_transfer} ans</strong></span>
+              <span>Âge au transfert : <strong style={{ color: '#fafafa' }}>{transfer.age_at_transfer} ans</strong></span>
               <span>·</span>
-              <span>Pied : <strong style={{ color: 'var(--gold)' }}>{transfer.preferred_foot || 'Droitier'}</strong></span>
+              <span>Pied : <strong style={{ color: '#06b6d4' }}>{transfer.preferred_foot || 'Droitier'}</strong></span>
             </div>
           </div>
         </div>
@@ -74,10 +74,10 @@ export default function TransferCard({ transfer }) {
           fontSize: 11,
           fontWeight: 700,
           padding: '4px 10px',
-          borderRadius: 8,
+          borderRadius: 4,
           background: isFree ? 'rgba(34, 197, 94, 0.12)' : 'var(--obsidian-2)',
-          color: isFree ? '#4ade80' : 'var(--gold)',
-          border: isFree ? '1px solid rgba(34, 197, 94, 0.3)' : '1px solid var(--gold-border)'
+          color: isFree ? '#4ade80' : '#06b6d4',
+          border: isFree ? '1px solid rgba(34, 197, 94, 0.3)' : '1px solid rgba(6, 182, 212, 0.35)'
         }}>
           {transfer.transfer_type_label || '💰 Achat'}
         </span>
@@ -86,8 +86,8 @@ export default function TransferCard({ transfer }) {
       {/* ── 2. LIGNE DU TRANSFERT : CLUB DÉPART ➔ CLUB ARRIVÉE ── */}
       <div style={{
         background: 'var(--obsidian-2)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 12,
+        border: '1px solid #27272a',
+        borderRadius: 4,
         padding: '12px 16px',
         display: 'flex',
         alignItems: 'center',
@@ -98,7 +98,7 @@ export default function TransferCard({ transfer }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0 }}>
           <TeamLogo teamName={transfer.from_team_name} size="sm" />
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Club Vendeur / Départ</div>
+            <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase' }}>Club Vendeur / Départ</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: '#f87171', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {transfer.from_team_name}
             </div>
@@ -107,10 +107,10 @@ export default function TransferCard({ transfer }) {
 
         {/* Flèche de Mouvement */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 8px' }}>
-          <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--gold-muted)', border: '1px solid var(--gold-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <ArrowRight size={14} color="var(--gold)" />
+          <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--gold-muted)', border: '1px solid rgba(6, 182, 212, 0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <ArrowRight size={14} color="#06b6d4" />
           </div>
-          <span style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 2, whiteSpace: 'nowrap' }}>
+          <span style={{ fontSize: 9, color: '#71717a', marginTop: 2, whiteSpace: 'nowrap' }}>
             {transfer.mercato_window_label || 'Mercato Estival'}
           </span>
         </div>
@@ -118,7 +118,7 @@ export default function TransferCard({ transfer }) {
         {/* Club Arrivée */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0, justifyContent: 'flex-end', textAlign: 'right' }}>
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Club Acheteur / Arrivée</div>
+            <div style={{ fontSize: 10, color: '#71717a', textTransform: 'uppercase' }}>Club Acheteur / Arrivée</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: '#4ade80', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {transfer.to_team_name}
             </div>
@@ -134,23 +134,23 @@ export default function TransferCard({ transfer }) {
         gap: 10,
         fontSize: 11
       }}>
-        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '8px 10px', borderRadius: 8, border: '1px solid var(--ivory-border)' }}>
-          <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>Montant Transaction</span>
-          <strong style={{ color: isFree ? '#4ade80' : 'var(--ivory)', fontSize: 13 }}>
+        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '8px 10px', borderRadius: 4, border: '1px solid #27272a' }}>
+          <span style={{ color: '#71717a', display: 'block', fontSize: 10 }}>Montant Transaction</span>
+          <strong style={{ color: isFree ? '#4ade80' : '#fafafa', fontSize: 13 }}>
             {transfer.fee_display}
           </strong>
         </div>
 
-        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '8px 10px', borderRadius: 8, border: '1px solid var(--ivory-border)' }}>
-          <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>Valeur Estimée</span>
-          <strong style={{ color: 'var(--gold)', fontSize: 13 }}>
+        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '8px 10px', borderRadius: 4, border: '1px solid #27272a' }}>
+          <span style={{ color: '#71717a', display: 'block', fontSize: 10 }}>Valeur Estimée</span>
+          <strong style={{ color: '#06b6d4', fontSize: 13 }}>
             {transfer.market_value_display}
           </strong>
         </div>
 
-        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '8px 10px', borderRadius: 8, border: '1px solid var(--ivory-border)' }}>
-          <span style={{ color: 'var(--neutral)', display: 'block', fontSize: 10 }}>Date Officielle</span>
-          <strong style={{ color: 'var(--ivory)', fontSize: 12 }}>
+        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '8px 10px', borderRadius: 4, border: '1px solid #27272a' }}>
+          <span style={{ color: '#71717a', display: 'block', fontSize: 10 }}>Date Officielle</span>
+          <strong style={{ color: '#fafafa', fontSize: 12 }}>
             {transfer.transfer_date_formatted || transfer.transfer_date}
           </strong>
         </div>
@@ -160,12 +160,12 @@ export default function TransferCard({ transfer }) {
       {transfer.transfer_notes && (
         <div style={{
           fontSize: 11,
-          color: 'var(--neutral)',
+          color: '#71717a',
           fontStyle: 'italic',
           background: 'rgba(212,175,55,0.04)',
           padding: '6px 10px',
           borderRadius: 6,
-          borderLeft: '2px solid var(--gold)'
+          borderLeft: '2px solid #06b6d4'
         }}>
           {transfer.transfer_notes}
         </div>

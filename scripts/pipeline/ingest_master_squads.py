@@ -236,7 +236,7 @@ def main():
                 joined_d = p.get('joined_date') or ('2023-07-01' if season_name == '2024-2025' else '2025-07-01' if season_name == '2025-2026' else '2026-07-01')
                 left_d = p.get('left_date')
                 valid_from = joined_d
-                valid_to = left_d
+                valid_to = left_d or ('2025-06-30' if season_name == '2024-2025' else '2026-06-30' if season_name == '2025-2026' else None)
                 is_current = 1 if (season_name == '2026-2027' and not left_d and p.get('status') != 'TRANSFERRED') else 0
                 
                 contract_sk = f"cnt_{player_id}_{team_id}_{season_name.replace('-', '_')}"

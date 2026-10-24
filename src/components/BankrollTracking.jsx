@@ -125,23 +125,23 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
   const topFeatures = r.top_predictive_features || [];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       {/* Explication d'Intégrité Scientifique & Anti-Contradiction */}
       <div style={{
-        background: 'rgba(212,175,55,0.06)',
-        border: '1px solid var(--gold-border)',
-        borderRadius: 16,
+        background: 'rgba(6, 182, 212, 0.08)',
+        border: '1px solid rgba(6, 182, 212, 0.35)',
+        borderRadius: 6,
         padding: '18px 22px',
         display: 'flex',
         alignItems: 'flex-start',
         gap: 16,
       }}>
-        <ShieldCheck size={26} color="var(--gold)" style={{ flexShrink: 0, marginTop: 2 }} />
+        <ShieldCheck size={26} color="#06b6d4" style={{ flexShrink: 0, marginTop: 2 }} />
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--gold)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+          <div style={{ fontSize: 13, fontWeight: 800, color: '#06b6d4', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
             Validation Scientifique & Benchmark Out-of-Sample {selectedSeason !== '2026-2027' ? `(Archives Saison ${selectedSeason})` : '(2024-2026)'}
           </div>
-          <p style={{ fontSize: 12, color: 'var(--ivory)', lineHeight: 1.6, margin: '8px 0 0 0' }}>
+          <p style={{ fontSize: 12, color: '#fafafa', lineHeight: 1.6, margin: '8px 0 0 0' }}>
             Conformément aux principes de rigueur quantitative de <strong>Predictor Ultimate</strong>, les archives historiques (2024-2026) ne contenaient pas de cotes pré-match officielles enregistrées en direct. Pour proscrire toute contradiction statistique ou hallucination post-hoc, <strong>aucun résultat match par match rétroactif n'est simulé sur les archives</strong>. Le modèle quantitatif (LightGBM 54 features + Dixon-Coles calibré) a été évalué selon un protocole strict de test hors-échantillon certifié sur <strong>{r.test_matches || 1846} rencontres indépendantes</strong>.
           </p>
           {onSwitchToLive && (
@@ -149,10 +149,10 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
               onClick={onSwitchToLive}
               style={{
                 marginTop: 12,
-                background: 'var(--gold)',
+                background: '#06b6d4',
                 color: '#000',
                 border: 'none',
-                borderRadius: 8,
+                borderRadius: 4,
                 padding: '7px 16px',
                 fontSize: 11,
                 fontWeight: 800,
@@ -172,77 +172,77 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
       {/* 4 Hero KPI Cards du Benchmark */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
         {/* Card 1: Brier Score */}
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 18 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#71717a' }}>
               Précision Probabiliste (Brier Score)
             </span>
-            <Award size={18} color="var(--gold)" />
+            <Award size={18} color="#06b6d4" />
           </div>
-          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: 'var(--gold)', lineHeight: 1.2 }}>
+          <div style={{ fontSize: 26, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#06b6d4', lineHeight: 1.2 }}>
             {metrics1n2.dixon_coles_brier_score || '0.6064'}
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 4 }}>
             Log Loss: {metrics1n2.dixon_coles_log_loss || '1.0138'} · RPS: {metrics1n2.dixon_coles_rps || '0.2127'}
           </div>
-          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: '#a1a1aa', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 4, border: '1px solid #27272a', alignSelf: 'flex-start', display: 'inline-block' }}>
             Calibration Dixon-Coles
           </div>
         </div>
 
         {/* Card 2: Test Dataset */}
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 18 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#71717a' }}>
               Volume Test Hors-Échantillon
             </span>
-            <Database size={18} color="#38bdf8" />
+            <Database size={18} color="#06b6d4" />
           </div>
-          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: '#38bdf8', lineHeight: 1.2 }}>
+          <div style={{ fontSize: 26, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#06b6d4', lineHeight: 1.2 }}>
             {r.test_matches || 1846} Matchs
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 4 }}>
             sur {r.dataset_matches_count || 4615} matchs · {r.features_count || 54} variables
           </div>
-          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: '#a1a1aa', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 4, border: '1px solid #27272a', alignSelf: 'flex-start', display: 'inline-block' }}>
             Split Temporel Out-of-Sample
           </div>
         </div>
 
         {/* Card 3: Value Betting ROI */}
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 18 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#71717a' }}>
               Simulation Value Bet (ROI Net)
             </span>
-            <TrendingUp size={18} color="#4ade80" />
+            <TrendingUp size={18} color="#10b981" />
           </div>
-          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: '#4ade80', lineHeight: 1.2 }}>
+          <div style={{ fontSize: 26, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#10b981', lineHeight: 1.2 }}>
             {vb.roi_percentage || '+3.96%'}
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 4 }}>
             {vb.total_bets || 1858} paris simulés · {vb.win_rate_pct || 41.4}% de réussite
           </div>
-          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: '#a1a1aa', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 4, border: '1px solid #27272a', alignSelf: 'flex-start', display: 'inline-block' }}>
             Seuil Edge ≥ +2.5%
           </div>
         </div>
 
         {/* Card 4: Bankroll Growth */}
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 18 }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 18 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#71717a' }}>
               Trajectoire Capital (Kelly Fraction)
             </span>
-            <Trophy size={18} color="var(--gold)" />
+            <Trophy size={18} color="#06b6d4" />
           </div>
-          <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: 'var(--gold)', lineHeight: 1.2 }}>
+          <div style={{ fontSize: 26, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#06b6d4', lineHeight: 1.2 }}>
             {vb.final_bankroll || '7 665.28'} €
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 4 }}>
             Départ {vb.starting_bankroll || 1000} € ➔ Profit Net +666.5%
           </div>
-          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: 'var(--ivory-dim)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 99, border: '1px solid var(--ivory-border)', alignSelf: 'flex-start', display: 'inline-block' }}>
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 700, color: '#a1a1aa', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: 4, border: '1px solid #27272a', alignSelf: 'flex-start', display: 'inline-block' }}>
             Gestion du Risque Certifiée
           </div>
         </div>
@@ -251,11 +251,11 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
       {/* Grid: Buts Metrics & Top SHAP Features */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 16 }}>
         {/* Left: Précision des Buts */}
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 18, padding: 22 }}>
-          <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gold)', marginBottom: 4 }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 22 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#06b6d4', marginBottom: 4 }}>
             Calibration des Buts & Marchés Totaux
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 18 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginBottom: 18 }}>
             Métriques d'erreur quadratique et calibration probabiliste Poisson bivarié
           </div>
 
@@ -267,11 +267,11 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
               { label: 'ROC-AUC Over / Under 2.5 Buts', value: metricsGoals.over25_roc_auc || 0.5671, target: 'Discriminant' },
               { label: 'Log Loss Over / Under 2.5 Buts', value: metricsGoals.over25_log_loss || 0.6968, target: 'Calibré' },
             ].map((row, idx) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: 'rgba(255,255,255,0.02)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.04)' }}>
-                <span style={{ fontSize: 11, color: 'var(--ivory)' }}>{row.label}</span>
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: 'rgba(255,255,255,0.02)', borderRadius: 4, border: '1px solid rgba(255,255,255,0.04)' }}>
+                <span style={{ fontSize: 11, color: '#fafafa' }}>{row.label}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ fontSize: 12, fontWeight: 800, color: 'var(--gold)', fontFamily: 'monospace' }}>{row.value}</span>
-                  <span style={{ fontSize: 9, color: 'var(--neutral)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>{row.target}</span>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: '#06b6d4', fontFamily: 'monospace' }}>{row.value}</span>
+                  <span style={{ fontSize: 9, color: '#71717a', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>{row.target}</span>
                 </div>
               </div>
             ))}
@@ -279,11 +279,11 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
         </div>
 
         {/* Right: Top SHAP Variables */}
-        <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 18, padding: 22 }}>
-          <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gold)', marginBottom: 4 }}>
+        <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 22 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#06b6d4', marginBottom: 4 }}>
             Top 10 Variables Prédictives Majeures (SHAP)
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginBottom: 18 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginBottom: 18 }}>
             Poids d'impact direct dans l'arborescence LightGBM (Mean |SHAP Value|)
           </div>
 
@@ -296,16 +296,16 @@ function BacktestBenchmarkView({ report, selectedSeason, onSwitchToLive }) {
               return (
                 <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 11 }}>
-                    <span style={{ color: 'var(--ivory)' }}>
-                      <strong style={{ color: 'var(--gold)', marginRight: 6 }}>#{f.rank || idx + 1}</strong>
+                    <span style={{ color: '#fafafa' }}>
+                      <strong style={{ color: '#06b6d4', marginRight: 6 }}>#{f.rank || idx + 1}</strong>
                       {label}
                     </span>
-                    <span style={{ fontFamily: 'monospace', fontWeight: 700, color: 'var(--gold)' }}>
+                    <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#06b6d4' }}>
                       {(val * 100).toFixed(2)}%
                     </span>
                   </div>
-                  <div style={{ width: '100%', height: 4, background: 'rgba(255,255,255,0.06)', borderRadius: 99, overflow: 'hidden' }}>
-                    <div style={{ width: `${pctWidth}%`, height: '100%', background: 'linear-gradient(90deg, #d4af37, #4ade80)', borderRadius: 99 }} />
+                  <div style={{ width: '100%', height: 4, background: 'rgba(255,255,255,0.06)', borderRadius: 4, overflow: 'hidden' }}>
+                    <div style={{ width: `${pctWidth}%`, height: '100%', background: 'linear-gradient(90deg, #d4af37, #10b981)', borderRadius: 4 }} />
                   </div>
                 </div>
               );
@@ -748,71 +748,63 @@ export default function BankrollTracking({ APP_DATA }) {
   }, [evaluatedMatches, selectedLeague, selectedRound, selectedClub]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 28, paddingBottom: 60 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingBottom: 60 }}>
 
-      {/* ── HEADER TITLE & CONTEXT ── */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{
-              background: 'rgba(212,175,55,0.15)',
-              border: '1px solid var(--gold-border)',
-              borderRadius: 8,
-              padding: '4px 10px',
-              fontSize: 10,
-              fontWeight: 800,
-              color: 'var(--gold)',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}>
-              Module IA & Validation
-            </span>
-            {isLoadingHistory && (
-              <span style={{ fontSize: 11, color: 'var(--neutral)', fontStyle: 'italic' }}>
-                Chargement des archives...
-              </span>
-            )}
-          </div>
-          <h1 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '2.2rem',
-            color: 'var(--ivory)',
-            fontWeight: 400,
-            margin: '8px 0 0 0',
-            letterSpacing: '-0.02em',
+      {/* ── HEADER TITLE (QUANT TERMINAL TOOLBAR) ── */}
+      <section style={{
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
+        padding: '10px 14px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        fontFamily: "'JetBrains Mono', monospace",
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.06em',
+            color: '#06b6d4', textTransform: 'uppercase',
           }}>
-            Model Tracking & Viabilité des Prédictions
-          </h1>
-          <p style={{ fontSize: 13, color: 'var(--neutral)', marginTop: 6, maxWidth: 840 }}>
-            Évaluation scientifique des prédictions de l'algorithme face aux scores réels. Analyse de la viabilité par championnat, par journée (J1 à J38 / Coupes d'Europe) et par club.
-          </p>
+            <BarChart3 size={13} /> MODEL TRACKING & BACKTEST ML BENCHMARK
+          </span>
+          <span style={{ color: '#27272a' }}>|</span>
+          <span style={{ fontSize: 11, color: '#71717a' }}>
+            SPLIT OUT-OF-SAMPLE · KELLY FRACTION · CALIBRATION PROBABILISTE
+          </span>
         </div>
 
         {/* Sélecteur de Saison */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', padding: '6px 14px', borderRadius: 12 }}>
-          <Calendar size={15} color="var(--gold)" />
-          <span style={{ fontSize: 11, color: 'var(--neutral)', fontWeight: 600 }}>Saison :</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#71717a', fontSize: 11 }}>
+            <Calendar size={12} color="#06b6d4" /> Saison :
+          </span>
           <select
             value={selectedSeason}
             onChange={(e) => handleSeasonChange(e.target.value)}
             style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--ivory)',
-              fontSize: 12,
-              fontWeight: 700,
-              outline: 'none',
+              padding: '4px 10px',
+              borderRadius: 4,
+              fontSize: 11,
+              fontWeight: 600,
+              background: '#18181b',
+              border: '1px solid #27272a',
+              color: '#fafafa',
               cursor: 'pointer',
+              outline: 'none',
+              fontFamily: "'JetBrains Mono', monospace",
             }}
           >
-            <option value="2026-2027" style={{ background: '#121212' }}>2026-2027 (En cours)</option>
-            <option value="2025-2026" style={{ background: '#121212' }}>2025-2026</option>
-            <option value="2024-2025" style={{ background: '#121212' }}>2024-2025</option>
+            <option value="2026-2027" style={{ background: '#121215' }}>2026-2027 (En cours)</option>
+            <option value="2025-2026" style={{ background: '#121215' }}>2025-2026</option>
+            <option value="2024-2025" style={{ background: '#121215' }}>2024-2025</option>
           </select>
         </div>
-      </div>
+      </section>
 
-      
       {/* ── SÉLECTEUR DE MODE D'AUDIT : LIVE 2026-2027 vs BENCHMARK BACKTEST ── */}
       <div style={{
         display: 'flex',
@@ -820,9 +812,9 @@ export default function BankrollTracking({ APP_DATA }) {
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: 12,
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 14,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 6,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
@@ -836,24 +828,24 @@ export default function BankrollTracking({ APP_DATA }) {
               alignItems: 'center',
               gap: 8,
               background: activeViewMode === 'LIVE' ? 'rgba(212,175,55,0.18)' : 'transparent',
-              border: activeViewMode === 'LIVE' ? '1px solid var(--gold-border)' : '1px solid transparent',
-              color: activeViewMode === 'LIVE' ? 'var(--gold)' : 'var(--neutral)',
+              border: activeViewMode === 'LIVE' ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid transparent',
+              color: activeViewMode === 'LIVE' ? '#06b6d4' : '#71717a',
               padding: '8px 16px',
-              borderRadius: 10,
+              borderRadius: 4,
               fontSize: 12,
               fontWeight: 700,
               cursor: 'pointer',
               transition: 'all 0.15s ease',
             }}
           >
-            <Zap size={15} color={activeViewMode === 'LIVE' ? 'var(--gold)' : 'var(--neutral)'} />
+            <Zap size={15} color={activeViewMode === 'LIVE' ? '#06b6d4' : '#71717a'} />
             <span>Suivi En Direct (2026-2027)</span>
             <span style={{
               fontSize: 10,
               padding: '1px 6px',
-              borderRadius: 99,
-              background: activeViewMode === 'LIVE' ? 'var(--gold)' : 'rgba(255,255,255,0.06)',
-              color: activeViewMode === 'LIVE' ? '#000' : 'var(--neutral)',
+              borderRadius: 4,
+              background: activeViewMode === 'LIVE' ? '#06b6d4' : 'rgba(255,255,255,0.06)',
+              color: activeViewMode === 'LIVE' ? '#000' : '#71717a',
               fontWeight: 800,
             }}>
               {metrics.total} matchs audités
@@ -868,23 +860,23 @@ export default function BankrollTracking({ APP_DATA }) {
               gap: 8,
               background: activeViewMode === 'BACKTEST' ? 'rgba(56,189,248,0.18)' : 'transparent',
               border: activeViewMode === 'BACKTEST' ? '1px solid rgba(56,189,248,0.4)' : '1px solid transparent',
-              color: activeViewMode === 'BACKTEST' ? '#38bdf8' : 'var(--neutral)',
+              color: activeViewMode === 'BACKTEST' ? '#06b6d4' : '#71717a',
               padding: '8px 16px',
-              borderRadius: 10,
+              borderRadius: 4,
               fontSize: 12,
               fontWeight: 700,
               cursor: 'pointer',
               transition: 'all 0.15s ease',
             }}
           >
-            <Database size={15} color={activeViewMode === 'BACKTEST' ? '#38bdf8' : 'var(--neutral)'} />
+            <Database size={15} color={activeViewMode === 'BACKTEST' ? '#06b6d4' : '#71717a'} />
             <span>Benchmark Backtest & Validation (2024-2026)</span>
             <span style={{
               fontSize: 10,
               padding: '1px 6px',
-              borderRadius: 99,
-              background: activeViewMode === 'BACKTEST' ? '#38bdf8' : 'rgba(255,255,255,0.06)',
-              color: activeViewMode === 'BACKTEST' ? '#000' : 'var(--neutral)',
+              borderRadius: 4,
+              background: activeViewMode === 'BACKTEST' ? '#06b6d4' : 'rgba(255,255,255,0.06)',
+              color: activeViewMode === 'BACKTEST' ? '#000' : '#71717a',
               fontWeight: 800,
             }}>
               1 846 tests · ROI +3.96%
@@ -900,16 +892,16 @@ export default function BankrollTracking({ APP_DATA }) {
               alignItems: 'center',
               gap: 6,
               background: showValueBetsQueue ? 'rgba(74,222,128,0.2)' : 'rgba(255,255,255,0.04)',
-              border: `1px solid ${showValueBetsQueue ? 'rgba(74,222,128,0.4)' : 'var(--ivory-border)'}`,
-              color: showValueBetsQueue ? '#4ade80' : 'var(--ivory)',
+              border: `1px solid ${showValueBetsQueue ? 'rgba(74,222,128,0.4)' : '#27272a'}`,
+              color: showValueBetsQueue ? '#10b981' : '#fafafa',
               padding: '6px 12px',
-              borderRadius: 8,
+              borderRadius: 4,
               fontSize: 11,
               fontWeight: 700,
               cursor: 'pointer',
             }}
           >
-            <Sparkles size={13} color={showValueBetsQueue ? '#4ade80' : 'var(--gold)'} />
+            <Sparkles size={13} color={showValueBetsQueue ? '#10b981' : '#06b6d4'} />
             <span>Surveillance Value Bets ({activeValueBets.length} signaux)</span>
           </button>
         )}
@@ -932,7 +924,7 @@ export default function BankrollTracking({ APP_DATA }) {
             <div style={{
               background: 'rgba(34,197,94,0.04)',
               border: '1px solid rgba(74,222,128,0.3)',
-              borderRadius: 16,
+              borderRadius: 6,
               padding: 20,
               display: 'flex',
               flexDirection: 'column',
@@ -940,22 +932,22 @@ export default function BankrollTracking({ APP_DATA }) {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     🎯 Queue de Surveillance des Value Bets (Saison 2026-2027)
                   </div>
-                  <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+                  <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
                     Opportunités mathématiques où la probabilité IA dépasse la cote implicite Betclic (Edge ≥ +2.5%)
                   </div>
                 </div>
-                <div style={{ fontSize: 11, color: '#4ade80', fontWeight: 700 }}>
+                <div style={{ fontSize: 11, color: '#10b981', fontWeight: 700 }}>
                   {activeValueBets.length} opportunités détectées
                 </div>
               </div>
 
-              <div style={{ overflowX: 'auto', borderRadius: 10, border: '1px solid var(--ivory-border)' }}>
+              <div style={{ overflowX: 'auto', borderRadius: 4, border: '1px solid #27272a' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: 11 }}>
                   <thead>
-                    <tr style={{ background: 'var(--obsidian-3)', borderBottom: '1px solid var(--ivory-border)', color: 'var(--neutral)', fontSize: 10, textTransform: 'uppercase' }}>
+                    <tr style={{ background: '#18181b', borderBottom: '1px solid #27272a', color: '#71717a', fontSize: 10, textTransform: 'uppercase' }}>
                       <th style={{ padding: '10px 12px' }}>Compétition</th>
                       <th style={{ padding: '10px 12px' }}>Rencontre</th>
                       <th style={{ padding: '10px 12px', textAlign: 'center' }}>Sélection</th>
@@ -968,23 +960,23 @@ export default function BankrollTracking({ APP_DATA }) {
                   <tbody>
                     {activeValueBets.slice(0, 10).map((vb, idx) => (
                       <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: idx % 2 === 0 ? 'rgba(255,255,255,0.01)' : 'transparent' }}>
-                        <td style={{ padding: '10px 12px', color: 'var(--gold)', fontWeight: 700 }}>{vb.league}</td>
-                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--ivory)' }}>
+                        <td style={{ padding: '10px 12px', color: '#06b6d4', fontWeight: 700 }}>{vb.league}</td>
+                        <td style={{ padding: '10px 12px', fontWeight: 600, color: '#fafafa' }}>
                           {vb.homeTeam} vs {vb.awayTeam}
                         </td>
-                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#4ade80', fontWeight: 700 }}>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#10b981', fontWeight: 700 }}>
                           {vb.selection_label || vb.side}
                         </td>
                         <td style={{ padding: '10px 12px', textAlign: 'center', fontFamily: 'monospace', fontWeight: 700 }}>
                           {vb.betclic_odd || vb.bookmaker_odds}
                         </td>
-                        <td style={{ padding: '10px 12px', textAlign: 'center', color: 'var(--gold)', fontWeight: 700 }}>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#06b6d4', fontWeight: 700 }}>
                           {vb.model_probability || vb.model_prob}
                         </td>
-                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#4ade80', fontWeight: 800 }}>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#10b981', fontWeight: 800 }}>
                           {vb.edge_percentage || vb.edge}
                         </td>
-                        <td style={{ padding: '10px 12px', textAlign: 'center', color: 'var(--neutral)' }}>
+                        <td style={{ padding: '10px 12px', textAlign: 'center', color: '#71717a' }}>
                           {vb.stake_recommendation || 'Kelly'}
                         </td>
                       </tr>
@@ -1003,7 +995,7 @@ export default function BankrollTracking({ APP_DATA }) {
             value: metrics.hitRatePct,
             sub: `${metrics.correct} validés sur ${metrics.total} matchs`,
             icon: Award,
-            color: metrics.hitRateNum >= 55 ? '#4ade80' : 'var(--gold)',
+            color: metrics.hitRateNum >= 55 ? '#10b981' : '#06b6d4',
             badge: `${metrics.total} matchs audités`,
           },
           {
@@ -1011,7 +1003,7 @@ export default function BankrollTracking({ APP_DATA }) {
             value: metrics.exactScorePct,
             sub: `${metrics.exactScoreHits} scores exacts parfaits`,
             icon: Target,
-            color: 'var(--gold)',
+            color: '#06b6d4',
             badge: 'Précision chirurgicale',
           },
           {
@@ -1019,7 +1011,7 @@ export default function BankrollTracking({ APP_DATA }) {
             value: metrics.highConfHitRate,
             sub: `${metrics.highConfHits} / ${metrics.highConfTotal} validées`,
             icon: ShieldCheck,
-            color: '#38bdf8',
+            color: '#06b6d4',
             badge: 'Signaux prioritaires',
           },
           {
@@ -1027,7 +1019,7 @@ export default function BankrollTracking({ APP_DATA }) {
             value: `${metrics.homeWinCorrect} · ${metrics.drawCorrect} · ${metrics.awayWinCorrect}`,
             sub: 'Dom. / Nuls / Ext. réussis',
             icon: Layers,
-            color: 'var(--ivory)',
+            color: '#fafafa',
             badge: 'Calibration issue',
           },
         ].map((kpi, idx) => {
@@ -1036,9 +1028,9 @@ export default function BankrollTracking({ APP_DATA }) {
             <div
               key={idx}
               style={{
-                background: 'var(--glass-primary)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 16,
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 6,
                 padding: 18,
                 position: 'relative',
                 display: 'flex',
@@ -1048,15 +1040,15 @@ export default function BankrollTracking({ APP_DATA }) {
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--neutral)' }}>
+                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#71717a' }}>
                     {kpi.label}
                   </span>
                   <Icon size={18} color={kpi.color} />
                 </div>
-                <div style={{ fontSize: 26, fontFamily: 'var(--font-serif)', fontWeight: 700, color: kpi.color, lineHeight: 1.2 }}>
+                <div style={{ fontSize: 26, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: kpi.color, lineHeight: 1.2 }}>
                   {kpi.value}
                 </div>
-                <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
+                <div style={{ fontSize: 11, color: '#71717a', marginTop: 4 }}>
                   {kpi.sub}
                 </div>
               </div>
@@ -1065,11 +1057,11 @@ export default function BankrollTracking({ APP_DATA }) {
                 marginTop: 12,
                 fontSize: 9,
                 fontWeight: 700,
-                color: 'var(--ivory-dim)',
+                color: '#a1a1aa',
                 background: 'rgba(255,255,255,0.04)',
                 padding: '2px 8px',
-                borderRadius: 99,
-                border: '1px solid var(--ivory-border)',
+                borderRadius: 4,
+                border: '1px solid #27272a',
               }}>
                 {kpi.badge}
               </div>
@@ -1080,9 +1072,9 @@ export default function BankrollTracking({ APP_DATA }) {
 
       {/* ── BARRE DE FILTRES MULTI-CRITÈRES ── */}
       <div style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 16,
         display: 'flex',
         flexDirection: 'column',
@@ -1090,8 +1082,8 @@ export default function BankrollTracking({ APP_DATA }) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Filter size={16} color="var(--gold)" />
-            <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ivory)' }}>
+            <Filter size={16} color="#06b6d4" />
+            <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#fafafa' }}>
               Filtres de Viabilité & Découpage
             </span>
           </div>
@@ -1107,9 +1099,9 @@ export default function BankrollTracking({ APP_DATA }) {
               }}
               style={{
                 background: 'rgba(255,255,255,0.05)',
-                border: '1px solid var(--ivory-border)',
+                border: '1px solid #27272a',
                 borderRadius: 6,
-                color: 'var(--gold)',
+                color: '#06b6d4',
                 padding: '4px 10px',
                 fontSize: 10,
                 fontWeight: 700,
@@ -1124,7 +1116,7 @@ export default function BankrollTracking({ APP_DATA }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
           {/* 1. Championnat / Compétition */}
           <div>
-            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: 'var(--neutral)', marginBottom: 4 }}>
+            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: '#71717a', marginBottom: 4 }}>
               Championnat
             </label>
             <select
@@ -1132,10 +1124,10 @@ export default function BankrollTracking({ APP_DATA }) {
               onChange={(e) => setSelectedLeague(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 8,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '7px 10px',
                 fontSize: 11,
                 outline: 'none',
@@ -1151,7 +1143,7 @@ export default function BankrollTracking({ APP_DATA }) {
 
           {/* 2. Journée (dynamique selon le championnat réel) */}
           <div>
-            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: 'var(--neutral)', marginBottom: 4 }}>
+            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: '#71717a', marginBottom: 4 }}>
               Journée / Tour
             </label>
             <select
@@ -1159,10 +1151,10 @@ export default function BankrollTracking({ APP_DATA }) {
               onChange={(e) => setSelectedRound(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 8,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '7px 10px',
                 fontSize: 11,
                 outline: 'none',
@@ -1179,7 +1171,7 @@ export default function BankrollTracking({ APP_DATA }) {
 
           {/* 3. Club spécifique */}
           <div>
-            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: 'var(--neutral)', marginBottom: 4 }}>
+            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: '#71717a', marginBottom: 4 }}>
               Club Spécifique
             </label>
             <select
@@ -1187,10 +1179,10 @@ export default function BankrollTracking({ APP_DATA }) {
               onChange={(e) => setSelectedClub(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 8,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '7px 10px',
                 fontSize: 11,
                 outline: 'none',
@@ -1207,7 +1199,7 @@ export default function BankrollTracking({ APP_DATA }) {
 
           {/* 4. Statut validation prédiction */}
           <div>
-            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: 'var(--neutral)', marginBottom: 4 }}>
+            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: '#71717a', marginBottom: 4 }}>
               Statut Prédiction
             </label>
             <select
@@ -1215,10 +1207,10 @@ export default function BankrollTracking({ APP_DATA }) {
               onChange={(e) => setFilterType(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 8,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '7px 10px',
                 fontSize: 11,
                 outline: 'none',
@@ -1233,11 +1225,11 @@ export default function BankrollTracking({ APP_DATA }) {
 
           {/* 5. Recherche par nom d'équipe */}
           <div>
-            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: 'var(--neutral)', marginBottom: 4 }}>
+            <label style={{ display: 'block', fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: '#71717a', marginBottom: 4 }}>
               Recherche
             </label>
             <div style={{ position: 'relative' }}>
-              <Search size={13} color="var(--neutral)" style={{ position: 'absolute', left: 10, top: 10 }} />
+              <Search size={13} color="#71717a" style={{ position: 'absolute', left: 10, top: 10 }} />
               <input
                 type="text"
                 placeholder="Ex: Paris, Real, Arsenal..."
@@ -1245,10 +1237,10 @@ export default function BankrollTracking({ APP_DATA }) {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
                   width: '100%',
-                  background: 'var(--obsidian-2)',
-                  border: '1px solid var(--ivory-border)',
-                  borderRadius: 8,
-                  color: 'var(--ivory)',
+                  background: '#121215',
+                  border: '1px solid #27272a',
+                  borderRadius: 4,
+                  color: '#fafafa',
                   padding: '7px 10px 7px 28px',
                   fontSize: 11,
                   outline: 'none',
@@ -1262,9 +1254,9 @@ export default function BankrollTracking({ APP_DATA }) {
 
       {/* ── SECTION GRAPHIQUES DE VIABILITÉ INTERACTIFS ── */}
       <div style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 22,
       }}>
         {/* Onglets Graphiques */}
@@ -1273,12 +1265,12 @@ export default function BankrollTracking({ APP_DATA }) {
             <div className="card-section-title" style={{ fontSize: '1.15rem' }}>
               Visualisation Graphique du Taux de Réussite
             </div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Analyse comparative de l'efficacité prédictive de l'algorithme selon le filtre actif
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'var(--obsidian-2)', padding: 4, borderRadius: 10, border: '1px solid var(--ivory-border)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#121215', padding: 4, borderRadius: 4, border: '1px solid #27272a' }}>
             {[
               { id: 'MATCHDAY', label: '1. Par Journée (J1...)' },
               { id: 'LEAGUE', label: '2. Par Championnat' },
@@ -1288,8 +1280,8 @@ export default function BankrollTracking({ APP_DATA }) {
                 key={tab.id}
                 onClick={() => setActiveChartTab(tab.id)}
                 style={{
-                  background: activeChartTab === tab.id ? 'var(--gold-muted)' : 'transparent',
-                  color: activeChartTab === tab.id ? 'var(--gold)' : 'var(--neutral)',
+                  background: activeChartTab === tab.id ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                  color: activeChartTab === tab.id ? '#06b6d4' : '#71717a',
                   border: 'none',
                   borderRadius: 6,
                   padding: '6px 12px',
@@ -1309,19 +1301,19 @@ export default function BankrollTracking({ APP_DATA }) {
         {activeChartTab === 'MATCHDAY' && (
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <div style={{ fontSize: 12, color: 'var(--ivory)' }}>
+              <div style={{ fontSize: 12, color: '#fafafa' }}>
                 Évolution temporelle du taux de réussite (% 1N2 & Scores Exacts) pour :{' '}
-                <strong style={{ color: 'var(--gold)' }}>
+                <strong style={{ color: '#06b6d4' }}>
                   {SUPPORTED_COMPETITIONS.find((c) => c.code === selectedLeague)?.name || 'Toutes compétitions'}
                 </strong>
               </div>
-              <div style={{ fontSize: 10, color: 'var(--neutral)' }}>
+              <div style={{ fontSize: 10, color: '#71717a' }}>
                 {matchdayChartData.length} journées observées
               </div>
             </div>
 
             {matchdayChartData.length === 0 ? (
-              <div style={{ padding: 40, textAlign: 'center', color: 'var(--neutral)', fontSize: 12 }}>
+              <div style={{ padding: 40, textAlign: 'center', color: '#71717a', fontSize: 12 }}>
                 Aucune donnée de journée disponible pour la sélection courante.
               </div>
             ) : (
@@ -1345,14 +1337,14 @@ export default function BankrollTracking({ APP_DATA }) {
                           const data = payload[0].payload;
                           return (
                             <div style={{
-                              background: 'var(--obsidian-2)',
-                              border: '1px solid var(--gold-border)',
-                              borderRadius: 8,
+                              background: '#121215',
+                              border: '1px solid rgba(6, 182, 212, 0.35)',
+                              borderRadius: 4,
                               padding: '8px 12px',
                               fontSize: 11,
-                              color: 'var(--ivory)',
+                              color: '#fafafa',
                             }}>
-                              <div style={{ fontWeight: 800, color: 'var(--gold)', marginBottom: 4 }}>
+                              <div style={{ fontWeight: 800, color: '#06b6d4', marginBottom: 4 }}>
                                 {data.round}
                               </div>
                               <div>Taux 1N2 validé : <strong>{data.accuracy}%</strong> ({data.correct}/{data.total})</div>
@@ -1368,19 +1360,19 @@ export default function BankrollTracking({ APP_DATA }) {
                       type="monotone"
                       dataKey="accuracy"
                       name="% Prédictions 1N2 Validées"
-                      stroke="#4ade80"
+                      stroke="#10b981"
                       strokeWidth={2.5}
-                      dot={{ fill: '#4ade80', r: 3 }}
+                      dot={{ fill: '#10b981', r: 3 }}
                       activeDot={{ r: 6 }}
                     />
                     <Line
                       type="monotone"
                       dataKey="exactAccuracy"
                       name="% Scores Exacts Validés"
-                      stroke="var(--gold)"
+                      stroke="#06b6d4"
                       strokeWidth={1.8}
                       strokeDasharray="4 4"
-                      dot={{ fill: 'var(--gold)', r: 3 }}
+                      dot={{ fill: '#06b6d4', r: 3 }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -1393,10 +1385,10 @@ export default function BankrollTracking({ APP_DATA }) {
         {activeChartTab === 'LEAGUE' && (
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <div style={{ fontSize: 12, color: 'var(--ivory)' }}>
+              <div style={{ fontSize: 12, color: '#fafafa' }}>
                 Comparatif de viabilité de l'algorithme à travers les 5 grands championnats et Coupes d'Europe
               </div>
-              <div style={{ fontSize: 10, color: 'var(--neutral)' }}>
+              <div style={{ fontSize: 10, color: '#71717a' }}>
                 Objectif de viabilité cible : 55%+
               </div>
             </div>
@@ -1422,18 +1414,18 @@ export default function BankrollTracking({ APP_DATA }) {
                         const data = payload[0].payload;
                         return (
                           <div style={{
-                            background: 'var(--obsidian-2)',
-                            border: '1px solid var(--gold-border)',
-                            borderRadius: 8,
+                            background: '#121215',
+                            border: '1px solid rgba(6, 182, 212, 0.35)',
+                            borderRadius: 4,
                             padding: '8px 12px',
                             fontSize: 11,
-                            color: 'var(--ivory)',
+                            color: '#fafafa',
                           }}>
-                            <div style={{ fontWeight: 800, color: 'var(--gold)', marginBottom: 4 }}>
+                            <div style={{ fontWeight: 800, color: '#06b6d4', marginBottom: 4 }}>
                               {data.name}
                             </div>
                             <div>Taux Réussite : <strong>{data.accuracy}%</strong></div>
-                            <div style={{ color: 'var(--neutral)', fontSize: 10 }}>
+                            <div style={{ color: '#71717a', fontSize: 10 }}>
                               {data.correct} réussis sur {data.total} matchs
                             </div>
                           </div>
@@ -1446,7 +1438,7 @@ export default function BankrollTracking({ APP_DATA }) {
                     {leagueChartData.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
-                        fill={entry.accuracy >= 60 ? '#4ade80' : (entry.accuracy >= 52 ? 'var(--gold)' : '#f87171')}
+                        fill={entry.accuracy >= 60 ? '#10b981' : (entry.accuracy >= 52 ? '#06b6d4' : '#f87171')}
                       />
                     ))}
                   </Bar>
@@ -1460,16 +1452,16 @@ export default function BankrollTracking({ APP_DATA }) {
         {activeChartTab === 'CLUB' && (
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <div style={{ fontSize: 12, color: 'var(--ivory)' }}>
+              <div style={{ fontSize: 12, color: '#fafafa' }}>
                 Fiabilité prédictive par Club (Minimum 3 matchs joués analysés)
               </div>
-              <div style={{ fontSize: 10, color: 'var(--neutral)' }}>
+              <div style={{ fontSize: 10, color: '#71717a' }}>
                 {selectedClub !== 'ALL' ? `Focus sur ${selectedClub}` : 'Top 15 clubs par volume & précision'}
               </div>
             </div>
 
             {clubChartData.length === 0 ? (
-              <div style={{ padding: 40, textAlign: 'center', color: 'var(--neutral)', fontSize: 12 }}>
+              <div style={{ padding: 40, textAlign: 'center', color: '#71717a', fontSize: 12 }}>
                 Pas assez de matchs terminés pour ce club ou cette sélection.
               </div>
             ) : (
@@ -1495,18 +1487,18 @@ export default function BankrollTracking({ APP_DATA }) {
                           const data = payload[0].payload;
                           return (
                             <div style={{
-                              background: 'var(--obsidian-2)',
-                              border: '1px solid var(--gold-border)',
-                              borderRadius: 8,
+                              background: '#121215',
+                              border: '1px solid rgba(6, 182, 212, 0.35)',
+                              borderRadius: 4,
                               padding: '8px 12px',
                               fontSize: 11,
-                              color: 'var(--ivory)',
+                              color: '#fafafa',
                             }}>
-                              <div style={{ fontWeight: 800, color: 'var(--gold)', marginBottom: 4 }}>
+                              <div style={{ fontWeight: 800, color: '#06b6d4', marginBottom: 4 }}>
                                 {data.club}
                               </div>
                               <div>Taux de prédiction validée : <strong>{data.accuracy}%</strong></div>
-                              <div style={{ color: 'var(--neutral)', fontSize: 10 }}>
+                              <div style={{ color: '#71717a', fontSize: 10 }}>
                                 {data.correct} réussis sur {data.total} matchs
                               </div>
                             </div>
@@ -1519,7 +1511,7 @@ export default function BankrollTracking({ APP_DATA }) {
                       {clubChartData.map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
-                          fill={entry.accuracy >= 65 ? '#4ade80' : (entry.accuracy >= 50 ? 'var(--gold)' : '#f87171')}
+                          fill={entry.accuracy >= 65 ? '#10b981' : (entry.accuracy >= 50 ? '#06b6d4' : '#f87171')}
                         />
                       ))}
                     </Bar>
@@ -1533,9 +1525,9 @@ export default function BankrollTracking({ APP_DATA }) {
 
       {/* ── SECTION AUDIT DÉTAILLÉ MATCH PAR MATCH ── */}
       <div style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 22,
         display: 'flex',
         flexDirection: 'column',
@@ -1544,21 +1536,21 @@ export default function BankrollTracking({ APP_DATA }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <div>
             <div className="card-section-title">Audit Trail des Prédictions Match par Match</div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Vérification unitaire des choix 1N2 et scores exacts face au score réel officiel
             </div>
           </div>
 
-          <div style={{ fontSize: 11, color: 'var(--neutral)' }}>
+          <div style={{ fontSize: 11, color: '#71717a' }}>
             <strong>{filteredMatches.length}</strong> matchs filtrés correspondants
           </div>
         </div>
 
         {/* Tableau Responsive */}
-        <div style={{ overflowX: 'auto', borderRadius: 12, border: '1px solid var(--ivory-border)' }}>
+        <div style={{ overflowX: 'auto', borderRadius: 4, border: '1px solid #27272a' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: 12 }}>
             <thead>
-              <tr style={{ background: 'var(--obsidian-3)', borderBottom: '1px solid var(--ivory-border)', color: 'var(--neutral)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ background: '#18181b', borderBottom: '1px solid #27272a', color: '#71717a', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '12px 14px' }}>Compétition & Tour</th>
                 <th style={{ padding: '12px 14px' }}>Rencontre</th>
                 <th style={{ padding: '12px 14px', textAlign: 'center' }}>Score Réel</th>
@@ -1571,7 +1563,7 @@ export default function BankrollTracking({ APP_DATA }) {
             <tbody>
               {filteredMatches.length === 0 ? (
                 <tr>
-                  <td colSpan={7} style={{ padding: 32, textAlign: 'center', color: 'var(--neutral)' }}>
+                  <td colSpan={7} style={{ padding: 32, textAlign: 'center', color: '#71717a' }}>
                     Aucun match ne correspond aux filtres sélectionnés.
                   </td>
                 </tr>
@@ -1587,13 +1579,13 @@ export default function BankrollTracking({ APP_DATA }) {
                       }}
                     >
                       {/* Compétition & Tour */}
-                      <td style={{ padding: '12px 14px', color: 'var(--neutral)', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '12px 14px', color: '#71717a', whiteSpace: 'nowrap' }}>
                         <span style={{
                           fontSize: 9,
                           padding: '2px 6px',
                           borderRadius: 4,
-                          background: 'var(--gold-muted)',
-                          color: 'var(--gold)',
+                          background: 'rgba(6, 182, 212, 0.12)',
+                          color: '#06b6d4',
                           fontWeight: 700,
                           marginRight: 6,
                         }}>
@@ -1606,9 +1598,9 @@ export default function BankrollTracking({ APP_DATA }) {
                       <td style={{ padding: '12px 14px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                           <TeamLogo teamName={match.homeTeam} size="xs" />
-                          <span style={{ fontWeight: 700, color: 'var(--ivory)' }}>{match.homeTeam}</span>
-                          <span style={{ color: 'var(--neutral)', fontSize: 10 }}>vs</span>
-                          <span style={{ fontWeight: 700, color: 'var(--ivory)' }}>{match.awayTeam}</span>
+                          <span style={{ fontWeight: 700, color: '#fafafa' }}>{match.homeTeam}</span>
+                          <span style={{ color: '#71717a', fontSize: 10 }}>vs</span>
+                          <span style={{ fontWeight: 700, color: '#fafafa' }}>{match.awayTeam}</span>
                           <TeamLogo teamName={match.awayTeam} size="xs" />
                         </div>
                       </td>
@@ -1619,11 +1611,11 @@ export default function BankrollTracking({ APP_DATA }) {
                           fontFamily: 'monospace',
                           fontWeight: 800,
                           fontSize: 13,
-                          color: 'var(--ivory)',
-                          background: 'var(--obsidian-2)',
+                          color: '#fafafa',
+                          background: '#121215',
                           padding: '4px 8px',
                           borderRadius: 6,
-                          border: '1px solid var(--ivory-border)',
+                          border: '1px solid #27272a',
                         }}>
                           {evaluation.realScore}
                         </span>
@@ -1634,7 +1626,7 @@ export default function BankrollTracking({ APP_DATA }) {
                         <span style={{
                           fontSize: 11,
                           fontWeight: 700,
-                          color: 'var(--ivory-dim)',
+                          color: '#a1a1aa',
                           background: 'rgba(255,255,255,0.05)',
                           padding: '3px 8px',
                           borderRadius: 6,
@@ -1652,13 +1644,13 @@ export default function BankrollTracking({ APP_DATA }) {
                             gap: 4,
                             fontSize: 10,
                             fontWeight: 800,
-                            color: '#4ade80',
+                            color: '#10b981',
                             background: 'rgba(34,197,94,0.15)',
                             border: '1px solid rgba(34,197,94,0.35)',
                             padding: '3px 8px',
                             borderRadius: 6,
                           }}>
-                            <CheckCircle2 size={12} color="#4ade80" />
+                            <CheckCircle2 size={12} color="#10b981" />
                             RÉUSSI
                           </span>
                         ) : (
@@ -1686,13 +1678,13 @@ export default function BankrollTracking({ APP_DATA }) {
                           <span style={{
                             fontSize: 11,
                             fontFamily: 'monospace',
-                            color: evaluation.isExactScoreCorrect ? 'var(--gold)' : 'var(--neutral)',
+                            color: evaluation.isExactScoreCorrect ? '#06b6d4' : '#71717a',
                             fontWeight: evaluation.isExactScoreCorrect ? 800 : 400,
                           }}>
                             {evaluation.predictedScore} {evaluation.isExactScoreCorrect ? '🎯' : ''}
                           </span>
                         ) : (
-                          <span style={{ color: 'var(--neutral)', fontSize: 11 }}>—</span>
+                          <span style={{ color: '#71717a', fontSize: 11 }}>—</span>
                         )}
                       </td>
 
@@ -1701,7 +1693,7 @@ export default function BankrollTracking({ APP_DATA }) {
                         <span style={{
                           fontSize: 11,
                           fontWeight: 700,
-                          color: parseInt(evaluation.predictedProb, 10) >= 55 ? 'var(--gold)' : 'var(--neutral)',
+                          color: parseInt(evaluation.predictedProb, 10) >= 55 ? '#06b6d4' : '#71717a',
                         }}>
                           {evaluation.predictedProb || '—'}
                         </span>
@@ -1715,7 +1707,7 @@ export default function BankrollTracking({ APP_DATA }) {
         </div>
 
         {filteredMatches.length > 100 && (
-          <div style={{ fontSize: 11, color: 'var(--neutral)', textAlign: 'center', marginTop: 4 }}>
+          <div style={{ fontSize: 11, color: '#71717a', textAlign: 'center', marginTop: 4 }}>
             Affichage des 100 premiers matchs sur <strong>{filteredMatches.length}</strong> disponibles pour cette sélection.
           </div>
         )}

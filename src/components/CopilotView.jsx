@@ -90,45 +90,51 @@ export default function CopilotView() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-      {/* ── HEADER ── */}
-      <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-        <div>
-          <h1 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '2.2rem',
-            color: 'var(--ivory)',
-            fontWeight: 400,
-            margin: 0,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
+      {/* ── HEADER (QUANT TERMINAL TOOLBAR) ── */}
+      <section style={{
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
+        padding: '10px 14px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        fontFamily: "'JetBrains Mono', monospace",
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.06em',
+            color: '#06b6d4', textTransform: 'uppercase',
           }}>
-            <Bot size={32} color="var(--gold)" />
-            AI Predictor Copilot (Moteur RAG Omniscient)
-          </h1>
-          <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-            Base Multi-Saisons : 4 793 Matchs · 20 400 Cartons · 2 060 Paires H2H · Modèle Dixon-Coles · Cotes Betclic
-          </p>
+            <Bot size={13} /> AI PREDICTOR COPILOT (RAG OMNISCIENT)
+          </span>
+          <span style={{ color: '#27272a' }}>|</span>
+          <span style={{ fontSize: 11, color: '#71717a' }}>
+            BASE 4 793 MATCHS · 20 400 CARTONS · DIXON-COLES · BETCLIC
+          </span>
         </div>
 
         {/* Feature Store Quick Metrics */}
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--gold-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
-            <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Résilience ({selectedTeam})</div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--gold)' }}>{resilience.score} / 10</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <div style={{ background: '#18181b', border: '1px solid #27272a', borderRadius: 4, padding: '3px 8px', fontSize: 11 }}>
+            <span style={{ color: '#71717a', marginRight: 4 }}>RÉSILIENCE ({selectedTeam}) :</span>
+            <strong style={{ color: '#06b6d4' }}>{resilience.score} / 10</strong>
           </div>
           {teamStats?.home && (
-            <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Win Rate Domicile</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--positive)' }}>{teamStats.home.winRateStr}</div>
+            <div style={{ background: '#18181b', border: '1px solid #27272a', borderRadius: 4, padding: '3px 8px', fontSize: 11 }}>
+              <span style={{ color: '#71717a', marginRight: 4 }}>WIN RATE DOM :</span>
+              <strong style={{ color: '#10b981' }}>{teamStats.home.winRateStr}</strong>
             </div>
           )}
           {teamStats?.discipline && (
-            <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 14, padding: '8px 16px', textAlign: 'right' }}>
-              <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Cartons Jaunes / M</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#facc15' }}>{teamStats.discipline.yellowsPerMatch}</div>
+            <div style={{ background: '#18181b', border: '1px solid #27272a', borderRadius: 4, padding: '3px 8px', fontSize: 11 }}>
+              <span style={{ color: '#71717a', marginRight: 4 }}>CARTONS / M :</span>
+              <strong style={{ color: '#f59e0b' }}>{teamStats.discipline.yellowsPerMatch}</strong>
             </div>
           )}
         </div>
@@ -153,14 +159,14 @@ export default function CopilotView() {
                 alignItems: 'center',
                 gap: 8,
                 padding: '8px 14px',
-                borderRadius: 12,
+                borderRadius: 4,
                 fontSize: 12,
                 fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.2s',
-                background: isActive ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                color: isActive ? 'var(--gold)' : 'var(--neutral)',
-                border: isActive ? '1px solid var(--gold-border)' : '1px solid var(--ivory-border)',
+                background: isActive ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                color: isActive ? '#06b6d4' : '#71717a',
+                border: isActive ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid #27272a',
                 whiteSpace: 'nowrap'
               }}
             >
@@ -175,14 +181,14 @@ export default function CopilotView() {
       <section style={{
         display: 'grid',
         gridTemplateColumns: '2.2fr 1fr',
-        gap: 24,
+        gap: 16,
       }}>
 
         {/* Left: Chat Feed */}
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 20,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 20,
           display: 'flex',
           flexDirection: 'column',
@@ -208,11 +214,11 @@ export default function CopilotView() {
               >
                 <div style={{
                   maxWidth: '92%',
-                  background: m.sender === 'user' ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                  border: `1px solid ${m.sender === 'user' ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                  borderRadius: 16,
+                  background: m.sender === 'user' ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                  border: `1px solid ${m.sender === 'user' ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                  borderRadius: 6,
                   padding: '16px 20px',
-                  color: 'var(--ivory)',
+                  color: '#fafafa',
                   fontSize: 13,
                   lineHeight: 1.65,
                   whiteSpace: 'pre-line',
@@ -224,7 +230,7 @@ export default function CopilotView() {
                       paddingTop: 8,
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontSize: 10,
-                      color: 'var(--gold)',
+                      color: '#06b6d4',
                       display: 'flex',
                       alignItems: 'center',
                       gap: 4
@@ -232,7 +238,7 @@ export default function CopilotView() {
                       <Sparkles size={11} /> Réécriture RAG : {m.rewrittenQuery}
                     </div>
                   )}
-                  <div style={{ fontSize: 9, color: 'var(--neutral)', marginTop: 8, textAlign: 'right' }}>
+                  <div style={{ fontSize: 9, color: '#71717a', marginTop: 8, textAlign: 'right' }}>
                     {m.timestamp}
                   </div>
                 </div>
@@ -240,7 +246,7 @@ export default function CopilotView() {
             ))}
 
             {isSearching && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--gold)', fontSize: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#06b6d4', fontSize: 12 }}>
                 <RefreshCw className="animate-spin" size={14} />
                 <span>Interrogation des 4 793 matchs et fusion du Feature Store Football en cours...</span>
               </div>
@@ -252,9 +258,9 @@ export default function CopilotView() {
             display: 'flex',
             alignItems: 'center',
             gap: 10,
-            background: 'var(--obsidian-3)',
-            border: '1px solid var(--ivory-border)',
-            borderRadius: 14,
+            background: '#18181b',
+            border: '1px solid #27272a',
+            borderRadius: 6,
             padding: '8px 14px',
           }}>
             <input
@@ -267,7 +273,7 @@ export default function CopilotView() {
                 flex: 1,
                 background: 'transparent',
                 border: 'none',
-                color: 'var(--ivory)',
+                color: '#fafafa',
                 fontSize: 13,
                 outline: 'none',
               }}
@@ -275,10 +281,10 @@ export default function CopilotView() {
             <button
               onClick={() => handleSendMessage()}
               style={{
-                background: 'var(--gold-muted)',
-                border: '1px solid var(--gold-border)',
-                color: 'var(--gold)',
-                borderRadius: 10,
+                background: 'rgba(6, 182, 212, 0.12)',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                color: '#06b6d4',
+                borderRadius: 4,
                 padding: '8px 14px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -296,8 +302,8 @@ export default function CopilotView() {
         {/* Right: Suggested RAG Prompt Templates & Team Selector */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {/* Team Quick Filter */}
-          <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 16 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', marginBottom: 10 }}>
+          <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 16 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#06b6d4', marginBottom: 10 }}>
               🎯 Sélection Club pour Analyse Ciblée
             </div>
             <select
@@ -305,10 +311,10 @@ export default function CopilotView() {
               onChange={e => setSelectedTeam(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 10,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '8px 12px',
                 fontSize: 12,
                 outline: 'none',
@@ -321,9 +327,9 @@ export default function CopilotView() {
           </div>
 
           {/* Quick Prompt Chips */}
-          <div style={{ background: 'var(--glass-primary)', border: '1px solid var(--ivory-border)', borderRadius: 16, padding: 16 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Sparkles size={16} color="var(--gold)" /> Suggestions de Requêtes RAG
+          <div style={{ background: '#121215', border: '1px solid #27272a', borderRadius: 6, padding: 16 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#fafafa', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Sparkles size={16} color="#06b6d4" /> Suggestions de Requêtes RAG
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -344,18 +350,18 @@ export default function CopilotView() {
                     handleSendMessage(pItem.text, pItem.mode);
                   }}
                   style={{
-                    background: 'var(--obsidian-2)',
-                    border: '1px solid var(--ivory-border)',
-                    borderRadius: 10,
+                    background: '#121215',
+                    border: '1px solid #27272a',
+                    borderRadius: 4,
                     padding: '8px 12px',
-                    color: 'var(--neutral)',
+                    color: '#71717a',
                     fontSize: 11,
                     textAlign: 'left',
                     cursor: 'pointer',
                     transition: 'all 0.2s',
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)'; e.currentTarget.style.borderColor = 'var(--gold-border)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = 'var(--neutral)'; e.currentTarget.style.borderColor = 'var(--ivory-border)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#06b6d4'; e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.35)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = '#71717a'; e.currentTarget.style.borderColor = '#27272a'; }}
                 >
                   💬 {pItem.text}
                 </button>

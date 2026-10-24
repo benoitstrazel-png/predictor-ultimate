@@ -64,20 +64,20 @@ export default function ValueEdgeScatter({ matches = [] }) {
       const data = payload[0].payload;
       return (
         <div style={{
-          background: 'var(--obsidian-2)',
-          border: '1px solid var(--gold-border)',
+          background: '#121215',
+          border: '1px solid rgba(6, 182, 212, 0.35)',
           borderRadius: 12,
           padding: '10px 14px',
           boxShadow: 'var(--shadow-float)',
         }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--gold)', marginBottom: 2 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#06b6d4', marginBottom: 2 }}>
             {data.match}
           </div>
-          <div style={{ fontSize: 12, color: 'var(--ivory)', fontWeight: 600 }}>
+          <div style={{ fontSize: 12, color: '#fafafa', fontWeight: 600 }}>
             {data.side}
           </div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 4 }}>
-            Cote Betclic : <strong style={{ color: 'var(--ivory)' }}>{data.odd}</strong> | Modèle : <strong style={{ color: 'var(--ivory)' }}>{data.prob}%</strong>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 4 }}>
+            Cote Betclic : <strong style={{ color: '#fafafa' }}>{data.odd}</strong> | Modèle : <strong style={{ color: '#fafafa' }}>{data.prob}%</strong>
           </div>
           <div style={{
             fontSize: 11,
@@ -96,24 +96,24 @@ export default function ValueEdgeScatter({ matches = [] }) {
 
   return (
     <div style={{
-      background: 'var(--glass-primary)',
-      border: '1px solid var(--ivory-border)',
+      background: '#121215',
+      border: '1px solid #27272a',
       borderRadius: 18,
       padding: 20,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
         <div>
           <div className="card-section-title">Scatter Plot "Value Edge"</div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+          <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
             Cote Bookmaker Betclic vs Probabilité Modèle Dixon-Coles
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 10, fontWeight: 700 }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--gold)' }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--gold)' }} />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#06b6d4' }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#06b6d4' }} />
             Value Bet (Edge ≥ +2.5%)
           </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--neutral)' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#71717a' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(245,240,232,0.3)' }} />
             Marché Standard
           </span>
@@ -147,7 +147,7 @@ export default function ValueEdgeScatter({ matches = [] }) {
             {/* Standard market points */}
             <Scatter name="Marché" data={normalPoints} fill="rgba(245,240,232,0.25)" />
             {/* Value Bet points */}
-            <Scatter name="Value Bets" data={valuePoints} fill="var(--gold)" />
+            <Scatter name="Value Bets" data={valuePoints} fill="#06b6d4" />
           </ScatterChart>
         </ResponsiveContainer>
       </div>

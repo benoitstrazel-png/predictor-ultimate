@@ -81,6 +81,28 @@ function validateDataset(dataset) {
       assert(sumProb >= 98 && sumProb <= 102, `${matchRef} : Somme probabilités cohérente (${sumProb}%)`);
     }
 
+    // Sealed Multi-Model Predictions Check (v1, v2, v3 must exist and not be identically cloned)
+    const pbm = m.predictionsByModel;
+    assert(
+      pbm && pbm.v1 && pbm.v2 && pbm.v3,
+      `${matchRef} : Présence obligatoire des 3 modèles scellés (v1, v2, v3) dans predictionsByModel`,
+      true
+    );
+    if (pbm && pbm.v1 && pbm.v2 && pbm.v3) {
+      const isCloned =
+        pbm.v1.probHome === pbm.v2.probHome &&
+        pbm.v2.probHome === pbm.v3.probHome &&
+        pbm.v1.probDraw === pbm.v2.probDraw &&
+        pbm.v2.probDraw === pbm.v3.probDraw &&
+        pbm.v1.probAway === pbm.v2.probAway &&
+        pbm.v2.probAway === pbm.v3.probAway;
+      assert(
+        !isCloned,
+        `${matchRef} : Interdiction de duplication/fallback identique entre V1, V2 et V3 (${pbm.v3.probHome}/${pbm.v3.probDraw}/${pbm.v3.probAway})`,
+        true
+      );
+    }
+
     // Lineup & Squad Impact Validation Check
     if (m.lineupStatus) {
       assert(m.lineupStatus === 'OFFICIAL' || m.lineupStatus === 'PROBABLE', `${matchRef} : Statut compo valide (${m.lineupStatus})`);

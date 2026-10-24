@@ -63,8 +63,8 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
           height: 36,
           borderRadius: '50%',
           background: 'rgba(8,11,20,0.7)',
-          border: '1px solid var(--ivory-border)',
-          color: 'var(--ivory)',
+          border: '1px solid #27272a',
+          color: '#fafafa',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -90,8 +90,8 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
           height: 36,
           borderRadius: '50%',
           background: 'rgba(8,11,20,0.7)',
-          border: '1px solid var(--ivory-border)',
-          color: 'var(--ivory)',
+          border: '1px solid #27272a',
+          color: '#fafafa',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -110,11 +110,11 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
       <div className="hero-content">
         {/* League tag */}
         <div className="hero-league-tag">
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold)', display: 'inline-block' }} />
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#06b6d4', display: 'inline-block' }} />
           {match.league || 'European Football'}
           {match.matchDate && (
-            <span style={{ color: 'var(--neutral)', fontWeight: 400, letterSpacing: '0.05em' }}>
-              · {match.matchDate} <strong style={{ color: 'var(--gold)', fontWeight: 700 }}>• {formatMatchTime(match)}</strong>
+            <span style={{ color: '#71717a', fontWeight: 400, letterSpacing: '0.05em' }}>
+              · {match.matchDate} <strong style={{ color: '#06b6d4', fontWeight: 700 }}>• {formatMatchTime(match)}</strong>
             </span>
           )}
         </div>
@@ -123,7 +123,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
         <div className="hero-match-header" style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
           <TeamLogo teamName={match.homeTeam} size="lg" />
           <h1 className="hero-match-title" style={{ margin: 0 }}>
-            {match.homeTeam} <em style={{ fontStyle: 'italic', color: 'var(--ivory)', opacity: 0.3, fontSize: '70%' }}>×</em>{' '}
+            {match.homeTeam} <em style={{ fontStyle: 'italic', color: '#fafafa', opacity: 0.3, fontSize: '70%' }}>×</em>{' '}
             <em>{match.awayTeam}</em>
           </h1>
           <TeamLogo teamName={match.awayTeam} size="lg" />
@@ -133,7 +133,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
         <div className="hero-badges">
           {match.expectedGoals && (
             <div className="hero-badge">
-              <Flame size={12} color="var(--gold)" />
+              <Flame size={12} color="#06b6d4" />
               <span>xG projeté :</span>
               <strong>{match.expectedGoals.home?.toFixed(2)} — {match.expectedGoals.away?.toFixed(2)}</strong>
             </div>
@@ -143,7 +143,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
               <CloudRain size={12} color="#93c5fd" />
               <span>{match.weather.condition}</span>
               <strong>{match.weather.temp_avg_c}°C</strong>
-              <Wind size={11} color="var(--neutral)" />
+              <Wind size={11} color="#71717a" />
               <span>{match.weather.wind_speed_kmh} km/h</span>
             </div>
           )}
@@ -190,7 +190,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
             <div className="prob-segment-draw" style={{ width: `${drawProb}%` }} />
             <div className="prob-segment-away" style={{ width: `${awayProb}%` }} />
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: 'var(--neutral)', letterSpacing: '0.05em' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#71717a', letterSpacing: '0.05em' }}>
             <span style={{ color: 'var(--positive)' }}>D1 {homeProb}%</span>
             <span>N {drawProb}%</span>
             <span style={{ color: 'var(--danger)' }}>D2 {awayProb}%</span>
@@ -204,7 +204,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
             width: '100%',
             padding: '10px 14px',
             borderRadius: 12,
-            background: 'linear-gradient(135deg, var(--gold), #8B6A3C)',
+            background: 'linear-gradient(135deg, #06b6d4, #8B6A3C)',
             color: 'var(--obsidian)',
             fontFamily: 'var(--font-ui)',
             fontSize: 11,
@@ -246,7 +246,7 @@ export default function HeroSpotlight({ selectedMatch: propMatch, onOpenAiModal,
               width: imgIdx === i ? 16 : 5,
               height: 5,
               borderRadius: 3,
-              background: imgIdx === i ? 'var(--gold)' : 'rgba(245,240,232,0.3)',
+              background: imgIdx === i ? '#06b6d4' : 'rgba(245,240,232,0.3)',
               border: 'none',
               cursor: 'pointer',
               transition: 'all 0.3s',

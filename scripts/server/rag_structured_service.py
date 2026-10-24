@@ -13,6 +13,7 @@ avec fallback quantitatif déterministe ultra-rapide (<15ms) garanti sans halluc
 """
 
 import os
+import re
 import sys
 import json
 import sqlite3
@@ -23,6 +24,18 @@ if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 DB_PATH = os.path.join(ROOT_DIR, "predictor_v2.db")
+
+
+def normalize_matchday_label(raw_md) -> str:
+    """Normalise l'intitulé de journée en 'Journée X' sans doublon 'JJournée'."""
+    s = str(raw_md if raw_md is not None else "—").strip()
+    if not s or s == "—":
+        return "Journée —"
+    clean = re.sub(r"^J+ournée\s*", "", s, flags=re.IGNORECASE)
+    clean = re.sub(r"^J\s*(?=\d)", "", clean, flags=re.IGNORECASE).strip()
+    if clean.isdigit():
+        return f"Journée {clean}"
+    return re.sub(r"^JJournée", "Journée", s, flags=re.IGNORECASE)
 
 
 def get_db_connection():
@@ -73,6 +86,8 @@ def build_structured_match_brief(match_obj: dict, model_version: str = "v3", for
                 conn.close()
                 cached = json.loads(row[0])
                 cached["cacheHit"] = True
+                if "verdictOneLiner" in cached:
+                    cached["verdictOneLiner"] = cached["verdictOneLiner"].replace("JJournée", "Journée")
                 return cached
         except Exception:
             pass
@@ -80,7 +95,7 @@ def build_structured_match_brief(match_obj: dict, model_version: str = "v3", for
     home = match_obj.get("homeTeam", "Domicile")
     away = match_obj.get("awayTeam", "Extérieur")
     league = match_obj.get("league", "Compétition")
-    md = match_obj.get("matchday") or match_obj.get("round") or "—"
+    md_formatted = normalize_matchday_label(match_obj.get("matchday") or match_obj.get("round") or "—")
 
     preds_by_model = match_obj.get("predictionsByModel") or {}
     m_pred = preds_by_model.get(model_version) or {}
@@ -242,12 +257,51 @@ def build_structured_match_brief(match_obj: dict, model_version: str = "v3", for
     ]
 
     fav_team = home if p_h >= p_a else away
+    fav_code = "1" if p_h >= p_a else "2"
     fav_prob = max(p_h, p_a)
+
+    has_value_bet = bool(edge_pct >= 2.0 and val_out)
+    val_norm = str(val_out or "").strip().upper()
+    if val_norm == "1" or val_out == home:
+        value_target_label = f"{home} (1)"
+        action_prob_pct = p_h
+    elif val_norm == "2" or val_out == away:
+        value_target_label = f"{away} (2)"
+        action_prob_pct = p_a
+    elif val_norm in ("N", "X", "DRAW", "NUL"):
+        value_target_label = "Match Nul (N)"
+        action_prob_pct = p_d
+    else:
+        value_target_label = f"{fav_team} ({fav_code})"
+        action_prob_pct = fav_prob
+
+    primary_action = (
+        f"Conseil : {value_target_label} — Value Bet"
+        if has_value_bet
+        else f"Favori : {fav_team} ({fav_code}) — Marché Efficient (No Bet)"
+    )
+
+    summary_header = {
+        "competitionTag": f"[{league} · {md_formatted}]",
+        "primaryAction": primary_action,
+        "hasValueBet": has_value_bet,
+        "edgeBadge": f"+{edge_pct:.1f}% Edge" if has_value_bet else "Marché Efficient",
+        "edgePct": round(edge_pct, 1),
+        "confidenceBadge": f"{fav_prob:.1f}% Confiance",
+        "confidencePct": round(fav_prob, 1),
+        "actionProbPct": round(action_prob_pct, 1),
+        "favTeam": fav_team,
+        "favCode": fav_code,
+        "favProbPct": round(fav_prob, 1),
+        "xgLabel": f"λxG {lam_h:.2f} – {lam_a:.2f}",
+        "subtitle": f"{fav_team} favori statistique ({fav_prob:.1f}%) · Attendus : λxG {lam_h:.2f} – {lam_a:.2f}",
+    }
+
     verdict_one_liner = (
-        f"[{league} · J{md}] {fav_team} favori quantitatif ({fav_prob:.1f}%, λxG {lam_h:.2f}–{lam_a:.2f}) "
+        f"[{league} · {md_formatted}] {fav_team} favori quantitatif ({fav_prob:.1f}%, λxG {lam_h:.2f}–{lam_a:.2f}) "
         + (
             f"avec Value Bet certifié sur '{val_out}' (Edge +{edge_pct:.1f}%)."
-            if edge_pct >= 2.0 and val_out
+            if has_value_bet
             else f"— marché à l'équilibre (Confiance {conf:.0f}/100)."
         )
     )
@@ -257,6 +311,7 @@ def build_structured_match_brief(match_obj: dict, model_version: str = "v3", for
         "modelVersion": model_version,
         "generatedAt": now_iso,
         "cacheHit": False,
+        "summaryHeader": summary_header,
         "verdictOneLiner": verdict_one_liner,
         "weakSignals": weak_signals[:4],
         "absencesAlerts": absences_alerts[:4],

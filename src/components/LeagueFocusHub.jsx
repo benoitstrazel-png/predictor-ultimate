@@ -112,110 +112,58 @@ export default function LeagueFocusHub() {
   const currentLeagueObj = SUPPORTED_LEAGUES.find((l) => l.code === selectedLeague) || SUPPORTED_LEAGUES[0];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 1400, margin: '0 auto' }}>
-      {/* ── 1. Top Cinematic Cockpit Header ── */}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 1400, margin: '0 auto' }}>
+      {/* ── 1. Top Terminal Toolbar ── */}
       <div
         style={{
-          background: 'linear-gradient(135deg, rgba(20, 26, 38, 0.95) 0%, rgba(13, 17, 26, 0.98) 100%)',
-          border: '1px solid var(--gold-border)',
-          borderRadius: 20,
-          padding: '24px 28px',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(212, 175, 55, 0.05)',
-          position: 'relative',
-          overflow: 'hidden',
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
+          padding: '12px 16px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 10,
         }}
       >
-        {/* Subtle background glow */}
-        <div
-          style={{
-            position: 'absolute',
-            top: -60,
-            right: -60,
-            width: 200,
-            height: 200,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 14,
-                background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.15))',
-                border: '1px solid rgba(212, 175, 55, 0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--gold)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
-              }}
-            >
-              <Trophy size={24} />
-            </div>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <h1
-                  style={{
-                    fontSize: 22,
-                    fontWeight: 800,
-                    color: 'var(--ivory)',
-                    fontFamily: 'var(--font-serif)',
-                    letterSpacing: '-0.02em',
-                    margin: 0,
-                  }}
-                >
-                  Focus Championnat & Stats
-                </h1>
-                <span
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 700,
-                    padding: '2px 8px',
-                    borderRadius: 6,
-                    background: 'rgba(212, 175, 55, 0.15)',
-                    border: '1px solid rgba(212, 175, 55, 0.3)',
-                    color: '#f5d77f',
-                    fontFamily: 'var(--font-mono)',
-                  }}
-                >
-                  ENGINE V2
-                </span>
-              </div>
-              <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(245, 240, 232, 0.6)' }}>
-                Exploration analytique, classements officiels, buteurs, passeurs et baromètre d'arbitrage.
-              </p>
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.06em',
+              color: '#06b6d4', fontFamily: "'JetBrains Mono', monospace",
+              textTransform: 'uppercase',
+            }}>
+              <Trophy size={13} /> FOCUS CHAMPIONNAT & STATS OFFICIELLES
+            </span>
+            <span style={{ color: '#27272a' }}>|</span>
+            <span style={{ fontSize: 11, color: '#71717a', fontFamily: "'JetBrains Mono', monospace" }}>
+              CLASSEMENTS · BUTEURS · PASSEURS · ARBITRAGE
+            </span>
           </div>
 
           {/* Saison Selector */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(245,240,232,0.6)', fontSize: 12, fontWeight: 600 }}>
-              <Calendar size={15} color="var(--gold)" />
-              Saison :
-            </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#71717a', fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>
+              <Calendar size={12} color="#06b6d4" /> Saison :
+            </span>
             <select
               value={selectedSeason}
               onChange={(e) => setSelectedSeason(e.target.value)}
               style={{
-                padding: '8px 16px',
-                borderRadius: 10,
-                fontSize: 13,
+                padding: '4px 10px',
+                borderRadius: 4,
+                fontSize: 11,
                 fontWeight: 600,
-                background: 'rgba(0, 0, 0, 0.4)',
-                border: '1px solid var(--gold-border)',
-                color: '#f5d77f',
+                background: '#18181b',
+                border: '1px solid #27272a',
+                color: '#fafafa',
                 cursor: 'pointer',
                 outline: 'none',
-                fontFamily: 'var(--font-ui)',
+                fontFamily: "'JetBrains Mono', monospace",
               }}
             >
               {AVAILABLE_SEASONS.map((s) => (
-                <option key={s.code} value={s.code} style={{ background: '#141a26', color: '#f5d77f' }}>
+                <option key={s.code} value={s.code} style={{ background: '#121215', color: '#fafafa' }}>
                   {s.label}
                 </option>
               ))}
@@ -228,9 +176,9 @@ export default function LeagueFocusHub() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 8,
+            gap: 6,
             overflowX: 'auto',
-            paddingBottom: 4,
+            paddingBottom: 2,
             scrollbarWidth: 'none',
           }}
         >
@@ -243,21 +191,21 @@ export default function LeagueFocusHub() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 8,
-                  padding: '8px 14px',
-                  borderRadius: 10,
-                  fontSize: 13,
+                  gap: 6,
+                  padding: '5px 10px',
+                  borderRadius: 4,
+                  fontSize: 11,
                   fontWeight: active ? 700 : 500,
                   whiteSpace: 'nowrap',
                   cursor: 'pointer',
-                  border: active ? '1px solid rgba(212, 175, 55, 0.5)' : '1px solid rgba(255, 255, 255, 0.08)',
-                  background: active ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 106, 60, 0.2))' : 'rgba(0, 0, 0, 0.25)',
-                  color: active ? '#f5d77f' : 'rgba(245, 240, 232, 0.7)',
-                  transition: 'all 0.2s',
-                  boxShadow: active ? '0 4px 12px rgba(0,0,0,0.3)' : 'none',
+                  border: active ? '1px solid rgba(6, 182, 212, 0.4)' : '1px solid #27272a',
+                  background: active ? 'rgba(6, 182, 212, 0.12)' : '#18181b',
+                  color: active ? '#06b6d4' : '#a1a1aa',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  transition: 'all 0.15s',
                 }}
               >
-                <span style={{ fontSize: 16 }}>{l.flag}</span>
+                <span>{l.flag}</span>
                 <span>{l.name}</span>
               </button>
             );
@@ -275,68 +223,68 @@ export default function LeagueFocusHub() {
       >
         <div
           style={{
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-            borderRadius: 12,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 4,
             padding: '12px 16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <span style={{ fontSize: 12, color: 'rgba(245, 240, 232, 0.6)' }}>Équipes</span>
-          <span style={{ fontSize: 16, fontWeight: 800, color: 'var(--ivory)', fontFamily: 'var(--font-mono)' }}>
+          <span style={{ fontSize: 12, color: '#71717a' }}>Équipes</span>
+          <span style={{ fontSize: 16, fontWeight: 800, color: '#fafafa', fontFamily: 'var(--font-mono)' }}>
             {leagueKpis.teamsCount}
           </span>
         </div>
 
         <div
           style={{
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-            borderRadius: 12,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 4,
             padding: '12px 16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <span style={{ fontSize: 12, color: 'rgba(245, 240, 232, 0.6)' }}>Matchs Disputés</span>
-          <span style={{ fontSize: 16, fontWeight: 800, color: '#38bdf8', fontFamily: 'var(--font-mono)' }}>
+          <span style={{ fontSize: 12, color: '#71717a' }}>Matchs Disputés</span>
+          <span style={{ fontSize: 16, fontWeight: 800, color: '#06b6d4', fontFamily: 'var(--font-mono)' }}>
             {leagueKpis.totalMatchesPlayed}
           </span>
         </div>
 
         <div
           style={{
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-            borderRadius: 12,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 4,
             padding: '12px 16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <span style={{ fontSize: 12, color: 'rgba(245, 240, 232, 0.6)' }}>Buts Marqués</span>
-          <span style={{ fontSize: 16, fontWeight: 800, color: '#f5d77f', fontFamily: 'var(--font-mono)' }}>
+          <span style={{ fontSize: 12, color: '#71717a' }}>Buts Marqués</span>
+          <span style={{ fontSize: 16, fontWeight: 800, color: '#06b6d4', fontFamily: 'var(--font-mono)' }}>
             {leagueKpis.netGoals}
           </span>
         </div>
 
         <div
           style={{
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-            borderRadius: 12,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 4,
             padding: '12px 16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <span style={{ fontSize: 12, color: 'rgba(245, 240, 232, 0.6)' }}>Moyenne Buts / m</span>
-          <span style={{ fontSize: 16, fontWeight: 800, color: '#34d399', fontFamily: 'var(--font-mono)' }}>
+          <span style={{ fontSize: 12, color: '#71717a' }}>Moyenne Buts / m</span>
+          <span style={{ fontSize: 16, fontWeight: 800, color: '#10b981', fontFamily: 'var(--font-mono)' }}>
             {leagueKpis.avgGoalsPerMatch}
           </span>
         </div>
@@ -348,7 +296,7 @@ export default function LeagueFocusHub() {
           display: 'flex',
           alignItems: 'center',
           gap: 10,
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          borderBottom: '1px solid #27272a',
           paddingBottom: 12,
           overflowX: 'auto',
           scrollbarWidth: 'none',
@@ -370,17 +318,17 @@ export default function LeagueFocusHub() {
                 alignItems: 'center',
                 gap: 8,
                 padding: '10px 20px',
-                borderRadius: 12,
+                borderRadius: 4,
                 fontSize: 13,
                 fontWeight: active ? 700 : 500,
                 cursor: 'pointer',
-                border: active ? '1px solid rgba(212, 175, 55, 0.4)' : '1px solid transparent',
+                border: active ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid transparent',
                 background: active ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 106, 60, 0.15))' : 'transparent',
-                color: active ? '#f5d77f' : 'rgba(245, 240, 232, 0.6)',
+                color: active ? '#06b6d4' : '#71717a',
                 transition: 'all 0.2s',
               }}
             >
-              <Icon size={16} color={active ? '#f5d77f' : 'currentColor'} />
+              <Icon size={16} color={active ? '#06b6d4' : 'currentColor'} />
               <span>{label}</span>
             </button>
           );

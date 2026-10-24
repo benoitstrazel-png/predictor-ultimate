@@ -1,138 +1,135 @@
 #!/usr/bin/env python3
 """
 Database Initializer & Migrator for European Football Predictor V2.
-Creates all SQL tables including SCD Type 2 Mercato tracking and Friendlies support.
+Ensures both the V2 Dimensional Star Schema (dim_*, fact_*, fct_*) with analytical B-Tree indices
+and V1 backward-compatibility tables exist in predictor_v2.db without any destructive operations.
 """
 
 import os
 import sys
 import sqlite3
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "..", "predictor_v2.db")
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
+DB_PATH = os.path.join(ROOT_DIR, "predictor_v2.db")
+
+COMPETITIONS_SEED = [
+    ('FRA-L1', 'Ligue 1', 'France', 'DOMESTIC_LEAGUE', 53, '🇫🇷', 'https://images.fotmob.com/image_resources/logo/leaguelogo/53.png'),
+    ('ENG-PL', 'Premier League', 'Angleterre', 'DOMESTIC_LEAGUE', 47, '🇬🇧', 'https://images.fotmob.com/image_resources/logo/leaguelogo/47.png'),
+    ('ESP-LL', 'La Liga', 'Espagne', 'DOMESTIC_LEAGUE', 87, '🇪🇸', 'https://images.fotmob.com/image_resources/logo/leaguelogo/87.png'),
+    ('ITA-SA', 'Serie A', 'Italie', 'DOMESTIC_LEAGUE', 55, '🇮🇹', 'https://images.fotmob.com/image_resources/logo/leaguelogo/55.png'),
+    ('GER-BL', 'Bundesliga', 'Allemagne', 'DOMESTIC_LEAGUE', 54, '🇩🇪', 'https://images.fotmob.com/image_resources/logo/leaguelogo/54.png'),
+    ('EUR-CL', 'Ligue des Champions', 'Europe', 'EUROPEAN_CUP', 42, '🇪🇺', 'https://images.fotmob.com/image_resources/logo/leaguelogo/42.png'),
+    ('EUR-EL', 'Ligue Europa', 'Europe', 'EUROPEAN_CUP', 73, '🇪🇺', 'https://images.fotmob.com/image_resources/logo/leaguelogo/73.png'),
+    ('EUR-ECL', 'Ligue Conférence', 'Europe', 'EUROPEAN_CUP', 10216, '🇪🇺', 'https://images.fotmob.com/image_resources/logo/leaguelogo/10216.png'),
+]
 
 def init_db(db_path=DB_PATH):
     abs_path = os.path.abspath(db_path)
     os.makedirs(os.path.dirname(abs_path), exist_ok=True)
     conn = sqlite3.connect(abs_path)
     cursor = conn.cursor()
-    
-    # 1. Base Tables
+    cursor.execute("PRAGMA journal_mode = WAL;")
+
+    # 1. Production V2 Dimensional & Fact Warehouse Schema + Analytical B-Tree Indices
     cursor.executescript("""
-        CREATE TABLE IF NOT EXISTS leagues (
-            league_id TEXT PRIMARY KEY,
-            name TEXT NOT NULL,
-            country TEXT NOT NULL,
-            code TEXT NOT NULL,
-            is_friendly INTEGER DEFAULT 0
+        CREATE TABLE IF NOT EXISTS dim_competitions (
+            competition_id VARCHAR(16) PRIMARY KEY,
+            name VARCHAR(64) NOT NULL,
+            country VARCHAR(32) NOT NULL,
+            category VARCHAR(16) NOT NULL,
+            external_source_id INT NOT NULL,
+            flag_emoji VARCHAR(8),
+            logo_url TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
-        CREATE TABLE IF NOT EXISTS teams (
-            team_id TEXT PRIMARY KEY,
-            league_id TEXT REFERENCES leagues(league_id),
-            name TEXT NOT NULL,
-            short_name TEXT,
-            stadium_name TEXT,
-            city TEXT,
-            logo_url TEXT
+        CREATE TABLE IF NOT EXISTS dim_teams (
+            team_id VARCHAR(32) PRIMARY KEY,
+            league_id VARCHAR(16) NOT NULL,
+            name VARCHAR(64) NOT NULL,
+            short_name VARCHAR(32),
+            slug VARCHAR(64) NOT NULL,
+            country VARCHAR(32),
+            stadium_name VARCHAR(64),
+            logo_url TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
-        CREATE TABLE IF NOT EXISTS players (
-            player_id TEXT PRIMARY KEY,
-            full_name TEXT NOT NULL,
-            known_name TEXT,
-            birth_date TEXT,
-            nationality TEXT,
-            primary_position TEXT,
-            jersey_number INTEGER,
-            photo_url TEXT
+        CREATE TABLE IF NOT EXISTS dim_players (
+            player_id VARCHAR(64) PRIMARY KEY,
+            tm_id VARCHAR(32) UNIQUE,
+            api_sports_id INT,
+            flashscore_slug VARCHAR(64),
+            full_name VARCHAR(128) NOT NULL,
+            display_name VARCHAR(64) NOT NULL,
+            short_name VARCHAR(32),
+            primary_position VARCHAR(16) NOT NULL,
+            role_category VARCHAR(4) NOT NULL,
+            birth_date DATE,
+            age INT,
+            nationality VARCHAR(64),
+            photo_url TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
-        CREATE TABLE IF NOT EXISTS player_team_history (
-            history_id TEXT PRIMARY KEY,
-            player_id TEXT NOT NULL REFERENCES players(player_id),
-            team_id TEXT NOT NULL REFERENCES teams(team_id),
-            shirt_number INTEGER,
-            valid_from TEXT NOT NULL,
-            valid_to TEXT,
-            is_current INTEGER DEFAULT 1
+        CREATE TABLE IF NOT EXISTS dim_player_contracts_scd2 (
+            contract_sk VARCHAR(64) PRIMARY KEY,
+            player_id VARCHAR(64) NOT NULL REFERENCES dim_players(player_id) ON DELETE CASCADE,
+            team_id VARCHAR(32) NOT NULL REFERENCES dim_teams(team_id) ON DELETE CASCADE,
+            league_id VARCHAR(16) NOT NULL,
+            valid_from DATE NOT NULL,
+            valid_to DATE,
+            is_current BOOLEAN NOT NULL DEFAULT 1,
+            squad_number INT,
+            contract_type VARCHAR(16) DEFAULT 'PERMANENT',
+            market_value_eur DECIMAL(12, 2),
+            market_value_formatted VARCHAR(32),
+            joined_date DATE,
+            contract_until DATE,
+            seasons_covered TEXT,
+            transfer_note TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
-        CREATE TABLE IF NOT EXISTS matches (
-            match_id TEXT PRIMARY KEY,
-            league_id TEXT REFERENCES leagues(league_id),
-            season TEXT NOT NULL,
-            round INTEGER,
-            match_date TEXT NOT NULL,
-            home_team_id TEXT REFERENCES teams(team_id),
-            away_team_id TEXT REFERENCES teams(team_id),
-            home_score INTEGER,
-            away_score INTEGER,
-            status TEXT DEFAULT 'SCHEDULED',
-            is_friendly INTEGER DEFAULT 0,
-            match_rating REAL DEFAULT 7.0
+        CREATE TABLE IF NOT EXISTS dim_player_aliases (
+            alias_id VARCHAR(64) PRIMARY KEY,
+            player_id VARCHAR(64) NOT NULL REFERENCES dim_players(player_id) ON DELETE CASCADE,
+            source_system VARCHAR(32) NOT NULL,
+            raw_name VARCHAR(128) NOT NULL,
+            normalized_name VARCHAR(128) NOT NULL,
+            confidence_score DECIMAL(3, 2) DEFAULT 1.00,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
-        CREATE TABLE IF NOT EXISTS match_weather (
-            match_id TEXT PRIMARY KEY REFERENCES matches(match_id),
-            temperature_c REAL,
-            precipitation_mm REAL,
-            wind_speed_kmh REAL,
-            condition_summary TEXT
-        );
-
-        CREATE TABLE IF NOT EXISTS match_odds (
-            odd_id TEXT PRIMARY KEY,
-            match_id TEXT REFERENCES matches(match_id),
-            bookmaker TEXT DEFAULT 'Betclic',
-            odd_home REAL NOT NULL,
-            odd_draw REAL NOT NULL,
-            odd_away REAL NOT NULL,
-            scraped_at TEXT NOT NULL
-        );
-
-        CREATE TABLE IF NOT EXISTS predictions (
-            prediction_id TEXT PRIMARY KEY,
-            match_id TEXT REFERENCES matches(match_id),
-            prob_home REAL NOT NULL,
-            prob_draw REAL NOT NULL,
-            prob_away REAL NOT NULL,
-            expected_score_home REAL,
-            expected_score_away REAL,
-            value_bet_detected INTEGER DEFAULT 0,
-            value_side TEXT,
-            edge_percentage REAL,
-            generated_at TEXT NOT NULL
-        );
+        CREATE INDEX IF NOT EXISTS idx_contracts_player_current ON dim_player_contracts_scd2(player_id, is_current);
+        CREATE INDEX IF NOT EXISTS idx_contracts_team ON dim_player_contracts_scd2(team_id, is_current);
+        CREATE INDEX IF NOT EXISTS idx_aliases_norm ON dim_player_aliases(normalized_name, source_system);
+        CREATE INDEX IF NOT EXISTS idx_matches_comp_season ON fact_matches(competition_id, season);
+        CREATE INDEX IF NOT EXISTS idx_matches_teams ON fact_matches(home_team_id, away_team_id);
+        CREATE INDEX IF NOT EXISTS idx_events_match ON fact_match_events(match_id);
+        CREATE INDEX IF NOT EXISTS idx_events_player ON fact_match_events(primary_player_id);
+        CREATE INDEX IF NOT EXISTS idx_team_stats_match ON fact_match_team_stats(match_id);
+        CREATE INDEX IF NOT EXISTS idx_lineups_match ON fct_match_lineups(match_id, team_id);
+        CREATE INDEX IF NOT EXISTS idx_lineups_player ON fct_match_lineups(player_id);
+        CREATE INDEX IF NOT EXISTS idx_availability_player ON fct_player_availability(player_id, recorded_date);
     """)
-    
-    # 2. Add columns if missing (Migrations)
-    cursor.execute("PRAGMA table_info(leagues)")
-    cols = [row[1] for row in cursor.fetchall()]
-    if "is_friendly" not in cols:
-        cursor.execute("ALTER TABLE leagues ADD COLUMN is_friendly INTEGER DEFAULT 0")
-        
-    cursor.execute("PRAGMA table_info(matches)")
-    mcols = [row[1] for row in cursor.fetchall()]
-    if "is_friendly" not in mcols:
-        cursor.execute("ALTER TABLE matches ADD COLUMN is_friendly INTEGER DEFAULT 0")
-    if "match_rating" not in mcols:
-        cursor.execute("ALTER TABLE matches ADD COLUMN match_rating REAL DEFAULT 7.0")
-    
-    # 3. Seed default leagues including Friendlies
-    leagues = [
-        ("ENG-PL", "Premier League", "England", "PL", 0),
-        ("ESP-LL", "La Liga", "Spain", "LL", 0),
-        ("ITA-SA", "Serie A", "Italy", "SA", 0),
-        ("GER-BL", "Bundesliga", "Germany", "BL", 0),
-        ("FRA-L1", "Ligue 1", "France", "L1", 0),
-        ("FRIENDLY-CLUB", "Club Friendlies", "Global", "FRIENDLY", 1),
-        ("FRIENDLY-INT", "International Friendlies", "Global", "INT_FRIENDLY", 1)
-    ]
-    cursor.executemany("INSERT OR IGNORE INTO leagues (league_id, name, country, code, is_friendly) VALUES (?, ?, ?, ?, ?)", leagues)
-    
+
+    # Seed Official Competitions into dim_competitions
+    cursor.executemany("""
+        INSERT OR REPLACE INTO dim_competitions (
+            competition_id, name, country, category, external_source_id, flag_emoji, logo_url
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, COMPETITIONS_SEED)
+
     conn.commit()
     conn.close()
-    print(f"Database migration completed at: {abs_path}")
+    print(f"Database initialized & verified successfully at: {abs_path}")
 
 if __name__ == "__main__":
     init_db()

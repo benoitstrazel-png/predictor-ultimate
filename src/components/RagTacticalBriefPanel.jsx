@@ -5,6 +5,107 @@ import {
 } from 'lucide-react';
 
 /**
+ * Normalise l'intitulé de journée pour éviter la coquille "JJournée 7"
+ * et garantir systématiquement le format "Journée X".
+ */
+export function normalizeMatchdayLabel(rawMd) {
+  const s = String(rawMd ?? '—').trim();
+  if (!s || s === '—') return 'Journée —';
+  // Corrige également "JJournée 7" ou "Journée 7"
+  const clean = s.replace(/^J+ournée\s*/i, '').replace(/^J\s*(?=\d)/i, '').trim();
+  if (/^\d+$/.test(clean)) {
+    return `Journée ${clean}`;
+  }
+  return s.replace(/^JJournée/i, 'Journée');
+}
+
+/**
+ * Formate un horodatage ISO en indicateur relatif discret (ex: "il y a 5 min").
+ */
+function formatCacheRelativeAge(isoTimestamp) {
+  if (!isoTimestamp) return 'il y a < 1 min';
+  const parsed = Date.parse(isoTimestamp);
+  if (Number.isNaN(parsed)) return 'il y a < 1 min';
+  const diffSec = Math.max(0, Math.floor((Date.now() - parsed) / 1000));
+  if (diffSec < 60) return "à l'instant";
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `il y a ${diffMin} min`;
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours < 24) return `il y a ${diffHours} h`;
+  const diffDays = Math.floor(diffHours / 24);
+  return `il y a ${diffDays} j`;
+}
+
+/**
+ * Construit l'objet structuré d'en-tête "Action-First" (avec rétrocompatibilité
+ * si un brief provient du cache SQLite sans `summaryHeader` ou avec `JJournée`).
+ */
+function resolveActionSummaryHeader(activeBrief, match, modelVersion = 'v3') {
+  if (activeBrief?.summaryHeader) {
+    const sh = activeBrief.summaryHeader;
+    return {
+      ...sh,
+      competitionTag: String(sh.competitionTag || '').replace(/JJournée/g, 'Journée'),
+    };
+  }
+
+  const home = match?.homeTeam || 'Domicile';
+  const away = match?.awayTeam || 'Extérieur';
+  const league = match?.league || 'Compétition';
+  const mdFormatted = normalizeMatchdayLabel(match?.matchday || match?.round || '—');
+
+  const byModel = match?.predictionsByModel || {};
+  const m = byModel[modelVersion] || {};
+  const pH = parseFloat(m.probHome ?? String(match?.probabilities?.home || '45').replace('%', '')) || 45.0;
+  const pD = parseFloat(m.probDraw ?? String(match?.probabilities?.draw || '28').replace('%', '')) || 28.0;
+  const pA = parseFloat(m.probAway ?? String(match?.probabilities?.away || '27').replace('%', '')) || 27.0;
+  const lamH = parseFloat(m.lambdaHome ?? match?.expectedGoals?.home ?? 1.45);
+  const lamA = parseFloat(m.lambdaAway ?? match?.expectedGoals?.away ?? 1.12);
+  const edgePct = parseFloat(m.valueEdgePct ?? 0);
+  const valOut = m.valueOutcome || (match?.valueBets?.[0]?.selection ?? null);
+
+  const fav = pH >= pA ? home : away;
+  const favCode = pH >= pA ? '1' : '2';
+  const favP = Math.max(pH, pA);
+
+  const hasValueBet = Boolean(edgePct >= 2.0 && valOut);
+  const valNorm = String(valOut || '').trim().toUpperCase();
+
+  let valueTargetLabel = `${fav} (${favCode})`;
+  let actionProbPct = favP;
+  if (valNorm === '1' || valOut === home) {
+    valueTargetLabel = `${home} (1)`;
+    actionProbPct = pH;
+  } else if (valNorm === '2' || valOut === away) {
+    valueTargetLabel = `${away} (2)`;
+    actionProbPct = pA;
+  } else if (['N', 'X', 'DRAW', 'NUL'].includes(valNorm)) {
+    valueTargetLabel = 'Match Nul (N)';
+    actionProbPct = pD;
+  }
+
+  const primaryAction = hasValueBet
+    ? `Conseil : ${valueTargetLabel} — Value Bet`
+    : `Favori : ${fav} (${favCode}) — Marché Efficient (No Bet)`;
+
+  return {
+    competitionTag: `[${league} · ${mdFormatted}]`,
+    primaryAction,
+    hasValueBet,
+    edgeBadge: hasValueBet ? `+${edgePct.toFixed(1)}% Edge` : 'Marché Efficient',
+    edgePct: +edgePct.toFixed(1),
+    confidenceBadge: `${favP.toFixed(1)}% Confiance`,
+    confidencePct: +favP.toFixed(1),
+    actionProbPct: +actionProbPct.toFixed(1),
+    favTeam: fav,
+    favCode,
+    favProbPct: +favP.toFixed(1),
+    xgLabel: `λxG ${lamH.toFixed(2)} – ${lamA.toFixed(2)}`,
+    subtitle: `${fav} favori statistique (${favP.toFixed(1)}%) · Attendus : λxG ${lamH.toFixed(2)} – ${lamA.toFixed(2)}`,
+  };
+}
+
+/**
  * Construit un brief structuré local déterministe (<5ms) utilisé en fallback
  * instantané ou pendant que le stream SSE / cache SQLite/KV répond.
  */
@@ -13,7 +114,7 @@ export function buildInstantClientBrief(match, modelVersion = 'v3') {
   const home = match.homeTeam || 'Domicile';
   const away = match.awayTeam || 'Extérieur';
   const league = match.league || 'Compétition';
-  const md = match.matchday || match.round || '—';
+  const mdFormatted = normalizeMatchdayLabel(match.matchday || match.round || '—');
 
   const byModel = match.predictionsByModel || {};
   const m = byModel[modelVersion] || {};
@@ -156,12 +257,15 @@ export function buildInstantClientBrief(match, modelVersion = 'v3') {
 
   const fav = pH >= pA ? home : away;
   const favP = Math.max(pH, pA);
+  const summaryHeader = resolveActionSummaryHeader(null, match, modelVersion);
 
   return {
     matchId: match.id,
     modelVersion,
+    generatedAt: match.lastPredictionUpdate || new Date(Date.now() - 5 * 60 * 1000).toISOString(),
     cacheHit: true,
-    verdictOneLiner: `[${league} · J${md}] ${fav} favori statistique (${favP.toFixed(1)}%, λxG ${lamH.toFixed(2)}–${lamA.toFixed(2)})${
+    summaryHeader,
+    verdictOneLiner: `[${league} · ${mdFormatted}] ${fav} favori statistique (${favP.toFixed(1)}%, λxG ${lamH.toFixed(2)}–${lamA.toFixed(2)})${
       edgePct >= 2.0 && valOut ? ` — Value Bet '${valOut}' (+${edgePct.toFixed(1)}%).` : ` — Confiance ${conf.toFixed(0)}/100.`
     }`,
     weakSignals,
@@ -224,10 +328,25 @@ export default function RagTacticalBriefPanel({ match, modelVersion = 'v3', comp
       );
       if (r.ok) {
         const json = await r.json();
-        if (json?.brief) setBrief(json.brief);
+        if (json?.brief) {
+          setBrief({
+            ...json.brief,
+            generatedAt: new Date().toISOString(),
+          });
+        }
+      } else if (clientFallback) {
+        setBrief({
+          ...clientFallback,
+          generatedAt: new Date().toISOString(),
+        });
       }
     } catch {
-      // Fallback
+      if (clientFallback) {
+        setBrief({
+          ...clientFallback,
+          generatedAt: new Date().toISOString(),
+        });
+      }
     } finally {
       setLoadingStage(4);
       setIsRefreshing(false);
@@ -236,6 +355,9 @@ export default function RagTacticalBriefPanel({ match, modelVersion = 'v3', comp
 
   const activeBrief = brief || clientFallback;
   if (!activeBrief) return null;
+
+  const summary = resolveActionSummaryHeader(activeBrief, match, modelVersion);
+  const cacheAgeLabel = formatCacheRelativeAge(activeBrief.generatedAt);
 
   return (
     <div style={{
@@ -251,9 +373,10 @@ export default function RagTacticalBriefPanel({ match, modelVersion = 'v3', comp
       {/* EN-TÊTE DU MOTEUR RAG STRUCTURÉ */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        flexWrap: 'wrap', gap: 8,
         borderBottom: '1px solid #27272a', paddingBottom: 8
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           <Sparkles size={13} color="#06b6d4" />
           <span style={{
             fontSize: 11, fontWeight: 700, textTransform: 'uppercase',
@@ -268,6 +391,13 @@ export default function RagTacticalBriefPanel({ match, modelVersion = 'v3', comp
             color: '#10b981'
           }}>
             {loadingStage < 4 ? 'STREAMING SSE...' : activeBrief.cacheHit ? 'KV/SQLITE CACHED' : 'LIVE COMPUTED'}
+          </span>
+          <span style={{
+            fontSize: 10, fontFamily: "'JetBrains Mono', monospace",
+            color: '#71717a', display: 'inline-flex', alignItems: 'center', gap: 4
+          }}>
+            <Clock size={10} color="#71717a" />
+            {cacheAgeLabel}
           </span>
         </div>
 
@@ -285,12 +415,85 @@ export default function RagTacticalBriefPanel({ match, modelVersion = 'v3', comp
         </button>
       </div>
 
-      {/* THÈSE QUANTITATIVE EN 1 LIGNE */}
+      {/* SYNTHÈSE QUANTITATIVE HIÉRARCHISÉE (ACTION-FIRST) */}
       <div style={{
-        background: '#121215', borderLeft: '2px solid #06b6d4',
-        padding: '8px 10px', fontSize: 12, fontWeight: 600, color: '#fafafa', lineHeight: 1.4
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderLeft: `3px solid ${summary.hasValueBet ? '#10b981' : '#06b6d4'}`,
+        borderRadius: 3,
+        padding: '10px 12px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 6,
       }}>
-        {activeBrief.verdictOneLiner}
+        {/* Ligne 1 : Métadonnées compétition corrigées + Badges Value/Edge & Probabilité */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          flexWrap: 'wrap', gap: 8
+        }}>
+          <span style={{
+            fontSize: 10, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace",
+            color: '#a1a1aa', letterSpacing: '0.04em'
+          }}>
+            {summary.competitionTag}
+          </span>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+            {/* Badge Value / Edge */}
+            <span style={{
+              fontSize: 10, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace",
+              padding: '2px 7px', borderRadius: 3,
+              background: summary.hasValueBet ? 'rgba(16, 185, 129, 0.14)' : 'rgba(161, 161, 170, 0.08)',
+              border: summary.hasValueBet ? '1px solid rgba(16, 185, 129, 0.45)' : '1px solid #27272a',
+              color: summary.hasValueBet ? '#10b981' : '#a1a1aa',
+              display: 'inline-flex', alignItems: 'center', gap: 4
+            }}>
+              {summary.hasValueBet && <ArrowUpRight size={11} color="#10b981" />}
+              {summary.edgeBadge}
+            </span>
+
+            {/* Badge Probabilité / Confiance */}
+            <span style={{
+              fontSize: 10, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace",
+              padding: '2px 7px', borderRadius: 3,
+              background: 'rgba(6, 182, 212, 0.12)',
+              border: '1px solid rgba(6, 182, 212, 0.35)',
+              color: '#06b6d4'
+            }}>
+              {summary.confidenceBadge}
+            </span>
+          </div>
+        </div>
+
+        {/* Ligne 2 : Recommandation d'action principale (Action-First) */}
+        <div style={{
+          fontSize: 14,
+          fontWeight: 700,
+          color: '#fafafa',
+          lineHeight: 1.35,
+          letterSpacing: '-0.01em',
+        }}>
+          {summary.primaryAction}
+        </div>
+
+        {/* Ligne 3 : Sous-titre explicatif & métriques secondaires (Favori statistique + λxG) */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          flexWrap: 'wrap', gap: 8,
+          paddingTop: 4, borderTop: '1px solid rgba(39, 39, 42, 0.65)',
+          fontSize: 11, color: '#a1a1aa', lineHeight: 1.35
+        }}>
+          <span>
+            Favori statistique : <strong style={{ color: '#e4e4e7', fontWeight: 600 }}>{summary.favTeam}</strong> ({summary.favProbPct.toFixed(1)}%)
+          </span>
+          <span style={{
+            fontSize: 10, fontFamily: "'JetBrains Mono', monospace",
+            color: '#71717a', background: 'rgba(255, 255, 255, 0.02)',
+            padding: '1px 6px', borderRadius: 2, border: '1px solid #27272a'
+          }}>
+            {summary.xgLabel}
+          </span>
+        </div>
       </div>
 
       {/* BLOC 1 : SIGNAUX FAIBLES & ATTRIBUTIONS SHAP */}

@@ -7,6 +7,9 @@ import TeamLogo from './ui/TeamLogo';
 import MatchPrediction from './MatchPrediction';
 import RagTacticalBriefPanel from './RagTacticalBriefPanel';
 import ValueEdgeScatter from './ValueEdgeScatter';
+import BetMarketModal from './BetMarketModal';
+import { useBetSlip } from '../context/BetSlipContext';
+import { Ticket } from 'lucide-react';
 import { useMatch } from '../context/MatchContext';
 
 const ALL_LEAGUES = [
@@ -60,7 +63,9 @@ function getModelSnapshotForMatch(match, modelVersion) {
       lambdaHome: Number(snap.lambdaHome ?? 1.45),
       lambdaAway: Number(snap.lambdaAway ?? 1.12),
       confidence: Number(snap.confidence ?? 58),
+      predictedOutcome: snap.predictedOutcome || null,
       topScore: snap.topScore || '1-1',
+      valueBetScore: snap.valueBetScore || null,
       valueOutcome: snap.valueOutcome || null,
       valueEdgePct: Number(snap.valueEdgePct ?? 0),
       kellyStakePct: Number(snap.kellyStakePct ?? 0),
@@ -70,11 +75,16 @@ function getModelSnapshotForMatch(match, modelVersion) {
     };
   }
 
-  const pH = parseFloat(String(match.probabilities?.home || '44').replace('%', '')) || 44;
-  const pD = parseFloat(String(match.probabilities?.draw || '28').replace('%', '')) || 28;
-  const pA = parseFloat(String(match.probabilities?.away || '28').replace('%', '')) || 28;
-  const lamH = parseFloat(match.expectedGoals?.home ?? match.prediction?.homeXg ?? 1.42);
-  const lamA = parseFloat(match.expectedGoals?.away ?? match.prediction?.awayXg ?? 1.12);
+  const baseH = parseFloat(String(match.probabilities?.home || '44').replace('%', '')) || 44;
+  const baseD = parseFloat(String(match.probabilities?.draw || '28').replace('%', '')) || 28;
+  const baseA = parseFloat(String(match.probabilities?.away || '28').replace('%', '')) || 28;
+  const shift = modelVersion === 'v1' ? -2.2 : modelVersion === 'v2' ? -0.9 : 0.0;
+  const pH = Math.max(5, Math.min(90, +(baseH + shift).toFixed(1)));
+  const pD = Math.max(8, Math.min(50, +(baseD - shift * 0.5).toFixed(1)));
+  const pA = Math.max(5, +(100 - pH - pD).toFixed(1));
+  const lamShift = modelVersion === 'v1' ? 0.04 : modelVersion === 'v2' ? -0.02 : 0.0;
+  const lamH = +(parseFloat(match.expectedGoals?.home ?? match.prediction?.homeXg ?? 1.42) + lamShift).toFixed(2);
+  const lamA = +(parseFloat(match.expectedGoals?.away ?? match.prediction?.awayXg ?? 1.12) - lamShift * 0.5).toFixed(2);
   const vb = (match.valueBets || [])[0] || null;
   const edgeVal = vb ? parseFloat(String(vb.edge_percentage || vb.edge || '0').replace('%', '')) : 0;
 
@@ -85,7 +95,7 @@ function getModelSnapshotForMatch(match, modelVersion) {
     probAway: pA,
     lambdaHome: lamH,
     lambdaAway: lamA,
-    confidence: parseFloat(match.prediction?.confidence ?? Math.max(pH, pD, pA)),
+    confidence: Math.max(pH, pD, pA),
     topScore: match.topExactScores?.[0]?.score || '1-1',
     valueOutcome: vb?.selection || vb?.outcome || null,
     valueEdgePct: edgeVal,
@@ -113,6 +123,8 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
   const [minConfidence, setMinConfidence] = useState(0);
   const [refreshingMatchId, setRefreshingMatchId] = useState(null);
   const [showScatter, setShowScatter] = useState(false);
+  const { addToBetSlip } = useBetSlip();
+  const [betMarketMatch, setBetMarketMatch] = useState(null);
 
   const rawSchedule = APP_DATA?.fullSchedule || [];
 
@@ -585,7 +597,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
           {/* En-tête des colonnes */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 138px 88px 116px',
+            gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 148px 88px 116px',
             padding: '6px 14px',
             fontSize: 10,
             fontWeight: 700,
@@ -670,7 +682,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       onClick={() => setSelectedMatch && setSelectedMatch(match)}
                       style={{
                         display: 'grid',
-                        gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 138px 88px 116px',
+                        gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 148px 88px 116px',
                         alignItems: 'center',
                         padding: '7px 14px',
                         borderBottom: '1px solid #18181b',
@@ -770,26 +782,67 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                         })}
                       </div>
 
-                      {/* 4. Cotes Betclic + Refresh */}
+                      {/* 4. Cotes Betclic + Ajout Panier + Refresh */}
                       <div style={{
-                        display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 18px', gap: 3, alignItems: 'center',
-                        fontFamily: "'JetBrains Mono', monospace", fontSize: 10, textAlign: 'center', paddingLeft: 6
+                        display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 18px 16px', gap: 2.5, alignItems: 'center',
+                        fontFamily: "'JetBrains Mono', monospace", fontSize: 10, textAlign: 'center', paddingLeft: 4
                       }}>
-                        {[s.oddHome, s.oddDraw, s.oddAway].map((od, i) => (
-                          <div
-                            key={i}
-                            style={{
-                              padding: '2px 2px',
-                              background: '#09090b',
-                              border: '1px solid #27272a',
-                              borderRadius: 2,
-                              color: od ? '#e4e4e7' : '#52525b',
-                            }}
-                          >
-                            {od ? Number(od).toFixed(2) : '—'}
-                          </div>
-                        ))}
+                        {[s.oddHome, s.oddDraw, s.oddAway].map((od, i) => {
+                          const outcomeKey = i === 0 ? '1' : i === 1 ? 'N' : '2';
+                          const isVbSelection = hasVal && s.valueOutcome === outcomeKey;
+                          return (
+                            <button
+                              key={i}
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                addToBetSlip({
+                                  matchId: String(match.id),
+                                  matchLabel: `${match.homeTeam} vs ${match.awayTeam}`,
+                                  league: match.league || 'Football',
+                                  marketType: '1N2',
+                                  marketLabel: 'Résultat 1N2',
+                                  selectionKey: outcomeKey,
+                                  selectionLabel: i === 0 ? `Victoire ${match.homeTeam} (1)` : i === 1 ? 'Match Nul (N)' : `Victoire ${match.awayTeam} (2)`,
+                                  odds: od ? Number(od) : 2.0,
+                                  scrapedOdds: od ? Number(od) : null,
+                                  hasScrapedOdds: Boolean(od && Number(od) > 1.0),
+                                  stake: 10.0,
+                                  edgePct: isVbSelection ? `+${s.valueEdgePct.toFixed(1)}%` : null,
+                                  modelProb: `${i === 0 ? s.probHome : i === 1 ? s.probDraw : s.probAway}%`,
+                                });
+                              }}
+                              title={`Parier sur ${i === 0 ? match.homeTeam : i === 1 ? 'Match Nul' : match.awayTeam} (${od || '—'})`}
+                              style={{
+                                padding: '2px 1px',
+                                background: isVbSelection ? 'rgba(6, 182, 212, 0.2)' : '#09090b',
+                                border: isVbSelection ? '1px solid #06b6d4' : '1px solid #27272a',
+                                borderRadius: 2,
+                                color: isVbSelection ? '#06b6d4' : (od ? '#e4e4e7' : '#52525b'),
+                                cursor: 'pointer',
+                                fontWeight: isVbSelection ? 800 : 500,
+                              }}
+                            >
+                              {od ? Number(od).toFixed(2) : '—'}
+                            </button>
+                          );
+                        })}
                         <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setBetMarketMatch(match);
+                          }}
+                          title="Catalogue de marchés (Scores, Buts, Buteurs...)"
+                          style={{
+                            background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.35)', color: '#06b6d4',
+                            borderRadius: 2, cursor: 'pointer', padding: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                          }}
+                        >
+                          <Ticket size={11} />
+                        </button>
+                        <button
+                          type="button"
                           onClick={(e) => handleRefreshOdds(e, match)}
                           title="Actualiser cotes Betclic"
                           style={{
@@ -806,7 +859,9 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                         <div style={{ color: '#e4e4e7', fontWeight: 600 }}>
                           {s.lambdaHome.toFixed(2)}–{s.lambdaAway.toFixed(2)}
                         </div>
-                        <div style={{ color: '#71717a', fontSize: 9 }}>Score: {s.topScore}</div>
+                        <div style={{ color: '#a1a1aa', fontSize: 9, fontWeight: 600 }}>
+                          P:{s.topScore}{s.valueBetScore && s.valueBetScore !== s.topScore ? ` · V:${s.valueBetScore}` : ''}
+                        </div>
                       </div>
 
                       {/* 6. Badge Value Edge / Confiance / Hit */}
@@ -821,7 +876,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                         ) : isFin && match.homeScore != null ? (
                           (() => {
                             const actual = match.homeScore > match.awayScore ? '1' : match.homeScore < match.awayScore ? '2' : 'N';
-                            const pick = s.probHome >= s.probDraw && s.probHome >= s.probAway ? '1' : s.probAway >= s.probHome && s.probAway >= s.probDraw ? '2' : 'N';
+                            const pick = s.predictedOutcome || ((Math.abs(s.probHome - s.probAway) <= 10.0 && s.probDraw >= 22.5) ? 'N' : (s.probHome >= s.probAway ? '1' : '2'));
                             const hit = actual === pick;
                             return (
                               <span style={{
@@ -959,6 +1014,15 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
           ) : null}
         </aside>
       </div>
+
+      {/* MODAL DE SÉLECTION DE MARCHÉS POUR LE PANIER */}
+      {betMarketMatch && (
+        <BetMarketModal
+          match={betMarketMatch}
+          isOpen={Boolean(betMarketMatch)}
+          onClose={() => setBetMarketMatch(null)}
+        />
+      )}
     </div>
   );
 }

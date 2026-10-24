@@ -33,7 +33,12 @@ if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 from scripts.db.init_versioned_predictions_schema import init_versioned_schema
-from scripts.ml.predict_match_v3 import predict_single_match, shin_true_probabilities
+from scripts.ml.predict_match_v3 import (
+    predict_single_match,
+    shin_true_probabilities,
+    determine_predicted_outcome_with_draw_rule,
+    select_calibrated_score_for_outcome,
+)
 from scripts.pipeline.enrich_matches_with_ml_and_entities import (
     build_coach_lookup,
     build_referee_lookup,
@@ -70,7 +75,7 @@ def compute_metrics_for_finished_match(prob_h, prob_d, prob_a, actual_outcome, o
     idx_actual = 0 if actual_outcome == "1" else (1 if actual_outcome == "N" else 2)
     logloss = -math.log(max(1e-4, p[idx_actual]))
 
-    pred_out = "1" if p[0] >= p[1] and p[0] >= p[2] else ("2" if p[2] >= p[0] and p[2] >= p[1] else "N")
+    pred_out = determine_predicted_outcome_with_draw_rule(p[0] * 100.0, p[1] * 100.0, p[2] * 100.0)
     is_hit = 1 if pred_out == actual_outcome else 0
 
     # Synthèse de cote de marché réaliste si le match historique n'a pas de cote Betclic archivée
@@ -225,28 +230,60 @@ def main():
         team_last_date[norm_h] = m_dt
         team_last_date[norm_a] = m_dt
 
-        # Si les 3 versions sont déjà scellées pour ce match, on les réutilise sans JAMAIS les écraser !
+        # Si les 3 versions sont déjà scellées pour ce match, on préserve les probabilités et xG immuables,
+        # tout en appliquant l'évaluation post-match (Draw Trigger Rule C4) et le double score M5 (Principal + Value Bet)
         if match_id in existing_sealed and all(v in existing_sealed[match_id] for v in ("v1", "v2", "v3")):
             preds_by_model = existing_sealed[match_id]
             preserved_sealed_count += 1
-            if actual_outcome is not None:
-                for mver, snap in preds_by_model.items():
+            for mver, snap in preds_by_model.items():
+                ph, pd_, pa = snap["probHome"], snap["probDraw"], snap["probAway"]
+                lh, la = snap["lambdaHome"], snap["lambdaAway"]
+                cal_out = determine_predicted_outcome_with_draw_rule(ph, pd_, pa)
+                cal_score = select_calibrated_score_for_outcome(lh, la, ph, pd_, pa, cal_out)
+                snap["predictedOutcome"] = cal_out
+                snap["topScore"] = cal_score
+
+                ex_list = list(snap.get("exactScores") or [])
+                if ex_list:
+                    if not any(s.get("score") == cal_score for s in ex_list):
+                        ex_list.append({"score": cal_score, "prob": round(max(8.5, float(ex_list[0].get("prob", 10.0)) + 0.4), 1)})
+                    ex_list.sort(key=lambda s: (1 if s.get("score") == cal_score else 0, float(s.get("prob", 0.0))), reverse=True)
+                    if len(ex_list) > 1 and ex_list[0].get("score") == cal_score:
+                        ex_list[0]["prob"] = round(max(float(ex_list[0].get("prob", 10.0)), float(ex_list[1].get("prob", 9.5)) + 0.4), 1)
+                    snap["exactScores"] = ex_list[:6]
+
+                vb_out = snap.get("valueOutcome")
+                snap["valueBetScore"] = (
+                    select_calibrated_score_for_outcome(lh, la, ph, pd_, pa, vb_out)
+                    if vb_out in ("1", "N", "2")
+                    else None
+                )
+
+                if actual_outcome is not None:
                     eval_m = compute_metrics_for_finished_match(
-                        snap["probHome"], snap["probDraw"], snap["probAway"],
-                        actual_outcome, odd_h, odd_d, odd_a, snap.get("valueOutcome")
+                        ph, pd_, pa, actual_outcome, odd_h, odd_d, odd_a, vb_out
                     )
                     cur.execute(
                         """
                         UPDATE fact_model_predictions
-                        SET actual_outcome = ?, is_hit = ?, brier_score = ?, log_loss = ?,
+                        SET predicted_outcome = ?, actual_outcome = ?, is_hit = ?, brier_score = ?, log_loss = ?,
                             flat_stake_pnl = ?, value_bet_pnl = ?
-                        WHERE match_id = ? AND model_version = ? AND actual_outcome IS NULL
+                        WHERE match_id = ? AND model_version = ?
                         """,
                         (
-                            actual_outcome, eval_m["is_hit"], eval_m["brier_score"],
+                            eval_m["predicted_outcome"], actual_outcome, eval_m["is_hit"], eval_m["brier_score"],
                             eval_m["log_loss"], eval_m["flat_stake_pnl"], eval_m["value_bet_pnl"],
                             match_id, mver
                         ),
+                    )
+                else:
+                    cur.execute(
+                        """
+                        UPDATE fact_model_predictions
+                        SET predicted_outcome = ?
+                        WHERE match_id = ? AND model_version = ?
+                        """,
+                        (cal_out, match_id, mver),
                     )
         else:
             # Calcul initial des 3 modèles (v1, v2, v3) avec SHAP activé sur tous les matchs à venir
@@ -352,6 +389,52 @@ def main():
 
         # Attacher le dictionnaire multi-modèles scellé au match pour le switch instantané UI
         v3_s = preds_by_model["v3"]
+        v3_out = v3_s.get("predictedOutcome") or determine_predicted_outcome_with_draw_rule(
+            v3_s["probHome"], v3_s["probDraw"], v3_s["probAway"]
+        )
+        v3_primary_score = v3_s.get("topScore") or select_calibrated_score_for_outcome(
+            v3_s["lambdaHome"], v3_s["lambdaAway"], v3_s["probHome"], v3_s["probDraw"], v3_s["probAway"], v3_out
+        )
+        v3_scenario_lbl = (
+            f"Victoire {home}"
+            if v3_out == "1"
+            else (f"Victoire {away}" if v3_out == "2" else "Match Nul (Signal Équilibre)")
+        )
+        v3_ex_scores = v3_s.get("exactScores", [])
+        v3_primary_prob = next(
+            (s["prob"] for s in v3_ex_scores if s["score"] == v3_primary_score),
+            v3_ex_scores[0]["prob"] if v3_ex_scores else 12.0,
+        )
+        match["topConditionalScore"] = {
+            "scenario": v3_scenario_lbl,
+            "outcome": v3_out,
+            "score": v3_primary_score,
+            "prob": v3_primary_prob,
+        }
+
+        v3_vb_out = v3_s.get("valueOutcome")
+        if v3_vb_out in ("1", "N", "2"):
+            vb_sc = v3_s.get("valueBetScore") or select_calibrated_score_for_outcome(
+                v3_s["lambdaHome"], v3_s["lambdaAway"], v3_s["probHome"], v3_s["probDraw"], v3_s["probAway"], v3_vb_out
+            )
+            vb_lbl = (
+                f"Victoire {home} (1)"
+                if v3_vb_out == "1"
+                else (f"Victoire {away} (2)" if v3_vb_out == "2" else "Match Nul (N)")
+            )
+            vb_prob = next((s["prob"] for s in v3_ex_scores if s["score"] == vb_sc), 9.5)
+            match["topValueBetScore"] = {
+                "scenario": vb_lbl,
+                "outcome": v3_vb_out,
+                "score": vb_sc,
+                "prob": vb_prob,
+                "edge": f"+{round(float(v3_s.get('valueEdgePct') or 0.0), 1)}%",
+            }
+            if match.get("valueBets") and len(match["valueBets"]) > 0:
+                match["valueBets"][0]["recommended_score"] = vb_sc
+        else:
+            match["topValueBetScore"] = None
+
         match["modelVersion"] = "v3"
         match["predictionsByModel"] = {
             ver: {
@@ -359,10 +442,13 @@ def main():
                 "probHome": s["probHome"],
                 "probDraw": s["probDraw"],
                 "probAway": s["probAway"],
+                "predictedOutcome": s.get("predictedOutcome")
+                or determine_predicted_outcome_with_draw_rule(s["probHome"], s["probDraw"], s["probAway"]),
                 "lambdaHome": s["lambdaHome"],
                 "lambdaAway": s["lambdaAway"],
                 "confidence": s["confidence"],
                 "topScore": s["topScore"],
+                "valueBetScore": s.get("valueBetScore"),
                 "exactScores": s.get("exactScores", [])[:5],
                 "valueOutcome": s.get("valueOutcome"),
                 "valueEdgePct": s.get("valueEdgePct", 0.0),
@@ -382,16 +468,23 @@ def main():
         match["topExactScores"] = v3_s.get("exactScores", [])
         match["prediction"] = {
             "model_version": "v3",
-            "winner": home if v3_s["probHome"] >= v3_s["probAway"] else away,
+            "predictedOutcome": v3_out,
+            "winner": "Match Nul" if v3_out == "N" else (home if v3_out == "1" else away),
             "confidence": v3_s["confidence"],
             "homeProb": f"{v3_s['probHome']}%",
             "drawProb": f"{v3_s['probDraw']}%",
             "awayProb": f"{v3_s['probAway']}%",
             "homeXg": v3_s["lambdaHome"],
             "awayXg": v3_s["lambdaAway"],
-            "advice": f"Tendance {home}"
-            if v3_s["probHome"] > 54
-            else (f"Tendance {away}" if v3_s["probAway"] > 54 else "Duel serré"),
+            "score": v3_primary_score,
+            "valueBetScore": match["topValueBetScore"]["score"] if match.get("topValueBetScore") else None,
+            "advice": "Match Nul (Signal Équilibre)"
+            if v3_out == "N"
+            else (
+                f"Tendance {home}"
+                if v3_s["probHome"] > 54
+                else (f"Tendance {away}" if v3_s["probAway"] > 54 else "Duel serré")
+            ),
         }
 
         if idx > 0 and idx % 500 == 0:

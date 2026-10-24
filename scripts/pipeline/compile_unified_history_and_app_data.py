@@ -101,10 +101,14 @@ def compile_data():
 
     # Charger les probabilités et prédictions existantes de app_data.json pour éviter de les écraser
     existing_lookup = {}
+    existing_model_benchmarks = None
+    existing_active_model_default = "v3"
     if os.path.exists(APP_DATA_FILE):
         try:
             with open(APP_DATA_FILE, 'r', encoding='utf-8') as f:
                 old_data = json.load(f)
+                existing_model_benchmarks = old_data.get('modelBenchmarks')
+                existing_active_model_default = old_data.get('activeModelDefault', 'v3')
                 for item in old_data.get('fullSchedule', []):
                     m_id = item.get('id')
                     if m_id:
@@ -117,11 +121,14 @@ def compile_data():
                             "oddsMarginPct": item.get('oddsMarginPct'),
                             "topExactScores": item.get('topExactScores'),
                             "topHalfTimeScores": item.get('topHalfTimeScores'),
+                            "topConditionalScore": item.get('topConditionalScore'),
                             "potentialScorers": item.get('potentialScorers'),
                             "potentialAssists": item.get('potentialAssists'),
                             "prediction": item.get('prediction'),
                             "shapFactors": item.get('shapFactors'),
-                            "overUnder25": item.get('overUnder25')
+                            "overUnder25": item.get('overUnder25'),
+                            "modelVersion": item.get('modelVersion'),
+                            "predictionsByModel": item.get('predictionsByModel')
                         }
             print(f"🔄 [Compiler] {len(existing_lookup)} prédictions ML historiques chargées depuis app_data.json.")
         except Exception as e:
@@ -147,7 +154,7 @@ def compile_data():
                 except Exception:
                     pass
 
-    needs_reload = (fin_count < 1000) or (raw_finished_2627 > fin_2627_count)
+    needs_reload = (fin_count < 4500)
     if needs_reload and os.path.exists(RAW_DIR):
         print(f"🔄 [Compiler] Synchronisation SQLite nécessaire (BDD: {fin_2627_count} finis 26/27 vs Raw: {raw_finished_2627} finis). Rechargement...")
         from scripts.pipeline.reload_all_raw_to_sqlite import reload_all
@@ -595,11 +602,21 @@ def compile_data():
             h2h_key_norm = "__".join(sorted([norm_h, norm_a]))
             h2h_key_clean = "__".join(sorted([clean_nh, clean_na]))
 
+            raw_ts = m.get('teamStats') or {}
+            compact_team_stats = {}
+            if isinstance(raw_ts, dict):
+                if isinstance(raw_ts.get('home'), dict) and raw_ts['home'].get('possession') is not None:
+                    compact_team_stats['home'] = {'possession': raw_ts['home']['possession']}
+                if isinstance(raw_ts.get('away'), dict) and raw_ts['away'].get('possession') is not None:
+                    compact_team_stats['away'] = {'possession': raw_ts['away']['possession']}
+
             h2h_entry = {
                 'id': m_id,
                 'date': m.get('date'),
                 'season': s,
                 'league': l,
+                'round': m.get('round'),
+                'status': m.get('status'),
                 'home': ht,
                 'away': at,
                 'homeTeam': ht,
@@ -611,13 +628,11 @@ def compile_data():
                 'awayXg': a_xg,
                 'referee': m.get('referee') or 'Arbitre Officiel',
                 'goals': m.get('goals') or [],
-                'cards': m.get('cards') or [],
-                'fullMatch': light_m,
-                'rawMatch': light_m
+                'cards': m.get('cards') or []
             }
-            if len(h2h_lists[h2h_key_norm]) < 10:
+            if len(h2h_lists[h2h_key_norm]) < 6:
                 h2h_lists[h2h_key_norm].append(h2h_entry)
-            if h2h_key_clean != h2h_key_norm and len(h2h_lists[h2h_key_clean]) < 10:
+            if h2h_key_clean != h2h_key_norm and len(h2h_lists[h2h_key_clean]) < 6:
                 h2h_lists[h2h_key_clean].append(h2h_entry)
 
             # Remplissage de teamRecent (jusqu'à 10 matchs récents par club)
@@ -648,6 +663,8 @@ def compile_data():
                         'date': m.get('date'),
                         'season': s,
                         'league': l,
+                        'round': m.get('round'),
+                        'status': m.get('status'),
                         'isHome': is_home,
                         'venue': venue_str,
                         'opponent': opp_team,
@@ -667,6 +684,8 @@ def compile_data():
                         'oppGoals': goals_conceded,
                         'home': ht,
                         'away': at,
+                        'homeTeam': ht,
+                        'awayTeam': at,
                         'homeScore': hs,
                         'awayScore': as_,
                         'homeXg': h_xg,
@@ -674,25 +693,19 @@ def compile_data():
                         'referee': m.get('referee') or 'Arbitre Officiel',
                         'goals': m.get('goals') or [],
                         'cards': m.get('cards') or [],
-                        'teamStats': m.get('teamStats') or {},
-                        'match': light_m,
-                        'fullMatch': light_m
+                        'teamStats': compact_team_stats,
+                        'match': {'id': m_id, 'date': m.get('date'), 'season': s, 'league': l, 'round': m.get('round'), 'status': m.get('status'), 'homeTeam': ht, 'awayTeam': at, 'homeScore': hs, 'awayScore': as_, 'score': f"{hs}-{as_}", 'homeXg': h_xg, 'awayXg': a_xg, 'referee': m.get('referee') or 'Arbitre Officiel'}
                     })
 
-        # Multi-indexation exhaustive pour teamRecent
+        # Indexation normalisée compacte pour teamRecent (compatible MatchHistory.jsx, MatchDeepDive.jsx & tacticalAnalysis.js)
         final_team_recent = {}
         for c_team, matches in raw_team_recent.items():
-            keys_to_index = {
-                c_team,
-                c_team.lower(),
-                c_team.strip(),
-                norm_key_helper(c_team),
-                clean_team_str(c_team),
-                clean_team_str(normalize_team_name(c_team))
-            }
-            for k in keys_to_index:
-                if k:
-                    final_team_recent[k] = matches
+            norm_k = norm_key_helper(c_team)
+            clean_k = clean_team_str(c_team)
+            if norm_k:
+                final_team_recent[norm_k] = matches
+            if clean_k and clean_k != norm_k:
+                final_team_recent[clean_k] = matches
 
         # Multi-indexation pour refs
         final_refs = {}
@@ -1075,6 +1088,8 @@ def compile_data():
             match_obj['topExactScores'] = old_val['topExactScores']
         if old_val.get('topHalfTimeScores'):
             match_obj['topHalfTimeScores'] = old_val['topHalfTimeScores']
+        if old_val.get('topConditionalScore'):
+            match_obj['topConditionalScore'] = old_val['topConditionalScore']
         if old_val.get('potentialScorers'):
             match_obj['potentialScorers'] = old_val['potentialScorers']
         if old_val.get('potentialAssists'):
@@ -1085,9 +1100,16 @@ def compile_data():
             match_obj['shapFactors'] = old_val['shapFactors']
         if old_val.get('overUnder25'):
             match_obj['overUnder25'] = old_val['overUnder25']
+        if old_val.get('modelVersion'):
+            match_obj['modelVersion'] = old_val['modelVersion']
+        if old_val.get('predictionsByModel'):
+            match_obj['predictionsByModel'] = old_val['predictionsByModel']
             
         new_schedule.append(match_obj)
 
+    if existing_model_benchmarks:
+        app_data['modelBenchmarks'] = existing_model_benchmarks
+    app_data['activeModelDefault'] = existing_active_model_default or "v3"
     app_data['fullSchedule'] = new_schedule
     today_str = datetime.date.today().strftime('%Y-%m-%d')
     upcoming_from_today = [m for m in new_schedule if (m.get('matchDate') or m.get('date') or '') >= today_str and m.get('status') in ['LIVE', 'SCHEDULED']]

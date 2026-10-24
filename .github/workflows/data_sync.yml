@@ -16,10 +16,11 @@ permissions:
 jobs:
   sync-live-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     env:
       PYTHONPATH: .
       PYTHONUNBUFFERED: "1"
+      NODE_OPTIONS: "--max-old-space-size=4096"
 
     steps:
       - name: Checkout repository
@@ -53,10 +54,15 @@ jobs:
       - name: Ingest Live Matches & Events (2026-2027)
         run: python scripts/pipeline/ingest_historical_and_live_matches.py --live-only --force-refresh
 
-      - name: Ingest Real Betclic Odds
+      - name: Ingest Real Betclic Odds (1N2)
         run: |
           npx puppeteer browsers install chrome || true
           python scripts/pipeline/extractors/betclic_collector.py || true
+
+      - name: Ingest Betclic Deep Multi-Markets & Init Schema (8 Sections)
+        run: |
+          python scripts/db/init_betclic_markets_schema.py
+          python scripts/pipeline/extractors/betclic_deep_markets_collector.py || true
 
       - name: Ingest Master Coaches & SCD2 Contracts
         run: python scripts/pipeline/ingest_master_coaches.py
@@ -82,6 +88,12 @@ jobs:
 
       - name: Validate Data Quality Contract
         run: npm run data:validate
+
+      - name: Verify Skills Documentation (Rule 1 skills-sync)
+        run: python .agents/scripts/verify_skills_documentation.py
+
+      - name: Verify Data Integrity (8/8 Checks)
+        run: python data_integrity_check.py
 
       - name: Validate Frontend Production Build
         run: npm run build

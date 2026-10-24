@@ -59,18 +59,19 @@ export function evaluateMatchPrediction(match) {
     const d = parseFloat(probs.draw) || 0;
     const a = parseFloat(probs.away) || 0;
 
-    if (h >= d && h >= a) {
-      predictedOutcome = '1';
-      predictedLabel = `1 · ${match.homeTeam || 'Domicile'}`;
-      predictedProb = h;
-    } else if (a >= h && a >= d) {
-      predictedOutcome = '2';
-      predictedLabel = `2 · ${match.awayTeam || 'Extérieur'}`;
-      predictedProb = a;
-    } else {
+    const explicitOut = match.prediction?.predictedOutcome || match.topConditionalScore?.outcome;
+    if (explicitOut === 'N' || (Math.abs(h - a) <= 10.0 && d >= 22.5) || (d >= h && d >= a)) {
       predictedOutcome = 'N';
       predictedLabel = 'N · Nul';
       predictedProb = d;
+    } else if (explicitOut === '1' || h >= a) {
+      predictedOutcome = '1';
+      predictedLabel = `1 · ${match.homeTeam || 'Domicile'}`;
+      predictedProb = h;
+    } else {
+      predictedOutcome = '2';
+      predictedLabel = `2 · ${match.awayTeam || 'Extérieur'}`;
+      predictedProb = a;
     }
   } else if (match.prediction && match.prediction.winner) {
     const w = match.prediction.winner.toLowerCase();

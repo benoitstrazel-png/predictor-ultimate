@@ -47,6 +47,58 @@ TEAM_ALIASES = {
     "leipzig": "RB Leipzig"
 }
 
+
+def calculate_match_probabilities(xg_home, xg_away, max_goals=6):
+    p_home = 0.0
+    p_draw = 0.0
+    p_away = 0.0
+    scores = []
+    def pois(lmb, k):
+        return (lmb**k * math.exp(-lmb)) / math.factorial(k)
+    for h in range(max_goals + 1):
+        for a in range(max_goals + 1):
+            p = pois(xg_home, h) * pois(xg_away, a)
+            scores.append({'score': f'{h}-{a}', 'prob': round(p * 100, 1)})
+            if h > a: p_home += p
+            elif h == a: p_draw += p
+            else: p_away += p
+    scores.sort(key=lambda s: s['prob'], reverse=True)
+    total = p_home + p_draw + p_away
+    return {
+        'prob_home': round((p_home / total) * 100, 1),
+        'prob_draw': round((p_draw / total) * 100, 1),
+        'prob_away': round((p_away / total) * 100, 1),
+        'top_exact_scores': scores[:6]
+    }
+
+def detect_value_bets(p_home, p_draw, p_away, odd_home, odd_draw, odd_away, min_edge_pct=5.0):
+    candidates = [
+        ('1', 'Victoire Domicile', p_home, odd_home),
+        ('N', 'Match Nul', p_draw, odd_draw),
+        ('2', 'Victoire Extérieur', p_away, odd_away),
+    ]
+    value_bets = []
+    for code, label, p_pct, odd in candidates:
+        if odd and odd > 1.0:
+            prob = p_pct / 100.0
+            edge = (prob * odd - 1.0) * 100.0
+            if edge > min_edge_pct:
+                b = odd - 1.0
+                q = 1.0 - prob
+                kelly = max(0.0, min(5.0, ((b * prob - q) / b) * 100.0 * 0.25))
+                value_bets.append({
+                    'selection': code,
+                    'label': label,
+                    'side': label,
+                    'model_prob': f'{round(p_pct, 1)}%',
+                    'odd': odd,
+                    'betclic_odd': odd,
+                    'edge': f'+{round(edge, 1)}%',
+                    'edge_percentage': f'+{round(edge, 1)}%',
+                    'kelly_stake_pct': f'{round(kelly, 2)}%'
+                })
+    return value_bets
+
 def resolve_team_name(name):
     if not name: return "Team"
     clean = str(name).strip().lower()

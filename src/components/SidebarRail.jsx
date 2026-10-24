@@ -9,6 +9,7 @@ import {
   TrendingUp,
   History,
   Bell,
+  Ticket,
 } from 'lucide-react';
 
 const navItems = [
@@ -18,7 +19,8 @@ const navItems = [
   { to: '/history',         icon: History,          label: '4. Historique & Résumés IA' },
   { to: '/squads-mercato',  icon: Users,            label: '5. Effectifs & Mercato Multi-Saisons (Transfermarkt)' },
   { to: '/copilot',         icon: Sparkles,         label: '6. AI Predictor Copilot' },
-  { to: '/model-tracking',  icon: TrendingUp,        label: '7. Model Tracking' },
+  { to: '/model-tracking',  icon: TrendingUp,       label: '7. Model Tracking' },
+  { to: '/my-bets',         icon: Ticket,           label: '8. Mes Paris & Tickets' },
 ];
 
 export default function SidebarRail({ onOpenAiModal }) {
@@ -27,15 +29,16 @@ export default function SidebarRail({ onOpenAiModal }) {
       {/* Top: Logo + Nav */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
         {/* Logo */}
-        <NavLink to="/main" className="sidebar-logo" title="European Football Predictor V2">
+        <NavLink to="/main" className="sidebar-logo" title="Predictor Ultimate Quant Terminal">
           <span style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 13,
-            color: 'var(--obsidian)',
-            letterSpacing: '-0.03em',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 12,
+            fontWeight: 800,
+            color: '#06b6d4',
+            letterSpacing: '0.05em',
             lineHeight: 1,
           }}>
-            EF
+            PU
           </span>
         </NavLink>
 
@@ -43,8 +46,8 @@ export default function SidebarRail({ onOpenAiModal }) {
         <div style={{
           width: 20,
           height: 1,
-          background: 'var(--gold-border)',
-          margin: '20px 0',
+          background: '#27272a',
+          margin: '16px 0 10px',
           borderRadius: 1,
         }} />
 
@@ -90,7 +93,7 @@ export default function SidebarRail({ onOpenAiModal }) {
             border: 'none',
             transition: 'color 0.2s',
           }}
-          onMouseEnter={e => e.currentTarget.style.color = 'var(--ivory)'}
+          onMouseEnter={e => e.currentTarget.style.color = '#fafafa'}
           onMouseLeave={e => e.currentTarget.style.color = 'rgba(245,240,232,0.3)'}
         >
           <Bell size={18} strokeWidth={1.75} />

@@ -247,49 +247,63 @@ export default function MatchHistoryHub() {
   }, [allMatchesHistory, selectedSeason, selectedLeague, selectedRound, searchTerm]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-      {/* ── HEADER ── */}
-      <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-        <div>
-          <h1 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '2.2rem',
-            color: 'var(--ivory)',
-            fontWeight: 400,
-            margin: 0,
+      {/* ── HEADER (QUANT TERMINAL TOOLBAR) ── */}
+      <section style={{
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
+        padding: '10px 14px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        fontFamily: "'JetBrains Mono', monospace",
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.06em',
+            color: '#06b6d4', textTransform: 'uppercase',
           }}>
-            Historique & Hub Multimédia des Matchs
-          </h1>
-          <p style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
-            Archives des Rencontres Officielles Certifiées · Référencement Intégral des Buteurs · Calendriers 2026-2027
-          </p>
+            <Tv size={13} /> HISTORIQUE & ARCHIVES CERTIFIÉES DES RENCONTRES
+          </span>
+          <span style={{ color: '#27272a' }}>|</span>
+          <span style={{ fontSize: 11, color: '#71717a' }}>
+            ARCHIVES OFFICIELLES · BUTEURS & PASSEURS · CHRONOLOGIE PJ
+          </span>
         </div>
 
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--gold-border)',
-          borderRadius: 14,
-          padding: '8px 16px',
-          textAlign: 'right',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 6,
+          background: '#18181b',
+          border: '1px solid #27272a',
+          borderRadius: 4,
+          padding: '4px 10px',
+          color: '#06b6d4',
+          fontSize: 11,
+          fontWeight: 700,
         }}>
-          <div style={{ fontSize: 10, color: 'var(--neutral)', textTransform: 'uppercase' }}>Base Certifiée Multi-Saisons</div>
-          <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--gold)' }}>{allMatchesHistory.length} Matchs · 5 200+ Buteurs</div>
+          <span>{allMatchesHistory.length} MATCHS CERTIFIÉS</span>
         </div>
       </section>
 
       {/* ── 4-LEVEL CONTEXTUAL SELECTOR BAR ── */}
       <section style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 20,
         display: 'flex',
         flexDirection: 'column',
         gap: 16,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: '#06b6d4', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             🎯 Sélecteur Contextuel : Saison ➔ Championnat ➔ Journée ➔ Match
           </div>
           {selectedRound !== 'ALL' && (
@@ -297,11 +311,11 @@ export default function MatchHistoryHub() {
               onClick={() => setSelectedRound('ALL')}
               style={{
                 fontSize: 11,
-                color: 'var(--gold)',
-                background: 'rgba(201,169,110,0.1)',
-                border: '1px solid var(--gold-border)',
+                color: '#06b6d4',
+                background: 'rgba(6, 182, 212, 0.1)',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
                 padding: '3px 10px',
-                borderRadius: 8,
+                borderRadius: 4,
                 cursor: 'pointer',
               }}
             >
@@ -313,16 +327,16 @@ export default function MatchHistoryHub() {
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 1.2fr 2fr', gap: 16 }}>
           {/* Level 1: Saison */}
           <div>
-            <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Saison</label>
+            <label style={{ fontSize: 10, color: '#71717a', display: 'block', marginBottom: 4 }}>Saison</label>
             <select
               value={selectedSeason}
               onChange={e => setSelectedSeason(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 10,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '8px 12px',
                 fontSize: 12,
                 outline: 'none',
@@ -337,16 +351,16 @@ export default function MatchHistoryHub() {
 
           {/* Level 2: Championnat */}
           <div>
-            <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Championnat</label>
+            <label style={{ fontSize: 10, color: '#71717a', display: 'block', marginBottom: 4 }}>Championnat</label>
             <select
               value={selectedLeague}
               onChange={e => handleLeagueChange(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                borderRadius: 10,
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                borderRadius: 4,
+                color: '#fafafa',
                 padding: '8px 12px',
                 fontSize: 12,
                 outline: 'none',
@@ -366,7 +380,7 @@ export default function MatchHistoryHub() {
 
           {/* Level 3: Journée */}
           <div>
-            <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>
+            <label style={{ fontSize: 10, color: '#71717a', display: 'block', marginBottom: 4 }}>
               Journée ({selectedLeague === 'FRA-L1' || selectedLeague === 'GER-BL' ? '1 à 34' : selectedLeague.startsWith('EUR') ? '1 à ' + maxRoundsForLeague : '1 à 38'})
             </label>
             <select
@@ -374,10 +388,10 @@ export default function MatchHistoryHub() {
               onChange={e => setSelectedRound(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--obsidian-2)',
-                border: selectedRound !== 'ALL' ? '1px solid var(--gold-border)' : '1px solid var(--ivory-border)',
-                borderRadius: 10,
-                color: selectedRound !== 'ALL' ? 'var(--gold)' : 'var(--ivory)',
+                background: '#121215',
+                border: selectedRound !== 'ALL' ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid #27272a',
+                borderRadius: 4,
+                color: selectedRound !== 'ALL' ? '#06b6d4' : '#fafafa',
                 padding: '8px 12px',
                 fontSize: 12,
                 fontWeight: selectedRound !== 'ALL' ? 700 : 400,
@@ -394,9 +408,9 @@ export default function MatchHistoryHub() {
 
           {/* Level 4: Recherche instantanée */}
           <div>
-            <label style={{ fontSize: 10, color: 'var(--neutral)', display: 'block', marginBottom: 4 }}>Recherche Instantanée</label>
+            <label style={{ fontSize: 10, color: '#71717a', display: 'block', marginBottom: 4 }}>Recherche Instantanée</label>
             <div style={{ position: 'relative' }}>
-              <Search size={14} color="var(--neutral)" style={{ position: 'absolute', left: 12, top: 11 }} />
+              <Search size={14} color="#71717a" style={{ position: 'absolute', left: 12, top: 11 }} />
               <input
                 type="text"
                 placeholder="Buteur (Mbappé, Haaland, Blas...), arbitre ou club..."
@@ -404,10 +418,10 @@ export default function MatchHistoryHub() {
                 onChange={e => setSearchTerm(e.target.value)}
                 style={{
                   width: '100%',
-                  background: 'var(--obsidian-2)',
-                  border: '1px solid var(--ivory-border)',
-                  borderRadius: 10,
-                  color: 'var(--ivory)',
+                  background: '#121215',
+                  border: '1px solid #27272a',
+                  borderRadius: 4,
+                  color: '#fafafa',
                   padding: '8px 12px 8px 34px',
                   fontSize: 12,
                   outline: 'none',
@@ -419,7 +433,7 @@ export default function MatchHistoryHub() {
 
         {/* Rapid Round Selector Buttons */}
         <div>
-          <div style={{ fontSize: 10, color: 'var(--neutral)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <div style={{ fontSize: 10, color: '#71717a', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Accès Rapide par Journée :
           </div>
           <div style={{ display: 'flex', gap: 6, overflowX: 'auto', paddingBottom: 6 }}>
@@ -443,10 +457,10 @@ export default function MatchHistoryHub() {
                     padding: '4px 10px',
                     minWidth: 36,
                     textAlign: 'center',
-                    background: isSelected ? 'var(--gold)' : 'var(--obsidian-2)',
-                    color: isSelected ? 'var(--obsidian-1)' : 'var(--neutral)',
+                    background: isSelected ? '#06b6d4' : '#121215',
+                    color: isSelected ? 'var(--obsidian-1)' : '#71717a',
                     fontWeight: isSelected ? 800 : 500,
-                    border: `1px solid ${isSelected ? 'var(--gold)' : 'var(--ivory-border)'}`,
+                    border: `1px solid ${isSelected ? '#06b6d4' : '#27272a'}`,
                     transition: 'all 0.15s ease',
                   }}
                 >
@@ -460,14 +474,14 @@ export default function MatchHistoryHub() {
 
       {/* ── MATCHES LIST & MULTIMEDIA CARDS ── */}
       <section style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-        <div style={{ fontSize: 12, color: 'var(--neutral)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ fontSize: 12, color: '#71717a', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>
-            Résultats filtrés : <strong style={{ color: 'var(--gold)' }}>{filteredMatches.length}</strong> rencontre(s) certifiée(s) trouvée(s)
-            {selectedRound !== 'ALL' && <span> pour la <strong style={{ color: 'var(--ivory)' }}>{selectedRound}</strong></span>}
+            Résultats filtrés : <strong style={{ color: '#06b6d4' }}>{filteredMatches.length}</strong> rencontre(s) certifiée(s) trouvée(s)
+            {selectedRound !== 'ALL' && <span> pour la <strong style={{ color: '#fafafa' }}>{selectedRound}</strong></span>}
             <span> ({selectedSeason === 'ALL' ? 'Toutes Saisons' : selectedSeason})</span>
           </span>
           {searchTerm && (
-            <span style={{ fontSize: 11, color: 'var(--gold)' }}>
+            <span style={{ fontSize: 11, color: '#06b6d4' }}>
               Filtre actif : « {searchTerm} »
             </span>
           )}
@@ -477,24 +491,24 @@ export default function MatchHistoryHub() {
           <div style={{
             padding: '36px 20px',
             textAlign: 'center',
-            background: 'var(--glass-primary)',
-            border: '1px solid var(--ivory-border)',
-            borderRadius: 16,
-            color: 'var(--neutral)',
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 6,
+            color: '#71717a',
           }}>
-            <Trophy size={32} color="var(--neutral)" style={{ margin: '0 auto 12px', opacity: 0.5 }} />
-            <div style={{ fontSize: 14, color: 'var(--ivory)', fontWeight: 600 }}>Aucune rencontre trouvée</div>
+            <Trophy size={32} color="#71717a" style={{ margin: '0 auto 12px', opacity: 0.5 }} />
+            <div style={{ fontSize: 14, color: '#fafafa', fontWeight: 600 }}>Aucune rencontre trouvée</div>
             <div style={{ fontSize: 12, marginTop: 4 }}>Essayez de réinitialiser le filtre Journée ou votre terme de recherche.</div>
             <button
               onClick={() => { setSelectedRound('ALL'); setSearchTerm(''); }}
               style={{
                 marginTop: 14,
                 fontSize: 11,
-                background: 'var(--gold-muted)',
-                border: '1px solid var(--gold-border)',
-                color: 'var(--gold)',
+                background: 'rgba(6, 182, 212, 0.12)',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                color: '#06b6d4',
                 padding: '6px 14px',
-                borderRadius: 8,
+                borderRadius: 4,
                 cursor: 'pointer',
               }}
             >
@@ -513,9 +527,9 @@ export default function MatchHistoryHub() {
               <div
                 key={m.id}
                 style={{
-                  background: 'var(--glass-primary)',
-                  border: `1px solid ${isExpanded ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                  borderRadius: 16,
+                  background: '#121215',
+                  border: `1px solid ${isExpanded ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                  borderRadius: 6,
                   overflow: 'hidden',
                   transition: 'all 0.2s',
                 }}
@@ -529,7 +543,7 @@ export default function MatchHistoryHub() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     cursor: 'pointer',
-                    background: isExpanded ? 'var(--obsidian-3)' : 'transparent',
+                    background: isExpanded ? '#18181b' : 'transparent',
                     flexWrap: 'wrap',
                     gap: 12,
                   }}
@@ -537,10 +551,10 @@ export default function MatchHistoryHub() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                     {/* League & Round & Status Badges */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 6, background: 'var(--gold-muted)', color: 'var(--gold)', fontWeight: 700 }}>
+                      <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 6, background: 'rgba(6, 182, 212, 0.12)', color: '#06b6d4', fontWeight: 700 }}>
                         {m.league}
                       </span>
-                      <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.05)', color: 'var(--ivory-dim)', border: '1px solid var(--ivory-border)', fontWeight: 600 }}>
+                      <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.05)', color: '#a1a1aa', border: '1px solid #27272a', fontWeight: 600 }}>
                         {m.round || 'Journée'}
                       </span>
                       {isLive ? (
@@ -558,23 +572,23 @@ export default function MatchHistoryHub() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <TeamLogo teamName={m.homeTeam} size="sm" />
-                        <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>{m.homeTeam}</span>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: '#fafafa' }}>{m.homeTeam}</span>
                       </div>
 
                       <span style={{
                         fontSize: 15,
                         fontWeight: 800,
-                        color: isLive ? '#4ade80' : isFinished ? (isZeroZero ? 'var(--neutral)' : 'var(--gold)') : 'var(--ivory-dim)',
-                        background: 'var(--obsidian-2)',
+                        color: isLive ? '#4ade80' : isFinished ? (isZeroZero ? '#71717a' : '#06b6d4') : '#a1a1aa',
+                        background: '#121215',
                         padding: '4px 12px',
-                        borderRadius: 8,
-                        border: '1px solid var(--ivory-border)'
+                        borderRadius: 4,
+                        border: '1px solid #27272a'
                       }}>
                         {scoreDisplay}
                       </span>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ivory)' }}>{m.awayTeam}</span>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: '#fafafa' }}>{m.awayTeam}</span>
                         <TeamLogo teamName={m.awayTeam} size="sm" />
                       </div>
                     </div>
@@ -608,12 +622,12 @@ export default function MatchHistoryHub() {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <div style={{ fontSize: 11, color: 'var(--neutral)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <div style={{ fontSize: 11, color: '#71717a', display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span>{m.date || m.season || '2026-2027'}</span>
-                      <span style={{ color: 'var(--gold)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+                      <span style={{ color: '#06b6d4', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 3 }}>
                         <Clock size={11} /> {formatMatchTime(m)}
                       </span>
-                      <span>· Arbitre : <strong style={{ color: 'var(--ivory)' }}>{typeof m.referee === 'object' ? m.referee.name : m.referee}</strong></span>
+                      <span>· Arbitre : <strong style={{ color: '#fafafa' }}>{typeof m.referee === 'object' ? m.referee.name : m.referee}</strong></span>
                     </div>
                     <button
                       onClick={(e) => {
@@ -624,13 +638,13 @@ export default function MatchHistoryHub() {
                         display: 'flex',
                         alignItems: 'center',
                         gap: 6,
-                        background: 'rgba(201, 169, 110, 0.15)',
-                        border: '1px solid var(--gold-border)',
-                        color: 'var(--gold)',
+                        background: 'rgba(6, 182, 212, 0.14)',
+                        border: '1px solid rgba(6, 182, 212, 0.35)',
+                        color: '#06b6d4',
                         fontSize: 11,
                         fontWeight: 700,
                         padding: '5px 12px',
-                        borderRadius: 8,
+                        borderRadius: 4,
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                       }}
@@ -639,7 +653,7 @@ export default function MatchHistoryHub() {
                       <Clock size={13} />
                       <span>Détails & Chronologie</span>
                     </button>
-                    {isExpanded ? <ChevronUp size={18} color="var(--gold)" /> : <ChevronDown size={18} color="var(--neutral)" />}
+                    {isExpanded ? <ChevronUp size={18} color="#06b6d4" /> : <ChevronDown size={18} color="#71717a" />}
                   </div>
                 </div>
 
@@ -654,7 +668,7 @@ export default function MatchHistoryHub() {
                     gap: 8,
                     flexWrap: 'wrap',
                   }}>
-                    <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.05em' }}>⚽ BUTEURS & PASSEURS :</span>
+                    <span style={{ fontSize: 10, color: '#06b6d4', fontWeight: 800, letterSpacing: '0.05em' }}>⚽ BUTEURS & PASSEURS :</span>
                     {m.goals.map((g, gIdx) => {
                       const isAssist = (g.detail && g.detail.startsWith('Assist:')) || Boolean(g.assist);
                       const assistName = g.assist || (g.detail && g.detail.startsWith('Assist:') ? g.detail.replace('Assist:', '').trim() : null);
@@ -665,17 +679,17 @@ export default function MatchHistoryHub() {
                       return (
                         <span key={gIdx} style={{
                           fontSize: 11,
-                          background: 'var(--obsidian-3)',
-                          border: '1px solid var(--ivory-border)',
+                          background: '#18181b',
+                          border: '1px solid #27272a',
                           padding: '3px 8px',
                           borderRadius: 6,
-                          color: 'var(--ivory)',
+                          color: '#fafafa',
                           display: 'inline-flex',
                           alignItems: 'center',
                           gap: 6
                         }}>
-                          <strong style={{ color: 'var(--ivory)' }}>{g.player}</strong>
-                          <span style={{ color: 'var(--gold)', fontSize: 10, fontWeight: 700 }}>({g.time}')</span>
+                          <strong style={{ color: '#fafafa' }}>{g.player}</strong>
+                          <span style={{ color: '#06b6d4', fontSize: 10, fontWeight: 700 }}>({g.time}')</span>
                           {isPenalty ? (
                             <span style={{
                               fontSize: 10,
@@ -704,11 +718,11 @@ export default function MatchHistoryHub() {
                           {isAssist && assistName ? (
                             <span style={{
                               fontSize: 10,
-                              background: 'rgba(201,169,110,0.15)',
-                              border: '1px solid rgba(201,169,110,0.3)',
+                              background: 'rgba(6, 182, 212, 0.14)',
+                              border: '1px solid rgba(6, 182, 212, 0.35)',
                               padding: '1px 5px',
                               borderRadius: 4,
-                              color: 'var(--gold-light, #E6CA65)',
+                              color: '#22d3ee',
                               display: 'inline-flex',
                               alignItems: 'center',
                               gap: 3
@@ -717,7 +731,7 @@ export default function MatchHistoryHub() {
                               <strong>{assistName}</strong>
                             </span>
                           ) : isCleanDetail ? (
-                            <span style={{ color: 'var(--neutral)', fontSize: 9 }}>· {g.detail}</span>
+                            <span style={{ color: '#71717a', fontSize: 9 }}>· {g.detail}</span>
                           ) : null}
                         </span>
                       );
@@ -744,12 +758,12 @@ export default function MatchHistoryHub() {
                           flexWrap: 'wrap',
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 800, letterSpacing: '0.05em' }}>🎲 COTES BETCLIC :</span>
-                            <span style={{ fontSize: 11, color: 'var(--ivory)' }}>1: <strong style={{ color: 'var(--gold)' }}>{effectiveOdds.home}</strong></span>
-                            <span style={{ fontSize: 11, color: 'var(--ivory)' }}>N: <strong style={{ color: 'var(--gold)' }}>{effectiveOdds.draw}</strong></span>
-                            <span style={{ fontSize: 11, color: 'var(--ivory)' }}>2: <strong style={{ color: 'var(--gold)' }}>{effectiveOdds.away}</strong></span>
+                            <span style={{ fontSize: 10, color: '#06b6d4', fontWeight: 800, letterSpacing: '0.05em' }}>🎲 COTES BETCLIC :</span>
+                            <span style={{ fontSize: 11, color: '#fafafa' }}>1: <strong style={{ color: '#06b6d4' }}>{effectiveOdds.home}</strong></span>
+                            <span style={{ fontSize: 11, color: '#fafafa' }}>N: <strong style={{ color: '#06b6d4' }}>{effectiveOdds.draw}</strong></span>
+                            <span style={{ fontSize: 11, color: '#fafafa' }}>2: <strong style={{ color: '#06b6d4' }}>{effectiveOdds.away}</strong></span>
                             {effectiveMargin && (
-                              <span style={{ fontSize: 9, color: 'var(--neutral)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>
+                              <span style={{ fontSize: 9, color: '#71717a', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>
                                 Marge: {effectiveMargin}%
                               </span>
                             )}
@@ -840,14 +854,14 @@ export default function MatchHistoryHub() {
                 {isExpanded && (
                   <div style={{
                     padding: '16px 20px',
-                    background: 'var(--obsidian-2)',
-                    borderTop: '1px solid var(--ivory-border)',
+                    background: '#121215',
+                    borderTop: '1px solid #27272a',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 12,
                   }}>
-                    <div style={{ fontSize: 12, color: 'var(--ivory-dim)', lineHeight: 1.6 }}>
-                      🤖 <strong style={{ color: 'var(--ivory)' }}>{m.aiSummary}</strong>
+                    <div style={{ fontSize: 12, color: '#a1a1aa', lineHeight: 1.6 }}>
+                      🤖 <strong style={{ color: '#fafafa' }}>{m.aiSummary}</strong>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 6 }}>
                       <button
@@ -859,13 +873,13 @@ export default function MatchHistoryHub() {
                           display: 'flex',
                           alignItems: 'center',
                           gap: 6,
-                          background: 'rgba(201, 169, 110, 0.15)',
-                          border: '1px solid var(--gold-border)',
-                          color: 'var(--gold)',
+                          background: 'rgba(6, 182, 212, 0.14)',
+                          border: '1px solid rgba(6, 182, 212, 0.35)',
+                          color: '#06b6d4',
                           fontSize: 11,
                           fontWeight: 700,
                           padding: '6px 14px',
-                          borderRadius: 8,
+                          borderRadius: 4,
                           cursor: 'pointer',
                         }}
                       >

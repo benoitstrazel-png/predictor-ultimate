@@ -304,9 +304,9 @@ export default function PassingNetwork({
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       {/* ── BARRE DE FILTRES GLOBALE (Saison, Championnat, Club, Joueur) ── */}
       <div style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 16,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 20,
         display: 'flex',
         flexDirection: 'column',
@@ -316,7 +316,7 @@ export default function PassingNetwork({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 14 }}>
           {/* Championnats */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+            <span style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
               Championnat :
             </span>
             {leaguesList.map(lg => (
@@ -327,12 +327,12 @@ export default function PassingNetwork({
                 }}
                 style={{
                   padding: '6px 14px',
-                  borderRadius: 10,
+                  borderRadius: 4,
                   fontSize: 12,
                   fontWeight: selectedLeague === lg.id ? 700 : 500,
-                  background: selectedLeague === lg.id ? 'var(--gold-muted)' : 'var(--obsidian-2)',
-                  border: `1px solid ${selectedLeague === lg.id ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                  color: selectedLeague === lg.id ? 'var(--gold)' : 'var(--ivory)',
+                  background: selectedLeague === lg.id ? 'rgba(6, 182, 212, 0.12)' : '#121215',
+                  border: `1px solid ${selectedLeague === lg.id ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                  color: selectedLeague === lg.id ? '#06b6d4' : '#fafafa',
                   cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
@@ -344,21 +344,21 @@ export default function PassingNetwork({
 
           {/* Saisons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+            <span style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
               Saison :
             </span>
-            <div style={{ display: 'flex', background: 'var(--obsidian-2)', borderRadius: 10, padding: 3, border: '1px solid var(--ivory-border)', gap: 3 }}>
+            <div style={{ display: 'flex', background: '#121215', borderRadius: 4, padding: 3, border: '1px solid #27272a', gap: 3 }}>
               {availableSeasons.map(s => (
                 <button
                   key={s.id}
                   onClick={() => setSelectedSeason(s.id)}
                   style={{
                     padding: '6px 12px',
-                    borderRadius: 8,
+                    borderRadius: 4,
                     fontSize: 11,
                     fontWeight: selectedSeason === s.id ? 700 : 500,
-                    background: selectedSeason === s.id ? 'var(--gold-muted)' : 'transparent',
-                    color: selectedSeason === s.id ? 'var(--gold)' : 'var(--neutral)',
+                    background: selectedSeason === s.id ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                    color: selectedSeason === s.id ? '#06b6d4' : '#71717a',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.2s'
@@ -373,7 +373,7 @@ export default function PassingNetwork({
 
         {/* Ligne 2 : Sélection du Club (Défilement horizontal avec écussons) */}
         <div>
-          <div style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8, fontWeight: 600 }}>
+          <div style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8, fontWeight: 600 }}>
             Club ({leagueClubs.length} disponibles) :
           </div>
           <div style={{
@@ -396,10 +396,10 @@ export default function PassingNetwork({
                     alignItems: 'center',
                     gap: 8,
                     padding: '7px 14px',
-                    borderRadius: 12,
-                    background: isSelected ? 'var(--gold-muted)' : 'var(--obsidian-3)',
-                    border: `1px solid ${isSelected ? 'var(--gold)' : 'var(--ivory-border)'}`,
-                    color: isSelected ? 'var(--gold)' : 'var(--ivory)',
+                    borderRadius: 4,
+                    background: isSelected ? 'rgba(6, 182, 212, 0.12)' : '#18181b',
+                    border: `1px solid ${isSelected ? '#06b6d4' : '#27272a'}`,
+                    color: isSelected ? '#06b6d4' : '#fafafa',
                     cursor: 'pointer',
                     whiteSpace: 'nowrap',
                     fontSize: 12,
@@ -424,22 +424,22 @@ export default function PassingNetwork({
           flexWrap: 'wrap',
           gap: 12,
           paddingTop: 12,
-          borderTop: '1px solid var(--ivory-border)',
+          borderTop: '1px solid #27272a',
         }}>
           {/* Sélecteur Joueur spécifique */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+            <span style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
               Filtrer par Joueur :
             </span>
             <select
               value={selectedPlayer}
               onChange={(e) => setSelectedPlayer(e.target.value)}
               style={{
-                background: 'var(--obsidian-2)',
-                border: '1px solid var(--ivory-border)',
-                color: 'var(--ivory)',
+                background: '#121215',
+                border: '1px solid #27272a',
+                color: '#fafafa',
                 padding: '7px 12px',
-                borderRadius: 10,
+                borderRadius: 4,
                 fontSize: 12,
                 outline: 'none',
                 cursor: 'pointer',
@@ -457,10 +457,10 @@ export default function PassingNetwork({
                 onClick={() => setSelectedPlayer('ALL')}
                 style={{
                   background: 'transparent',
-                  border: '1px solid var(--ivory-border)',
-                  color: 'var(--neutral)',
+                  border: '1px solid #27272a',
+                  color: '#71717a',
                   padding: '6px 12px',
-                  borderRadius: 8,
+                  borderRadius: 4,
                   fontSize: 11,
                   cursor: 'pointer',
                 }}
@@ -475,13 +475,13 @@ export default function PassingNetwork({
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            background: 'var(--obsidian-2)',
-            border: '1px solid var(--ivory-border)',
-            borderRadius: 10,
+            background: '#121215',
+            border: '1px solid #27272a',
+            borderRadius: 4,
             padding: '6px 12px',
             minWidth: 260,
           }}>
-            <Search size={14} color="var(--neutral)" />
+            <Search size={14} color="#71717a" />
             <input
               type="text"
               value={playerSearch}
@@ -491,7 +491,7 @@ export default function PassingNetwork({
                 background: 'transparent',
                 border: 'none',
                 fontSize: 12,
-                color: 'var(--ivory)',
+                color: '#fafafa',
                 outline: 'none',
                 width: '100%'
               }}
@@ -499,7 +499,7 @@ export default function PassingNetwork({
             {playerSearch && (
               <button
                 onClick={() => setPlayerSearch('')}
-                style={{ background: 'transparent', border: 'none', color: 'var(--neutral)', cursor: 'pointer', fontSize: 11 }}
+                style={{ background: 'transparent', border: 'none', color: '#71717a', cursor: 'pointer', fontSize: 11 }}
               >
                 ×
               </button>
@@ -515,9 +515,9 @@ export default function PassingNetwork({
         gap: 14,
       }}>
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 16,
           display: 'flex',
           alignItems: 'center',
@@ -525,18 +525,18 @@ export default function PassingNetwork({
         }}>
           <TeamLogo teamName={selectedClub} size="lg" />
           <div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', fontWeight: 600 }}>Équipe Active</div>
-            <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--gold)', marginTop: 2 }}>{selectedClub}</div>
-            <div style={{ fontSize: 11, color: 'var(--ivory-dim)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', fontWeight: 600 }}>Équipe Active</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: '#06b6d4', marginTop: 2 }}>{selectedClub}</div>
+            <div style={{ fontSize: 11, color: '#a1a1aa', marginTop: 2 }}>
               {selectedLeague} · {selectedSeason}
             </div>
           </div>
         </div>
 
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 16,
           display: 'flex',
           alignItems: 'center',
@@ -545,31 +545,31 @@ export default function PassingNetwork({
           <div style={{
             width: 44,
             height: 44,
-            borderRadius: 12,
-            background: 'var(--gold-muted)',
-            border: '1px solid var(--gold-border)',
+            borderRadius: 4,
+            background: 'rgba(6, 182, 212, 0.12)',
+            border: '1px solid rgba(6, 182, 212, 0.35)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--gold)',
+            color: '#06b6d4',
           }}>
             <Activity size={22} />
           </div>
           <div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', fontWeight: 600 }}>Synergies Actives</div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--ivory)', marginTop: 2 }}>
-              {filteredConnections.length} <span style={{ fontSize: 12, color: 'var(--neutral)', fontWeight: 500 }}>/ {connections.length}</span>
+            <div style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', fontWeight: 600 }}>Synergies Actives</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: '#fafafa', marginTop: 2 }}>
+              {filteredConnections.length} <span style={{ fontSize: 12, color: '#71717a', fontWeight: 500 }}>/ {connections.length}</span>
             </div>
-            <div style={{ fontSize: 11, color: 'var(--positive)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#10b981', marginTop: 2 }}>
               {clubNetworkMetrics.elite} circuits Élite identifiés
             </div>
           </div>
         </div>
 
         <div style={{
-          background: 'var(--glass-primary)',
-          border: '1px solid var(--ivory-border)',
-          borderRadius: 14,
+          background: '#121215',
+          border: '1px solid #27272a',
+          borderRadius: 6,
           padding: 16,
           display: 'flex',
           alignItems: 'center',
@@ -578,22 +578,22 @@ export default function PassingNetwork({
           <div style={{
             width: 44,
             height: 44,
-            borderRadius: 12,
+            borderRadius: 4,
             background: 'rgba(34,197,94,0.15)',
             border: '1px solid rgba(34,197,94,0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--positive)',
+            color: '#10b981',
           }}>
             <Sparkles size={22} />
           </div>
           <div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', textTransform: 'uppercase', fontWeight: 600 }}>Volume xA Cumulé</div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--positive)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', textTransform: 'uppercase', fontWeight: 600 }}>Volume xA Cumulé</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: '#10b981', marginTop: 2 }}>
               {clubNetworkMetrics.totalXA} xA
             </div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Potentiel offensif assist-to-goal
             </div>
           </div>
@@ -602,15 +602,15 @@ export default function PassingNetwork({
 
       {/* ── LISTE DÉTAILLÉE DES CONNEXIONS DE PASSES ── */}
       <div style={{
-        background: 'var(--glass-primary)',
-        border: '1px solid var(--ivory-border)',
-        borderRadius: 18,
+        background: '#121215',
+        border: '1px solid #27272a',
+        borderRadius: 6,
         padding: 20,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <div>
             <div className="card-section-title">Synergy & Passing Network</div>
-            <div style={{ fontSize: 11, color: 'var(--neutral)', marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: '#71717a', marginTop: 2 }}>
               Connexions préférentielles passeur ➔ buteur ({selectedClub})
             </div>
           </div>
@@ -621,9 +621,9 @@ export default function PassingNetwork({
             textTransform: 'uppercase',
             padding: '3px 9px',
             borderRadius: 6,
-            background: 'var(--gold-muted)',
-            border: '1px solid var(--gold-border)',
-            color: 'var(--gold)',
+            background: 'rgba(6, 182, 212, 0.12)',
+            border: '1px solid rgba(6, 182, 212, 0.35)',
+            color: '#06b6d4',
           }}>
             Saison {selectedSeason}
           </span>
@@ -635,9 +635,9 @@ export default function PassingNetwork({
               <div
                 key={c.id || idx}
                 style={{
-                  background: 'var(--obsidian-3)',
-                  border: '1px solid var(--ivory-border)',
-                  borderRadius: 14,
+                  background: '#18181b',
+                  border: '1px solid #27272a',
+                  borderRadius: 6,
                   padding: '12px 18px',
                   display: 'flex',
                   alignItems: 'center',
@@ -653,15 +653,15 @@ export default function PassingNetwork({
                   <div style={{
                     width: 32,
                     height: 32,
-                    borderRadius: 10,
-                    background: idx === 0 ? 'var(--gold)' : 'var(--gold-muted)',
-                    border: '1px solid var(--gold-border)',
+                    borderRadius: 4,
+                    background: idx === 0 ? '#06b6d4' : 'rgba(6, 182, 212, 0.12)',
+                    border: '1px solid rgba(6, 182, 212, 0.35)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: 12,
                     fontWeight: 800,
-                    color: idx === 0 ? '#000' : 'var(--gold)',
+                    color: idx === 0 ? '#000' : '#06b6d4',
                     flexShrink: 0
                   }}>
                     #{idx + 1}
@@ -677,10 +677,10 @@ export default function PassingNetwork({
                       size={38}
                     />
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                         {c.passer}
                       </div>
-                      <div style={{ fontSize: 10, color: 'var(--neutral)' }}>
+                      <div style={{ fontSize: 10, color: '#71717a' }}>
                         {c.passerPos} · {c.assistsSource} passes déc.
                       </div>
                     </div>
@@ -692,10 +692,10 @@ export default function PassingNetwork({
                     flexDirection: 'column',
                     alignItems: 'center',
                     padding: '0 4px',
-                    color: 'var(--gold)',
+                    color: '#06b6d4',
                   }}>
                     <ArrowRight size={18} />
-                    <span style={{ fontSize: 9, color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    <span style={{ fontSize: 9, color: '#06b6d4', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                       Passe clé
                     </span>
                   </div>
@@ -710,10 +710,10 @@ export default function PassingNetwork({
                       size={38}
                     />
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--ivory)' }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#fafafa' }}>
                         {c.scorer}
                       </div>
-                      <div style={{ fontSize: 10, color: 'var(--neutral)' }}>
+                      <div style={{ fontSize: 10, color: '#71717a' }}>
                         {c.scorerPos} · {c.goalsTarget} buts
                       </div>
                     </div>
@@ -723,11 +723,11 @@ export default function PassingNetwork({
                 {/* Bloc Droit : Métriques et Badge */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ivory)' }}>
-                      {c.passes} <span style={{ fontSize: 11, color: 'var(--neutral)', fontWeight: 400 }}>passes clés</span>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#fafafa' }}>
+                      {c.passes} <span style={{ fontSize: 11, color: '#71717a', fontWeight: 400 }}>passes clés</span>
                     </div>
-                    <div style={{ fontSize: 10, color: 'var(--neutral)', marginTop: 2 }}>
-                      xA accumulé : <strong style={{ color: 'var(--positive)', fontSize: 11 }}>{c.xA}</strong>
+                    <div style={{ fontSize: 10, color: '#71717a', marginTop: 2 }}>
+                      xA accumulé : <strong style={{ color: '#10b981', fontSize: 11 }}>{c.xA}</strong>
                     </div>
                   </div>
 
@@ -737,10 +737,10 @@ export default function PassingNetwork({
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     padding: '5px 12px',
-                    borderRadius: 8,
+                    borderRadius: 4,
                     background: c.rating === 'Élite' ? 'rgba(34,197,94,0.15)' : c.rating === 'Élevé' ? 'rgba(234,179,8,0.15)' : 'var(--ivory-ghost)',
-                    color: c.rating === 'Élite' ? 'var(--positive)' : c.rating === 'Élevé' ? 'var(--gold)' : 'var(--ivory-dim)',
-                    border: `1px solid ${c.rating === 'Élite' ? 'rgba(34,197,94,0.3)' : c.rating === 'Élevé' ? 'rgba(234,179,8,0.3)' : 'var(--ivory-border)'}`,
+                    color: c.rating === 'Élite' ? '#10b981' : c.rating === 'Élevé' ? '#06b6d4' : '#a1a1aa',
+                    border: `1px solid ${c.rating === 'Élite' ? 'rgba(34,197,94,0.3)' : c.rating === 'Élevé' ? 'rgba(234,179,8,0.3)' : '#27272a'}`,
                   }}>
                     {c.rating}
                   </div>
@@ -752,15 +752,15 @@ export default function PassingNetwork({
           <div style={{
             textAlign: 'center',
             padding: '36px 20px',
-            background: 'var(--obsidian-3)',
-            borderRadius: 12,
-            border: '1px solid var(--ivory-border)',
+            background: '#18181b',
+            borderRadius: 4,
+            border: '1px solid #27272a',
           }}>
-            <Users size={32} color="var(--neutral)" style={{ margin: '0 auto 10px' }} />
-            <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--ivory)' }}>
+            <Users size={32} color="#71717a" style={{ margin: '0 auto 10px' }} />
+            <div style={{ fontSize: 14, fontWeight: 600, color: '#fafafa' }}>
               Aucune connexion trouvée pour ces critères
             </div>
-            <div style={{ fontSize: 12, color: 'var(--neutral)', marginTop: 4 }}>
+            <div style={{ fontSize: 12, color: '#71717a', marginTop: 4 }}>
               Essayez de réinitialiser le filtre joueur ou la recherche textuelle.
             </div>
           </div>

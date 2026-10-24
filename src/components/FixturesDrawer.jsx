@@ -85,19 +85,19 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
                 fontWeight: 700,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'var(--gold)',
+                color: '#06b6d4',
                 marginBottom: 4,
               }}>
                 Matchs & Cotes
               </div>
-              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--ivory)' }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: '#fafafa' }}>
                 {filteredSchedule.length} rencontres
                 {valueBetCount > 0 && (
                   <span style={{
                     marginLeft: 8,
                     fontSize: 10,
                     fontWeight: 700,
-                    color: 'var(--positive)',
+                    color: '#10b981',
                     background: 'var(--positive-muted)',
                     border: '1px solid var(--positive-border)',
                     padding: '2px 7px',
@@ -115,10 +115,10 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
                 style={{
                   width: 32,
                   height: 32,
-                  borderRadius: 9,
-                  background: showFilter ? 'var(--gold-muted)' : 'var(--ivory-ghost)',
-                  border: `1px solid ${showFilter ? 'var(--gold-border)' : 'var(--ivory-border)'}`,
-                  color: showFilter ? 'var(--gold)' : 'var(--neutral)',
+                  borderRadius: 4,
+                  background: showFilter ? 'rgba(6, 182, 212, 0.12)' : 'var(--ivory-ghost)',
+                  border: `1px solid ${showFilter ? 'rgba(6, 182, 212, 0.35)' : '#27272a'}`,
+                  color: showFilter ? '#06b6d4' : '#71717a',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -142,13 +142,13 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
 
         {/* Filter dropdown */}
         {showFilter && (
-          <div style={{ marginTop: 10, padding: '10px', background: 'var(--obsidian-3)', borderRadius: 10, border: '1px solid var(--ivory-border)' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 12, color: 'var(--ivory-dim)' }}>
+          <div style={{ marginTop: 10, padding: '10px', background: '#18181b', borderRadius: 4, border: '1px solid #27272a' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 12, color: '#a1a1aa' }}>
               <input
                 type="checkbox"
                 checked={filterValueBet}
                 onChange={e => setFilterValueBet(e.target.checked)}
-                style={{ accentColor: 'var(--gold)' }}
+                style={{ accentColor: '#06b6d4' }}
               />
               Afficher uniquement les Value Bets
             </label>
@@ -199,25 +199,25 @@ export default function FixturesDrawer({ selectedLeague, onSelectLeague, onSelec
                     {isFinished
                       ? <span style={{ fontSize: '1.1rem' }}>{fixture.homeScore} – {fixture.awayScore}</span>
                       : fixture.status === 'LIVE'
-                      ? <span style={{ fontSize: '0.95rem', color: 'var(--positive)', fontWeight: 700 }}>{fixture.score ? `${fixture.score.home}-${fixture.score.away}` : 'LIVE'}</span>
+                      ? <span style={{ fontSize: '0.95rem', color: '#10b981', fontWeight: 700 }}>{fixture.score ? `${fixture.score.home}-${fixture.score.away}` : 'LIVE'}</span>
                       : <span className="fixture-vs">vs</span>
                     }
                   </div>
                   <div className="fixture-meta" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
                     <span>{formatDate(fixture.matchDate)}</span>
                     <span style={{ opacity: 0.4 }}>•</span>
-                    <span style={{ color: 'var(--gold)', fontWeight: 700 }}>{formatMatchTime(fixture)}</span>
+                    <span style={{ color: '#06b6d4', fontWeight: 700 }}>{formatMatchTime(fixture)}</span>
                   </div>
                   {hasVB && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: 3, marginTop: 3 }}>
-                      <TrendingUp size={9} color="var(--gold)" />
+                      <TrendingUp size={9} color="#06b6d4" />
                       <span className="value-badge" style={{ fontSize: 8, padding: '1px 5px' }}>
                         {fixture.valueBets[0].selection === '1' ? `1 (${fixture.homeTeam.slice(0, 4)}.)` : fixture.valueBets[0].selection === '2' ? `2 (${fixture.awayTeam.slice(0, 4)}.)` : 'N'} {fixture.valueBets[0].edge_percentage || fixture.valueBets[0].edge}
                       </span>
                     </div>
                   )}
                   {fixture.rating && (
-                    <div style={{ fontSize: 9, color: 'var(--gold)', marginTop: 2, opacity: 0.8 }}>
+                    <div style={{ fontSize: 9, color: '#06b6d4', marginTop: 2, opacity: 0.8 }}>
                       ★ {fixture.rating}
                     </div>
                   )}
