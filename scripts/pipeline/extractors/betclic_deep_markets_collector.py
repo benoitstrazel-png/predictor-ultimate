@@ -328,94 +328,195 @@ def build_structured_markets_for_match(match: Dict[str, Any], real_players_db: D
         }
     ]
 
-    # 5. SECTION PLAYERS (BUTEURS & JOUEURS AVEC SUPERSUB CERTIFIÉ)
+    # 5. SECTION PLAYERS (BUTEURS & JOUEURS AVEC SUPERSUB CERTIFIÉ & TOUS MARCHÉS)
     potential_scorers_dict = match.get('potentialScorers') or {}
     h_scorers_raw = potential_scorers_dict.get('home', []) if isinstance(potential_scorers_dict, dict) else []
     a_scorers_raw = potential_scorers_dict.get('away', []) if isinstance(potential_scorers_dict, dict) else []
 
+    potential_assists_dict = match.get('potentialAssists') or {}
+    h_assists_raw = potential_assists_dict.get('home', []) if isinstance(potential_assists_dict, dict) else []
+    a_assists_raw = potential_assists_dict.get('away', []) if isinstance(potential_assists_dict, dict) else []
+
+    # Extraire l'intégralité des joueurs de champ de l'effectif
+    def build_team_player_pool(team_name, raw_scorers, raw_assists, real_list, team_lam):
+        pool = []
+        seen = set()
+
+        # 1. Joueurs issus de potentialScorers
+        for s in raw_scorers:
+            nm = s.get('name', '').strip()
+            if nm and nm not in seen:
+                seen.add(nm)
+                res = resolve_player_match(nm, real_list)
+                photo = res.get('photoUrl') if res else s.get('photoUrl')
+                pos = res.get('fullPos') if res else s.get('position', 'Attaquant')
+                pool.append({
+                    'name': nm,
+                    'team': team_name,
+                    'position': pos,
+                    'photoUrl': photo,
+                    'oddScorer': float(s.get('oddScorer') or 2.90),
+                    'goalProb': s.get('goalProb', '25%'),
+                })
+
+        # 2. Compléter avec tous les autres joueurs de champ de l'effectif
+        for p in real_list:
+            nm = p.get('name', '').strip()
+            if not nm or nm in seen:
+                continue
+            raw_p = str(p.get('position') or p.get('pos') or 'MF').upper().strip()
+            if raw_p in ['G', 'GK', 'GARDIEN']:
+                continue
+            seen.add(nm)
+
+            is_fw = (raw_p == 'A') or any(k in raw_p for k in ['FW', 'ATT', 'AILIER', 'BU', 'AG', 'AD', 'AVANT', 'ST', 'CF'])
+            is_mf = (raw_p == 'M') or any(k in raw_p for k in ['MF', 'MIL', 'MC', 'MDC', 'MOC', 'MD', 'MG'])
+
+            rating = float(p.get('rating', 7.0) or 7.0)
+            goals = float(p.get('goals', 0) or 0)
+            pos_weight = 3.2 if is_fw else (1.2 if is_mf else 0.35)
+            star_boost = max(0.5, (rating / 7.0) ** 2.2)
+            goal_boost = (1.0 + goals * 0.30) ** 1.4
+            w = pos_weight * star_boost * goal_boost
+
+            approx_p = min(0.65, max(0.06, (w / 18.0) * team_lam * 0.55))
+            odd = round(max(1.30, 1.0 / (approx_p * 0.88)), 2)
+
+            pool.append({
+                'name': nm,
+                'team': team_name,
+                'position': 'Attaquant' if is_fw else ('Milieu' if is_mf else 'Défenseur'),
+                'photoUrl': p.get('photoUrl', ''),
+                'oddScorer': odd,
+                'goalProb': f'{round(approx_p * 100, 1)}%',
+            })
+
+        pool.sort(key=lambda x: x['oddScorer'])
+        return pool
+
+    exp_home_xg = float(match.get('expectedGoals', {}).get('home') or 1.35)
+    exp_away_xg = float(match.get('expectedGoals', {}).get('away') or 1.25)
+
+    all_home_pool = build_team_player_pool(home_team, h_scorers_raw, h_assists_raw, home_players, exp_home_xg)
+    all_away_pool = build_team_player_pool(away_team, a_scorers_raw, a_assists_raw, away_players, exp_away_xg)
+
     supersub_selections = []
     reg_scorer_selections = []
+    first_scorer_selections = []
+    brace_selections = []
     assists_selections = []
 
-    # Buteurs Domicile
-    for item in h_scorers_raw[:7]:
-        p_name = item.get('name', '')
-        resolved = resolve_player_match(p_name, home_players)
-        p_odd = float(item.get('oddScorer') or 2.80)
-        p_photo = resolved.get('photoUrl') if resolved else item.get('photoUrl')
-        p_pos = resolved.get('fullPos') if resolved else item.get('position', 'Attaquant')
+    # Construction sélections Domicile
+    for p in all_home_pool:
+        p_name = p['name']
+        odd_sub = p['oddScorer']
+        odd_reg = round(max(1.05, odd_sub * 1.06), 2)
+        odd_first = round(max(2.40, odd_sub * 2.75), 2)
+        odd_brace = round(max(3.10, odd_sub * 3.65), 2)
+        odd_ast = round(max(1.60, odd_sub * 1.45), 2)
 
         supersub_selections.append({
             "key": f"SUPERSUB_H_{p_name}",
             "label": p_name,
             "team": home_team,
-            "position": p_pos,
-            "photoUrl": p_photo,
-            "odds": p_odd,
-            "prob": item.get('goalProb', '22%'),
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_sub,
+            "prob": p['goalProb'],
             "isSuperSub": True
         })
-
         reg_scorer_selections.append({
             "key": f"SCORER_H_{p_name}",
             "label": p_name,
             "team": home_team,
-            "position": p_pos,
-            "photoUrl": p_photo,
-            "odds": round(p_odd * 1.10, 2),
-            "prob": item.get('goalProb', '22%'),
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_reg,
+            "prob": p['goalProb'],
             "isSuperSub": False
         })
-
+        first_scorer_selections.append({
+            "key": f"FIRST_H_{p_name}",
+            "label": p_name,
+            "team": home_team,
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_first,
+            "isSuperSub": False
+        })
+        brace_selections.append({
+            "key": f"BRACE_H_{p_name}",
+            "label": p_name,
+            "team": home_team,
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_brace,
+            "isSuperSub": False
+        })
         assists_selections.append({
             "key": f"ASSIST_H_{p_name}",
             "label": p_name,
             "team": home_team,
-            "position": p_pos,
-            "photoUrl": p_photo,
-            "odds": round(p_odd * 1.35, 2),
-            "prob": "15%",
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_ast,
             "isSuperSub": False
         })
 
-    # Buteurs Extérieur
-    for item in a_scorers_raw[:7]:
-        p_name = item.get('name', '')
-        resolved = resolve_player_match(p_name, away_players)
-        p_odd = float(item.get('oddScorer') or 3.20)
-        p_photo = resolved.get('photoUrl') if resolved else item.get('photoUrl')
-        p_pos = resolved.get('fullPos') if resolved else item.get('position', 'Attaquant')
+    # Construction sélections Extérieur
+    for p in all_away_pool:
+        p_name = p['name']
+        odd_sub = p['oddScorer']
+        odd_reg = round(max(1.05, odd_sub * 1.06), 2)
+        odd_first = round(max(2.40, odd_sub * 2.75), 2)
+        odd_brace = round(max(3.10, odd_sub * 3.65), 2)
+        odd_ast = round(max(1.60, odd_sub * 1.45), 2)
 
         supersub_selections.append({
             "key": f"SUPERSUB_A_{p_name}",
             "label": p_name,
             "team": away_team,
-            "position": p_pos,
-            "photoUrl": p_photo,
-            "odds": p_odd,
-            "prob": item.get('goalProb', '18%'),
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_sub,
+            "prob": p['goalProb'],
             "isSuperSub": True
         })
-
         reg_scorer_selections.append({
             "key": f"SCORER_A_{p_name}",
             "label": p_name,
             "team": away_team,
-            "position": p_pos,
-            "photoUrl": p_photo,
-            "odds": round(p_odd * 1.10, 2),
-            "prob": item.get('goalProb', '18%'),
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_reg,
+            "prob": p['goalProb'],
             "isSuperSub": False
         })
-
+        first_scorer_selections.append({
+            "key": f"FIRST_A_{p_name}",
+            "label": p_name,
+            "team": away_team,
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_first,
+            "isSuperSub": False
+        })
+        brace_selections.append({
+            "key": f"BRACE_A_{p_name}",
+            "label": p_name,
+            "team": away_team,
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_brace,
+            "isSuperSub": False
+        })
         assists_selections.append({
             "key": f"ASSIST_A_{p_name}",
             "label": p_name,
             "team": away_team,
-            "position": p_pos,
-            "photoUrl": p_photo,
-            "odds": round(p_odd * 1.35, 2),
-            "prob": "12%",
+            "position": p['position'],
+            "photoUrl": p['photoUrl'],
+            "odds": odd_ast,
             "isSuperSub": False
         })
 
@@ -445,6 +546,22 @@ def build_structured_markets_for_match(match: Dict[str, Any], real_players_db: D
             "isLive": False,
             "isSuperSub": False,
             "selections": assists_selections
+        },
+        {
+            "marketId": f"{match_id}_FIRST_SCORER",
+            "marketName": "Premier buteur du match (t. rég)",
+            "category": "PLAYERS",
+            "isLive": False,
+            "isSuperSub": False,
+            "selections": first_scorer_selections
+        },
+        {
+            "marketId": f"{match_id}_BRACE",
+            "marketName": "Joueur marque 2 buts ou plus (Doublé)",
+            "category": "PLAYERS",
+            "isLive": False,
+            "isSuperSub": False,
+            "selections": brace_selections
         }
     ]
 

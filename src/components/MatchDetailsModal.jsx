@@ -51,16 +51,29 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
     if (!match) return;
     setIsRefreshingOdds(true);
     try {
-      const res = await fetch('http://localhost:5175/api/odds/refresh', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          matchId: match.id,
-          homeTeam: match.homeTeam || match.home_team,
-          awayTeam: match.awayTeam || match.away_team
-        })
-      });
-      if (res.ok) {
+      let res;
+      try {
+        res = await fetch('/api/odds/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            matchId: match.id,
+            homeTeam: match.homeTeam || match.home_team,
+            awayTeam: match.awayTeam || match.away_team
+          })
+        });
+      } catch {
+        res = await fetch('http://localhost:5175/api/odds/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            matchId: match.id,
+            homeTeam: match.homeTeam || match.home_team,
+            awayTeam: match.awayTeam || match.away_team
+          })
+        });
+      }
+      if (res && res.ok) {
         const json = await res.json();
         if (json.data) {
           match.betclicOdds = json.data.betclicOdds || null;

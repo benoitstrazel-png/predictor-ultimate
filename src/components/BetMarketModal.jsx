@@ -27,6 +27,8 @@ import {
   Users,
   Check,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Sparkles,
   HelpCircle,
   Hash,
@@ -65,6 +67,8 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
   const [customOdds, setCustomOdds] = useState('2.00');
   const [showCustomBet, setShowCustomBet] = useState(false);
   const [justAddedLabel, setJustAddedLabel] = useState(null);
+  const [expandedTeams, setExpandedTeams] = useState({});
+  const toggleExpandTeam = (teamKey) => setExpandedTeams((prev) => ({ ...prev, [teamKey]: !prev[teamKey] }));
 
   if (!isOpen || !match) return null;
 
@@ -567,19 +571,21 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
                     </p>
                   )}
 
-                  {/* Grille des sélections */}
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: isPlayersSection
-                        ? 'repeat(auto-fill, minmax(230px, 1fr))'
-                        : market.selections.length === 3
-                        ? 'repeat(3, 1fr)'
-                        : 'repeat(auto-fill, minmax(160px, 1fr))',
-                      gap: 8,
-                    }}
-                  >
-                    {market.selections.map((sel) => {
+                  {/* Grille des sélections par équipe pour les Joueurs ou Grille standard */}
+                  {isPlayersSection ? (() => {
+                    const homeSelections = market.selections.filter((s) => s.team === homeTeam || s.key.includes('_H_'));
+                    const awaySelections = market.selections.filter((s) => s.team === awayTeam || s.key.includes('_A_'));
+                    const otherSelections = market.selections.filter(
+                      (s) => !homeSelections.includes(s) && !awaySelections.includes(s)
+                    );
+
+                    const isHomeExp = Boolean(expandedTeams[`${market.marketId}_home`]) || Boolean(searchFilter.trim());
+                    const isAwayExp = Boolean(expandedTeams[`${market.marketId}_away`]) || Boolean(searchFilter.trim());
+
+                    const visHome = isHomeExp ? homeSelections : homeSelections.slice(0, 4);
+                    const visAway = isAwayExp ? awaySelections : awaySelections.slice(0, 4);
+
+                    const renderPlayerBtn = (sel) => {
                       const oddVal = parseFloat(sel.odds) || 1.0;
                       return (
                         <button
@@ -598,7 +604,7 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
                             )
                           }
                           style={{
-                            padding: isPlayersSection ? '8px 12px' : '10px 12px',
+                            padding: '8px 12px',
                             borderRadius: 8,
                             background: '#0e0e12',
                             border: '1px solid #27272a',
@@ -620,15 +626,32 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
                           }}
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flex: 1 }}>
-                            {sel.photoUrl && (
+                            {sel.photoUrl ? (
                               <img
                                 src={sel.photoUrl}
                                 alt={sel.label}
-                                style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover' }}
+                                style={{ width: 28, height: 28, borderRadius: '50%', objectFit: 'cover' }}
                                 onError={(e) => {
                                   e.target.style.display = 'none';
                                 }}
                               />
+                            ) : (
+                              <div
+                                style={{
+                                  width: 28,
+                                  height: 28,
+                                  borderRadius: '50%',
+                                  background: '#27272a',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  fontSize: 10,
+                                  color: '#a1a1aa',
+                                  fontWeight: 700,
+                                }}
+                              >
+                                {sel.label.slice(0, 2).toUpperCase()}
+                              </div>
                             )}
 
                             <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -659,6 +682,9 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
                               fontWeight: 900,
                               color: '#22d3ee',
                               fontFamily: "'JetBrains Mono', monospace",
+                              background: 'rgba(34, 211, 238, 0.08)',
+                              padding: '2px 8px',
+                              borderRadius: 4,
                               flexShrink: 0,
                             }}
                           >
@@ -666,8 +692,202 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
                           </span>
                         </button>
                       );
-                    })}
-                  </div>
+                    };
+
+                    return (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                        {/* 1. Bloc Équipe Domicile */}
+                        {homeSelections.length > 0 && (
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderBottom: '1px solid #27272a',
+                                paddingBottom: 6,
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <TeamLogo teamName={homeTeam} size={18} />
+                                <span style={{ fontSize: 12, fontWeight: 900, color: '#fafafa', letterSpacing: '0.02em' }}>
+                                  {homeTeam}
+                                </span>
+                              </div>
+                              <span style={{ fontSize: 10, color: '#71717a', fontFamily: "'JetBrains Mono', monospace" }}>
+                                {homeSelections.length} joueurs disponibles
+                              </span>
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 8 }}>
+                              {visHome.map(renderPlayerBtn)}
+                            </div>
+
+                            {homeSelections.length > 4 && !searchFilter.trim() && (
+                              <button
+                                type="button"
+                                onClick={() => toggleExpandTeam(`${market.marketId}_home`)}
+                                style={{
+                                  alignSelf: 'center',
+                                  background: 'transparent',
+                                  border: '1px dashed #3f3f46',
+                                  borderRadius: 6,
+                                  padding: '5px 12px',
+                                  color: isHomeExp ? '#22d3ee' : '#a1a1aa',
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  fontFamily: "'JetBrains Mono', monospace",
+                                  cursor: 'pointer',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: 6,
+                                  marginTop: 4,
+                                  transition: 'all 0.15s ease',
+                                }}
+                              >
+                                {isHomeExp ? (
+                                  <>Replier la liste <ChevronUp size={12} /></>
+                                ) : (
+                                  <>Déplier l'effectif d'{homeTeam} ({homeSelections.length}) <ChevronDown size={12} /></>
+                                )}
+                              </button>
+                            )}
+                          </div>
+                        )}
+
+                        {/* 2. Bloc Équipe Extérieur */}
+                        {awaySelections.length > 0 && (
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderBottom: '1px solid #27272a',
+                                paddingBottom: 6,
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <TeamLogo teamName={awayTeam} size={18} />
+                                <span style={{ fontSize: 12, fontWeight: 900, color: '#fafafa', letterSpacing: '0.02em' }}>
+                                  {awayTeam}
+                                </span>
+                              </div>
+                              <span style={{ fontSize: 10, color: '#71717a', fontFamily: "'JetBrains Mono', monospace" }}>
+                                {awaySelections.length} joueurs disponibles
+                              </span>
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 8 }}>
+                              {visAway.map(renderPlayerBtn)}
+                            </div>
+
+                            {awaySelections.length > 4 && !searchFilter.trim() && (
+                              <button
+                                type="button"
+                                onClick={() => toggleExpandTeam(`${market.marketId}_away`)}
+                                style={{
+                                  alignSelf: 'center',
+                                  background: 'transparent',
+                                  border: '1px dashed #3f3f46',
+                                  borderRadius: 6,
+                                  padding: '5px 12px',
+                                  color: isAwayExp ? '#22d3ee' : '#a1a1aa',
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  fontFamily: "'JetBrains Mono', monospace",
+                                  cursor: 'pointer',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: 6,
+                                  marginTop: 4,
+                                  transition: 'all 0.15s ease',
+                                }}
+                              >
+                                {isAwayExp ? (
+                                  <>Replier la liste <ChevronUp size={12} /></>
+                                ) : (
+                                  <>Déplier l'effectif de {awayTeam} ({awaySelections.length}) <ChevronDown size={12} /></>
+                                )}
+                              </button>
+                            )}
+                          </div>
+                        )}
+
+                        {otherSelections.length > 0 && (
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 8 }}>
+                            {otherSelections.map(renderPlayerBtn)}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })() : (
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns:
+                          market.selections.length === 3
+                            ? 'repeat(3, 1fr)'
+                            : 'repeat(auto-fill, minmax(160px, 1fr))',
+                        gap: 8,
+                      }}
+                    >
+                      {market.selections.map((sel) => {
+                        const oddVal = parseFloat(sel.odds) || 1.0;
+                        return (
+                          <button
+                            key={sel.key}
+                            type="button"
+                            onClick={() =>
+                              handleSelectBet(
+                                market.category,
+                                market.marketName,
+                                sel.key,
+                                sel.label,
+                                oddVal,
+                                null,
+                                sel.prob || null,
+                                isSuperSub
+                              )
+                            }
+                            style={{
+                              padding: '10px 12px',
+                              borderRadius: 8,
+                              background: '#0e0e12',
+                              border: '1px solid #27272a',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              gap: 8,
+                              textAlign: 'left',
+                              transition: 'all 0.15s ease',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.borderColor = '#06b6d4';
+                              e.currentTarget.style.background = 'rgba(6, 182, 212, 0.08)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.borderColor = '#27272a';
+                              e.currentTarget.style.background = '#0e0e12';
+                            }}
+                          >
+                            <span style={{ fontSize: 11, fontWeight: 700, color: '#fafafa' }}>{sel.label}</span>
+                            <span
+                              style={{
+                                fontSize: 12,
+                                fontWeight: 900,
+                                color: '#22d3ee',
+                                fontFamily: "'JetBrains Mono', monospace",
+                              }}
+                            >
+                              @{oddVal.toFixed(2)}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               );
             })

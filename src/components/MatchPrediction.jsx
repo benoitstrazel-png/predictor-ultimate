@@ -72,12 +72,21 @@ const MatchPrediction = ({ match }) => {
     if (!match?.id) return;
     setIsRefreshing(true);
     try {
-      const res = await fetch('http://localhost:5175/api/odds/refresh', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ matchId: match.id, homeTeam: match.homeTeam, awayTeam: match.awayTeam })
-      });
-      if (res.ok) {
+      let res;
+      try {
+        res = await fetch('/api/odds/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ matchId: match.id, homeTeam: match.homeTeam, awayTeam: match.awayTeam })
+        });
+      } catch {
+        res = await fetch('http://localhost:5175/api/odds/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ matchId: match.id, homeTeam: match.homeTeam, awayTeam: match.awayTeam })
+        });
+      }
+      if (res && res.ok) {
         const json = await res.json();
         if (json.data) {
           match.betclicOdds = json.data.betclicOdds || null;

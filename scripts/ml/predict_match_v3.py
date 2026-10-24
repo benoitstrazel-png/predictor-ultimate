@@ -513,9 +513,11 @@ def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
         )
         rating = float(p.get("rating", 7.0) or 7.0)
 
-        w_goal = pos_weight_goal * (
-            1.0 + goals * 0.20 + xg90 * 2.0 + (rating - 7.0) * 0.15
-        )
+        pos_base = 3.5 if is_fw else (1.2 if is_mf else 0.3)
+        star_boost = max(0.5, (rating / 7.0) ** 2.5)
+        goal_boost = (1.0 + goals * 0.30) ** 1.5
+        w_goal = pos_base * star_boost * goal_boost * (1.0 + xg90 * 1.5)
+
         w_ast = pos_weight_ast * (
             1.0 + assists * 0.25 + xa90 * 2.2 + (rating - 7.0) * 0.15
         )
@@ -544,9 +546,10 @@ def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
     assisters = []
 
     for o in outfield:
-        exp_g = lambda_team * (o["w_goal"] / tot_w_goal)
-        p_goal = min(0.85, 1.0 - math.exp(-exp_g))
-        odd_g = max(1.20, round(1.0 / (p_goal * 0.90), 2)) if p_goal > 0 else 9.0
+        share = o["w_goal"] / tot_w_goal
+        eff_lambda = lambda_team * (share ** 0.85) * 1.35
+        p_goal = min(0.75, 1.0 - math.exp(-eff_lambda))
+        odd_g = round(max(1.30, 1.0 / (p_goal * 0.90)), 2)
 
         scorers.append(
             {
@@ -557,7 +560,7 @@ def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
                 "goalProb": f"{round(p_goal * 100, 1)}%",
                 "goalProbVal": round(p_goal * 100, 1),
                 "oddScorer": odd_g,
-                "xGMatch": round(exp_g, 2),
+                "xGMatch": round(eff_lambda, 2),
                 "seasonGoals": o["goals"],
             }
         )
@@ -583,7 +586,7 @@ def predict_team_scorers_and_assists(team_name, lambda_team, is_home=True):
     scorers.sort(key=lambda s: s["goalProbVal"], reverse=True)
     assisters.sort(key=lambda a: a["assistProbVal"], reverse=True)
 
-    return scorers[:4], assisters[:3]
+    return scorers[:20], assisters[:15]
 
 
 def get_team_rolling_stats():
