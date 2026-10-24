@@ -447,9 +447,9 @@
                 "1",
                 "1",
                 "away_team",
-                "3",
+                "2",
                 "1",
-                "1"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,20 +462,19 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paderborn have 3W, 1D, 1L in five matches while Eintracht Frankfurt have 3W, 1D, 1L."
+              "defaultText": "Paderborn have 3W, 1D, 1L in five matches while Eintracht Frankfurt have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "1",
+                "0.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,20 +485,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paderborn have scored 3 goals in their last 3 matches, while Eintracht Frankfurt have scored 5."
+              "defaultText": "Paderborn have an average of 1 goals in their last three matches and Eintracht Frankfurt have an average of 0.33."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "1",
+                "0.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,23 +508,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paderborn have scored 3 goals in their last 3 matches, while Eintracht Frankfurt have scored 5."
+              "defaultText": "Paderborn have an average of 1 goals in their last three matches and Eintracht Frankfurt have an average of 0.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "3",
-                "1",
-                "1",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -539,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paderborn have 3W, 1D, 1L in five matches while Eintracht Frankfurt have 3W, 1D, 1L."
+              "defaultText": "Eintracht Frankfurt haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -650,29 +642,29 @@
         },
         {
           "type": "player",
-          "playerId": 1281100,
+          "playerId": 629805,
           "teamId": 9810,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1281100,
-              "name": "Noah Atubolu",
+              "value": 629805,
+              "name": "Ritsu Doan",
               "type": "player"
             },
             {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
+              "value": 9810,
+              "name": "Eintracht Frankfurt",
+              "type": "team"
             },
             {
-              "value": 5.3,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Noah Atubolu is ranked 2 in saves per match in the competition (5.3)",
+          "text": "Ritsu Doan has created the most big chances for Eintracht Frankfurt (3)",
           "color": "#000000"
         },
         {
@@ -694,12 +686,12 @@
               "type": "team"
             },
             {
-              "value": 2.5,
+              "value": 1.8,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Farès Chaïbi has the most shots on target per match for Eintracht Frankfurt (2.5)",
+          "text": "Farès Chaïbi has the most shots on target per match for Eintracht Frankfurt (1.8)",
           "color": "#000000"
         }
       ],
