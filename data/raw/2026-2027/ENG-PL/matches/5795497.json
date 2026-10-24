@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
-            "linkToMatch": "/matches/tottenham-hotspur-vs-nottingham-forest/2x3odl#5795444",
-            "date": {
-              "utcTime": "2026-09-05T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8586/overview/tottenham-hotspur",
-            "tooltipText": {
-              "utcTime": "2026-09-05T14:00:00.000Z",
-              "homeTeam": "Nottingham Forest",
-              "homeTeamId": 10203,
-              "homeScore": "0",
-              "awayTeam": "Tottenham Hotspur",
-              "awayTeamId": 8586,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8586",
-              "name": "Tottenham Hotspur",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
@@ -423,6 +393,36 @@
               "name": "Arsenal",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png",
+            "linkToMatch": "/matches/ipswich-town-vs-nottingham-forest/3cc90b#5795491",
+            "date": {
+              "utcTime": "2026-10-23T19:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9902/overview/ipswich-town",
+            "tooltipText": {
+              "utcTime": "2026-10-23T19:00:00.000Z",
+              "homeTeam": "Ipswich Town",
+              "homeTeamId": 9902,
+              "homeScore": "1",
+              "awayTeam": "Nottingham Forest",
+              "awayTeamId": 10203,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9902",
+              "name": "Ipswich Town",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10203",
+              "name": "Nottingham Forest",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -489,13 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "2",
-                "0.33"
+                "3",
+                "6",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,14 +507,14 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brentford have an average of 2 goals in their last three matches and Nottingham Forest have an average of 0.33."
+              "defaultText": "Brentford have scored 6 goals in their last 3 matches, while Nottingham Forest have scored 2."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
                 "4"
@@ -528,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Nottingham Forest haven't drawn in their last 4 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Nottingham Forest haven't won a match in 4 attempts."
             }
           ]
         },
@@ -625,7 +626,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -635,7 +636,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#C8102E"
         },
         {
