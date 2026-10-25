@@ -483,14 +483,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "5",
-                "5"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Marseille have scored 5 goals in their last 3 matches, while Toulouse have scored 5."
+              "defaultText": "Marseille have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -575,30 +573,20 @@
           "color": "#0A60A8"
         },
         {
-          "type": "player",
-          "playerId": 687868,
+          "type": "team",
+          "playerId": null,
           "teamId": 8592,
           "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 687868,
-              "name": "Jeffrey De Lange",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
+              "value": 2.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Jeffrey De Lange is ranked 1 in saves per match in the competition (4.3)",
+          "text": "Average 2.3 goals per match",
           "color": "#0A60A8"
         },
         {
@@ -688,58 +676,69 @@
     "weather": {
       "temperature": 14,
       "windSpeed": 3,
-      "windDirectionCardinal": "NNW",
+      "windDirectionCardinal": "NW",
       "iconCode": 33,
-      "relativeHumidity": 77,
-      "precipChance": 4,
+      "relativeHumidity": 76,
+      "precipChance": 10,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 24,
+      "cloudCover": 25,
       "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-25T08:00:23Z",
+      "lastUpdated": "2026-10-25T20:00:23Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5802977,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8592,
         "name": "Marseille",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 847629,
+            "age": 28,
             "name": "Derek Cornelius",
+            "countryName": "Canada",
+            "countryCode": "CAN",
+            "marketValue": 1679278,
             "unavailability": {
               "injuryId": 31,
-              "lastUpdated": "2026-09-26T09:55:56Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Derek",
-            "lastName": "Cornelius"
+            "lastName": "Cornelius",
+            "nationalTeamId": 5810
           }
         ]
       },
       "awayTeam": {
         "id": 9941,
         "name": "Toulouse",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1717493,
+            "age": 19,
             "name": "Sion Oppong",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 1300828,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-24T19:34:17Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Sion",
-            "lastName": "Oppong"
+            "lastName": "Oppong",
+            "nationalTeamId": 8520
           }
         ]
       }
