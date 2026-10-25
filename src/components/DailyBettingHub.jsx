@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
   ChevronLeft, ChevronRight, Layers, AlertTriangle, CloudRain,
-  RefreshCw, Search, CheckCircle2, Flame, ShieldCheck, Calendar, SlidersHorizontal
+  RefreshCw, Search, CheckCircle2, Flame, ShieldCheck, Calendar, SlidersHorizontal, Sparkles
 } from 'lucide-react';
 import TeamLogo from './ui/TeamLogo';
 import MatchPrediction from './MatchPrediction';
