@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
-            "linkToMatch": "/matches/liverpool-vs-afc-bournemouth/2he69q#5795455",
-            "date": {
-              "utcTime": "2026-09-20T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8678/overview/afc-bournemouth",
-            "tooltipText": {
-              "utcTime": "2026-09-20T13:00:00.000Z",
-              "homeTeam": "AFC Bournemouth",
-              "homeTeamId": 8678,
-              "homeScore": "0",
-              "awayTeam": "Liverpool",
-              "awayTeamId": 8650,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8678",
-              "name": "AFC Bournemouth",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "10205",
               "name": "Villarreal",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
+            "linkToMatch": "/matches/liverpool-vs-brighton-hove-albion/2xtwfj#5795492",
+            "date": {
+              "utcTime": "2026-10-25T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "tooltipText": {
+              "utcTime": "2026-10-25T14:00:00.000Z",
+              "homeTeam": "Liverpool",
+              "homeTeamId": 8650,
+              "homeScore": "2",
+              "awayTeam": "Brighton & Hove Albion",
+              "awayTeamId": 10204,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
               "isOurTeam": false
             }
           }
@@ -465,13 +465,12 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
+                "4",
                 "away_team",
-                "3",
-                "12",
                 "5"
               ],
               "DefaultLabels": [
@@ -483,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 12 goals in their last 3 matches, while Arsenal have scored 5."
+              "defaultText": "Liverpool have scored in their last 4 matches and Arsenal have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -493,7 +492,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "12",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -505,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 12 goals in their last 3 matches."
+              "defaultText": "Liverpool have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -515,7 +514,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool haven't drawn in their last 6 matches."
+              "defaultText": "Liverpool haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -548,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 14,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +557,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 14 goals in their last 5 matches",
           "color": "#911712"
         },
         {
@@ -651,6 +650,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 9825,
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have kept the most clean sheets in the competition (5)",
+          "color": "#bd0510"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9825,
           "priority": 8,
           "defaultText": "Ranked {0} away from home this season",
           "localizedTextId": "insights_best_away",
@@ -662,23 +678,6 @@
             }
           ],
           "text": "Ranked 3 away from home this season",
-          "color": "#bd0510"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9825,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
           "color": "#bd0510"
         }
       ],
@@ -700,156 +699,199 @@
       }
     },
     "weather": {
-      "temperature": 11,
+      "temperature": 10,
       "windSpeed": 3,
       "windDirectionCardinal": "WNW",
       "iconCode": 30,
       "relativeHumidity": 82,
-      "precipChance": 8,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 35,
+      "cloudCover": 57,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-25T05:00:05Z",
+      "lastUpdated": "2026-10-25T17:00:03Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795501,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8650,
         "name": "Liverpool",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1553105,
+            "age": 23,
             "name": "Víctor Muñoz",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 24500000,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-20T11:19:00Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Víctor",
-            "lastName": "Muñoz"
+            "lastName": "Muñoz",
+            "nationalTeamId": 6720
           },
           {
             "id": 966018,
+            "age": 25,
             "name": "Jeremie Frimpong",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 43905178,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-19T00:09:16Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Jeremie",
-            "lastName": "Frimpong"
+            "lastName": "Frimpong",
+            "nationalTeamId": 6708
           },
           {
             "id": 846005,
+            "age": 26,
             "name": "Dominik Szoboszlai",
+            "countryName": "Hungary",
+            "countryCode": "HUN",
+            "marketValue": 122859701,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-19T00:08:19Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Dominik",
-            "lastName": "Szoboszlai"
+            "lastName": "Szoboszlai",
+            "nationalTeamId": 8565
           },
           {
             "id": 1197030,
+            "age": 24,
             "name": "Hugo Ekitiké",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 74462289,
             "unavailability": {
               "injuryId": 73,
-              "lastUpdated": "2026-09-04T16:05:26Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Hugo",
-            "lastName": "Ekitiké"
+            "lastName": "Ekitiké",
+            "nationalTeamId": 6723
           },
           {
             "id": 1113690,
+            "age": 23,
             "name": "Conor Bradley",
+            "countryName": "Northern Ireland",
+            "countryCode": "NIR",
+            "marketValue": 28459646,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-23T22:35:02Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Conor",
-            "lastName": "Bradley"
+            "lastName": "Bradley",
+            "nationalTeamId": 10259
           },
           {
             "id": 1609209,
+            "age": 19,
             "name": "Giovanni Leoni",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 30879227,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-10-16T10:27:29Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Giovanni",
-            "lastName": "Leoni"
+            "lastName": "Leoni",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 9825,
         "name": "Arsenal",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 961995,
+            "age": 25,
             "name": "Bukayo Saka",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 112716392,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-23T15:57:10Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Bukayo",
-            "lastName": "Saka"
+            "lastName": "Saka",
+            "nationalTeamId": 8491
           },
           {
             "id": 1137667,
+            "age": 24,
             "name": "Piero Hincapié",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
+            "marketValue": 65438881,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-22T16:13:24Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Piero",
-            "lastName": "Hincapié"
+            "lastName": "Hincapié",
+            "nationalTeamId": 6707
           },
           {
             "id": 1157237,
+            "age": 24,
             "name": "Christos Tzolis",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 47942738,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-22T16:13:17Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Christos",
-            "lastName": "Tzolis"
+            "lastName": "Tzolis",
+            "nationalTeamId": 6383
           },
           {
             "id": 955406,
+            "age": 25,
             "name": "William Saliba",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 120390607,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-10-23T15:59:44Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "William",
-            "lastName": "Saliba"
+            "lastName": "Saliba",
+            "nationalTeamId": 6723
           }
         ]
       }

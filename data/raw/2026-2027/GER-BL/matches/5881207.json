@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png",
-            "linkToMatch": "/matches/bayer-leverkusen-vs-rb-leipzig/803a6n9#5881170",
-            "date": {
-              "utcTime": "2026-09-20T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/178475/overview/rb-leipzig",
-            "tooltipText": {
-              "utcTime": "2026-09-20T13:30:00.000Z",
-              "homeTeam": "Bayer Leverkusen",
-              "homeTeamId": 8178,
-              "homeScore": "2",
-              "awayTeam": "RB Leipzig",
-              "awayTeamId": 178475,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8178",
-              "name": "Bayer Leverkusen",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9905.png",
             "linkToMatch": "/matches/bayer-leverkusen-vs-mainz-05/2pcq1z#5881184",
             "date": {
@@ -264,6 +234,36 @@
             "home": {
               "id": "7753",
               "name": "OFI Crete",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8178",
+              "name": "Bayer Leverkusen",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226.png",
+            "linkToMatch": "/matches/bayer-leverkusen-vs-hoffenheim/2844qc#5881201",
+            "date": {
+              "utcTime": "2026-10-25T14:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8226/overview/hoffenheim",
+            "tooltipText": {
+              "utcTime": "2026-10-25T14:30:00.000Z",
+              "homeTeam": "Hoffenheim",
+              "homeTeamId": 8226,
+              "homeScore": "3",
+              "awayTeam": "Bayer Leverkusen",
+              "awayTeamId": 8178,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8226",
+              "name": "Hoffenheim",
               "isOurTeam": false
             },
             "away": {
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Bayer Leverkusen have won their last 6 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Bayer Leverkusen have 4W, 0D, 1L in five matches while VfB Stuttgart have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -483,12 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayer Leverkusen have scored 8 goals in their last 3 matches."
+              "defaultText": "Bayer Leverkusen have an average of 1.33 goals in their last three matches and VfB Stuttgart have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -509,7 +516,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayer Leverkusen haven't drawn in their last 6 matches."
+              "defaultText": "Bayer Leverkusen haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -542,7 +549,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -552,41 +559,61 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#cf1e1e"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 540097,
           "teamId": 8178,
-          "priority": 7,
-          "defaultText": "Have won their last {0} matches",
-          "localizedTextId": "insights_good_form_team",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
+            {
+              "value": 540097,
+              "name": "Patrik Schick",
+              "type": "player"
+            },
+            {
+              "value": 8178,
+              "name": "Bayer Leverkusen",
+              "type": "team"
+            },
+            {
+              "value": 2.1,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Patrik Schick has the most shots on target per match for Bayer Leverkusen (2.1)",
+          "color": "#cf1e1e"
+        },
+        {
+          "type": "player",
+          "playerId": 942379,
+          "teamId": 8178,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 942379,
+              "name": "Miguel Gutiérrez",
+              "type": "player"
+            },
+            {
+              "value": 8178,
+              "name": "Bayer Leverkusen",
+              "type": "team"
+            },
             {
               "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have won their last 6 matches",
-          "color": "#cf1e1e"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8178,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 8 matches",
+          "text": "Miguel Gutiérrez has created the most big chances for Bayer Leverkusen (6)",
           "color": "#cf1e1e"
         },
         {

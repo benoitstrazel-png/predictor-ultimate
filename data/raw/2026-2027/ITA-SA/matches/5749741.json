@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-frosinone/2m17vl#5749664",
-            "date": {
-              "utcTime": "2026-09-06T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7881/overview/venezia",
-            "tooltipText": {
-              "utcTime": "2026-09-06T13:00:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "3",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
@@ -423,6 +393,36 @@
               "name": "Sassuolo",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
+            "linkToMatch": "/matches/atalanta-vs-frosinone/2syl2j#5749710",
+            "date": {
+              "utcTime": "2026-10-25T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-10-25T14:00:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "4",
+              "awayTeam": "Frosinone",
+              "awayTeamId": 9891,
+              "awayScore": "4"
+            },
+            "score": "4 - 4",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9891",
+              "name": "Frosinone",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "1",
                 "2",
                 "away_team",
-                "3",
-                "1",
+                "2",
+                "2",
                 "1"
               ],
               "DefaultLabels": [
@@ -462,19 +462,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari have 2W, 1D, 2L in five matches while Frosinone have 3W, 1D, 1L."
+              "defaultText": "Cagliari have 2W, 1D, 2L in five matches while Frosinone have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "2"
+                "3",
+                "1",
+                "8"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,19 +486,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Cagliari have an average of 0.33 goals in their last three matches and Frosinone have an average of 2."
+              "defaultText": "Cagliari have scored 1 goals in their last 3 matches, while Frosinone have scored 8."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "0.33",
-                "2"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Cagliari have an average of 0.33 goals in their last three matches and Frosinone have an average of 2."
+              "defaultText": "Frosinone have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -522,8 +522,8 @@
                 "1",
                 "2",
                 "away_team",
-                "3",
-                "1",
+                "2",
+                "2",
                 "1"
               ],
               "DefaultLabels": [
@@ -537,7 +537,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Cagliari have 2W, 1D, 2L in five matches while Frosinone have 3W, 1D, 1L."
+              "defaultText": "Cagliari have 2W, 1D, 2L in five matches while Frosinone have 2W, 2D, 1L."
             }
           ]
         },
@@ -623,7 +623,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -633,34 +633,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#d5a300"
         },
         {
-          "type": "player",
-          "playerId": 746829,
+          "type": "team",
+          "playerId": null,
           "teamId": 9891,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
             {
-              "value": 746829,
-              "name": "Giacomo Calò",
-              "type": "player"
-            },
-            {
-              "value": 9891,
-              "name": "Frosinone",
-              "type": "team"
-            },
-            {
-              "value": 5,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Giacomo Calò has created the most big chances for Frosinone (5)",
+          "text": "Have conceded the most penalties this season (3)",
           "color": "#d5a300"
         },
         {

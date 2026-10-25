@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
-            "linkToMatch": "/matches/afc-bournemouth-vs-brentford/2v5yfp#5795445",
-            "date": {
-              "utcTime": "2026-09-12T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8678/overview/afc-bournemouth",
-            "tooltipText": {
-              "utcTime": "2026-09-12T14:00:00.000Z",
-              "homeTeam": "AFC Bournemouth",
-              "homeTeamId": 8678,
-              "homeScore": "2",
-              "awayTeam": "Brentford",
-              "awayTeamId": 9937,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8678",
-              "name": "AFC Bournemouth",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9937",
-              "name": "Brentford",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9798.png",
@@ -270,6 +240,36 @@
               "id": "8650",
               "name": "Liverpool",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8667.png",
+            "linkToMatch": "/matches/hull-city-vs-brentford/2v1khb#5795490",
+            "date": {
+              "utcTime": "2026-10-25T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8667/overview/hull-city",
+            "tooltipText": {
+              "utcTime": "2026-10-25T14:00:00.000Z",
+              "homeTeam": "Hull City",
+              "homeTeamId": 8667,
+              "homeScore": "1",
+              "awayTeam": "Brentford",
+              "awayTeamId": 9937,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8667",
+              "name": "Hull City",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9937",
+              "name": "Brentford",
+              "isOurTeam": true
             }
           }
         ],
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "6",
-                "2"
+                "1.33",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brentford have scored 6 goals in their last 3 matches, while Nottingham Forest have scored 2."
+              "defaultText": "Brentford have an average of 1.33 goals in their last three matches and Nottingham Forest have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -550,7 +549,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -560,34 +559,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#C00808"
         },
         {
-          "type": "player",
-          "playerId": 650616,
+          "type": "team",
+          "playerId": null,
           "teamId": 9937,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
-            {
-              "value": 650616,
-              "name": "Mathias Jensen",
-              "type": "player"
-            },
-            {
-              "value": 9937,
-              "name": "Brentford",
-              "type": "team"
-            },
             {
               "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Mathias Jensen has created the most big chances for Brentford (2)",
+          "text": "Have conceded the most penalties this season (2)",
           "color": "#C00808"
         },
         {
@@ -609,12 +598,12 @@
               "type": "team"
             },
             {
-              "value": 1.2,
+              "value": 1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Kevin Schade has the most shots on target per match for Brentford (1.2)",
+          "text": "Kevin Schade has the most shots on target per match for Brentford (1)",
           "color": "#C00808"
         },
         {
@@ -670,7 +659,7 @@
               "type": "player"
             },
             {
-              "value": 1,
+              "value": 2,
               "name": null,
               "type": "ordinal"
             },
@@ -680,7 +669,7 @@
               "type": "integer"
             }
           ],
-          "text": "Morgan Gibbs-White is ranked 1 in big chances created in the competition (7)",
+          "text": "Morgan Gibbs-White is ranked 2 in big chances created in the competition (7)",
           "color": "#C8102E"
         }
       ],

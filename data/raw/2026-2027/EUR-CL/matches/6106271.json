@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783.png",
-            "linkToMatch": "/matches/real-betis-vs-deportivo-coruna/2sn58i#5868074",
-            "date": {
-              "utcTime": "2026-09-20T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
-            "tooltipText": {
-              "utcTime": "2026-09-20T16:30:00.000Z",
-              "homeTeam": "Deportivo A Coruña",
-              "homeTeamId": 9783,
-              "homeScore": "1",
-              "awayTeam": "Real Betis",
-              "awayTeamId": 8603,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9783",
-              "name": "Deportivo A Coruña",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8603",
-              "name": "Real Betis",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8371.png",
@@ -424,6 +394,36 @@
               "name": "Feyenoord",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
+            "linkToMatch": "/matches/real-betis-vs-celta-vigo/2u1dbj#5868104",
+            "date": {
+              "utcTime": "2026-10-25T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9910/overview/celta-vigo",
+            "tooltipText": {
+              "utcTime": "2026-10-25T15:15:00.000Z",
+              "homeTeam": "Celta Vigo",
+              "homeTeamId": 9910,
+              "homeScore": "0",
+              "awayTeam": "Real Betis",
+              "awayTeamId": 8603,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9910",
+              "name": "Celta Vigo",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8603",
+              "name": "Real Betis",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -490,14 +490,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "6"
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,17 +507,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Dortmund have scored 3 goals in their last 3 matches, while Real Betis have scored 6."
+              "defaultText": "Borussia Dortmund have an average of 1 goals in their last three matches and Real Betis have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "4"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +536,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Betis haven't drawn in their last 4 matches."
+              "defaultText": "Borussia Dortmund have 2W, 2D, 1L in five matches while Real Betis have 3W, 1D, 1L."
             }
           ]
         },

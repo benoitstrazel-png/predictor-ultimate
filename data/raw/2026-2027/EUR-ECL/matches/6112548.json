@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6183.png",
-            "linkToMatch": "/matches/trollhattan-fc-vs-mjallby/1oyux0#5820431",
-            "date": {
-              "utcTime": "2026-10-06T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6183/overview/trollhattan-fc",
-            "tooltipText": {
-              "utcTime": "2026-10-06T15:00:00.000Z",
-              "homeTeam": "Trollhättan FC",
-              "homeTeamId": 6183,
-              "homeScore": "1",
-              "awayTeam": "Mjällby",
-              "awayTeamId": 8127,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "6183",
-              "name": "Trollhättan FC",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8127",
-              "name": "Mjällby",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6544.png",
@@ -270,39 +240,39 @@
               "name": "Mjällby",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8248.png",
+            "linkToMatch": "/matches/mjallby-vs-hammarby/27txzw#5107632",
+            "date": {
+              "utcTime": "2026-10-25T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8248/overview/hammarby",
+            "tooltipText": {
+              "utcTime": "2026-10-25T15:30:00.000Z",
+              "homeTeam": "Mjällby",
+              "homeTeamId": 8127,
+              "homeScore": "0",
+              "awayTeam": "Hammarby",
+              "awayTeamId": 8248,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8127",
+              "name": "Mjällby",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8248",
+              "name": "Hammarby",
+              "isOurTeam": false
+            }
           }
         ],
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/187928.png",
-            "linkToMatch": "/matches/borac-banja-luka-vs-sloga-doboj/90bvsdq#5927571",
-            "date": {
-              "utcTime": "2026-09-16T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/187928/overview/sloga-doboj",
-            "tooltipText": {
-              "utcTime": "2026-09-16T16:00:00.000Z",
-              "homeTeam": "Sloga Doboj",
-              "homeTeamId": 187928,
-              "homeScore": "1",
-              "awayTeam": "Borac Banja Luka",
-              "awayTeamId": 10116,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "187928",
-              "name": "Sloga Doboj",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10116",
-              "name": "Borac Banja Luka",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -422,6 +392,36 @@
               "name": "KuPS",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/187928.png",
+            "linkToMatch": "/matches/borac-banja-luka-vs-sloga-doboj/90bvsdq#6140998",
+            "date": {
+              "utcTime": "2026-10-25T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/187928/overview/sloga-doboj",
+            "tooltipText": {
+              "utcTime": "2026-10-25T16:30:00.000Z",
+              "homeTeam": "Borac Banja Luka",
+              "homeTeamId": 10116,
+              "homeScore": "2",
+              "awayTeam": "Sloga Doboj",
+              "awayTeamId": 187928,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10116",
+              "name": "Borac Banja Luka",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "187928",
+              "name": "Sloga Doboj",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -488,14 +488,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "0.33",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Mjällby have scored 3 goals in their last 3 matches, while Borac Banja Luka have scored 5."
+              "defaultText": "Mjällby have an average of 0.33 goals in their last three matches and Borac Banja Luka have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -516,7 +515,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Borac Banja Luka haven't drawn in their last 8 matches."
+              "defaultText": "Borac Banja Luka haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -559,16 +558,16 @@
     "weather": {
       "temperature": 7,
       "windSpeed": 4,
-      "windDirectionCardinal": "SSW",
+      "windDirectionCardinal": "WSW",
       "iconCode": 29,
-      "relativeHumidity": 89,
-      "precipChance": 18,
+      "relativeHumidity": 87,
+      "precipChance": 16,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 43,
+      "cloudCover": 46,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-25T06:00:35Z",
+      "lastUpdated": "2026-10-25T18:00:21Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },

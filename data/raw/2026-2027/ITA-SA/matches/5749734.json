@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-frosinone/2m17vl#5749664",
-            "date": {
-              "utcTime": "2026-09-06T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/7881/overview/venezia",
-            "tooltipText": {
-              "utcTime": "2026-09-06T13:00:00.000Z",
-              "homeTeam": "Frosinone",
-              "homeTeamId": 9891,
-              "homeScore": "3",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "9891",
-              "name": "Frosinone",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
@@ -270,6 +240,36 @@
               "id": "7943",
               "name": "Sassuolo",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
+            "linkToMatch": "/matches/atalanta-vs-frosinone/2syl2j#5749710",
+            "date": {
+              "utcTime": "2026-10-25T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-10-25T14:00:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "4",
+              "awayTeam": "Frosinone",
+              "awayTeamId": 9891,
+              "awayScore": "4"
+            },
+            "score": "4 - 4",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9891",
+              "name": "Frosinone",
+              "isOurTeam": true
             }
           }
         ],
@@ -487,7 +487,7 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "away_team",
+                "home_team",
                 "8",
                 "3"
               ],
@@ -500,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Torino have scored 8 goals in their last 3 matches."
+              "defaultText": "Frosinone have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -510,8 +510,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
+                "2",
+                "2",
                 "1",
                 "away_team",
                 "3",
@@ -529,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Frosinone have 3W, 1D, 1L in five matches while Torino have 3W, 1D, 1L."
+              "defaultText": "Frosinone have 2W, 2D, 1L in five matches while Torino have 3W, 1D, 1L."
             }
           ]
         },
@@ -549,7 +549,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -559,7 +559,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
+          "color": "#d5a300"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9891,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (3)",
           "color": "#d5a300"
         },
         {
@@ -582,33 +599,6 @@
             }
           ],
           "text": "Antonio Raimondo is the competition's top scorer (7)",
-          "color": "#d5a300"
-        },
-        {
-          "type": "player",
-          "playerId": 1256534,
-          "teamId": 9891,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1256534,
-              "name": "Antonio Raimondo",
-              "type": "player"
-            },
-            {
-              "value": 9891,
-              "name": "Frosinone",
-              "type": "team"
-            },
-            {
-              "value": 1.6,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Antonio Raimondo has the most shots on target per match for Frosinone (1.6)",
           "color": "#d5a300"
         },
         {

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
-            "linkToMatch": "/matches/marseille-vs-paris-saint-germain/2t82ab#5802945",
-            "date": {
-              "utcTime": "2026-09-20T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
-            "tooltipText": {
-              "utcTime": "2026-09-20T18:45:00.000Z",
-              "homeTeam": "Marseille",
-              "homeTeamId": 8592,
-              "homeScore": "1",
-              "awayTeam": "Paris Saint-Germain",
-              "awayTeamId": 9847,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "8592",
-              "name": "Marseille",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9847",
-              "name": "Paris Saint-Germain",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
@@ -271,39 +241,39 @@
               "name": "Marseille",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
-            "linkToMatch": "/matches/lille-vs-toulouse/2us06f#5802926",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9746.png",
+            "linkToMatch": "/matches/marseille-vs-le-havre/2s4945#5802968",
             "date": {
-              "utcTime": "2026-09-03T18:45:00.000Z"
+              "utcTime": "2026-10-25T16:15:00.000Z"
             },
-            "teamPageUrl": "/teams/8639/overview/lille",
+            "teamPageUrl": "/teams/9746/overview/le-havre",
             "tooltipText": {
-              "utcTime": "2026-09-03T18:45:00.000Z",
-              "homeTeam": "Toulouse",
-              "homeTeamId": 9941,
-              "homeScore": "0",
-              "awayTeam": "Lille",
-              "awayTeamId": 8639,
-              "awayScore": "1"
+              "utcTime": "2026-10-25T16:15:00.000Z",
+              "homeTeam": "Marseille",
+              "homeTeamId": 8592,
+              "homeScore": "4",
+              "awayTeam": "Le Havre",
+              "awayTeamId": 9746,
+              "awayScore": "3"
             },
-            "score": "0 - 1",
+            "score": "4 - 3",
             "home": {
-              "id": "9941",
-              "name": "Toulouse",
+              "id": "8592",
+              "name": "Marseille",
               "isOurTeam": true
             },
             "away": {
-              "id": "8639",
-              "name": "Lille",
+              "id": "9746",
+              "name": "Le Havre",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": 0,
             "resultString": "D",
@@ -423,6 +393,36 @@
               "name": "Toulouse",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
+            "linkToMatch": "/matches/toulouse-vs-troyes/3d9xft#5802971",
+            "date": {
+              "utcTime": "2026-10-25T16:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/10242/overview/troyes",
+            "tooltipText": {
+              "utcTime": "2026-10-25T16:15:00.000Z",
+              "homeTeam": "Toulouse",
+              "homeTeamId": 9941,
+              "homeScore": "0",
+              "awayTeam": "Troyes",
+              "awayTeamId": 10242,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9941",
+              "name": "Toulouse",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10242",
+              "name": "Troyes",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Toulouse haven't lost in 4 matches."
+              "defaultText": "Toulouse haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
@@ -483,12 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "5",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have scored 8 goals in their last 3 matches."
+              "defaultText": "Marseille have scored 5 goals in their last 3 matches, while Toulouse have scored 5."
             },
             {
               "OddsType": "dc",
@@ -542,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -552,24 +554,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#0A60A8"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8592,
-          "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Average 2 goals per match",
+          "text": "Have conceded the most penalties this season (3)",
           "color": "#0A60A8"
         },
         {
@@ -586,17 +588,17 @@
               "type": "player"
             },
             {
-              "value": 3,
+              "value": 1,
               "name": null,
               "type": "ordinal"
             },
             {
-              "value": 3.9,
+              "value": 4.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Jeffrey De Lange is ranked 3 in saves per match in the competition (3.9)",
+          "text": "Jeffrey De Lange is ranked 1 in saves per match in the competition (4.3)",
           "color": "#0A60A8"
         },
         {
@@ -625,17 +627,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 9941,
-          "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 5,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 3 away from home this season",
+          "text": "Haven't lost in 5 matches",
           "color": "#5b417b"
         },
         {

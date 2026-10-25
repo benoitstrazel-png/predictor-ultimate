@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9848.png",
-            "linkToMatch": "/matches/strasbourg-vs-troyes/3c5scn#5802927",
-            "date": {
-              "utcTime": "2026-09-06T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9848/overview/strasbourg",
-            "tooltipText": {
-              "utcTime": "2026-09-06T13:00:00.000Z",
-              "homeTeam": "Troyes",
-              "homeTeamId": 10242,
-              "homeScore": "2",
-              "awayTeam": "Strasbourg",
-              "awayTeamId": 9848,
-              "awayScore": "6"
-            },
-            "score": "2 - 6",
-            "home": {
-              "id": "10242",
-              "name": "Troyes",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9848",
-              "name": "Strasbourg",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
             "linkToMatch": "/matches/lille-vs-troyes/2y4ti8#5802932",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Lens",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9941.png",
+            "linkToMatch": "/matches/toulouse-vs-troyes/3d9xft#5802971",
+            "date": {
+              "utcTime": "2026-10-25T16:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9941/overview/toulouse",
+            "tooltipText": {
+              "utcTime": "2026-10-25T16:15:00.000Z",
+              "homeTeam": "Toulouse",
+              "homeTeamId": 9941,
+              "homeScore": "0",
+              "awayTeam": "Troyes",
+              "awayTeamId": 10242,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9941",
+              "name": "Toulouse",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10242",
+              "name": "Troyes",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -509,7 +509,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Troyes haven't won a match in 5 attempts."
+              "defaultText": "Troyes haven't won a match in 6 attempts."
             }
           ]
         },
@@ -618,7 +618,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 1,
               "name": null,
               "type": "integer"
             },
@@ -628,7 +628,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 1 goals in their last 5 matches",
           "color": "#2A50A1"
         },
         {
@@ -640,29 +640,39 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
-          "color": "#2A50A1"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10242,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
               "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't won a match in 6 attempts",
+          "color": "#2A50A1"
+        },
+        {
+          "type": "player",
+          "playerId": 1038058,
+          "teamId": 10242,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1038058,
+              "name": "Timothé Nkada",
+              "type": "player"
+            },
+            {
+              "value": 10242,
+              "name": "Troyes",
+              "type": "team"
+            },
+            {
+              "value": 2.1,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Timothé Nkada has the most shots on target per match for Troyes (2.1)",
           "color": "#2A50A1"
         }
       ],

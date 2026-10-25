@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
-            "linkToMatch": "/matches/fulham-vs-manchester-united/3cqww9#5795459",
-            "date": {
-              "utcTime": "2026-09-20T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9879/overview/fulham",
-            "tooltipText": {
-              "utcTime": "2026-09-20T15:30:00.000Z",
-              "homeTeam": "Fulham",
-              "homeTeamId": 9879,
-              "homeScore": "1",
-              "awayTeam": "Manchester United",
-              "awayTeamId": 10260,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9879",
-              "name": "Fulham",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
             "linkToMatch": "/matches/tottenham-hotspur-vs-manchester-united/2xqo0r#5795473",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Manchester United",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
+            "linkToMatch": "/matches/afc-bournemouth-vs-manchester-united/2yrx85#5795493",
+            "date": {
+              "utcTime": "2026-10-25T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8678/overview/afc-bournemouth",
+            "tooltipText": {
+              "utcTime": "2026-10-25T14:00:00.000Z",
+              "homeTeam": "Manchester United",
+              "homeTeamId": 10260,
+              "homeScore": "0",
+              "awayTeam": "AFC Bournemouth",
+              "awayTeamId": 8678,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "10260",
+              "name": "Manchester United",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8678",
+              "name": "AFC Bournemouth",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Manchester United haven't won a match in 7 attempts."
+              "defaultText": "Manchester United haven't won a match in 8 attempts."
             },
             {
               "OddsType": "bts",
@@ -514,7 +514,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Manchester United haven't won a match in 7 attempts."
+              "defaultText": "Manchester United haven't won a match in 8 attempts."
             }
           ]
         },
@@ -561,20 +561,30 @@
           "color": "#051495"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 268375,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 2.1,
+              "value": 268375,
+              "name": "Emiliano Martínez",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Average 2.1 goals per match",
+          "text": "Emiliano Martínez is ranked 1 in saves per match in the competition (4.3)",
           "color": "#051495"
         },
         {
@@ -613,7 +623,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -623,7 +633,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
           "color": "#C70101"
         },
         {
@@ -631,16 +641,26 @@
           "playerId": null,
           "teamId": 10260,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 7,
+              "value": 10260,
+              "name": "Manchester United",
+              "type": "team"
+            },
+            {
+              "value": 8455,
+              "name": "Chelsea",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 7 attempts",
+          "text": "Manchester United have won the previous 2 matches against Chelsea.",
           "color": "#C70101"
         },
         {
@@ -652,12 +672,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#C70101"
         }
       ],
@@ -715,7 +735,7 @@
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Unknown"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "João",
             "lastName": "Pedro",
