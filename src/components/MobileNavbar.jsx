@@ -9,6 +9,7 @@ import {
   Sparkles,
   TrendingUp,
   Calendar,
+  Ticket,
 } from 'lucide-react';
 
 const mobileNavItems = [
@@ -19,6 +20,7 @@ const mobileNavItems = [
   { to: '/squads-mercato', icon: Users, label: 'Mercato' },
   { to: '/copilot', icon: Sparkles, label: 'Copilot' },
   { to: '/model-tracking', icon: TrendingUp, label: 'Tracking' },
+  { to: '/my-bets', icon: Ticket, label: 'Paris' },
 ];
 
 export default function MobileNavbar({ onOpenAiModal, onToggleFixtures, isFixturesOpen }) {

@@ -169,6 +169,7 @@ export default function BetMarketModal({ match, isOpen, onClose }) {
       }}
     >
       <div
+        className="modal-dialog-panel"
         style={{
           width: '100%',
           maxWidth: 860,

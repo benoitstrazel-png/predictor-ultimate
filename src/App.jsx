@@ -78,7 +78,7 @@ function AppContent() {
       <main className="main-content" style={{ background: '#09090b' }}>
         <div className="main-scroll">
           {/* Top Compact Terminal Status Ticker (38px height) */}
-          <div style={{
+          <div className="top-terminal-ticker" style={{
             height: 38,
             background: '#121215',
             borderBottom: '1px solid #27272a',
@@ -89,23 +89,23 @@ function AppContent() {
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11,
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{
+            <div className="top-ticker-left" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <span className="top-ticker-brand" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
                 color: '#06b6d4', fontWeight: 700, letterSpacing: '0.04em'
               }}>
-                <Terminal size={13} /> PREDICTOR QUANT TERMINAL
+                <Terminal size={13} /> <span className="top-ticker-brand-text">PREDICTOR QUANT TERMINAL</span>
               </span>
-              <span style={{ color: '#27272a' }}>|</span>
+              <span className="top-ticker-sep" style={{ color: '#27272a' }}>|</span>
               {selectedMatch && (
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#e4e4e7' }}>
-                  <span style={{ color: '#71717a' }}>FOCUS:</span>
+                <div className="top-ticker-match" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#e4e4e7' }}>
+                  <span className="top-ticker-focus-label" style={{ color: '#71717a' }}>FOCUS:</span>
                   <TeamLogo teamName={selectedMatch.homeTeam} size={13} />
                   <strong>{selectedMatch.homeTeam}</strong>
                   <span style={{ color: '#71717a' }}>vs</span>
                   <TeamLogo teamName={selectedMatch.awayTeam} size={13} />
                   <strong>{selectedMatch.awayTeam}</strong>
-                  <span style={{
+                  <span className="top-ticker-prob-badge" style={{
                     padding: '1px 5px', borderRadius: 2,
                     background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.35)',
                     color: '#10b981', fontSize: 10
@@ -116,12 +116,13 @@ function AppContent() {
               )}
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ color: '#71717a', fontSize: 10, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <div className="top-ticker-right" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span className="top-ticker-db-badge" style={{ color: '#71717a', fontSize: 10, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                 <Database size={11} color="#10b981" /> SQLITE/LIBSQL SEALED ({modelVersion.toUpperCase()})
               </span>
               <button
                 onClick={() => setIsFixturesOpen((prev) => !prev)}
+                className="top-ticker-btn top-ticker-fixtures-btn"
                 style={{
                   background: '#18181b', border: '1px solid #27272a', color: '#e4e4e7',
                   padding: '3px 8px', borderRadius: 3, fontSize: 10, cursor: 'pointer',
@@ -132,6 +133,7 @@ function AppContent() {
               </button>
               <button
                 onClick={() => setIsAiModalOpen(true)}
+                className="top-ticker-btn top-ticker-ai-btn"
                 style={{
                   background: 'rgba(6, 182, 212, 0.14)', border: '1px solid #06b6d4', color: '#06b6d4',
                   padding: '3px 9px', borderRadius: 3, fontSize: 10, fontWeight: 700, cursor: 'pointer',

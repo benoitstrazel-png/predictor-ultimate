@@ -198,6 +198,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
   const [showScatter, setShowScatter] = useState(false);
   const { addToBetSlip } = useBetSlip();
   const [betMarketMatch, setBetMarketMatch] = useState(null);
+  const [mobileActiveView, setMobileActiveView] = useState('FEED'); // 'FEED' | 'INSPECTOR'
 
   const rawSchedule = APP_DATA?.fullSchedule || [];
 
@@ -393,7 +394,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
       flexDirection: 'column',
     }}>
       {/* ── BARRE SUPÉRIEURE DE CONTRÔLE MLOps & NAVIGATION RAPIDE (STICKY) ── */}
-      <div style={{
+      <div className="daily-hub-toolbar" style={{
         position: 'sticky',
         top: 0,
         zIndex: 40,
@@ -405,7 +406,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
         gap: 8,
       }}>
         {/* Ligne 1 : Switcher Multi-Modèles (v1 | v2 | v3) + KPIs Certifiés + Recherche */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+        <div className="daily-hub-toolbar-row1" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
             <span style={{
               fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em',
@@ -440,7 +441,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
             </div>
 
             {/* Télémesure temps réel du modèle sélectionné */}
-            <div style={{
+            <div className="daily-hub-telemetry" style={{
               display: 'flex', alignItems: 'center', gap: 12,
               padding: '4px 10px', background: '#121215', border: '1px solid #27272a', borderRadius: 4,
               fontFamily: "'JetBrains Mono', monospace", fontSize: 11
@@ -495,9 +496,9 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
         </div>
 
         {/* Ligne 2 : Filtres Ligues, Pagination Horizontale Journées (Matchday), Statuts & Value Edge */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <div className="daily-hub-toolbar-row2" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
           {/* Sélecteur de Ligue */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto' }}>
+          <div className="daily-hub-leagues-scroll" style={{ display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto' }}>
             <button
               onClick={() => { setSelectedLeague('ALL'); setSelectedMatchday('ALL'); }}
               style={{
@@ -666,6 +667,28 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
         </div>
       </div>
 
+      {/* ── SÉLECTEUR DE VUE MOBILE (Masqué sur Desktop/PC) ── */}
+      <div className="daily-hub-mobile-tabs">
+        <button
+          type="button"
+          onClick={() => setMobileActiveView('FEED')}
+          className={`daily-hub-mobile-tab-btn ${mobileActiveView === 'FEED' ? 'active' : ''}`}
+        >
+          <Calendar size={13} />
+          <span>Matchs ({processedMatches.length})</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileActiveView('INSPECTOR')}
+          className={`daily-hub-mobile-tab-btn ${mobileActiveView === 'INSPECTOR' ? 'active' : ''}`}
+        >
+          <Sparkles size={13} />
+          <span>
+            Analyse & RAG {activeFocusMatch ? `(${activeFocusMatch.homeTeam?.slice(0, 4)} vs ${activeFocusMatch.awayTeam?.slice(0, 4)})` : ''}
+          </span>
+        </button>
+      </div>
+
       {/* MATRICE SCATTER OPTIONNELLE */}
       {showScatter && (
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #27272a', background: '#121215' }}>
@@ -674,16 +697,16 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
       )}
 
       {/* ── CORPS DU TERMINAL EN MASTER-DETAIL (FLUX STICKY GAUCHE + INSPECTEUR RAG/ML DROITE) ── */}
-      <div style={{
+      <div className={`daily-hub-master-detail mobile-view-${mobileActiveView}`} style={{
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1.35fr) minmax(380px, 0.95fr)',
         alignItems: 'start',
         borderTop: '1px solid #18181b',
       }}>
         {/* COLONNE GAUCHE : TABLEAU HAUTE DENSITÉ GROUPÉ PAR LIGUE & JOURNÉE */}
-        <div style={{ borderRight: '1px solid #27272a', minHeight: 'calc(100vh - 96px)' }}>
+        <div className="daily-hub-feed-col" style={{ borderRight: '1px solid #27272a', minHeight: 'calc(100vh - 96px)' }}>
           {/* En-tête des colonnes */}
-          <div style={{
+          <div className="daily-hub-table-header" style={{
             display: 'grid',
             gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 148px 88px 116px',
             padding: '6px 14px',
@@ -767,7 +790,10 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                   return (
                     <div
                       key={match.id}
-                      onClick={() => setSelectedMatch && setSelectedMatch(match)}
+                      onClick={() => {
+                        setSelectedMatch && setSelectedMatch(match);
+                      }}
+                      className="daily-hub-match-row"
                       style={{
                         display: 'grid',
                         gridTemplateColumns: '74px minmax(180px, 1.5fr) 156px 148px 88px 116px',
@@ -785,7 +811,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       }}
                     >
                       {/* 1. Date & Heure */}
-                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#a1a1aa' }}>
+                      <div className="match-row-col-date" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#a1a1aa' }}>
                         <div>{String(match.matchDate || match.date || '').slice(5, 10) || '—'}</div>
                         <div style={{ color: isFin ? '#71717a' : '#06b6d4', fontWeight: 600 }}>
                           {isFin ? 'FIN' : formatMatchTime(match)}
@@ -793,7 +819,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       </div>
 
                       {/* 2. Équipes & Scores / Alertes */}
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingRight: 10 }}>
+                      <div className="match-row-col-teams" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingRight: 10 }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#fafafa' }}>
                             <TeamLogo teamName={match.homeTeam} size={14} />
@@ -830,7 +856,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       </div>
 
                       {/* 3. Probabilités 1N2 (Modèle Actif) */}
-                      <div style={{
+                      <div className="match-row-col-probs" style={{
                         display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3,
                         fontFamily: "'JetBrains Mono', monospace", fontSize: 11, textAlign: 'center'
                       }}>
@@ -871,7 +897,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       </div>
 
                       {/* 4. Cotes Betclic + Ajout Panier + Refresh */}
-                      <div style={{
+                      <div className="match-row-col-odds" style={{
                         display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 18px 16px', gap: 2.5, alignItems: 'center',
                         fontFamily: "'JetBrains Mono', monospace", fontSize: 10, textAlign: 'center', paddingLeft: 4
                       }}>
@@ -943,7 +969,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                       </div>
 
                       {/* 5. Lambda xG & Score Exact Majeur */}
-                      <div style={{ textAlign: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: 10 }}>
+                      <div className="match-row-col-xg" style={{ textAlign: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: 10 }}>
                         <div style={{ color: '#e4e4e7', fontWeight: 600 }}>
                           {s.lambdaHome.toFixed(2)}–{s.lambdaAway.toFixed(2)}
                         </div>
@@ -960,8 +986,8 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                         </div>
                       </div>
 
-                      {/* 6. Badge Value Edge / Confiance / Hit */}
-                      <div style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace" }}>
+                      {/* 6. Badge Value Edge / Confiance / Hit + Bouton Mobile Analyser */}
+                      <div className="match-row-col-status" style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace" }}>
                         {hasVal ? (
                           <span style={{
                             display: 'inline-block', padding: '2px 6px', fontSize: 10, fontWeight: 700, borderRadius: 2,
@@ -994,6 +1020,19 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
                             CONF {s.confidence.toFixed(0)}
                           </span>
                         )}
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedMatch && setSelectedMatch(match);
+                            setMobileActiveView('INSPECTOR');
+                          }}
+                          className="match-row-mobile-inspect-btn"
+                          title="Analyser et afficher le brief RAG"
+                        >
+                          <Sparkles size={11} /> Analyser
+                        </button>
                       </div>
                     </div>
                   );
@@ -1004,7 +1043,7 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
         </div>
 
         {/* COLONNE DROITE STICKY : INSPECTEUR MULTI-MODÈLES + BRIEF RAG STRUCTURÉ + PRÉDICTION DÉTAILLÉE */}
-        <aside style={{
+        <aside className="daily-hub-inspector-col" style={{
           position: 'sticky',
           top: 84,
           maxHeight: 'calc(100vh - 90px)',
@@ -1015,6 +1054,16 @@ export default function DailyBettingHub({ APP_DATA, selectedMatch, setSelectedMa
           gap: 12,
           background: '#09090b',
         }}>
+          {/* Bouton retour mobile vers la liste des matchs */}
+          <div className="daily-hub-inspector-mobile-back">
+            <button
+              type="button"
+              onClick={() => setMobileActiveView('FEED')}
+              className="daily-hub-back-btn"
+            >
+              <ChevronLeft size={14} /> Retour à la liste des matchs
+            </button>
+          </div>
           {activeFocusMatch ? (
             <>
               {/* Comparateur Multi-Modèles Scellés (v1 vs v2 vs v3) pour le match sélectionné */}

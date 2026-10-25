@@ -40,6 +40,7 @@ export default function AiPredictorModal({ isOpen, onClose, selectedMatch, APP_D
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="modal-dialog-panel"
         style={{
           width: '100%',
           maxWidth: 840,

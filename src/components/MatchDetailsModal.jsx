@@ -153,10 +153,11 @@ export default function MatchDetailsModal({ match, isOpen, onClose }) {
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             onClick={(e) => e.stopPropagation()}
-          style={{
-            width: '100%',
-            maxWidth: 820,
-            maxHeight: '92vh',
+            className="modal-dialog-panel"
+            style={{
+              width: '100%',
+              maxWidth: 820,
+              maxHeight: '92vh',
             background: '#121215',
             border: '1px solid rgba(6, 182, 212, 0.35)',
             borderRadius: 4,
