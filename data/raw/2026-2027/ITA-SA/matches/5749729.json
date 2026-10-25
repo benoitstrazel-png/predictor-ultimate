@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png",
-            "linkToMatch": "/matches/inter-vs-roma/2hby2d#5749681",
-            "date": {
-              "utcTime": "2026-09-19T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8686/overview/roma",
-            "tooltipText": {
-              "utcTime": "2026-09-19T16:00:00.000Z",
-              "homeTeam": "Roma",
-              "homeTeamId": 8686,
-              "homeScore": "2",
-              "awayTeam": "Inter",
-              "awayTeamId": 8636,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8686",
-              "name": "Roma",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
@@ -423,6 +393,36 @@
               "name": "Shakhtar Donetsk",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
+            "linkToMatch": "/matches/fiorentina-vs-inter/2fs4je#5749714",
+            "date": {
+              "utcTime": "2026-10-25T11:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8535/overview/fiorentina",
+            "tooltipText": {
+              "utcTime": "2026-10-25T11:30:00.000Z",
+              "homeTeam": "Inter",
+              "homeTeamId": 8636,
+              "homeScore": "2",
+              "awayTeam": "Fiorentina",
+              "awayTeamId": 8535,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8636",
+              "name": "Inter",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -467,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored in their last 5 away matches."
+              "defaultText": "Inter have scored in their last 4 away matches."
             },
             {
               "OddsType": "ou",
@@ -491,7 +491,7 @@
                 "away_team",
                 "3",
                 "2",
-                "7"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have scored 2 goals in their last 3 matches, while Inter have scored 7."
+              "defaultText": "Venezia have scored 2 goals in their last 3 matches, while Inter have scored 6."
             },
             {
               "OddsType": "dc",
@@ -514,7 +514,7 @@
                 "home_team",
                 "away_team",
                 "9",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Venezia haven't drawn in their last 9 matches and Inter in their last 4."
+              "defaultText": "Venezia haven't drawn in their last 9 matches and Inter in their last 5."
             }
           ]
         },
@@ -640,6 +640,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 8636,
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have been awarded the most penalties this season (2)",
+          "color": "#010E80"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8636,
           "priority": 9,
           "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
           "localizedTextId": "h2h_undefeated",
@@ -672,33 +689,6 @@
           ],
           "text": "Inter haven't lost to Venezia in their last 5 meetings (5W, 0D).",
           "color": "#010E80"
-        },
-        {
-          "type": "player",
-          "playerId": 541820,
-          "teamId": 8636,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
-          "statValues": [
-            {
-              "value": 541820,
-              "name": "Nicolò Barella",
-              "type": "player"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Nicolò Barella is ranked 2 in big chances created in the competition (7)",
-          "color": "#010E80"
         }
       ],
       "topScorers": {
@@ -725,19 +715,19 @@
         "awayPlayer": {
           "playerId": 621562,
           "position": 3,
-          "matchesWithRating": 6,
+          "matchesWithRating": 7,
           "lastName": "Thuram",
           "fullName": "Marcus Thuram",
           "stats": {
             "goals": 4,
             "goalAssist": 2,
-            "ontargetScoringAtt": 1.4,
+            "ontargetScoringAtt": 1.33,
             "motm": 1,
             "gamesPlayed": 6,
             "minsPlayed": 369,
             "minsPlayedGoal": 92,
-            "expectedGoals": 2.8585000038146973,
-            "playerRating": 7.68
+            "expectedGoals": 2.894700050354004,
+            "playerRating": 7.44
           }
         },
         "statsOrder": [
