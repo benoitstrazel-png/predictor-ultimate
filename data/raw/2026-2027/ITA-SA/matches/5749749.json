@@ -443,7 +443,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese have lost their last 5 matches."
+              "defaultText": "Udinese have lost their last 6 matches."
             },
             {
               "OddsType": "bts",
@@ -510,7 +510,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese haven't won a match in 5 attempts."
+              "defaultText": "Udinese haven't won a match in 6 attempts."
             }
           ]
         },
@@ -654,16 +654,26 @@
           "playerId": null,
           "teamId": 8600,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 9,
+              "value": 8600,
+              "name": "Udinese",
+              "type": "team"
+            },
+            {
+              "value": 7881,
+              "name": "Venezia",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Udinese have won the previous 2 matches against Venezia.",
           "color": "#101010"
         }
       ],
@@ -686,17 +696,17 @@
     },
     "weather": {
       "temperature": 10,
-      "windSpeed": 2,
-      "windDirectionCardinal": "N",
+      "windSpeed": 3,
+      "windDirectionCardinal": "NNE",
       "iconCode": 29,
-      "relativeHumidity": 84,
-      "precipChance": 24,
+      "relativeHumidity": 80,
+      "precipChance": 7,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 44,
+      "cloudCover": 47,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-25T20:00:20Z",
+      "lastUpdated": "2026-10-26T08:00:16Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -764,6 +774,18 @@
         "id": 8600,
         "name": "Udinese",
         "unavailable": [
+          {
+            "id": 916710,
+            "name": "Alessandro Zanoli",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-10-26T09:41:44Z",
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "firstName": "Alessandro",
+            "lastName": "Zanoli"
+          },
           {
             "id": 866708,
             "name": "Oumar Solet",

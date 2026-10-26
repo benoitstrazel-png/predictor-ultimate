@@ -474,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
+                "5",
                 "5"
               ],
               "DefaultLabels": [
@@ -486,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have scored 7 goals in their last 3 matches, while Bologna have scored 5."
+              "defaultText": "Milan have scored 5 goals in their last 3 matches, while Bologna have scored 5."
             },
             {
               "OddsType": "ou",
@@ -498,7 +498,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
+                "5",
                 "5"
               ],
               "DefaultLabels": [
@@ -510,18 +510,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Milan have scored 7 goals in their last 3 matches, while Bologna have scored 5."
+              "defaultText": "Milan have scored 5 goals in their last 3 matches, while Bologna have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
-              "TextTemplateId": "h2h_no_draws_v2",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -534,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Milan and Bologna have not drawn any of their last 5 matches against each other."
+              "defaultText": "Milan haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -596,15 +595,15 @@
         },
         {
           "type": "player",
-          "playerId": 1163219,
+          "playerId": 688300,
           "teamId": 8564,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1163219,
-              "name": "Ardon Jashari",
+              "value": 688300,
+              "name": "Samuel Chukwueze",
               "type": "player"
             },
             {
@@ -613,12 +612,12 @@
               "type": "team"
             },
             {
-              "value": 2.5,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Ardon Jashari has the most shots on target per match for Milan (2.5)",
+          "text": "Samuel Chukwueze has created the most big chances for Milan (5)",
           "color": "#CF2C27"
         },
         {
@@ -750,7 +749,46 @@
         ]
       },
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749720/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -769,16 +807,16 @@
     "weather": {
       "temperature": 15,
       "windSpeed": 1,
-      "windDirectionCardinal": "SSE",
+      "windDirectionCardinal": "SSW",
       "iconCode": 31,
-      "relativeHumidity": 71,
-      "precipChance": 3,
+      "relativeHumidity": 72,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 13,
+      "cloudCover": 7,
       "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-25T18:00:10Z",
+      "lastUpdated": "2026-10-26T06:00:11Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
@@ -1110,22 +1148,6 @@
         },
         "unavailable": [
           {
-            "id": 604982,
-            "age": 30,
-            "name": "Ruben Loftus-Cheek",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 4033003,
-            "unavailability": {
-              "injuryId": 121,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ruben",
-            "lastName": "Loftus-Cheek",
-            "nationalTeamId": 8491
-          },
-          {
             "id": 844996,
             "age": 27,
             "name": "Matteo Gabbia",
@@ -1158,6 +1180,23 @@
             "firstName": "Alexis",
             "lastName": "Saelemaekers",
             "nationalTeamId": 8263
+          },
+          {
+            "id": 604982,
+            "age": 30,
+            "name": "Ruben Loftus-Cheek",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 4033003,
+            "unavailability": {
+              "injuryId": 130,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Ruben",
+            "lastName": "Loftus-Cheek",
+            "nationalTeamId": 8491
           },
           {
             "id": 688300,

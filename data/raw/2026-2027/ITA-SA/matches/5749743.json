@@ -493,7 +493,7 @@
                 "away_team",
                 "3",
                 "3",
-                "7"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,17 +504,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Genoa have scored 3 goals in their last 3 matches, while Milan have scored 7."
+              "defaultText": "Genoa have scored 3 goals in their last 3 matches, while Milan have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "away_team",
+                "5",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Genoa haven't drawn in their last 5 matches."
+              "defaultText": "Genoa haven't drawn in their last 5 matches and Milan in their last 4."
             }
           ]
         },
@@ -711,18 +713,18 @@
     "weather": {
       "temperature": 15,
       "windSpeed": 4,
-      "windDirectionCardinal": "NE",
-      "iconCode": 30,
+      "windDirectionCardinal": "ENE",
+      "iconCode": 28,
       "relativeHumidity": 65,
       "precipChance": 24,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 51,
-      "description": "Partly Cloudy",
+      "cloudCover": 65,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-25T14:00:11Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-26T02:00:12Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5749743,
@@ -801,6 +803,18 @@
         "name": "Milan",
         "unavailable": [
           {
+            "id": 604982,
+            "name": "Ruben Loftus-Cheek",
+            "unavailability": {
+              "injuryId": 130,
+              "lastUpdated": "2026-10-26T09:18:22Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Ruben",
+            "lastName": "Loftus-Cheek"
+          },
+          {
             "id": 1106074,
             "name": "Mario Gila",
             "unavailability": {
@@ -835,18 +849,6 @@
             },
             "firstName": "Adrien",
             "lastName": "Rabiot"
-          },
-          {
-            "id": 604982,
-            "name": "Ruben Loftus-Cheek",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-10-25T20:18:27Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Ruben",
-            "lastName": "Loftus-Cheek"
           },
           {
             "id": 688300,
