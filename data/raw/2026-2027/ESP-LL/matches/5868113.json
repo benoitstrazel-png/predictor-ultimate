@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8558.png",
-            "linkToMatch": "/matches/osasuna-vs-espanyol/2dbonz#5868055",
-            "date": {
-              "utcTime": "2026-09-12T14:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8558/overview/espanyol",
-            "tooltipText": {
-              "utcTime": "2026-09-12T14:15:00.000Z",
-              "homeTeam": "Osasuna",
-              "homeTeamId": 8371,
-              "homeScore": "0",
-              "awayTeam": "Espanyol",
-              "awayTeamId": 8558,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "8371",
-              "name": "Osasuna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8558",
-              "name": "Espanyol",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
             "linkToMatch": "/matches/osasuna-vs-atletico-madrid/2rgbip#5868062",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Racing Santander",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
+            "linkToMatch": "/matches/sevilla-vs-osasuna/2arhpg#5868109",
+            "date": {
+              "utcTime": "2026-10-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8302/overview/sevilla",
+            "tooltipText": {
+              "utcTime": "2026-10-26T20:00:00.000Z",
+              "homeTeam": "Sevilla",
+              "homeTeamId": 8302,
+              "homeScore": "2",
+              "awayTeam": "Osasuna",
+              "awayTeamId": 8371,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8302",
+              "name": "Sevilla",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8371",
+              "name": "Osasuna",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -483,14 +483,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "1",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Deportivo A Coruña have scored 3 goals in their last 3 matches, while Osasuna have scored 5."
+              "defaultText": "Deportivo A Coruña have an average of 1 goals in their last three matches and Osasuna have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -642,15 +641,15 @@
         },
         {
           "type": "player",
-          "playerId": 384413,
+          "playerId": 251269,
           "teamId": 8371,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 384413,
-              "name": "Rubén Garcia",
+              "value": 251269,
+              "name": "Ante Budimir",
               "type": "player"
             },
             {
@@ -659,17 +658,56 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 1.7,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Rubén Garcia has created the most big chances for Osasuna (3)",
+          "text": "Ante Budimir has the most shots on target per match for Osasuna (1.7)",
           "color": "#af1428"
         }
       ],
       "countryCode": "ESP",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/87/5868113/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -686,132 +724,167 @@
       }
     },
     "weather": {
-      "temperature": 15,
+      "temperature": 14,
       "windSpeed": 2,
-      "windDirectionCardinal": "E",
-      "iconCode": 29,
-      "relativeHumidity": 81,
-      "precipChance": 6,
+      "windDirectionCardinal": "ESE",
+      "iconCode": 31,
+      "relativeHumidity": 78,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 40,
-      "description": "Partly Cloudy",
+      "cloudCover": 12,
+      "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-26T08:00:20Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-27T08:00:22Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5868113,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9783,
         "name": "Deportivo A Coruña",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1821442,
+            "age": 19,
             "name": "Noé",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1400901,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-20T16:26:26Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "",
-            "lastName": "Noé"
+            "lastName": "Noé",
+            "nationalTeamId": 6720
           },
           {
             "id": 1711969,
+            "age": 19,
             "name": "Bright Ede",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 1134613,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-20T16:28:31Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Bright",
-            "lastName": "Ede"
+            "lastName": "Ede",
+            "nationalTeamId": 8568
           },
           {
             "id": 1029029,
+            "age": 26,
             "name": "Zakaria Eddahchouri",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 2017033,
             "unavailability": {
               "injuryId": 17,
-              "lastUpdated": "2026-10-15T13:08:32Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Zakaria",
-            "lastName": "Eddahchouri"
+            "lastName": "Eddahchouri",
+            "nationalTeamId": 6708
           },
           {
             "id": 150565,
+            "age": 37,
             "name": "Pierre-Emerick Aubameyang",
+            "countryName": "Gabon",
+            "countryCode": "GAB",
+            "marketValue": 1850774,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-10-21T15:19:00Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Pierre-Emerick",
-            "lastName": "Aubameyang"
+            "lastName": "Aubameyang",
+            "nationalTeamId": 5889
           },
           {
             "id": 1384883,
+            "age": 23,
             "name": "Marc Casadó",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 16365470,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-20T12:34:22Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Marc",
-            "lastName": "Casadó"
+            "lastName": "Casadó",
+            "nationalTeamId": 6720
           }
         ]
       },
       "awayTeam": {
         "id": 8371,
         "name": "Osasuna",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 696263,
+            "age": 30,
             "name": "Romain Del Castillo",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 4356006,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-20T12:35:04Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Romain",
-            "lastName": "Del Castillo"
+            "lastName": "Del Castillo",
+            "nationalTeamId": 6723
           },
           {
             "id": 1054786,
+            "age": 24,
             "name": "Aimar Oroz",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 10237877,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-20T12:33:36Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Aimar",
-            "lastName": "Oroz"
+            "lastName": "Oroz",
+            "nationalTeamId": 6720
           },
           {
             "id": 1098365,
+            "age": 25,
             "name": "Jorge Herrando",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 4434183,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-30T20:18:07Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Jorge",
-            "lastName": "Herrando"
+            "lastName": "Herrando",
+            "nationalTeamId": 6720
           }
         ]
       }
