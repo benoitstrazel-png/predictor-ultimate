@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8178.png",
-            "linkToMatch": "/matches/bayer-leverkusen-vs-augsburg/29vrru#5881161",
-            "date": {
-              "utcTime": "2026-09-12T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8178/overview/bayer-leverkusen",
-            "tooltipText": {
-              "utcTime": "2026-09-12T13:30:00.000Z",
-              "homeTeam": "Augsburg",
-              "homeTeamId": 8406,
-              "homeScore": "2",
-              "awayTeam": "Bayer Leverkusen",
-              "awayTeamId": 8178,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8406",
-              "name": "Augsburg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8178",
-              "name": "Bayer Leverkusen",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8697.png",
@@ -271,6 +241,36 @@
               "id": "8149",
               "name": "Union Berlin",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/94941.png",
+            "linkToMatch": "/matches/augsburg-vs-sonnenhof-grossaspach/2gbkbwr#6162744",
+            "date": {
+              "utcTime": "2026-10-27T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/94941/overview/sonnenhof-grossaspach",
+            "tooltipText": {
+              "utcTime": "2026-10-27T17:00:00.000Z",
+              "homeTeam": "Sonnenhof Großaspach",
+              "homeTeamId": 94941,
+              "homeScore": "2",
+              "awayTeam": "Augsburg",
+              "awayTeamId": 8406,
+              "awayScore": "4"
+            },
+            "score": "2 - 4",
+            "home": {
+              "id": "94941",
+              "name": "Sonnenhof Großaspach",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8406",
+              "name": "Augsburg",
+              "isOurTeam": true
             }
           }
         ],
@@ -487,14 +487,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "6",
-                "2"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,17 +503,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Augsburg have scored 6 goals in their last 3 matches, while Freiburg have scored 2."
+              "defaultText": "Augsburg have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "5"
+                "away_team",
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,8 +525,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Augsburg haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Freiburg haven't drawn in their last 6 matches."
             }
           ]
         },
@@ -548,7 +546,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -558,24 +556,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
-          "color": "#B93733"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8406,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#B93733"
         },
         {
@@ -587,12 +568,29 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
+          "color": "#B93733"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8406,
+          "priority": 4,
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
+          "statValues": [
+            {
+              "value": 2.4,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Average 2.4 goals per match",
           "color": "#B93733"
         },
         {

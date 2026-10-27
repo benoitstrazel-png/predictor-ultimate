@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9788.png",
-            "linkToMatch": "/matches/borussia-monchengladbach-vs-mainz-05/37gixo#5881172",
-            "date": {
-              "utcTime": "2026-09-19T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9788/overview/borussia-monchengladbach",
-            "tooltipText": {
-              "utcTime": "2026-09-19T13:30:00.000Z",
-              "homeTeam": "Borussia Mönchengladbach",
-              "homeTeamId": 9788,
-              "homeScore": "3",
-              "awayTeam": "Mainz 05",
-              "awayTeamId": 9905,
-              "awayScore": "4"
-            },
-            "score": "3 - 4",
-            "home": {
-              "id": "9788",
-              "name": "Borussia Mönchengladbach",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9905",
-              "name": "Mainz 05",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9743.png",
             "linkToMatch": "/matches/waldhof-mannheim-vs-mainz-05/36xjwx#6301695",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8697",
               "name": "Werder Bremen",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9911.png",
+            "linkToMatch": "/matches/mainz-05-vs-bochum/38wlu3#6162739",
+            "date": {
+              "utcTime": "2026-10-27T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9911/overview/bochum",
+            "tooltipText": {
+              "utcTime": "2026-10-27T17:00:00.000Z",
+              "homeTeam": "Bochum",
+              "homeTeamId": 9911,
+              "homeScore": "2",
+              "awayTeam": "Mainz 05",
+              "awayTeamId": 9905,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "9911",
+              "name": "Bochum",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9905",
+              "name": "Mainz 05",
+              "isOurTeam": true
             }
           }
         ],
@@ -465,13 +465,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "7",
-                "away_team",
-                "8"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Mainz 05 have scored in their last 7 matches and Bayern München have scored in their last 8 matches."
+              "defaultText": "Mainz 05 have scored in their last 3 home matches."
             },
             {
               "OddsType": "ou",
@@ -514,7 +512,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Mainz 05 haven't drawn in their last 7 matches."
+              "defaultText": "Mainz 05 haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -547,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -557,7 +555,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#B8121C"
         },
         {
@@ -579,15 +577,15 @@
         },
         {
           "type": "player",
-          "playerId": 1199283,
+          "playerId": 495222,
           "teamId": 9905,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1199283,
-              "name": "Eric Martel",
+              "value": 495222,
+              "name": "Sheraldo Becker",
               "type": "player"
             },
             {
@@ -596,12 +594,12 @@
               "type": "team"
             },
             {
-              "value": 1.8,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Eric Martel has the most shots on target per match for Mainz 05 (1.8)",
+          "text": "Sheraldo Becker has created the most big chances for Mainz 05 (5)",
           "color": "#B8121C"
         },
         {
@@ -731,7 +729,7 @@
             "name": "Robin Zentner",
             "unavailability": {
               "injuryId": 35,
-              "lastUpdated": "2026-09-15T11:42:17Z",
+              "lastUpdated": "2026-10-27T19:13:12Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },

@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png",
-            "linkToMatch": "/matches/real-madrid-vs-elche/2ycx1c#5868065",
-            "date": {
-              "utcTime": "2026-09-15T19:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8633/overview/real-madrid",
-            "tooltipText": {
-              "utcTime": "2026-09-15T19:30:00.000Z",
-              "homeTeam": "Elche",
-              "homeTeamId": 10268,
-              "homeScore": "2",
-              "awayTeam": "Real Madrid",
-              "awayTeamId": 8633,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "10268",
-              "name": "Elche",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8633",
-              "name": "Real Madrid",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8558.png",
@@ -265,6 +235,36 @@
             "home": {
               "id": "8370",
               "name": "Rayo Vallecano",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10268",
+              "name": "Elche",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2341166.png",
+            "linkToMatch": "/matches/elche-vs-ud-pinatar/za1u0i9x#6386071",
+            "date": {
+              "utcTime": "2026-10-27T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/2341166/overview/ud-pinatar",
+            "tooltipText": {
+              "utcTime": "2026-10-27T18:00:00.000Z",
+              "homeTeam": "UD Pinatar",
+              "homeTeamId": 2341166,
+              "homeScore": "1",
+              "awayTeam": "Elche",
+              "awayTeamId": 10268,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "2341166",
+              "name": "UD Pinatar",
               "isOurTeam": false
             },
             "away": {
@@ -466,13 +466,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1"
+                "3",
+                "6",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,19 +484,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Elche have an average of 1 goals in their last three matches and Real Betis have an average of 1."
+              "defaultText": "Elche have scored 6 goals in their last 3 matches, while Real Betis have scored 3."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1"
+                "3",
+                "6",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Elche have an average of 1 goals in their last three matches and Real Betis have an average of 1."
+              "defaultText": "Elche have scored 6 goals in their last 3 matches, while Real Betis have scored 3."
             },
             {
               "OddsType": "dc",
@@ -552,7 +554,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -562,7 +564,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
+          "color": "#00662D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10268,
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
           "color": "#00662D"
         },
         {
@@ -590,33 +609,6 @@
             }
           ],
           "text": "Tete Morente has created the most big chances for Elche (2)",
-          "color": "#00662D"
-        },
-        {
-          "type": "player",
-          "playerId": 1280756,
-          "teamId": 10268,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1280756,
-              "name": "Lucas Cepeda",
-              "type": "player"
-            },
-            {
-              "value": 10268,
-              "name": "Elche",
-              "type": "team"
-            },
-            {
-              "value": 1.9,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Lucas Cepeda has the most shots on target per match for Elche (1.9)",
           "color": "#00662D"
         },
         {
