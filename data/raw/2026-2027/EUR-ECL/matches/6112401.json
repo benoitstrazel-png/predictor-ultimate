@@ -276,36 +276,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8414.png",
-            "linkToMatch": "/matches/ob-vs-nordsjaelland/2v6bmi#5739523",
-            "date": {
-              "utcTime": "2026-10-09T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8414/overview/ob",
-            "tooltipText": {
-              "utcTime": "2026-10-09T17:00:00.000Z",
-              "homeTeam": "Nordsjælland",
-              "homeTeamId": 10202,
-              "homeScore": "0",
-              "awayTeam": "OB",
-              "awayTeamId": 8414,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "10202",
-              "name": "Nordsjælland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8414",
-              "name": "OB",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9860.png",
             "linkToMatch": "/matches/heart-midlothian-vs-nordsjaelland/3btqlx#6112497",
             "date": {
@@ -422,6 +392,36 @@
               "name": "Nordsjælland",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8285.png",
+            "linkToMatch": "/matches/esbjerg-fb-vs-nordsjaelland/2tr0wx#6298362",
+            "date": {
+              "utcTime": "2026-10-28T16:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8285/overview/esbjerg-fb",
+            "tooltipText": {
+              "utcTime": "2026-10-28T16:00:00.000Z",
+              "homeTeam": "Esbjerg fB",
+              "homeTeamId": 8285,
+              "homeScore": "0",
+              "awayTeam": "Nordsjælland",
+              "awayTeamId": 10202,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "8285",
+              "name": "Esbjerg fB",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10202",
+              "name": "Nordsjælland",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -442,7 +442,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Nordsjælland haven't lost in 5 matches."
+              "defaultText": "Nordsjælland haven't lost in 6 matches."
             },
             {
               "OddsType": "bts",
@@ -489,7 +489,7 @@
                 "away_team",
                 "3",
                 "4",
-                "6"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,17 +500,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monaco have scored 4 goals in their last 3 matches, while Nordsjælland have scored 6."
+              "defaultText": "Monaco have scored 4 goals in their last 3 matches, while Nordsjælland have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "6"
+                "1",
+                "4",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +528,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Nordsjælland haven't won a match in 6 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Monaco have 2W, 2D, 1L in five matches while Nordsjælland have 1W, 4D, 0L."
             }
           ]
         },
@@ -538,26 +544,9 @@
           "type": "team",
           "playerId": null,
           "teamId": 10202,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#D8132E"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10202,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
               "value": 6,
@@ -565,7 +554,7 @@
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 6 attempts",
+          "text": "Haven't lost in 6 matches",
           "color": "#D8132E"
         }
       ],

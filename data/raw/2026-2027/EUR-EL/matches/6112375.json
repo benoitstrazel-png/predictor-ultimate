@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10180.png",
-            "linkToMatch": "/matches/viktoria-plzen-vs-mlada-boleslav/269bh4#5831185",
-            "date": {
-              "utcTime": "2026-10-10T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10180/overview/mlada-boleslav",
-            "tooltipText": {
-              "utcTime": "2026-10-10T13:00:00.000Z",
-              "homeTeam": "Viktoria Plzeň",
-              "homeTeamId": 6033,
-              "homeScore": "3",
-              "awayTeam": "Mladá Boleslav",
-              "awayTeamId": 10180,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "6033",
-              "name": "Viktoria Plzeň",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10180",
-              "name": "Mladá Boleslav",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8222.png",
@@ -422,6 +392,36 @@
               "name": "Pardubice",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1949.png",
+            "linkToMatch": "/matches/vysocina-jihlava-vs-viktoria-plzen/iz03u#6125858",
+            "date": {
+              "utcTime": "2026-10-28T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/1949/overview/vysocina-jihlava",
+            "tooltipText": {
+              "utcTime": "2026-10-28T13:00:00.000Z",
+              "homeTeam": "Vysočina Jihlava",
+              "homeTeamId": 1949,
+              "homeScore": "1",
+              "awayTeam": "Viktoria Plzeň",
+              "awayTeamId": 6033,
+              "awayScore": "6"
+            },
+            "score": "1 - 6",
+            "home": {
+              "id": "1949",
+              "name": "Vysočina Jihlava",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "6033",
+              "name": "Viktoria Plzeň",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -471,6 +471,28 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
+                "4"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Viktoria Plzeň have scored in their last 4 away matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "away_team",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -482,31 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Viktoria Plzeň have scored in their last 3 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "5",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Lillestrøm have scored 5 goals in their last 3 matches, while Viktoria Plzeň have scored 5."
+              "defaultText": "Viktoria Plzeň have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -516,7 +514,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Viktoria Plzeň haven't drawn in their last 8 matches."
+              "defaultText": "Viktoria Plzeň haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -539,6 +537,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 6033,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#DF041C"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },

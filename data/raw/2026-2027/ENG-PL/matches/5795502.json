@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -681,30 +681,40 @@
           "color": "#0850A0"
         },
         {
-          "type": "player",
-          "playerId": 167008,
+          "type": "team",
+          "playerId": null,
           "teamId": 10204,
           "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
+          "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+          "localizedTextId": "h2h_undefeated",
           "statValues": [
             {
-              "value": 167008,
-              "name": "Pascal Groß",
-              "type": "player"
+              "value": 10204,
+              "name": "Brighton & Hove Albion",
+              "type": "team"
             },
             {
-              "value": 1,
+              "value": 8456,
+              "name": "Manchester City",
+              "type": "team"
+            },
+            {
+              "value": 5,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             },
             {
-              "value": 7,
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            },
+            {
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Pascal Groß is ranked 1 in big chances created in the competition (7)",
+          "text": "Brighton & Hove Albion haven't lost to Manchester City in their last 5 meetings (2W, 3D).",
           "color": "#0850A0"
         }
       ],
@@ -819,22 +829,22 @@
       "temperature": 12,
       "windSpeed": 1,
       "windDirectionCardinal": "SSE",
-      "iconCode": 28,
-      "relativeHumidity": 79,
+      "iconCode": 30,
+      "relativeHumidity": 77,
       "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 63,
-      "description": "Mostly Cloudy",
+      "cloudCover": 56,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T03:00:05Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-10-28T15:00:02Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795502,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -933,7 +943,6 @@
             "positionId": 36,
             "usualPlayingPositionId": 1,
             "shirtNumber": "3",
-            "isCaptain": true,
             "countryName": "Portugal",
             "countryCode": "POR",
             "horizontalLayout": {
@@ -1158,138 +1167,12 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 245555,
-            "age": 34,
-            "name": "Gerónimo Rulli",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "28",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 6241627,
-            "firstName": "Gerónimo",
-            "lastName": "Rulli",
-            "nationalTeamId": 6706,
-            "rankings": null
-          },
-          {
-            "id": 1300526,
-            "age": 21,
-            "name": "Nico O'Reilly",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "33",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 81688764,
-            "firstName": "Nico",
-            "lastName": "O'Reilly",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 933845,
-            "age": 25,
-            "name": "Rayan Aït-Nouri",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "21",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
-            "marketValue": 48768452,
-            "firstName": "Rayan",
-            "lastName": "Aït-Nouri",
-            "nationalTeamId": 6317,
-            "rankings": null
-          },
-          {
-            "id": 1288450,
-            "age": 21,
-            "name": "Rico Lewis",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "82",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 41224441,
-            "firstName": "Rico",
-            "lastName": "Lewis",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1580952,
-            "age": 20,
-            "name": "Vitor Reis",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 41724784,
-            "firstName": "Vitor",
-            "lastName": "Reis",
-            "nationalTeamId": 8256,
-            "rankings": null
-          },
-          {
-            "id": 1561552,
-            "age": 19,
-            "name": "Ayyoub Bouaddi",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "32",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 70264579,
-            "firstName": "Ayyoub",
-            "lastName": "Bouaddi",
-            "nationalTeamId": 6262,
-            "rankings": null
-          },
-          {
-            "id": 239219,
-            "age": 32,
-            "name": "Mateo Kovačić",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Croatia",
-            "countryCode": "CRO",
-            "marketValue": 7037661,
-            "firstName": "Mateo",
-            "lastName": "Kovačić",
-            "nationalTeamId": 10155,
-            "rankings": null
-          },
-          {
-            "id": 815006,
-            "age": 26,
-            "name": "Phil Foden",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "47",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 70902300,
-            "firstName": "Phil",
-            "lastName": "Foden",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1680328,
-            "age": 18,
-            "name": "Ryan McAidoo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "56",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "firstName": "Ryan",
-            "lastName": "McAidoo",
-            "nationalTeamId": 8491,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 955529,
             "age": 28,
             "name": "Matheus Nunes",
+            "positionId": 1000,
             "countryName": "Portugal",
             "countryCode": "POR",
             "marketValue": 53537615,
@@ -1321,17 +1204,7 @@
           }
         ],
         "averageStarterAge": 25.6,
-        "totalStarterMarketValue": 922900255,
-        "lastMatch": {
-          "matchId": 5795486,
-          "homeTeamId": 10252,
-          "awayTeamId": 8456,
-          "homeTeamName": "Aston Villa",
-          "awayTeamName": "Manchester City",
-          "homeScore": 2,
-          "awayScore": 1,
-          "matchDate": "2026-10-24T13:30:00"
-        }
+        "totalStarterMarketValue": 922900255
       },
       "awayTeam": {
         "id": 10204,
@@ -1366,14 +1239,14 @@
             "rankings": null
           },
           {
-            "id": 774448,
-            "age": 27,
-            "name": "Ferdi Kadıoğlu",
+            "id": 1178324,
+            "age": 23,
+            "name": "Jaouen Hadjam",
             "positionId": 32,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "24",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
+            "shirtNumber": "3",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.875,
@@ -1386,10 +1259,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 41174643,
-            "firstName": "Ferdi",
-            "lastName": "Kadıoğlu",
-            "nationalTeamId": 6595,
+            "marketValue": 7407716,
+            "firstName": "Jaouen",
+            "lastName": "Hadjam",
+            "nationalTeamId": 6317,
             "rankings": null
           },
           {
@@ -1426,7 +1299,6 @@
             "positionId": 36,
             "usualPlayingPositionId": 1,
             "shirtNumber": "5",
-            "isCaptain": true,
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -1502,14 +1374,14 @@
             "rankings": null
           },
           {
-            "id": 1586552,
+            "id": 1251334,
             "age": 21,
-            "name": "Chema Andrés",
+            "name": "Jack Hinshelwood",
             "positionId": 66,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "14",
-            "countryName": "Spain",
-            "countryCode": "ESP",
+            "shirtNumber": "8",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.3,
@@ -1522,10 +1394,10 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 18602781,
-            "firstName": "Chema",
-            "lastName": "Andrés",
-            "nationalTeamId": 6720,
+            "marketValue": 27483929,
+            "firstName": "Jack",
+            "lastName": "Hinshelwood",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
@@ -1651,155 +1523,12 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 107917,
-            "age": 36,
-            "name": "Jason Steele",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "23",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 415935,
-            "firstName": "Jason",
-            "lastName": "Steele",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1079456,
-            "age": 26,
-            "name": "Costinha",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "20",
-            "countryName": "Portugal",
-            "countryCode": "POR",
-            "marketValue": 8435732,
-            "firstName": "",
-            "lastName": "Costinha",
-            "nationalTeamId": 8361,
-            "rankings": null
-          },
-          {
-            "id": 1178324,
-            "age": 23,
-            "name": "Jaouen Hadjam",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
-            "marketValue": 7407716,
-            "firstName": "Jaouen",
-            "lastName": "Hadjam",
-            "nationalTeamId": 6317,
-            "rankings": null
-          },
-          {
-            "id": 1251334,
-            "age": 21,
-            "name": "Jack Hinshelwood",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 27483929,
-            "firstName": "Jack",
-            "lastName": "Hinshelwood",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1602352,
-            "age": 20,
-            "name": "Malick Junior Yalcouyé",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "35",
-            "countryName": "Ivory Coast",
-            "countryCode": "CIV",
-            "marketValue": 17786963,
-            "firstName": "Malick Junior",
-            "lastName": "Yalcouyé",
-            "nationalTeamId": 6709,
-            "rankings": null
-          },
-          {
-            "id": 866686,
-            "age": 25,
-            "name": "Matthew O'Riley",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "33",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 21057387,
-            "firstName": "Matthew",
-            "lastName": "O'Riley",
-            "nationalTeamId": 8238,
-            "rankings": null
-          },
-          {
-            "id": 956925,
-            "age": 24,
-            "name": "Georginio Rutter",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 35189164,
-            "firstName": "Georginio",
-            "lastName": "Rutter",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1215410,
-            "age": 21,
-            "name": "Ibrahim Osman",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "15",
-            "countryName": "Ghana",
-            "countryCode": "GHA",
-            "marketValue": 10289558,
-            "firstName": "Ibrahim",
-            "lastName": "Osman",
-            "nationalTeamId": 6714,
-            "rankings": null
-          },
-          {
-            "id": 1252132,
-            "age": 25,
-            "name": "Promise David",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "12",
-            "countryName": "Canada",
-            "countryCode": "CAN",
-            "marketValue": 16899727,
-            "firstName": "Promise",
-            "lastName": "David",
-            "nationalTeamId": 5810,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1586552,
-            "age": 21,
-            "name": "Chema Andrés",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 18602781,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Chema",
-            "lastName": "Andrés",
-            "nationalTeamId": 6720
-          },
           {
             "id": 774448,
             "age": 27,
             "name": "Ferdi Kadıoğlu",
+            "positionId": 1000,
             "countryName": "Turkiye",
             "countryCode": "TUR",
             "marketValue": 41174643,
@@ -1845,6 +1574,23 @@
             "firstName": "Pascal",
             "lastName": "Struijk",
             "nationalTeamId": 6708
+          },
+          {
+            "id": 1586552,
+            "age": 21,
+            "name": "Chema Andrés",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 18602781,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Chema",
+            "lastName": "Andrés",
+            "nationalTeamId": 6720
           },
           {
             "id": 1068482,
@@ -1949,18 +1695,8 @@
             "nationalTeamId": 6346
           }
         ],
-        "averageStarterAge": 25.8,
-        "totalStarterMarketValue": 271765454,
-        "lastMatch": {
-          "matchId": 5795492,
-          "homeTeamId": 8650,
-          "awayTeamId": 10204,
-          "homeTeamName": "Liverpool",
-          "awayTeamName": "Brighton & Hove Albion",
-          "homeScore": 2,
-          "awayScore": 0,
-          "matchDate": "2026-10-25T15:00:00"
-        }
+        "averageStarterAge": 25.5,
+        "totalStarterMarketValue": 246879675
       }
     },
     "hasPlayoff": false,

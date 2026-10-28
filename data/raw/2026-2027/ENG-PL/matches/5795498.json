@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -607,20 +607,30 @@
           "color": "#051495"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 268375,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "Average {0} goals per match",
-          "localizedTextId": "insights_average_goals_per_match",
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 2.1,
+              "value": 268375,
+              "name": "Emiliano Martínez",
+              "type": "player"
+            },
+            {
+              "value": 1,
+              "name": null,
+              "type": "ordinal"
+            },
+            {
+              "value": 4.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Average 2.1 goals per match",
+          "text": "Emiliano Martínez is ranked 1 in saves per match in the competition (4.3)",
           "color": "#051495"
         },
         {
@@ -677,6 +687,33 @@
           "playerId": null,
           "teamId": 10260,
           "priority": 8,
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
+          "statValues": [
+            {
+              "value": 10260,
+              "name": "Manchester United",
+              "type": "team"
+            },
+            {
+              "value": 8455,
+              "name": "Chelsea",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Manchester United have won the previous 2 matches against Chelsea.",
+          "color": "#C70101"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10260,
+          "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -687,23 +724,6 @@
             }
           ],
           "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#C70101"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10260,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 8 attempts",
           "color": "#C70101"
         }
       ],
@@ -815,25 +835,25 @@
       }
     },
     "weather": {
-      "temperature": 13,
+      "temperature": 14,
       "windSpeed": 3,
       "windDirectionCardinal": "ENE",
-      "iconCode": 30,
-      "relativeHumidity": 75,
+      "iconCode": 34,
+      "relativeHumidity": 73,
       "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 51,
-      "description": "Partly Cloudy",
+      "cloudCover": 26,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T01:00:03Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-28T13:00:02Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5795498,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -986,7 +1006,6 @@
             "positionId": 64,
             "usualPlayingPositionId": 2,
             "shirtNumber": "25",
-            "isCaptain": true,
             "countryName": "Ecuador",
             "countryCode": "ECU",
             "horizontalLayout": {
@@ -1157,150 +1176,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1117871,
-            "age": 23,
-            "name": "Teddy Sharman-Lowe",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "28",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 1261514,
-            "firstName": "Teddy",
-            "lastName": "Sharman-Lowe",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1197250,
-            "age": 23,
-            "name": "Malo Gusto",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "27",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 53061265,
-            "firstName": "Malo",
-            "lastName": "Gusto",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 917802,
-            "age": 25,
-            "name": "Wesley Fofana",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 36711829,
-            "firstName": "Wesley",
-            "lastName": "Fofana",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1720243,
-            "age": 16,
-            "name": "Mahdi Nicoll-Jazuli",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "32",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "firstName": "Mahdi",
-            "lastName": "Nicoll-Jazuli",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1473806,
-            "age": 21,
-            "name": "Marco Palestra",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "2",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 18385458,
-            "firstName": "Marco",
-            "lastName": "Palestra",
-            "nationalTeamId": 8204,
-            "rankings": null
-          },
-          {
-            "id": 1190867,
-            "age": 22,
-            "name": "Roméo Lavia",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "45",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 25721170,
-            "firstName": "Roméo",
-            "lastName": "Lavia",
-            "nationalTeamId": 8263,
-            "rankings": null
-          },
-          {
-            "id": 1272440,
-            "age": 22,
-            "name": "Valentín Barco",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "4",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 45172265,
-            "firstName": "Valentín",
-            "lastName": "Barco",
-            "nationalTeamId": 6706,
-            "rankings": null
-          },
-          {
-            "id": 113836,
-            "age": 35,
-            "name": "Danny Welbeck",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "18",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 4462332,
-            "firstName": "Danny",
-            "lastName": "Welbeck",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1580774,
-            "age": 19,
-            "name": "Estêvão",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "41",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 110915912,
-            "firstName": "",
-            "lastName": "Estêvão",
-            "nationalTeamId": 8256,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1021382,
-            "age": 25,
-            "name": "João Pedro",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 86332161,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Early November 2026"
-            },
-            "firstName": "João",
-            "lastName": "Pedro",
-            "nationalTeamId": 8256
-          },
           {
             "id": 268375,
             "age": 34,
@@ -1368,20 +1244,27 @@
             "firstName": "Jamie",
             "lastName": "Gittens",
             "nationalTeamId": 8491
+          },
+          {
+            "id": 1021382,
+            "age": 25,
+            "name": "João Pedro",
+            "positionId": 1000,
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 86332161,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Early November 2026"
+            },
+            "firstName": "João",
+            "lastName": "Pedro",
+            "nationalTeamId": 8256
           }
         ],
         "averageStarterAge": 24.4,
-        "totalStarterMarketValue": 685490578,
-        "lastMatch": {
-          "matchId": 5795487,
-          "homeTeamId": 8455,
-          "awayTeamId": 8586,
-          "homeTeamName": "Chelsea",
-          "awayTeamName": "Tottenham Hotspur",
-          "homeScore": 0,
-          "awayScore": 2,
-          "matchDate": "2026-10-24T18:30:00"
-        }
+        "totalStarterMarketValue": 685490578
       },
       "awayTeam": {
         "id": 10260,
@@ -1449,7 +1332,6 @@
             "positionId": 34,
             "usualPlayingPositionId": 1,
             "shirtNumber": "5",
-            "isCaptain": true,
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -1701,151 +1583,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 163604,
-            "age": 36,
-            "name": "Karl Darlow",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "12",
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 846298,
-            "firstName": "Karl",
-            "lastName": "Darlow",
-            "nationalTeamId": 5790,
-            "rankings": null
-          },
-          {
-            "id": 847983,
-            "age": 28,
-            "name": "Lisandro Martínez",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "6",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 29269722,
-            "firstName": "Lisandro",
-            "lastName": "Martínez",
-            "nationalTeamId": 6706,
-            "rankings": null
-          },
-          {
-            "id": 769895,
-            "age": 27,
-            "name": "Matthijs de Ligt",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "4",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 38076970,
-            "firstName": "Matthijs",
-            "lastName": "de Ligt",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 775539,
-            "age": 28,
-            "name": "Noussair Mazraoui",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 16781589,
-            "firstName": "Noussair",
-            "lastName": "Mazraoui",
-            "nationalTeamId": 6262,
-            "rankings": null
-          },
-          {
-            "id": 422685,
-            "age": 32,
-            "name": "Bruno Fernandes",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Portugal",
-            "countryCode": "POR",
-            "marketValue": 27178733,
-            "firstName": "Bruno",
-            "lastName": "Fernandes",
-            "nationalTeamId": 8361,
-            "rankings": null
-          },
-          {
-            "id": 1676985,
-            "age": 19,
-            "name": "Tyler Fletcher",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "39",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
-            "marketValue": 207360,
-            "firstName": "Tyler",
-            "lastName": "Fletcher",
-            "nationalTeamId": 8498,
-            "rankings": null
-          },
-          {
-            "id": 950830,
-            "age": 25,
-            "name": "Joshua Zirkzee",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 24341891,
-            "firstName": "Joshua",
-            "lastName": "Zirkzee",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 863098,
-            "age": 27,
-            "name": "Matheus Cunha",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 76014204,
-            "firstName": "Matheus",
-            "lastName": "Cunha",
-            "nationalTeamId": 8256,
-            "rankings": null
-          },
-          {
-            "id": 1436260,
-            "age": 19,
-            "name": "Shea Lacey",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "31",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 1965772,
-            "firstName": "Shea",
-            "lastName": "Lacey",
-            "nationalTeamId": 8491,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 696365,
-            "age": 29,
-            "name": "Marcus Rashford",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 41522585,
-            "unavailability": {
-              "injuryId": 31,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Marcus",
-            "lastName": "Rashford",
-            "nationalTeamId": 8491
-          },
           {
             "id": 362694,
             "age": 31,
@@ -1915,6 +1653,23 @@
             "nationalTeamId": 5787
           },
           {
+            "id": 696365,
+            "age": 29,
+            "name": "Marcus Rashford",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 41522585,
+            "unavailability": {
+              "injuryId": 31,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Marcus",
+            "lastName": "Rashford",
+            "nationalTeamId": 8491
+          },
+          {
             "id": 1526560,
             "age": 22,
             "name": "Patrick Dorgu",
@@ -1933,17 +1688,7 @@
           }
         ],
         "averageStarterAge": 25.5,
-        "totalStarterMarketValue": 473671934,
-        "lastMatch": {
-          "matchId": 5795493,
-          "homeTeamId": 10260,
-          "awayTeamId": 8678,
-          "homeTeamName": "Manchester United",
-          "awayTeamName": "AFC Bournemouth",
-          "homeScore": 0,
-          "awayScore": 3,
-          "matchDate": "2026-10-25T15:00:00"
-        }
+        "totalStarterMarketValue": 473671934
       }
     },
     "hasPlayoff": false,
