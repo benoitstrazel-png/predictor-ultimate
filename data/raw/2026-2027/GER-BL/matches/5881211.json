@@ -468,11 +468,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "away_team",
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Elversberg have scored in their last 5 home matches."
+              "defaultText": "Elversberg have an average of 1.33 goals in their last three matches and Mainz 05 have an average of 1."
             },
             {
               "OddsType": "ou",
@@ -512,10 +514,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "8"
               ],
               "DefaultLabels": [
@@ -529,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Mainz 05 haven't drawn in their last 8 matches."
+              "defaultText": "Elversberg haven't drawn in their last 4 matches and Mainz 05 in their last 8."
             }
           ]
         },
@@ -1486,22 +1490,6 @@
           "isCoach": true
         },
         "unavailable": [
-          {
-            "id": 556505,
-            "age": 32,
-            "name": "Robin Zentner",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 1729403,
-            "unavailability": {
-              "injuryId": 35,
-              "type": "injury",
-              "expectedReturn": "A few weeks"
-            },
-            "firstName": "Robin",
-            "lastName": "Zentner",
-            "nationalTeamId": 8570
-          },
           {
             "id": 303905,
             "age": 32,

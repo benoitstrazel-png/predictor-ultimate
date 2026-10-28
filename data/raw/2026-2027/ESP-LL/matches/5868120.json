@@ -485,14 +485,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "5",
-                "4"
+                "10",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 5 goals in their last 3 matches, while Espanyol have scored 4."
+              "defaultText": "Villarreal have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -598,15 +596,15 @@
         },
         {
           "type": "player",
-          "playerId": 1117069,
+          "playerId": 1184694,
           "teamId": 10205,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1117069,
-              "name": "Georges Mikautadze",
+              "value": 1184694,
+              "name": "Alberto Moleiro",
               "type": "player"
             },
             {
@@ -615,12 +613,12 @@
               "type": "team"
             },
             {
-              "value": 2.2,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Georges Mikautadze has the most shots on target per match for Villarreal (2.2)",
+          "text": "Alberto Moleiro has created the most big chances for Villarreal (5)",
           "color": "#e19d00"
         },
         {
@@ -650,23 +648,6 @@
           "playerId": null,
           "teamId": 8558,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 6 matches",
-          "color": "#1954B2"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8558,
-          "priority": 8,
           "defaultText": "Haven't won a match in {0} attempts",
           "localizedTextId": "insights_not_won_team",
           "statValues": [
@@ -677,6 +658,23 @@
             }
           ],
           "text": "Haven't won a match in 6 attempts",
+          "color": "#1954B2"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8558,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#1954B2"
         }
       ],
