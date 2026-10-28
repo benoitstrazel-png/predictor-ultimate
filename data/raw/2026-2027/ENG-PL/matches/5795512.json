@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
-            "linkToMatch": "/matches/brentford-vs-aston-villa/3dciw4#5795466",
-            "date": {
-              "utcTime": "2026-10-10T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9937/overview/brentford",
-            "tooltipText": {
-              "utcTime": "2026-10-10T14:00:00.000Z",
-              "homeTeam": "Aston Villa",
-              "homeTeamId": 10252,
-              "homeScore": "2",
-              "awayTeam": "Brentford",
-              "awayTeamId": 9937,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9937",
-              "name": "Brentford",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8695.png",
@@ -423,6 +393,36 @@
               "name": "Manchester City",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
+            "linkToMatch": "/matches/afc-bournemouth-vs-aston-villa/2yooch#6275374",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8678/overview/afc-bournemouth",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "AFC Bournemouth",
+              "homeTeamId": 8678,
+              "homeScore": "3",
+              "awayTeam": "Aston Villa",
+              "awayTeamId": 10252,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8678",
+              "name": "AFC Bournemouth",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "away_team",
-                "4"
+                "home_team",
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,18 +455,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Aston Villa have won their last 4 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Manchester United haven't won a match in 8 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "5"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,20 +479,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored in their last 5 away matches."
+              "defaultText": "Manchester United have an average of 0.67 goals in their last three matches and Aston Villa have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester United have scored 2 goals in their last 3 matches, while Aston Villa have scored 6."
+              "defaultText": "Manchester United have an average of 0.67 goals in their last three matches and Aston Villa have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -562,23 +563,6 @@
           "playerId": null,
           "teamId": 10260,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 8 matches",
-          "color": "#C70101"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10260,
-          "priority": 8,
           "defaultText": "Haven't won a match in {0} attempts",
           "localizedTextId": "insights_not_won_team",
           "statValues": [
@@ -594,13 +578,30 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 10260,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 8 matches",
+          "color": "#C70101"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 10252,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -610,24 +611,34 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#7D1142"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 356406,
           "teamId": 10252,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 356406,
+              "name": "John McGinn",
+              "type": "player"
+            },
+            {
+              "value": 10252,
+              "name": "Aston Villa",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 8 matches",
+          "text": "John McGinn has created the most big chances for Aston Villa (2)",
           "color": "#7D1142"
         },
         {
@@ -808,7 +819,7 @@
             "name": "Modou Kéba Cissé",
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-21T20:03:18Z",
+              "lastUpdated": "2026-10-28T19:40:04Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },

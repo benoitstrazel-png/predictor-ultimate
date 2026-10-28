@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -321,36 +321,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
-            "linkToMatch": "/matches/sunderland-vs-brighton-hove-albion/2vuaxm#5795474",
-            "date": {
-              "utcTime": "2026-10-10T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
-            "tooltipText": {
-              "utcTime": "2026-10-10T14:00:00.000Z",
-              "homeTeam": "Sunderland",
-              "homeTeamId": 8472,
-              "homeScore": "0",
-              "awayTeam": "Brighton & Hove Albion",
-              "awayTeamId": 10204,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "8472",
-              "name": "Sunderland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10204",
-              "name": "Brighton & Hove Albion",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/212820.png",
@@ -469,6 +439,36 @@
               "name": "Leeds United",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
+            "linkToMatch": "/matches/sunderland-vs-brentford/2sw7v2#6275370",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9937/overview/brentford",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "Sunderland",
+              "homeTeamId": 8472,
+              "homeScore": "3",
+              "awayTeam": "Brentford",
+              "awayTeamId": 9937,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "8472",
+              "name": "Sunderland",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9937",
+              "name": "Brentford",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -493,9 +493,9 @@
                 "0",
                 "3",
                 "away_team",
-                "1",
                 "2",
-                "2"
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -508,19 +508,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Coventry City have 2W, 0D, 3L in five matches while Sunderland have 1W, 2D, 2L."
+              "defaultText": "Coventry City have 2W, 0D, 3L in five matches while Sunderland have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.33"
+                "3",
+                "5",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -531,19 +532,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Coventry City have an average of 1.67 goals in their last three matches and Sunderland have an average of 0.33."
+              "defaultText": "Coventry City have scored 5 goals in their last 3 matches, while Sunderland have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.33"
+                "3",
+                "5",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -554,7 +556,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Coventry City have an average of 1.67 goals in their last three matches and Sunderland have an average of 0.33."
+              "defaultText": "Coventry City have scored 5 goals in their last 3 matches, while Sunderland have scored 4."
             },
             {
               "OddsType": "dc",
@@ -673,7 +675,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -683,7 +685,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#DC0814"
         },
         {
@@ -705,15 +707,15 @@
         },
         {
           "type": "player",
-          "playerId": 207236,
+          "playerId": 1364069,
           "teamId": 8472,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 207236,
-              "name": "Granit Xhaka",
+              "value": 1364069,
+              "name": "Malick Fofana",
               "type": "player"
             },
             {
@@ -722,12 +724,12 @@
               "type": "team"
             },
             {
-              "value": 5,
+              "value": 3.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Granit Xhaka has created the most big chances for Sunderland (5)",
+          "text": "Malick Fofana has the most shots on target per match for Sunderland (3.1)",
           "color": "#DC0814"
         }
       ],
@@ -856,8 +858,8 @@
     },
     "lineup": {
       "matchId": 5795499,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -923,12 +925,12 @@
             "rankings": null
           },
           {
-            "id": 1161885,
-            "age": 25,
-            "name": "Bobby Thomas",
+            "id": 1613300,
+            "age": 18,
+            "name": "Stephen Mfuni",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "4",
+            "shirtNumber": "12",
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -943,9 +945,9 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 10446582,
-            "firstName": "Bobby",
-            "lastName": "Thomas",
+            "marketValue": 248832,
+            "firstName": "Stephen",
+            "lastName": "Mfuni",
             "nationalTeamId": 8491,
             "rankings": null
           },
@@ -1181,151 +1183,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 189103,
-            "age": 33,
-            "name": "Daniel Bentley",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "25",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 402517,
-            "firstName": "Daniel",
-            "lastName": "Bentley",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1089686,
-            "age": 24,
-            "name": "Kaine Kesler-Hayden",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "20",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 4589596,
-            "firstName": "Kaine",
-            "lastName": "Kesler-Hayden",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1613300,
-            "age": 18,
-            "name": "Stephen Mfuni",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "12",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 248832,
-            "firstName": "Stephen",
-            "lastName": "Mfuni",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 856685,
-            "age": 28,
-            "name": "Frank Onyeka",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "16",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
-            "marketValue": 8543179,
-            "firstName": "Frank",
-            "lastName": "Onyeka",
-            "nationalTeamId": 6346,
-            "rankings": null
-          },
-          {
-            "id": 845985,
-            "age": 27,
-            "name": "Victor Torp",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "29",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 11104482,
-            "firstName": "Victor",
-            "lastName": "Torp",
-            "nationalTeamId": 8238,
-            "rankings": null
-          },
-          {
-            "id": 955411,
-            "age": 25,
-            "name": "Yann Gboho",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "34",
-            "countryName": "Ivory Coast",
-            "countryCode": "CIV",
-            "marketValue": 14637083,
-            "firstName": "Yann",
-            "lastName": "Gboho",
-            "nationalTeamId": 6709,
-            "rankings": null
-          },
-          {
-            "id": 798654,
-            "age": 27,
-            "name": "Ephron Mason-Clark",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Jamaica",
-            "countryCode": "JAM",
-            "marketValue": 16111004,
-            "firstName": "Ephron",
-            "lastName": "Mason-Clark",
-            "nationalTeamId": 5806,
-            "rankings": null
-          },
-          {
-            "id": 775355,
-            "age": 29,
-            "name": "Gustavo Hamer",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "38",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 11523834,
-            "firstName": "Gustavo",
-            "lastName": "Hamer",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 643717,
-            "age": 29,
-            "name": "Taiwo Awoniyi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
-            "marketValue": 6714239,
-            "firstName": "Taiwo",
-            "lastName": "Awoniyi",
-            "nationalTeamId": 6346,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1161885,
-            "age": 25,
-            "name": "Bobby Thomas",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 10446582,
-            "unavailability": {
-              "injuryId": 74,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Bobby",
-            "lastName": "Thomas",
-            "nationalTeamId": 8491
-          },
           {
             "id": 1257648,
             "age": 23,
@@ -1342,6 +1200,23 @@
             "firstName": "Aurèle",
             "lastName": "Amenda",
             "nationalTeamId": 6717
+          },
+          {
+            "id": 1161885,
+            "age": 25,
+            "name": "Bobby Thomas",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 10446582,
+            "unavailability": {
+              "injuryId": 74,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Bobby",
+            "lastName": "Thomas",
+            "nationalTeamId": 8491
           },
           {
             "id": 866688,
@@ -1395,18 +1270,8 @@
             "nationalTeamId": 6713
           }
         ],
-        "averageStarterAge": 26.8,
-        "totalStarterMarketValue": 115686709,
-        "lastMatch": {
-          "matchId": 5795488,
-          "homeTeamId": 8669,
-          "awayTeamId": 9879,
-          "homeTeamName": "Coventry City",
-          "awayTeamName": "Fulham",
-          "homeScore": 0,
-          "awayScore": 1,
-          "matchDate": "2026-10-24T16:00:00"
-        }
+        "averageStarterAge": 26.1,
+        "totalStarterMarketValue": 105488959
       },
       "awayTeam": {
         "id": 8472,
@@ -1468,14 +1333,14 @@
             "rankings": null
           },
           {
-            "id": 602304,
+            "id": 754126,
             "age": 28,
-            "name": "Nordi Mukiele",
+            "name": "Kevin Danso",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "20",
-            "countryName": "France",
-            "countryCode": "FRA",
+            "shirtNumber": "4",
+            "countryName": "Austria",
+            "countryCode": "AUT",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.625,
@@ -1488,10 +1353,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 19252707,
-            "firstName": "Nordi",
-            "lastName": "Mukiele",
-            "nationalTeamId": 6723,
+            "marketValue": 18680638,
+            "firstName": "Kevin",
+            "lastName": "Danso",
+            "nationalTeamId": 8255,
             "rankings": null
           },
           {
@@ -1725,149 +1590,22 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1186615,
-            "age": 23,
-            "name": "Melker Ellborg",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "31",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 1534663,
-            "firstName": "Melker",
-            "lastName": "Ellborg",
-            "nationalTeamId": 8520,
-            "rankings": null
-          },
-          {
-            "id": 751998,
-            "age": 29,
-            "name": "Omar Alderete",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "countryName": "Paraguay",
-            "countryCode": "PAR",
-            "marketValue": 17165138,
-            "firstName": "Omar",
-            "lastName": "Alderete",
-            "nationalTeamId": 6724,
-            "rankings": null
-          },
-          {
-            "id": 1664716,
-            "age": 20,
-            "name": "Dayann Méthalie",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "6",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 14714476,
-            "firstName": "Dayann",
-            "lastName": "Méthalie",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1285866,
-            "age": 22,
-            "name": "Habib Diarra",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "19",
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 45896674,
-            "firstName": "Habib",
-            "lastName": "Diarra",
-            "nationalTeamId": 6395,
-            "rankings": null
-          },
-          {
-            "id": 1811265,
-            "age": 20,
-            "name": "Jules Ahoka",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "29",
-            "countryName": "DR Congo",
-            "countryCode": "COD",
-            "firstName": "Jules",
-            "lastName": "Ahoka",
-            "nationalTeamId": 6321,
-            "rankings": null
-          },
-          {
-            "id": 1368654,
-            "age": 21,
-            "name": "Chemsdine Talbi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 29736105,
-            "firstName": "Chemsdine",
-            "lastName": "Talbi",
-            "nationalTeamId": 6262,
-            "rankings": null
-          },
-          {
-            "id": 1829355,
-            "age": 18,
-            "name": "Juan Riquelme Angulo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "50",
-            "countryName": "Ecuador",
-            "countryCode": "ECU",
-            "marketValue": 955547,
-            "firstName": "Juan Riquelme",
-            "lastName": "Angulo",
-            "nationalTeamId": 6707,
-            "rankings": null
-          },
-          {
-            "id": 1364069,
-            "age": 21,
-            "name": "Malick Fofana",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "39",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 32833229,
-            "firstName": "Malick",
-            "lastName": "Fofana",
-            "nationalTeamId": 8263,
-            "rankings": null
-          },
-          {
-            "id": 1421003,
-            "age": 21,
-            "name": "Timur Tuterov",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "57",
-            "countryName": "Ukraine",
-            "countryCode": "UKR",
-            "marketValue": 374865,
-            "firstName": "Timur",
-            "lastName": "Tuterov",
-            "nationalTeamId": 6718,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
-            "id": 602304,
-            "age": 28,
-            "name": "Nordi Mukiele",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 19252707,
+            "id": 277771,
+            "age": 35,
+            "name": "Thomas Meunier",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 1590131,
             "unavailability": {
-              "injuryId": 130,
+              "injuryId": 42,
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
-            "firstName": "Nordi",
-            "lastName": "Mukiele",
-            "nationalTeamId": 6723
+            "firstName": "Thomas",
+            "lastName": "Meunier",
+            "nationalTeamId": 8263
           },
           {
             "id": 974268,
@@ -1887,21 +1625,21 @@
             "nationalTeamId": 10259
           },
           {
-            "id": 277771,
-            "age": 35,
-            "name": "Thomas Meunier",
+            "id": 602304,
+            "age": 28,
+            "name": "Nordi Mukiele",
             "positionId": 1000,
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 1590131,
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 19252707,
             "unavailability": {
-              "injuryId": 42,
+              "injuryId": 130,
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
-            "firstName": "Thomas",
-            "lastName": "Meunier",
-            "nationalTeamId": 8263
+            "firstName": "Nordi",
+            "lastName": "Mukiele",
+            "nationalTeamId": 6723
           },
           {
             "id": 1123947,
@@ -1938,18 +1676,8 @@
             "nationalTeamId": 5934
           }
         ],
-        "averageStarterAge": 26.6,
-        "totalStarterMarketValue": 235402174,
-        "lastMatch": {
-          "matchId": 5795494,
-          "homeTeamId": 8472,
-          "awayTeamId": 8463,
-          "homeTeamName": "Sunderland",
-          "awayTeamName": "Leeds United",
-          "homeScore": 0,
-          "awayScore": 0,
-          "matchDate": "2026-10-25T17:30:00"
-        }
+        "averageStarterAge": 26.5,
+        "totalStarterMarketValue": 234830105
       }
     },
     "hasPlayoff": false,

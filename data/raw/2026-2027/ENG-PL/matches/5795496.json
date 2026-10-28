@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -169,36 +169,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
-            "linkToMatch": "/matches/brentford-vs-aston-villa/3dciw4#5795466",
-            "date": {
-              "utcTime": "2026-10-10T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9937/overview/brentford",
-            "tooltipText": {
-              "utcTime": "2026-10-10T14:00:00.000Z",
-              "homeTeam": "Aston Villa",
-              "homeTeamId": 10252,
-              "homeScore": "2",
-              "awayTeam": "Brentford",
-              "awayTeamId": 9937,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9937",
-              "name": "Brentford",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -318,39 +288,39 @@
               "name": "Manchester City",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8654.png",
-            "linkToMatch": "/matches/west-ham-united-vs-fulham/2u9b5i#6099343",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
+            "linkToMatch": "/matches/afc-bournemouth-vs-aston-villa/2yooch#6275374",
             "date": {
-              "utcTime": "2026-09-15T18:45:00.000Z"
+              "utcTime": "2026-10-28T19:45:00.000Z"
             },
-            "teamPageUrl": "/teams/8654/overview/west-ham-united",
+            "teamPageUrl": "/teams/8678/overview/afc-bournemouth",
             "tooltipText": {
-              "utcTime": "2026-09-15T18:45:00.000Z",
-              "homeTeam": "West Ham United",
-              "homeTeamId": 8654,
-              "homeScore": "2",
-              "awayTeam": "Fulham",
-              "awayTeamId": 9879,
-              "awayScore": "3"
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "AFC Bournemouth",
+              "homeTeamId": 8678,
+              "homeScore": "3",
+              "awayTeam": "Aston Villa",
+              "awayTeamId": 10252,
+              "awayScore": "0"
             },
-            "score": "2 - 3",
+            "score": "3 - 0",
             "home": {
-              "id": "8654",
-              "name": "West Ham United",
+              "id": "8678",
+              "name": "AFC Bournemouth",
               "isOurTeam": false
             },
             "away": {
-              "id": "9879",
-              "name": "Fulham",
+              "id": "10252",
+              "name": "Aston Villa",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 0,
             "resultString": "D",
@@ -470,6 +440,36 @@
               "name": "Fulham",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png",
+            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#6275373",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9826/overview/crystal-palace",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "Fulham",
+              "homeTeamId": 9879,
+              "homeScore": "0",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -486,11 +486,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -502,19 +508,17 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Aston Villa have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Aston Villa have 4W, 0D, 1L in five matches while Fulham have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "10",
-                "away_team",
                 "5"
               ],
               "DefaultLabels": [
@@ -526,7 +530,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored in their last 10 matches and Fulham have scored in their last 5 matches."
+              "defaultText": "Aston Villa have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -538,7 +542,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "5",
                 "3"
               ],
               "DefaultLabels": [
@@ -550,7 +554,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored 6 goals in their last 3 matches, while Fulham have scored 3."
+              "defaultText": "Aston Villa have scored 5 goals in their last 3 matches, while Fulham have scored 3."
             },
             {
               "OddsType": "dc",
@@ -560,7 +564,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -573,7 +577,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Aston Villa haven't drawn in their last 4 matches."
+              "defaultText": "Aston Villa haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -593,7 +597,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -603,24 +607,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
-          "color": "#7D1142"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10252,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 8 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
           "color": "#7D1142"
         },
         {
@@ -651,6 +638,33 @@
           "color": "#7D1142"
         },
         {
+          "type": "player",
+          "playerId": 356406,
+          "teamId": 10252,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 356406,
+              "name": "John McGinn",
+              "type": "player"
+            },
+            {
+              "value": 10252,
+              "name": "Aston Villa",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "John McGinn has created the most big chances for Aston Villa (2)",
+          "color": "#7D1142"
+        },
+        {
           "type": "team",
           "playerId": null,
           "teamId": 9879,
@@ -659,7 +673,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -669,7 +683,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#000000"
         },
         {
@@ -835,25 +849,25 @@
       }
     },
     "weather": {
-      "temperature": 8,
+      "temperature": 7,
       "windSpeed": 0,
       "windDirectionCardinal": "ENE",
       "iconCode": 29,
-      "relativeHumidity": 94,
+      "relativeHumidity": 96,
       "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 39,
+      "cloudCover": 36,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T08:00:01Z",
+      "lastUpdated": "2026-10-28T20:00:01Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795496,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -1087,7 +1101,6 @@
             "positionId": 85,
             "usualPlayingPositionId": 3,
             "shirtNumber": "7",
-            "isCaptain": true,
             "countryName": "Scotland",
             "countryCode": "SCO",
             "horizontalLayout": {
@@ -1177,134 +1190,6 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 195782,
-            "age": 35,
-            "name": "Marco Bizot",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "40",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 1075401,
-            "firstName": "Marco",
-            "lastName": "Bizot",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 419664,
-            "age": 33,
-            "name": "Tyrone Mings",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 1996530,
-            "firstName": "Tyrone",
-            "lastName": "Mings",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1607333,
-            "age": 19,
-            "name": "George Hemmings",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "53",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 8500000,
-            "firstName": "George",
-            "lastName": "Hemmings",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1190033,
-            "age": 22,
-            "name": "Lamare Bogarde",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "26",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 19602330,
-            "firstName": "Lamare",
-            "lastName": "Bogarde",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 343748,
-            "age": 31,
-            "name": "Leon Goretzka",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "27",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 6056525,
-            "firstName": "Leon",
-            "lastName": "Goretzka",
-            "nationalTeamId": 8570,
-            "rankings": null
-          },
-          {
-            "id": 215384,
-            "age": 32,
-            "name": "Ross Barkley",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "6",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 2168907,
-            "firstName": "Ross",
-            "lastName": "Barkley",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 1729841,
-            "age": 17,
-            "name": "Brian Madjo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "39",
-            "countryName": "Luxembourg",
-            "countryCode": "LUX",
-            "marketValue": 20391195,
-            "firstName": "Brian",
-            "lastName": "Madjo",
-            "nationalTeamId": 5792,
-            "rankings": null
-          },
-          {
-            "id": 610184,
-            "age": 29,
-            "name": "Emiliano Buendía",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "10",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 14916361,
-            "firstName": "Emiliano",
-            "lastName": "Buendía",
-            "nationalTeamId": 6706,
-            "rankings": null
-          },
-          {
-            "id": 1593857,
-            "age": 18,
-            "name": "Ibrahim Mbaye",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "19",
-            "countryName": "Senegal",
-            "countryCode": "SEN",
-            "marketValue": 36488127,
-            "firstName": "Ibrahim",
-            "lastName": "Mbaye",
-            "nationalTeamId": 6395,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 1714552,
@@ -1375,17 +1260,7 @@
           }
         ],
         "averageStarterAge": 26.5,
-        "totalStarterMarketValue": 337626374,
-        "lastMatch": {
-          "matchId": 5795486,
-          "homeTeamId": 10252,
-          "awayTeamId": 8456,
-          "homeTeamName": "Aston Villa",
-          "awayTeamName": "Manchester City",
-          "homeScore": 2,
-          "awayScore": 1,
-          "matchDate": "2026-10-24T13:30:00"
-        }
+        "totalStarterMarketValue": 337626374
       },
       "awayTeam": {
         "id": 9879,
@@ -1480,7 +1355,6 @@
             "positionId": 36,
             "usualPlayingPositionId": 1,
             "shirtNumber": "3",
-            "isCaptain": true,
             "countryName": "Nigeria",
             "countryCode": "NGA",
             "horizontalLayout": {
@@ -1705,150 +1579,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 210114,
-            "age": 35,
-            "name": "Benjamin Lecomte",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "23",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 744160,
-            "firstName": "Benjamin",
-            "lastName": "Lecomte",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 503659,
-            "age": 30,
-            "name": "Joachim Andersen",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 23122400,
-            "firstName": "Joachim",
-            "lastName": "Andersen",
-            "nationalTeamId": 8238,
-            "rankings": null
-          },
-          {
-            "id": 469804,
-            "age": 31,
-            "name": "Kenny Tete",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "2",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 8204255,
-            "firstName": "Kenny",
-            "lastName": "Tete",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 1508427,
-            "age": 22,
-            "name": "Manuel Ángel",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "20",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "firstName": "Manuel",
-            "lastName": "Ángel",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 540963,
-            "age": 28,
-            "name": "Sander Berge",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "16",
-            "countryName": "Norway",
-            "countryCode": "NOR",
-            "marketValue": 27889763,
-            "firstName": "Sander",
-            "lastName": "Berge",
-            "nationalTeamId": 8492,
-            "rankings": null
-          },
-          {
-            "id": 182962,
-            "age": 35,
-            "name": "Tom Cairney",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "10",
-            "countryName": "Scotland",
-            "countryCode": "SCO",
-            "marketValue": 705708,
-            "firstName": "Tom",
-            "lastName": "Cairney",
-            "nationalTeamId": 8498,
-            "rankings": null
-          },
-          {
-            "id": 1403691,
-            "age": 21,
-            "name": "César Palacios",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "8",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 7500000,
-            "firstName": "César",
-            "lastName": "Palacios",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1318400,
-            "age": 23,
-            "name": "Kevin",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 27270600,
-            "firstName": "",
-            "lastName": "Kevin",
-            "nationalTeamId": 8256,
-            "rankings": null
-          },
-          {
-            "id": 1128945,
-            "age": 25,
-            "name": "Rodrigo Muniz",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 15641562,
-            "firstName": "Rodrigo",
-            "lastName": "Muniz",
-            "nationalTeamId": 8256,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 889534,
-            "age": 26,
-            "name": "Emile Smith Rowe",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 25037437,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Emile Smith",
-            "lastName": "Rowe",
-            "nationalTeamId": 8491
-          },
           {
             "id": 773991,
             "age": 26,
@@ -1865,20 +1596,27 @@
             "firstName": "Ryan",
             "lastName": "Sessegnon",
             "nationalTeamId": 8491
+          },
+          {
+            "id": 889534,
+            "age": 26,
+            "name": "Emile Smith Rowe",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 25037437,
+            "unavailability": {
+              "injuryId": 130,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Emile Smith",
+            "lastName": "Rowe",
+            "nationalTeamId": 8491
           }
         ],
         "averageStarterAge": 26.3,
-        "totalStarterMarketValue": 245218983,
-        "lastMatch": {
-          "matchId": 5795488,
-          "homeTeamId": 8669,
-          "awayTeamId": 9879,
-          "homeTeamName": "Coventry City",
-          "awayTeamName": "Fulham",
-          "homeScore": 0,
-          "awayScore": 1,
-          "matchDate": "2026-10-24T16:00:00"
-        }
+        "totalStarterMarketValue": 245218983
       }
     },
     "hasPlayoff": false,

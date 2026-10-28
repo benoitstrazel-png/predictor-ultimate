@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png",
-            "linkToMatch": "/matches/crystal-palace-vs-nottingham-forest/3bfk5h#5795469",
-            "date": {
-              "utcTime": "2026-10-11T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10203/overview/nottingham-forest",
-            "tooltipText": {
-              "utcTime": "2026-10-11T13:00:00.000Z",
-              "homeTeam": "Crystal Palace",
-              "homeTeamId": 9826,
-              "homeScore": "3",
-              "awayTeam": "Nottingham Forest",
-              "awayTeamId": 10203,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "9826",
-              "name": "Crystal Palace",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9748.png",
@@ -270,39 +240,39 @@
               "name": "Newcastle United",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
+            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#6275373",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9879/overview/fulham",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "Fulham",
+              "homeTeamId": 9879,
+              "homeScore": "0",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9790.png",
-            "linkToMatch": "/matches/hoffenheim-vs-hamburger-sv/2omstq#5881183",
-            "date": {
-              "utcTime": "2026-10-10T13:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9790/overview/hamburger-sv",
-            "tooltipText": {
-              "utcTime": "2026-10-10T13:30:00.000Z",
-              "homeTeam": "Hoffenheim",
-              "homeTeamId": 8226,
-              "homeScore": "2",
-              "awayTeam": "Hamburger SV",
-              "awayTeamId": 9790,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "8226",
-              "name": "Hoffenheim",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9790",
-              "name": "Hamburger SV",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -422,6 +392,36 @@
               "name": "Bayer Leverkusen",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8150.png",
+            "linkToMatch": "/matches/holstein-kiel-vs-hoffenheim/27uam6#6162747",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8150/overview/holstein-kiel",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "Holstein Kiel",
+              "homeTeamId": 8150,
+              "homeScore": "1",
+              "awayTeam": "Hoffenheim",
+              "awayTeamId": 8226,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8150",
+              "name": "Holstein Kiel",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8226",
+              "name": "Hoffenheim",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -473,7 +473,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "2",
+                "3",
                 "8"
               ],
               "DefaultLabels": [
@@ -485,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have scored 2 goals in their last 3 matches, while Hoffenheim have scored 8."
+              "defaultText": "Crystal Palace have scored 3 goals in their last 3 matches, while Hoffenheim have scored 8."
             },
             {
               "OddsType": "ou",
@@ -513,11 +513,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Hoffenheim haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -540,25 +540,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9826,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 6 matches",
-          "color": "#0055A5"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -579,16 +560,16 @@
     "weather": {
       "temperature": 9,
       "windSpeed": 4,
-      "windDirectionCardinal": "NE",
+      "windDirectionCardinal": "NNE",
       "iconCode": 27,
       "relativeHumidity": 79,
-      "precipChance": 5,
+      "precipChance": 13,
       "precipitation": 0,
       "snow": 0,
       "cloudCover": 64,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T06:00:23Z",
+      "lastUpdated": "2026-10-28T18:00:19Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -685,7 +666,7 @@
             "name": "Tim Lemperle",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-26T13:02:10Z",
+              "lastUpdated": "2026-10-28T20:13:06Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
-            "linkToMatch": "/matches/parma-vs-como/3f58t2#5749671",
-            "date": {
-              "utcTime": "2026-09-14T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10171/overview/como",
-            "tooltipText": {
-              "utcTime": "2026-09-14T16:30:00.000Z",
-              "homeTeam": "Como",
-              "homeTeamId": 10171,
-              "homeScore": "2",
-              "awayTeam": "Parma",
-              "awayTeamId": 10167,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10167",
-              "name": "Parma",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
@@ -271,39 +241,39 @@
               "name": "Parma",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
+            "linkToMatch": "/matches/udinese-vs-parma/2wutm8#5749726",
+            "date": {
+              "utcTime": "2026-10-28T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8600/overview/udinese",
+            "tooltipText": {
+              "utcTime": "2026-10-28T17:30:00.000Z",
+              "homeTeam": "Parma",
+              "homeTeamId": 10167,
+              "homeScore": "0",
+              "awayTeam": "Udinese",
+              "awayTeamId": 8600,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": false
+            }
           }
         ],
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
-            "linkToMatch": "/matches/bologna-vs-napoli/37x04l#5749676",
-            "date": {
-              "utcTime": "2026-09-13T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9875/overview/napoli",
-            "tooltipText": {
-              "utcTime": "2026-09-13T16:00:00.000Z",
-              "homeTeam": "Napoli",
-              "homeTeamId": 9875,
-              "homeScore": "1",
-              "awayTeam": "Bologna",
-              "awayTeamId": 9857,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -423,6 +393,36 @@
               "name": "Bologna",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
+            "linkToMatch": "/matches/milan-vs-bologna/2t0ybc#5749720",
+            "date": {
+              "utcTime": "2026-10-28T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8564/overview/milan",
+            "tooltipText": {
+              "utcTime": "2026-10-28T17:30:00.000Z",
+              "homeTeam": "Milan",
+              "homeTeamId": 8564,
+              "homeScore": "2",
+              "awayTeam": "Bologna",
+              "awayTeamId": 9857,
+              "awayScore": "4"
+            },
+            "score": "2 - 4",
+            "home": {
+              "id": "8564",
+              "name": "Milan",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -444,12 +444,12 @@
               "StatValues": [
                 "home_team",
                 "1",
-                "0",
-                "4",
-                "away_team",
-                "2",
                 "1",
-                "2"
+                "3",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -462,19 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Parma have 1W, 0D, 4L in five matches while Bologna have 2W, 1D, 2L."
+              "defaultText": "Parma have 1W, 1D, 3L in five matches while Bologna have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "0.33",
-                "1.67"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,19 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Parma have an average of 0.33 goals in their last three matches and Bologna have an average of 1.67."
+              "defaultText": "Bologna have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "1.67"
+                "3",
+                "1",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,17 +507,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Parma have an average of 0.33 goals in their last three matches and Bologna have an average of 1.67."
+              "defaultText": "Parma have scored 1 goals in their last 3 matches, while Bologna have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Parma haven't drawn in their last 5 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Parma haven't won a match in 4 attempts."
             }
           ]
         },
@@ -551,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -561,41 +560,61 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
           "color": "#000000"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10167,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 6,
+          "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+          "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
             {
-              "value": 9,
+              "value": 10167,
+              "name": "Parma",
+              "type": "team"
+            },
+            {
+              "value": 9857,
+              "name": "Bologna",
+              "type": "team"
+            },
+            {
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Parma and Bologna have not drawn any of their last 4 matches against each other.",
           "color": "#000000"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1233748,
           "teamId": 10167,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 1233748,
+              "name": "David Romero",
+              "type": "player"
+            },
+            {
+              "value": 10167,
+              "name": "Parma",
+              "type": "team"
+            },
+            {
+              "value": 2.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Have lost their last 3 matches",
+          "text": "David Romero has the most shots on target per match for Parma (2.1)",
           "color": "#000000"
         },
         {
@@ -607,7 +626,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -617,34 +636,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
-          "color": "#102880"
-        },
-        {
-          "type": "player",
-          "playerId": 414245,
-          "teamId": 9857,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 414245,
-              "name": "Federico Bernardeschi",
-              "type": "player"
-            },
-            {
-              "value": 9857,
-              "name": "Bologna",
-              "type": "team"
-            },
-            {
-              "value": 1.5,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Federico Bernardeschi has the most shots on target per match for Bologna (1.5)",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#102880"
         },
         {
@@ -666,12 +658,39 @@
               "type": "team"
             },
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Juan Miranda has created the most big chances for Bologna (5)",
+          "text": "Juan Miranda has created the most big chances for Bologna (6)",
+          "color": "#102880"
+        },
+        {
+          "type": "player",
+          "playerId": 1402900,
+          "teamId": 9857,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1402900,
+              "name": "Samuel Mbangula",
+              "type": "player"
+            },
+            {
+              "value": 9857,
+              "name": "Bologna",
+              "type": "team"
+            },
+            {
+              "value": 3.5,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Samuel Mbangula has the most shots on target per match for Bologna (3.5)",
           "color": "#102880"
         }
       ],

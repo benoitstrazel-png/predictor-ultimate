@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
-            "linkToMatch": "/matches/brentford-vs-aston-villa/3dciw4#5795466",
-            "date": {
-              "utcTime": "2026-10-10T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9937/overview/brentford",
-            "tooltipText": {
-              "utcTime": "2026-10-10T14:00:00.000Z",
-              "homeTeam": "Aston Villa",
-              "homeTeamId": 10252,
-              "homeScore": "2",
-              "awayTeam": "Brentford",
-              "awayTeamId": 9937,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9937",
-              "name": "Brentford",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8695.png",
@@ -422,6 +392,36 @@
               "name": "Manchester City",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
+            "linkToMatch": "/matches/afc-bournemouth-vs-aston-villa/2yooch#6275374",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8678/overview/afc-bournemouth",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "AFC Bournemouth",
+              "homeTeamId": 8678,
+              "homeScore": "3",
+              "awayTeam": "Aston Villa",
+              "awayTeamId": 10252,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8678",
+              "name": "AFC Bournemouth",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "0",
+                "2",
                 "away_team",
-                "4"
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,20 +460,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Aston Villa have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Barcelona have 3W, 0D, 2L in five matches while Aston Villa have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "12",
-                "away_team",
-                "10"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Barcelona have scored in their last 12 matches and Aston Villa have scored in their last 10 matches."
+              "defaultText": "Barcelona have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
@@ -512,7 +516,7 @@
                 "home_team",
                 "away_team",
                 "12",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Barcelona haven't drawn in their last 12 matches and Aston Villa in their last 4."
+              "defaultText": "Barcelona haven't drawn in their last 12 matches and Aston Villa in their last 5."
             }
           ]
         },
@@ -535,25 +539,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 10252,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 8 matches",
-          "color": "#7D1142"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -611,20 +596,20 @@
       }
     },
     "weather": {
-      "temperature": 12,
+      "temperature": 13,
       "windSpeed": 3,
-      "windDirectionCardinal": "NNE",
-      "iconCode": 11,
-      "relativeHumidity": 70,
-      "precipChance": 34,
-      "precipitation": 0.2,
+      "windDirectionCardinal": "NE",
+      "iconCode": 27,
+      "relativeHumidity": 75,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 43,
-      "description": "Few Showers",
+      "cloudCover": 60,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T08:00:25Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-28T20:00:25Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 6106263,

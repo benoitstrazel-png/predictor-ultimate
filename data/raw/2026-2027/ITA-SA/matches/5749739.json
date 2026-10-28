@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
-            "linkToMatch": "/matches/udinese-vs-inter/2gg3e6#5749673",
-            "date": {
-              "utcTime": "2026-09-14T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8636/overview/inter",
-            "tooltipText": {
-              "utcTime": "2026-09-14T18:45:00.000Z",
-              "homeTeam": "Inter",
-              "homeTeamId": 8636,
-              "homeScore": "5",
-              "awayTeam": "Udinese",
-              "awayTeamId": 8600,
-              "awayScore": "3"
-            },
-            "score": "5 - 3",
-            "home": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
             "linkToMatch": "/matches/cagliari-vs-udinese/2fcoph#5749688",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8564",
               "name": "Milan",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
+            "linkToMatch": "/matches/udinese-vs-parma/2wutm8#5749726",
+            "date": {
+              "utcTime": "2026-10-28T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10167/overview/parma",
+            "tooltipText": {
+              "utcTime": "2026-10-28T17:30:00.000Z",
+              "homeTeam": "Parma",
+              "homeTeamId": 10167,
+              "homeScore": "0",
+              "awayTeam": "Udinese",
+              "awayTeamId": 8600,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "home_team",
-                "6"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Udinese have lost their last 6 matches."
+              "Icon": "poll_stat_up",
+              "defaultText": "Roma haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -509,7 +509,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese haven't won a match in 6 attempts."
+              "defaultText": "Udinese haven't won a match in 7 attempts."
             }
           ]
         },
@@ -542,7 +542,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 1,
               "name": null,
               "type": "integer"
             },
@@ -552,7 +552,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 1 goals in their last 5 matches",
           "color": "#101010"
         },
         {
@@ -564,12 +564,12 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#101010"
         },
         {
@@ -577,16 +577,16 @@
           "playerId": null,
           "teamId": 8600,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Haven't won a match in 7 attempts",
           "color": "#101010"
         },
         {
@@ -657,19 +657,19 @@
         "homePlayer": {
           "playerId": 934156,
           "position": 2,
-          "matchesWithRating": 8,
+          "matchesWithRating": 9,
           "lastName": "Ekkelenkamp",
           "fullName": "Jurgen Ekkelenkamp",
           "stats": {
             "goals": 3,
             "goalAssist": 1,
-            "ontargetScoringAtt": 1.25,
+            "ontargetScoringAtt": 1.2,
             "motm": 1,
-            "gamesPlayed": 8,
-            "minsPlayed": 705,
-            "minsPlayedGoal": 235,
-            "expectedGoals": 1.2533999681472778,
-            "playerRating": 7.14
+            "gamesPlayed": 9,
+            "minsPlayed": 795,
+            "minsPlayedGoal": 265,
+            "expectedGoals": 1.4574999809265137,
+            "playerRating": 7.17
           }
         },
         "awayPlayer": {

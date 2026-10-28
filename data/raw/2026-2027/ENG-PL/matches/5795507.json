@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png",
-            "linkToMatch": "/matches/crystal-palace-vs-nottingham-forest/3bfk5h#5795469",
-            "date": {
-              "utcTime": "2026-10-11T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10203/overview/nottingham-forest",
-            "tooltipText": {
-              "utcTime": "2026-10-11T13:00:00.000Z",
-              "homeTeam": "Crystal Palace",
-              "homeTeamId": 9826,
-              "homeScore": "3",
-              "awayTeam": "Nottingham Forest",
-              "awayTeamId": 10203,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "9826",
-              "name": "Crystal Palace",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9748.png",
@@ -271,39 +241,39 @@
               "name": "Newcastle United",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
+            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#6275373",
+            "date": {
+              "utcTime": "2026-10-28T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9879/overview/fulham",
+            "tooltipText": {
+              "utcTime": "2026-10-28T19:45:00.000Z",
+              "homeTeam": "Fulham",
+              "homeTeamId": 9879,
+              "homeScore": "0",
+              "awayTeam": "Crystal Palace",
+              "awayTeamId": 9826,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
-            "linkToMatch": "/matches/manchester-city-vs-liverpool/2f48yd#5795472",
-            "date": {
-              "utcTime": "2026-10-11T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8456/overview/manchester-city",
-            "tooltipText": {
-              "utcTime": "2026-10-11T15:30:00.000Z",
-              "homeTeam": "Liverpool",
-              "homeTeamId": 8650,
-              "homeScore": "0",
-              "awayTeam": "Manchester City",
-              "awayTeamId": 8456,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8456",
-              "name": "Manchester City",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Brighton & Hove Albion",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png",
+            "linkToMatch": "/matches/chelsea-vs-liverpool/2f3vr7#6275371",
+            "date": {
+              "utcTime": "2026-10-28T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8455/overview/chelsea",
+            "tooltipText": {
+              "utcTime": "2026-10-28T20:00:00.000Z",
+              "homeTeam": "Liverpool",
+              "homeTeamId": 8650,
+              "homeScore": "1",
+              "awayTeam": "Chelsea",
+              "awayTeamId": 8455,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8455",
+              "name": "Chelsea",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -505,11 +505,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Liverpool haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -542,7 +542,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -552,24 +552,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
-          "color": "#0055A5"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9826,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#0055A5"
         },
         {
@@ -600,6 +583,33 @@
           "color": "#0055A5"
         },
         {
+          "type": "player",
+          "playerId": 1047676,
+          "teamId": 9826,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 1047676,
+              "name": "Yéremi Pino",
+              "type": "player"
+            },
+            {
+              "value": 9826,
+              "name": "Crystal Palace",
+              "type": "team"
+            },
+            {
+              "value": 4,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Yéremi Pino has created the most big chances for Crystal Palace (4)",
+          "color": "#0055A5"
+        },
+        {
           "type": "team",
           "playerId": null,
           "teamId": 8650,
@@ -608,7 +618,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 15,
               "name": null,
               "type": "integer"
             },
@@ -618,7 +628,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
+          "text": "Have scored 15 goals in their last 5 matches",
           "color": "#911712"
         },
         {
@@ -639,30 +649,20 @@
           "color": "#911712"
         },
         {
-          "type": "player",
-          "playerId": 846005,
+          "type": "team",
+          "playerId": null,
           "teamId": 8650,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 846005,
-              "name": "Dominik Szoboszlai",
-              "type": "player"
-            },
-            {
-              "value": 8650,
-              "name": "Liverpool",
-              "type": "team"
-            },
-            {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Dominik Szoboszlai has created the most big chances for Liverpool (3)",
+          "text": "Haven't lost in 5 matches",
           "color": "#911712"
         }
       ],
@@ -792,7 +792,7 @@
             "name": "Florian Wirtz",
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-27T19:47:02Z",
+              "lastUpdated": "2026-10-28T20:03:20Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },

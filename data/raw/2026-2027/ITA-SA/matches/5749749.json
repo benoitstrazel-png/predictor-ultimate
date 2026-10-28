@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
-            "linkToMatch": "/matches/venezia-vs-fiorentina/288cx3#5749679",
-            "date": {
-              "utcTime": "2026-09-11T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8535/overview/fiorentina",
-            "tooltipText": {
-              "utcTime": "2026-09-11T18:45:00.000Z",
-              "homeTeam": "Venezia",
-              "homeTeamId": 7881,
-              "homeScore": "2",
-              "awayTeam": "Fiorentina",
-              "awayTeamId": 8535,
-              "awayScore": "4"
-            },
-            "score": "2 - 4",
-            "home": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8543.png",
             "linkToMatch": "/matches/venezia-vs-lazio/28b6ab#5749689",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Venezia",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
-            "linkToMatch": "/matches/udinese-vs-inter/2gg3e6#5749673",
+            "linkToMatch": "/matches/venezia-vs-inter/2980az#5749729",
             "date": {
-              "utcTime": "2026-09-14T18:45:00.000Z"
+              "utcTime": "2026-10-28T17:30:00.000Z"
             },
             "teamPageUrl": "/teams/8636/overview/inter",
             "tooltipText": {
-              "utcTime": "2026-09-14T18:45:00.000Z",
-              "homeTeam": "Inter",
-              "homeTeamId": 8636,
-              "homeScore": "5",
-              "awayTeam": "Udinese",
-              "awayTeamId": 8600,
-              "awayScore": "3"
+              "utcTime": "2026-10-28T17:30:00.000Z",
+              "homeTeam": "Venezia",
+              "homeTeamId": 7881,
+              "homeScore": "0",
+              "awayTeam": "Inter",
+              "awayTeamId": 8636,
+              "awayScore": "2"
             },
-            "score": "5 - 3",
+            "score": "0 - 2",
             "home": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": true
+            },
+            "away": {
               "id": "8636",
               "name": "Inter",
               "isOurTeam": false
-            },
-            "away": {
-              "id": "8600",
-              "name": "Udinese",
-              "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -423,6 +393,36 @@
               "name": "Milan",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
+            "linkToMatch": "/matches/udinese-vs-parma/2wutm8#5749726",
+            "date": {
+              "utcTime": "2026-10-28T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10167/overview/parma",
+            "tooltipText": {
+              "utcTime": "2026-10-28T17:30:00.000Z",
+              "homeTeam": "Parma",
+              "homeTeamId": 10167,
+              "homeScore": "0",
+              "awayTeam": "Udinese",
+              "awayTeamId": 8600,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10167",
+              "name": "Parma",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,14 +456,37 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese have lost their last 6 matches."
+              "defaultText": "Udinese haven't won a match in 7 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "0.33",
+                "0"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Udinese have an average of 0."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
                 "away_team",
                 "3"
@@ -476,31 +499,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Udinese have scored in their last 3 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "0.67",
-                "0.33"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.67 goals in their last three matches and Udinese have an average of 0.33."
+              "Icon": "poll_glove",
+              "defaultText": "Udinese haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -510,7 +510,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Udinese haven't won a match in 6 attempts."
+              "defaultText": "Udinese haven't won a match in 7 attempts."
             }
           ]
         },
@@ -543,7 +543,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 2,
               "name": null,
               "type": "integer"
             },
@@ -553,34 +553,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 2 goals in their last 5 matches",
           "color": "#101010"
         },
         {
-          "type": "player",
-          "playerId": 958640,
+          "type": "team",
+          "playerId": null,
           "teamId": 7881,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 958640,
-              "name": "Akor Adams",
-              "type": "player"
-            },
-            {
-              "value": 7881,
-              "name": "Venezia",
-              "type": "team"
-            },
-            {
-              "value": 1.6,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Akor Adams has the most shots on target per match for Venezia (1.6)",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#101010"
         },
         {
@@ -619,7 +609,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 1,
               "name": null,
               "type": "integer"
             },
@@ -629,7 +619,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 1 goals in their last 5 matches",
           "color": "#101010"
         },
         {
@@ -641,12 +631,12 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#101010"
         },
         {
@@ -654,16 +644,16 @@
           "playerId": null,
           "teamId": 8600,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Haven't won a match in 7 attempts",
           "color": "#101010"
         }
       ],
@@ -689,14 +679,14 @@
       "windSpeed": 3,
       "windDirectionCardinal": "NNE",
       "iconCode": 29,
-      "relativeHumidity": 76,
-      "precipChance": 17,
+      "relativeHumidity": 79,
+      "precipChance": 19,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 48,
+      "cloudCover": 34,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T08:00:16Z",
+      "lastUpdated": "2026-10-28T20:00:15Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
