@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "2",
                 "0",
@@ -462,17 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Fulham have 3W, 1D, 1L in five matches while Newcastle United have 2W, 0D, 3L."
+              "defaultText": "Fulham have 2W, 1D, 2L in five matches while Newcastle United have 2W, 0D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "6"
+                "away_team",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fulham have scored in their last 6 home matches."
+              "defaultText": "Newcastle United have scored in their last 5 away matches."
             },
             {
               "OddsType": "ou",
@@ -494,7 +494,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
+                "0.67",
                 "1"
               ],
               "DefaultLabels": [
@@ -506,16 +506,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fulham have an average of 1 goals in their last three matches and Newcastle United have an average of 1."
+              "defaultText": "Fulham have an average of 0.67 goals in their last three matches and Newcastle United have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -529,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Newcastle United haven't drawn in their last 6 matches."
+              "defaultText": "Fulham haven't drawn in their last 4 matches and Newcastle United in their last 6."
             }
           ]
         },
@@ -657,15 +659,15 @@
         },
         {
           "type": "player",
-          "playerId": 1624586,
+          "playerId": 760359,
           "teamId": 10261,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1624586,
-              "name": "Bazoumana Touré",
+              "value": 760359,
+              "name": "Harvey Barnes",
               "type": "player"
             },
             {
@@ -674,12 +676,12 @@
               "type": "team"
             },
             {
-              "value": 1.6,
+              "value": 2,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Bazoumana Touré has the most shots on target per match for Newcastle United (1.6)",
+          "text": "Harvey Barnes has created the most big chances for Newcastle United (2)",
           "color": "#141413"
         }
       ],

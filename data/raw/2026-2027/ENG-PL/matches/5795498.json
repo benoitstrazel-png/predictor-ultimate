@@ -508,14 +508,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "7",
-                "2"
+                "1",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -526,20 +525,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have scored 7 goals in their last 3 matches, while Manchester United have scored 2."
+              "defaultText": "Chelsea have an average of 1 goals in their last three matches and Manchester United have an average of 0.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "7",
-                "2"
+                "1",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -550,7 +548,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have scored 7 goals in their last 3 matches, while Manchester United have scored 2."
+              "defaultText": "Chelsea have an average of 1 goals in their last three matches and Manchester United have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -607,30 +605,20 @@
           "color": "#051495"
         },
         {
-          "type": "player",
-          "playerId": 268375,
+          "type": "team",
+          "playerId": null,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 268375,
-              "name": "Emiliano Martínez",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
+              "value": 2.1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Emiliano Martínez is ranked 1 in saves per match in the competition (4.3)",
+          "text": "Average 2.1 goals per match",
           "color": "#051495"
         },
         {
@@ -704,26 +692,16 @@
           "playerId": null,
           "teamId": 10260,
           "priority": 8,
-          "defaultText": "{0} have won the previous {2} matches against {1}.",
-          "localizedTextId": "h2h_winstreak",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 10260,
-              "name": "Manchester United",
-              "type": "team"
-            },
-            {
-              "value": 8455,
-              "name": "Chelsea",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Manchester United have won the previous 2 matches against Chelsea.",
+          "text": "Haven't won a match in 8 attempts",
           "color": "#C70101"
         }
       ],
@@ -835,20 +813,20 @@
       }
     },
     "weather": {
-      "temperature": 14,
+      "temperature": 13,
       "windSpeed": 3,
       "windDirectionCardinal": "ENE",
-      "iconCode": 34,
-      "relativeHumidity": 73,
-      "precipChance": 3,
+      "iconCode": 30,
+      "relativeHumidity": 77,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 26,
-      "description": "Mostly Sunny",
+      "cloudCover": 41,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-28T13:00:02Z",
-      "localizedKey": "weather_condition_sunny",
-      "defaultTitle": "Sunny"
+      "lastUpdated": "2026-10-29T01:00:03Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795498,

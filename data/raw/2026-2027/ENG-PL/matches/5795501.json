@@ -516,7 +516,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4",
+                "5",
                 "away_team",
                 "6"
               ],
@@ -529,18 +529,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored in their last 4 matches and Arsenal have scored in their last 6 matches."
+              "defaultText": "Liverpool have scored in their last 5 matches and Arsenal have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "7",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -551,7 +553,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 8 goals in their last 3 matches."
+              "defaultText": "Liverpool have scored 7 goals in their last 3 matches, while Arsenal have scored 5."
             },
             {
               "OddsType": "dc",
@@ -561,7 +563,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -574,7 +576,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool haven't drawn in their last 7 matches."
+              "defaultText": "Liverpool haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -718,6 +720,57 @@
           "color": "#bd0510"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 690107,
+          "position": 3,
+          "matchesWithRating": 7,
+          "lastName": "Isak",
+          "fullName": "Alexander Isak",
+          "stats": {
+            "goals": 6,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.29,
+            "motm": 1,
+            "gamesPlayed": 7,
+            "minsPlayed": 571,
+            "minsPlayedGoal": 95,
+            "expectedGoals": 4.266600131988525,
+            "playerRating": 7.5
+          }
+        },
+        "awayPlayer": {
+          "playerId": 961995,
+          "position": 3,
+          "matchesWithRating": 7,
+          "lastName": "Saka",
+          "fullName": "Bukayo Saka",
+          "stats": {
+            "goals": 3,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.67,
+            "motm": 1,
+            "gamesPlayed": 7,
+            "minsPlayed": 598,
+            "minsPlayedGoal": 199,
+            "expectedGoals": 3.618499994277954,
+            "playerRating": 7.72
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ENG",
       "QAData": [],
       "matchInsightsConfig": {
@@ -1246,22 +1299,6 @@
           }
         ],
         "unavailable": [
-          {
-            "id": 1152455,
-            "age": 23,
-            "name": "Florian Wirtz",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 116547690,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Florian",
-            "lastName": "Wirtz",
-            "nationalTeamId": 8570
-          },
           {
             "id": 1113690,
             "age": 23,

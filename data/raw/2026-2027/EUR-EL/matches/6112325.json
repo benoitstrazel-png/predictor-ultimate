@@ -467,35 +467,10 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "3",
-                "8"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have scored 3 goals in their last 3 matches, while Hoffenheim have scored 8."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -507,7 +482,31 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored 8 goals in their last 3 matches."
+              "defaultText": "Hoffenheim have scored in their last 3 away matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "3",
+                "7"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Crystal Palace have scored 3 goals in their last 3 matches, while Hoffenheim have scored 7."
             },
             {
               "OddsType": "dc",
@@ -632,18 +631,6 @@
             "lastName": "Tomiyasu"
           },
           {
-            "id": 719330,
-            "name": "Dean Henderson",
-            "unavailability": {
-              "injuryId": 21,
-              "lastUpdated": "2026-10-28T10:38:48Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Dean",
-            "lastName": "Henderson"
-          },
-          {
             "id": 1187506,
             "name": "Chadi Riad",
             "unavailability": {
@@ -661,18 +648,6 @@
         "id": 8226,
         "name": "Hoffenheim",
         "unavailable": [
-          {
-            "id": 1124825,
-            "name": "Tim Lemperle",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-28T20:13:06Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Tim",
-            "lastName": "Lemperle"
-          },
           {
             "id": 1664759,
             "name": "Nathan De Cat",

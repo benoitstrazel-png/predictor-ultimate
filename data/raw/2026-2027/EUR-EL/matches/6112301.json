@@ -442,8 +442,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
-                "0",
+                "2",
+                "1",
                 "2",
                 "away_team",
                 "3",
@@ -461,41 +461,16 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Celtic have 3W, 0D, 2L in five matches while Beşiktaş have 3W, 1D, 1L."
+              "defaultText": "Celtic have 2W, 1D, 2L in five matches while Beşiktaş have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "10",
-                "4"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Celtic have scored 10 goals in their last 3 matches, while Beşiktaş have scored 4."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
-              "StatValues": [
-                "home_team",
-                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -507,17 +482,47 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Celtic have scored 10 goals in their last 3 matches."
+              "defaultText": "Celtic have scored in their last 3 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "5",
+                "4"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Celtic have scored 5 goals in their last 3 matches, while Beşiktaş have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Celtic haven't drawn in their last 12 matches."
+              "defaultText": "Celtic have 2W, 1D, 2L in five matches while Beşiktaş have 3W, 1D, 1L."
             }
           ]
         },

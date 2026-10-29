@@ -470,7 +470,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -481,18 +481,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored in their last 12 matches and Hoffenheim have scored in their last 6 matches."
+              "defaultText": "Werder Bremen have scored in their last 12 matches and Hoffenheim have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "7",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored 8 goals in their last 3 matches."
+              "defaultText": "Werder Bremen have scored 7 goals in their last 3 matches, while Hoffenheim have scored 7."
             },
             {
               "OddsType": "dc",
@@ -659,15 +661,15 @@
         },
         {
           "type": "player",
-          "playerId": 1353000,
+          "playerId": 1486537,
           "teamId": 8226,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1353000,
-              "name": "Adam Daghim",
+              "value": 1486537,
+              "name": "Max Moerstedt",
               "type": "player"
             },
             {
@@ -676,12 +678,12 @@
               "type": "team"
             },
             {
-              "value": 6,
+              "value": 2.4,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Adam Daghim has created the most big chances for Hoffenheim (6)",
+          "text": "Max Moerstedt has the most shots on target per match for Hoffenheim (2.4)",
           "color": "#005098"
         }
       ],
@@ -1593,22 +1595,6 @@
           "isCoach": true
         },
         "unavailable": [
-          {
-            "id": 1124825,
-            "age": 24,
-            "name": "Tim Lemperle",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 17059259,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Tim",
-            "lastName": "Lemperle",
-            "nationalTeamId": 8570
-          },
           {
             "id": 1186015,
             "age": 23,
