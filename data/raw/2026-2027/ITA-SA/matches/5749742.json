@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6479.png",
-            "linkToMatch": "/matches/pisa-vs-fiorentina/1v441o#6003659",
-            "date": {
-              "utcTime": "2026-09-15T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6479/overview/pisa",
-            "tooltipText": {
-              "utcTime": "2026-09-15T19:00:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "3",
-              "awayTeam": "Pisa",
-              "awayTeamId": 6479,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6479",
-              "name": "Pisa",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
@@ -270,6 +240,36 @@
               "id": "8535",
               "name": "Fiorentina",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
+            "linkToMatch": "/matches/atalanta-vs-fiorentina/2en1cd#5749722",
+            "date": {
+              "utcTime": "2026-10-29T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-10-29T19:45:00.000Z",
+              "homeTeam": "Fiorentina",
+              "homeTeamId": 8535,
+              "homeScore": "2",
+              "awayTeam": "Atalanta",
+              "awayTeamId": 8524,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
             }
           }
         ],
@@ -469,6 +469,30 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
+                "5"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Fiorentina have scored in their last 5 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -480,30 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have scored in their last 4 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "1",
-                "1.33"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Fiorentina have an average of 1 goals in their last three matches and Juventus have an average of 1.33."
+              "defaultText": "Fiorentina have scored 4 goals in their last 3 matches, while Juventus have scored 4."
             },
             {
               "OddsType": "dc",
@@ -513,7 +514,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Fiorentina haven't won a match in 4 attempts."
+              "defaultText": "Fiorentina haven't won a match in 5 attempts."
             }
           ]
         },
@@ -546,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -556,51 +557,41 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#5F259F"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 8535,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 3 matches",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#5F259F"
         },
         {
-          "type": "player",
-          "playerId": 951712,
+          "type": "team",
+          "playerId": null,
           "teamId": 8535,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 951712,
-              "name": "Nicolò Fagioli",
-              "type": "player"
-            },
-            {
-              "value": 8535,
-              "name": "Fiorentina",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Nicolò Fagioli has created the most big chances for Fiorentina (2)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#5F259F"
         },
         {
@@ -698,18 +689,18 @@
       }
     },
     "weather": {
-      "temperature": 10,
+      "temperature": 12,
       "windSpeed": 2,
-      "windDirectionCardinal": "E",
+      "windDirectionCardinal": "SE",
       "iconCode": 11,
-      "relativeHumidity": 85,
-      "precipChance": 32,
-      "precipitation": 0.1,
+      "relativeHumidity": 90,
+      "precipChance": 46,
+      "precipitation": 0.23,
       "snow": 0,
-      "cloudCover": 45,
-      "description": "Few Showers",
+      "cloudCover": 68,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-29T08:00:16Z",
+      "lastUpdated": "2026-10-29T20:00:18Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },

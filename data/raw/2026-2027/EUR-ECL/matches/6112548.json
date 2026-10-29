@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6544.png",
-            "linkToMatch": "/matches/degerfors-vs-mjallby/1s2zdj#5107618",
-            "date": {
-              "utcTime": "2026-10-10T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/6544/overview/degerfors",
-            "tooltipText": {
-              "utcTime": "2026-10-10T15:30:00.000Z",
-              "homeTeam": "Mjällby",
-              "homeTeamId": 8127,
-              "homeScore": "1",
-              "awayTeam": "Degerfors",
-              "awayTeamId": 6544,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "8127",
-              "name": "Mjällby",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6544",
-              "name": "Degerfors",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10050.png",
@@ -269,6 +239,36 @@
               "id": "8248",
               "name": "Hammarby",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10002.png",
+            "linkToMatch": "/matches/mjallby-vs-orgryte/2pujco#5107640",
+            "date": {
+              "utcTime": "2026-10-29T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10002/overview/orgryte",
+            "tooltipText": {
+              "utcTime": "2026-10-29T18:00:00.000Z",
+              "homeTeam": "Örgryte",
+              "homeTeamId": 10002,
+              "homeScore": "1",
+              "awayTeam": "Mjällby",
+              "awayTeamId": 8127,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "10002",
+              "name": "Örgryte",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8127",
+              "name": "Mjällby",
+              "isOurTeam": true
             }
           }
         ],
@@ -442,8 +442,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "1",
                 "2",
+                "1",
                 "2",
                 "away_team",
                 "4",
@@ -461,7 +461,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Mjällby have 1W, 2D, 2L in five matches while Borac Banja Luka have 4W, 0D, 1L."
+              "defaultText": "Mjällby have 2W, 1D, 2L in five matches while Borac Banja Luka have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -488,13 +488,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
-                "1.67"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Mjällby have an average of 0.33 goals in their last three matches and Borac Banja Luka have an average of 1.67."
+              "defaultText": "Mjällby have scored 3 goals in their last 3 matches, while Borac Banja Luka have scored 5."
             },
             {
               "OddsType": "dc",
@@ -573,44 +574,53 @@
     },
     "lineup": {
       "matchId": 6112548,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8127,
         "name": "Mjällby",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1838025,
+            "age": 20,
             "name": "Villum Dalsgaard",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-21T22:02:09Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Villum",
-            "lastName": "Dalsgaard"
+            "lastName": "Dalsgaard",
+            "nationalTeamId": 8238
           },
           {
             "id": 831481,
+            "age": 27,
             "name": "Timo Stavitski",
+            "countryName": "Finland",
+            "countryCode": "FIN",
+            "marketValue": 298813,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-10-21T22:12:19Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Timo",
-            "lastName": "Stavitski"
+            "lastName": "Stavitski",
+            "nationalTeamId": 7871
           }
         ]
       },
       "awayTeam": {
         "id": 10116,
         "name": "Borac Banja Luka",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       }
     },
     "hasPlayoff": true,

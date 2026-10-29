@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-atalanta/284hmb#5749690",
-            "date": {
-              "utcTime": "2026-10-12T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/7881/overview/venezia",
-            "tooltipText": {
-              "utcTime": "2026-10-12T16:30:00.000Z",
-              "homeTeam": "Atalanta",
-              "homeTeamId": 8524,
-              "homeScore": "3",
-              "awayTeam": "Venezia",
-              "awayTeamId": 7881,
-              "awayScore": "1"
-            },
-            "score": "3 - 1",
-            "home": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2137.png",
             "linkToMatch": "/matches/pafos-fc-vs-atalanta/xubt7#6112387",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Frosinone",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
+            "linkToMatch": "/matches/atalanta-vs-fiorentina/2en1cd#5749722",
+            "date": {
+              "utcTime": "2026-10-29T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8535/overview/fiorentina",
+            "tooltipText": {
+              "utcTime": "2026-10-29T19:45:00.000Z",
+              "homeTeam": "Fiorentina",
+              "homeTeamId": 8535,
+              "homeScore": "2",
+              "awayTeam": "Atalanta",
+              "awayTeamId": 8524,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -508,10 +508,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
+                "away_team",
                 "4"
               ],
               "DefaultLabels": [
@@ -524,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Monza haven't drawn in their last 4 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Atalanta haven't won a match in 4 attempts."
             }
           ]
         },
@@ -560,6 +560,33 @@
         },
         {
           "type": "player",
+          "playerId": 824655,
+          "teamId": 6504,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 824655,
+              "name": "Ricardo Mangas",
+              "type": "player"
+            },
+            {
+              "value": 6504,
+              "name": "Monza",
+              "type": "team"
+            },
+            {
+              "value": 4,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Ricardo Mangas has created the most big chances for Monza (4)",
+          "color": "#e10032"
+        },
+        {
+          "type": "player",
           "playerId": 1122424,
           "teamId": 6504,
           "priority": 4,
@@ -586,28 +613,6 @@
           "color": "#e10032"
         },
         {
-          "type": "player",
-          "playerId": 1585676,
-          "teamId": 6504,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
-          "statValues": [
-            {
-              "value": 1585676,
-              "name": "Gustavo Varela",
-              "type": "player"
-            },
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Gustavo Varela is the competition's top scorer (8)",
-          "color": "#e10032"
-        },
-        {
           "type": "team",
           "playerId": null,
           "teamId": 8524,
@@ -616,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 12,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -626,7 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 12 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#004ca6"
         },
         {

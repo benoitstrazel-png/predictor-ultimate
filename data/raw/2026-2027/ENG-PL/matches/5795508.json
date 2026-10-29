@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8602.png",
-            "linkToMatch": "/matches/wolverhampton-wanderers-vs-everton/2gso21#6099338",
-            "date": {
-              "utcTime": "2026-09-16T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8602/overview/wolverhampton-wanderers",
-            "tooltipText": {
-              "utcTime": "2026-09-16T18:45:00.000Z",
-              "homeTeam": "Everton",
-              "homeTeamId": 8668,
-              "homeScore": "1",
-              "awayTeam": "Wolverhampton Wanderers",
-              "awayTeamId": 8602,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8602",
-              "name": "Wolverhampton Wanderers",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png",
             "linkToMatch": "/matches/everton-vs-ipswich-town/2uo0th#5795458",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8668",
               "name": "Everton",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
+            "linkToMatch": "/matches/everton-vs-newcastle-united/2yo9qd#6275369",
+            "date": {
+              "utcTime": "2026-10-29T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/10261/overview/newcastle-united",
+            "tooltipText": {
+              "utcTime": "2026-10-29T19:45:00.000Z",
+              "homeTeam": "Everton",
+              "homeTeamId": 8668,
+              "homeScore": "3",
+              "awayTeam": "Newcastle United",
+              "awayTeamId": 10261,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8668",
+              "name": "Everton",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10261",
+              "name": "Newcastle United",
+              "isOurTeam": false
             }
           }
         ],
@@ -468,13 +468,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,19 +486,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Everton have an average of 0.67 goals in their last three matches and Coventry City have an average of 1.67."
+              "defaultText": "Everton have scored 3 goals in their last 3 matches, while Coventry City have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Everton have an average of 0.67 goals in their last three matches and Coventry City have an average of 1.67."
+              "defaultText": "Everton have scored 3 goals in their last 3 matches, while Coventry City have scored 5."
             },
             {
               "OddsType": "dc",
@@ -551,7 +553,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -561,24 +563,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
-          "color": "#00359C"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8668,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#00359C"
         },
         {
@@ -606,6 +591,33 @@
             }
           ],
           "text": "Kiernan Dewsbury-Hall has created the most big chances for Everton (4)",
+          "color": "#00359C"
+        },
+        {
+          "type": "player",
+          "playerId": 1398392,
+          "teamId": 8668,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1398392,
+              "name": "Thierno Barry",
+              "type": "player"
+            },
+            {
+              "value": 8668,
+              "name": "Everton",
+              "type": "team"
+            },
+            {
+              "value": 1.6,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Thierno Barry has the most shots on target per match for Everton (1.6)",
           "color": "#00359C"
         },
         {
@@ -705,18 +717,18 @@
     "weather": {
       "temperature": 8,
       "windSpeed": 4,
-      "windDirectionCardinal": "NNE",
-      "iconCode": 29,
-      "relativeHumidity": 83,
-      "precipChance": 8,
+      "windDirectionCardinal": "NE",
+      "iconCode": 27,
+      "relativeHumidity": 82,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
-      "description": "Partly Cloudy",
+      "cloudCover": 66,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-29T08:00:02Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-29T20:00:01Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795508,
@@ -733,7 +745,7 @@
             "name": "Vitaliy Mykolenko",
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-26T00:11:27Z",
+              "lastUpdated": "2026-10-29T21:01:09Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },

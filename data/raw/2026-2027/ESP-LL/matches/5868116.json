@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png",
-            "linkToMatch": "/matches/getafe-vs-barcelona/2dfbe4#5868084",
-            "date": {
-              "utcTime": "2026-10-10T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8634/overview/barcelona",
-            "tooltipText": {
-              "utcTime": "2026-10-10T16:30:00.000Z",
-              "homeTeam": "Barcelona",
-              "homeTeamId": 8634,
-              "homeScore": "3",
-              "awayTeam": "Getafe",
-              "awayTeamId": 8305,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8634",
-              "name": "Barcelona",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/480286.png",
@@ -272,39 +242,39 @@
               "name": "Getafe",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/477697.png",
+            "linkToMatch": "/matches/getafe-vs-ub-lebrijana/1i9587ws#6386062",
+            "date": {
+              "utcTime": "2026-10-29T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/477697/overview/ub-lebrijana",
+            "tooltipText": {
+              "utcTime": "2026-10-29T18:00:00.000Z",
+              "homeTeam": "UB Lebrijana",
+              "homeTeamId": 477697,
+              "homeScore": "2",
+              "awayTeam": "Getafe",
+              "awayTeamId": 8305,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "477697",
+              "name": "UB Lebrijana",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
+            }
           }
         ],
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png",
-            "linkToMatch": "/matches/sevilla-vs-barcelona/2de86m#5868078",
-            "date": {
-              "utcTime": "2026-09-19T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8634/overview/barcelona",
-            "tooltipText": {
-              "utcTime": "2026-09-19T19:00:00.000Z",
-              "homeTeam": "Sevilla",
-              "homeTeamId": 8302,
-              "homeScore": "1",
-              "awayTeam": "Barcelona",
-              "awayTeamId": 8634,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8302",
-              "name": "Sevilla",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8634",
-              "name": "Barcelona",
-              "isOurTeam": false
-            }
-          },
           {
             "result": -1,
             "resultString": "L",
@@ -424,6 +394,36 @@
               "name": "Osasuna",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2360741.png",
+            "linkToMatch": "/matches/sevilla-vs-sporting-hortaleza/zt558l64#6428918",
+            "date": {
+              "utcTime": "2026-10-29T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/2360741/overview/sporting-hortaleza",
+            "tooltipText": {
+              "utcTime": "2026-10-29T20:00:00.000Z",
+              "homeTeam": "Sporting Hortaleza",
+              "homeTeamId": 2360741,
+              "homeScore": "0",
+              "awayTeam": "Sevilla",
+              "awayTeamId": 8302,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "2360741",
+              "name": "Sporting Hortaleza",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8302",
+              "name": "Sevilla",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -440,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,8 +462,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Getafe haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Getafe have 1W, 2D, 2L in five matches while Sevilla have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -467,7 +473,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,7 +484,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Getafe have scored in their last 6 home matches."
+              "defaultText": "Getafe have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +496,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "3",
+                "5",
                 "6"
               ],
               "DefaultLabels": [
@@ -502,17 +508,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Getafe have scored 3 goals in their last 3 matches, while Sevilla have scored 6."
+              "defaultText": "Getafe have scored 5 goals in their last 3 matches, while Sevilla have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,8 +536,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Getafe haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Getafe have 1W, 2D, 2L in five matches while Sevilla have 1W, 1D, 3L."
             }
           ]
         },
@@ -545,7 +557,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -555,7 +567,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#084888"
         },
         {
@@ -567,29 +579,39 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#084888"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1183650,
           "teamId": 8305,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 1183650,
+              "name": "Francho Serrano",
+              "type": "player"
+            },
+            {
+              "value": 8305,
+              "name": "Getafe",
+              "type": "team"
+            },
+            {
+              "value": 1,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Francho Serrano has created the most big chances for Getafe (1)",
           "color": "#084888"
         },
         {
@@ -601,7 +623,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -611,7 +633,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#C90F20"
         },
         {

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png",
-            "linkToMatch": "/matches/getafe-vs-barcelona/2dfbe4#5868084",
-            "date": {
-              "utcTime": "2026-10-10T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8634/overview/barcelona",
-            "tooltipText": {
-              "utcTime": "2026-10-10T16:30:00.000Z",
-              "homeTeam": "Barcelona",
-              "homeTeamId": 8634,
-              "homeScore": "3",
-              "awayTeam": "Getafe",
-              "awayTeamId": 8305,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8634",
-              "name": "Barcelona",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/480286.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "8315",
               "name": "Athletic Club",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/477697.png",
+            "linkToMatch": "/matches/getafe-vs-ub-lebrijana/1i9587ws#6386062",
+            "date": {
+              "utcTime": "2026-10-29T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/477697/overview/ub-lebrijana",
+            "tooltipText": {
+              "utcTime": "2026-10-29T18:00:00.000Z",
+              "homeTeam": "UB Lebrijana",
+              "homeTeamId": 477697,
+              "homeScore": "2",
+              "awayTeam": "Getafe",
+              "awayTeamId": 8305,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "477697",
+              "name": "UB Lebrijana",
               "isOurTeam": false
             },
             "away": {
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Getafe haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Getafe have 1W, 2D, 2L in five matches while Brighton & Hove Albion have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -466,7 +472,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Getafe have scored in their last 6 home matches."
+              "defaultText": "Getafe have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -488,7 +494,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
+                "1.67",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -500,17 +506,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Getafe have an average of 1 goals in their last three matches and Brighton & Hove Albion have an average of 0.67."
+              "defaultText": "Getafe have an average of 1.67 goals in their last three matches and Brighton & Hove Albion have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,8 +534,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Getafe haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Getafe have 1W, 2D, 2L in five matches while Brighton & Hove Albion have 2W, 1D, 2L."
             }
           ]
         },
@@ -538,34 +550,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 8305,
-          "priority": 1345,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
-          "color": "#084888"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8305,
           "priority": 8,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#084888"
         }
       ],
@@ -588,179 +583,230 @@
     },
     "weather": {
       "temperature": 10,
-      "windSpeed": 2,
-      "windDirectionCardinal": "NE",
-      "iconCode": 11,
-      "relativeHumidity": 67,
-      "precipChance": 36,
-      "precipitation": 0.2,
+      "windSpeed": 1,
+      "windDirectionCardinal": "N",
+      "iconCode": 29,
+      "relativeHumidity": 66,
+      "precipChance": 16,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 50,
-      "description": "Showers",
+      "cloudCover": 40,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-29T08:00:26Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-10-29T20:00:30Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6112474,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8305,
         "name": "Getafe",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 765693,
+            "age": 28,
             "name": "Orel Mangala",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 8854152,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-28T17:58:07Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Orel",
-            "lastName": "Mangala"
+            "lastName": "Mangala",
+            "nationalTeamId": 8263
           },
           {
             "id": 1118199,
+            "age": 26,
             "name": "Zaid Abner Romero",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 2101655,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-28T17:58:33Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
             "firstName": "Zaid Abner",
-            "lastName": "Romero"
+            "lastName": "Romero",
+            "nationalTeamId": 6706
           },
           {
             "id": 1580704,
+            "age": 23,
             "name": "Christantus Uche",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 14021979,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-19T11:50:25Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Christantus",
-            "lastName": "Uche"
+            "lastName": "Uche",
+            "nationalTeamId": 6346
           },
           {
             "id": 191873,
+            "age": 33,
             "name": "Juanmi",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 649155,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-09-20T11:56:34Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "",
-            "lastName": "Juanmi"
+            "lastName": "Juanmi",
+            "nationalTeamId": 6720
           }
         ]
       },
       "awayTeam": {
         "id": 10204,
         "name": "Brighton & Hove Albion",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1586552,
+            "age": 21,
             "name": "Chema Andrés",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 18602781,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-28T19:27:41Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
             "firstName": "Chema",
-            "lastName": "Andrés"
+            "lastName": "Andrés",
+            "nationalTeamId": 6720
           },
           {
             "id": 774448,
+            "age": 27,
             "name": "Ferdi Kadıoğlu",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
+            "marketValue": 41174643,
             "unavailability": {
               "injuryId": 31,
-              "lastUpdated": "2026-10-28T19:27:52Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
             "firstName": "Ferdi",
-            "lastName": "Kadıoğlu"
+            "lastName": "Kadıoğlu",
+            "nationalTeamId": 6595
           },
           {
             "id": 796974,
+            "age": 27,
             "name": "Pascal Struijk",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 25758329,
             "unavailability": {
               "injuryId": 137,
-              "lastUpdated": "2026-10-28T19:28:48Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
             "firstName": "Pascal",
-            "lastName": "Struijk"
+            "lastName": "Struijk",
+            "nationalTeamId": 6708
           },
           {
             "id": 1782648,
+            "age": 19,
             "name": "Zadok Yohanna",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 2379052,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-22T16:35:57Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Zadok",
-            "lastName": "Yohanna"
+            "lastName": "Yohanna",
+            "nationalTeamId": 6346
           },
           {
             "id": 1083185,
+            "age": 25,
             "name": "Femi Azeez",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 5775582,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-22T16:35:15Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Femi",
-            "lastName": "Azeez"
+            "lastName": "Azeez",
+            "nationalTeamId": 6346
           },
           {
             "id": 1068482,
+            "age": 22,
             "name": "Evan Ferguson",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "marketValue": 26364096,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-22T16:36:22Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Evan",
-            "lastName": "Ferguson"
+            "lastName": "Ferguson",
+            "nationalTeamId": 5791
           },
           {
             "id": 862608,
+            "age": 29,
             "name": "Kaoru Mitoma",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 16997839,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-17T00:35:37Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Kaoru",
-            "lastName": "Mitoma"
+            "lastName": "Mitoma",
+            "nationalTeamId": 6715
           },
           {
             "id": 1423616,
+            "age": 20,
             "name": "Stefanos Tzimas",
+            "countryName": "Greece",
+            "countryCode": "GRE",
+            "marketValue": 24447115,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-10-22T16:37:36Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Stefanos",
-            "lastName": "Tzimas"
+            "lastName": "Tzimas",
+            "nationalTeamId": 6383
           }
         ]
       }

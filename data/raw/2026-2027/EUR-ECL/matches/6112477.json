@@ -124,36 +124,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6550.png",
-            "linkToMatch": "/matches/kups-vs-fc-inter-turku/k8edg#6145878",
-            "date": {
-              "utcTime": "2026-10-11T12:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6550/overview/fc-inter-turku",
-            "tooltipText": {
-              "utcTime": "2026-10-11T12:00:00.000Z",
-              "homeTeam": "FC Inter Turku",
-              "homeTeamId": 6550,
-              "homeScore": "1",
-              "awayTeam": "KuPS",
-              "awayTeamId": 1693,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "6550",
-              "name": "FC Inter Turku",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "1693",
-              "name": "KuPS",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9752.png",
             "linkToMatch": "/matches/kups-vs-trabzonspor/1303fz#6112478",
             "date": {
@@ -269,6 +239,36 @@
               "id": "1693",
               "name": "KuPS",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2361.png",
+            "linkToMatch": "/matches/kups-vs-if-gnistan/4w80m#6145889",
+            "date": {
+              "utcTime": "2026-10-29T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/2361/overview/if-gnistan",
+            "tooltipText": {
+              "utcTime": "2026-10-29T17:00:00.000Z",
+              "homeTeam": "KuPS",
+              "homeTeamId": 1693,
+              "homeScore": "1",
+              "awayTeam": "IF Gnistan",
+              "awayTeamId": 2361,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "1693",
+              "name": "KuPS",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "2361",
+              "name": "IF Gnistan",
+              "isOurTeam": false
             }
           }
         ],
@@ -443,8 +443,8 @@
               "StatValues": [
                 "home_team",
                 "1",
-                "1",
-                "3",
+                "2",
+                "2",
                 "away_team",
                 "3",
                 "0",
@@ -461,20 +461,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "KuPS have 1W, 1D, 3L in five matches while Gent have 3W, 0D, 2L."
+              "defaultText": "KuPS have 1W, 2D, 2L in five matches while Gent have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "4",
-                "7"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,7 +482,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "KuPS have scored 4 goals in their last 3 matches, while Gent have scored 7."
+              "defaultText": "KuPS have scored in their last 3 home matches."
             },
             {
               "OddsType": "ou",
@@ -497,7 +494,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "4",
+                "3",
                 "7"
               ],
               "DefaultLabels": [
@@ -509,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "KuPS have scored 4 goals in their last 3 matches, while Gent have scored 7."
+              "defaultText": "KuPS have scored 3 goals in their last 3 matches, while Gent have scored 7."
             },
             {
               "OddsType": "dc",
@@ -577,42 +574,52 @@
     },
     "lineup": {
       "matchId": 6112477,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 1693,
         "name": "KuPS",
-        "unavailable": []
+        "formation": "",
+        "starters": []
       },
       "awayTeam": {
         "id": 9991,
         "name": "Gent",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1676100,
+            "age": 19,
             "name": "Josué Vergara",
+            "countryName": "Panama",
+            "countryCode": "PAN",
+            "marketValue": 2268371,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-23T19:12:48Z",
               "type": "injury",
               "expectedReturn": "A few days"
             },
             "firstName": "Josué",
-            "lastName": "Vergara"
+            "lastName": "Vergara",
+            "nationalTeamId": 5922
           },
           {
             "id": 1363733,
+            "age": 26,
             "name": "Mouhamed Ngom",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 574503,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-10-23T19:12:30Z",
               "type": "injury",
               "expectedReturn": "Early June 2027"
             },
             "firstName": "Mouhamed",
-            "lastName": "Ngom"
+            "lastName": "Ngom",
+            "nationalTeamId": 6395
           }
         ]
       }

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10011.png",
-            "linkToMatch": "/matches/austria-wien-vs-sturm-graz/3bduhf#5845994",
-            "date": {
-              "utcTime": "2026-10-10T17:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10011/overview/austria-wien",
-            "tooltipText": {
-              "utcTime": "2026-10-10T17:30:00.000Z",
-              "homeTeam": "Austria Wien",
-              "homeTeamId": 10011,
-              "homeScore": "0",
-              "awayTeam": "Sturm Graz",
-              "awayTeamId": 10014,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "10011",
-              "name": "Austria Wien",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10014",
-              "name": "Sturm Graz",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
@@ -270,6 +240,36 @@
               "id": "10017",
               "name": "Ried",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9982.png",
+            "linkToMatch": "/matches/austria-lustenau-vs-sturm-graz/3b1eok#6171131",
+            "date": {
+              "utcTime": "2026-10-29T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9982/overview/austria-lustenau",
+            "tooltipText": {
+              "utcTime": "2026-10-29T17:00:00.000Z",
+              "homeTeam": "Austria Lustenau",
+              "homeTeamId": 9982,
+              "homeScore": "3",
+              "awayTeam": "Sturm Graz",
+              "awayTeamId": 10014,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "9982",
+              "name": "Austria Lustenau",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10014",
+              "name": "Sturm Graz",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "1",
                 "3",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sturm Graz have 3W, 1D, 1L in five matches while NK Celje have 1W, 3D, 1L."
+              "defaultText": "Sturm Graz have 2W, 1D, 2L in five matches while NK Celje have 1W, 3D, 1L."
             },
             {
               "OddsType": "bts",
@@ -489,11 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "9",
+                "away_team",
+                "3",
+                "5",
                 "3"
               ],
               "DefaultLabels": [
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sturm Graz have scored 9 goals in their last 3 matches."
+              "defaultText": "Sturm Graz have scored 5 goals in their last 3 matches, while NK Celje have scored 3."
             },
             {
               "OddsType": "dc",
@@ -585,156 +587,199 @@
       }
     },
     "weather": {
-      "temperature": 3,
+      "temperature": 4,
       "windSpeed": 1,
-      "windDirectionCardinal": "N",
+      "windDirectionCardinal": "NNE",
       "iconCode": 27,
-      "relativeHumidity": 83,
-      "precipChance": 21,
+      "relativeHumidity": 88,
+      "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 68,
+      "cloudCover": 64,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-29T08:00:25Z",
+      "lastUpdated": "2026-10-29T20:00:28Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 6112316,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10014,
         "name": "Sturm Graz",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 861777,
+            "age": 29,
             "name": "Jürgen Heil",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 348726,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-25T09:55:26Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Jürgen",
-            "lastName": "Heil"
+            "lastName": "Heil",
+            "nationalTeamId": 8255
           },
           {
             "id": 1248004,
+            "age": 22,
             "name": "Daniil Khudyakov",
+            "countryName": "Russia",
+            "countryCode": "RUS",
+            "marketValue": 1451774,
             "unavailability": {
               "injuryId": 23,
-              "lastUpdated": "2026-10-19T07:38:23Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Daniil",
-            "lastName": "Khudyakov"
+            "lastName": "Khudyakov",
+            "nationalTeamId": 8713
           },
           {
             "id": 1382325,
+            "age": 23,
             "name": "Gizo Mamageishvili",
+            "countryName": "Georgia",
+            "countryCode": "GEO",
+            "marketValue": 685618,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-14T09:28:55Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Gizo",
-            "lastName": "Mamageishvili"
+            "lastName": "Mamageishvili",
+            "nationalTeamId": 8268
           },
           {
             "id": 1367614,
+            "age": 21,
             "name": "Nelson Weiper",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 10183372,
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-10-14T09:29:23Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Nelson",
-            "lastName": "Weiper"
+            "lastName": "Weiper",
+            "nationalTeamId": 8570
           },
           {
             "id": 652954,
+            "age": 30,
             "name": "Otar Kiteishvili",
+            "countryName": "Georgia",
+            "countryCode": "GEO",
+            "marketValue": 1865682,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-14T09:28:11Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "Otar",
-            "lastName": "Kiteishvili"
+            "lastName": "Kiteishvili",
+            "nationalTeamId": 8268
           },
           {
             "id": 1484822,
+            "age": 20,
             "name": "Filip Rózga",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 2409097,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-14T09:28:16Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Filip",
-            "lastName": "Rózga"
+            "lastName": "Rózga",
+            "nationalTeamId": 8568
           },
           {
             "id": 1385272,
+            "age": 20,
             "name": "Leon Grgić",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
+            "marketValue": 2176609,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-10-25T09:54:41Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "Leon",
-            "lastName": "Grgić"
+            "lastName": "Grgić",
+            "nationalTeamId": 10155
           },
           {
             "id": 1233202,
+            "age": 23,
             "name": "Seedy Jatta",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 1206141,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-10-14T09:29:07Z",
               "type": "injury",
               "expectedReturn": "Unknown"
             },
             "firstName": "Seedy",
-            "lastName": "Jatta"
+            "lastName": "Jatta",
+            "nationalTeamId": 8492
           },
           {
             "id": 1525418,
+            "age": 21,
             "name": "Emran Soglo",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 535220,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-14T09:29:02Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Emran",
-            "lastName": "Soglo"
+            "lastName": "Soglo",
+            "nationalTeamId": 6723
           }
         ]
       },
       "awayTeam": {
         "id": 4622,
         "name": "NK Celje",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1264037,
+            "age": 24,
             "name": "Jošt Pišek",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
+            "marketValue": 257382,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-16T07:45:50Z",
               "type": "injury",
               "expectedReturn": "Mid January 2027"
             },
             "firstName": "Jošt",
-            "lastName": "Pišek"
+            "lastName": "Pišek",
+            "nationalTeamId": 5787
           }
         ]
       }

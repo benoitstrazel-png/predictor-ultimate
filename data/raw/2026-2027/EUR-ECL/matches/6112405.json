@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8391.png",
-            "linkToMatch": "/matches/fc-midtjylland-vs-fc-kobenhavn/293ehv#5739519",
-            "date": {
-              "utcTime": "2026-10-11T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8391/overview/fc-kobenhavn",
-            "tooltipText": {
-              "utcTime": "2026-10-11T16:00:00.000Z",
-              "homeTeam": "FC Midtjylland",
-              "homeTeamId": 8113,
-              "homeScore": "2",
-              "awayTeam": "FC København",
-              "awayTeamId": 8391,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8113",
-              "name": "FC Midtjylland",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8391",
-              "name": "FC København",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10039.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "9907",
               "name": "Lyngby",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8414.png",
+            "linkToMatch": "/matches/fc-midtjylland-vs-ob/29bjme#6298365",
+            "date": {
+              "utcTime": "2026-10-29T18:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8414/overview/ob",
+            "tooltipText": {
+              "utcTime": "2026-10-29T18:30:00.000Z",
+              "homeTeam": "FC Midtjylland",
+              "homeTeamId": 8113,
+              "homeScore": "2",
+              "awayTeam": "OB",
+              "awayTeamId": 8414,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8113",
+              "name": "FC Midtjylland",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8414",
+              "name": "OB",
               "isOurTeam": false
             }
           }
@@ -511,10 +511,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -528,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Ajax haven't drawn in their last 4 matches."
+              "defaultText": "FC Midtjylland haven't drawn in their last 4 matches and Ajax in their last 4."
             }
           ]
         },
@@ -548,12 +550,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#000000"
         },
         {
@@ -619,139 +621,181 @@
     },
     "lineup": {
       "matchId": 6112405,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8113,
         "name": "FC Midtjylland",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1272272,
+            "age": 21,
             "name": "Pedro Bravo",
+            "countryName": "Colombia",
+            "countryCode": "COL",
+            "marketValue": 5308027,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-25T10:32:11Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Pedro",
-            "lastName": "Bravo"
+            "lastName": "Bravo",
+            "nationalTeamId": 8258
           },
           {
             "id": 1477417,
+            "age": 22,
             "name": "Denil Castillo",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-25T10:27:47Z",
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
             "firstName": "Denil",
-            "lastName": "Castillo"
+            "lastName": "Castillo",
+            "nationalTeamId": 6707
           },
           {
             "id": 768860,
+            "age": 30,
             "name": "Magnus Jensen",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 621767,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-25T10:26:53Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Magnus",
-            "lastName": "Jensen"
+            "lastName": "Jensen",
+            "nationalTeamId": 8238
           },
           {
             "id": 841966,
+            "age": 26,
             "name": "Elías Ólafsson",
+            "countryName": "Iceland",
+            "countryCode": "ISL",
+            "marketValue": 2330133,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-25T10:26:40Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Elías",
-            "lastName": "Ólafsson"
+            "lastName": "Ólafsson",
+            "nationalTeamId": 8536
           },
           {
             "id": 616170,
+            "age": 28,
             "name": "Martin Erlić",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
+            "marketValue": 2371155,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-25T10:27:12Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Martin",
-            "lastName": "Erlić"
+            "lastName": "Erlić",
+            "nationalTeamId": 10155
           },
           {
             "id": 1531099,
+            "age": 20,
             "name": "Mikel Gogorza",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 5684071,
             "unavailability": {
               "injuryId": 31,
-              "lastUpdated": "2026-10-25T10:27:35Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Mikel",
-            "lastName": "Gogorza"
+            "lastName": "Gogorza",
+            "nationalTeamId": 8238
           }
         ]
       },
       "awayTeam": {
         "id": 8593,
         "name": "Ajax",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1329665,
+            "age": 23,
             "name": "Anton Gaaei",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 5377530,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-23T20:08:08Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Anton",
-            "lastName": "Gaaei"
+            "lastName": "Gaaei",
+            "nationalTeamId": 8238
           },
           {
             "id": 209786,
+            "age": 34,
             "name": "Steven Berghuis",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "marketValue": 1182678,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-22T09:44:29Z",
               "type": "injury",
               "expectedReturn": "Back in training"
             },
             "firstName": "Steven",
-            "lastName": "Berghuis"
+            "lastName": "Berghuis",
+            "nationalTeamId": 6708
           },
           {
             "id": 769525,
+            "age": 29,
             "name": "Caio Henrique",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 13110713,
             "unavailability": {
               "injuryId": 31,
-              "lastUpdated": "2026-10-23T20:08:59Z",
               "type": "injury",
               "expectedReturn": "Day to day"
             },
             "firstName": "Caio",
-            "lastName": "Henrique"
+            "lastName": "Henrique",
+            "nationalTeamId": 8256
           },
           {
             "id": 640742,
+            "age": 29,
             "name": "Kasper Dolberg",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 6537447,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-23T20:08:40Z",
               "type": "injury",
               "expectedReturn": "Out for season"
             },
             "firstName": "Kasper",
-            "lastName": "Dolberg"
+            "lastName": "Dolberg",
+            "nationalTeamId": 8238
           }
         ]
       }
