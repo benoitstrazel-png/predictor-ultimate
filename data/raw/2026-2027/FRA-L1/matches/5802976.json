@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -610,6 +610,23 @@
           "playerId": null,
           "teamId": 9748,
           "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#0160A0"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9748,
+          "priority": 9,
           "defaultText": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
           "localizedTextId": "h2h_undefeated",
           "statValues": [
@@ -640,23 +657,6 @@
             }
           ],
           "text": "Lyon haven't lost to Angers in their last 7 meetings (6W, 1D).",
-          "color": "#0160A0"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9748,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
-          "statValues": [
-            {
-              "value": 2,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't scored in their last 2 matches",
           "color": "#0160A0"
         },
         {
@@ -861,8 +861,8 @@
     },
     "lineup": {
       "matchId": 5802976,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -1069,7 +1069,6 @@
             "positionId": 77,
             "usualPlayingPositionId": 2,
             "shirtNumber": "8",
-            "isCaptain": true,
             "countryName": "France",
             "countryCode": "FRA",
             "horizontalLayout": {
@@ -1186,135 +1185,23 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 767014,
-            "age": 30,
-            "name": "Rémy Descamps",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "40",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 1148634,
-            "firstName": "Rémy",
-            "lastName": "Descamps",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 266105,
-            "age": 33,
-            "name": "Clinton Mata",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Angola",
-            "countryCode": "ANG",
-            "marketValue": 1941108,
-            "firstName": "Clinton",
-            "lastName": "Mata",
-            "nationalTeamId": 6712,
-            "rankings": null
-          },
-          {
-            "id": 1744188,
-            "age": 19,
-            "name": "Noham Kamara",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "85",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 4199618,
-            "firstName": "Noham",
-            "lastName": "Kamara",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1125076,
-            "age": 25,
-            "name": "Ruben Kluivert",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "21",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 5794015,
-            "firstName": "Ruben",
-            "lastName": "Kluivert",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 1853988,
-            "age": 17,
-            "name": "Adil Hamdani",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "44",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 1351179,
-            "firstName": "Adil",
-            "lastName": "Hamdani",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1081025,
-            "age": 25,
-            "name": "Mads Bidstrup",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "2",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 15386509,
-            "firstName": "Mads",
-            "lastName": "Bidstrup",
-            "nationalTeamId": 8238,
-            "rankings": null
-          },
-          {
-            "id": 1368710,
-            "age": 21,
-            "name": "Noah Nartey",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "99",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 15466888,
-            "firstName": "Noah",
-            "lastName": "Nartey",
-            "nationalTeamId": 8238,
-            "rankings": null
-          },
-          {
-            "id": 1896949,
-            "age": 20,
-            "name": "Kaïl Boudache",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "26",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
-            "marketValue": 7688744,
-            "firstName": "Kaïl",
-            "lastName": "Boudache",
-            "nationalTeamId": 6317,
-            "rankings": null
-          },
-          {
-            "id": 1793704,
-            "age": 18,
-            "name": "Rémi Himbert",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "45",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 13307446,
-            "firstName": "Rémi",
-            "lastName": "Himbert",
-            "nationalTeamId": 6723,
-            "rankings": null
-          }
-        ],
         "unavailable": [
+          {
+            "id": 747767,
+            "age": 26,
+            "name": "Loïs Openda",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 24871232,
+            "unavailability": {
+              "injuryId": 74,
+              "type": "injury",
+              "expectedReturn": "Mid November 2026"
+            },
+            "firstName": "Loïs",
+            "lastName": "Openda",
+            "nationalTeamId": 8263
+          },
           {
             "id": 195750,
             "age": 34,
@@ -1367,23 +1254,6 @@
             "nationalTeamId": 6323
           },
           {
-            "id": 747767,
-            "age": 26,
-            "name": "Loïs Openda",
-            "positionId": 1000,
-            "countryName": "Belgium",
-            "countryCode": "BEL",
-            "marketValue": 24871232,
-            "unavailability": {
-              "injuryId": 74,
-              "type": "injury",
-              "expectedReturn": "Mid November 2026"
-            },
-            "firstName": "Loïs",
-            "lastName": "Openda",
-            "nationalTeamId": 8263
-          },
-          {
             "id": 1037539,
             "age": 25,
             "name": "Pavel Šulc",
@@ -1402,17 +1272,7 @@
           }
         ],
         "averageStarterAge": 25.4,
-        "totalStarterMarketValue": 151324692,
-        "lastMatch": {
-          "matchId": 5802972,
-          "homeTeamId": 9847,
-          "awayTeamId": 9748,
-          "homeTeamName": "Paris Saint-Germain",
-          "awayTeamName": "Lyon",
-          "homeScore": 2,
-          "awayScore": 0,
-          "matchDate": "2026-10-26T20:30:00"
-        }
+        "totalStarterMarketValue": 151324692
       },
       "awayTeam": {
         "id": 8121,
@@ -1507,7 +1367,6 @@
             "positionId": 37,
             "usualPlayingPositionId": 1,
             "shirtNumber": "21",
-            "isCaptain": true,
             "countryName": "Mauritania",
             "countryCode": "MTN",
             "horizontalLayout": {
@@ -1663,14 +1522,14 @@
             "rankings": null
           },
           {
-            "id": 1123505,
-            "age": 25,
-            "name": "Amine El Ouazzani",
+            "id": 1169692,
+            "age": 24,
+            "name": "Usman Simbakoli",
             "positionId": 104,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "19",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
+            "shirtNumber": "7",
+            "countryName": "Central African Rep.",
+            "countryCode": "CTA",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.7,
@@ -1683,10 +1542,10 @@
               "height": 0.2,
               "width": 0.4
             },
-            "marketValue": 2568898,
-            "firstName": "Amine",
-            "lastName": "El Ouazzani",
-            "nationalTeamId": 6262,
+            "marketValue": 737160,
+            "firstName": "Usman",
+            "lastName": "Simbakoli",
+            "nationalTeamId": 230693,
             "rankings": null
           },
           {
@@ -1731,150 +1590,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1177482,
-            "age": 24,
-            "name": "Melvin Zinga",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "16",
-            "countryName": "Congo",
-            "countryCode": "CGO",
-            "marketValue": 369824,
-            "firstName": "Melvin",
-            "lastName": "Zinga",
-            "nationalTeamId": 5801,
-            "rankings": null
-          },
-          {
-            "id": 1946407,
-            "age": 17,
-            "name": "Mael Gernigon",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "34",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "firstName": "Mael",
-            "lastName": "Gernigon",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1688980,
-            "age": 19,
-            "name": "Marius Louër",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "20",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 2161159,
-            "firstName": "Marius",
-            "lastName": "Louër",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1573544,
-            "age": 21,
-            "name": "Anthony Bermont",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "26",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 1437625,
-            "firstName": "Anthony",
-            "lastName": "Bermont",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 561869,
-            "age": 32,
-            "name": "Haris Belkebla",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "93",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
-            "marketValue": 1248782,
-            "firstName": "Haris",
-            "lastName": "Belkebla",
-            "nationalTeamId": 6317,
-            "rankings": null
-          },
-          {
-            "id": 1329255,
-            "age": 24,
-            "name": "Louis Mouton",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "6",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 3541526,
-            "firstName": "Louis",
-            "lastName": "Mouton",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 1832893,
-            "age": 19,
-            "name": "Harouna Djibirin",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Cameroon",
-            "countryCode": "CMR",
-            "marketValue": 1938561,
-            "firstName": "Harouna",
-            "lastName": "Djibirin",
-            "nationalTeamId": 6629,
-            "rankings": null
-          },
-          {
-            "id": 1011026,
-            "age": 31,
-            "name": "Jim Allevinah",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "18",
-            "countryName": "Gabon",
-            "countryCode": "GAB",
-            "marketValue": 661094,
-            "firstName": "Jim",
-            "lastName": "Allevinah",
-            "nationalTeamId": 5889,
-            "rankings": null
-          },
-          {
-            "id": 1169692,
-            "age": 24,
-            "name": "Usman Simbakoli",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Central African Rep.",
-            "countryCode": "CTA",
-            "marketValue": 737160,
-            "firstName": "Usman",
-            "lastName": "Simbakoli",
-            "nationalTeamId": 230693,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1123505,
-            "age": 25,
-            "name": "Amine El Ouazzani",
-            "countryName": "Morocco",
-            "countryCode": "MAR",
-            "marketValue": 2568898,
-            "unavailability": {
-              "injuryId": 6,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Amine",
-            "lastName": "El Ouazzani",
-            "nationalTeamId": 6262
-          },
           {
             "id": 1428420,
             "age": 21,
@@ -1891,20 +1607,27 @@
             "firstName": "Emmanuel",
             "lastName": "Biumla",
             "nationalTeamId": 6723
+          },
+          {
+            "id": 1123505,
+            "age": 25,
+            "name": "Amine El Ouazzani",
+            "positionId": 1000,
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 2568898,
+            "unavailability": {
+              "injuryId": 47,
+              "type": "injury",
+              "expectedReturn": "A few weeks"
+            },
+            "firstName": "Amine",
+            "lastName": "El Ouazzani",
+            "nationalTeamId": 6262
           }
         ],
         "averageStarterAge": 27.1,
-        "totalStarterMarketValue": 38494316,
-        "lastMatch": {
-          "matchId": 5802964,
-          "homeTeamId": 8121,
-          "awayTeamId": 8689,
-          "homeTeamName": "Angers",
-          "awayTeamName": "Lorient",
-          "homeScore": 0,
-          "awayScore": 0,
-          "matchDate": "2026-10-25T17:15:00"
-        }
+        "totalStarterMarketValue": 36662578
       }
     },
     "hasPlayoff": false,
