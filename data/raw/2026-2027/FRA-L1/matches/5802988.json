@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
-            "linkToMatch": "/matches/auxerre-vs-rennes/2t635q#5802953",
-            "date": {
-              "utcTime": "2026-10-11T15:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8583/overview/auxerre",
-            "tooltipText": {
-              "utcTime": "2026-10-11T15:15:00.000Z",
-              "homeTeam": "Rennes",
-              "homeTeamId": 9851,
-              "homeScore": "4",
-              "awayTeam": "Auxerre",
-              "awayTeamId": 8583,
-              "awayScore": "1"
-            },
-            "score": "4 - 1",
-            "home": {
-              "id": "9851",
-              "name": "Rennes",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8583",
-              "name": "Auxerre",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7753.png",
             "linkToMatch": "/matches/ofi-crete-vs-rennes/2k9iw5#6112309",
             "date": {
@@ -270,6 +240,36 @@
               "id": "9848",
               "name": "Strasbourg",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
+            "linkToMatch": "/matches/nice-vs-rennes/37bvse#5802978",
+            "date": {
+              "utcTime": "2026-10-30T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9831/overview/nice",
+            "tooltipText": {
+              "utcTime": "2026-10-30T18:00:00.000Z",
+              "homeTeam": "Nice",
+              "homeTeamId": 9831,
+              "homeScore": "5",
+              "awayTeam": "Rennes",
+              "awayTeamId": 9851,
+              "awayScore": "2"
+            },
+            "score": "5 - 2",
+            "home": {
+              "id": "9831",
+              "name": "Nice",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9851",
+              "name": "Rennes",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "1",
                 "2",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Rennes have 3W, 1D, 1L in five matches while Lille have 1W, 2D, 2L."
+              "defaultText": "Rennes have 2W, 1D, 2L in five matches while Lille have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,12 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "7",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rennes have scored 8 goals in their last 3 matches."
+              "defaultText": "Rennes have scored 7 goals in their last 3 matches, while Lille have scored 4."
             },
             {
               "OddsType": "dc",
@@ -548,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 14,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +560,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 14 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
+          "color": "#E13327"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9851,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 4,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (4)",
           "color": "#E13327"
         },
         {
@@ -570,34 +589,12 @@
           "localizedTextId": "insights_penalties_awarded",
           "statValues": [
             {
-              "value": 4,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have been awarded the most penalties this season (4)",
-          "color": "#E13327"
-        },
-        {
-          "type": "player",
-          "playerId": 1280225,
-          "teamId": 9851,
-          "priority": 10,
-          "defaultText": "{0} is the competition's top scorer ({1})",
-          "localizedTextId": "insights_player_goals_scored",
-          "statValues": [
-            {
-              "value": 1280225,
-              "name": "Estéban Lepaul",
-              "type": "player"
-            },
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Estéban Lepaul is the competition's top scorer (7)",
+          "text": "Have been awarded the most penalties this season (5)",
           "color": "#E13327"
         },
         {
@@ -745,7 +742,7 @@
             "name": "Osame Sahraoui",
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-24T21:47:36Z",
+              "lastUpdated": "2026-10-30T20:14:10Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
