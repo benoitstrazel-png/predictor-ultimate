@@ -605,30 +605,20 @@
           "color": "#051495"
         },
         {
-          "type": "player",
-          "playerId": 268375,
+          "type": "team",
+          "playerId": null,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 268375,
-              "name": "Emiliano Martínez",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
+              "value": 2.1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Emiliano Martínez is ranked 1 in saves per match in the competition (4.3)",
+          "text": "Average 2.1 goals per match",
           "color": "#051495"
         },
         {
@@ -905,7 +895,8 @@
           "zh-Hans",
           "zh"
         ],
-        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795498/matchinsights_{lang}.json"
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795498/matchinsights_{lang}.json",
+        "hasRefereeInsight": true
       }
     },
     "liveticker": false,
@@ -923,26 +914,27 @@
       }
     },
     "weather": {
-      "temperature": 13,
+      "temperature": 14,
       "windSpeed": 3,
       "windDirectionCardinal": "E",
-      "iconCode": 30,
-      "relativeHumidity": 76,
-      "precipChance": 4,
+      "iconCode": 34,
+      "relativeHumidity": 74,
+      "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 37,
-      "description": "Partly Cloudy",
+      "cloudCover": 24,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-29T19:00:01Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-10-30T07:00:01Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5795498,
       "lineupType": "predicted",
       "source": "enetpulse",
       "availableFilters": [
+        "season",
         "marketValue",
         "age",
         "country"
@@ -974,6 +966,9 @@
               "width": 1
             },
             "marketValue": 30138512,
+            "performance": {
+              "seasonRating": 5.87
+            },
             "firstName": "Mike",
             "lastName": "Penders",
             "nationalTeamId": 8263,
@@ -1001,6 +996,9 @@
               "width": 0.29
             },
             "marketValue": 29169410,
+            "performance": {
+              "seasonRating": 6.63
+            },
             "firstName": "Josh",
             "lastName": "Acheampong",
             "nationalTeamId": 8491,
@@ -1028,6 +1026,10 @@
               "width": 0.29
             },
             "marketValue": 61125128,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.89
+            },
             "firstName": "Maxence",
             "lastName": "Lacroix",
             "nationalTeamId": 6723,
@@ -1055,6 +1057,9 @@
               "width": 0.29
             },
             "marketValue": 62745559,
+            "performance": {
+              "seasonRating": 6.73
+            },
             "firstName": "Levi",
             "lastName": "Colwill",
             "nationalTeamId": 8491,
@@ -1082,6 +1087,11 @@
               "width": 0.25
             },
             "marketValue": 60607265,
+            "performance": {
+              "seasonGoals": 3,
+              "seasonAssists": 1,
+              "seasonRating": 7.41
+            },
             "firstName": "Pedro",
             "lastName": "Neto",
             "nationalTeamId": 8361,
@@ -1109,6 +1119,9 @@
               "width": 0.25
             },
             "marketValue": 123013657,
+            "performance": {
+              "seasonRating": 6.94
+            },
             "firstName": "Moisés",
             "lastName": "Caicedo",
             "nationalTeamId": 6707,
@@ -1136,6 +1149,11 @@
               "width": 0.25
             },
             "marketValue": 1360603,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonAssists": 1,
+              "seasonRating": 7.46
+            },
             "firstName": "Jordan",
             "lastName": "Henderson",
             "nationalTeamId": 8491,
@@ -1163,6 +1181,10 @@
               "width": 0.25
             },
             "marketValue": 54453612,
+            "performance": {
+              "seasonAssists": 2,
+              "seasonRating": 6.81
+            },
             "firstName": "Jorrel",
             "lastName": "Hato",
             "nationalTeamId": 6708,
@@ -1190,6 +1212,11 @@
               "width": 0.4
             },
             "marketValue": 101952390,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonAssists": 3,
+              "seasonRating": 7.38
+            },
             "firstName": "Cole",
             "lastName": "Palmer",
             "nationalTeamId": 8491,
@@ -1217,6 +1244,9 @@
               "width": 0.4
             },
             "marketValue": 54942760,
+            "performance": {
+              "seasonRating": 5.97
+            },
             "firstName": "Geovany",
             "lastName": "Quenda",
             "nationalTeamId": 8361,
@@ -1244,6 +1274,11 @@
               "width": 1
             },
             "marketValue": 105981682,
+            "performance": {
+              "seasonGoals": 4,
+              "seasonAssists": 1,
+              "seasonRating": 7.64
+            },
             "firstName": "Morgan",
             "lastName": "Rogers",
             "nationalTeamId": 8491,
@@ -1278,6 +1313,9 @@
               "type": "injury",
               "expectedReturn": "Early November 2026"
             },
+            "performance": {
+              "seasonRating": 7.34
+            },
             "firstName": "Emiliano",
             "lastName": "Martínez",
             "nationalTeamId": 6706
@@ -1295,6 +1333,10 @@
               "type": "injury",
               "expectedReturn": "Back in training"
             },
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.6
+            },
             "firstName": "Pep",
             "lastName": "Chavarría",
             "nationalTeamId": 6720
@@ -1311,6 +1353,9 @@
               "injuryId": 14,
               "type": "injury",
               "expectedReturn": "Mid January 2027"
+            },
+            "performance": {
+              "seasonRating": 6.83
             },
             "firstName": "Reece",
             "lastName": "James",
@@ -1345,6 +1390,11 @@
               "injuryId": 87,
               "type": "injury",
               "expectedReturn": "Early November 2026"
+            },
+            "performance": {
+              "seasonGoals": 5,
+              "seasonAssists": 3,
+              "seasonRating": 7.73
             },
             "firstName": "João",
             "lastName": "Pedro",
@@ -1381,6 +1431,9 @@
               "width": 1
             },
             "marketValue": 25694269,
+            "performance": {
+              "seasonRating": 6.69
+            },
             "firstName": "Senne",
             "lastName": "Lammens",
             "nationalTeamId": 8263,
@@ -1408,6 +1461,9 @@
               "width": 0.25
             },
             "marketValue": 64213544,
+            "performance": {
+              "seasonRating": 6.62
+            },
             "firstName": "Leny",
             "lastName": "Yoro",
             "nationalTeamId": 6723,
@@ -1435,6 +1491,9 @@
               "width": 0.25
             },
             "marketValue": 5811328,
+            "performance": {
+              "seasonRating": 7.01
+            },
             "firstName": "Harry",
             "lastName": "Maguire",
             "nationalTeamId": 8491,
@@ -1462,6 +1521,9 @@
               "width": 0.25
             },
             "marketValue": 28962303,
+            "performance": {
+              "seasonRating": 6.25
+            },
             "firstName": "Ayden",
             "lastName": "Heaven",
             "nationalTeamId": 8491,
@@ -1489,6 +1551,9 @@
               "width": 0.25
             },
             "marketValue": 33062873,
+            "performance": {
+              "seasonRating": 7.16
+            },
             "firstName": "Diogo",
             "lastName": "Dalot",
             "nationalTeamId": 8361,
@@ -1516,6 +1581,9 @@
               "width": 0.4
             },
             "marketValue": 50721856,
+            "performance": {
+              "seasonRating": 6.75
+            },
             "firstName": "Andrey",
             "lastName": "Santos",
             "nationalTeamId": 8256,
@@ -1543,6 +1611,9 @@
               "width": 0.4
             },
             "marketValue": 63181148,
+            "performance": {
+              "seasonRating": 6.7
+            },
             "firstName": "Carlos",
             "lastName": "Baleba",
             "nationalTeamId": 6629,
@@ -1570,6 +1641,9 @@
               "width": 0.325
             },
             "marketValue": 55380731,
+            "performance": {
+              "seasonRating": 6.93
+            },
             "firstName": "Amad",
             "lastName": "Diallo",
             "nationalTeamId": 6709,
@@ -1597,6 +1671,10 @@
               "width": 0.337
             },
             "marketValue": 47631944,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 7.1
+            },
             "firstName": "Youri",
             "lastName": "Tielemans",
             "nationalTeamId": 8263,
@@ -1624,6 +1702,9 @@
               "width": 0.325
             },
             "marketValue": 24297394,
+            "performance": {
+              "seasonRating": 6.81
+            },
             "firstName": "Mason",
             "lastName": "Mount",
             "nationalTeamId": 8491,
@@ -1651,6 +1732,10 @@
               "width": 1
             },
             "marketValue": 74714544,
+            "performance": {
+              "seasonGoals": 4,
+              "seasonRating": 7.31
+            },
             "firstName": "Bryan",
             "lastName": "Mbeumo",
             "nationalTeamId": 6629,
@@ -1685,25 +1770,12 @@
               "type": "injury",
               "expectedReturn": "A few days"
             },
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 7.14
+            },
             "firstName": "Luke",
             "lastName": "Shaw",
-            "nationalTeamId": 8491
-          },
-          {
-            "id": 1292810,
-            "age": 21,
-            "name": "Kobbie Mainoo",
-            "positionId": 1000,
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 79664956,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "firstName": "Kobbie",
-            "lastName": "Mainoo",
             "nationalTeamId": 8491
           },
           {
@@ -1736,6 +1808,10 @@
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.31
+            },
             "firstName": "Benjamin",
             "lastName": "Šeško",
             "nationalTeamId": 5787
@@ -1753,6 +1829,9 @@
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
+            "performance": {
+              "seasonRating": 7.29
+            },
             "firstName": "Marcus",
             "lastName": "Rashford",
             "nationalTeamId": 8491
@@ -1769,6 +1848,10 @@
               "injuryId": 42,
               "type": "injury",
               "expectedReturn": "Late October 2026"
+            },
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.51
             },
             "firstName": "Patrick",
             "lastName": "Dorgu",
