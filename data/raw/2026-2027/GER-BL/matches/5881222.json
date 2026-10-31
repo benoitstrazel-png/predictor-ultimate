@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
-            "linkToMatch": "/matches/psv-eindhoven-vs-rb-leipzig/81iorv6#6106323",
-            "date": {
-              "utcTime": "2026-10-13T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8640/overview/psv-eindhoven",
-            "tooltipText": {
-              "utcTime": "2026-10-13T19:00:00.000Z",
-              "homeTeam": "RB Leipzig",
-              "homeTeamId": 178475,
-              "homeScore": "1",
-              "awayTeam": "PSV Eindhoven",
-              "awayTeamId": 8640,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "178475",
-              "name": "RB Leipzig",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8640",
-              "name": "PSV Eindhoven",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
@@ -272,39 +242,39 @@
               "name": "RB Leipzig",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8697.png",
-            "linkToMatch": "/matches/augsburg-vs-werder-bremen/2f35e9#5881178",
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10189.png",
+            "linkToMatch": "/matches/schalke-04-vs-rb-leipzig/86c2g1z#5881212",
             "date": {
-              "utcTime": "2026-09-19T13:30:00.000Z"
+              "utcTime": "2026-10-31T14:30:00.000Z"
             },
-            "teamPageUrl": "/teams/8697/overview/werder-bremen",
+            "teamPageUrl": "/teams/10189/overview/schalke-04",
             "tooltipText": {
-              "utcTime": "2026-09-19T13:30:00.000Z",
-              "homeTeam": "Werder Bremen",
-              "homeTeamId": 8697,
-              "homeScore": "3",
-              "awayTeam": "Augsburg",
-              "awayTeamId": 8406,
+              "utcTime": "2026-10-31T14:30:00.000Z",
+              "homeTeam": "Schalke 04",
+              "homeTeamId": 10189,
+              "homeScore": "0",
+              "awayTeam": "RB Leipzig",
+              "awayTeamId": 178475,
               "awayScore": "2"
             },
-            "score": "3 - 2",
+            "score": "0 - 2",
             "home": {
-              "id": "8697",
-              "name": "Werder Bremen",
+              "id": "10189",
+              "name": "Schalke 04",
               "isOurTeam": false
             },
             "away": {
-              "id": "8406",
-              "name": "Augsburg",
+              "id": "178475",
+              "name": "RB Leipzig",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 0,
             "resultString": "D",
@@ -424,6 +394,36 @@
               "name": "Augsburg",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8358.png",
+            "linkToMatch": "/matches/freiburg-vs-augsburg/2bo3oc#5881206",
+            "date": {
+              "utcTime": "2026-10-31T14:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8358/overview/freiburg",
+            "tooltipText": {
+              "utcTime": "2026-10-31T14:30:00.000Z",
+              "homeTeam": "Augsburg",
+              "homeTeamId": 8406,
+              "homeScore": "1",
+              "awayTeam": "Freiburg",
+              "awayTeamId": 8358,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "8406",
+              "name": "Augsburg",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8358",
+              "name": "Freiburg",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -472,7 +472,7 @@
                 "home_team",
                 "6",
                 "away_team",
-                "9"
+                "10"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,18 +483,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "RB Leipzig have scored in their last 6 matches and Augsburg have scored in their last 9 matches."
+              "defaultText": "RB Leipzig have scored in their last 6 matches and Augsburg have scored in their last 10 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "7",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Augsburg have scored 8 goals in their last 3 matches."
+              "defaultText": "RB Leipzig have scored 7 goals in their last 3 matches, while Augsburg have scored 6."
             },
             {
               "OddsType": "dc",
@@ -548,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -558,7 +560,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#DD0741"
         },
         {
@@ -617,12 +619,12 @@
               "type": "ordinal"
             },
             {
-              "value": 6,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Antonio Nusa is ranked 1 in big chances created in the competition (6)",
+          "text": "Antonio Nusa is ranked 1 in big chances created in the competition (8)",
           "color": "#DD0741"
         },
         {
@@ -634,7 +636,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 12,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -644,7 +646,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 12 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#B93733"
         },
         {
@@ -656,12 +658,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#B93733"
         },
         {
@@ -673,12 +675,12 @@
           "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 2.4,
+              "value": 2.3,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Average 2.4 goals per match",
+          "text": "Average 2.3 goals per match",
           "color": "#B93733"
         }
       ],
@@ -702,152 +704,197 @@
     "weather": {
       "temperature": 6,
       "windSpeed": 3,
-      "windDirectionCardinal": "E",
+      "windDirectionCardinal": "SSE",
       "iconCode": 34,
-      "relativeHumidity": 77,
+      "relativeHumidity": 79,
       "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 20,
+      "cloudCover": 22,
       "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-31T03:00:19Z",
+      "lastUpdated": "2026-10-31T15:00:17Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5881222,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 178475,
         "name": "RB Leipzig",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1250443,
+            "age": 24,
             "name": "Maxime Estève",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 31963566,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-10-30T16:01:46Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Maxime",
-            "lastName": "Estève"
+            "lastName": "Estève",
+            "nationalTeamId": 6723
           },
           {
             "id": 1412137,
+            "age": 20,
             "name": "Marc Guiu",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 20186451,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-18T14:24:55Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Marc",
-            "lastName": "Guiu"
+            "lastName": "Guiu",
+            "nationalTeamId": 6720
           },
           {
             "id": 1486541,
+            "age": 20,
             "name": "Assan Ouédraogo",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 23794034,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-09-15T15:45:37Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
             "firstName": "Assan",
-            "lastName": "Ouédraogo"
+            "lastName": "Ouédraogo",
+            "nationalTeamId": 8570
           }
         ]
       },
       "awayTeam": {
         "id": 8406,
         "name": "Augsburg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1539619,
+            "age": 20,
             "name": "Juma Bah",
+            "countryName": "Sierra Leone",
+            "countryCode": "SLE",
+            "marketValue": 15136199,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Early November 2026",
+              "expectedReturnDate": "2026-11-07T15:30:00Z"
             },
             "firstName": "Juma",
-            "lastName": "Bah"
+            "lastName": "Bah",
+            "nationalTeamId": 5803
           },
           {
             "id": 1300329,
+            "age": 27,
             "name": "Calvin Brackelmann",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1822953,
             "unavailability": {
               "injuryId": 85,
-              "lastUpdated": "2026-10-25T12:45:32Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Calvin",
-            "lastName": "Brackelmann"
+            "lastName": "Brackelmann",
+            "nationalTeamId": 8570
           },
           {
             "id": 1561984,
+            "age": 21,
             "name": "Sima Suso",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 3976380,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-15T20:02:05Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Sima",
-            "lastName": "Suso"
+            "lastName": "Suso",
+            "nationalTeamId": 8570
           },
           {
             "id": 478527,
+            "age": 32,
             "name": "Steve Mounié",
+            "countryName": "Benin",
+            "countryCode": "BEN",
+            "marketValue": 952494,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-21T22:01:49Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Steve",
-            "lastName": "Mounié"
+            "lastName": "Mounié",
+            "nationalTeamId": 5883
           },
           {
             "id": 1641063,
+            "age": 19,
             "name": "Noahkai Banks",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 20418994,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-04T13:26:23Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Noahkai",
-            "lastName": "Banks"
+            "lastName": "Banks",
+            "nationalTeamId": 6713
           },
           {
             "id": 1679517,
+            "age": 18,
             "name": "Faik Sakar",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1094290,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-11T12:00:36Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Faik",
-            "lastName": "Sakar"
+            "lastName": "Sakar",
+            "nationalTeamId": 8570
           },
           {
             "id": 1201713,
+            "age": 24,
             "name": "Tim Breithaupt",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 823236,
             "unavailability": {
               "injuryId": 29,
-              "lastUpdated": "2026-08-20T19:29:33Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Tim",
-            "lastName": "Breithaupt"
+            "lastName": "Breithaupt",
+            "nationalTeamId": 8570
           }
         ]
       }

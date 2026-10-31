@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
-            "linkToMatch": "/matches/tottenham-hotspur-vs-manchester-united/2xqo0r#5795473",
-            "date": {
-              "utcTime": "2026-10-10T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8586/overview/tottenham-hotspur",
-            "tooltipText": {
-              "utcTime": "2026-10-10T16:30:00.000Z",
-              "homeTeam": "Manchester United",
-              "homeTeamId": 10260,
-              "homeScore": "1",
-              "awayTeam": "Tottenham Hotspur",
-              "awayTeamId": 8586,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8586",
-              "name": "Tottenham Hotspur",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
@@ -270,6 +240,36 @@
               "id": "8678",
               "name": "AFC Bournemouth",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png",
+            "linkToMatch": "/matches/chelsea-vs-manchester-united/2w9xj5#5795498",
+            "date": {
+              "utcTime": "2026-10-31T12:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8455/overview/chelsea",
+            "tooltipText": {
+              "utcTime": "2026-10-31T12:30:00.000Z",
+              "homeTeam": "Chelsea",
+              "homeTeamId": 8455,
+              "homeScore": "2",
+              "awayTeam": "Manchester United",
+              "awayTeamId": 10260,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8455",
+              "name": "Chelsea",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10260",
+              "name": "Manchester United",
+              "isOurTeam": true
             }
           }
         ],
@@ -468,7 +468,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "2",
+                "1",
                 "11"
               ],
               "DefaultLabels": [
@@ -480,7 +480,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester United have scored 2 goals in their last 3 matches, while Roma have scored 11."
+              "defaultText": "Manchester United have scored 1 goals in their last 3 matches, while Roma have scored 11."
             },
             {
               "OddsType": "ou",
@@ -512,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Manchester United haven't won a match in 8 attempts."
+              "defaultText": "Manchester United haven't won a match in 9 attempts."
             }
           ]
         },
@@ -567,17 +567,34 @@
           "type": "team",
           "playerId": null,
           "teamId": 10260,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#C70101"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10260,
           "priority": 8,
           "defaultText": "Haven't won a match in {0} attempts",
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 8 attempts",
+          "text": "Haven't won a match in 9 attempts",
           "color": "#C70101"
         },
         {
@@ -589,12 +606,29 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
+          "color": "#C70101"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10260,
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have lost their last 3 matches",
           "color": "#C70101"
         }
       ],

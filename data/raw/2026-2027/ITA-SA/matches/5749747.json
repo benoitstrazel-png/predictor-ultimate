@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9804.png",
-            "linkToMatch": "/matches/torino-vs-bologna/373118#5749682",
-            "date": {
-              "utcTime": "2026-09-19T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9804/overview/torino",
-            "tooltipText": {
-              "utcTime": "2026-09-19T13:00:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "1",
-              "awayTeam": "Torino",
-              "awayTeamId": 9804,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9804",
-              "name": "Torino",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9888.png",
@@ -423,6 +393,36 @@
               "name": "Bologna",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6504.png",
+            "linkToMatch": "/matches/monza-vs-bologna/27p2f2#5749732",
+            "date": {
+              "utcTime": "2026-10-31T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/6504/overview/monza",
+            "tooltipText": {
+              "utcTime": "2026-10-31T14:00:00.000Z",
+              "homeTeam": "Bologna",
+              "homeTeamId": 9857,
+              "homeScore": "2",
+              "awayTeam": "Monza",
+              "awayTeamId": 6504,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "1",
                 "3",
                 "away_team",
-                "3",
-                "1",
+                "4",
+                "0",
                 "1"
               ],
               "DefaultLabels": [
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Parma have 1W, 1D, 3L in five matches while Bologna have 3W, 1D, 1L."
+              "defaultText": "Parma have 1W, 1D, 3L in five matches while Bologna have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -489,14 +489,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "1",
-                "7"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Parma have scored 1 goals in their last 3 matches, while Bologna have scored 7."
+              "defaultText": "Bologna have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -592,15 +590,15 @@
         },
         {
           "type": "player",
-          "playerId": 867789,
+          "playerId": 1233748,
           "teamId": 10167,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 867789,
-              "name": "Emanuele Valeri",
+              "value": 1233748,
+              "name": "David Romero",
               "type": "player"
             },
             {
@@ -609,12 +607,12 @@
               "type": "team"
             },
             {
-              "value": 5,
+              "value": 2.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Emanuele Valeri has created the most big chances for Parma (5)",
+          "text": "David Romero has the most shots on target per match for Parma (2.1)",
           "color": "#000000"
         },
         {
@@ -626,7 +624,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -636,16 +634,16 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#102880"
         },
         {
           "type": "player",
           "playerId": 873956,
           "teamId": 9857,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 9,
+          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
+          "localizedTextId": "insights_player_chances_created_rank_in_competition",
           "statValues": [
             {
               "value": 873956,
@@ -653,17 +651,17 @@
               "type": "player"
             },
             {
-              "value": 9857,
-              "name": "Bologna",
-              "type": "team"
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
             },
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Juan Miranda has created the most big chances for Bologna (6)",
+          "text": "Juan Miranda is ranked 3 in big chances created in the competition (7)",
           "color": "#102880"
         },
         {
@@ -685,12 +683,12 @@
               "type": "team"
             },
             {
-              "value": 3.5,
+              "value": 2.8,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Samuel Mbangula has the most shots on target per match for Bologna (3.5)",
+          "text": "Samuel Mbangula has the most shots on target per match for Bologna (2.8)",
           "color": "#102880"
         }
       ],

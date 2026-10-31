@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9757.png",
-            "linkToMatch": "/matches/sportfreunde-siegen-vs-borussia-monchengladbach/35qach#6306838",
-            "date": {
-              "utcTime": "2026-09-24T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9757/overview/sportfreunde-siegen",
-            "tooltipText": {
-              "utcTime": "2026-09-24T16:30:00.000Z",
-              "homeTeam": "Sportfreunde Siegen",
-              "homeTeamId": 9757,
-              "homeScore": "0",
-              "awayTeam": "Borussia Mönchengladbach",
-              "awayTeamId": 9788,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "9757",
-              "name": "Sportfreunde Siegen",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9788",
-              "name": "Borussia Mönchengladbach",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8722.png",
@@ -424,6 +394,36 @@
               "name": "Karlsruher SC",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8460.png",
+            "linkToMatch": "/matches/paderborn-vs-borussia-monchengladbach/2r4yrk#5881209",
+            "date": {
+              "utcTime": "2026-10-31T14:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8460/overview/paderborn",
+            "tooltipText": {
+              "utcTime": "2026-10-31T14:30:00.000Z",
+              "homeTeam": "Borussia Mönchengladbach",
+              "homeTeamId": 9788,
+              "homeScore": "0",
+              "awayTeam": "Paderborn",
+              "awayTeamId": 8460,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9788",
+              "name": "Borussia Mönchengladbach",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8460",
+              "name": "Paderborn",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -448,8 +448,8 @@
                 "0",
                 "2",
                 "away_team",
-                "3",
-                "0",
+                "2",
+                "1",
                 "2"
               ],
               "DefaultLabels": [
@@ -463,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hamburger SV have 3W, 0D, 2L in five matches while Borussia Mönchengladbach have 3W, 0D, 2L."
+              "defaultText": "Hamburger SV have 3W, 0D, 2L in five matches while Borussia Mönchengladbach have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -490,14 +490,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "2",
-                "6"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,18 +507,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hamburger SV have scored 2 goals in their last 3 matches, while Borussia Mönchengladbach have scored 6."
+              "defaultText": "Hamburger SV have an average of 0.67 goals in their last three matches and Borussia Mönchengladbach have an average of 1.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "12",
                 "12"
               ],
               "DefaultLabels": [
@@ -533,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hamburger SV haven't drawn in their last 12 matches and Borussia Mönchengladbach in their last 12."
+              "defaultText": "Hamburger SV haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -629,7 +626,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -639,7 +636,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#417E37"
         },
         {
@@ -683,7 +680,7 @@
               "type": "player"
             },
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "ordinal"
             },
@@ -693,7 +690,7 @@
               "type": "double"
             }
           ],
-          "text": "Moritz Nicolas is ranked 2 in saves per match in the competition (5.1)",
+          "text": "Moritz Nicolas is ranked 3 in saves per match in the competition (5.1)",
           "color": "#417E37"
         }
       ],

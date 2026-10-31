@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6602.png",
-            "linkToMatch": "/matches/dc-united-vs-paderborn/1vjkyx#6000976",
-            "date": {
-              "utcTime": "2026-09-30T23:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/6602/overview/dc-united",
-            "tooltipText": {
-              "utcTime": "2026-09-30T23:30:00.000Z",
-              "homeTeam": "DC United",
-              "homeTeamId": 6602,
-              "homeScore": "0",
-              "awayTeam": "Paderborn",
-              "awayTeamId": 8460,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "6602",
-              "name": "DC United",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8460",
-              "name": "Paderborn",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png",
@@ -270,6 +240,36 @@
               "id": "10269",
               "name": "VfB Stuttgart",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9788.png",
+            "linkToMatch": "/matches/paderborn-vs-borussia-monchengladbach/2r4yrk#5881209",
+            "date": {
+              "utcTime": "2026-10-31T14:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9788/overview/borussia-monchengladbach",
+            "tooltipText": {
+              "utcTime": "2026-10-31T14:30:00.000Z",
+              "homeTeam": "Borussia Mönchengladbach",
+              "homeTeamId": 9788,
+              "homeScore": "0",
+              "awayTeam": "Paderborn",
+              "awayTeamId": 8460,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "9788",
+              "name": "Borussia Mönchengladbach",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8460",
+              "name": "Paderborn",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,8 +443,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
                 "1",
+                "2",
                 "2",
                 "away_team",
                 "3",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paderborn have 2W, 1D, 2L in five matches while Eintracht Frankfurt have 3W, 0D, 2L."
+              "defaultText": "Paderborn have 1W, 2D, 2L in five matches while Eintracht Frankfurt have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -473,7 +473,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
+                "0.33",
                 "1.33"
               ],
               "DefaultLabels": [
@@ -485,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paderborn have an average of 1 goals in their last three matches and Eintracht Frankfurt have an average of 1.33."
+              "defaultText": "Paderborn have an average of 0.33 goals in their last three matches and Eintracht Frankfurt have an average of 1.33."
             },
             {
               "OddsType": "ou",
@@ -496,7 +496,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
+                "0.33",
                 "1.33"
               ],
               "DefaultLabels": [
@@ -508,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paderborn have an average of 1 goals in their last three matches and Eintracht Frankfurt have an average of 1.33."
+              "defaultText": "Paderborn have an average of 0.33 goals in their last three matches and Eintracht Frankfurt have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -551,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -561,7 +561,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
+          "color": "#004A99"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8460,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#004A99"
         },
         {
@@ -589,33 +606,6 @@
             }
           ],
           "text": "Paderborn and Eintracht Frankfurt have not drawn any of their last 5 matches against each other.",
-          "color": "#004A99"
-        },
-        {
-          "type": "player",
-          "playerId": 1426060,
-          "teamId": 8460,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1426060,
-              "name": "Laurin Curda",
-              "type": "player"
-            },
-            {
-              "value": 8460,
-              "name": "Paderborn",
-              "type": "team"
-            },
-            {
-              "value": 3,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Laurin Curda has created the most big chances for Paderborn (3)",
           "color": "#004A99"
         },
         {
@@ -715,118 +705,149 @@
     "weather": {
       "temperature": 8,
       "windSpeed": 3,
-      "windDirectionCardinal": "ESE",
-      "iconCode": 34,
-      "relativeHumidity": 70,
-      "precipChance": 4,
+      "windDirectionCardinal": "SE",
+      "iconCode": 32,
+      "relativeHumidity": 71,
+      "precipChance": 6,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 21,
-      "description": "Mostly Sunny",
+      "cloudCover": 13,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-31T03:00:19Z",
+      "lastUpdated": "2026-10-31T15:00:17Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5881221,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8460,
         "name": "Paderborn",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1276453,
+            "age": 22,
             "name": "Gabriel Vidović",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
+            "marketValue": 2150327,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-29T18:29:10Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Gabriel",
-            "lastName": "Vidović"
+            "lastName": "Vidović",
+            "nationalTeamId": 10155
           },
           {
             "id": 950822,
+            "age": 25,
             "name": "Oliver Batista Meier",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1201369,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-21T16:34:33Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Oliver Batista",
-            "lastName": "Meier"
+            "lastName": "Meier",
+            "nationalTeamId": 8570
           },
           {
             "id": 970587,
+            "age": 27,
             "name": "Marcel Hoffmeier",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 890717,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-09-24T14:03:07Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Marcel",
-            "lastName": "Hoffmeier"
+            "lastName": "Hoffmeier",
+            "nationalTeamId": 8570
           },
           {
             "id": 1473681,
+            "age": 26,
             "name": "Nyamekye Awortwie-Grant",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 362541,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-10-21T22:11:52Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Nyamekye",
-            "lastName": "Awortwie-Grant"
+            "lastName": "Awortwie-Grant",
+            "nationalTeamId": 8570
           },
           {
             "id": 840947,
+            "age": 28,
             "name": "Sebastian Klaas",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 489340,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-21T22:02:36Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Sebastian",
-            "lastName": "Klaas"
+            "lastName": "Klaas",
+            "nationalTeamId": 8570
           },
           {
             "id": 978381,
+            "age": 28,
             "name": "Timur Gayret",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 322532,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-04-22T12:24:51Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Timur",
-            "lastName": "Gayret"
+            "lastName": "Gayret",
+            "nationalTeamId": 8570
           }
         ]
       },
       "awayTeam": {
         "id": 9810,
         "name": "Eintracht Frankfurt",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1083717,
+            "age": 26,
             "name": "Jessic Ngankam",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 699543,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-21T22:05:52Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jessic",
-            "lastName": "Ngankam"
+            "lastName": "Ngankam",
+            "nationalTeamId": 8570
           }
         ]
       }
