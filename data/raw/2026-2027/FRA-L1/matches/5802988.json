@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9746.png",
-            "linkToMatch": "/matches/lille-vs-le-havre/2smr0r#5802948",
-            "date": {
-              "utcTime": "2026-10-10T15:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/9746/overview/le-havre",
-            "tooltipText": {
-              "utcTime": "2026-10-10T15:15:00.000Z",
-              "homeTeam": "Lille",
-              "homeTeamId": 8639,
-              "homeScore": "1",
-              "awayTeam": "Le Havre",
-              "awayTeamId": 9746,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8639",
-              "name": "Lille",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9746",
-              "name": "Le Havre",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
@@ -423,6 +393,36 @@
               "name": "Lille",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
+            "linkToMatch": "/matches/lens-vs-lille/2gcrq9#5802974",
+            "date": {
+              "utcTime": "2026-10-30T20:05:00.000Z"
+            },
+            "teamPageUrl": "/teams/8588/overview/lens",
+            "tooltipText": {
+              "utcTime": "2026-10-30T20:05:00.000Z",
+              "homeTeam": "Lille",
+              "homeTeamId": 8639,
+              "homeScore": "1",
+              "awayTeam": "Lens",
+              "awayTeamId": 8588,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8639",
+              "name": "Lille",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8588",
+              "name": "Lens",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -468,11 +468,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "6",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rennes have scored in their last 6 home matches."
+              "defaultText": "Rennes have scored in their last 6 matches and Lille have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -513,9 +515,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+              "TextTemplateId": "h2h_no_draws_v2",
               "StatValues": [
+                "home_team",
                 "away_team",
                 "4"
               ],
@@ -529,8 +532,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Lille haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Rennes and Lille have not drawn any of their last 4 matches against each other."
             }
           ]
         },
@@ -581,20 +584,25 @@
           "color": "#E13327"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1280225,
           "teamId": 9851,
           "priority": 10,
-          "defaultText": "Have been awarded the most penalties this season ({0})",
-          "localizedTextId": "insights_penalties_awarded",
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
-              "value": 5,
+              "value": 1280225,
+              "name": "Estéban Lepaul",
+              "type": "player"
+            },
+            {
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have been awarded the most penalties this season (5)",
+          "text": "Estéban Lepaul is the competition's top scorer (7)",
           "color": "#E13327"
         },
         {
@@ -638,15 +646,15 @@
         },
         {
           "type": "player",
-          "playerId": 1070404,
+          "playerId": 500520,
           "teamId": 8639,
           "priority": 1,
           "defaultText": "{0} has created the most big chances for {1} ({2})",
           "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1070404,
-              "name": "Maurits Kjærgaard",
+              "value": 500520,
+              "name": "Nabil Bentaleb",
               "type": "player"
             },
             {
@@ -655,12 +663,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Maurits Kjærgaard has created the most big chances for Lille (2)",
+          "text": "Nabil Bentaleb has created the most big chances for Lille (3)",
           "color": "#E01D13"
         }
       ],
@@ -737,18 +745,6 @@
         "id": 8639,
         "name": "Lille",
         "unavailable": [
-          {
-            "id": 988160,
-            "name": "Osame Sahraoui",
-            "unavailability": {
-              "injuryId": 21,
-              "lastUpdated": "2026-10-30T20:14:10Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Osame",
-            "lastName": "Sahraoui"
-          },
           {
             "id": 942393,
             "name": "Ayase Ueda",

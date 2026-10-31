@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "1",
                 "2",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal have 3W, 1D, 1L in five matches while Getafe have 1W, 2D, 2L."
+              "defaultText": "Villarreal have 2W, 1D, 2L in five matches while Getafe have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -474,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "10",
+                "7",
                 "5"
               ],
               "DefaultLabels": [
@@ -486,18 +486,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 10 goals in their last 3 matches, while Getafe have scored 5."
+              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "10",
-                "3"
+                "away_team",
+                "3",
+                "7",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,23 +510,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 10 goals in their last 3 matches."
+              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "1",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -537,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal have 3W, 1D, 1L in five matches while Getafe have 1W, 2D, 2L."
+              "defaultText": "Villarreal haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -599,15 +595,15 @@
         },
         {
           "type": "player",
-          "playerId": 1117069,
+          "playerId": 1184694,
           "teamId": 10205,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1117069,
-              "name": "Georges Mikautadze",
+              "value": 1184694,
+              "name": "Alberto Moleiro",
               "type": "player"
             },
             {
@@ -616,12 +612,12 @@
               "type": "team"
             },
             {
-              "value": 2.6,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Georges Mikautadze has the most shots on target per match for Villarreal (2.6)",
+          "text": "Alberto Moleiro has created the most big chances for Villarreal (5)",
           "color": "#e19d00"
         },
         {
@@ -665,15 +661,15 @@
         },
         {
           "type": "player",
-          "playerId": 1203946,
+          "playerId": 1183650,
           "teamId": 8305,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1203946,
-              "name": "Iván Azon",
+              "value": 1183650,
+              "name": "Francho Serrano",
               "type": "player"
             },
             {
@@ -682,12 +678,12 @@
               "type": "team"
             },
             {
-              "value": 1.1,
+              "value": 1,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Iván Azon has the most shots on target per match for Getafe (1.1)",
+          "text": "Francho Serrano has created the most big chances for Getafe (1)",
           "color": "#084888"
         }
       ],
@@ -764,18 +760,6 @@
         "id": 8305,
         "name": "Getafe",
         "unavailable": [
-          {
-            "id": 765693,
-            "name": "Orel Mangala",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-10-30T13:35:22Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Orel",
-            "lastName": "Mangala"
-          },
           {
             "id": 1118199,
             "name": "Zaid Abner Romero",
