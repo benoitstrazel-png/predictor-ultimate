@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/212820.png",
-            "linkToMatch": "/matches/sunderland-vs-torreense/b8xuoeu#6112360",
-            "date": {
-              "utcTime": "2026-10-15T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/212820/overview/torreense",
-            "tooltipText": {
-              "utcTime": "2026-10-15T16:45:00.000Z",
-              "homeTeam": "Torreense",
-              "homeTeamId": 212820,
-              "homeScore": "1",
-              "awayTeam": "Sunderland",
-              "awayTeamId": 8472,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "212820",
-              "name": "Torreense",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8472",
-              "name": "Sunderland",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
@@ -270,39 +240,39 @@
               "name": "Brentford",
               "isOurTeam": false
             }
-          }
-        ],
-        [
+          },
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10154.png",
-            "linkToMatch": "/matches/hajduk-split-vs-dinamo-zagreb/3et1op#5765935",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8669.png",
+            "linkToMatch": "/matches/sunderland-vs-coventry-city/2fh3f8#5795499",
             "date": {
-              "utcTime": "2026-10-10T13:00:00.000Z"
+              "utcTime": "2026-10-31T15:00:00.000Z"
             },
-            "teamPageUrl": "/teams/10154/overview/hajduk-split",
+            "teamPageUrl": "/teams/8669/overview/coventry-city",
             "tooltipText": {
-              "utcTime": "2026-10-10T13:00:00.000Z",
-              "homeTeam": "Hajduk Split",
-              "homeTeamId": 10154,
-              "homeScore": "2",
-              "awayTeam": "Dinamo Zagreb",
-              "awayTeamId": 10156,
+              "utcTime": "2026-10-31T15:00:00.000Z",
+              "homeTeam": "Coventry City",
+              "homeTeamId": 8669,
+              "homeScore": "3",
+              "awayTeam": "Sunderland",
+              "awayTeamId": 8472,
               "awayScore": "1"
             },
-            "score": "2 - 1",
+            "score": "3 - 1",
             "home": {
-              "id": "10154",
-              "name": "Hajduk Split",
+              "id": "8669",
+              "name": "Coventry City",
               "isOurTeam": false
             },
             "away": {
-              "id": "10156",
-              "name": "Dinamo Zagreb",
+              "id": "8472",
+              "name": "Sunderland",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -422,6 +392,36 @@
               "name": "Rijeka",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/187866.png",
+            "linkToMatch": "/matches/dinamo-zagreb-vs-rudes/909aenj#5765952",
+            "date": {
+              "utcTime": "2026-10-31T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/187866/overview/rudes",
+            "tooltipText": {
+              "utcTime": "2026-10-31T17:00:00.000Z",
+              "homeTeam": "Rudeš",
+              "homeTeamId": 187866,
+              "homeScore": "1",
+              "awayTeam": "Dinamo Zagreb",
+              "awayTeamId": 10156,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "187866",
+              "name": "Rudeš",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10156",
+              "name": "Dinamo Zagreb",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -442,9 +442,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "2",
                 "1",
+                "2",
+                "2",
                 "away_team",
                 "3",
                 "0",
@@ -461,17 +461,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sunderland have 2W, 2D, 1L in five matches while Dinamo Zagreb have 3W, 0D, 2L."
+              "defaultText": "Sunderland have 1W, 2D, 2L in five matches while Dinamo Zagreb have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "3"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -482,18 +485,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Dinamo Zagreb have scored in their last 3 away matches."
+              "defaultText": "Sunderland have scored 4 goals in their last 3 matches, while Dinamo Zagreb have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Dinamo Zagreb have scored 9 goals in their last 3 matches."
+              "defaultText": "Sunderland have scored 4 goals in their last 3 matches, while Dinamo Zagreb have scored 4."
             },
             {
               "OddsType": "dc",
@@ -514,7 +519,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "7"
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Dinamo Zagreb haven't drawn in their last 7 matches."
+              "defaultText": "Dinamo Zagreb haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -598,14 +603,14 @@
       "windSpeed": 4,
       "windDirectionCardinal": "ENE",
       "iconCode": 26,
-      "relativeHumidity": 87,
-      "precipChance": 13,
+      "relativeHumidity": 85,
+      "precipChance": 14,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 82,
+      "cloudCover": 89,
       "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-31T08:00:36Z",
+      "lastUpdated": "2026-10-31T20:00:31Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -755,6 +760,22 @@
             "firstName": "Scott",
             "lastName": "McKenna",
             "nationalTeamId": 8498
+          },
+          {
+            "id": 1791802,
+            "age": 22,
+            "name": "Aleks Stojaković",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "marketValue": 1210496,
+            "unavailability": {
+              "injuryId": 139,
+              "type": "injury",
+              "expectedReturn": "Unknown"
+            },
+            "firstName": "Aleks",
+            "lastName": "Stojaković",
+            "nationalTeamId": 8497
           }
         ]
       }

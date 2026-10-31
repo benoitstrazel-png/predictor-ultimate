@@ -468,11 +468,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "3"
+                "4",
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -483,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored in their last 3 home matches."
+              "defaultText": "VfB Stuttgart have scored in their last 4 matches and Werder Bremen have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -495,7 +497,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "4",
+                "7",
                 "7"
               ],
               "DefaultLabels": [
@@ -507,7 +509,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored 4 goals in their last 3 matches, while Werder Bremen have scored 7."
+              "defaultText": "VfB Stuttgart have scored 7 goals in their last 3 matches, while Werder Bremen have scored 7."
             },
             {
               "OddsType": "dc",
@@ -615,12 +617,12 @@
               "type": "team"
             },
             {
-              "value": 2.6,
+              "value": 2.2,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Ermedin Demirović has the most shots on target per match for VfB Stuttgart (2.6)",
+          "text": "Ermedin Demirović has the most shots on target per match for VfB Stuttgart (2.2)",
           "color": "#D30029"
         },
         {
@@ -705,202 +707,261 @@
     "weather": {
       "temperature": 5,
       "windSpeed": 1,
-      "windDirectionCardinal": "NE",
+      "windDirectionCardinal": "NNE",
       "iconCode": 31,
-      "relativeHumidity": 78,
-      "precipChance": 6,
+      "relativeHumidity": 81,
+      "precipChance": 20,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 14,
+      "cloudCover": 13,
       "description": "Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-10-31T06:00:13Z",
+      "lastUpdated": "2026-10-31T18:00:06Z",
       "localizedKey": "weather_condition_clear",
       "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5881223,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10269,
         "name": "VfB Stuttgart",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1425998,
+            "age": 20,
             "name": "Leo Sauer",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "marketValue": 12605040,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-29T18:33:07Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Leo",
-            "lastName": "Sauer"
+            "lastName": "Sauer",
+            "nationalTeamId": 8497
           },
           {
             "id": 1071186,
+            "age": 25,
             "name": "Angelo Stiller",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 44045057,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-29T14:15:29Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Angelo",
-            "lastName": "Stiller"
+            "lastName": "Stiller",
+            "nationalTeamId": 8570
           },
           {
             "id": 928454,
+            "age": 25,
             "name": "Josha Vagnoman",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 10655394,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-22T10:58:13Z",
               "type": "injury",
               "expectedReturn": "A few weeks"
             },
             "firstName": "Josha",
-            "lastName": "Vagnoman"
+            "lastName": "Vagnoman",
+            "nationalTeamId": 8570
           },
           {
             "id": 1164506,
+            "age": 24,
             "name": "Tiago Tomás",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 18427771,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-31T14:47:20Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Tiago",
-            "lastName": "Tomás"
+            "lastName": "Tomás",
+            "nationalTeamId": 8361
           },
           {
             "id": 852347,
+            "age": 27,
             "name": "Dan-Axel Zagadou",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1249820,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-21T22:04:24Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Dan-Axel",
-            "lastName": "Zagadou"
+            "lastName": "Zagadou",
+            "nationalTeamId": 6723
           },
           {
             "id": 1434478,
+            "age": 21,
             "name": "Justin Diehl",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1395029,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-11T12:01:36Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Justin",
-            "lastName": "Diehl"
+            "lastName": "Diehl",
+            "nationalTeamId": 8570
           }
         ]
       },
       "awayTeam": {
         "id": 8697,
         "name": "Werder Bremen",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1810868,
+            "age": 19,
             "name": "Paul Erevbenagie",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 817157,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-29T18:41:55Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Paul",
-            "lastName": "Erevbenagie"
+            "lastName": "Erevbenagie",
+            "nationalTeamId": 8570
           },
           {
             "id": 969856,
+            "age": 26,
             "name": "Olivier Deman",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 2642385,
             "unavailability": {
               "injuryId": 21,
-              "lastUpdated": "2026-10-31T14:31:51Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Olivier",
-            "lastName": "Deman"
+            "lastName": "Deman",
+            "nationalTeamId": 8263
           },
           {
             "id": 1393480,
+            "age": 24,
             "name": "Skelly Alvero",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1620695,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-06T13:33:32Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Skelly",
-            "lastName": "Alvero"
+            "lastName": "Alvero",
+            "nationalTeamId": 6723
           },
           {
             "id": 1646629,
+            "age": 20,
             "name": "Salim Musah",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 401314,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-09-29T17:03:42Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Salim",
-            "lastName": "Musah"
+            "lastName": "Musah",
+            "nationalTeamId": 8570
           },
           {
             "id": 1053674,
+            "age": 24,
             "name": "Moussa N'Diaye",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 2193108,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-11T11:59:17Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Moussa",
-            "lastName": "N'Diaye"
+            "lastName": "N'Diaye",
+            "nationalTeamId": 6395
           },
           {
             "id": 528811,
+            "age": 29,
             "name": "Jens Stage",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 11836698,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-08-30T15:54:40Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Jens",
-            "lastName": "Stage"
+            "lastName": "Stage",
+            "nationalTeamId": 8238
           },
           {
             "id": 937368,
+            "age": 27,
             "name": "Felix Agu",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 2406420,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-10-21T22:04:51Z",
               "type": "injury",
               "expectedReturn": "Late October 2026"
             },
             "firstName": "Felix",
-            "lastName": "Agu"
+            "lastName": "Agu",
+            "nationalTeamId": 6346
           },
           {
             "id": 1319717,
+            "age": 22,
             "name": "Keke Topp",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 4572428,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-06-24T10:15:52Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Keke",
-            "lastName": "Topp"
+            "lastName": "Topp",
+            "nationalTeamId": 8570
           }
         ]
       }
