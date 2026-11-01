@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9748.png",
-            "linkToMatch": "/matches/paris-fc-vs-lyon/25flas#5802934",
-            "date": {
-              "utcTime": "2026-09-12T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9748/overview/lyon",
-            "tooltipText": {
-              "utcTime": "2026-09-12T18:45:00.000Z",
-              "homeTeam": "Paris FC",
-              "homeTeamId": 6379,
-              "homeScore": "0",
-              "awayTeam": "Lyon",
-              "awayTeamId": 9748,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "6379",
-              "name": "Paris FC",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9748",
-              "name": "Lyon",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9848.png",
@@ -423,6 +393,36 @@
               "name": "Paris FC",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9829.png",
+            "linkToMatch": "/matches/paris-fc-vs-monaco/267nv1#5802979",
+            "date": {
+              "utcTime": "2026-11-01T16:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9829/overview/monaco",
+            "tooltipText": {
+              "utcTime": "2026-11-01T16:15:00.000Z",
+              "homeTeam": "Paris FC",
+              "homeTeamId": 6379,
+              "homeScore": "3",
+              "awayTeam": "Monaco",
+              "awayTeamId": 9829,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "6379",
+              "name": "Paris FC",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9829",
+              "name": "Monaco",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -484,14 +484,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "5",
-                "5"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Auxerre have scored 5 goals in their last 3 matches, while Paris FC have scored 5."
+              "defaultText": "Paris FC have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -512,7 +510,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris FC haven't drawn in their last 4 matches."
+              "defaultText": "Paris FC haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -577,15 +575,15 @@
         },
         {
           "type": "player",
-          "playerId": 904021,
+          "playerId": 1401248,
           "teamId": 8583,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 904021,
-              "name": "Romain Faivre",
+              "value": 1401248,
+              "name": "Rémy Lascary",
               "type": "player"
             },
             {
@@ -594,12 +592,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 2.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Romain Faivre has created the most big chances for Auxerre (2)",
+          "text": "Rémy Lascary has the most shots on target per match for Auxerre (2.1)",
           "color": "#055DC6"
         },
         {
@@ -611,7 +609,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 10,
               "name": null,
               "type": "integer"
             },
@@ -621,43 +619,33 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 10 goals in their last 5 matches",
           "color": "#0C1C3D"
         },
         {
-          "type": "player",
-          "playerId": 923196,
+          "type": "team",
+          "playerId": null,
           "teamId": 6379,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 923196,
-              "name": "Lassine Sinayoko",
-              "type": "player"
-            },
-            {
-              "value": 6379,
-              "name": "Paris FC",
-              "type": "team"
-            },
-            {
-              "value": 3,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Lassine Sinayoko has created the most big chances for Paris FC (3)",
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#0C1C3D"
         },
         {
           "type": "player",
           "playerId": 923196,
           "teamId": 6379,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 10,
+          "defaultText": "{0} is the competition's top scorer ({1})",
+          "localizedTextId": "insights_player_goals_scored",
           "statValues": [
             {
               "value": 923196,
@@ -665,17 +653,12 @@
               "type": "player"
             },
             {
-              "value": 6379,
-              "name": "Paris FC",
-              "type": "team"
-            },
-            {
-              "value": 1.5,
+              "value": 8,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Lassine Sinayoko has the most shots on target per match for Paris FC (1.5)",
+          "text": "Lassine Sinayoko is the competition's top scorer (8)",
           "color": "#0C1C3D"
         }
       ],

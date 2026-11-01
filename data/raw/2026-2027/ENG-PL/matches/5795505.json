@@ -126,36 +126,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
-            "linkToMatch": "/matches/lille-vs-arsenal/2thy7l#6106260",
-            "date": {
-              "utcTime": "2026-10-13T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8639/overview/lille",
-            "tooltipText": {
-              "utcTime": "2026-10-13T19:00:00.000Z",
-              "homeTeam": "Arsenal",
-              "homeTeamId": 9825,
-              "homeScore": "3",
-              "awayTeam": "Lille",
-              "awayTeamId": 8639,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "9825",
-              "name": "Arsenal",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8639",
-              "name": "Lille",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png",
             "linkToMatch": "/matches/arsenal-vs-nottingham-forest/3bf4p3#5795483",
             "date": {
@@ -265,6 +235,36 @@
             "home": {
               "id": "45723",
               "name": "Fleetwood Town",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
+            "linkToMatch": "/matches/liverpool-vs-arsenal/2tmaz7#5795501",
+            "date": {
+              "utcTime": "2026-11-01T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8650/overview/liverpool",
+            "tooltipText": {
+              "utcTime": "2026-11-01T16:30:00.000Z",
+              "homeTeam": "Liverpool",
+              "homeTeamId": 8650,
+              "homeScore": "0",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "8650",
+              "name": "Liverpool",
               "isOurTeam": false
             },
             "away": {
@@ -484,14 +484,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "3"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Arsenal have scored 5 goals in their last 3 matches, while Hull City have scored 3."
+              "defaultText": "Arsenal have an average of 1.33 goals in their last three matches and Hull City have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -545,7 +544,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -555,7 +554,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 9 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
+          "color": "#bd0510"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9825,
+          "priority": 10,
+          "defaultText": "Have kept the most clean sheets in the competition ({0})",
+          "localizedTextId": "insights_clean_sheets",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have kept the most clean sheets in the competition (6)",
           "color": "#bd0510"
         },
         {
@@ -598,23 +614,6 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 9825,
-          "priority": 7,
-          "defaultText": "Ranked {0} at home this season",
-          "localizedTextId": "insights_best_home",
-          "statValues": [
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            }
-          ],
-          "text": "Ranked 1 at home this season",
-          "color": "#bd0510"
-        },
-        {
-          "type": "team",
-          "playerId": null,
           "teamId": 8667,
           "priority": 1338,
           "defaultText": "Have scored {0} goals in their last {1} matches",
@@ -639,23 +638,6 @@
           "playerId": null,
           "teamId": 8667,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't kept a clean sheet in 7 matches",
-          "color": "#ED8B00"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8667,
-          "priority": 8,
           "defaultText": "Haven't won a match in {0} attempts",
           "localizedTextId": "insights_not_won_team",
           "statValues": [
@@ -666,6 +648,23 @@
             }
           ],
           "text": "Haven't won a match in 8 attempts",
+          "color": "#ED8B00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8667,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#ED8B00"
         }
       ],

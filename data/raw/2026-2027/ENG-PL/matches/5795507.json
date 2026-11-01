@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -277,36 +278,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9977.png",
-            "linkToMatch": "/matches/liverpool-vs-lask/2vaqvz#6106405",
-            "date": {
-              "utcTime": "2026-10-14T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9977/overview/lask",
-            "tooltipText": {
-              "utcTime": "2026-10-14T16:45:00.000Z",
-              "homeTeam": "LASK",
-              "homeTeamId": 9977,
-              "homeScore": "3",
-              "awayTeam": "Liverpool",
-              "awayTeamId": 8650,
-              "awayScore": "6"
-            },
-            "score": "3 - 6",
-            "home": {
-              "id": "9977",
-              "name": "LASK",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
             "linkToMatch": "/matches/liverpool-vs-brentford/2uusjv#5795476",
             "date": {
@@ -423,6 +394,36 @@
               "name": "Chelsea",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
+            "linkToMatch": "/matches/liverpool-vs-arsenal/2tmaz7#5795501",
+            "date": {
+              "utcTime": "2026-11-01T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9825/overview/arsenal",
+            "tooltipText": {
+              "utcTime": "2026-11-01T16:30:00.000Z",
+              "homeTeam": "Liverpool",
+              "homeTeamId": 8650,
+              "homeScore": "0",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
                 "away_team",
-                "5"
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +462,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Liverpool have won their last 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Crystal Palace have 1W, 1D, 3L in five matches while Liverpool have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -483,14 +490,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "1",
-                "7"
+                "0.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have scored 1 goals in their last 3 matches, while Liverpool have scored 7."
+              "defaultText": "Crystal Palace have an average of 0.33 goals in their last three matches and Liverpool have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -511,7 +517,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +530,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool haven't drawn in their last 8 matches."
+              "defaultText": "Liverpool haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -620,7 +626,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 15,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -630,7 +636,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 15 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#911712"
         },
         {
@@ -642,29 +648,39 @@
           "localizedTextId": "insights_best_away",
           "statValues": [
             {
-              "value": 1,
+              "value": 2,
               "name": null,
               "type": "ordinal"
             }
           ],
-          "text": "Ranked 1 away from home this season",
+          "text": "Ranked 2 away from home this season",
           "color": "#911712"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1364042,
           "teamId": 8650,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 1364042,
+              "name": "Lewis Koumas",
+              "type": "player"
+            },
+            {
+              "value": 8650,
+              "name": "Liverpool",
+              "type": "team"
+            },
+            {
+              "value": 2.1,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Lewis Koumas has the most shots on target per match for Liverpool (2.1)",
           "color": "#911712"
         }
       ],
@@ -712,6 +728,22 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 706297,
+            "age": 29,
+            "name": "Jean-Philippe Mateta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 26352389,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Late November 2026",
+              "expectedReturnDate": "2026-11-28T16:00:00Z"
+            },
+            "firstName": "Jean-Philippe",
+            "lastName": "Mateta",
+            "nationalTeamId": 6723
+          },
           {
             "id": 771294,
             "age": 28,

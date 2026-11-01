@@ -71,8 +71,8 @@
   },
   "nav": [
     "matchfacts",
-    "table",
-    "injured"
+    "lineup",
+    "table"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9977.png",
-            "linkToMatch": "/matches/liverpool-vs-lask/2vaqvz#6106405",
-            "date": {
-              "utcTime": "2026-10-14T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9977/overview/lask",
-            "tooltipText": {
-              "utcTime": "2026-10-14T16:45:00.000Z",
-              "homeTeam": "LASK",
-              "homeTeamId": 9977,
-              "homeScore": "3",
-              "awayTeam": "Liverpool",
-              "awayTeamId": 8650,
-              "awayScore": "6"
-            },
-            "score": "3 - 6",
-            "home": {
-              "id": "9977",
-              "name": "LASK",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png",
             "linkToMatch": "/matches/liverpool-vs-brentford/2uusjv#5795476",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Chelsea",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
+            "linkToMatch": "/matches/liverpool-vs-arsenal/2tmaz7#5795501",
+            "date": {
+              "utcTime": "2026-11-01T16:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9825/overview/arsenal",
+            "tooltipText": {
+              "utcTime": "2026-11-01T16:30:00.000Z",
+              "homeTeam": "Liverpool",
+              "homeTeamId": 8650,
+              "homeScore": "0",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
                 "away_team",
-                "5"
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +461,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Liverpool have won their last 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Fenerbahçe have 1W, 1D, 3L in five matches while Liverpool have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4",
-                "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,20 +483,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fenerbahçe have scored in their last 4 matches and Liverpool have scored in their last 5 matches."
+              "defaultText": "Fenerbahçe have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "7"
+                "1.33",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fenerbahçe have scored 4 goals in their last 3 matches, while Liverpool have scored 7."
+              "defaultText": "Fenerbahçe have an average of 1.33 goals in their last three matches and Liverpool have an average of 1."
             },
             {
               "OddsType": "dc",
@@ -513,7 +516,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "8"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Liverpool haven't drawn in their last 8 matches."
+              "defaultText": "Liverpool haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -536,25 +539,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8650,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#911712"
-        }
-      ],
       "topScorers": {
         "section": "Top scorers",
         "sectionId": 6,
@@ -664,24 +648,24 @@
     },
     "weather": {
       "temperature": 13,
-      "windSpeed": 5,
+      "windSpeed": 7,
       "windDirectionCardinal": "N",
       "iconCode": 12,
       "relativeHumidity": 88,
-      "precipChance": 85,
-      "precipitation": 1,
+      "precipChance": 74,
+      "precipitation": 0.89,
       "snow": 0,
       "cloudCover": 100,
       "description": "Rain",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-01T06:00:40Z",
+      "lastUpdated": "2026-11-01T18:00:16Z",
       "localizedKey": "weather_condition_rain",
       "defaultTitle": "Rain"
     },
     "lineup": {
       "matchId": 6106330,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -801,14 +785,14 @@
             "rankings": null
           },
           {
-            "id": 1080172,
-            "age": 25,
-            "name": "Levent Mercan",
+            "id": 1113704,
+            "age": 24,
+            "name": "Archie Brown",
             "positionId": 38,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Germany",
-            "countryCode": "GER",
+            "shirtNumber": "3",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.125,
@@ -821,10 +805,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 4411407,
-            "firstName": "Levent",
-            "lastName": "Mercan",
-            "nationalTeamId": 8570,
+            "marketValue": 11929952,
+            "firstName": "Archie",
+            "lastName": "Brown",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
@@ -909,14 +893,14 @@
             "rankings": null
           },
           {
-            "id": 316544,
-            "age": 31,
-            "name": "İrfan Kahveci",
+            "id": 950473,
+            "age": 25,
+            "name": "Mason Greenwood",
             "positionId": 85,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "17",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
+            "shirtNumber": "11",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.5,
@@ -929,10 +913,10 @@
               "height": 0.192,
               "width": 0.337
             },
-            "marketValue": 1683857,
-            "firstName": "İrfan",
-            "lastName": "Kahveci",
-            "nationalTeamId": 6595,
+            "marketValue": 53893004,
+            "firstName": "Mason",
+            "lastName": "Greenwood",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
@@ -963,14 +947,14 @@
             "rankings": null
           },
           {
-            "id": 181276,
-            "age": 33,
-            "name": "Romelu Lukaku",
+            "id": 517052,
+            "age": 32,
+            "name": "Vedat Muriqi",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
+            "shirtNumber": "19",
+            "countryName": "Kosovo",
+            "countryCode": "KVX",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -983,10 +967,10 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 5087051,
-            "firstName": "Romelu",
-            "lastName": "Lukaku",
-            "nationalTeamId": 8263,
+            "marketValue": 4544274,
+            "firstName": "Vedat",
+            "lastName": "Muriqi",
+            "nationalTeamId": 430156,
             "rankings": null
           }
         ],
@@ -1004,197 +988,7 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 150372,
-            "age": 37,
-            "name": "Mert Günok",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "34",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 440634,
-            "firstName": "Mert",
-            "lastName": "Günok",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 903995,
-            "age": 29,
-            "name": "Tarık Çetin",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "13",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 514342,
-            "firstName": "Tarık",
-            "lastName": "Çetin",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 904098,
-            "age": 27,
-            "name": "Mert Müldür",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "18",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 3896780,
-            "firstName": "Mert",
-            "lastName": "Müldür",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 1666975,
-            "age": 22,
-            "name": "Ognjen Mimović",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "77",
-            "countryName": "Serbia",
-            "countryCode": "SRB",
-            "marketValue": 2275430,
-            "firstName": "Ognjen",
-            "lastName": "Mimović",
-            "nationalTeamId": 8205,
-            "rankings": null
-          },
-          {
-            "id": 1414040,
-            "age": 22,
-            "name": "Yiğit Efe Demir",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "14",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 5027343,
-            "firstName": "Yiğit Efe",
-            "lastName": "Demir",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 1216728,
-            "age": 23,
-            "name": "Bartuğ Elmaz",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "28",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 1773243,
-            "firstName": "Bartuğ",
-            "lastName": "Elmaz",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 1183589,
-            "age": 27,
-            "name": "Ismail Yüksek",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "5",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 13717837,
-            "firstName": "Ismail",
-            "lastName": "Yüksek",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 796006,
-            "age": 32,
-            "name": "Mert Hakan Yandaş",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
-            "marketValue": 241178,
-            "firstName": "Mert Hakan",
-            "lastName": "Yandaş",
-            "nationalTeamId": 6595,
-            "rankings": null
-          },
-          {
-            "id": 1230287,
-            "age": 23,
-            "name": "Dorgeles Nene",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "45",
-            "countryName": "Mali",
-            "countryCode": "MLI",
-            "marketValue": 24006061,
-            "firstName": "Dorgeles",
-            "lastName": "Nene",
-            "nationalTeamId": 5815,
-            "rankings": null
-          },
-          {
-            "id": 517052,
-            "age": 32,
-            "name": "Vedat Muriqi",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "19",
-            "countryName": "Kosovo",
-            "countryCode": "KVX",
-            "marketValue": 4544274,
-            "firstName": "Vedat",
-            "lastName": "Muriqi",
-            "nationalTeamId": 430156,
-            "rankings": null
-          }
-        ],
         "unavailable": [
-          {
-            "id": 1113704,
-            "age": 24,
-            "name": "Archie Brown",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 11929952,
-            "unavailability": {
-              "type": "suspension",
-              "expectedReturn": "Late November 2026",
-              "expectedReturnDate": "2026-11-22T19:00:00Z"
-            },
-            "firstName": "Archie",
-            "lastName": "Brown",
-            "nationalTeamId": 8491
-          },
-          {
-            "id": 1429607,
-            "age": 22,
-            "name": "Kojo Peprah Oppong",
-            "countryName": "Ghana",
-            "countryCode": "GHA",
-            "marketValue": 12369629,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Kojo Peprah",
-            "lastName": "Oppong",
-            "nationalTeamId": 6714
-          },
-          {
-            "id": 950473,
-            "age": 25,
-            "name": "Mason Greenwood",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 53893004,
-            "unavailability": {
-              "injuryId": 92,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Mason",
-            "lastName": "Greenwood",
-            "nationalTeamId": 8491
-          },
           {
             "id": 417068,
             "age": 31,
@@ -1260,18 +1054,8 @@
             "nationalTeamId": 6708
           }
         ],
-        "averageStarterAge": 29.8,
-        "totalStarterMarketValue": 93178761,
-        "lastMatch": {
-          "matchId": 5904791,
-          "homeTeamId": 8695,
-          "awayTeamId": 1925,
-          "homeTeamName": "Fenerbahçe",
-          "awayTeamName": "Göztepe",
-          "homeScore": 1,
-          "awayScore": 2,
-          "matchDate": "2026-10-31T17:00:00"
-        }
+        "averageStarterAge": 29.1,
+        "totalStarterMarketValue": 152363676
       },
       "awayTeam": {
         "id": 8650,
@@ -1279,14 +1063,14 @@
         "formation": "4-2-3-1",
         "starters": [
           {
-            "id": 948800,
-            "age": 26,
-            "name": "Giorgi Mamardashvili",
+            "id": 319784,
+            "age": 34,
+            "name": "Alisson Becker",
             "positionId": 11,
             "usualPlayingPositionId": 0,
-            "shirtNumber": "25",
-            "countryName": "Georgia",
-            "countryCode": "GEO",
+            "shirtNumber": "1",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
@@ -1299,21 +1083,21 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 35798150,
-            "firstName": "Giorgi",
-            "lastName": "Mamardashvili",
-            "nationalTeamId": 8268,
+            "marketValue": 13337895,
+            "firstName": "Alisson",
+            "lastName": "Becker",
+            "nationalTeamId": 8256,
             "rankings": null
           },
           {
-            "id": 568571,
-            "age": 29,
-            "name": "Joseph Gomez",
+            "id": 921253,
+            "age": 27,
+            "name": "Ronald Araujo",
             "positionId": 32,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "2",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "33",
+            "countryName": "Uruguay",
+            "countryCode": "URU",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.875,
@@ -1326,21 +1110,21 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 11714157,
-            "firstName": "Joseph",
-            "lastName": "Gomez",
-            "nationalTeamId": 8491,
+            "marketValue": 26788892,
+            "firstName": "Ronald",
+            "lastName": "Araujo",
+            "nationalTeamId": 5796,
             "rankings": null
           },
           {
-            "id": 921253,
-            "age": 27,
-            "name": "Ronald Araujo",
+            "id": 1473534,
+            "age": 21,
+            "name": "Jérémy Jacquet",
             "positionId": 34,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "33",
-            "countryName": "Uruguay",
-            "countryCode": "URU",
+            "shirtNumber": "5",
+            "countryName": "France",
+            "countryCode": "FRA",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.625,
@@ -1353,10 +1137,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 26788892,
-            "firstName": "Ronald",
-            "lastName": "Araujo",
-            "nationalTeamId": 5796,
+            "marketValue": 46180575,
+            "firstName": "Jérémy",
+            "lastName": "Jacquet",
+            "nationalTeamId": 6723,
             "rankings": null
           },
           {
@@ -1414,14 +1198,14 @@
             "rankings": null
           },
           {
-            "id": 956683,
-            "age": 24,
-            "name": "Ryan Gravenberch",
+            "id": 831489,
+            "age": 27,
+            "name": "Alexis Mac Allister",
             "positionId": 64,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "38",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
+            "shirtNumber": "10",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
             "horizontalLayout": {
               "x": 0.485,
               "y": 0.7,
@@ -1434,10 +1218,10 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 75748658,
-            "firstName": "Ryan",
-            "lastName": "Gravenberch",
-            "nationalTeamId": 6708,
+            "marketValue": 65519788,
+            "firstName": "Alexis",
+            "lastName": "Mac Allister",
+            "nationalTeamId": 6706,
             "rankings": null
           },
           {
@@ -1468,14 +1252,14 @@
             "rankings": null
           },
           {
-            "id": 1364042,
-            "age": 21,
-            "name": "Lewis Koumas",
+            "id": 1597668,
+            "age": 18,
+            "name": "Rio Ngumoha",
             "positionId": 83,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "67",
-            "countryName": "Wales",
-            "countryCode": "WAL",
+            "shirtNumber": "73",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.837,
@@ -1488,21 +1272,21 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 5201169,
-            "firstName": "Lewis",
-            "lastName": "Koumas",
-            "nationalTeamId": 5790,
+            "marketValue": 43123176,
+            "firstName": "Rio",
+            "lastName": "Ngumoha",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
-            "id": 1231075,
-            "age": 22,
-            "name": "James McConnell",
+            "id": 956683,
+            "age": 24,
+            "name": "Ryan Gravenberch",
             "positionId": 85,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "53",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "38",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.5,
@@ -1515,21 +1299,21 @@
               "height": 0.192,
               "width": 0.337
             },
-            "marketValue": 1606945,
-            "firstName": "James",
-            "lastName": "McConnell",
-            "nationalTeamId": 8491,
+            "marketValue": 75748658,
+            "firstName": "Ryan",
+            "lastName": "Gravenberch",
+            "nationalTeamId": 6708,
             "rankings": null
           },
           {
-            "id": 1597668,
-            "age": 18,
-            "name": "Rio Ngumoha",
+            "id": 806552,
+            "age": 27,
+            "name": "Cody Gakpo",
             "positionId": 87,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "73",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "shirtNumber": "18",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.163,
@@ -1542,21 +1326,21 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 43123176,
-            "firstName": "Rio",
-            "lastName": "Ngumoha",
-            "nationalTeamId": 8491,
+            "marketValue": 63515303,
+            "firstName": "Cody",
+            "lastName": "Gakpo",
+            "nationalTeamId": 6708,
             "rankings": null
           },
           {
-            "id": 806552,
-            "age": 27,
-            "name": "Cody Gakpo",
+            "id": 1364042,
+            "age": 21,
+            "name": "Lewis Koumas",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "18",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
+            "shirtNumber": "67",
+            "countryName": "Wales",
+            "countryCode": "WAL",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -1569,10 +1353,10 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 63515303,
-            "firstName": "Cody",
-            "lastName": "Gakpo",
-            "nationalTeamId": 6708,
+            "marketValue": 5201169,
+            "firstName": "Lewis",
+            "lastName": "Koumas",
+            "nationalTeamId": 5790,
             "rankings": null
           }
         ],
@@ -1590,134 +1374,6 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 319784,
-            "age": 34,
-            "name": "Alisson Becker",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "1",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 13337895,
-            "firstName": "Alisson",
-            "lastName": "Becker",
-            "nationalTeamId": 8256,
-            "rankings": null
-          },
-          {
-            "id": 1473534,
-            "age": 21,
-            "name": "Jérémy Jacquet",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 46180575,
-            "firstName": "Jérémy",
-            "lastName": "Jacquet",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 202643,
-            "age": 33,
-            "name": "Wataru Endo",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Japan",
-            "countryCode": "JPN",
-            "marketValue": 1818046,
-            "firstName": "Wataru",
-            "lastName": "Endo",
-            "nationalTeamId": 6715,
-            "rankings": null
-          },
-          {
-            "id": 831489,
-            "age": 27,
-            "name": "Alexis Mac Allister",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "10",
-            "countryName": "Argentina",
-            "countryCode": "ARG",
-            "marketValue": 65519788,
-            "firstName": "Alexis",
-            "lastName": "Mac Allister",
-            "nationalTeamId": 6706,
-            "rankings": null
-          },
-          {
-            "id": 1249634,
-            "age": 22,
-            "name": "Luke Chambers",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "44",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 1115336,
-            "firstName": "Luke",
-            "lastName": "Chambers",
-            "nationalTeamId": 8491,
-            "rankings": null
-          },
-          {
-            "id": 690107,
-            "age": 27,
-            "name": "Alexander Isak",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 93644653,
-            "firstName": "Alexander",
-            "lastName": "Isak",
-            "nationalTeamId": 8520,
-            "rankings": null
-          },
-          {
-            "id": 1297165,
-            "age": 24,
-            "name": "Bradley Barcola",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "29",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 100340026,
-            "firstName": "Bradley",
-            "lastName": "Barcola",
-            "nationalTeamId": 6723,
-            "rankings": null
-          },
-          {
-            "id": 784510,
-            "age": 29,
-            "name": "Federico Chiesa",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Italy",
-            "countryCode": "ITA",
-            "marketValue": 12744594,
-            "firstName": "Federico",
-            "lastName": "Chiesa",
-            "nationalTeamId": 8204,
-            "rankings": null
-          },
-          {
-            "id": 1152455,
-            "age": 23,
-            "name": "Florian Wirtz",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 104892921,
-            "firstName": "Florian",
-            "lastName": "Wirtz",
-            "nationalTeamId": 8570,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 1553105,
@@ -1816,18 +1472,8 @@
             "nationalTeamId": 8204
           }
         ],
-        "averageStarterAge": 25.6,
-        "totalStarterMarketValue": 295539010,
-        "lastMatch": {
-          "matchId": 6275371,
-          "homeTeamId": 8650,
-          "awayTeamId": 8455,
-          "homeTeamName": "Liverpool",
-          "awayTeamName": "Chelsea",
-          "homeScore": 7,
-          "awayScore": 6,
-          "matchDate": "2026-10-28T21:00:00"
-        }
+        "averageStarterAge": 26.1,
+        "totalStarterMarketValue": 371458016
       }
     },
     "hasPlayoff": true,

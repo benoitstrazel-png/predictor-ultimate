@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
-            "linkToMatch": "/matches/milan-vs-lecce/2td7ci#5749680",
-            "date": {
-              "utcTime": "2026-09-20T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8564/overview/milan",
-            "tooltipText": {
-              "utcTime": "2026-09-20T18:45:00.000Z",
-              "homeTeam": "Milan",
-              "homeTeamId": 8564,
-              "homeScore": "3",
-              "awayTeam": "Lecce",
-              "awayTeamId": 9888,
-              "awayScore": "0"
-            },
-            "score": "3 - 0",
-            "home": {
-              "id": "8564",
-              "name": "Milan",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9888",
-              "name": "Lecce",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9857.png",
             "linkToMatch": "/matches/bologna-vs-lecce/382i4x#5749696",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Lecce",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
+            "linkToMatch": "/matches/lecce-vs-genoa/3cj5b9#5749737",
+            "date": {
+              "utcTime": "2026-11-01T17:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10233/overview/genoa",
+            "tooltipText": {
+              "utcTime": "2026-11-01T17:00:00.000Z",
+              "homeTeam": "Lecce",
+              "homeTeamId": 9888,
+              "homeScore": "1",
+              "awayTeam": "Genoa",
+              "awayTeamId": 10233,
+              "awayScore": "2"
+            },
+            "score": "1 - 2",
+            "home": {
+              "id": "9888",
+              "name": "Lecce",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10233",
+              "name": "Genoa",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "4"
+                "1.33",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Torino have scored 4 goals in their last 3 matches, while Lecce have scored 4."
+              "defaultText": "Torino have an average of 1.33 goals in their last three matches and Lecce have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -519,7 +518,7 @@
                 "home_team",
                 "away_team",
                 "5",
-                "10"
+                "11"
               ],
               "DefaultLabels": [
                 "1x",
@@ -532,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Torino haven't drawn in their last 5 matches and Lecce in their last 10."
+              "defaultText": "Torino haven't drawn in their last 5 matches and Lecce in their last 11."
             }
           ]
         },
@@ -628,7 +627,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -638,61 +637,51 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#e12300"
         },
         {
-          "type": "player",
-          "playerId": 1027594,
+          "type": "team",
+          "playerId": null,
           "teamId": 9888,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
-            {
-              "value": 1027594,
-              "name": "Konan N’Dri",
-              "type": "player"
-            },
-            {
-              "value": 9888,
-              "name": "Lecce",
-              "type": "team"
-            },
-            {
-              "value": 1.3,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Konan N’Dri has the most shots on target per match for Lecce (1.3)",
-          "color": "#e12300"
-        },
-        {
-          "type": "player",
-          "playerId": 1306664,
-          "teamId": 9888,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
-          "statValues": [
-            {
-              "value": 1306664,
-              "name": "Danilo Veiga",
-              "type": "player"
-            },
-            {
-              "value": 9888,
-              "name": "Lecce",
-              "type": "team"
-            },
             {
               "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Danilo Veiga has created the most big chances for Lecce (3)",
+          "text": "Have lost their last 3 matches",
+          "color": "#e12300"
+        },
+        {
+          "type": "player",
+          "playerId": 1417101,
+          "teamId": 9888,
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "statValues": [
+            {
+              "value": 1417101,
+              "name": "Paco Esteban",
+              "type": "player"
+            },
+            {
+              "value": 9888,
+              "name": "Lecce",
+              "type": "team"
+            },
+            {
+              "value": 1.2,
+              "name": null,
+              "type": "double"
+            }
+          ],
+          "text": "Paco Esteban has the most shots on target per match for Lecce (1.2)",
           "color": "#e12300"
         }
       ],
@@ -812,6 +801,22 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 1187691,
+            "age": 27,
+            "name": "Joël Monteiro",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "marketValue": 3599533,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "Joël",
+            "lastName": "Monteiro",
+            "nationalTeamId": 6717
+          },
           {
             "id": 883824,
             "age": 25,
