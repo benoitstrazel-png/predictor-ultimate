@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10267.png",
-            "linkToMatch": "/matches/deportivo-alaves-vs-valencia/3cobnt#5868061",
-            "date": {
-              "utcTime": "2026-09-15T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10267/overview/valencia",
-            "tooltipText": {
-              "utcTime": "2026-09-15T18:00:00.000Z",
-              "homeTeam": "Deportivo Alavés",
-              "homeTeamId": 9866,
-              "homeScore": "0",
-              "awayTeam": "Valencia",
-              "awayTeamId": 10267,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9866",
-              "name": "Deportivo Alavés",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10267",
-              "name": "Valencia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
@@ -423,6 +393,36 @@
               "name": "Málaga",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png",
+            "linkToMatch": "/matches/barcelona-vs-deportivo-alaves/2tw7n8#5868115",
+            "date": {
+              "utcTime": "2026-10-31T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8634/overview/barcelona",
+            "tooltipText": {
+              "utcTime": "2026-10-31T20:00:00.000Z",
+              "homeTeam": "Barcelona",
+              "homeTeamId": 8634,
+              "homeScore": "6",
+              "awayTeam": "Deportivo Alavés",
+              "awayTeamId": 9866,
+              "awayScore": "1"
+            },
+            "score": "6 - 1",
+            "home": {
+              "id": "8634",
+              "name": "Barcelona",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9866",
+              "name": "Deportivo Alavés",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,17 +456,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Deportivo Alavés haven't won a match in 6 attempts."
+              "defaultText": "Deportivo Alavés haven't won a match in 7 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "6"
+                "12",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sevilla have scored in their last 6 home matches."
+              "defaultText": "Sevilla have scored in their last 12 matches and Deportivo Alavés have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
@@ -511,7 +513,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Deportivo Alavés haven't won a match in 6 attempts."
+              "defaultText": "Deportivo Alavés haven't won a match in 7 attempts."
             }
           ]
         },
@@ -620,7 +622,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -630,7 +632,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 3 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#0351A3"
         },
         {
@@ -642,25 +644,25 @@
           "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 6 attempts",
+          "text": "Haven't won a match in 7 attempts",
           "color": "#0351A3"
         },
         {
           "type": "player",
-          "playerId": 518525,
+          "playerId": 1563022,
           "teamId": 9866,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 518525,
-              "name": "Mariano Díaz",
+              "value": 1563022,
+              "name": "Ángel Pérez",
               "type": "player"
             },
             {
@@ -669,12 +671,12 @@
               "type": "team"
             },
             {
-              "value": 1.8,
+              "value": 7,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Mariano Díaz has the most shots on target per match for Deportivo Alavés (1.8)",
+          "text": "Ángel Pérez has created the most big chances for Deportivo Alavés (7)",
           "color": "#0351A3"
         }
       ],

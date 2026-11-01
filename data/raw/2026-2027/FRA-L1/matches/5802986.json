@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
-            "linkToMatch": "/matches/lens-vs-le-mans/2gso2f#5802931",
-            "date": {
-              "utcTime": "2026-09-13T15:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8588/overview/lens",
-            "tooltipText": {
-              "utcTime": "2026-09-13T15:15:00.000Z",
-              "homeTeam": "Le Mans",
-              "homeTeamId": 8682,
-              "homeScore": "2",
-              "awayTeam": "Lens",
-              "awayTeamId": 8588,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8682",
-              "name": "Le Mans",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8588",
-              "name": "Lens",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8689.png",
@@ -264,6 +234,36 @@
             "home": {
               "id": "8583",
               "name": "Auxerre",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8682",
+              "name": "Le Mans",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
+            "linkToMatch": "/matches/le-mans-vs-troyes/2ym8q0#5802981",
+            "date": {
+              "utcTime": "2026-10-31T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/10242/overview/troyes",
+            "tooltipText": {
+              "utcTime": "2026-10-31T19:45:00.000Z",
+              "homeTeam": "Troyes",
+              "homeTeamId": 10242,
+              "homeScore": "2",
+              "awayTeam": "Le Mans",
+              "awayTeamId": 8682,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10242",
+              "name": "Troyes",
               "isOurTeam": false
             },
             "away": {
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "1",
-                "2",
-                "2",
+                "1",
+                "3",
                 "away_team",
                 "2",
                 "2",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Le Mans have 1W, 2D, 2L in five matches while Monaco have 2W, 2D, 1L."
+              "defaultText": "Le Mans have 1W, 1D, 3L in five matches while Monaco have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
@@ -473,7 +473,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
+                "0.33",
                 "1.33"
               ],
               "DefaultLabels": [
@@ -485,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Le Mans have an average of 0.67 goals in their last three matches and Monaco have an average of 1.33."
+              "defaultText": "Le Mans have an average of 0.33 goals in their last three matches and Monaco have an average of 1.33."
             },
             {
               "OddsType": "ou",
@@ -496,7 +496,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
+                "0.33",
                 "1.33"
               ],
               "DefaultLabels": [
@@ -508,23 +508,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Le Mans have an average of 0.67 goals in their last three matches and Monaco have an average of 1.33."
+              "defaultText": "Le Mans have an average of 0.33 goals in their last three matches and Monaco have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "2",
-                "2",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -536,8 +530,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Le Mans have 1W, 2D, 2L in five matches while Monaco have 2W, 2D, 1L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Le Mans haven't won a match in 4 attempts."
             }
           ]
         },
@@ -557,7 +551,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 4,
               "name": null,
               "type": "integer"
             },
@@ -567,7 +561,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 4 goals in their last 5 matches",
           "color": "#D60000"
         },
         {
@@ -579,12 +573,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 9,
+              "value": 10,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Haven't kept a clean sheet in 10 matches",
           "color": "#D60000"
         },
         {
@@ -641,23 +635,6 @@
           "playerId": null,
           "teamId": 9829,
           "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
-          "statValues": [
-            {
-              "value": 3,
-              "name": null,
-              "type": "ordinal"
-            }
-          ],
-          "text": "Ranked 3 away from home this season",
-          "color": "#C80C13"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9829,
-          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -678,6 +655,23 @@
             }
           ],
           "text": "Monaco have won the previous 3 matches against Le Mans.",
+          "color": "#C80C13"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9829,
+          "priority": 8,
+          "defaultText": "Ranked {0} away from home this season",
+          "localizedTextId": "insights_best_away",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "ordinal"
+            }
+          ],
+          "text": "Ranked 3 away from home this season",
           "color": "#C80C13"
         }
       ],
@@ -813,18 +807,6 @@
             },
             "firstName": "Stanis",
             "lastName": "Idumbo"
-          },
-          {
-            "id": 361315,
-            "name": "Eric Dier",
-            "unavailability": {
-              "injuryId": 69,
-              "lastUpdated": "2026-10-31T19:17:25Z",
-              "type": "injury",
-              "expectedReturn": "Late October 2026"
-            },
-            "firstName": "Eric",
-            "lastName": "Dier"
           }
         ]
       }
