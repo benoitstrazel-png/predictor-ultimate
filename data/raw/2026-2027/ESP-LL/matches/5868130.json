@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/480286.png",
-            "linkToMatch": "/matches/getafe-vs-universitatea-craiova/1iu0cxwp#6112505",
-            "date": {
-              "utcTime": "2026-10-15T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/480286/overview/universitatea-craiova",
-            "tooltipText": {
-              "utcTime": "2026-10-15T16:45:00.000Z",
-              "homeTeam": "Universitatea Craiova",
-              "homeTeamId": 480286,
-              "homeScore": "1",
-              "awayTeam": "Getafe",
-              "awayTeamId": 8305,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "480286",
-              "name": "Universitatea Craiova",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8370.png",
             "linkToMatch": "/matches/getafe-vs-rayo-vallecano/2as7fs#5868095",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Getafe",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
+            "linkToMatch": "/matches/sevilla-vs-getafe/2a3y81#5868116",
+            "date": {
+              "utcTime": "2026-11-01T13:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8302/overview/sevilla",
+            "tooltipText": {
+              "utcTime": "2026-11-01T13:00:00.000Z",
+              "homeTeam": "Getafe",
+              "homeTeamId": 8305,
+              "homeScore": "3",
+              "awayTeam": "Sevilla",
+              "awayTeamId": 8302,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8302",
+              "name": "Sevilla",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -447,8 +447,8 @@
                 "1",
                 "2",
                 "away_team",
-                "1",
                 "2",
+                "1",
                 "2"
               ],
               "DefaultLabels": [
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal have 2W, 1D, 2L in five matches while Getafe have 1W, 2D, 2L."
+              "defaultText": "Villarreal have 2W, 1D, 2L in five matches while Getafe have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -475,7 +475,7 @@
                 "away_team",
                 "3",
                 "7",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -486,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 5."
+              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 6."
             },
             {
               "OddsType": "ou",
@@ -499,7 +499,7 @@
                 "away_team",
                 "3",
                 "7",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -510,16 +510,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 5."
+              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
+                "away_team",
+                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -533,7 +535,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal haven't drawn in their last 4 matches."
+              "defaultText": "Villarreal haven't drawn in their last 4 matches and Getafe in their last 4."
             }
           ]
         },
@@ -595,15 +597,15 @@
         },
         {
           "type": "player",
-          "playerId": 1117069,
+          "playerId": 1184694,
           "teamId": 10205,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1117069,
-              "name": "Georges Mikautadze",
+              "value": 1184694,
+              "name": "Alberto Moleiro",
               "type": "player"
             },
             {
@@ -612,12 +614,12 @@
               "type": "team"
             },
             {
-              "value": 2.2,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Georges Mikautadze has the most shots on target per match for Villarreal (2.2)",
+          "text": "Alberto Moleiro has created the most big chances for Villarreal (5)",
           "color": "#e19d00"
         },
         {
@@ -629,7 +631,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -639,7 +641,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#084888"
         },
         {
@@ -651,12 +653,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#084888"
         },
         {

@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9829.png",
-            "linkToMatch": "/matches/monaco-vs-strasbourg/379ruz#5802936",
-            "date": {
-              "utcTime": "2026-09-12T15:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/9829/overview/monaco",
-            "tooltipText": {
-              "utcTime": "2026-09-12T15:15:00.000Z",
-              "homeTeam": "Strasbourg",
-              "homeTeamId": 9848,
-              "homeScore": "1",
-              "awayTeam": "Monaco",
-              "awayTeamId": 9829,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9848",
-              "name": "Strasbourg",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9829",
-              "name": "Monaco",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6379.png",
@@ -423,6 +393,36 @@
               "name": "Strasbourg",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
+            "linkToMatch": "/matches/auxerre-vs-strasbourg/2t4whk#5802980",
+            "date": {
+              "utcTime": "2026-11-01T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8583/overview/auxerre",
+            "tooltipText": {
+              "utcTime": "2026-11-01T14:00:00.000Z",
+              "homeTeam": "Strasbourg",
+              "homeTeamId": 9848,
+              "homeScore": "5",
+              "awayTeam": "Auxerre",
+              "awayTeamId": 8583,
+              "awayScore": "1"
+            },
+            "score": "5 - 1",
+            "home": {
+              "id": "9848",
+              "name": "Strasbourg",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8583",
+              "name": "Auxerre",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
-                "away_team",
-                "4"
+                "home_team",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +455,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Strasbourg have lost their last 4 matches."
+              "Icon": "poll_stat_up",
+              "defaultText": "Toulouse haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,19 +480,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have an average of 1.67 goals in their last three matches and Strasbourg have an average of 0.67."
+              "defaultText": "Toulouse have scored 5 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,14 +504,14 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have an average of 1.67 goals in their last three matches and Strasbourg have an average of 0.67."
+              "defaultText": "Toulouse have scored 5 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
                 "5"
@@ -524,8 +526,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Strasbourg haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Strasbourg haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -621,7 +623,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -631,7 +633,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#294A92"
         },
         {
@@ -643,29 +645,39 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 22,
+              "value": 23,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 22 matches",
+          "text": "Haven't kept a clean sheet in 23 matches",
           "color": "#294A92"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1603755,
           "teamId": 9848,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
+            {
+              "value": 1603755,
+              "name": "Gessime Yassine",
+              "type": "player"
+            },
+            {
+              "value": 9848,
+              "name": "Strasbourg",
+              "type": "team"
+            },
             {
               "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Gessime Yassine has created the most big chances for Strasbourg (5)",
           "color": "#294A92"
         }
       ],

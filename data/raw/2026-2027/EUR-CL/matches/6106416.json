@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10235.png",
-            "linkToMatch": "/matches/como-vs-feyenoord/3fyxs8#6106309",
-            "date": {
-              "utcTime": "2026-10-14T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10235/overview/feyenoord",
-            "tooltipText": {
-              "utcTime": "2026-10-14T16:45:00.000Z",
-              "homeTeam": "Feyenoord",
-              "homeTeamId": 10235,
-              "homeScore": "3",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "10235",
-              "name": "Feyenoord",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
@@ -422,6 +392,36 @@
               "name": "Como",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
+            "linkToMatch": "/matches/venezia-vs-como/2p0ob7#5749733",
+            "date": {
+              "utcTime": "2026-11-01T11:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/7881/overview/venezia",
+            "tooltipText": {
+              "utcTime": "2026-11-01T11:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "1",
+              "awayTeam": "Venezia",
+              "awayTeamId": 7881,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -442,7 +442,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Como have won their last 4 matches."
+              "defaultText": "Como have won their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -482,12 +482,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "9",
-                "3"
+                "3",
+                "2",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -498,7 +500,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Como have scored 9 goals in their last 3 matches."
+              "defaultText": "Lens have scored 2 goals in their last 3 matches, while Como have scored 6."
             },
             {
               "OddsType": "dc",
@@ -510,7 +512,7 @@
                 "home_team",
                 "away_team",
                 "7",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lens haven't drawn in their last 7 matches and Como in their last 5."
+              "defaultText": "Lens haven't drawn in their last 7 matches and Como in their last 6."
             }
           ]
         },
@@ -538,7 +540,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 8588,
-          "priority": 8,
+          "priority": 1345,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
@@ -550,6 +552,23 @@
           ],
           "text": "Haven't kept a clean sheet in 12 matches",
           "color": "#d89f00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10171,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
+          "color": "#005ea9"
         }
       ],
       "topScorers": {

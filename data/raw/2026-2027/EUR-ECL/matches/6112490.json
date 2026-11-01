@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8203.png",
-            "linkToMatch": "/matches/kv-mechelen-vs-sttruiden/2qm7y1#5811776",
-            "date": {
-              "utcTime": "2026-10-11T17:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/8203/overview/kv-mechelen",
-            "tooltipText": {
-              "utcTime": "2026-10-11T17:15:00.000Z",
-              "homeTeam": "KV Mechelen",
-              "homeTeamId": 8203,
-              "homeScore": "4",
-              "awayTeam": "St.Truiden",
-              "awayTeamId": 9997,
-              "awayScore": "3"
-            },
-            "score": "4 - 3",
-            "home": {
-              "id": "8203",
-              "name": "KV Mechelen",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9997",
-              "name": "St.Truiden",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/480291.png",
@@ -270,39 +240,39 @@
               "name": "St.Truiden",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/545012.png",
-            "linkToMatch": "/matches/brann-vs-lincoln-red-imps-fc/1yd5nz20#6112493",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1773.png",
+            "linkToMatch": "/matches/oh-leuven-vs-sttruiden/158yl8#5811798",
             "date": {
-              "utcTime": "2026-10-15T19:00:00.000Z"
+              "utcTime": "2026-11-01T15:00:00.000Z"
             },
-            "teamPageUrl": "/teams/545012/overview/lincoln-red-imps-fc",
+            "teamPageUrl": "/teams/1773/overview/oh-leuven",
             "tooltipText": {
-              "utcTime": "2026-10-15T19:00:00.000Z",
-              "homeTeam": "Brann",
-              "homeTeamId": 8468,
-              "homeScore": "2",
-              "awayTeam": "Lincoln Red Imps FC",
-              "awayTeamId": 545012,
-              "awayScore": "1"
+              "utcTime": "2026-11-01T15:00:00.000Z",
+              "homeTeam": "St.Truiden",
+              "homeTeamId": 9997,
+              "homeScore": "1",
+              "awayTeam": "OH Leuven",
+              "awayTeamId": 1773,
+              "awayScore": "2"
             },
-            "score": "2 - 1",
+            "score": "1 - 2",
             "home": {
-              "id": "8468",
-              "name": "Brann",
+              "id": "9997",
+              "name": "St.Truiden",
               "isOurTeam": true
             },
             "away": {
-              "id": "545012",
-              "name": "Lincoln Red Imps FC",
+              "id": "1773",
+              "name": "OH Leuven",
               "isOurTeam": false
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -422,6 +392,36 @@
               "name": "Brann",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9917.png",
+            "linkToMatch": "/matches/brann-vs-molde/2smr5i#5105036",
+            "date": {
+              "utcTime": "2026-11-01T13:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9917/overview/molde",
+            "tooltipText": {
+              "utcTime": "2026-11-01T13:30:00.000Z",
+              "homeTeam": "Brann",
+              "homeTeamId": 8468,
+              "homeScore": "3",
+              "awayTeam": "Molde",
+              "awayTeamId": 9917,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "8468",
+              "name": "Brann",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9917",
+              "name": "Molde",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -473,7 +473,7 @@
                 "home_team",
                 "5",
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -484,18 +484,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "St.Truiden have scored in their last 5 matches and Brann have scored in their last 5 matches."
+              "defaultText": "St.Truiden have scored in their last 5 matches and Brann have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "7",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -506,7 +508,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brann have scored 8 goals in their last 3 matches."
+              "defaultText": "St.Truiden have scored 7 goals in their last 3 matches, while Brann have scored 7."
             },
             {
               "OddsType": "dc",
@@ -518,7 +520,7 @@
                 "home_team",
                 "away_team",
                 "12",
-                "11"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "St.Truiden haven't drawn in their last 12 matches and Brann in their last 11."
+              "defaultText": "St.Truiden haven't drawn in their last 12 matches and Brann in their last 12."
             }
           ]
         },

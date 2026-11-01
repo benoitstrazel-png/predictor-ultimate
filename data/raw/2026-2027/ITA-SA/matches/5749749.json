@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8543.png",
-            "linkToMatch": "/matches/venezia-vs-lazio/28b6ab#5749689",
-            "date": {
-              "utcTime": "2026-09-19T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8543/overview/lazio",
-            "tooltipText": {
-              "utcTime": "2026-09-19T18:45:00.000Z",
-              "homeTeam": "Venezia",
-              "homeTeamId": 7881,
-              "homeScore": "0",
-              "awayTeam": "Lazio",
-              "awayTeamId": 8543,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8543",
-              "name": "Lazio",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
             "linkToMatch": "/matches/venezia-vs-atalanta/284hmb#5749690",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8636",
               "name": "Inter",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
+            "linkToMatch": "/matches/venezia-vs-como/2p0ob7#5749733",
+            "date": {
+              "utcTime": "2026-11-01T11:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10171/overview/como",
+            "tooltipText": {
+              "utcTime": "2026-11-01T11:30:00.000Z",
+              "homeTeam": "Como",
+              "homeTeamId": 10171,
+              "homeScore": "1",
+              "awayTeam": "Venezia",
+              "awayTeamId": 7881,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "7881",
+              "name": "Venezia",
+              "isOurTeam": true
             }
           }
         ],
@@ -467,7 +467,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.33",
+                "0",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -479,19 +479,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Udinese have an average of 0.67."
+              "defaultText": "Venezia have an average of 0 goals in their last three matches and Udinese have an average of 0.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "0.33",
-                "0.67"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,8 +499,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Venezia have an average of 0.33 goals in their last three matches and Udinese have an average of 0.67."
+              "Icon": "poll_glove",
+              "defaultText": "Venezia haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -562,44 +560,34 @@
           "type": "team",
           "playerId": null,
           "teamId": 7881,
+          "priority": 10,
+          "defaultText": "Have conceded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_conceded",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have conceded the most penalties this season (3)",
+          "color": "#101010"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 7881,
           "priority": 9,
           "defaultText": "Haven't scored in their last {0} matches",
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
-          "color": "#101010"
-        },
-        {
-          "type": "player",
-          "playerId": 1130600,
-          "teamId": 7881,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
-          "statValues": [
-            {
-              "value": 1130600,
-              "name": "Filip Stanković",
-              "type": "player"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.4,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Filip Stanković is ranked 2 in saves per match in the competition (4.4)",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#101010"
         },
         {
@@ -629,23 +617,6 @@
           "playerId": null,
           "teamId": 8600,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 8,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 8 attempts",
-          "color": "#101010"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8600,
-          "priority": 8,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -666,6 +637,23 @@
             }
           ],
           "text": "Udinese have won the previous 2 matches against Venezia.",
+          "color": "#101010"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8600,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 8,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 8 attempts",
           "color": "#101010"
         }
       ],

@@ -278,36 +278,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10162.png",
-            "linkToMatch": "/matches/union-berlin-vs-rijeka/2rtm41#6300872",
-            "date": {
-              "utcTime": "2026-09-26T17:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/10162/overview/rijeka",
-            "tooltipText": {
-              "utcTime": "2026-09-26T17:15:00.000Z",
-              "homeTeam": "Rijeka",
-              "homeTeamId": 10162,
-              "homeScore": "0",
-              "awayTeam": "Union Berlin",
-              "awayTeamId": 8149,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "10162",
-              "name": "Rijeka",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8149",
-              "name": "Union Berlin",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8232.png",
             "linkToMatch": "/matches/union-berlin-vs-elversberg/27w1t7#5881187",
             "date": {
@@ -424,6 +394,36 @@
               "name": "Union Berlin",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8722.png",
+            "linkToMatch": "/matches/union-berlin-vs-1-fc-koln/2cqofy#5881213",
+            "date": {
+              "utcTime": "2026-11-01T14:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8722/overview/1-fc-koln",
+            "tooltipText": {
+              "utcTime": "2026-11-01T14:30:00.000Z",
+              "homeTeam": "Union Berlin",
+              "homeTeamId": 8149,
+              "homeScore": "1",
+              "awayTeam": "1. FC Köln",
+              "awayTeamId": 8722,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8149",
+              "name": "Union Berlin",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8722",
+              "name": "1. FC Köln",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -487,13 +487,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "2",
-                "0.33"
+                "3",
+                "6",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,17 +505,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Freiburg have an average of 2 goals in their last three matches and Union Berlin have an average of 0.33."
+              "defaultText": "Freiburg have scored 6 goals in their last 3 matches, while Union Berlin have scored 2."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "8"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,8 +527,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Freiburg haven't drawn in their last 8 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Union Berlin haven't won a match in 4 attempts."
             }
           ]
         },
@@ -709,118 +710,151 @@
       }
     },
     "weather": {
-      "temperature": 8,
+      "temperature": 9,
       "windSpeed": 2,
-      "windDirectionCardinal": "W",
-      "iconCode": 28,
-      "relativeHumidity": 74,
-      "precipChance": 18,
+      "windDirectionCardinal": "SW",
+      "iconCode": 29,
+      "relativeHumidity": 73,
+      "precipChance": 21,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 61,
-      "description": "Mostly Cloudy",
+      "cloudCover": 47,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-01T05:00:10Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-11-01T17:00:06Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5881217,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 8358,
         "name": "Freiburg",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1281090,
+            "age": 25,
             "name": "Philipp Treu",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 14486686,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-30T19:53:43Z",
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Philipp",
-            "lastName": "Treu"
+            "lastName": "Treu",
+            "nationalTeamId": 8570
           },
           {
             "id": 848666,
+            "age": 28,
             "name": "Florent Muslija",
+            "countryName": "Kosovo",
+            "countryCode": "KVX",
+            "marketValue": 1182180,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-08-18T12:51:19Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
             "firstName": "Florent",
-            "lastName": "Muslija"
+            "lastName": "Muslija",
+            "nationalTeamId": 430156
           }
         ]
       },
       "awayTeam": {
         "id": 8149,
         "name": "Union Berlin",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 767800,
+            "age": 29,
             "name": "Felix Uduokhai",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1426003,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Early November 2026",
+              "expectedReturnDate": "2026-11-08T17:30:00Z"
             },
             "firstName": "Felix",
-            "lastName": "Uduokhai"
+            "lastName": "Uduokhai",
+            "nationalTeamId": 8570
           },
           {
             "id": 447959,
+            "age": 30,
             "name": "Robert Skov",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 901796,
             "unavailability": {
               "injuryId": 6,
-              "lastUpdated": "2026-10-30T15:55:05Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Robert",
-            "lastName": "Skov"
+            "lastName": "Skov",
+            "nationalTeamId": 8238
           },
           {
             "id": 1047670,
+            "age": 26,
             "name": "Andrej Ilić",
+            "countryName": "Serbia",
+            "countryCode": "SRB",
+            "marketValue": 6799919,
             "unavailability": {
               "injuryId": 138,
-              "lastUpdated": "2026-11-01T10:36:15Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Andrej",
-            "lastName": "Ilić"
+            "lastName": "Ilić",
+            "nationalTeamId": 8205
           },
           {
             "id": 907495,
+            "age": 27,
             "name": "Stanley N'Soki",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 959854,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-11-01T10:40:48Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Stanley",
-            "lastName": "N'Soki"
+            "lastName": "N'Soki",
+            "nationalTeamId": 6723
           },
           {
             "id": 1796861,
+            "age": 20,
             "name": "Andrik Markgraf",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 393984,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-07-13T10:28:35Z",
               "type": "injury",
               "expectedReturn": "Early March 2027"
             },
             "firstName": "Andrik",
-            "lastName": "Markgraf"
+            "lastName": "Markgraf",
+            "nationalTeamId": 8570
           }
         ]
       }

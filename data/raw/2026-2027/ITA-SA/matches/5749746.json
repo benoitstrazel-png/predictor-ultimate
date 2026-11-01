@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6106.png",
-            "linkToMatch": "/matches/juve-stabia-vs-lazio/1rw2tw#6367371",
-            "date": {
-              "utcTime": "2026-10-03T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/6106/overview/juve-stabia",
-            "tooltipText": {
-              "utcTime": "2026-10-03T13:00:00.000Z",
-              "homeTeam": "Lazio",
-              "homeTeamId": 8543,
-              "homeScore": "3",
-              "awayTeam": "Juve Stabia",
-              "awayTeamId": 6106,
-              "awayScore": "3"
-            },
-            "score": "3 - 3",
-            "home": {
-              "id": "8543",
-              "name": "Lazio",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "6106",
-              "name": "Juve Stabia",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6504.png",
@@ -423,6 +393,36 @@
               "name": "Lazio",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
+            "linkToMatch": "/matches/cagliari-vs-lazio/2ersjb#5749736",
+            "date": {
+              "utcTime": "2026-11-01T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8529/overview/cagliari",
+            "tooltipText": {
+              "utcTime": "2026-11-01T14:00:00.000Z",
+              "homeTeam": "Lazio",
+              "homeTeamId": 8543,
+              "homeScore": "2",
+              "awayTeam": "Cagliari",
+              "awayTeamId": 8529,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8543",
+              "name": "Lazio",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8529",
+              "name": "Cagliari",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Lazio have won their last 4 matches."
+              "defaultText": "Lazio have won their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -509,7 +509,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -522,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lazio haven't drawn in their last 4 matches."
+              "defaultText": "Lazio haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -574,15 +574,15 @@
         },
         {
           "type": "player",
-          "playerId": 843099,
+          "playerId": 415539,
           "teamId": 9875,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 843099,
-              "name": "Scott McTominay",
+              "value": 415539,
+              "name": "Matteo Politano",
               "type": "player"
             },
             {
@@ -591,12 +591,12 @@
               "type": "team"
             },
             {
-              "value": 1.4,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Scott McTominay has the most shots on target per match for Napoli (1.4)",
+          "text": "Matteo Politano has created the most big chances for Napoli (5)",
           "color": "#12A0D7"
         },
         {
@@ -608,7 +608,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 17,
+              "value": 16,
               "name": null,
               "type": "integer"
             },
@@ -618,7 +618,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 17 goals in their last 5 matches",
+          "text": "Have scored 16 goals in their last 5 matches",
           "color": "#75acd4"
         },
         {
@@ -647,12 +647,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 11,
+              "value": 12,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 11 matches",
+          "text": "Haven't lost in 12 matches",
           "color": "#75acd4"
         }
       ],
@@ -691,139 +691,182 @@
     },
     "lineup": {
       "matchId": 5749746,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9875,
         "name": "Napoli",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 308517,
+            "age": 31,
             "name": "Stanislav Lobotka",
+            "countryName": "Slovakia",
+            "countryCode": "SVK",
+            "marketValue": 6001904,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-29T19:58:32Z",
               "type": "injury",
               "expectedReturn": "Late December 2026"
             },
             "firstName": "Stanislav",
-            "lastName": "Lobotka"
+            "lastName": "Lobotka",
+            "nationalTeamId": 8497
           },
           {
             "id": 215242,
+            "age": 33,
             "name": "Leonardo Spinazzola",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 2561418,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-26T19:55:10Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Leonardo",
-            "lastName": "Spinazzola"
+            "lastName": "Spinazzola",
+            "nationalTeamId": 8204
           },
           {
             "id": 955376,
+            "age": 25,
             "name": "Benoît Badiashile",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 16794245,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-10-26T19:54:47Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Benoît",
-            "lastName": "Badiashile"
+            "lastName": "Badiashile",
+            "nationalTeamId": 6723
           },
           {
             "id": 1355552,
+            "age": 24,
             "name": "Alisson Santos",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 866838,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-30T11:35:41Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Alisson",
-            "lastName": "Santos"
+            "lastName": "Santos",
+            "nationalTeamId": 8256
           },
           {
             "id": 793066,
+            "age": 29,
             "name": "David Neres",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 17446756,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-30T11:36:00Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "David",
-            "lastName": "Neres"
+            "lastName": "Neres",
+            "nationalTeamId": 8256
           },
           {
             "id": 1403328,
+            "age": 22,
             "name": "Costantino Favasuli",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 5968527,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-30T11:36:28Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Costantino",
-            "lastName": "Favasuli"
+            "lastName": "Favasuli",
+            "nationalTeamId": 8204
           },
           {
             "id": 823018,
+            "age": 27,
             "name": "Alessandro Buongiorno",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 23313742,
             "unavailability": {
               "injuryId": 70,
-              "lastUpdated": "2026-10-30T11:35:10Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Alessandro",
-            "lastName": "Buongiorno"
+            "lastName": "Buongiorno",
+            "nationalTeamId": 8204
           }
         ]
       },
       "awayTeam": {
         "id": 8543,
         "name": "Lazio",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 665188,
+            "age": 29,
             "name": "Albert Guðmundsson",
+            "countryName": "Iceland",
+            "countryCode": "ISL",
+            "marketValue": 12857482,
             "unavailability": {
               "injuryId": 32,
-              "lastUpdated": "2026-10-04T10:44:24Z",
               "type": "injury",
               "expectedReturn": "Mid November 2026"
             },
             "firstName": "Albert",
-            "lastName": "Guðmundsson"
+            "lastName": "Guðmundsson",
+            "nationalTeamId": 8536
           },
           {
             "id": 1020963,
+            "age": 24,
             "name": "Nicolò Rovella",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 18798237,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-09-30T20:19:25Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Nicolò",
-            "lastName": "Rovella"
+            "lastName": "Rovella",
+            "nationalTeamId": 8204
           },
           {
             "id": 478447,
+            "age": 34,
             "name": "Adam Marušić",
+            "countryName": "Montenegro",
+            "countryCode": "MNE",
+            "marketValue": 2137959,
             "unavailability": {
               "injuryId": 69,
-              "lastUpdated": "2026-10-09T10:25:41Z",
               "type": "injury",
               "expectedReturn": "Doubtful"
             },
             "firstName": "Adam",
-            "lastName": "Marušić"
+            "lastName": "Marušić",
+            "nationalTeamId": 49437
           }
         ]
       }
