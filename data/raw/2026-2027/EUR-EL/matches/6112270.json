@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783.png",
-            "linkToMatch": "/matches/real-sociedad-vs-deportivo-coruna/2s67wj#5868090",
-            "date": {
-              "utcTime": "2026-10-11T14:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
-            "tooltipText": {
-              "utcTime": "2026-10-11T14:15:00.000Z",
-              "homeTeam": "Real Sociedad",
-              "homeTeamId": 8560,
-              "homeScore": "3",
-              "awayTeam": "Deportivo A Coruña",
-              "awayTeamId": 9783,
-              "awayScore": "2"
-            },
-            "score": "3 - 2",
-            "home": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9783",
-              "name": "Deportivo A Coruña",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7978.png",
@@ -270,6 +240,36 @@
               "id": "8581",
               "name": "Levante",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
+            "linkToMatch": "/matches/athletic-club-vs-real-sociedad/2cs4ea#5868111",
+            "date": {
+              "utcTime": "2026-11-01T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8315/overview/athletic-club",
+            "tooltipText": {
+              "utcTime": "2026-11-01T20:00:00.000Z",
+              "homeTeam": "Athletic Club",
+              "homeTeamId": 8315,
+              "homeScore": "2",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8315",
+              "name": "Athletic Club",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Real Sociedad haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Real Sociedad have 3W, 1D, 1L in five matches while Lyon have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -468,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "13",
+                "9",
                 "2"
               ],
               "DefaultLabels": [
@@ -480,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 13 goals in their last 3 matches, while Lyon have scored 2."
+              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches, while Lyon have scored 2."
             },
             {
               "OddsType": "ou",
@@ -490,7 +496,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "13",
+                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,16 +508,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 13 goals in their last 3 matches."
+              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "8"
               ],
               "DefaultLabels": [
@@ -525,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lyon haven't drawn in their last 8 matches."
+              "defaultText": "Real Sociedad haven't drawn in their last 4 matches and Lyon in their last 8."
             }
           ]
         },
@@ -536,23 +544,6 @@
         "awayTopPlayers": []
       },
       "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8560,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 5 matches",
-          "color": "#0056B3"
-        },
         {
           "type": "team",
           "playerId": null,
@@ -581,6 +572,57 @@
           "color": "#0056B3"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 844477,
+          "position": 1,
+          "matchesWithRating": 3,
+          "lastName": "Gómez",
+          "fullName": "Sergio Gómez",
+          "stats": {
+            "goals": 3,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.5,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 270,
+            "minsPlayedGoal": 90,
+            "expectedGoals": 0.19859999418258667,
+            "playerRating": 7.93
+          }
+        },
+        "awayPlayer": {
+          "playerId": 887704,
+          "position": 3,
+          "matchesWithRating": 3,
+          "lastName": "Nakamura",
+          "fullName": "Keito Nakamura",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 2,
+            "ontargetScoringAtt": 1.5,
+            "motm": 2,
+            "gamesPlayed": 3,
+            "minsPlayed": 270,
+            "minsPlayedGoal": 270,
+            "expectedGoals": 0.444599986076355,
+            "playerRating": 7.91
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8689.png",
-            "linkToMatch": "/matches/lorient-vs-toulouse/2vbxze#5802933",
-            "date": {
-              "utcTime": "2026-09-12T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8689/overview/lorient",
-            "tooltipText": {
-              "utcTime": "2026-09-12T18:45:00.000Z",
-              "homeTeam": "Lorient",
-              "homeTeamId": 8689,
-              "homeScore": "2",
-              "awayTeam": "Toulouse",
-              "awayTeamId": 9941,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8689",
-              "name": "Lorient",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9941",
-              "name": "Toulouse",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9746.png",
@@ -270,6 +240,36 @@
               "id": "10242",
               "name": "Troyes",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8592.png",
+            "linkToMatch": "/matches/marseille-vs-toulouse/2u9b78#5802977",
+            "date": {
+              "utcTime": "2026-11-01T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8592/overview/marseille",
+            "tooltipText": {
+              "utcTime": "2026-11-01T19:45:00.000Z",
+              "homeTeam": "Marseille",
+              "homeTeamId": 8592,
+              "homeScore": "2",
+              "awayTeam": "Toulouse",
+              "awayTeamId": 9941,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8592",
+              "name": "Marseille",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9941",
+              "name": "Toulouse",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "2",
+                "2",
+                "1",
+                "away_team",
+                "1",
+                "0",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,8 +461,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Toulouse haven't lost in 5 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Toulouse have 2W, 2D, 1L in five matches while Strasbourg have 1W, 0D, 4L."
             },
             {
               "OddsType": "bts",
@@ -468,7 +474,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "3",
                 "6"
               ],
               "DefaultLabels": [
@@ -480,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have scored 5 goals in their last 3 matches, while Strasbourg have scored 6."
+              "defaultText": "Toulouse have scored 3 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "ou",
@@ -492,7 +498,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "3",
                 "6"
               ],
               "DefaultLabels": [
@@ -504,7 +510,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have scored 5 goals in their last 3 matches, while Strasbourg have scored 6."
+              "defaultText": "Toulouse have scored 3 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "dc",
@@ -547,7 +553,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -557,34 +563,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#5b417b"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 9941,
-          "priority": 8,
-          "defaultText": "{0} have won the previous {2} matches against {1}.",
-          "localizedTextId": "h2h_winstreak",
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
-            {
-              "value": 9941,
-              "name": "Toulouse",
-              "type": "team"
-            },
-            {
-              "value": 9848,
-              "name": "Strasbourg",
-              "type": "team"
-            },
             {
               "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Toulouse have won the previous 2 matches against Strasbourg.",
+          "text": "Haven't scored in their last 2 matches",
           "color": "#5b417b"
         },
         {
@@ -764,22 +760,6 @@
             "firstName": "Fabio",
             "lastName": "Baldé",
             "nationalTeamId": 8361
-          },
-          {
-            "id": 1156569,
-            "age": 24,
-            "name": "Sebastian Nanasi",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
-            "marketValue": 18027703,
-            "unavailability": {
-              "injuryId": 6,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Sebastian",
-            "lastName": "Nanasi",
-            "nationalTeamId": 8520
           },
           {
             "id": 1355526,
