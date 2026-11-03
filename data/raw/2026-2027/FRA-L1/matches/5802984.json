@@ -114,44 +114,15 @@
           "surface": "grass"
         },
         "Referee": {
-          "text": "",
-          "countryCode": "",
-          "country": ""
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/fra.png",
+          "text": "Jeremy Stinat",
+          "countryCode": "FRA",
+          "country": "France"
         },
         "Attendance": null
       },
       "teamForm": [
         [
-          {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8583.png",
-            "linkToMatch": "/matches/brest-vs-auxerre/2f3ii7#5802938",
-            "date": {
-              "utcTime": "2026-09-20T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8583/overview/auxerre",
-            "tooltipText": {
-              "utcTime": "2026-09-20T13:00:00.000Z",
-              "homeTeam": "Auxerre",
-              "homeTeamId": 8583,
-              "homeScore": "2",
-              "awayTeam": "Brest",
-              "awayTeamId": 8521,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8583",
-              "name": "Auxerre",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8521",
-              "name": "Brest",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -270,6 +241,36 @@
               "id": "9831",
               "name": "Nice",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8689.png",
+            "linkToMatch": "/matches/brest-vs-lorient/2g6hwg#5802975",
+            "date": {
+              "utcTime": "2026-11-02T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8689/overview/lorient",
+            "tooltipText": {
+              "utcTime": "2026-11-02T19:45:00.000Z",
+              "homeTeam": "Lorient",
+              "homeTeamId": 8689,
+              "homeScore": "0",
+              "awayTeam": "Brest",
+              "awayTeamId": 8521,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8689",
+              "name": "Lorient",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8521",
+              "name": "Brest",
+              "isOurTeam": true
             }
           }
         ],
@@ -486,14 +487,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "7",
-                "2"
+                "1.33",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +504,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have scored 7 goals in their last 3 matches, while Lyon have scored 2."
+              "defaultText": "Brest have an average of 1.33 goals in their last three matches and Lyon have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -547,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 11,
               "name": null,
               "type": "integer"
             },
@@ -557,24 +557,34 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 11 goals in their last 5 matches",
           "color": "#ED1C24"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1079548,
           "teamId": 8521,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 23,
+              "value": 1079548,
+              "name": "Joris Chotard",
+              "type": "player"
+            },
+            {
+              "value": 8521,
+              "name": "Brest",
+              "type": "team"
+            },
+            {
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 23 matches",
+          "text": "Joris Chotard has created the most big chances for Brest (5)",
           "color": "#ED1C24"
         },
         {
@@ -596,12 +606,12 @@
               "type": "team"
             },
             {
-              "value": 1.6,
+              "value": 1.5,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Pathé Mboup has the most shots on target per match for Brest (1.6)",
+          "text": "Pathé Mboup has the most shots on target per match for Brest (1.5)",
           "color": "#ED1C24"
         },
         {
@@ -700,19 +710,19 @@
     },
     "weather": {
       "temperature": 11,
-      "windSpeed": 4,
-      "windDirectionCardinal": "ESE",
-      "iconCode": 11,
-      "relativeHumidity": 74,
-      "precipChance": 31,
-      "precipitation": 0.2,
+      "windSpeed": 5,
+      "windDirectionCardinal": "E",
+      "iconCode": 28,
+      "relativeHumidity": 73,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 68,
-      "description": "Few Showers",
+      "cloudCover": 67,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-02T05:00:15Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-11-03T05:00:17Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5802984,
@@ -726,28 +736,12 @@
         "starters": [],
         "unavailable": [
           {
-            "id": 1441955,
-            "age": 22,
-            "name": "Giovani Versini",
-            "countryName": "France",
-            "countryCode": "FRA",
-            "marketValue": 5841759,
-            "unavailability": {
-              "injuryId": 14,
-              "type": "injury",
-              "expectedReturn": "Early November 2026"
-            },
-            "firstName": "Giovani",
-            "lastName": "Versini",
-            "nationalTeamId": 6723
-          },
-          {
             "id": 1699556,
             "age": 20,
             "name": "Raphaël Le Guen",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 1424134,
+            "marketValue": 18971810,
             "unavailability": {
               "injuryId": 23,
               "type": "injury",
@@ -763,7 +757,7 @@
             "name": "Brendan Chardonnet",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 2073440,
+            "marketValue": 2041955,
             "unavailability": {
               "injuryId": 101,
               "type": "injury",
@@ -787,7 +781,7 @@
             "name": "Tyler Morton",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 29895848,
+            "marketValue": 34355962,
             "unavailability": {
               "injuryId": 47,
               "type": "injury",
@@ -819,7 +813,7 @@
             "name": "Pavel Šulc",
             "countryName": "Czechia",
             "countryCode": "CZE",
-            "marketValue": 22169342,
+            "marketValue": 22331351,
             "unavailability": {
               "injuryId": 70,
               "type": "injury",
@@ -835,7 +829,7 @@
             "name": "Loïs Openda",
             "countryName": "Belgium",
             "countryCode": "BEL",
-            "marketValue": 25547544,
+            "marketValue": 25442744,
             "unavailability": {
               "injuryId": 74,
               "type": "injury",
@@ -851,7 +845,7 @@
             "name": "Mohamed Ouédraogo",
             "countryName": "Burkina Faso",
             "countryCode": "BFA",
-            "marketValue": 1435281,
+            "marketValue": 1831626,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",

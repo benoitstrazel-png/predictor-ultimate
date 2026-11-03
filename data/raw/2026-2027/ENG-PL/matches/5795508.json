@@ -114,44 +114,60 @@
           "surface": "grass"
         },
         "Referee": {
-          "text": "",
-          "countryCode": "",
-          "country": ""
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/eng.png",
+          "text": "Stuart Attwell",
+          "countryCode": "ENG",
+          "country": "England",
+          "id": 1001075752,
+          "leagueId": 47,
+          "leagueName": "Premier League",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 45,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 4.58,
+              "valueType": "perMatch",
+              "average": 3.86,
+              "total": 206,
+              "averageType": "above",
+              "fillPercentage": 91.25,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 3,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 4,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 10,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 22.09,
+              "valueType": "perMatch",
+              "average": 21.92,
+              "total": 994,
+              "averageType": "average",
+              "fillPercentage": 51.86,
+              "averagePercentage": 50
+            }
+          ]
         },
         "Attendance": null
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png",
-            "linkToMatch": "/matches/everton-vs-ipswich-town/2uo0th#5795458",
-            "date": {
-              "utcTime": "2026-09-19T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9902/overview/ipswich-town",
-            "tooltipText": {
-              "utcTime": "2026-09-19T14:00:00.000Z",
-              "homeTeam": "Everton",
-              "homeTeamId": 8668,
-              "homeScore": "1",
-              "awayTeam": "Ipswich Town",
-              "awayTeamId": 9902,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9902",
-              "name": "Ipswich Town",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -270,6 +286,36 @@
               "id": "10261",
               "name": "Newcastle United",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
+            "linkToMatch": "/matches/everton-vs-newcastle-united/2yo9qd#5795503",
+            "date": {
+              "utcTime": "2026-11-02T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10261/overview/newcastle-united",
+            "tooltipText": {
+              "utcTime": "2026-11-02T20:00:00.000Z",
+              "homeTeam": "Newcastle United",
+              "homeTeamId": 10261,
+              "homeScore": "0",
+              "awayTeam": "Everton",
+              "awayTeamId": 8668,
+              "awayScore": "1"
+            },
+            "score": "0 - 1",
+            "home": {
+              "id": "10261",
+              "name": "Newcastle United",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8668",
+              "name": "Everton",
+              "isOurTeam": true
             }
           }
         ],
@@ -468,13 +514,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,19 +532,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Everton have an average of 1 goals in their last three matches and Coventry City have an average of 1.33."
+              "defaultText": "Everton have scored 4 goals in their last 3 matches, while Coventry City have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,16 +556,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Everton have an average of 1 goals in their last three matches and Coventry City have an average of 1.33."
+              "defaultText": "Everton have scored 4 goals in their last 3 matches, while Coventry City have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "12"
               ],
               "DefaultLabels": [
@@ -531,7 +581,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Coventry City haven't drawn in their last 12 matches."
+              "defaultText": "Everton haven't drawn in their last 4 matches and Coventry City in their last 12."
             }
           ]
         },
@@ -583,12 +633,12 @@
               "type": "team"
             },
             {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Kiernan Dewsbury-Hall has created the most big chances for Everton (4)",
+          "text": "Kiernan Dewsbury-Hall has created the most big chances for Everton (6)",
           "color": "#00359C"
         },
         {
@@ -610,12 +660,12 @@
               "type": "team"
             },
             {
-              "value": 1.6,
+              "value": 1.5,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Thierno Barry has the most shots on target per match for Everton (1.6)",
+          "text": "Thierno Barry has the most shots on target per match for Everton (1.5)",
           "color": "#00359C"
         },
         {
@@ -659,15 +709,15 @@
         },
         {
           "type": "player",
-          "playerId": 776184,
+          "playerId": 982284,
           "teamId": 8669,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 776184,
-              "name": "Brandon Thomas-Asante",
+              "value": 982284,
+              "name": "Ellis Simms",
               "type": "player"
             },
             {
@@ -676,17 +726,107 @@
               "type": "team"
             },
             {
-              "value": 1,
+              "value": 1.5,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Brandon Thomas-Asante has created the most big chances for Coventry City (1)",
+          "text": "Ellis Simms has the most shots on target per match for Coventry City (1.5)",
           "color": "#65b0e4"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 1398392,
+          "position": 3,
+          "matchesWithRating": 9,
+          "lastName": "Barry",
+          "fullName": "Thierno Barry",
+          "stats": {
+            "goals": 4,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.62,
+            "motm": 1,
+            "gamesPlayed": 9,
+            "minsPlayed": 765,
+            "minsPlayedGoal": 191,
+            "expectedGoals": 6.366300106048584,
+            "playerRating": 7.07
+          }
+        },
+        "awayPlayer": {
+          "playerId": 1030830,
+          "position": 2,
+          "matchesWithRating": 9,
+          "lastName": "Rudoni",
+          "fullName": "Jack Rudoni",
+          "stats": {
+            "goals": 3,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 1,
+            "gamesPlayed": 9,
+            "minsPlayed": 651,
+            "minsPlayedGoal": 217,
+            "expectedGoals": 2.101300001144409,
+            "playerRating": 7.12
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ENG",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/47/5795508/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -703,18 +843,18 @@
       }
     },
     "weather": {
-      "temperature": 8,
+      "temperature": 9,
       "windSpeed": 2,
-      "windDirectionCardinal": "E",
-      "iconCode": 27,
-      "relativeHumidity": 82,
+      "windDirectionCardinal": "ENE",
+      "iconCode": 26,
+      "relativeHumidity": 84,
       "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 73,
-      "description": "Mostly Cloudy",
+      "cloudCover": 90,
+      "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-02T08:00:01Z",
+      "lastUpdated": "2026-11-03T08:00:01Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -753,21 +893,21 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 14264589,
+            "marketValue": 16625745,
             "firstName": "Jordan",
             "lastName": "Pickford",
             "nationalTeamId": 8491,
             "rankings": null
           },
           {
-            "id": 1210384,
-            "age": 24,
-            "name": "Merlin Röhl",
+            "id": 1098607,
+            "age": 25,
+            "name": "Jake O'Brien",
             "positionId": 32,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "34",
-            "countryName": "Germany",
-            "countryCode": "GER",
+            "shirtNumber": "15",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.875,
@@ -780,10 +920,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 21570139,
-            "firstName": "Merlin",
-            "lastName": "Röhl",
-            "nationalTeamId": 8570,
+            "marketValue": 18483930,
+            "firstName": "Jake",
+            "lastName": "O'Brien",
+            "nationalTeamId": 5791,
             "rankings": null
           },
           {
@@ -793,6 +933,7 @@
             "positionId": 34,
             "usualPlayingPositionId": 1,
             "shirtNumber": "6",
+            "isCaptain": true,
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -807,21 +948,21 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 5171461,
+            "marketValue": 5000354,
             "firstName": "James",
             "lastName": "Tarkowski",
             "nationalTeamId": 8491,
             "rankings": null
           },
           {
-            "id": 1098607,
-            "age": 25,
-            "name": "Jake O'Brien",
+            "id": 1030829,
+            "age": 24,
+            "name": "Jarrad Branthwaite",
             "positionId": 36,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "15",
-            "countryName": "Ireland",
-            "countryCode": "IRL",
+            "shirtNumber": "4",
+            "countryName": "England",
+            "countryCode": "ENG",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.375,
@@ -834,10 +975,10 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 17747013,
-            "firstName": "Jake",
-            "lastName": "O'Brien",
-            "nationalTeamId": 5791,
+            "marketValue": 50198399,
+            "firstName": "Jarrad",
+            "lastName": "Branthwaite",
+            "nationalTeamId": 8491,
             "rankings": null
           },
           {
@@ -861,19 +1002,19 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 26770137,
+            "marketValue": 26705758,
             "firstName": "Vitaliy",
             "lastName": "Mykolenko",
             "nationalTeamId": 6718,
             "rankings": null
           },
           {
-            "id": 982394,
-            "age": 24,
-            "name": "Hayden Hackney",
+            "id": 1559637,
+            "age": 19,
+            "name": "Harrison Armstrong",
             "positionId": 64,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "30",
+            "shirtNumber": "45",
             "countryName": "England",
             "countryCode": "ENG",
             "horizontalLayout": {
@@ -888,9 +1029,9 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 40536652,
-            "firstName": "Hayden",
-            "lastName": "Hackney",
+            "marketValue": 39488835,
+            "firstName": "Harrison",
+            "lastName": "Armstrong",
             "nationalTeamId": 8491,
             "rankings": null
           },
@@ -915,21 +1056,21 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 55058965,
+            "marketValue": 60805445,
             "firstName": "James",
             "lastName": "Garner",
             "nationalTeamId": 8491,
             "rankings": null
           },
           {
-            "id": 1292833,
-            "age": 20,
-            "name": "Tyler Dibling",
+            "id": 1210384,
+            "age": 24,
+            "name": "Merlin Röhl",
             "positionId": 83,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "20",
-            "countryName": "England",
-            "countryCode": "ENG",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "34",
+            "countryName": "Germany",
+            "countryCode": "GER",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.837,
@@ -942,10 +1083,10 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 23751258,
-            "firstName": "Tyler",
-            "lastName": "Dibling",
-            "nationalTeamId": 8491,
+            "marketValue": 25100953,
+            "firstName": "Merlin",
+            "lastName": "Röhl",
+            "nationalTeamId": 8570,
             "rankings": null
           },
           {
@@ -969,7 +1110,7 @@
               "height": 0.192,
               "width": 0.337
             },
-            "marketValue": 44655591,
+            "marketValue": 45885024,
             "firstName": "Kiernan",
             "lastName": "Dewsbury-Hall",
             "nationalTeamId": 8491,
@@ -996,7 +1137,7 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 29176703,
+            "marketValue": 28973429,
             "firstName": "Tyrique",
             "lastName": "George",
             "nationalTeamId": 8491,
@@ -1023,7 +1164,7 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 44676667,
+            "marketValue": 46631043,
             "firstName": "Thierno",
             "lastName": "Barry",
             "nationalTeamId": 6723,
@@ -1053,24 +1194,10 @@
             "shirtNumber": "12",
             "countryName": "Ireland",
             "countryCode": "IRL",
-            "marketValue": 4618059,
+            "marketValue": 4267705,
             "firstName": "Mark",
             "lastName": "Travers",
             "nationalTeamId": 5791,
-            "rankings": null
-          },
-          {
-            "id": 581530,
-            "age": 31,
-            "name": "Tom King",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "31",
-            "countryName": "Wales",
-            "countryCode": "WAL",
-            "marketValue": 627484,
-            "firstName": "Tom",
-            "lastName": "King",
-            "nationalTeamId": 5790,
             "rankings": null
           },
           {
@@ -1081,7 +1208,7 @@
             "shirtNumber": "2",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 6662485,
+            "marketValue": 12058384,
             "firstName": "Ainsley",
             "lastName": "Maitland-Niles",
             "nationalTeamId": 8491,
@@ -1095,7 +1222,7 @@
             "shirtNumber": "5",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 1921456,
+            "marketValue": 1897858,
             "firstName": "Michael",
             "lastName": "Keane",
             "nationalTeamId": 8491,
@@ -1123,23 +1250,23 @@
             "shirtNumber": "23",
             "countryName": "Denmark",
             "countryCode": "DEN",
-            "marketValue": 4210396,
+            "marketValue": 4196646,
             "firstName": "Christian",
             "lastName": "Nørgaard",
             "nationalTeamId": 8238,
             "rankings": null
           },
           {
-            "id": 1559637,
-            "age": 19,
-            "name": "Harrison Armstrong",
+            "id": 982394,
+            "age": 24,
+            "name": "Hayden Hackney",
             "usualPlayingPositionId": 2,
-            "shirtNumber": "45",
+            "shirtNumber": "30",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 11140979,
-            "firstName": "Harrison",
-            "lastName": "Armstrong",
+            "marketValue": 41244754,
+            "firstName": "Hayden",
+            "lastName": "Hackney",
             "nationalTeamId": 8491,
             "rankings": null
           },
@@ -1151,7 +1278,7 @@
             "shirtNumber": "58",
             "countryName": "Northern Ireland",
             "countryCode": "NIR",
-            "marketValue": 601040,
+            "marketValue": 825007,
             "firstName": "Braiden",
             "lastName": "Graham",
             "nationalTeamId": 10259,
@@ -1165,24 +1292,38 @@
             "shirtNumber": "22",
             "countryName": "Wales",
             "countryCode": "WAL",
-            "marketValue": 33812641,
+            "marketValue": 27624610,
             "firstName": "Brennan",
             "lastName": "Johnson",
             "nationalTeamId": 5790,
             "rankings": null
+          },
+          {
+            "id": 1292833,
+            "age": 20,
+            "name": "Tyler Dibling",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "20",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 20929660,
+            "firstName": "Tyler",
+            "lastName": "Dibling",
+            "nationalTeamId": 8491,
+            "rankings": null
           }
         ],
         "averageStarterAge": 26.1,
-        "totalStarterMarketValue": 323379175,
+        "totalStarterMarketValue": 363898915,
         "lastMatch": {
-          "matchId": 6275369,
-          "homeTeamId": 8668,
-          "awayTeamId": 10261,
-          "homeTeamName": "Everton",
-          "awayTeamName": "Newcastle United",
-          "homeScore": 3,
+          "matchId": 5795503,
+          "homeTeamId": 10261,
+          "awayTeamId": 8668,
+          "homeTeamName": "Newcastle United",
+          "awayTeamName": "Everton",
+          "homeScore": 0,
           "awayScore": 1,
-          "matchDate": "2026-10-29T20:45:00"
+          "matchDate": "2026-11-02T21:00:00"
         }
       },
       "awayTeam": {
@@ -1211,7 +1352,7 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 13558453,
+            "marketValue": 18955868,
             "firstName": "Carl",
             "lastName": "Rushworth",
             "nationalTeamId": 8491,
@@ -1238,7 +1379,7 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 18568729,
+            "marketValue": 18423285,
             "firstName": "Milan",
             "lastName": "van Ewijk",
             "nationalTeamId": 6708,
@@ -1265,7 +1406,7 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 298598,
+            "marketValue": 6511761,
             "firstName": "Stephen",
             "lastName": "Mfuni",
             "nationalTeamId": 8491,
@@ -1293,7 +1434,7 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 1972119,
+            "marketValue": 1949060,
             "firstName": "Ethan",
             "lastName": "Pinnock",
             "nationalTeamId": 5806,
@@ -1320,7 +1461,7 @@
               "height": 0.192,
               "width": 0.25
             },
-            "marketValue": 8422731,
+            "marketValue": 9138706,
             "firstName": "Jay",
             "lastName": "Dasilva",
             "nationalTeamId": 5790,
@@ -1347,7 +1488,7 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 11432129,
+            "marketValue": 21868434,
             "firstName": "Caleb",
             "lastName": "Yirenkyi",
             "nationalTeamId": 6714,
@@ -1374,7 +1515,7 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 12214930,
+            "marketValue": 13975231,
             "firstName": "Victor",
             "lastName": "Torp",
             "nationalTeamId": 8238,
@@ -1401,7 +1542,7 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 2364826,
+            "marketValue": 2354041,
             "firstName": "Tatsuhiro",
             "lastName": "Sakamoto",
             "nationalTeamId": 6715,
@@ -1428,7 +1569,7 @@
               "height": 0.192,
               "width": 0.337
             },
-            "marketValue": 21457212,
+            "marketValue": 21401536,
             "firstName": "Jack",
             "lastName": "Rudoni",
             "nationalTeamId": 8491,
@@ -1455,7 +1596,7 @@
               "height": 0.192,
               "width": 0.325
             },
-            "marketValue": 15455401,
+            "marketValue": 15252128,
             "firstName": "Yann",
             "lastName": "Gboho",
             "nationalTeamId": 6709,
@@ -1512,7 +1653,7 @@
             "shirtNumber": "25",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 483020,
+            "marketValue": 821756,
             "firstName": "Daniel",
             "lastName": "Bentley",
             "nationalTeamId": 8491,
@@ -1526,7 +1667,7 @@
             "shirtNumber": "22",
             "countryName": "Jamaica",
             "countryCode": "JAM",
-            "marketValue": 2454768,
+            "marketValue": 2391845,
             "firstName": "Joel",
             "lastName": "Latibeaudiere",
             "nationalTeamId": 5806,
@@ -1540,7 +1681,7 @@
             "shirtNumber": "6",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 4953138,
+            "marketValue": 4781162,
             "firstName": "Matt",
             "lastName": "Grimes",
             "nationalTeamId": 8491,
@@ -1554,7 +1695,7 @@
             "shirtNumber": "23",
             "countryName": "Ghana",
             "countryCode": "GHA",
-            "marketValue": 11314438,
+            "marketValue": 15402424,
             "firstName": "Brandon",
             "lastName": "Thomas-Asante",
             "nationalTeamId": 6714,
@@ -1568,7 +1709,7 @@
             "shirtNumber": "9",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 13306057,
+            "marketValue": 13102783,
             "firstName": "Ellis",
             "lastName": "Simms",
             "nationalTeamId": 8491,
@@ -1596,7 +1737,7 @@
             "shirtNumber": "38",
             "countryName": "Netherlands",
             "countryCode": "NED",
-            "marketValue": 10371451,
+            "marketValue": 6681048,
             "firstName": "Gustavo",
             "lastName": "Hamer",
             "nationalTeamId": 6708,
@@ -1610,7 +1751,7 @@
             "shirtNumber": "20",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 4732353,
+            "marketValue": 4495663,
             "firstName": "Kaine",
             "lastName": "Kesler-Hayden",
             "nationalTeamId": 8491,
@@ -1624,7 +1765,7 @@
             "shirtNumber": "49",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 17268180,
+            "marketValue": 19907792,
             "firstName": "Sidiki",
             "lastName": "Cherif",
             "nationalTeamId": 6723,
@@ -1638,7 +1779,7 @@
             "name": "Bobby Thomas",
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 11491240,
+            "marketValue": 24645513,
             "unavailability": {
               "injuryId": 74,
               "type": "injury",
@@ -1655,7 +1796,7 @@
             "positionId": 1000,
             "countryName": "Switzerland",
             "countryCode": "SUI",
-            "marketValue": 13668203,
+            "marketValue": 19761451,
             "unavailability": {
               "injuryId": 101,
               "type": "injury",
@@ -1706,7 +1847,7 @@
             "positionId": 1000,
             "countryName": "USA",
             "countryCode": "USA",
-            "marketValue": 14478033,
+            "marketValue": 11958088,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
@@ -1718,7 +1859,7 @@
           }
         ],
         "averageStarterAge": 26.4,
-        "totalStarterMarketValue": 112220480,
+        "totalStarterMarketValue": 136305402,
         "lastMatch": {
           "matchId": 5795499,
           "homeTeamId": 8669,

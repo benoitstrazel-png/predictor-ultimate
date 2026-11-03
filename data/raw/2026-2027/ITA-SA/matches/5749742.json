@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
-            "linkToMatch": "/matches/fiorentina-vs-napoli/2swm0q#5749683",
-            "date": {
-              "utcTime": "2026-09-20T10:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9875/overview/napoli",
-            "tooltipText": {
-              "utcTime": "2026-09-20T10:30:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "1",
-              "awayTeam": "Napoli",
-              "awayTeamId": 9875,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9875",
-              "name": "Napoli",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
@@ -270,6 +240,36 @@
               "id": "8524",
               "name": "Atalanta",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7943.png",
+            "linkToMatch": "/matches/sassuolo-vs-fiorentina/28u7rc#5749738",
+            "date": {
+              "utcTime": "2026-11-02T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/7943/overview/sassuolo",
+            "tooltipText": {
+              "utcTime": "2026-11-02T17:30:00.000Z",
+              "homeTeam": "Sassuolo",
+              "homeTeamId": 7943,
+              "homeScore": "2",
+              "awayTeam": "Fiorentina",
+              "awayTeamId": 8535,
+              "awayScore": "4"
+            },
+            "score": "2 - 4",
+            "home": {
+              "id": "7943",
+              "name": "Sassuolo",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": true
             }
           }
         ],
@@ -492,7 +492,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "4",
+                "7",
                 "4"
               ],
               "DefaultLabels": [
@@ -504,17 +504,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have scored 4 goals in their last 3 matches, while Juventus have scored 4."
+              "defaultText": "Fiorentina have scored 7 goals in their last 3 matches, while Juventus have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
                 "home_team",
-                "5"
+                "away_team",
+                "4",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Fiorentina haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Fiorentina haven't lost to Juventus in their last 4 meetings (2W, 2D)."
             }
           ]
         },
@@ -547,7 +550,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -557,7 +560,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#5F259F"
         },
         {
@@ -569,29 +572,39 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 5 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#5F259F"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1526689,
           "teamId": 8535,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 1526689,
+              "name": "Álex Jiménez",
+              "type": "player"
+            },
+            {
+              "value": 8535,
+              "name": "Fiorentina",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Álex Jiménez has created the most big chances for Fiorentina (2)",
           "color": "#5F259F"
         },
         {
@@ -635,15 +648,15 @@
         },
         {
           "type": "player",
-          "playerId": 787350,
+          "playerId": 862616,
           "teamId": 9885,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 787350,
-              "name": "Douglas Luiz",
+              "value": 862616,
+              "name": "Edon Zhegrova",
               "type": "player"
             },
             {
@@ -652,17 +665,56 @@
               "type": "team"
             },
             {
-              "value": 4,
+              "value": 3.3,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Douglas Luiz has created the most big chances for Juventus (4)",
+          "text": "Edon Zhegrova has the most shots on target per match for Juventus (3.3)",
           "color": "#000001"
         }
       ],
       "countryCode": "ITA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/55/5749742/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -681,18 +733,18 @@
     "weather": {
       "temperature": 12,
       "windSpeed": 1,
-      "windDirectionCardinal": "SE",
-      "iconCode": 11,
-      "relativeHumidity": 90,
-      "precipChance": 46,
-      "precipitation": 0.3,
+      "windDirectionCardinal": "ESE",
+      "iconCode": 27,
+      "relativeHumidity": 89,
+      "precipChance": 23,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 60,
-      "description": "Showers",
+      "cloudCover": 62,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-02T08:00:13Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-11-03T08:00:13Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5749742,
@@ -711,7 +763,7 @@
             "name": "Marin Pongračić",
             "countryName": "Croatia",
             "countryCode": "CRO",
-            "marketValue": 6360697,
+            "marketValue": 6241307,
             "unavailability": {
               "injuryId": 69,
               "type": "injury",
@@ -727,7 +779,7 @@
             "name": "Luca Ranieri",
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 6870553,
+            "marketValue": 6561994,
             "unavailability": {
               "injuryId": 74,
               "type": "injury",
@@ -743,7 +795,7 @@
             "name": "Arthur Atta",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 25932466,
+            "marketValue": 26061282,
             "unavailability": {
               "injuryId": 114,
               "type": "injury",
@@ -759,7 +811,7 @@
             "name": "Fabiano Parisi",
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 6788935,
+            "marketValue": 6788131,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
@@ -783,11 +835,11 @@
             "name": "Weston McKennie",
             "countryName": "USA",
             "countryCode": "USA",
-            "marketValue": 30743277,
+            "marketValue": 31534855,
             "unavailability": {
               "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Doubtful"
+              "expectedReturn": "About 1-2 weeks"
             },
             "firstName": "Weston",
             "lastName": "McKennie",
@@ -799,7 +851,7 @@
             "name": "Nicolás González",
             "countryName": "Argentina",
             "countryCode": "ARG",
-            "marketValue": 22297682,
+            "marketValue": 22712118,
             "unavailability": {
               "injuryId": 101,
               "type": "injury",
@@ -815,7 +867,7 @@
             "name": "Zeki Çelik",
             "countryName": "Turkiye",
             "countryCode": "TUR",
-            "marketValue": 13390712,
+            "marketValue": 14351988,
             "unavailability": {
               "injuryId": 69,
               "type": "injury",
@@ -831,7 +883,7 @@
             "name": "Francisco Conceição",
             "countryName": "Portugal",
             "countryCode": "POR",
-            "marketValue": 33783768,
+            "marketValue": 34232511,
             "unavailability": {
               "injuryId": 79,
               "type": "injury",
@@ -847,7 +899,7 @@
             "name": "Kamil Grabara",
             "countryName": "Poland",
             "countryCode": "POL",
-            "marketValue": 11659645,
+            "marketValue": 11631902,
             "unavailability": {
               "injuryId": 76,
               "type": "injury",
@@ -863,7 +915,7 @@
             "name": "Manuel Locatelli",
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 23092670,
+            "marketValue": 23378696,
             "unavailability": {
               "injuryId": 70,
               "type": "injury",
@@ -879,7 +931,7 @@
             "name": "Khéphren Thuram-Ulien",
             "countryName": "France",
             "countryCode": "FRA",
-            "marketValue": 38759295,
+            "marketValue": 39965969,
             "unavailability": {
               "injuryId": 140,
               "type": "injury",
@@ -895,7 +947,7 @@
             "name": "Kenan Yıldız",
             "countryName": "Turkiye",
             "countryCode": "TUR",
-            "marketValue": 79805396,
+            "marketValue": 76995516,
             "unavailability": {
               "injuryId": 8,
               "type": "injury",
