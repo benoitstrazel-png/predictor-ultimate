@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10268.png",
-            "linkToMatch": "/matches/villarreal-vs-elche/3gsai9#5868100",
-            "date": {
-              "utcTime": "2026-10-17T14:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/10268/overview/elche",
-            "tooltipText": {
-              "utcTime": "2026-10-17T14:15:00.000Z",
-              "homeTeam": "Villarreal",
-              "homeTeamId": 10205,
-              "homeScore": "0",
-              "awayTeam": "Elche",
-              "awayTeamId": 10268,
-              "awayScore": "0"
-            },
-            "score": "0 - 0",
-            "home": {
-              "id": "10205",
-              "name": "Villarreal",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10268",
-              "name": "Elche",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
@@ -269,6 +239,36 @@
             "away": {
               "id": "8558",
               "name": "Espanyol",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+            "linkToMatch": "/matches/paris-saint-germain-vs-villarreal/3bpfu1#6106326",
+            "date": {
+              "utcTime": "2026-11-03T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
+            "tooltipText": {
+              "utcTime": "2026-11-03T20:00:00.000Z",
+              "homeTeam": "Villarreal",
+              "homeTeamId": 10205,
+              "homeScore": "0",
+              "awayTeam": "Paris Saint-Germain",
+              "awayTeamId": 9847,
+              "awayScore": "6"
+            },
+            "score": "0 - 6",
+            "home": {
+              "id": "10205",
+              "name": "Villarreal",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9847",
+              "name": "Paris Saint-Germain",
               "isOurTeam": false
             }
           }
@@ -444,8 +444,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "1",
-                "2",
+                "0",
+                "3",
                 "away_team",
                 "2",
                 "1",
@@ -462,20 +462,17 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal have 2W, 1D, 2L in five matches while Getafe have 2W, 1D, 2L."
+              "defaultText": "Villarreal have 2W, 0D, 3L in five matches while Getafe have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} haven't scored at home for {1} matches.",
+              "TextTemplateId": "goalless_home",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "7",
-                "6"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -485,8 +482,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 6."
+              "Icon": "poll_glove",
+              "defaultText": "Villarreal haven't scored at home for 3 matches."
             },
             {
               "OddsType": "ou",
@@ -498,7 +495,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
+                "5",
                 "6"
               ],
               "DefaultLabels": [
@@ -510,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Villarreal have scored 7 goals in their last 3 matches, while Getafe have scored 6."
+              "defaultText": "Villarreal have scored 5 goals in their last 3 matches, while Getafe have scored 6."
             },
             {
               "OddsType": "dc",
@@ -521,7 +518,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "4",
+                "5",
                 "4"
               ],
               "DefaultLabels": [
@@ -535,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Villarreal haven't drawn in their last 4 matches and Getafe in their last 4."
+              "defaultText": "Villarreal haven't drawn in their last 5 matches and Getafe in their last 4."
             }
           ]
         },
@@ -572,6 +569,23 @@
           "type": "team",
           "playerId": null,
           "teamId": 10205,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#e19d00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10205,
           "priority": 6,
           "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
           "localizedTextId": "h2h_no_draws_v2",
@@ -593,33 +607,6 @@
             }
           ],
           "text": "Villarreal and Getafe have not drawn any of their last 3 matches against each other.",
-          "color": "#e19d00"
-        },
-        {
-          "type": "player",
-          "playerId": 1117069,
-          "teamId": 10205,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1117069,
-              "name": "Georges Mikautadze",
-              "type": "player"
-            },
-            {
-              "value": 10205,
-              "name": "Villarreal",
-              "type": "team"
-            },
-            {
-              "value": 2.2,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Georges Mikautadze has the most shots on target per match for Villarreal (2.2)",
           "color": "#e19d00"
         },
         {

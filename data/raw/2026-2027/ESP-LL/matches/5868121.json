@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
-            "linkToMatch": "/matches/atletico-madrid-vs-manchester-united/3d2krr#6106267",
-            "date": {
-              "utcTime": "2026-10-13T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10260/overview/manchester-united",
-            "tooltipText": {
-              "utcTime": "2026-10-13T19:00:00.000Z",
-              "homeTeam": "Atlético Madrid",
-              "homeTeamId": 9906,
-              "homeScore": "2",
-              "awayTeam": "Manchester United",
-              "awayTeamId": 10260,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10260",
-              "name": "Manchester United",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8558.png",
             "linkToMatch": "/matches/espanyol-vs-atletico-madrid/2thy9u#5868094",
             "date": {
@@ -271,39 +241,39 @@
               "name": "Atlético Madrid",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
+            "linkToMatch": "/matches/bayern-munchen-vs-atletico-madrid/37vqh7#6106266",
+            "date": {
+              "utcTime": "2026-11-03T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9823/overview/bayern-munchen",
+            "tooltipText": {
+              "utcTime": "2026-11-03T20:00:00.000Z",
+              "homeTeam": "Atlético Madrid",
+              "homeTeamId": 9906,
+              "homeScore": "0",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": false
+            }
           }
         ],
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png",
-            "linkToMatch": "/matches/barcelona-vs-galatasaray/2gt1cx#6106338",
-            "date": {
-              "utcTime": "2026-10-13T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8637/overview/galatasaray",
-            "tooltipText": {
-              "utcTime": "2026-10-13T19:00:00.000Z",
-              "homeTeam": "Galatasaray",
-              "homeTeamId": 8637,
-              "homeScore": "1",
-              "awayTeam": "Barcelona",
-              "awayTeamId": 8634,
-              "awayScore": "4"
-            },
-            "score": "1 - 4",
-            "home": {
-              "id": "8637",
-              "name": "Galatasaray",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8634",
-              "name": "Barcelona",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -423,6 +393,36 @@
               "name": "Deportivo Alavés",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
+            "linkToMatch": "/matches/barcelona-vs-aston-villa/2y6ucv#6106263",
+            "date": {
+              "utcTime": "2026-11-03T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10252/overview/aston-villa",
+            "tooltipText": {
+              "utcTime": "2026-11-03T20:00:00.000Z",
+              "homeTeam": "Barcelona",
+              "homeTeamId": 8634,
+              "homeScore": "3",
+              "awayTeam": "Aston Villa",
+              "awayTeamId": 10252,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "8634",
+              "name": "Barcelona",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "9"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +461,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Atlético Madrid haven't lost in 9 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Atlético Madrid have 3W, 1D, 1L in five matches while Barcelona have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "10",
                 "away_team",
-                "12"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +483,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Atlético Madrid have scored in their last 10 matches and Barcelona have scored in their last 12 matches."
+              "defaultText": "Barcelona have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
@@ -489,7 +493,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "9",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Barcelona have scored 9 goals in their last 3 matches."
+              "defaultText": "Barcelona have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -544,7 +548,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +558,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#C63527"
         },
         {
@@ -610,7 +614,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 18,
+              "value": 17,
               "name": null,
               "type": "integer"
             },
@@ -620,7 +624,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 18 goals in their last 5 matches",
+          "text": "Have scored 17 goals in their last 5 matches",
           "color": "#971e48"
         },
         {
@@ -721,17 +725,17 @@
     },
     "weather": {
       "temperature": 13,
-      "windSpeed": 2,
+      "windSpeed": 3,
       "windDirectionCardinal": "SSE",
       "iconCode": 11,
-      "relativeHumidity": 82,
+      "relativeHumidity": 84,
       "precipChance": 48,
-      "precipitation": 0.61,
+      "precipitation": 0.7,
       "snow": 0,
-      "cloudCover": 83,
+      "cloudCover": 96,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-03T08:00:15Z",
+      "lastUpdated": "2026-11-03T20:00:16Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -746,22 +750,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 1173678,
-            "age": 25,
-            "name": "Johnny Cardoso",
-            "countryName": "USA",
-            "countryCode": "USA",
-            "marketValue": 22331351,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Back in training"
-            },
-            "firstName": "Johnny",
-            "lastName": "Cardoso",
-            "nationalTeamId": 6713
-          },
           {
             "id": 789066,
             "age": 28,
