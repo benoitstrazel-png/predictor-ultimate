@@ -131,10 +131,10 @@
               "type": "yellowCards",
               "value": 3.13,
               "valueType": "perMatch",
-              "average": 3.69,
+              "average": 3.68,
               "total": 100,
               "averageType": "below",
-              "fillPercentage": 42.3,
+              "fillPercentage": 42.42,
               "averagePercentage": 50
             },
             {
@@ -323,36 +323,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
-            "linkToMatch": "/matches/fiorentina-vs-como/2w6bnm#5749703",
-            "date": {
-              "utcTime": "2026-10-18T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8535/overview/fiorentina",
-            "tooltipText": {
-              "utcTime": "2026-10-18T13:00:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "1",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
             "linkToMatch": "/matches/como-vs-manchester-united/3g9vos#6106410",
             "date": {
@@ -469,6 +439,36 @@
               "name": "Venezia",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
+            "linkToMatch": "/matches/lens-vs-como/2wrls8#6106416",
+            "date": {
+              "utcTime": "2026-11-04T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8588/overview/lens",
+            "tooltipText": {
+              "utcTime": "2026-11-04T20:00:00.000Z",
+              "homeTeam": "Lens",
+              "homeTeamId": 8588,
+              "homeScore": "1",
+              "awayTeam": "Como",
+              "awayTeamId": 10171,
+              "awayScore": "9"
+            },
+            "score": "1 - 9",
+            "home": {
+              "id": "8588",
+              "name": "Lens",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10171",
+              "name": "Como",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -517,7 +517,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -528,20 +528,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored in their last 12 matches and Como have scored in their last 6 matches."
+              "defaultText": "Inter have scored in their last 12 matches and Como have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "6",
-                "6"
+                "13",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -552,7 +550,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored 6 goals in their last 3 matches, while Como have scored 6."
+              "defaultText": "Como have scored 13 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -564,7 +562,7 @@
                 "home_team",
                 "away_team",
                 "8",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -577,7 +575,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Inter haven't drawn in their last 8 matches and Como in their last 6."
+              "defaultText": "Inter haven't drawn in their last 8 matches and Como in their last 7."
             }
           ]
         },
@@ -683,7 +681,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 13,
+              "value": 19,
               "name": null,
               "type": "integer"
             },
@@ -693,7 +691,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 13 goals in their last 5 matches",
+          "text": "Have scored 19 goals in their last 5 matches",
           "color": "#005ea9"
         },
         {
@@ -717,20 +715,71 @@
           "type": "team",
           "playerId": null,
           "teamId": 10171,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "priority": 7,
+          "defaultText": "Have won their last {0} matches",
+          "localizedTextId": "insights_good_form_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Have won their last 6 matches",
           "color": "#005ea9"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 621562,
+          "position": 3,
+          "matchesWithRating": 9,
+          "lastName": "Thuram",
+          "fullName": "Marcus Thuram",
+          "stats": {
+            "goals": 5,
+            "goalAssist": 2,
+            "ontargetScoringAtt": 1.62,
+            "motm": 1,
+            "gamesPlayed": 9,
+            "minsPlayed": 635,
+            "minsPlayedGoal": 127,
+            "expectedGoals": 4.380199909210205,
+            "playerRating": 7.6
+          }
+        },
+        "awayPlayer": {
+          "playerId": 873270,
+          "position": 3,
+          "matchesWithRating": 10,
+          "lastName": "Douvikas",
+          "fullName": "Anastasios Douvikas",
+          "stats": {
+            "goals": 5,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 2.17,
+            "motm": 1,
+            "gamesPlayed": 10,
+            "minsPlayed": 767,
+            "minsPlayedGoal": 153,
+            "expectedGoals": 4.722300052642822,
+            "playerRating": 7.04
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "ITA",
       "QAData": [],
       "matchInsightsConfig": {
@@ -1316,40 +1365,6 @@
             "firstName": "Luis",
             "lastName": "Henrique",
             "nationalTeamId": 8256
-          },
-          {
-            "id": 263653,
-            "age": 32,
-            "name": "John Stones",
-            "positionId": 1000,
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 9184871,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Back in training"
-            },
-            "firstName": "John",
-            "lastName": "Stones",
-            "nationalTeamId": 8491
-          },
-          {
-            "id": 933768,
-            "age": 25,
-            "name": "Curtis Jones",
-            "positionId": 1000,
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 39862407,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Back in training"
-            },
-            "firstName": "Curtis",
-            "lastName": "Jones",
-            "nationalTeamId": 8491
           },
           {
             "id": 690230,
