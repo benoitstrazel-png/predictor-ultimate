@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -122,36 +122,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7978.png",
-            "linkToMatch": "/matches/union-stgilloise-vs-real-sociedad/29fg27#6112286",
-            "date": {
-              "utcTime": "2026-10-15T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/7978/overview/union-stgilloise",
-            "tooltipText": {
-              "utcTime": "2026-10-15T16:45:00.000Z",
-              "homeTeam": "Union St.Gilloise",
-              "homeTeamId": 7978,
-              "homeScore": "1",
-              "awayTeam": "Real Sociedad",
-              "awayTeamId": 8560,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "7978",
-              "name": "Union St.Gilloise",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": true
-            }
-          },
           {
             "result": 1,
             "resultString": "W",
@@ -270,6 +240,36 @@
               "id": "8560",
               "name": "Real Sociedad",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9748.png",
+            "linkToMatch": "/matches/real-sociedad-vs-lyon/2rsgym#6112270",
+            "date": {
+              "utcTime": "2026-11-05T17:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/9748/overview/lyon",
+            "tooltipText": {
+              "utcTime": "2026-11-05T17:45:00.000Z",
+              "homeTeam": "Real Sociedad",
+              "homeTeamId": 8560,
+              "homeScore": "1",
+              "awayTeam": "Lyon",
+              "awayTeamId": 9748,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9748",
+              "name": "Lyon",
+              "isOurTeam": false
             }
           }
         ],
@@ -465,32 +465,10 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
-              "StatValues": [
-                "away_team",
-                "6"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Rayo Vallecano have scored in their last 6 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -502,17 +480,47 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Real Sociedad have scored 9 goals in their last 3 matches."
+              "defaultText": "Real Sociedad have scored in their last 3 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "4",
+                "6"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Real Sociedad have scored 4 goals in their last 3 matches, while Rayo Vallecano have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Real Sociedad haven't drawn in their last 4 matches."
+              "defaultText": "Real Sociedad have 3W, 1D, 1L in five matches while Rayo Vallecano have 2W, 2D, 1L."
             }
           ]
         },
@@ -797,25 +805,25 @@
       }
     },
     "weather": {
-      "temperature": 20,
+      "temperature": 19,
       "windSpeed": 5,
-      "windDirectionCardinal": "S",
+      "windDirectionCardinal": "SSE",
       "iconCode": 28,
-      "relativeHumidity": 56,
+      "relativeHumidity": 58,
       "precipChance": 0,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 65,
+      "cloudCover": 63,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-05T04:00:06Z",
+      "lastUpdated": "2026-11-05T16:00:09Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5868127,
-      "lineupType": "lastStarting11",
-      "source": "lastStartingLineups",
+      "lineupType": "predicted",
+      "source": "enetpulse",
       "availableFilters": [
         "marketValue",
         "age",
@@ -1103,7 +1111,6 @@
             "positionId": 106,
             "usualPlayingPositionId": 3,
             "shirtNumber": "10",
-            "isCaptain": true,
             "countryName": "Spain",
             "countryCode": "ESP",
             "horizontalLayout": {
@@ -1139,176 +1146,6 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1529105,
-            "age": 23,
-            "name": "Aitor Fraga",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "32",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1113008,
-            "firstName": "Aitor",
-            "lastName": "Fraga",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1217043,
-            "age": 25,
-            "name": "Unai Marrero",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "13",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1026097,
-            "firstName": "Unai",
-            "lastName": "Marrero",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 999159,
-            "age": 29,
-            "name": "Aihen Muñoz",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1489941,
-            "firstName": "Aihen",
-            "lastName": "Muñoz",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1490110,
-            "age": 20,
-            "name": "Héctor Fort",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 19025799,
-            "firstName": "Héctor",
-            "lastName": "Fort",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 698653,
-            "age": 29,
-            "name": "Igor Zubeldia",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "5",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 5317240,
-            "firstName": "Igor",
-            "lastName": "Zubeldia",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1112072,
-            "age": 25,
-            "name": "Jon Pacheco",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "16",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 5485347,
-            "firstName": "Jon",
-            "lastName": "Pacheco",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1210647,
-            "age": 24,
-            "name": "Beñat Turrientes",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "8",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 11471158,
-            "firstName": "Beñat",
-            "lastName": "Turrientes",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 730901,
-            "age": 28,
-            "name": "Yangel Herrera",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "21",
-            "countryName": "Venezuela",
-            "countryCode": "VEN",
-            "marketValue": 5068086,
-            "firstName": "Yangel",
-            "lastName": "Herrera",
-            "nationalTeamId": 5800,
-            "rankings": null
-          },
-          {
-            "id": 1724551,
-            "age": 23,
-            "name": "Job Ochieng",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "12",
-            "countryName": "Kenya",
-            "countryCode": "KEN",
-            "marketValue": 4042226,
-            "firstName": "Job",
-            "lastName": "Ochieng",
-            "nationalTeamId": 5884,
-            "rankings": null
-          },
-          {
-            "id": 1097229,
-            "age": 22,
-            "name": "Orri Óskarsson",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Iceland",
-            "countryCode": "ISL",
-            "marketValue": 23858948,
-            "firstName": "Orri",
-            "lastName": "Óskarsson",
-            "nationalTeamId": 8536,
-            "rankings": null
-          },
-          {
-            "id": 1293912,
-            "age": 23,
-            "name": "Pablo Marín",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "15",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 9290438,
-            "firstName": "Pablo",
-            "lastName": "Marín",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 848289,
-            "age": 25,
-            "name": "Takefusa Kubo",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Japan",
-            "countryCode": "JPN",
-            "marketValue": 22331351,
-            "firstName": "Takefusa",
-            "lastName": "Kubo",
-            "nationalTeamId": 6715,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 636570,
@@ -1363,17 +1200,7 @@
           }
         ],
         "averageStarterAge": 26,
-        "totalStarterMarketValue": 187511625,
-        "lastMatch": {
-          "matchId": 5868111,
-          "homeTeamId": 8315,
-          "awayTeamId": 8560,
-          "homeTeamName": "Athletic Club",
-          "awayTeamName": "Real Sociedad",
-          "homeScore": 2,
-          "awayScore": 1,
-          "matchDate": "2026-11-01T21:00:00"
-        }
+        "totalStarterMarketValue": 187511625
       },
       "awayTeam": {
         "id": 8370,
@@ -1543,15 +1370,14 @@
             "rankings": null
           },
           {
-            "id": 956622,
-            "age": 32,
-            "name": "Óscar Valentín",
+            "id": 915264,
+            "age": 28,
+            "name": "Randy Nteka",
             "positionId": 75,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "23",
-            "isCaptain": true,
-            "countryName": "Spain",
-            "countryCode": "ESP",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Angola",
+            "countryCode": "ANG",
             "horizontalLayout": {
               "x": 0.613,
               "y": 0.5,
@@ -1564,10 +1390,10 @@
               "height": 0.2,
               "width": 0.29
             },
-            "marketValue": 1362301,
-            "firstName": "Óscar",
-            "lastName": "Valentín",
-            "nationalTeamId": 6720,
+            "marketValue": 1024043,
+            "firstName": "Randy",
+            "lastName": "Nteka",
+            "nationalTeamId": 6712,
             "rankings": null
           },
           {
@@ -1652,14 +1478,14 @@
             "rankings": null
           },
           {
-            "id": 474658,
-            "age": 34,
-            "name": "Álvaro Garcia",
+            "id": 939061,
+            "age": 25,
+            "name": "Giorgi Tsitaishvili",
             "positionId": 107,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "18",
-            "countryName": "Spain",
-            "countryCode": "ESP",
+            "shirtNumber": "14",
+            "countryName": "Georgia",
+            "countryCode": "GEO",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.21,
@@ -1672,10 +1498,10 @@
               "height": 0.2,
               "width": 0.29
             },
-            "marketValue": 1349562,
-            "firstName": "Álvaro",
-            "lastName": "Garcia",
-            "nationalTeamId": 6720,
+            "marketValue": 2274165,
+            "firstName": "Giorgi",
+            "lastName": "Tsitaishvili",
+            "nationalTeamId": 8268,
             "rankings": null
           }
         ],
@@ -1693,162 +1519,6 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
-        "subs": [
-          {
-            "id": 1041445,
-            "age": 29,
-            "name": "Dani Cárdenas",
-            "usualPlayingPositionId": 0,
-            "shirtNumber": "1",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 875511,
-            "firstName": "Dani",
-            "lastName": "Cárdenas",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 264885,
-            "age": 34,
-            "name": "Iván Balliu",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "20",
-            "countryName": "Albania",
-            "countryCode": "ALB",
-            "marketValue": 672392,
-            "firstName": "Iván",
-            "lastName": "Balliu",
-            "nationalTeamId": 10024,
-            "rankings": null
-          },
-          {
-            "id": 1255090,
-            "age": 22,
-            "name": "Jozhua Vertrouwd",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "33",
-            "countryName": "Netherlands",
-            "countryCode": "NED",
-            "marketValue": 1974952,
-            "firstName": "Jozhua",
-            "lastName": "Vertrouwd",
-            "nationalTeamId": 6708,
-            "rankings": null
-          },
-          {
-            "id": 1411818,
-            "age": 23,
-            "name": "Pelayo Fernández",
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "22",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 673076,
-            "firstName": "Pelayo",
-            "lastName": "Fernández",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 1889232,
-            "age": 22,
-            "name": "Gnangoro Bouare",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "36",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1113786,
-            "firstName": "Gnangoro",
-            "lastName": "Bouare",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 638010,
-            "age": 31,
-            "name": "Isi Palazón",
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "7",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1930400,
-            "firstName": "Isi",
-            "lastName": "Palazón",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 924300,
-            "age": 28,
-            "name": "Alemão",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 3433941,
-            "firstName": "",
-            "lastName": "Alemão",
-            "nationalTeamId": 8256,
-            "rankings": null
-          },
-          {
-            "id": 1284430,
-            "age": 24,
-            "name": "Fran Pérez",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "21",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 3594189,
-            "firstName": "Fran",
-            "lastName": "Pérez",
-            "nationalTeamId": 6720,
-            "rankings": null
-          },
-          {
-            "id": 939061,
-            "age": 25,
-            "name": "Giorgi Tsitaishvili",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Georgia",
-            "countryCode": "GEO",
-            "marketValue": 2274165,
-            "firstName": "Giorgi",
-            "lastName": "Tsitaishvili",
-            "nationalTeamId": 8268,
-            "rankings": null
-          },
-          {
-            "id": 915264,
-            "age": 28,
-            "name": "Randy Nteka",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "11",
-            "countryName": "Angola",
-            "countryCode": "ANG",
-            "marketValue": 1024043,
-            "firstName": "Randy",
-            "lastName": "Nteka",
-            "nationalTeamId": 6712,
-            "rankings": null
-          },
-          {
-            "id": 1553404,
-            "age": 21,
-            "name": "Rayane Belaid",
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "37",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 989785,
-            "firstName": "Rayane",
-            "lastName": "Belaid",
-            "nationalTeamId": 6720,
-            "rankings": null
-          }
-        ],
         "unavailable": [
           {
             "id": 872362,
@@ -1865,38 +1535,6 @@
             "firstName": "Marash",
             "lastName": "Kumbulla",
             "nationalTeamId": 10024
-          },
-          {
-            "id": 474658,
-            "age": 34,
-            "name": "Álvaro Garcia",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1349562,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Early December 2026"
-            },
-            "firstName": "Álvaro",
-            "lastName": "Garcia",
-            "nationalTeamId": 6720
-          },
-          {
-            "id": 956622,
-            "age": 32,
-            "name": "Óscar Valentín",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 1362301,
-            "unavailability": {
-              "injuryId": 14,
-              "type": "injury",
-              "expectedReturn": "Late November 2026"
-            },
-            "firstName": "Óscar",
-            "lastName": "Valentín",
-            "nationalTeamId": 6720
           },
           {
             "id": 621415,
@@ -1931,20 +1569,44 @@
             "firstName": "Luiz",
             "lastName": "Felipe",
             "nationalTeamId": 8204
+          },
+          {
+            "id": 956622,
+            "age": 32,
+            "name": "Óscar Valentín",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1362301,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Late November 2026"
+            },
+            "firstName": "Óscar",
+            "lastName": "Valentín",
+            "nationalTeamId": 6720
+          },
+          {
+            "id": 474658,
+            "age": 34,
+            "name": "Álvaro Garcia",
+            "positionId": 1000,
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1349562,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "firstName": "Álvaro",
+            "lastName": "Garcia",
+            "nationalTeamId": 6720
           }
         ],
-        "averageStarterAge": 30,
-        "totalStarterMarketValue": 57899671,
-        "lastMatch": {
-          "matchId": 5868119,
-          "homeTeamId": 8370,
-          "awayTeamId": 9910,
-          "homeTeamName": "Rayo Vallecano",
-          "awayTeamName": "Celta Vigo",
-          "homeScore": 3,
-          "awayScore": 0,
-          "matchDate": "2026-10-31T16:15:00"
-        }
+        "averageStarterAge": 29,
+        "totalStarterMarketValue": 58486016
       }
     },
     "hasPlayoff": false,
