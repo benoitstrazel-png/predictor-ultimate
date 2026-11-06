@@ -71,6 +71,7 @@
   },
   "nav": [
     "matchfacts",
+    "liveticker",
     "lineup",
     "table",
     "head to head"
@@ -628,15 +629,15 @@
         },
         {
           "type": "player",
-          "playerId": 1133381,
+          "playerId": 1025462,
           "teamId": 9790,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1133381,
-              "name": "Albert Grønbæk",
+              "value": 1025462,
+              "name": "Fábio Vieira",
               "type": "player"
             },
             {
@@ -645,12 +646,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 1.9,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Albert Grønbæk has created the most big chances for Hamburger SV (3)",
+          "text": "Fábio Vieira has the most shots on target per match for Hamburger SV (1.9)",
           "color": "#005AAA"
         },
         {
@@ -673,6 +674,33 @@
             }
           ],
           "text": "Have scored 7 goals in their last 5 matches",
+          "color": "#417E37"
+        },
+        {
+          "type": "player",
+          "playerId": 501543,
+          "teamId": 9788,
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
+          "statValues": [
+            {
+              "value": 501543,
+              "name": "Franck Honorat",
+              "type": "player"
+            },
+            {
+              "value": 9788,
+              "name": "Borussia Mönchengladbach",
+              "type": "team"
+            },
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Franck Honorat has created the most big chances for Borussia Mönchengladbach (2)",
           "color": "#417E37"
         },
         {
@@ -700,33 +728,6 @@
             }
           ],
           "text": "Moritz Nicolas is ranked 3 in saves per match in the competition (5.1)",
-          "color": "#417E37"
-        },
-        {
-          "type": "player",
-          "playerId": 1793874,
-          "teamId": 9788,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 1793874,
-              "name": "Wael Mohya",
-              "type": "player"
-            },
-            {
-              "value": 9788,
-              "name": "Borussia Mönchengladbach",
-              "type": "team"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Wael Mohya has the most shots on target per match for Borussia Mönchengladbach (1)",
           "color": "#417E37"
         }
       ],
@@ -823,7 +824,13 @@
         "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881218/matchinsights_{lang}.json"
       }
     },
-    "liveticker": false,
+    "liveticker": {
+      "langs": "de,en_gen,es_gen,fr_gen,it_gen",
+      "teams": [
+        "Hamburger SV",
+        "Borussia Mönchengladbach"
+      ]
+    },
     "superlive": {
       "superLiveUrl": "https://pub.fotmob.com/prod/news/api/law?matchid=5r0ipjk74vhogsckvfzps8q38&competition=6by3h89i2eykc341oz7lv1ddd&season=8h5xijv2u4mlf5028gso6kw7o&srmatchid=sr:match:72513304&version=v4w",
       "showSuperLive": false
@@ -840,22 +847,22 @@
     "weather": {
       "temperature": 6,
       "windSpeed": 4,
-      "windDirectionCardinal": "E",
+      "windDirectionCardinal": "ESE",
       "iconCode": 26,
-      "relativeHumidity": 92,
-      "precipChance": 5,
+      "relativeHumidity": 89,
+      "precipChance": 15,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 84,
+      "cloudCover": 96,
       "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-06T12:00:04Z",
+      "lastUpdated": "2026-11-06T18:00:13Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5881218,
-      "lineupType": "predicted",
+      "lineupType": "standard",
       "source": "enetpulse",
       "availableFilters": [
         "season",
@@ -866,7 +873,7 @@
       "homeTeam": {
         "id": 9790,
         "name": "Hamburger SV",
-        "formation": "3-5-2",
+        "formation": "3-3-2-2",
         "starters": [
           {
             "id": 406501,
@@ -880,13 +887,13 @@
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
-              "height": 0.195,
-              "width": 0.2
+              "height": 0.22,
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.5,
               "y": 0.1,
-              "height": 0.2,
+              "height": 0.192,
               "width": 1
             },
             "marketValue": 996725,
@@ -899,33 +906,33 @@
             "rankings": null
           },
           {
-            "id": 1202595,
-            "age": 26,
-            "name": "Warmed Omari",
+            "id": 1804634,
+            "age": 19,
+            "name": "Shafiq Nandja",
             "positionId": 33,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "17",
-            "countryName": "Comoros",
-            "countryCode": "COM",
+            "shirtNumber": "43",
+            "countryName": "Germany",
+            "countryCode": "GER",
             "horizontalLayout": {
-              "x": 0.357,
-              "y": 0.79,
-              "height": 0.195,
-              "width": 0.257
+              "x": 0.292,
+              "y": 0.725,
+              "height": 0.22,
+              "width": 0.192
             },
             "verticalLayout": {
-              "x": 0.21,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.29
+              "x": 0.275,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.225
             },
-            "marketValue": 2688988,
+            "marketValue": 1795580,
             "performance": {
-              "seasonRating": 6.49
+              "seasonRating": 5.91
             },
-            "firstName": "Warmed",
-            "lastName": "Omari",
-            "nationalTeamId": 230692,
+            "firstName": "Shafiq",
+            "lastName": "Nandja",
+            "nationalTeamId": 8570,
             "rankings": null
           },
           {
@@ -938,16 +945,16 @@
             "countryName": "Belgium",
             "countryCode": "BEL",
             "horizontalLayout": {
-              "x": 0.357,
+              "x": 0.292,
               "y": 0.5,
-              "height": 0.195,
-              "width": 0.257
+              "height": 0.22,
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.5,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.29
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.225
             },
             "marketValue": 5646975,
             "performance": {
@@ -959,55 +966,55 @@
             "rankings": null
           },
           {
-            "id": 700074,
-            "age": 29,
-            "name": "Jordan Torunarigha",
+            "id": 1202595,
+            "age": 26,
+            "name": "Warmed Omari",
             "positionId": 37,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "23",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
+            "shirtNumber": "17",
+            "countryName": "Comoros",
+            "countryCode": "COM",
             "horizontalLayout": {
-              "x": 0.357,
-              "y": 0.21,
-              "height": 0.195,
-              "width": 0.257
+              "x": 0.292,
+              "y": 0.275,
+              "height": 0.22,
+              "width": 0.385
             },
             "verticalLayout": {
-              "x": 0.79,
-              "y": 0.357,
-              "height": 0.2,
-              "width": 0.29
+              "x": 0.725,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.225
             },
-            "marketValue": 2368087,
+            "marketValue": 2688988,
             "performance": {
-              "seasonRating": 6.03
+              "seasonRating": 6.49
             },
-            "firstName": "Jordan",
-            "lastName": "Torunarigha",
-            "nationalTeamId": 6346,
+            "firstName": "Warmed",
+            "lastName": "Omari",
+            "nationalTeamId": 230692,
             "rankings": null
           },
           {
             "id": 1287871,
             "age": 24,
             "name": "Zakaria El Ouahdi",
-            "positionId": 71,
+            "positionId": 53,
             "usualPlayingPositionId": 1,
             "shirtNumber": "7",
             "countryName": "Morocco",
             "countryCode": "MAR",
             "horizontalLayout": {
-              "x": 0.613,
+              "x": 0.485,
               "y": 0.89,
-              "height": 0.195,
-              "width": 0.773
+              "height": 0.22,
+              "width": 0.97
             },
             "verticalLayout": {
               "x": 0.11,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.195
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.22
             },
             "marketValue": 14041769,
             "performance": {
@@ -1020,56 +1027,26 @@
             "rankings": null
           },
           {
-            "id": 1133381,
-            "age": 25,
-            "name": "Albert Grønbæk",
-            "positionId": 73,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "11",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.695,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.305,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 7179925,
-            "performance": {
-              "seasonAssists": 3,
-              "seasonRating": 6.88
-            },
-            "firstName": "Albert",
-            "lastName": "Grønbæk",
-            "nationalTeamId": 8238,
-            "rankings": null
-          },
-          {
             "id": 901495,
             "age": 27,
             "name": "Albert Sambi Lokonga",
-            "positionId": 75,
+            "positionId": 55,
             "usualPlayingPositionId": 2,
             "shirtNumber": "6",
+            "isCaptain": true,
             "countryName": "Belgium",
             "countryCode": "BEL",
             "horizontalLayout": {
-              "x": 0.613,
+              "x": 0.485,
               "y": 0.5,
-              "height": 0.195,
-              "width": 0.257
+              "height": 0.22,
+              "width": 0.192
             },
             "verticalLayout": {
               "x": 0.5,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.195
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.39
             },
             "marketValue": 12011983,
             "performance": {
@@ -1081,25 +1058,85 @@
             "rankings": null
           },
           {
+            "id": 1049679,
+            "age": 24,
+            "name": "David Møller Wolfe",
+            "positionId": 57,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.11,
+              "height": 0.22,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.89,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.22
+            },
+            "marketValue": 14665418,
+            "performance": {
+              "seasonRating": 6.34
+            },
+            "firstName": "David Møller",
+            "lastName": "Wolfe",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 1324082,
+            "age": 22,
+            "name": "Martin Adeline",
+            "positionId": 74,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "5",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.76,
+              "height": 0.22,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.24,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.48
+            },
+            "marketValue": 10217368,
+            "performance": {
+              "seasonRating": 6.91
+            },
+            "firstName": "Martin",
+            "lastName": "Adeline",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
             "id": 759817,
             "age": 28,
             "name": "Miro Muheim",
-            "positionId": 77,
+            "positionId": 76,
             "usualPlayingPositionId": 2,
             "shirtNumber": "28",
             "countryName": "Switzerland",
             "countryCode": "SUI",
             "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.305,
-              "height": 0.195,
-              "width": 0.257
+              "x": 0.678,
+              "y": 0.24,
+              "height": 0.22,
+              "width": 0.192
             },
             "verticalLayout": {
-              "x": 0.695,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.195
+              "x": 0.76,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.48
             },
             "marketValue": 2089684,
             "performance": {
@@ -1113,85 +1150,24 @@
             "rankings": null
           },
           {
-            "id": 1049679,
-            "age": 24,
-            "name": "David Møller Wolfe",
-            "positionId": 79,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "3",
-            "countryName": "Norway",
-            "countryCode": "NOR",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.11,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.89,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 14665418,
-            "performance": {
-              "seasonRating": 6.34
-            },
-            "firstName": "David Møller",
-            "lastName": "Wolfe",
-            "nationalTeamId": 8492,
-            "rankings": null
-          },
-          {
-            "id": 885005,
-            "age": 27,
-            "name": "Terem Moffi",
-            "positionId": 104,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "9",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
-            "horizontalLayout": {
-              "x": 0.87,
-              "y": 0.7,
-              "height": 0.195,
-              "width": 0.257
-            },
-            "verticalLayout": {
-              "x": 0.3,
-              "y": 0.87,
-              "height": 0.2,
-              "width": 0.4
-            },
-            "marketValue": 5390459,
-            "performance": {
-              "seasonGoals": 2,
-              "seasonRating": 6.31
-            },
-            "firstName": "Terem",
-            "lastName": "Moffi",
-            "nationalTeamId": 6346,
-            "rankings": null
-          },
-          {
             "id": 644459,
             "age": 28,
             "name": "Patson Daka",
-            "positionId": 106,
+            "positionId": 104,
             "usualPlayingPositionId": 3,
             "shirtNumber": "27",
             "countryName": "Zambia",
             "countryCode": "ZAM",
             "horizontalLayout": {
               "x": 0.87,
-              "y": 0.3,
-              "height": 0.195,
-              "width": 0.257
+              "y": 0.7,
+              "height": 0.22,
+              "width": 0.192
             },
             "verticalLayout": {
-              "x": 0.7,
+              "x": 0.3,
               "y": 0.87,
-              "height": 0.2,
+              "height": 0.192,
               "width": 0.4
             },
             "marketValue": 1846653,
@@ -1201,6 +1177,37 @@
             "firstName": "Patson",
             "lastName": "Daka",
             "nationalTeamId": 6277,
+            "rankings": null
+          },
+          {
+            "id": 1133381,
+            "age": 25,
+            "name": "Albert Grønbæk",
+            "positionId": 106,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.3,
+              "height": 0.22,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 7179925,
+            "performance": {
+              "seasonAssists": 3,
+              "seasonRating": 6.88
+            },
+            "firstName": "Albert",
+            "lastName": "Grønbæk",
+            "nationalTeamId": 8238,
             "rankings": null
           }
         ],
@@ -1218,6 +1225,156 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
+        "subs": [
+          {
+            "id": 1145714,
+            "age": 23,
+            "name": "Sander Tangvik",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "12",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 2061830,
+            "firstName": "Sander",
+            "lastName": "Tangvik",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 2264137,
+            "age": 18,
+            "name": "Jason Dean Bissi Mouelle",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "48",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "firstName": "Jason Dean Bissi",
+            "lastName": "Mouelle",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 700074,
+            "age": 29,
+            "name": "Jordan Torunarigha",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "23",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 2368087,
+            "performance": {
+              "seasonRating": 6.03
+            },
+            "firstName": "Jordan",
+            "lastName": "Torunarigha",
+            "nationalTeamId": 6346,
+            "rankings": null
+          },
+          {
+            "id": 1587901,
+            "age": 21,
+            "name": "Kofi Amoako",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "22",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 5231080,
+            "performance": {
+              "seasonRating": 6.22
+            },
+            "firstName": "Kofi",
+            "lastName": "Amoako",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1899791,
+            "age": 17,
+            "name": "Louis Lemke",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "37",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 414582,
+            "performance": {
+              "seasonRating": 6.46
+            },
+            "firstName": "Louis",
+            "lastName": "Lemke",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1644278,
+            "age": 19,
+            "name": "Alexander Røssing",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "38",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "marketValue": 7435159,
+            "performance": {
+              "seasonRating": 6.71
+            },
+            "firstName": "Alexander",
+            "lastName": "Røssing",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 1576487,
+            "age": 19,
+            "name": "Otto Stange",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 7722897,
+            "performance": {
+              "seasonRating": 6.05
+            },
+            "firstName": "Otto",
+            "lastName": "Stange",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 885005,
+            "age": 27,
+            "name": "Terem Moffi",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 5390459,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonRating": 6.31
+            },
+            "firstName": "Terem",
+            "lastName": "Moffi",
+            "nationalTeamId": 6346,
+            "rankings": null
+          },
+          {
+            "id": 266527,
+            "age": 32,
+            "name": "Yussuf Poulsen",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "15",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 849909,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonRating": 7.05
+            },
+            "firstName": "Yussuf",
+            "lastName": "Poulsen",
+            "nationalTeamId": 8238,
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1066260,
@@ -1233,26 +1390,6 @@
             "firstName": "Mario",
             "lastName": "Vušković",
             "nationalTeamId": 10155
-          },
-          {
-            "id": 266527,
-            "age": 32,
-            "name": "Yussuf Poulsen",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
-            "marketValue": 849909,
-            "unavailability": {
-              "injuryId": 31,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "performance": {
-              "seasonGoals": 2,
-              "seasonRating": 7.05
-            },
-            "firstName": "Yussuf",
-            "lastName": "Poulsen",
-            "nationalTeamId": 8238
           },
           {
             "id": 1018564,
@@ -1335,8 +1472,8 @@
             "nationalTeamId": 8570
           }
         ],
-        "averageStarterAge": 27.6,
-        "totalStarterMarketValue": 68926666
+        "averageStarterAge": 26.3,
+        "totalStarterMarketValue": 73181068
       },
       "awayTeam": {
         "id": 9788,
@@ -1374,14 +1511,15 @@
             "rankings": null
           },
           {
-            "id": 878296,
-            "age": 27,
-            "name": "Daiki Hashioka",
+            "id": 951918,
+            "age": 28,
+            "name": "Philipp Sander",
             "positionId": 33,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "14",
-            "countryName": "Japan",
-            "countryCode": "JPN",
+            "shirtNumber": "16",
+            "isCaptain": true,
+            "countryName": "Germany",
+            "countryCode": "GER",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.79,
@@ -1394,24 +1532,24 @@
               "height": 0.192,
               "width": 0.29
             },
-            "marketValue": 1160105,
+            "marketValue": 2580880,
             "performance": {
-              "seasonRating": 6.43
+              "seasonRating": 6.67
             },
-            "firstName": "Daiki",
-            "lastName": "Hashioka",
-            "nationalTeamId": 6715,
+            "firstName": "Philipp",
+            "lastName": "Sander",
+            "nationalTeamId": 8570,
             "rankings": null
           },
           {
-            "id": 951918,
-            "age": 28,
-            "name": "Philipp Sander",
+            "id": 620917,
+            "age": 29,
+            "name": "Ko Itakura",
             "positionId": 35,
             "usualPlayingPositionId": 1,
-            "shirtNumber": "16",
-            "countryName": "Germany",
-            "countryCode": "GER",
+            "shirtNumber": "6",
+            "countryName": "Japan",
+            "countryCode": "JPN",
             "horizontalLayout": {
               "x": 0.292,
               "y": 0.5,
@@ -1424,13 +1562,13 @@
               "height": 0.192,
               "width": 0.29
             },
-            "marketValue": 2580880,
+            "marketValue": 2413368,
             "performance": {
-              "seasonRating": 6.67
+              "seasonRating": 5.22
             },
-            "firstName": "Philipp",
-            "lastName": "Sander",
-            "nationalTeamId": 8570,
+            "firstName": "Ko",
+            "lastName": "Itakura",
+            "nationalTeamId": 6715,
             "rankings": null
           },
           {
@@ -1590,12 +1728,12 @@
             "rankings": null
           },
           {
-            "id": 1793874,
-            "age": 17,
-            "name": "Wael Mohya",
+            "id": 884919,
+            "age": 28,
+            "name": "Robin Hack",
             "positionId": 84,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "36",
+            "shirtNumber": "25",
             "countryName": "Germany",
             "countryCode": "GER",
             "horizontalLayout": {
@@ -1606,6 +1744,36 @@
             },
             "verticalLayout": {
               "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 4378882,
+            "performance": {
+              "seasonRating": 6.34
+            },
+            "firstName": "Robin",
+            "lastName": "Hack",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1793874,
+            "age": 17,
+            "name": "Wael Mohya",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "36",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.7,
               "y": 0.678,
               "height": 0.192,
               "width": 0.4
@@ -1622,44 +1790,14 @@
             "rankings": null
           },
           {
-            "id": 884919,
-            "age": 28,
-            "name": "Robin Hack",
-            "positionId": 86,
-            "usualPlayingPositionId": 2,
-            "shirtNumber": "25",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "horizontalLayout": {
-              "x": 0.678,
-              "y": 0.3,
-              "height": 0.25,
-              "width": 0.193
-            },
-            "verticalLayout": {
-              "x": 0.7,
-              "y": 0.678,
-              "height": 0.192,
-              "width": 0.4
-            },
-            "marketValue": 4378882,
-            "performance": {
-              "seasonRating": 6.34
-            },
-            "firstName": "Robin",
-            "lastName": "Hack",
-            "nationalTeamId": 8570,
-            "rankings": null
-          },
-          {
-            "id": 655095,
-            "age": 28,
-            "name": "Isac Lidberg",
+            "id": 915111,
+            "age": 27,
+            "name": "Shuto Machino",
             "positionId": 105,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "3",
-            "countryName": "Sweden",
-            "countryCode": "SWE",
+            "shirtNumber": "18",
+            "countryName": "Japan",
+            "countryCode": "JPN",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -1672,14 +1810,14 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 5284326,
+            "marketValue": 3703988,
             "performance": {
-              "seasonGoals": 1,
-              "seasonRating": 6.38
+              "seasonGoals": 2,
+              "seasonRating": 6.39
             },
-            "firstName": "Isac",
-            "lastName": "Lidberg",
-            "nationalTeamId": 8520,
+            "firstName": "Shuto",
+            "lastName": "Machino",
+            "nationalTeamId": 6715,
             "rankings": null
           }
         ],
@@ -1697,7 +1835,180 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
+        "subs": [
+          {
+            "id": 1129317,
+            "age": 24,
+            "name": "Jan Olschowsky",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "23",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 416183,
+            "firstName": "Jan",
+            "lastName": "Olschowsky",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1356589,
+            "age": 23,
+            "name": "David Herold",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 4877463,
+            "performance": {
+              "seasonRating": 5.71
+            },
+            "firstName": "David",
+            "lastName": "Herold",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 566158,
+            "age": 30,
+            "name": "Kevin Diks",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Indonesia",
+            "countryCode": "IDN",
+            "marketValue": 4257995,
+            "performance": {
+              "seasonRating": 5.81
+            },
+            "firstName": "Kevin",
+            "lastName": "Diks",
+            "nationalTeamId": 6324,
+            "rankings": null
+          },
+          {
+            "id": 1054026,
+            "age": 27,
+            "name": "Yukhym Konoplya",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "22",
+            "countryName": "Ukraine",
+            "countryCode": "UKR",
+            "marketValue": 4420992,
+            "performance": {
+              "seasonRating": 6.11
+            },
+            "firstName": "Yukhym",
+            "lastName": "Konoplya",
+            "nationalTeamId": 6718,
+            "rankings": null
+          },
+          {
+            "id": 1185902,
+            "age": 23,
+            "name": "Jens Castrop",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "17",
+            "countryName": "South Korea",
+            "countryCode": "KOR",
+            "marketValue": 12689921,
+            "performance": {
+              "seasonRating": 6.26
+            },
+            "firstName": "Jens",
+            "lastName": "Castrop",
+            "nationalTeamId": 7804,
+            "rankings": null
+          },
+          {
+            "id": 276739,
+            "age": 33,
+            "name": "Kevin Stöger",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "marketValue": 916915,
+            "performance": {
+              "seasonRating": 6.07
+            },
+            "firstName": "Kevin",
+            "lastName": "Stöger",
+            "nationalTeamId": 8255,
+            "rankings": null
+          },
+          {
+            "id": 1975572,
+            "age": 18,
+            "name": "Mathieu Nguefack",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "34",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 1110148,
+            "performance": {
+              "seasonRating": 6.43
+            },
+            "firstName": "Mathieu",
+            "lastName": "Nguefack",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 501543,
+            "age": 30,
+            "name": "Franck Honorat",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 5603617,
+            "performance": {
+              "seasonAssists": 2,
+              "seasonRating": 7.25
+            },
+            "firstName": "Franck",
+            "lastName": "Honorat",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 655095,
+            "age": 28,
+            "name": "Isac Lidberg",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "3",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "marketValue": 5284326,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 6.38
+            },
+            "firstName": "Isac",
+            "lastName": "Lidberg",
+            "nationalTeamId": 8520,
+            "rankings": null
+          }
+        ],
         "unavailable": [
+          {
+            "id": 878296,
+            "age": 27,
+            "name": "Daiki Hashioka",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 1160105,
+            "unavailability": {
+              "injuryId": 121,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "performance": {
+              "seasonRating": 6.43
+            },
+            "firstName": "Daiki",
+            "lastName": "Hashioka",
+            "nationalTeamId": 6715
+          },
           {
             "id": 888745,
             "age": 26,
@@ -1834,8 +2145,8 @@
             "nationalTeamId": 8570
           }
         ],
-        "averageStarterAge": 26.1,
-        "totalStarterMarketValue": 49130608
+        "averageStarterAge": 26.2,
+        "totalStarterMarketValue": 48803533
       }
     },
     "hasPlayoff": false,
@@ -2565,7 +2876,33 @@
         }
       ]
     },
-    "momentum": false
+    "momentum": false,
+    "attackingZones": {
+      "home": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      },
+      "away": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      }
+    }
   },
   "seo": {
     "path": "hamburger-sv-vs-borussia-monchengladbach",
