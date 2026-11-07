@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9864.png",
-            "linkToMatch": "/matches/espanyol-vs-malaga/2t1cj9#5868086",
-            "date": {
-              "utcTime": "2026-10-09T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/9864/overview/malaga",
-            "tooltipText": {
-              "utcTime": "2026-10-09T19:00:00.000Z",
-              "homeTeam": "Málaga",
-              "homeTeamId": 9864,
-              "homeScore": "1",
-              "awayTeam": "Espanyol",
-              "awayTeamId": 8558,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8558",
-              "name": "Espanyol",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
@@ -423,6 +393,36 @@
               "name": "Espanyol",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9783.png",
+            "linkToMatch": "/matches/espanyol-vs-deportivo-coruna/2s5fli#5868124",
+            "date": {
+              "utcTime": "2026-11-07T15:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9783/overview/deportivo-coruna",
+            "tooltipText": {
+              "utcTime": "2026-11-07T15:15:00.000Z",
+              "homeTeam": "Espanyol",
+              "homeTeamId": 8558,
+              "homeScore": "0",
+              "awayTeam": "Deportivo A Coruña",
+              "awayTeamId": 9783,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8558",
+              "name": "Espanyol",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9783",
+              "name": "Deportivo A Coruña",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -508,12 +508,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "4",
                 "4"
               ],
               "DefaultLabels": [
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Athletic Club haven't drawn in their last 4 matches and Espanyol in their last 4."
+              "defaultText": "Athletic Club haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -561,20 +559,30 @@
           "color": "#E2001A"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 574629,
           "teamId": 8315,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 574629,
+              "name": "Alex Berenguer",
+              "type": "player"
+            },
+            {
+              "value": 8315,
+              "name": "Athletic Club",
+              "type": "team"
+            },
+            {
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have kept the most clean sheets in the competition (6)",
+          "text": "Alex Berenguer has created the most big chances for Athletic Club (2)",
           "color": "#E2001A"
         },
         {
@@ -613,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -623,7 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#1954B2"
         },
         {
@@ -741,7 +749,7 @@
             "name": "Álvaro Djaló",
             "unavailability": {
               "injuryId": 74,
-              "lastUpdated": "2026-11-06T17:26:10Z",
+              "lastUpdated": "2026-11-07T17:40:50Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },
