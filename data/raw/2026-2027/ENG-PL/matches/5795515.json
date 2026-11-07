@@ -277,36 +277,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8669.png",
-            "linkToMatch": "/matches/coventry-city-vs-nottingham-forest/2y16ft#5795463",
-            "date": {
-              "utcTime": "2026-09-19T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8669/overview/coventry-city",
-            "tooltipText": {
-              "utcTime": "2026-09-19T16:30:00.000Z",
-              "homeTeam": "Nottingham Forest",
-              "homeTeamId": 10203,
-              "homeScore": "0",
-              "awayTeam": "Coventry City",
-              "awayTeamId": 8669,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8669",
-              "name": "Coventry City",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png",
             "linkToMatch": "/matches/crystal-palace-vs-nottingham-forest/3bfk5h#5795469",
             "date": {
@@ -423,6 +393,36 @@
               "name": "Nottingham Forest",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
+            "linkToMatch": "/matches/manchester-city-vs-nottingham-forest/2vni1q#5795513",
+            "date": {
+              "utcTime": "2026-11-07T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8456/overview/manchester-city",
+            "tooltipText": {
+              "utcTime": "2026-11-07T17:30:00.000Z",
+              "homeTeam": "Nottingham Forest",
+              "homeTeamId": 10203,
+              "homeScore": "3",
+              "awayTeam": "Manchester City",
+              "awayTeamId": 8456,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
+            "home": {
+              "id": "10203",
+              "name": "Nottingham Forest",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8456",
+              "name": "Manchester City",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -508,11 +508,11 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
-                "5"
+                "home_team",
+                "10"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Nottingham Forest haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "AFC Bournemouth haven't drawn in their last 10 matches."
             }
           ]
         },
@@ -621,7 +621,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -631,7 +631,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 2 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#C8102E"
         },
         {
@@ -639,16 +639,16 @@
           "playerId": null,
           "teamId": 10203,
           "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 5,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Haven't kept a clean sheet in 7 matches",
           "color": "#C8102E"
         },
         {
