@@ -71,6 +71,7 @@
   },
   "nav": [
     "matchfacts",
+    "liveticker",
     "lineup",
     "table",
     "head to head"
@@ -629,15 +630,15 @@
         },
         {
           "type": "player",
-          "playerId": 1486537,
+          "playerId": 1353000,
           "teamId": 8226,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1486537,
-              "name": "Max Moerstedt",
+              "value": 1353000,
+              "name": "Adam Daghim",
               "type": "player"
             },
             {
@@ -646,12 +647,12 @@
               "type": "team"
             },
             {
-              "value": 2.4,
+              "value": 6,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Max Moerstedt has the most shots on target per match for Hoffenheim (2.4)",
+          "text": "Adam Daghim has created the most big chances for Hoffenheim (6)",
           "color": "#005098"
         },
         {
@@ -804,7 +805,13 @@
         "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881219/matchinsights_{lang}.json"
       }
     },
-    "liveticker": false,
+    "liveticker": {
+      "langs": "de,en_gen,es_gen,fr_gen,it_gen",
+      "teams": [
+        "Hoffenheim",
+        "Schalke 04"
+      ]
+    },
     "superlive": {
       "superLiveUrl": "https://pub.fotmob.com/prod/news/api/law?matchid=5q48nanu047b6u7aos32d4e8k&competition=6by3h89i2eykc341oz7lv1ddd&season=8h5xijv2u4mlf5028gso6kw7o&srmatchid=sr:match:72513298&version=v4w",
       "showSuperLive": false
@@ -820,17 +827,17 @@
     },
     "weather": {
       "temperature": 6,
-      "windSpeed": 1,
-      "windDirectionCardinal": "ENE",
+      "windSpeed": 2,
+      "windDirectionCardinal": "NE",
       "iconCode": 29,
-      "relativeHumidity": 90,
-      "precipChance": 5,
+      "relativeHumidity": 94,
+      "precipChance": 3,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 30,
+      "cloudCover": 59,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-08T11:00:08Z",
+      "lastUpdated": "2026-11-08T17:00:03Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -847,7 +854,7 @@
       "homeTeam": {
         "id": 8226,
         "name": "Hoffenheim",
-        "formation": "3-5-2",
+        "formation": "4-4-2",
         "starters": [
           {
             "id": 178778,
@@ -856,12 +863,13 @@
             "positionId": 11,
             "usualPlayingPositionId": 0,
             "shirtNumber": "1",
+            "isCaptain": true,
             "countryName": "Germany",
             "countryCode": "GER",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
-              "height": 0.195,
+              "height": 0.25,
               "width": 0.2
             },
             "verticalLayout": {
@@ -880,25 +888,56 @@
             "rankings": null
           },
           {
+            "id": 307317,
+            "age": 34,
+            "name": "Vladimír Coufal",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "34",
+            "countryName": "Czechia",
+            "countryCode": "CZE",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 1937847,
+            "performance": {
+              "seasonAssists": 2,
+              "seasonRating": 7.09
+            },
+            "firstName": "Vladimír",
+            "lastName": "Coufal",
+            "nationalTeamId": 8496,
+            "rankings": null
+          },
+          {
             "id": 845990,
             "age": 26,
             "name": "Ozan Kabak",
-            "positionId": 33,
+            "positionId": 34,
             "usualPlayingPositionId": 1,
             "shirtNumber": "5",
             "countryName": "Turkiye",
             "countryCode": "TUR",
             "horizontalLayout": {
               "x": 0.357,
-              "y": 0.79,
-              "height": 0.195,
+              "y": 0.625,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.21,
+              "x": 0.375,
               "y": 0.357,
               "height": 0.2,
-              "width": 0.29
+              "width": 0.25
             },
             "marketValue": 16612762,
             "performance": {
@@ -914,22 +953,22 @@
             "id": 727817,
             "age": 29,
             "name": "Koki Machida",
-            "positionId": 35,
+            "positionId": 36,
             "usualPlayingPositionId": 1,
             "shirtNumber": "28",
             "countryName": "Japan",
             "countryCode": "JPN",
             "horizontalLayout": {
               "x": 0.357,
-              "y": 0.5,
-              "height": 0.195,
+              "y": 0.375,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.5,
+              "x": 0.625,
               "y": 0.357,
               "height": 0.2,
-              "width": 0.29
+              "width": 0.25
             },
             "marketValue": 5077260,
             "performance": {
@@ -944,22 +983,22 @@
             "id": 1445416,
             "age": 20,
             "name": "Mats Rots",
-            "positionId": 37,
+            "positionId": 38,
             "usualPlayingPositionId": 1,
             "shirtNumber": "39",
             "countryName": "Netherlands",
             "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.357,
-              "y": 0.21,
-              "height": 0.195,
+              "y": 0.125,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.79,
+              "x": 0.875,
               "y": 0.357,
               "height": 0.2,
-              "width": 0.29
+              "width": 0.25
             },
             "marketValue": 19492523,
             "performance": {
@@ -971,87 +1010,57 @@
             "rankings": null
           },
           {
-            "id": 1899713,
-            "age": 18,
-            "name": "Natnael Abraha",
-            "positionId": 71,
-            "usualPlayingPositionId": 1,
-            "shirtNumber": "29",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "horizontalLayout": {
-              "x": 0.613,
-              "y": 0.89,
-              "height": 0.195,
-              "width": 0.773
-            },
-            "verticalLayout": {
-              "x": 0.11,
-              "y": 0.613,
-              "height": 0.2,
-              "width": 0.195
-            },
-            "marketValue": 493294,
-            "performance": {
-              "seasonRating": 6.31
-            },
-            "firstName": "Natnael",
-            "lastName": "Abraha",
-            "nationalTeamId": 8570,
-            "rankings": null
-          },
-          {
-            "id": 1027194,
-            "age": 25,
-            "name": "Alexander Prass",
-            "positionId": 73,
+            "id": 173461,
+            "age": 35,
+            "name": "Andrej Kramarić",
+            "positionId": 72,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "22",
-            "countryName": "Austria",
-            "countryCode": "AUT",
+            "shirtNumber": "27",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
             "horizontalLayout": {
               "x": 0.613,
-              "y": 0.695,
-              "height": 0.195,
+              "y": 0.875,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.305,
+              "x": 0.125,
               "y": 0.613,
               "height": 0.2,
-              "width": 0.195
+              "width": 0.25
             },
-            "marketValue": 9805726,
+            "marketValue": 1933954,
             "performance": {
-              "seasonGoals": 2,
+              "seasonGoals": 1,
               "seasonAssists": 1,
-              "seasonRating": 7.49
+              "seasonRating": 6.49
             },
-            "firstName": "Alexander",
-            "lastName": "Prass",
-            "nationalTeamId": 8255,
+            "firstName": "Andrej",
+            "lastName": "Kramarić",
+            "nationalTeamId": 10155,
             "rankings": null
           },
           {
             "id": 1478148,
             "age": 22,
             "name": "Leon Avdullahu",
-            "positionId": 75,
+            "positionId": 74,
             "usualPlayingPositionId": 2,
             "shirtNumber": "7",
             "countryName": "Kosovo",
             "countryCode": "KVX",
             "horizontalLayout": {
               "x": 0.613,
-              "y": 0.5,
-              "height": 0.195,
+              "y": 0.625,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.5,
+              "x": 0.375,
               "y": 0.613,
               "height": 0.2,
-              "width": 0.195
+              "width": 0.25
             },
             "marketValue": 37491021,
             "performance": {
@@ -1067,22 +1076,22 @@
             "id": 947884,
             "age": 25,
             "name": "Wouter Burger",
-            "positionId": 77,
+            "positionId": 76,
             "usualPlayingPositionId": 2,
             "shirtNumber": "18",
             "countryName": "Netherlands",
             "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.613,
-              "y": 0.305,
-              "height": 0.195,
+              "y": 0.375,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.695,
+              "x": 0.625,
               "y": 0.613,
               "height": 0.2,
-              "width": 0.195
+              "width": 0.25
             },
             "marketValue": 16482281,
             "performance": {
@@ -1094,35 +1103,35 @@
             "rankings": null
           },
           {
-            "id": 1353000,
-            "age": 21,
-            "name": "Adam Daghim",
-            "positionId": 79,
-            "usualPlayingPositionId": 3,
-            "shirtNumber": "14",
-            "countryName": "Denmark",
-            "countryCode": "DEN",
+            "id": 1027194,
+            "age": 25,
+            "name": "Alexander Prass",
+            "positionId": 78,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "22",
+            "countryName": "Austria",
+            "countryCode": "AUT",
             "horizontalLayout": {
               "x": 0.613,
-              "y": 0.11,
-              "height": 0.195,
+              "y": 0.125,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
-              "x": 0.89,
+              "x": 0.875,
               "y": 0.613,
               "height": 0.2,
-              "width": 0.195
+              "width": 0.25
             },
-            "marketValue": 17808107,
+            "marketValue": 9805726,
             "performance": {
               "seasonGoals": 2,
-              "seasonAssists": 2,
-              "seasonRating": 7.22
+              "seasonAssists": 1,
+              "seasonRating": 7.49
             },
-            "firstName": "Adam",
-            "lastName": "Daghim",
-            "nationalTeamId": 8238,
+            "firstName": "Alexander",
+            "lastName": "Prass",
+            "nationalTeamId": 8255,
             "rankings": null
           },
           {
@@ -1137,7 +1146,7 @@
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.7,
-              "height": 0.195,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
@@ -1168,7 +1177,7 @@
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.3,
-              "height": 0.195,
+              "height": 0.25,
               "width": 0.257
             },
             "verticalLayout": {
@@ -1244,26 +1253,6 @@
             "firstName": "Bambasé",
             "lastName": "Conté",
             "nationalTeamId": 8570
-          },
-          {
-            "id": 307317,
-            "age": 34,
-            "name": "Vladimír Coufal",
-            "countryName": "Czechia",
-            "countryCode": "CZE",
-            "marketValue": 1937847,
-            "unavailability": {
-              "injuryId": 121,
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "performance": {
-              "seasonAssists": 2,
-              "seasonRating": 7.09
-            },
-            "firstName": "Vladimír",
-            "lastName": "Coufal",
-            "nationalTeamId": 8496
           },
           {
             "id": 1186015,
@@ -1388,8 +1377,8 @@
             "nationalTeamId": 8255
           }
         ],
-        "averageStarterAge": 25.1,
-        "totalStarterMarketValue": 175655070
+        "averageStarterAge": 27.8,
+        "totalStarterMarketValue": 161225470
       },
       "awayTeam": {
         "id": 10189,
@@ -1638,14 +1627,14 @@
             "rankings": null
           },
           {
-            "id": 1047664,
-            "age": 24,
-            "name": "Adil Aouchiche",
+            "id": 469763,
+            "age": 32,
+            "name": "Kenan Karaman",
             "positionId": 84,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "24",
-            "countryName": "Algeria",
-            "countryCode": "ALG",
+            "shirtNumber": "19",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.7,
@@ -1658,25 +1647,25 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 7298365,
+            "marketValue": 1174384,
             "performance": {
               "seasonGoals": 1,
-              "seasonRating": 6.95
+              "seasonRating": 7.02
             },
-            "firstName": "Adil",
-            "lastName": "Aouchiche",
-            "nationalTeamId": 6317,
+            "firstName": "Kenan",
+            "lastName": "Karaman",
+            "nationalTeamId": 6595,
             "rankings": null
           },
           {
-            "id": 469763,
-            "age": 32,
-            "name": "Kenan Karaman",
+            "id": 1047664,
+            "age": 24,
+            "name": "Adil Aouchiche",
             "positionId": 86,
             "usualPlayingPositionId": 2,
-            "shirtNumber": "19",
-            "countryName": "Turkiye",
-            "countryCode": "TUR",
+            "shirtNumber": "24",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
             "horizontalLayout": {
               "x": 0.678,
               "y": 0.3,
@@ -1689,14 +1678,14 @@
               "height": 0.192,
               "width": 0.4
             },
-            "marketValue": 1174384,
+            "marketValue": 7298365,
             "performance": {
               "seasonGoals": 1,
-              "seasonRating": 7.02
+              "seasonRating": 6.95
             },
-            "firstName": "Kenan",
-            "lastName": "Karaman",
-            "nationalTeamId": 6595,
+            "firstName": "Adil",
+            "lastName": "Aouchiche",
+            "nationalTeamId": 6317,
             "rankings": null
           },
           {
@@ -2796,7 +2785,33 @@
         }
       ]
     },
-    "momentum": false
+    "momentum": false,
+    "attackingZones": {
+      "home": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      },
+      "away": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      }
+    }
   },
   "seo": {
     "path": "hoffenheim-vs-schalke-04",
