@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8121.png",
-            "linkToMatch": "/matches/angers-vs-troyes/2se1ur#5802937",
-            "date": {
-              "utcTime": "2026-09-19T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8121/overview/angers",
-            "tooltipText": {
-              "utcTime": "2026-09-19T18:45:00.000Z",
-              "homeTeam": "Angers",
-              "homeTeamId": 8121,
-              "homeScore": "2",
-              "awayTeam": "Troyes",
-              "awayTeamId": 10242,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8121",
-              "name": "Angers",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10242",
-              "name": "Troyes",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8592.png",
             "linkToMatch": "/matches/marseille-vs-troyes/2xltkr#5802954",
             "date": {
@@ -270,6 +240,36 @@
               "id": "8682",
               "name": "Le Mans",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+            "linkToMatch": "/matches/paris-saint-germain-vs-troyes/3c5cuk#5802987",
+            "date": {
+              "utcTime": "2026-11-07T20:05:00.000Z"
+            },
+            "teamPageUrl": "/teams/9847/overview/paris-saint-germain",
+            "tooltipText": {
+              "utcTime": "2026-11-07T20:05:00.000Z",
+              "homeTeam": "Paris Saint-Germain",
+              "homeTeamId": 9847,
+              "homeScore": "1",
+              "awayTeam": "Troyes",
+              "awayTeamId": 10242,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "9847",
+              "name": "Paris Saint-Germain",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10242",
+              "name": "Troyes",
+              "isOurTeam": true
             }
           }
         ],
@@ -462,14 +462,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,20 +479,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Troyes have scored 3 goals in their last 3 matches, while Le Havre have scored 5."
+              "defaultText": "Troyes have an average of 0.67 goals in their last three matches and Le Havre have an average of 1.67."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Troyes have scored 3 goals in their last 3 matches, while Le Havre have scored 5."
+              "defaultText": "Troyes have an average of 0.67 goals in their last three matches and Le Havre have an average of 1.67."
             },
             {
               "OddsType": "dc",
@@ -589,15 +587,15 @@
         },
         {
           "type": "player",
-          "playerId": 1038058,
+          "playerId": 1321149,
           "teamId": 10242,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1038058,
-              "name": "Timothé Nkada",
+              "value": 1321149,
+              "name": "Mouhamed Diop",
               "type": "player"
             },
             {
@@ -606,12 +604,12 @@
               "type": "team"
             },
             {
-              "value": 1.2,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Timothé Nkada has the most shots on target per match for Troyes (1.2)",
+          "text": "Mouhamed Diop has created the most big chances for Troyes (3)",
           "color": "#2A50A1"
         },
         {
