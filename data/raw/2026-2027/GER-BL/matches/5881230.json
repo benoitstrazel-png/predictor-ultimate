@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8358.png",
-            "linkToMatch": "/matches/freiburg-vs-schalke-04/2ueu9g#5881182",
-            "date": {
-              "utcTime": "2026-10-11T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8358/overview/freiburg",
-            "tooltipText": {
-              "utcTime": "2026-10-11T15:30:00.000Z",
-              "homeTeam": "Freiburg",
-              "homeTeamId": 8358,
-              "homeScore": "2",
-              "awayTeam": "Schalke 04",
-              "awayTeamId": 10189,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8358",
-              "name": "Freiburg",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10189",
-              "name": "Schalke 04",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9905.png",
             "linkToMatch": "/matches/mainz-05-vs-schalke-04/3c7ieq#5881194",
             "date": {
@@ -270,6 +240,36 @@
               "id": "178475",
               "name": "RB Leipzig",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8226.png",
+            "linkToMatch": "/matches/hoffenheim-vs-schalke-04/2syjsa#5881219",
+            "date": {
+              "utcTime": "2026-11-08T18:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8226/overview/hoffenheim",
+            "tooltipText": {
+              "utcTime": "2026-11-08T18:30:00.000Z",
+              "homeTeam": "Hoffenheim",
+              "homeTeamId": 8226,
+              "homeScore": "2",
+              "awayTeam": "Schalke 04",
+              "awayTeamId": 10189,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8226",
+              "name": "Hoffenheim",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "10189",
+              "name": "Schalke 04",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,14 +456,14 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Schalke 04 haven't won a match in 5 attempts."
+              "defaultText": "Schalke 04 haven't won a match in 6 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
-              "TextTemplateId": "goalless_team",
+              "DefaultTemplate": "{0} haven't scored at home for {1} matches.",
+              "TextTemplateId": "goalless_home",
               "StatValues": [
                 "home_team",
                 "4"
@@ -477,14 +477,14 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Schalke 04 haven't scored in their last 4 matches."
+              "defaultText": "Schalke 04 haven't scored at home for 4 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
-              "TextTemplateId": "goalless_team",
+              "DefaultTemplate": "{0} haven't scored at home for {1} matches.",
+              "TextTemplateId": "goalless_home",
               "StatValues": [
                 "home_team",
                 "4"
@@ -498,7 +498,7 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Schalke 04 haven't scored in their last 4 matches."
+              "defaultText": "Schalke 04 haven't scored at home for 4 matches."
             },
             {
               "OddsType": "dc",
@@ -508,7 +508,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,7 +521,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Schalke 04 haven't won a match in 5 attempts."
+              "defaultText": "Schalke 04 haven't won a match in 6 attempts."
             }
           ]
         },
@@ -558,34 +558,34 @@
           "type": "team",
           "playerId": null,
           "teamId": 10189,
-          "priority": 9,
-          "defaultText": "Haven't scored in their last {0} matches",
-          "localizedTextId": "insights_goalless_team",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 4 matches",
+          "text": "Haven't won a match in 6 attempts",
           "color": "#083890"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10189,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't won a match in 5 attempts",
+          "text": "Have lost their last 3 matches",
           "color": "#083890"
         },
         {
@@ -683,18 +683,18 @@
       }
     },
     "weather": {
-      "temperature": 9,
-      "windSpeed": 5,
+      "temperature": 8,
+      "windSpeed": 4,
       "windDirectionCardinal": "SSW",
       "iconCode": 11,
-      "relativeHumidity": 84,
-      "precipChance": 44,
+      "relativeHumidity": 87,
+      "precipChance": 49,
       "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 82,
+      "cloudCover": 81,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-08T06:00:13Z",
+      "lastUpdated": "2026-11-08T18:00:08Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -709,11 +709,23 @@
         "name": "Schalke 04",
         "unavailable": [
           {
+            "id": 785739,
+            "name": "Timo Becker",
+            "unavailability": {
+              "injuryId": 21,
+              "lastUpdated": "2026-11-08T19:21:21Z",
+              "type": "injury",
+              "expectedReturn": "Late November 2026"
+            },
+            "firstName": "Timo",
+            "lastName": "Becker"
+          },
+          {
             "id": 1842512,
             "name": "Luca Vozar",
             "unavailability": {
               "injuryId": 92,
-              "lastUpdated": "2026-10-30T13:04:26Z",
+              "lastUpdated": "2026-11-08T18:40:18Z",
               "type": "injury",
               "expectedReturn": "About 1-2 weeks"
             },

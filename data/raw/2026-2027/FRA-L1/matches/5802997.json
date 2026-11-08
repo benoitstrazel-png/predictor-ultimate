@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10242.png",
-            "linkToMatch": "/matches/angers-vs-troyes/2se1ur#5802937",
-            "date": {
-              "utcTime": "2026-09-19T18:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10242/overview/troyes",
-            "tooltipText": {
-              "utcTime": "2026-09-19T18:45:00.000Z",
-              "homeTeam": "Angers",
-              "homeTeamId": 8121,
-              "homeScore": "2",
-              "awayTeam": "Troyes",
-              "awayTeamId": 10242,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "8121",
-              "name": "Angers",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10242",
-              "name": "Troyes",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8521.png",
@@ -423,6 +393,36 @@
               "name": "Angers",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9831.png",
+            "linkToMatch": "/matches/angers-vs-nice/2ny4qf#5802982",
+            "date": {
+              "utcTime": "2026-11-08T16:15:00.000Z"
+            },
+            "teamPageUrl": "/teams/9831/overview/nice",
+            "tooltipText": {
+              "utcTime": "2026-11-08T16:15:00.000Z",
+              "homeTeam": "Angers",
+              "homeTeamId": 8121,
+              "homeScore": "0",
+              "awayTeam": "Nice",
+              "awayTeamId": 9831,
+              "awayScore": "2"
+            },
+            "score": "0 - 2",
+            "home": {
+              "id": "8121",
+              "name": "Angers",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9831",
+              "name": "Nice",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "3",
-                "0",
-                "2",
                 "away_team",
-                "1",
-                "1",
-                "3"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Paris FC have 3W, 0D, 2L in five matches while Angers have 1W, 1D, 3L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Angers haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -489,13 +483,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,8 +497,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Paris FC have an average of 1.67 goals in their last three matches and Angers have an average of 0.67."
+              "Icon": "poll_glove",
+              "defaultText": "Angers haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -516,7 +508,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,7 +521,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Angers haven't won a match in 4 attempts."
+              "defaultText": "Angers haven't won a match in 5 attempts."
             }
           ]
         },
@@ -610,7 +602,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -620,7 +612,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
           "color": "#000000"
         },
         {
@@ -632,39 +624,29 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
           "color": "#000000"
         },
         {
-          "type": "player",
-          "playerId": 167035,
+          "type": "team",
+          "playerId": null,
           "teamId": 8121,
-          "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 167035,
-              "name": "Anthony Lopes",
-              "type": "player"
-            },
-            {
-              "value": 1,
+              "value": 5,
               "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4,
-              "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Anthony Lopes is ranked 1 in saves per match in the competition (4)",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#000000"
         }
       ],
