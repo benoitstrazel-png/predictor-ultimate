@@ -12787,7 +12787,7 @@ export const PLAYERS_DB = [
   {
     "Player": "Max Dowman",
     "Nation": "en ENG",
-    "Pos": "FW",
+    "Pos": "MF",
     "Squad": "Arsenal",
     "League": "eng Premier League",
     "Age": 16,
@@ -12796,9 +12796,9 @@ export const PLAYERS_DB = [
     "Min": 246,
     "Gls": 0,
     "Ast": 0,
-    "xG": 1.4,
-    "npxG": 1.3,
-    "xAG": 0.8
+    "xG": 0.6,
+    "npxG": 0.5,
+    "xAG": 1.3
   },
   {
     "Player": "Illan Meslier",
@@ -12865,8 +12865,8 @@ export const PLAYERS_DB = [
     "xAG": 2.9
   },
   {
-    "Player": "Maalik Hashi",
-    "Nation": "en ENG",
+    "Player": "Ceadach O'Neill",
+    "Nation": "ni NIR",
     "Pos": "MF",
     "Squad": "Arsenal",
     "League": "eng Premier League",
@@ -12881,9 +12881,9 @@ export const PLAYERS_DB = [
     "xAG": 1.3
   },
   {
-    "Player": "Ceadach O'Neill",
-    "Nation": "ni NIR",
-    "Pos": "FW",
+    "Player": "Maalik Hashi",
+    "Nation": "en ENG",
+    "Pos": "MF",
     "Squad": "Arsenal",
     "League": "eng Premier League",
     "Age": 18,
@@ -12892,9 +12892,9 @@ export const PLAYERS_DB = [
     "Min": 82,
     "Gls": 0,
     "Ast": 0,
-    "xG": 1.4,
-    "npxG": 1.3,
-    "xAG": 0.8
+    "xG": 0.6,
+    "npxG": 0.5,
+    "xAG": 1.3
   },
   {
     "Player": "Marcell Washington",
