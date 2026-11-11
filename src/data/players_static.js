@@ -16753,7 +16753,7 @@ export const PLAYERS_DB = [
     "xAG": 0.8
   },
   {
-    "Player": "Alvaro Padilla",
+    "Player": "Álvaro Padilla",
     "Nation": "es ESP",
     "Pos": "FW",
     "Squad": "Elche",

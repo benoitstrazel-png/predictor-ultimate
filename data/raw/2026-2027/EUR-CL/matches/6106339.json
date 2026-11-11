@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
-                "away_team",
-                "4"
+                "home_team",
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +454,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa have lost their last 4 matches."
+              "Icon": "poll_stat_up",
+              "defaultText": "Galatasaray have won their last 6 matches."
             },
             {
               "OddsType": "bts",
@@ -465,6 +465,28 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
+                "6"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Galatasaray have scored in their last 6 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "home_team",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -476,31 +498,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Galatasaray have scored in their last 3 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "7",
-                "2"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Galatasaray have scored 7 goals in their last 3 matches, while Aston Villa have scored 2."
+              "defaultText": "Galatasaray have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -537,35 +535,35 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 10252,
-          "priority": 1344,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "teamId": 8637,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 4 matches",
-          "color": "#7D1142"
+          "text": "Haven't lost in 6 matches",
+          "color": "#8D072A"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 10252,
-          "priority": 8,
+          "priority": 1345,
           "defaultText": "Haven't kept a clean sheet in {0} matches",
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 6 matches",
           "color": "#7D1142"
         }
       ],

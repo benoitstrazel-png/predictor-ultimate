@@ -125,36 +125,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
-            "linkToMatch": "/matches/deportivo-alaves-vs-atletico-madrid/38dxso#5868081",
-            "date": {
-              "utcTime": "2026-10-10T14:15:00.000Z"
-            },
-            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
-            "tooltipText": {
-              "utcTime": "2026-10-10T14:15:00.000Z",
-              "homeTeam": "Deportivo Alavés",
-              "homeTeamId": 9866,
-              "homeScore": "1",
-              "awayTeam": "Atlético Madrid",
-              "awayTeamId": 9906,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "9866",
-              "name": "Deportivo Alavés",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9906",
-              "name": "Atlético Madrid",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
             "linkToMatch": "/matches/deportivo-alaves-vs-celta-vigo/38fmty#5868092",
             "date": {
@@ -264,6 +234,36 @@
             "home": {
               "id": "8302",
               "name": "Sevilla",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9866",
+              "name": "Deportivo Alavés",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/357266.png",
+            "linkToMatch": "/matches/deportivo-alaves-vs-anaitasuna-ft/uyk50dc#6386040",
+            "date": {
+              "utcTime": "2026-11-10T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/357266/overview/anaitasuna-ft",
+            "tooltipText": {
+              "utcTime": "2026-11-10T18:00:00.000Z",
+              "homeTeam": "Anaitasuna FT",
+              "homeTeamId": 357266,
+              "homeScore": "1",
+              "awayTeam": "Deportivo Alavés",
+              "awayTeamId": 9866,
+              "awayScore": "6"
+            },
+            "score": "1 - 6",
+            "home": {
+              "id": "357266",
+              "name": "Anaitasuna FT",
               "isOurTeam": false
             },
             "away": {
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "8"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +461,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Deportivo Alavés haven't won a match in 8 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Deportivo Alavés have 1W, 2D, 2L in five matches while Deportivo A Coruña have 2W, 2D, 1L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "7",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,19 +486,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Deportivo Alavés have an average of 0.67 goals in their last three matches and Deportivo A Coruña have an average of 1.67."
+              "defaultText": "Deportivo Alavés have scored 7 goals in their last 3 matches, while Deportivo A Coruña have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.67"
+                "3",
+                "7",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,17 +510,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Deportivo Alavés have an average of 0.67 goals in their last three matches and Deportivo A Coruña have an average of 1.67."
+              "defaultText": "Deportivo Alavés have scored 7 goals in their last 3 matches, while Deportivo A Coruña have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "8"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,8 +538,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Deportivo Alavés haven't won a match in 8 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Deportivo Alavés have 1W, 2D, 2L in five matches while Deportivo A Coruña have 2W, 2D, 1L."
             }
           ]
         },
@@ -545,7 +559,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -555,7 +569,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#0351A3"
         },
         {
@@ -586,20 +600,30 @@
           "color": "#0351A3"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 518525,
           "teamId": 9866,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 518525,
+              "name": "Mariano Díaz",
+              "type": "player"
+            },
+            {
+              "value": 9866,
+              "name": "Deportivo Alavés",
+              "type": "team"
+            },
+            {
+              "value": 1.9,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Haven't won a match in 8 attempts",
+          "text": "Mariano Díaz has the most shots on target per match for Deportivo Alavés (1.9)",
           "color": "#0351A3"
         },
         {
