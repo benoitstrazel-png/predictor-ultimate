@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "away_team",
-                "4"
+                "home_team",
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +455,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Barcelona have won their last 4 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Sabah FK haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
-              "TextTemplateId": "goalstreak_team_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "11",
                 "away_team",
-                "4"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +477,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sabah FK have scored in their last 11 matches and Barcelona have scored in their last 4 matches."
+              "defaultText": "Barcelona have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
@@ -488,8 +486,8 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
-                "8",
+                "away_team",
+                "11",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,19 +499,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sabah FK have scored 8 goals in their last 3 matches."
+              "defaultText": "Barcelona have scored 11 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "12",
-                "12"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Sabah FK haven't drawn in their last 12 matches and Barcelona in their last 12."
+              "Icon": "poll_stat_down",
+              "defaultText": "Sabah FK haven't won a match in 5 attempts."
             }
           ]
         },
@@ -536,6 +532,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 951893,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 5 attempts",
+          "color": "#101010"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
