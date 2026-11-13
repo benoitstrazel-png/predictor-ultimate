@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10235.png",
-            "linkToMatch": "/matches/real-betis-vs-feyenoord/2xnfq0#6106300",
-            "date": {
-              "utcTime": "2026-10-21T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10235/overview/feyenoord",
-            "tooltipText": {
-              "utcTime": "2026-10-21T19:00:00.000Z",
-              "homeTeam": "Real Betis",
-              "homeTeamId": 8603,
-              "homeScore": "1",
-              "awayTeam": "Feyenoord",
-              "awayTeamId": 10235,
-              "awayScore": "0"
-            },
-            "score": "1 - 0",
-            "home": {
-              "id": "8603",
-              "name": "Real Betis",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10235",
-              "name": "Feyenoord",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9910.png",
@@ -424,6 +394,36 @@
               "name": "Real Betis",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/161758.png",
+            "linkToMatch": "/matches/real-betis-vs-navalcarnero/6nzsfe8#6386067",
+            "date": {
+              "utcTime": "2026-11-12T18:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/161758/overview/navalcarnero",
+            "tooltipText": {
+              "utcTime": "2026-11-12T18:00:00.000Z",
+              "homeTeam": "Navalcarnero",
+              "homeTeamId": 161758,
+              "homeScore": "2",
+              "awayTeam": "Real Betis",
+              "awayTeamId": 8603,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "161758",
+              "name": "Navalcarnero",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8603",
+              "name": "Real Betis",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -466,14 +466,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "4",
-                "5"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -484,7 +481,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sevilla have scored 4 goals in their last 3 matches, while Real Betis have scored 5."
+              "defaultText": "Real Betis have scored in their last 3 away matches."
             },
             {
               "OddsType": "ou",
@@ -497,7 +494,7 @@
                 "away_team",
                 "3",
                 "4",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -508,23 +505,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sevilla have scored 4 goals in their last 3 matches, while Real Betis have scored 5."
+              "defaultText": "Sevilla have scored 4 goals in their last 3 matches, while Real Betis have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -537,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Sevilla have 2W, 1D, 2L in five matches while Real Betis have 3W, 1D, 1L."
+              "defaultText": "Real Betis haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -633,7 +624,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 8,
               "name": null,
               "type": "integer"
             },
@@ -643,20 +634,20 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 8 goals in their last 5 matches",
           "color": "#009048"
         },
         {
           "type": "player",
-          "playerId": 967622,
+          "playerId": 852071,
           "teamId": 8603,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 967622,
-              "name": "Antony",
+              "value": 852071,
+              "name": "Juan Hernández",
               "type": "player"
             },
             {
@@ -665,12 +656,12 @@
               "type": "team"
             },
             {
-              "value": 1.9,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Antony has the most shots on target per match for Real Betis (1.9)",
+          "text": "Juan Hernández has created the most big chances for Real Betis (3)",
           "color": "#009048"
         },
         {
