@@ -120,6 +120,115 @@
       },
       "teamForm": null,
       "poll": {
+        "oddspoll": {
+          "PollName": "oddspoll-match-5803180",
+          "MatchId": 5803180,
+          "HomeTeamId": 8583,
+          "AwayTeamId": 9851,
+          "HomeTeam": "Auxerre",
+          "AwayTeam": "Rennes",
+          "Facts": [
+            {
+              "OddsType": "1x2",
+              "DefaultLabel": "Who will win?",
+              "TextLabelId": "who_will_win",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
+              "StatValues": [
+                "away_team",
+                "home_team",
+                "3",
+                "2",
+                "1"
+              ],
+              "DefaultLabels": [
+                "1",
+                "x",
+                "2"
+              ],
+              "LabelTemplates": [
+                "label_1",
+                "label_x",
+                "label_2"
+              ],
+              "Icon": "poll_teams",
+              "defaultText": "Rennes haven't lost to Auxerre in their last 3 meetings (2W, 1D)."
+            },
+            {
+              "OddsType": "bts",
+              "DefaultLabel": "Will both teams score?",
+              "TextLabelId": "both_score",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
+              "StatValues": [
+                "away_team",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Rennes have scored in their last 3 away matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "0.67",
+                "1"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Auxerre have an average of 0.67 goals in their last three matches and Rennes have an average of 1."
+            },
+            {
+              "OddsType": "dc",
+              "DefaultLabel": "Double chance",
+              "TextLabelId": "double_chance",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
+              "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
+                "away_team",
+                "1",
+                "2",
+                "2"
+              ],
+              "DefaultLabels": [
+                "1x",
+                "12",
+                "x2"
+              ],
+              "LabelTemplates": [
+                "label_1x",
+                "label_12",
+                "label_x2"
+              ],
+              "Icon": "poll_teams",
+              "defaultText": "Auxerre have 1W, 1D, 3L in five matches while Rennes have 1W, 2D, 2L."
+            }
+          ]
+        },
         "renderToTop": true
       },
       "topPlayers": {
@@ -195,6 +304,18 @@
         "id": 9851,
         "name": "Rennes",
         "unavailable": [
+          {
+            "id": 402419,
+            "name": "Przemysław Frankowski",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-11-12T13:28:07Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Przemysław",
+            "lastName": "Frankowski"
+          },
           {
             "id": 1280225,
             "name": "Estéban Lepaul",
