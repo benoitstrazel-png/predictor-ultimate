@@ -656,16 +656,26 @@
           "playerId": null,
           "teamId": 9825,
           "priority": 8,
-          "defaultText": "Ranked {0} away from home this season",
-          "localizedTextId": "insights_best_away",
+          "defaultText": "{0} have won the previous {2} matches against {1}.",
+          "localizedTextId": "h2h_winstreak",
           "statValues": [
             {
-              "value": 2,
+              "value": 9825,
+              "name": "Arsenal",
+              "type": "team"
+            },
+            {
+              "value": 10261,
+              "name": "Newcastle United",
+              "type": "team"
+            },
+            {
+              "value": 4,
               "name": null,
-              "type": "ordinal"
+              "type": "integer"
             }
           ],
-          "text": "Ranked 2 away from home this season",
+          "text": "Arsenal have won the previous 4 matches against Newcastle United.",
           "color": "#bd0510"
         }
       ],
@@ -687,94 +697,119 @@
       }
     },
     "weather": {
-      "temperature": 6,
-      "windSpeed": 4,
-      "windDirectionCardinal": "S",
-      "iconCode": 11,
-      "relativeHumidity": 91,
-      "precipChance": 33,
-      "precipitation": 0.12,
+      "temperature": 4,
+      "windSpeed": 3,
+      "windDirectionCardinal": "SSE",
+      "iconCode": 27,
+      "relativeHumidity": 90,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 77,
-      "description": "Few Showers",
+      "cloudCover": 78,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-14T06:00:04Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-11-14T18:00:02Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5795523,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 10261,
         "name": "Newcastle United",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 535936,
+            "age": 30,
             "name": "Joelinton",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 17949602,
             "unavailability": {
               "injuryId": 130,
-              "lastUpdated": "2026-11-06T17:47:13Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "",
-            "lastName": "Joelinton"
+            "lastName": "Joelinton",
+            "nationalTeamId": 8256
           },
           {
             "id": 1438570,
+            "age": 20,
             "name": "Ewen Jaouen",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 23811733,
             "unavailability": {
               "injuryId": 42,
-              "lastUpdated": "2026-10-11T07:40:19Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Ewen",
-            "lastName": "Jaouen"
+            "lastName": "Jaouen",
+            "nationalTeamId": 6723
           }
         ]
       },
       "awayTeam": {
         "id": 9825,
         "name": "Arsenal",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 1635773,
+            "age": 16,
             "name": "Max Dowman",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 63461213,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Late November 2026",
+              "expectedReturnDate": "2026-11-21T18:30:00Z"
             },
             "firstName": "Max",
-            "lastName": "Dowman"
+            "lastName": "Dowman",
+            "nationalTeamId": 8491
           },
           {
             "id": 710159,
+            "age": 29,
             "name": "Ezri Konsa",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 57143662,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-11-14T18:15:48Z",
               "type": "injury",
               "expectedReturn": "A few days"
             },
             "firstName": "Ezri",
-            "lastName": "Konsa"
+            "lastName": "Konsa",
+            "nationalTeamId": 8491
           },
           {
             "id": 961995,
+            "age": 25,
             "name": "Bukayo Saka",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 97092702,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-11-07T00:13:44Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Bukayo",
-            "lastName": "Saka"
+            "lastName": "Saka",
+            "nationalTeamId": 8491
           }
         ]
       }
