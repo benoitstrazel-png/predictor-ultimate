@@ -157,11 +157,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "4",
+                "away_team",
+                "10"
               ],
               "DefaultLabels": [
                 "yes",
@@ -172,7 +174,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hamburger SV have scored in their last 5 home matches."
+              "defaultText": "Hamburger SV have scored in their last 4 matches and RB Leipzig have scored in their last 10 matches."
             },
             {
               "OddsType": "ou",
@@ -200,12 +202,10 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "12",
                 "12"
               ],
               "DefaultLabels": [
@@ -219,7 +219,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hamburger SV haven't drawn in their last 12 matches and RB Leipzig in their last 12."
+              "defaultText": "RB Leipzig haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -706,7 +706,8 @@
         }
       ]
     },
-    "momentum": false
+    "momentum": false,
+    "hasPassNetwork": false
   },
   "seo": {
     "path": "hamburger-sv-vs-rb-leipzig",
