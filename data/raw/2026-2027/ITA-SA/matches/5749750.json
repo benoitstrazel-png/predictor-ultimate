@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -652,15 +652,15 @@
         },
         {
           "type": "player",
-          "playerId": 1445650,
+          "playerId": 688300,
           "teamId": 8564,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1445650,
-              "name": "Alphadjo Cissè",
+              "value": 688300,
+              "name": "Samuel Chukwueze",
               "type": "player"
             },
             {
@@ -669,12 +669,12 @@
               "type": "team"
             },
             {
-              "value": 1.5,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Alphadjo Cissè has the most shots on target per match for Milan (1.5)",
+          "text": "Samuel Chukwueze has created the most big chances for Milan (5)",
           "color": "#CF2C27"
         },
         {
@@ -718,15 +718,15 @@
         },
         {
           "type": "player",
-          "playerId": 746829,
+          "playerId": 1135820,
           "teamId": 9891,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 746829,
-              "name": "Giacomo Calò",
+              "value": 1135820,
+              "name": "Daniel Bîrligea",
               "type": "player"
             },
             {
@@ -735,12 +735,12 @@
               "type": "team"
             },
             {
-              "value": 6,
+              "value": 3,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Giacomo Calò has created the most big chances for Frosinone (6)",
+          "text": "Daniel Bîrligea has the most shots on target per match for Frosinone (3)",
           "color": "#d5a300"
         }
       ],
@@ -854,50 +854,350 @@
     "weather": {
       "temperature": 8,
       "windSpeed": 2,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 27,
+      "windDirectionCardinal": "W",
+      "iconCode": 26,
       "relativeHumidity": 91,
-      "precipChance": 23,
+      "precipChance": 15,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 65,
-      "description": "Mostly Cloudy",
+      "cloudCover": 80,
+      "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-19T05:00:14Z",
+      "lastUpdated": "2026-11-19T17:00:05Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5749750,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 8564,
         "name": "Milan",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "3-4-3",
+        "starters": [
           {
-            "id": 749662,
-            "age": 28,
-            "name": "Fikayo Tomori",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 5644519,
-            "unavailability": {
-              "injuryId": 87,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
+            "id": 2022740,
+            "age": 18,
+            "name": "Leo Paul Bouyer",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "41",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.2
             },
-            "firstName": "Fikayo",
-            "lastName": "Tomori",
-            "nationalTeamId": 8491
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.2,
+              "width": 1
+            },
+            "firstName": "Leo Paul",
+            "lastName": "Bouyer",
+            "nationalTeamId": 6723,
+            "rankings": null
           },
+          {
+            "id": 1106074,
+            "age": 26,
+            "name": "Mario Gila",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "34",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 32685326,
+            "firstName": "Mario",
+            "lastName": "Gila",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 1200630,
+            "age": 24,
+            "name": "Koni De Winter",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 25830796,
+            "firstName": "Koni",
+            "lastName": "De Winter",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1669433,
+            "age": 20,
+            "name": "Sankhoun Diawara",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "13",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.357,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.357,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 2175641,
+            "firstName": "Sankhoun",
+            "lastName": "Diawara",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1342754,
+            "age": 22,
+            "name": "Diego Moreira",
+            "positionId": 72,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "22",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 47913497,
+            "firstName": "Diego",
+            "lastName": "Moreira",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 31097,
+            "age": 41,
+            "name": "Luka Modrić",
+            "positionId": 74,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "Croatia",
+            "countryCode": "CRO",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 2550801,
+            "firstName": "Luka",
+            "lastName": "Modrić",
+            "nationalTeamId": 10155,
+            "rankings": null
+          },
+          {
+            "id": 352879,
+            "age": 31,
+            "name": "Adrien Rabiot",
+            "positionId": 76,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "12",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 11398101,
+            "firstName": "Adrien",
+            "lastName": "Rabiot",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1137272,
+            "age": 23,
+            "name": "Yunus Musah",
+            "positionId": 78,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "80",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "horizontalLayout": {
+              "x": 0.613,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.613,
+              "height": 0.2,
+              "width": 0.25
+            },
+            "marketValue": 18575543,
+            "firstName": "Yunus",
+            "lastName": "Musah",
+            "nationalTeamId": 6713,
+            "rankings": null
+          },
+          {
+            "id": 688295,
+            "age": 28,
+            "name": "Christian Pulisic",
+            "positionId": 103,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 22963192,
+            "firstName": "Christian",
+            "lastName": "Pulisic",
+            "nationalTeamId": 6713,
+            "rankings": null
+          },
+          {
+            "id": 940087,
+            "age": 25,
+            "name": "Gonçalo Ramos",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 56878760,
+            "firstName": "Gonçalo",
+            "lastName": "Ramos",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 1445650,
+            "age": 20,
+            "name": "Alphadjo Cissè",
+            "positionId": 107,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "70",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.257
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.87,
+              "height": 0.2,
+              "width": 0.29
+            },
+            "marketValue": 24494858,
+            "firstName": "Alphadjo",
+            "lastName": "Cissè",
+            "nationalTeamId": 8204,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 11754,
+          "age": 41,
+          "name": "Ruben Amorim",
+          "countryName": "Portugal",
+          "countryCode": "POR",
+          "firstName": "Ruben",
+          "lastName": "Amorim",
+          "nationalTeamId": 8361,
+          "primaryTeamId": 8564,
+          "primaryTeamName": "Milan",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 281762,
             "age": 36,
             "name": "Pietro Terracciano",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 578308,
@@ -911,41 +1211,27 @@
             "nationalTeamId": 8204
           },
           {
-            "id": 604982,
-            "age": 30,
-            "name": "Ruben Loftus-Cheek",
+            "id": 749662,
+            "age": 28,
+            "name": "Fikayo Tomori",
+            "positionId": 1000,
             "countryName": "England",
             "countryCode": "ENG",
-            "marketValue": 3848842,
+            "marketValue": 5644519,
             "unavailability": {
-              "injuryId": 69,
+              "injuryId": 87,
               "type": "injury",
-              "expectedReturn": "Early December 2026"
+              "expectedReturn": "Doubtful"
             },
-            "firstName": "Ruben",
-            "lastName": "Loftus-Cheek",
+            "firstName": "Fikayo",
+            "lastName": "Tomori",
             "nationalTeamId": 8491
-          },
-          {
-            "id": 688300,
-            "age": 27,
-            "name": "Samuel Chukwueze",
-            "countryName": "Nigeria",
-            "countryCode": "NGA",
-            "marketValue": 17876240,
-            "unavailability": {
-              "injuryId": 69,
-              "type": "injury",
-              "expectedReturn": "Mid January 2027"
-            },
-            "firstName": "Samuel",
-            "lastName": "Chukwueze",
-            "nationalTeamId": 6346
           },
           {
             "id": 844996,
             "age": 27,
             "name": "Matteo Gabbia",
+            "positionId": 1000,
             "countryName": "Italy",
             "countryCode": "ITA",
             "marketValue": 16648271,
@@ -962,6 +1248,7 @@
             "id": 921341,
             "age": 27,
             "name": "Alexis Saelemaekers",
+            "positionId": 1000,
             "countryName": "Belgium",
             "countryCode": "BEL",
             "marketValue": 19740345,
@@ -973,35 +1260,368 @@
             "firstName": "Alexis",
             "lastName": "Saelemaekers",
             "nationalTeamId": 8263
+          },
+          {
+            "id": 604982,
+            "age": 30,
+            "name": "Ruben Loftus-Cheek",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 3848842,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "firstName": "Ruben",
+            "lastName": "Loftus-Cheek",
+            "nationalTeamId": 8491
+          },
+          {
+            "id": 688300,
+            "age": 27,
+            "name": "Samuel Chukwueze",
+            "positionId": 1000,
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "marketValue": 17876240,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Mid January 2027"
+            },
+            "firstName": "Samuel",
+            "lastName": "Chukwueze",
+            "nationalTeamId": 6346
           }
-        ]
+        ],
+        "averageStarterAge": 25.7,
+        "totalStarterMarketValue": 245466515
       },
       "awayTeam": {
         "id": 9891,
         "name": "Frosinone",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 1396091,
-            "age": 23,
-            "name": "Gabriele Bracaglia",
+            "id": 1289655,
+            "age": 22,
+            "name": "Lorenzo Palmisani",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "22",
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 5088302,
-            "unavailability": {
-              "type": "suspension",
-              "expectedReturn": "Late November 2026",
-              "expectedReturnDate": "2026-11-22T18:00:00Z"
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Gabriele",
-            "lastName": "Bracaglia",
-            "nationalTeamId": 8204
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 9321170,
+            "firstName": "Lorenzo",
+            "lastName": "Palmisani",
+            "nationalTeamId": 8204,
+            "rankings": null
           },
+          {
+            "id": 1235421,
+            "age": 25,
+            "name": "Anthony Oyono",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "Gabon",
+            "countryCode": "GAB",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1809277,
+            "firstName": "Anthony",
+            "lastName": "Oyono",
+            "nationalTeamId": 5889,
+            "rankings": null
+          },
+          {
+            "id": 1415326,
+            "age": 22,
+            "name": "Gabriele Calvani",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 4709707,
+            "firstName": "Gabriele",
+            "lastName": "Calvani",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 1117058,
+            "age": 24,
+            "name": "Ilario Monterisi",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "30",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1682141,
+            "firstName": "Ilario",
+            "lastName": "Monterisi",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 353519,
+            "age": 31,
+            "name": "Kevin Akpoguma",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "25",
+            "countryName": "Nigeria",
+            "countryCode": "NGA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1115889,
+            "firstName": "Kevin",
+            "lastName": "Akpoguma",
+            "nationalTeamId": 6346,
+            "rankings": null
+          },
+          {
+            "id": 1670272,
+            "age": 21,
+            "name": "Matteo Cichella",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "16",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 4648948,
+            "firstName": "Matteo",
+            "lastName": "Cichella",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 746829,
+            "age": 29,
+            "name": "Giacomo Calò",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1811650,
+            "firstName": "Giacomo",
+            "lastName": "Calò",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 1523327,
+            "age": 24,
+            "name": "Farès Ghedjemis",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 15051702,
+            "firstName": "Farès",
+            "lastName": "Ghedjemis",
+            "nationalTeamId": 6317,
+            "rankings": null
+          },
+          {
+            "id": 749488,
+            "age": 26,
+            "name": "Romano Schmid",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 16355531,
+            "firstName": "Romano",
+            "lastName": "Schmid",
+            "nationalTeamId": 8255,
+            "rankings": null
+          },
+          {
+            "id": 1342748,
+            "age": 23,
+            "name": "Giorgi Kvernadze",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "17",
+            "countryName": "Georgia",
+            "countryCode": "GEO",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 9942775,
+            "firstName": "Giorgi",
+            "lastName": "Kvernadze",
+            "nationalTeamId": 8268,
+            "rankings": null
+          },
+          {
+            "id": 1135820,
+            "age": 26,
+            "name": "Daniel Bîrligea",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Romania",
+            "countryCode": "ROU",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 4118202,
+            "firstName": "Daniel",
+            "lastName": "Bîrligea",
+            "nationalTeamId": 9730,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 1188285,
+          "age": 56,
+          "name": "Massimiliano Alvini",
+          "countryName": "Italy",
+          "countryCode": "ITA",
+          "firstName": "Massimiliano",
+          "lastName": "Alvini",
+          "nationalTeamId": 8204,
+          "primaryTeamId": 9891,
+          "primaryTeamName": "Frosinone",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 992025,
             "age": 27,
             "name": "Aleksa Terzić",
+            "positionId": 1000,
             "countryName": "Serbia",
             "countryCode": "SRB",
             "marketValue": 1698923,
@@ -1015,25 +1635,27 @@
             "nationalTeamId": 8205
           },
           {
-            "id": 1256534,
-            "age": 22,
-            "name": "Antonio Raimondo",
+            "id": 1396091,
+            "age": 23,
+            "name": "Gabriele Bracaglia",
+            "positionId": 1100,
             "countryName": "Italy",
             "countryCode": "ITA",
-            "marketValue": 5386256,
+            "marketValue": 5088302,
             "unavailability": {
-              "injuryId": 30,
-              "type": "injury",
-              "expectedReturn": "Late January 2027"
+              "type": "suspension",
+              "expectedReturn": "Late November 2026",
+              "expectedReturnDate": "2026-11-22T18:00:00Z"
             },
-            "firstName": "Antonio",
-            "lastName": "Raimondo",
+            "firstName": "Gabriele",
+            "lastName": "Bracaglia",
             "nationalTeamId": 8204
           },
           {
             "id": 617044,
             "age": 31,
             "name": "Florian Grillitsch",
+            "positionId": 1000,
             "countryName": "Austria",
             "countryCode": "AUT",
             "marketValue": 1335078,
@@ -1045,8 +1667,27 @@
             "firstName": "Florian",
             "lastName": "Grillitsch",
             "nationalTeamId": 8255
+          },
+          {
+            "id": 1256534,
+            "age": 22,
+            "name": "Antonio Raimondo",
+            "positionId": 1000,
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 5386256,
+            "unavailability": {
+              "injuryId": 30,
+              "type": "injury",
+              "expectedReturn": "Late January 2027"
+            },
+            "firstName": "Antonio",
+            "lastName": "Raimondo",
+            "nationalTeamId": 8204
           }
-        ]
+        ],
+        "averageStarterAge": 25.4,
+        "totalStarterMarketValue": 70566992
       }
     },
     "hasPlayoff": false,
