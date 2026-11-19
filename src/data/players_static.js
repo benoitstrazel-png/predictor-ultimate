@@ -16279,7 +16279,7 @@ export const PLAYERS_DB = [
     "Squad": "Lens",
     "League": "fra Ligue 1",
     "Age": 16,
-    "MP": 8,
+    "MP": 7,
     "Starts": 6,
     "Min": 492,
     "Gls": 0,
@@ -16287,6 +16287,22 @@ export const PLAYERS_DB = [
     "xG": 0.6,
     "npxG": 0.5,
     "xAG": 2.1
+  },
+  {
+    "Player": "Mezian Mesloub",
+    "Nation": "po POR",
+    "Pos": "MF",
+    "Squad": "Lens",
+    "League": "fra Ligue 1",
+    "Age": 16,
+    "MP": 1,
+    "Starts": 1,
+    "Min": 82,
+    "Gls": 0,
+    "Ast": 0,
+    "xG": 0.6,
+    "npxG": 0.5,
+    "xAG": 1.3
   },
   {
     "Player": "Michal Skóras",
