@@ -277,36 +277,6 @@
           {
             "result": 0,
             "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10013.png",
-            "linkToMatch": "/matches/nk-celje-vs-salzburg/1rrlmo#6112335",
-            "date": {
-              "utcTime": "2026-10-22T19:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10013/overview/salzburg",
-            "tooltipText": {
-              "utcTime": "2026-10-22T19:00:00.000Z",
-              "homeTeam": "NK Celje",
-              "homeTeamId": 4622,
-              "homeScore": "2",
-              "awayTeam": "Salzburg",
-              "awayTeamId": 10013,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "4622",
-              "name": "NK Celje",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10013",
-              "name": "Salzburg",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 0,
-            "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7872.png",
             "linkToMatch": "/matches/nk-celje-vs-olimpija-ljubljana/1ah6o9#5833595",
             "date": {
@@ -423,6 +393,36 @@
               "name": "NK Celje",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/945621.png",
+            "linkToMatch": "/matches/nk-celje-vs-nd-beltinci/5reowkff#6505591",
+            "date": {
+              "utcTime": "2026-11-19T12:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/945621/overview/nd-beltinci",
+            "tooltipText": {
+              "utcTime": "2026-11-19T12:30:00.000Z",
+              "homeTeam": "ND Beltinci",
+              "homeTeamId": 945621,
+              "homeScore": "1",
+              "awayTeam": "NK Celje",
+              "awayTeamId": 4622,
+              "awayScore": "3"
+            },
+            "score": "1 - 3",
+            "home": {
+              "id": "945621",
+              "name": "ND Beltinci",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "4622",
+              "name": "NK Celje",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have won their last {2} matches and {1} their last {3} matches.",
+              "TextTemplateId": "good_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "away_team",
+                "5",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Ferencváros have won their last 5 matches."
+              "defaultText": "Ferencváros have won their last 5 matches and NK Celje their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -468,7 +470,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +481,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ferencváros have scored in their last 12 matches and NK Celje have scored in their last 5 matches."
+              "defaultText": "Ferencváros have scored in their last 12 matches and NK Celje have scored in their last 6 matches."
             },
             {
               "OddsType": "ou",
@@ -489,7 +491,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "9",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -501,17 +503,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "NK Celje have scored 9 goals in their last 3 matches."
+              "defaultText": "NK Celje have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "away_team",
+                "5",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +528,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Ferencváros haven't drawn in their last 5 matches."
+              "defaultText": "Ferencváros haven't drawn in their last 5 matches and NK Celje in their last 4."
             }
           ]
         },
@@ -561,12 +565,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 6 matches",
+          "text": "Haven't lost in 7 matches",
           "color": "#021B5C"
         }
       ],
@@ -588,18 +592,18 @@
       }
     },
     "weather": {
-      "temperature": 2,
+      "temperature": 1,
       "windSpeed": 3,
-      "windDirectionCardinal": "ENE",
+      "windDirectionCardinal": "NE",
       "iconCode": 11,
-      "relativeHumidity": 88,
-      "precipChance": 47,
-      "precipitation": 0.2,
+      "relativeHumidity": 92,
+      "precipChance": 52,
+      "precipitation": 0.5,
       "snow": 0,
       "cloudCover": 89,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-18T20:00:25Z",
+      "lastUpdated": "2026-11-19T08:00:26Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
