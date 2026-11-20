@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png",
-            "linkToMatch": "/matches/borussia-dortmund-vs-sabah-fk/5wfix3jc#6106422",
-            "date": {
-              "utcTime": "2026-10-20T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9789/overview/borussia-dortmund",
-            "tooltipText": {
-              "utcTime": "2026-10-20T16:45:00.000Z",
-              "homeTeam": "Sabah FK",
-              "homeTeamId": 951893,
-              "homeScore": "1",
-              "awayTeam": "Borussia Dortmund",
-              "awayTeamId": 9789,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "951893",
-              "name": "Sabah FK",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9789",
-              "name": "Borussia Dortmund",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7981.png",
@@ -270,6 +240,36 @@
               "id": "2103",
               "name": "Shamakhi FK",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/213987.png",
+            "linkToMatch": "/matches/sumqayt-vs-sabah-fk/8o7zvslt#5987562",
+            "date": {
+              "utcTime": "2026-11-20T15:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/213987/overview/sumqayt",
+            "tooltipText": {
+              "utcTime": "2026-11-20T15:00:00.000Z",
+              "homeTeam": "Sumqayıt",
+              "homeTeamId": 213987,
+              "homeScore": "1",
+              "awayTeam": "Sabah FK",
+              "awayTeamId": 951893,
+              "awayScore": "5"
+            },
+            "score": "1 - 5",
+            "home": {
+              "id": "213987",
+              "name": "Sumqayıt",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "951893",
+              "name": "Sabah FK",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,18 +461,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Sabah FK haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Sabah FK have 1W, 2D, 2L in five matches while Barcelona have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
+                "home_team",
+                "4",
                 "away_team",
-                "6"
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +485,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Barcelona have scored in their last 6 away matches."
+              "defaultText": "Sabah FK have scored in their last 4 matches and Barcelona have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -486,8 +494,8 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "away_team",
-                "11",
+                "home_team",
+                "8",
                 "3"
               ],
               "DefaultLabels": [
@@ -499,17 +507,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Barcelona have scored 11 goals in their last 3 matches."
+              "defaultText": "Sabah FK have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "5"
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,8 +529,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Sabah FK haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Barcelona haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -532,25 +540,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 951893,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
-          "statValues": [
-            {
-              "value": 5,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't won a match in 5 attempts",
-          "color": "#101010"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -609,17 +598,17 @@
     },
     "weather": {
       "temperature": 9,
-      "windSpeed": 9,
+      "windSpeed": 8,
       "windDirectionCardinal": "NNW",
       "iconCode": 11,
-      "relativeHumidity": 78,
-      "precipChance": 49,
-      "precipitation": 0.4,
+      "relativeHumidity": 83,
+      "precipChance": 63,
+      "precipitation": 0.56,
       "snow": 0,
-      "cloudCover": 91,
-      "description": "Showers/Wind",
+      "cloudCover": 94,
+      "description": "Light Rain",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-20T06:00:26Z",
+      "lastUpdated": "2026-11-20T18:00:26Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
@@ -643,8 +632,8 @@
             "marketValue": 534336,
             "unavailability": {
               "type": "suspension",
-              "expectedReturn": "Late November 2026",
-              "expectedReturnDate": "2026-11-25T19:45:00Z"
+              "expectedReturn": "Early December 2026",
+              "expectedReturnDate": "2026-12-08T19:45:00Z"
             },
             "firstName": "Aden",
             "lastName": "McCarthy",
@@ -658,6 +647,37 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 1901980,
+            "age": 17,
+            "name": "Jordi Pesquer",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "unavailability": {
+              "type": "internationalDuty",
+              "expectedReturn": "Mid December 2026",
+              "expectedReturnDate": "2026-12-13T00:00:00Z"
+            },
+            "firstName": "Jordi",
+            "lastName": "Pesquer",
+            "nationalTeamId": 6720
+          },
+          {
+            "id": 449232,
+            "age": 30,
+            "name": "Andreas Christensen",
+            "countryName": "Denmark",
+            "countryCode": "DEN",
+            "marketValue": 6107975,
+            "unavailability": {
+              "injuryId": 101,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Andreas",
+            "lastName": "Christensen",
+            "nationalTeamId": 8238
+          },
           {
             "id": 1532137,
             "age": 19,
