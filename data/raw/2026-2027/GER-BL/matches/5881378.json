@@ -159,11 +159,13 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
+                "home_team",
+                "4",
                 "away_team",
-                "6"
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -174,7 +176,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayern München have scored in their last 6 away matches."
+              "defaultText": "1. FC Köln have scored in their last 4 matches and Bayern München have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -186,8 +188,8 @@
                 "home_team",
                 "away_team",
                 "3",
-                "7",
-                "6"
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -198,7 +200,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "1. FC Köln have scored 7 goals in their last 3 matches, while Bayern München have scored 6."
+              "defaultText": "1. FC Köln have scored 3 goals in their last 3 matches, while Bayern München have scored 5."
             },
             {
               "OddsType": "dc",
@@ -334,6 +336,30 @@
         "name": "Bayern München",
         "unavailable": [
           {
+            "id": 194165,
+            "name": "Harry Kane",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-11-20T23:39:49Z",
+              "type": "injury",
+              "expectedReturn": "Late January 2027"
+            },
+            "firstName": "Harry",
+            "lastName": "Kane"
+          },
+          {
+            "id": 1029063,
+            "name": "Michael Olise",
+            "unavailability": {
+              "injuryId": 21,
+              "lastUpdated": "2026-11-20T22:46:16Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Michael",
+            "lastName": "Olise"
+          },
+          {
             "id": 751202,
             "name": "Alphonso Davies",
             "unavailability": {
@@ -411,7 +437,7 @@
     "h2h": {
       "summary": [
         2,
-        3,
+        4,
         21
       ],
       "matches": [
@@ -431,9 +457,17 @@
           },
           "status": {
             "utcTime": "2026-11-20T19:30:00.000Z",
-            "started": false,
+            "finished": true,
+            "started": true,
             "cancelled": false,
-            "finished": false
+            "awarded": false,
+            "scoreStr": "1 - 1",
+            "reason": {
+              "short": "FT",
+              "shortKey": "fulltime_short",
+              "long": "Full-Time",
+              "longKey": "finished"
+            }
           },
           "finished": false,
           "away": {

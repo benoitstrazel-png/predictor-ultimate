@@ -71,6 +71,7 @@
   },
   "nav": [
     "matchfacts",
+    "liveticker",
     "lineup",
     "table",
     "head to head"
@@ -635,30 +636,20 @@
           "color": "#051495"
         },
         {
-          "type": "player",
-          "playerId": 268375,
+          "type": "team",
+          "playerId": null,
           "teamId": 8455,
           "priority": 4,
-          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
-          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
+          "defaultText": "Average {0} goals per match",
+          "localizedTextId": "insights_average_goals_per_match",
           "statValues": [
             {
-              "value": 268375,
-              "name": "Emiliano Martínez",
-              "type": "player"
-            },
-            {
-              "value": 2,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 4.3,
+              "value": 1.9,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Emiliano Martínez is ranked 2 in saves per match in the competition (4.3)",
+          "text": "Average 1.9 goals per match",
           "color": "#051495"
         },
         {
@@ -922,7 +913,13 @@
         "hasRefereeInsight": true
       }
     },
-    "liveticker": false,
+    "liveticker": {
+      "langs": "de,en_gen,es_gen,fr_gen,it_gen,nb",
+      "teams": [
+        "Chelsea",
+        "Leeds United"
+      ]
+    },
     "superlive": {
       "superLiveUrl": "https://pub.fotmob.com/prod/news/api/law?matchid=4vqxpltefcdchpzkgwz3yr310&competition=2kwbbcootiqqgmrzs6o5inle5&season=6pdwluctev9iebv00r4qqukno&srmatchid=sr:match:72221398&version=v4w",
       "showSuperLive": false
@@ -937,24 +934,24 @@
       }
     },
     "weather": {
-      "temperature": 9,
-      "windSpeed": 3,
+      "temperature": 10,
+      "windSpeed": 2,
       "windDirectionCardinal": "E",
-      "iconCode": 30,
-      "relativeHumidity": 76,
-      "precipChance": 5,
+      "iconCode": 32,
+      "relativeHumidity": 73,
+      "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 42,
-      "description": "Partly Cloudy",
+      "cloudCover": 13,
+      "description": "Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-21T00:00:19Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-11-21T14:00:03Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5795518,
-      "lineupType": "predicted",
+      "lineupType": "standard",
       "source": "enetpulse",
       "availableFilters": [
         "season",
@@ -968,14 +965,14 @@
         "formation": "4-2-3-1",
         "starters": [
           {
-            "id": 1319972,
-            "age": 21,
-            "name": "Mike Penders",
+            "id": 268375,
+            "age": 34,
+            "name": "Emiliano Martínez",
             "positionId": 11,
             "usualPlayingPositionId": 0,
-            "shirtNumber": "39",
-            "countryName": "Belgium",
-            "countryCode": "BEL",
+            "shirtNumber": "1",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
             "horizontalLayout": {
               "x": 0.1,
               "y": 0.5,
@@ -988,13 +985,13 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 29700682,
+            "marketValue": 13143651,
             "performance": {
-              "seasonRating": 6.51
+              "seasonRating": 7.34
             },
-            "firstName": "Mike",
-            "lastName": "Penders",
-            "nationalTeamId": 8263,
+            "firstName": "Emiliano",
+            "lastName": "Martínez",
+            "nationalTeamId": 6706,
             "rankings": null
           },
           {
@@ -1125,6 +1122,7 @@
             "positionId": 64,
             "usualPlayingPositionId": 2,
             "shirtNumber": "25",
+            "isCaptain": true,
             "countryName": "Ecuador",
             "countryCode": "ECU",
             "horizontalLayout": {
@@ -1275,14 +1273,14 @@
             "rankings": null
           },
           {
-            "id": 843040,
-            "age": 26,
-            "name": "Pedro Neto",
+            "id": 1183148,
+            "age": 23,
+            "name": "Emanuel Emegha",
             "positionId": 115,
             "usualPlayingPositionId": 3,
-            "shirtNumber": "7",
-            "countryName": "Portugal",
-            "countryCode": "POR",
+            "shirtNumber": "22",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
             "horizontalLayout": {
               "x": 0.87,
               "y": 0.5,
@@ -1295,15 +1293,10 @@
               "height": 0.192,
               "width": 1
             },
-            "marketValue": 61070845,
-            "performance": {
-              "seasonGoals": 3,
-              "seasonAssists": 1,
-              "seasonRating": 7.27
-            },
-            "firstName": "Pedro",
-            "lastName": "Neto",
-            "nationalTeamId": 8361,
+            "marketValue": 25367228,
+            "firstName": "Emanuel",
+            "lastName": "Emegha",
+            "nationalTeamId": 6708,
             "rankings": null
           }
         ],
@@ -1321,6 +1314,161 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
+        "subs": [
+          {
+            "id": 1319972,
+            "age": 21,
+            "name": "Mike Penders",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "39",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 29700682,
+            "performance": {
+              "seasonRating": 6.51
+            },
+            "firstName": "Mike",
+            "lastName": "Penders",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 1197250,
+            "age": 23,
+            "name": "Malo Gusto",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "27",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 48199950,
+            "performance": {
+              "seasonRating": 6.76
+            },
+            "firstName": "Malo",
+            "lastName": "Gusto",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1682325,
+            "age": 18,
+            "name": "Olutayo Subuloye",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "37",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "firstName": "Olutayo",
+            "lastName": "Subuloye",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 156008,
+            "age": 36,
+            "name": "Jordan Henderson",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 1632500,
+            "performance": {
+              "seasonGoals": 2,
+              "seasonAssists": 1,
+              "seasonRating": 7.29
+            },
+            "firstName": "Jordan",
+            "lastName": "Henderson",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1473806,
+            "age": 21,
+            "name": "Marco Palestra",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "2",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 47382087,
+            "performance": {
+              "seasonRating": 6.34
+            },
+            "firstName": "Marco",
+            "lastName": "Palestra",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 1272440,
+            "age": 22,
+            "name": "Valentín Barco",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "4",
+            "countryName": "Argentina",
+            "countryCode": "ARG",
+            "marketValue": 51570378,
+            "performance": {
+              "seasonRating": 6.56
+            },
+            "firstName": "Valentín",
+            "lastName": "Barco",
+            "nationalTeamId": 6706,
+            "rankings": null
+          },
+          {
+            "id": 113836,
+            "age": 35,
+            "name": "Danny Welbeck",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "18",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 2290844,
+            "performance": {
+              "seasonRating": 6.17
+            },
+            "firstName": "Danny",
+            "lastName": "Welbeck",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1530314,
+            "age": 19,
+            "name": "Geovany Quenda",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "23",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 54871384,
+            "performance": {
+              "seasonRating": 5.94
+            },
+            "firstName": "Geovany",
+            "lastName": "Quenda",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 843040,
+            "age": 26,
+            "name": "Pedro Neto",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 61070845,
+            "performance": {
+              "seasonGoals": 3,
+              "seasonAssists": 1,
+              "seasonRating": 7.27
+            },
+            "firstName": "Pedro",
+            "lastName": "Neto",
+            "nationalTeamId": 8361,
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1413846,
@@ -1424,8 +1572,8 @@
             "nationalTeamId": 8256
           }
         ],
-        "averageStarterAge": 23.9,
-        "totalStarterMarketValue": 682510387
+        "averageStarterAge": 24.8,
+        "totalStarterMarketValue": 630249739
       },
       "awayTeam": {
         "id": 8463,
@@ -1713,7 +1861,7 @@
             "age": 26,
             "name": "Noah Okafor",
             "positionId": 86,
-            "usualPlayingPositionId": 3,
+            "usualPlayingPositionId": 2,
             "shirtNumber": "19",
             "countryName": "Switzerland",
             "countryCode": "SUI",
@@ -1785,6 +1933,160 @@
           "usualPlayingPositionId": null,
           "isCoach": true
         },
+        "subs": [
+          {
+            "id": 432435,
+            "age": 31,
+            "name": "Michael Zetterer",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "16",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 2696610,
+            "firstName": "Michael",
+            "lastName": "Zetterer",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 861805,
+            "age": 27,
+            "name": "Jaka Bijol",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "15",
+            "countryName": "Slovenia",
+            "countryCode": "SVN",
+            "marketValue": 23468249,
+            "performance": {
+              "seasonRating": 7.04
+            },
+            "firstName": "Jaka",
+            "lastName": "Bijol",
+            "nationalTeamId": 5787,
+            "rankings": null
+          },
+          {
+            "id": 717174,
+            "age": 29,
+            "name": "Joe Rodon",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "marketValue": 20033359,
+            "performance": {
+              "seasonRating": 6.69
+            },
+            "firstName": "Joe",
+            "lastName": "Rodon",
+            "nationalTeamId": 5790,
+            "rankings": null
+          },
+          {
+            "id": 1092403,
+            "age": 26,
+            "name": "Melvin Bard",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "26",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 12248973,
+            "performance": {
+              "seasonRating": 6.59
+            },
+            "firstName": "Melvin",
+            "lastName": "Bard",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 881735,
+            "age": 28,
+            "name": "Anton Stach",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "18",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 38630151,
+            "performance": {
+              "seasonGoals": 1,
+              "seasonRating": 7.12
+            },
+            "firstName": "Anton",
+            "lastName": "Stach",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 952322,
+            "age": 26,
+            "name": "Brenden Aaronson",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "11",
+            "countryName": "USA",
+            "countryCode": "USA",
+            "marketValue": 25270962,
+            "performance": {
+              "seasonRating": 6.27
+            },
+            "firstName": "Brenden",
+            "lastName": "Aaronson",
+            "nationalTeamId": 6713,
+            "rankings": null
+          },
+          {
+            "id": 717176,
+            "age": 29,
+            "name": "Daniel James",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "marketValue": 11789560,
+            "performance": {
+              "seasonRating": 6.17
+            },
+            "firstName": "Daniel",
+            "lastName": "James",
+            "nationalTeamId": 5790,
+            "rankings": null
+          },
+          {
+            "id": 494417,
+            "age": 29,
+            "name": "Harry Wilson",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "countryName": "Wales",
+            "countryCode": "WAL",
+            "marketValue": 23283948,
+            "performance": {
+              "seasonRating": 6.44
+            },
+            "firstName": "Harry",
+            "lastName": "Wilson",
+            "nationalTeamId": 5790,
+            "rankings": null
+          },
+          {
+            "id": 861197,
+            "age": 27,
+            "name": "Lukas Nmecha",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "14",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 8424982,
+            "performance": {
+              "seasonAssists": 1,
+              "seasonRating": 6.34
+            },
+            "firstName": "Lukas",
+            "lastName": "Nmecha",
+            "nationalTeamId": 8570,
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1344677,
@@ -2264,6 +2566,32 @@
       ]
     },
     "momentum": false,
+    "attackingZones": {
+      "home": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      },
+      "away": {
+        "total": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        },
+        "firstHalf": {
+          "left": 0,
+          "center": 0,
+          "right": 0
+        }
+      }
+    },
     "hasPassNetwork": false
   },
   "seo": {
