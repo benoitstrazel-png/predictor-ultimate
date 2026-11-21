@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10156.png",
-            "linkToMatch": "/matches/nec-nijmegen-vs-dinamo-zagreb/2v7x4m#6112293",
-            "date": {
-              "utcTime": "2026-10-22T16:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10156/overview/dinamo-zagreb",
-            "tooltipText": {
-              "utcTime": "2026-10-22T16:45:00.000Z",
-              "homeTeam": "Dinamo Zagreb",
-              "homeTeamId": 10156,
-              "homeScore": "2",
-              "awayTeam": "NEC Nijmegen",
-              "awayTeamId": 8464,
-              "awayScore": "4"
-            },
-            "score": "2 - 4",
-            "home": {
-              "id": "10156",
-              "name": "Dinamo Zagreb",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8464",
-              "name": "NEC Nijmegen",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8674.png",
@@ -269,6 +239,36 @@
               "id": "8464",
               "name": "NEC Nijmegen",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
+            "linkToMatch": "/matches/nec-nijmegen-vs-psv-eindhoven/2f3ijs#5781805",
+            "date": {
+              "utcTime": "2026-11-21T15:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8640/overview/psv-eindhoven",
+            "tooltipText": {
+              "utcTime": "2026-11-21T15:30:00.000Z",
+              "homeTeam": "NEC Nijmegen",
+              "homeTeamId": 8464,
+              "homeScore": "1",
+              "awayTeam": "PSV Eindhoven",
+              "awayTeamId": 8640,
+              "awayScore": "4"
+            },
+            "score": "1 - 4",
+            "home": {
+              "id": "8464",
+              "name": "NEC Nijmegen",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8640",
+              "name": "PSV Eindhoven",
+              "isOurTeam": false
             }
           }
         ],
@@ -442,9 +442,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
+                "2",
                 "1",
-                "1",
+                "2",
                 "away_team",
                 "1",
                 "2",
@@ -461,7 +461,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "NEC Nijmegen have 3W, 1D, 1L in five matches while Rennes have 1W, 2D, 2L."
+              "defaultText": "NEC Nijmegen have 2W, 1D, 2L in five matches while Rennes have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -494,7 +494,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "6",
+                "7",
                 "3"
               ],
               "DefaultLabels": [
@@ -506,23 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "NEC Nijmegen have scored 6 goals in their last 3 matches, while Rennes have scored 3."
+              "defaultText": "NEC Nijmegen have scored 7 goals in their last 3 matches, while Rennes have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "1",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -535,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "NEC Nijmegen have 3W, 1D, 1L in five matches while Rennes have 1W, 2D, 2L."
+              "defaultText": "NEC Nijmegen haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -555,12 +549,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 19,
+              "value": 20,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 19 matches",
+          "text": "Haven't kept a clean sheet in 20 matches",
           "color": "#ED1C24"
         }
       ],

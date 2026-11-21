@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1712.png",
-            "linkToMatch": "/matches/hradec-kralove-vs-jablonec/qpcr3#5831198",
-            "date": {
-              "utcTime": "2026-10-25T12:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/1712/overview/hradec-kralove",
-            "tooltipText": {
-              "utcTime": "2026-10-25T12:00:00.000Z",
-              "homeTeam": "Hradec Králové",
-              "homeTeamId": 1712,
-              "homeScore": "1",
-              "awayTeam": "Jablonec",
-              "awayTeamId": 7758,
-              "awayScore": "2"
-            },
-            "score": "1 - 2",
-            "home": {
-              "id": "1712",
-              "name": "Hradec Králové",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "7758",
-              "name": "Jablonec",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7787.png",
@@ -261,6 +231,36 @@
               "awayScore": "1"
             },
             "score": "2 - 1",
+            "home": {
+              "id": "106189",
+              "name": "Artis Brno",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "7758",
+              "name": "Jablonec",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/106189.png",
+            "linkToMatch": "/matches/jablonec-vs-artis-brno/2zd6lvs#5943699",
+            "date": {
+              "utcTime": "2026-11-21T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/106189/overview/artis-brno",
+            "tooltipText": {
+              "utcTime": "2026-11-21T14:00:00.000Z",
+              "homeTeam": "Artis Brno",
+              "homeTeamId": 106189,
+              "homeScore": "3",
+              "awayTeam": "Jablonec",
+              "awayTeamId": 7758,
+              "awayScore": "1"
+            },
+            "score": "3 - 1",
             "home": {
               "id": "106189",
               "name": "Artis Brno",
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "4",
-                "0",
-                "1"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,8 +455,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Jablonec have 1W, 2D, 2L in five matches while Lugano have 4W, 0D, 1L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Jablonec haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -514,7 +508,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +521,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Jablonec haven't won a match in 4 attempts."
+              "defaultText": "Jablonec haven't won a match in 5 attempts."
             }
           ]
         },
@@ -537,6 +531,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 7758,
+          "priority": 8,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't won a match in 5 attempts",
+          "color": "#00874C"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -557,16 +570,16 @@
     "weather": {
       "temperature": -3,
       "windSpeed": 3,
-      "windDirectionCardinal": "E",
+      "windDirectionCardinal": "ENE",
       "iconCode": 14,
-      "relativeHumidity": 87,
-      "precipChance": 36,
+      "relativeHumidity": 86,
+      "precipChance": 38,
       "precipitation": 0.2,
       "snow": 0.2,
-      "cloudCover": 86,
+      "cloudCover": 84,
       "description": "Snow Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-21T06:00:25Z",
+      "lastUpdated": "2026-11-21T18:00:20Z",
       "localizedKey": "weather_condition_snowy",
       "defaultTitle": "Snowy"
     },

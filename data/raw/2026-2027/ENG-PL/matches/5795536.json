@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
-            "linkToMatch": "/matches/manchester-city-vs-aston-villa/2w74gq#5795486",
-            "date": {
-              "utcTime": "2026-10-24T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8456/overview/manchester-city",
-            "tooltipText": {
-              "utcTime": "2026-10-24T11:30:00.000Z",
-              "homeTeam": "Aston Villa",
-              "homeTeamId": 10252,
-              "homeScore": "2",
-              "awayTeam": "Manchester City",
-              "awayTeamId": 8456,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8456",
-              "name": "Manchester City",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png",
@@ -270,6 +240,36 @@
               "id": "10252",
               "name": "Aston Villa",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8472.png",
+            "linkToMatch": "/matches/sunderland-vs-aston-villa/2wdjjm#5795516",
+            "date": {
+              "utcTime": "2026-11-21T15:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8472/overview/sunderland",
+            "tooltipText": {
+              "utcTime": "2026-11-21T15:00:00.000Z",
+              "homeTeam": "Aston Villa",
+              "homeTeamId": 10252,
+              "homeScore": "0",
+              "awayTeam": "Sunderland",
+              "awayTeamId": 8472,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "10252",
+              "name": "Aston Villa",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8472",
+              "name": "Sunderland",
+              "isOurTeam": false
             }
           }
         ],
@@ -439,17 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "3",
-                "0",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -461,41 +455,20 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Aston Villa have 1W, 2D, 2L in five matches while Everton have 3W, 0D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Aston Villa haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
-              "StatValues": [
-                "home_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored in their last 5 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
               "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
               "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "4",
                 "7"
               ],
               "DefaultLabels": [
@@ -507,7 +480,31 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have scored 5 goals in their last 3 matches, while Everton have scored 7."
+              "defaultText": "Aston Villa have scored 4 goals in their last 3 matches, while Everton have scored 7."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "3",
+                "4",
+                "7"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Aston Villa have scored 4 goals in their last 3 matches, while Everton have scored 7."
             },
             {
               "OddsType": "dc",
@@ -517,7 +514,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 4 attempts."
+              "defaultText": "Aston Villa haven't won a match in 5 attempts."
             }
           ]
         },
@@ -550,7 +547,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 5,
               "name": null,
               "type": "integer"
             },
@@ -560,7 +557,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 7 goals in their last 5 matches",
+          "text": "Have scored 5 goals in their last 5 matches",
           "color": "#7D1142"
         },
         {
@@ -568,29 +565,29 @@
           "playerId": null,
           "teamId": 10252,
           "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 6 matches",
+          "text": "Haven't won a match in 5 attempts",
           "color": "#7D1142"
         },
         {
           "type": "player",
-          "playerId": 356406,
+          "playerId": 1593857,
           "teamId": 10252,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 356406,
-              "name": "John McGinn",
+              "value": 1593857,
+              "name": "Ibrahim Mbaye",
               "type": "player"
             },
             {
@@ -599,12 +596,12 @@
               "type": "team"
             },
             {
-              "value": 2,
+              "value": 1.9,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "John McGinn has created the most big chances for Aston Villa (2)",
+          "text": "Ibrahim Mbaye has the most shots on target per match for Aston Villa (1.9)",
           "color": "#7D1142"
         },
         {

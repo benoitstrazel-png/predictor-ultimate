@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
-            "linkToMatch": "/matches/manchester-city-vs-aston-villa/2w74gq#5795486",
-            "date": {
-              "utcTime": "2026-10-24T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/10252/overview/aston-villa",
-            "tooltipText": {
-              "utcTime": "2026-10-24T11:30:00.000Z",
-              "homeTeam": "Aston Villa",
-              "homeTeamId": 10252,
-              "homeScore": "2",
-              "awayTeam": "Manchester City",
-              "awayTeamId": 8456,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "10252",
-              "name": "Aston Villa",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8456",
-              "name": "Manchester City",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
@@ -271,6 +241,36 @@
               "id": "8456",
               "name": "Manchester City",
               "isOurTeam": true
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
+            "linkToMatch": "/matches/manchester-city-vs-fulham/2s32rr#5795522",
+            "date": {
+              "utcTime": "2026-11-21T12:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/9879/overview/fulham",
+            "tooltipText": {
+              "utcTime": "2026-11-21T12:30:00.000Z",
+              "homeTeam": "Manchester City",
+              "homeTeamId": 8456,
+              "homeScore": "1",
+              "awayTeam": "Fulham",
+              "awayTeamId": 9879,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "8456",
+              "name": "Manchester City",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9879",
+              "name": "Fulham",
+              "isOurTeam": false
             }
           }
         ],
@@ -445,8 +445,8 @@
               "StatValues": [
                 "home_team",
                 "2",
-                "0",
-                "3",
+                "1",
+                "2",
                 "away_team",
                 "1",
                 "2",
@@ -463,7 +463,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Manchester City have 2W, 0D, 3L in five matches while Napoli have 1W, 2D, 2L."
+              "defaultText": "Manchester City have 2W, 1D, 2L in five matches while Napoli have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
@@ -474,7 +474,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
+                "1.67",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -486,7 +486,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester City have an average of 1.33 goals in their last three matches and Napoli have an average of 0.67."
+              "defaultText": "Manchester City have an average of 1.67 goals in their last three matches and Napoli have an average of 0.67."
             },
             {
               "OddsType": "ou",
@@ -497,7 +497,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
+                "1.67",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -509,17 +509,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Manchester City have an average of 1.33 goals in their last three matches and Napoli have an average of 0.67."
+              "defaultText": "Manchester City have an average of 1.67 goals in their last three matches and Napoli have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -532,7 +538,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Manchester City haven't drawn in their last 12 matches."
+              "defaultText": "Manchester City have 2W, 1D, 2L in five matches while Napoli have 1W, 2D, 2L."
             }
           ]
         },
@@ -552,12 +558,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#69A8D8"
         },
         {
