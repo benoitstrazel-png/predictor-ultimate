@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -626,15 +626,15 @@
         },
         {
           "type": "player",
-          "playerId": 650616,
+          "playerId": 1083796,
           "teamId": 9937,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 650616,
-              "name": "Mathias Jensen",
+              "value": 1083796,
+              "name": "Kevin Schade",
               "type": "player"
             },
             {
@@ -643,12 +643,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 0.8,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Mathias Jensen has created the most big chances for Brentford (3)",
+          "text": "Kevin Schade has the most shots on target per match for Brentford (0.8)",
           "color": "#C00808"
         },
         {
@@ -702,15 +702,15 @@
         },
         {
           "type": "player",
-          "playerId": 1398392,
+          "playerId": 886016,
           "teamId": 8668,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1398392,
-              "name": "Thierno Barry",
+              "value": 886016,
+              "name": "Kiernan Dewsbury-Hall",
               "type": "player"
             },
             {
@@ -719,12 +719,12 @@
               "type": "team"
             },
             {
-              "value": 1.6,
+              "value": 7,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Thierno Barry has the most shots on target per match for Everton (1.6)",
+          "text": "Kiernan Dewsbury-Hall has created the most big chances for Everton (7)",
           "color": "#00359C"
         }
       ],
@@ -836,68 +836,353 @@
       }
     },
     "weather": {
-      "temperature": 4,
+      "temperature": 3,
       "windSpeed": 3,
       "windDirectionCardinal": "ESE",
       "iconCode": 29,
       "relativeHumidity": 82,
-      "precipChance": 17,
+      "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 51,
+      "cloudCover": 54,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-20T08:00:03Z",
+      "lastUpdated": "2026-11-20T20:00:01Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5795517,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 9937,
         "name": "Brentford",
-        "formation": "",
-        "starters": [],
-        "unavailable": [
+        "formation": "4-2-3-1",
+        "starters": [
           {
-            "id": 1302005,
-            "age": 25,
-            "name": "Igor Thiago",
-            "countryName": "Brazil",
-            "countryCode": "BRA",
-            "marketValue": 68630610,
-            "unavailability": {
-              "type": "suspension",
-              "expectedReturn": "Early December 2026",
-              "expectedReturnDate": "2026-12-02T21:15:00Z"
+            "id": 776689,
+            "age": 28,
+            "name": "Caoimhín Kelleher",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Ireland",
+            "countryCode": "IRL",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Igor",
-            "lastName": "Thiago",
-            "nationalTeamId": 8256
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 39724505,
+            "firstName": "Caoimhín",
+            "lastName": "Kelleher",
+            "nationalTeamId": 5791,
+            "rankings": null
           },
           {
-            "id": 963965,
+            "id": 1429912,
+            "age": 22,
+            "name": "Michael Kayode",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "33",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 58052571,
+            "firstName": "Michael",
+            "lastName": "Kayode",
+            "nationalTeamId": 8204,
+            "rankings": null
+          },
+          {
+            "id": 552718,
+            "age": 28,
+            "name": "Kristoffer Ajer",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 26739276,
+            "firstName": "Kristoffer",
+            "lastName": "Ajer",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 919435,
             "age": 24,
-            "name": "Fábio Carvalho",
-            "countryName": "Portugal",
-            "countryCode": "POR",
-            "marketValue": 11486318,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Late November 2026"
+            "name": "Sepp van den Berg",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
             },
-            "firstName": "Fábio",
-            "lastName": "Carvalho",
-            "nationalTeamId": 8361
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 42152746,
+            "firstName": "Sepp",
+            "lastName": "van den Berg",
+            "nationalTeamId": 6708,
+            "rankings": null
           },
+          {
+            "id": 1572340,
+            "age": 20,
+            "name": "Jannik Schuster",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "44",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 27562149,
+            "firstName": "Jannik",
+            "lastName": "Schuster",
+            "nationalTeamId": 8255,
+            "rankings": null
+          },
+          {
+            "id": 1185211,
+            "age": 24,
+            "name": "Mamadou Sangaré",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "18",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 69277155,
+            "firstName": "Mamadou",
+            "lastName": "Sangaré",
+            "nationalTeamId": 5815,
+            "rankings": null
+          },
+          {
+            "id": 688273,
+            "age": 28,
+            "name": "Vitaly Janelt",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 23116712,
+            "firstName": "Vitaly",
+            "lastName": "Janelt",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1250253,
+            "age": 24,
+            "name": "Dango Ouattara",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "Burkina Faso",
+            "countryCode": "BFA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 43735609,
+            "firstName": "Dango",
+            "lastName": "Ouattara",
+            "nationalTeamId": 6323,
+            "rankings": null
+          },
+          {
+            "id": 1083796,
+            "age": 24,
+            "name": "Kevin Schade",
+            "positionId": 85,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 54856158,
+            "firstName": "Kevin",
+            "lastName": "Schade",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1010426,
+            "age": 25,
+            "name": "Keane Lewis-Potter",
+            "positionId": 87,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "23",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 37674046,
+            "firstName": "Keane",
+            "lastName": "Lewis-Potter",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 184321,
+            "age": 34,
+            "name": "Callum Wilson",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "13",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 2318175,
+            "firstName": "Callum",
+            "lastName": "Wilson",
+            "nationalTeamId": 8491,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 38711,
+          "age": 46,
+          "name": "Keith Andrews",
+          "countryName": "Ireland",
+          "countryCode": "IRL",
+          "firstName": "Keith",
+          "lastName": "Andrews",
+          "nationalTeamId": 5791,
+          "primaryTeamId": 9937,
+          "primaryTeamName": "Brentford",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "unavailable": [
           {
             "id": 562892,
             "age": 29,
             "name": "Rico Henry",
+            "positionId": 1000,
             "countryName": "Jamaica",
             "countryCode": "JAM",
             "marketValue": 7719910,
@@ -911,25 +1196,10 @@
             "nationalTeamId": 5806
           },
           {
-            "id": 759566,
-            "age": 28,
-            "name": "Joshua Dasilva",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 1206138,
-            "unavailability": {
-              "injuryId": 42,
-              "type": "injury",
-              "expectedReturn": "Late November 2026"
-            },
-            "firstName": "Joshua",
-            "lastName": "Dasilva",
-            "nationalTeamId": 8491
-          },
-          {
             "id": 1276312,
             "age": 21,
             "name": "Antoni Milambo",
+            "positionId": 1000,
             "countryName": "Netherlands",
             "countryCode": "NED",
             "marketValue": 20699154,
@@ -941,14 +1211,381 @@
             "firstName": "Antoni",
             "lastName": "Milambo",
             "nationalTeamId": 6708
+          },
+          {
+            "id": 963965,
+            "age": 24,
+            "name": "Fábio Carvalho",
+            "positionId": 1000,
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "marketValue": 11486318,
+            "unavailability": {
+              "injuryId": 130,
+              "type": "injury",
+              "expectedReturn": "Late November 2026"
+            },
+            "firstName": "Fábio",
+            "lastName": "Carvalho",
+            "nationalTeamId": 8361
+          },
+          {
+            "id": 1302005,
+            "age": 25,
+            "name": "Igor Thiago",
+            "positionId": 1100,
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 68630610,
+            "unavailability": {
+              "type": "suspension",
+              "expectedReturn": "Early December 2026",
+              "expectedReturnDate": "2026-12-02T21:15:00Z"
+            },
+            "firstName": "Igor",
+            "lastName": "Thiago",
+            "nationalTeamId": 8256
+          },
+          {
+            "id": 759566,
+            "age": 28,
+            "name": "Joshua Dasilva",
+            "positionId": 1000,
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 1206138,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Late November 2026"
+            },
+            "firstName": "Joshua",
+            "lastName": "Dasilva",
+            "nationalTeamId": 8491
           }
-        ]
+        ],
+        "averageStarterAge": 26.2,
+        "totalStarterMarketValue": 425209102
       },
       "awayTeam": {
         "id": 8668,
         "name": "Everton",
-        "formation": "",
-        "starters": []
+        "formation": "4-2-3-1",
+        "starters": [
+          {
+            "id": 303919,
+            "age": 32,
+            "name": "Jordan Pickford",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 16625745,
+            "firstName": "Jordan",
+            "lastName": "Pickford",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1210384,
+            "age": 24,
+            "name": "Merlin Röhl",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "34",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 25100953,
+            "firstName": "Merlin",
+            "lastName": "Röhl",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 243138,
+            "age": 34,
+            "name": "James Tarkowski",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 5000354,
+            "firstName": "James",
+            "lastName": "Tarkowski",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1030829,
+            "age": 24,
+            "name": "Jarrad Branthwaite",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 50198399,
+            "firstName": "Jarrad",
+            "lastName": "Branthwaite",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 874025,
+            "age": 27,
+            "name": "Vitaliy Mykolenko",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "16",
+            "countryName": "Ukraine",
+            "countryCode": "UKR",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 26705758,
+            "firstName": "Vitaliy",
+            "lastName": "Mykolenko",
+            "nationalTeamId": 6718,
+            "rankings": null
+          },
+          {
+            "id": 1559637,
+            "age": 19,
+            "name": "Harrison Armstrong",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "45",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 39488835,
+            "firstName": "Harrison",
+            "lastName": "Armstrong",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 950474,
+            "age": 25,
+            "name": "James Garner",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "37",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 60805445,
+            "firstName": "James",
+            "lastName": "Garner",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1292833,
+            "age": 20,
+            "name": "Tyler Dibling",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "20",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 20929660,
+            "firstName": "Tyler",
+            "lastName": "Dibling",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 886016,
+            "age": 28,
+            "name": "Kiernan Dewsbury-Hall",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 45885024,
+            "firstName": "Kiernan",
+            "lastName": "Dewsbury-Hall",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1424875,
+            "age": 20,
+            "name": "Tyrique George",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 28973429,
+            "firstName": "Tyrique",
+            "lastName": "George",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1398392,
+            "age": 24,
+            "name": "Thierno Barry",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "11",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 46631043,
+            "firstName": "Thierno",
+            "lastName": "Barry",
+            "nationalTeamId": 6723,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 78626,
+          "age": 63,
+          "name": "David Moyes",
+          "countryName": "Scotland",
+          "countryCode": "SCO",
+          "firstName": "David",
+          "lastName": "Moyes",
+          "nationalTeamId": 8498,
+          "primaryTeamId": 8668,
+          "primaryTeamName": "Everton",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "averageStarterAge": 25.7,
+        "totalStarterMarketValue": 366344645
       }
     },
     "hasPlayoff": false,

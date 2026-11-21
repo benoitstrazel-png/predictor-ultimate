@@ -277,36 +277,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png",
-            "linkToMatch": "/matches/gil-vicente-vs-fc-porto/35mxpi#5887657",
-            "date": {
-              "utcTime": "2026-10-24T19:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9764/overview/gil-vicente",
-            "tooltipText": {
-              "utcTime": "2026-10-24T19:30:00.000Z",
-              "homeTeam": "Gil Vicente",
-              "homeTeamId": 9764,
-              "homeScore": "0",
-              "awayTeam": "FC Porto",
-              "awayTeamId": 9773,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9764",
-              "name": "Gil Vicente",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9773",
-              "name": "FC Porto",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png",
             "linkToMatch": "/matches/academico-viseu-vs-fc-porto/13s795#5985963",
             "date": {
@@ -423,6 +393,36 @@
               "name": "FC Porto",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2503.png",
+            "linkToMatch": "/matches/paredes-vs-fc-porto/18vcrz#6506251",
+            "date": {
+              "utcTime": "2026-11-20T20:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/2503/overview/paredes",
+            "tooltipText": {
+              "utcTime": "2026-11-20T20:45:00.000Z",
+              "homeTeam": "FC Porto",
+              "homeTeamId": 9773,
+              "homeScore": "1",
+              "awayTeam": "Paredes",
+              "awayTeamId": 2503,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9773",
+              "name": "FC Porto",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "2503",
+              "name": "Paredes",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "FC Porto have won their last 5 matches."
+              "defaultText": "FC Porto have won their last 6 matches."
             },
             {
               "OddsType": "bts",
@@ -483,12 +483,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10",
-                "3"
+                "3",
+                "4",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +501,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC Porto have scored 10 goals in their last 3 matches."
+              "defaultText": "Feyenoord have scored 4 goals in their last 3 matches, while FC Porto have scored 7."
             },
             {
               "OddsType": "dc",
@@ -553,21 +555,106 @@
         {
           "type": "team",
           "playerId": null,
+          "teamId": 10235,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 7,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 7 matches",
+          "color": "#D8232A"
+        },
+        {
+          "type": "team",
+          "playerId": null,
           "teamId": 9773,
           "priority": 1343,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't lost in 6 matches",
+          "color": "#005898"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9773,
+          "priority": 7,
+          "defaultText": "Have won their last {0} matches",
+          "localizedTextId": "insights_good_form_team",
+          "statValues": [
+            {
+              "value": 6,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have won their last 6 matches",
           "color": "#005898"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 947898,
+          "position": 2,
+          "matchesWithRating": 2,
+          "lastName": "Steijn",
+          "fullName": "Sem Steijn",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 54,
+            "minsPlayedGoal": 54,
+            "expectedGoals": 0.4059999883174896,
+            "playerRating": 6.64
+          }
+        },
+        "awayPlayer": {
+          "playerId": 1116734,
+          "position": 2,
+          "matchesWithRating": 4,
+          "lastName": "Veiga",
+          "fullName": "Gabriel Veiga",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 1,
+            "ontargetScoringAtt": 1.5,
+            "motm": 1,
+            "gamesPlayed": 4,
+            "minsPlayed": 290,
+            "minsPlayedGoal": 145,
+            "expectedGoals": 1.0678000450134277,
+            "playerRating": 7.46
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -626,19 +713,19 @@
     },
     "weather": {
       "temperature": 1,
-      "windSpeed": 5,
-      "windDirectionCardinal": "ESE",
-      "iconCode": 27,
-      "relativeHumidity": 82,
-      "precipChance": 11,
+      "windSpeed": 4,
+      "windDirectionCardinal": "E",
+      "iconCode": 29,
+      "relativeHumidity": 89,
+      "precipChance": 9,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 76,
-      "description": "Mostly Cloudy",
+      "cloudCover": 50,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-20T08:00:36Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-11-20T20:00:27Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 6106307,
