@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
-            "linkToMatch": "/matches/hull-city-vs-everton/2hgrvk#5795470",
-            "date": {
-              "utcTime": "2026-10-11T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8668/overview/everton",
-            "tooltipText": {
-              "utcTime": "2026-10-11T13:00:00.000Z",
-              "homeTeam": "Hull City",
-              "homeTeamId": 8667,
-              "homeScore": "2",
-              "awayTeam": "Everton",
-              "awayTeamId": 8668,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8667",
-              "name": "Hull City",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
@@ -423,6 +393,36 @@
               "name": "Hull City",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
+            "linkToMatch": "/matches/hull-city-vs-brighton-hove-albion/2y0rvj#5795520",
+            "date": {
+              "utcTime": "2026-11-22T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "tooltipText": {
+              "utcTime": "2026-11-22T14:00:00.000Z",
+              "homeTeam": "Hull City",
+              "homeTeamId": 8667,
+              "homeScore": "2",
+              "awayTeam": "Brighton & Hove Albion",
+              "awayTeamId": 10204,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8667",
+              "name": "Hull City",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -490,7 +490,7 @@
                 "away_team",
                 "3",
                 "7",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,17 +501,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "AFC Bournemouth have scored 7 goals in their last 3 matches, while Hull City have scored 3."
+              "defaultText": "AFC Bournemouth have scored 7 goals in their last 3 matches, while Hull City have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
-                "9"
+                "home_team",
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,8 +523,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Hull City haven't won a match in 9 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "AFC Bournemouth haven't drawn in their last 12 matches."
             }
           ]
         },
@@ -614,37 +614,57 @@
           "color": "#ED8B00"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 956161,
           "teamId": 8667,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1,
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 956161,
+              "name": "Joe Gelhardt",
+              "type": "player"
+            },
+            {
+              "value": 8667,
+              "name": "Hull City",
+              "type": "team"
+            },
+            {
+              "value": 2.8,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Joe Gelhardt has the most shots on target per match for Hull City (2.8)",
           "color": "#ED8B00"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1072068,
           "teamId": 8667,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 9,
+              "value": 1072068,
+              "name": "Konstantinos Tzolakis",
+              "type": "player"
+            },
+            {
+              "value": 2,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 4.4,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Haven't won a match in 9 attempts",
+          "text": "Konstantinos Tzolakis is ranked 2 in saves per match in the competition (4.4)",
           "color": "#ED8B00"
         }
       ],
@@ -666,20 +686,20 @@
       }
     },
     "weather": {
-      "temperature": 8,
+      "temperature": 9,
       "windSpeed": 5,
-      "windDirectionCardinal": "ENE",
-      "iconCode": 28,
-      "relativeHumidity": 81,
-      "precipChance": 24,
-      "precipitation": 0,
+      "windDirectionCardinal": "ESE",
+      "iconCode": 11,
+      "relativeHumidity": 83,
+      "precipChance": 42,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 65,
-      "description": "Mostly Cloudy",
+      "cloudCover": 54,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-22T03:00:04Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-11-22T15:00:06Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5795545,

@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
-            "linkToMatch": "/matches/inter-vs-bologna/2ttfqc#5749702",
-            "date": {
-              "utcTime": "2026-10-17T16:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8636/overview/inter",
-            "tooltipText": {
-              "utcTime": "2026-10-17T16:00:00.000Z",
-              "homeTeam": "Bologna",
-              "homeTeamId": 9857,
-              "homeScore": "1",
-              "awayTeam": "Inter",
-              "awayTeamId": 8636,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "9857",
-              "name": "Bologna",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
@@ -423,6 +393,36 @@
               "name": "Bologna",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8600.png",
+            "linkToMatch": "/matches/udinese-vs-bologna/2tf6iu#5749752",
+            "date": {
+              "utcTime": "2026-11-22T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8600/overview/udinese",
+            "tooltipText": {
+              "utcTime": "2026-11-22T14:00:00.000Z",
+              "homeTeam": "Bologna",
+              "homeTeamId": 9857,
+              "homeScore": "1",
+              "awayTeam": "Udinese",
+              "awayTeamId": 8600,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9857",
+              "name": "Bologna",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8600",
+              "name": "Udinese",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +456,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bologna have won their last 4 matches."
+              "defaultText": "Bologna haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
@@ -483,12 +483,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,19 +500,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bologna have scored 8 goals in their last 3 matches."
+              "defaultText": "Venezia have an average of 0.67 goals in their last three matches and Bologna have an average of 1.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "12",
-                "6"
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +523,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Venezia haven't drawn in their last 12 matches and Bologna in their last 6."
+              "defaultText": "Venezia haven't drawn in their last 12 matches."
             }
           ]
         },

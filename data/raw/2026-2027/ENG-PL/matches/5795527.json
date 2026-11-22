@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
-            "linkToMatch": "/matches/hull-city-vs-everton/2hgrvk#5795470",
-            "date": {
-              "utcTime": "2026-10-11T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8668/overview/everton",
-            "tooltipText": {
-              "utcTime": "2026-10-11T13:00:00.000Z",
-              "homeTeam": "Hull City",
-              "homeTeamId": 8667,
-              "homeScore": "2",
-              "awayTeam": "Everton",
-              "awayTeamId": 8668,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8667",
-              "name": "Hull City",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
@@ -424,6 +394,36 @@
               "name": "Hull City",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png",
+            "linkToMatch": "/matches/hull-city-vs-brighton-hove-albion/2y0rvj#5795520",
+            "date": {
+              "utcTime": "2026-11-22T14:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10204/overview/brighton-hove-albion",
+            "tooltipText": {
+              "utcTime": "2026-11-22T14:00:00.000Z",
+              "homeTeam": "Hull City",
+              "homeTeamId": 8667,
+              "homeScore": "2",
+              "awayTeam": "Brighton & Hove Albion",
+              "awayTeamId": 10204,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8667",
+              "name": "Hull City",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10204",
+              "name": "Brighton & Hove Albion",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -440,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "1",
+                "1",
+                "3",
                 "away_team",
-                "9"
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,20 +462,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Hull City haven't won a match in 9 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Crystal Palace have 1W, 1D, 3L in five matches while Hull City have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,19 +487,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have an average of 1.33 goals in their last three matches and Hull City have an average of 1."
+              "defaultText": "Crystal Palace have scored 4 goals in their last 3 matches, while Hull City have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +511,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Crystal Palace have an average of 1.33 goals in their last three matches and Hull City have an average of 1."
+              "defaultText": "Crystal Palace have scored 4 goals in their last 3 matches, while Hull City have scored 4."
             },
             {
               "OddsType": "dc",
@@ -588,15 +596,15 @@
         },
         {
           "type": "player",
-          "playerId": 821100,
+          "playerId": 1047676,
           "teamId": 9826,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 821100,
-              "name": "Jørgen Strand Larsen",
+              "value": 1047676,
+              "name": "Yéremi Pino",
               "type": "player"
             },
             {
@@ -605,12 +613,12 @@
               "type": "team"
             },
             {
-              "value": 1.2,
+              "value": 6,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Jørgen Strand Larsen has the most shots on target per match for Crystal Palace (1.2)",
+          "text": "Yéremi Pino has created the most big chances for Crystal Palace (6)",
           "color": "#0055A5"
         },
         {
@@ -636,37 +644,57 @@
           "color": "#ED8B00"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 807930,
           "teamId": 8667,
-          "priority": 8,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1,
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 807930,
+              "name": "Regan Slater",
+              "type": "player"
+            },
+            {
+              "value": 8667,
+              "name": "Hull City",
+              "type": "team"
+            },
+            {
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Regan Slater has created the most big chances for Hull City (3)",
           "color": "#ED8B00"
         },
         {
-          "type": "team",
-          "playerId": null,
+          "type": "player",
+          "playerId": 1072068,
           "teamId": 8667,
-          "priority": 8,
-          "defaultText": "Haven't won a match in {0} attempts",
-          "localizedTextId": "insights_not_won_team",
+          "priority": 4,
+          "defaultText": "{0} is ranked {1} in saves per match in the competition ({2})",
+          "localizedTextId": "insights_player_saves_per_match_rank_in_competition",
           "statValues": [
             {
-              "value": 9,
+              "value": 1072068,
+              "name": "Konstantinos Tzolakis",
+              "type": "player"
+            },
+            {
+              "value": 2,
               "name": null,
-              "type": "integer"
+              "type": "ordinal"
+            },
+            {
+              "value": 4.4,
+              "name": null,
+              "type": "double"
             }
           ],
-          "text": "Haven't won a match in 9 attempts",
+          "text": "Konstantinos Tzolakis is ranked 2 in saves per match in the competition (4.4)",
           "color": "#ED8B00"
         }
       ],
@@ -688,142 +716,183 @@
       }
     },
     "weather": {
-      "temperature": 8,
+      "temperature": 7,
       "windSpeed": 4,
-      "windDirectionCardinal": "SSW",
+      "windDirectionCardinal": "SSE",
       "iconCode": 11,
-      "relativeHumidity": 86,
-      "precipChance": 42,
-      "precipitation": 0.2,
+      "relativeHumidity": 80,
+      "precipChance": 39,
+      "precipitation": 0.3,
       "snow": 0,
-      "cloudCover": 60,
+      "cloudCover": 79,
       "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-22T03:00:04Z",
+      "lastUpdated": "2026-11-22T15:00:05Z",
       "localizedKey": "weather_condition_light_rain",
       "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5795527,
-      "lineupType": "standard",
-      "availableFilters": [
-        "match"
-      ],
+      "lineupType": "unavailable",
+      "source": "enetpulse",
+      "availableFilters": [],
       "homeTeam": {
         "id": 9826,
         "name": "Crystal Palace",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 706297,
+            "age": 29,
             "name": "Jean-Philippe Mateta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 26666197,
             "unavailability": {
-              "lastUpdated": "0001-01-01T00:00:00",
-              "type": "suspension"
+              "type": "suspension",
+              "expectedReturn": "Late November 2026",
+              "expectedReturnDate": "2026-11-29T15:05:00Z"
             },
             "firstName": "Jean-Philippe",
-            "lastName": "Mateta"
+            "lastName": "Mateta",
+            "nationalTeamId": 6723
           },
           {
             "id": 771294,
+            "age": 28,
             "name": "Ismaïla Sarr",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 48798216,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-11-19T22:34:54Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Ismaïla",
-            "lastName": "Sarr"
+            "lastName": "Sarr",
+            "nationalTeamId": 6395
           },
           {
             "id": 664444,
+            "age": 28,
             "name": "Takehiro Tomiyasu",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 2534929,
             "unavailability": {
               "injuryId": 101,
-              "lastUpdated": "2026-11-19T22:35:05Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Takehiro",
-            "lastName": "Tomiyasu"
+            "lastName": "Tomiyasu",
+            "nationalTeamId": 6715
           },
           {
             "id": 1187506,
+            "age": 23,
             "name": "Chadi Riad",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 19730719,
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-08-28T16:50:12Z",
               "type": "injury",
               "expectedReturn": "Late June 2027"
             },
             "firstName": "Chadi",
-            "lastName": "Riad"
+            "lastName": "Riad",
+            "nationalTeamId": 6262
           }
         ]
       },
       "awayTeam": {
         "id": 8667,
         "name": "Hull City",
+        "formation": "",
+        "starters": [],
         "unavailable": [
           {
             "id": 915102,
+            "age": 31,
             "name": "Hidemasa Morita",
+            "countryName": "Japan",
+            "countryCode": "JPN",
+            "marketValue": 5010346,
             "unavailability": {
               "injuryId": 87,
-              "lastUpdated": "2026-11-18T08:23:56Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Hidemasa",
-            "lastName": "Morita"
+            "lastName": "Morita",
+            "nationalTeamId": 6715
           },
           {
             "id": 538112,
+            "age": 31,
             "name": "Matt Targett",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 2419898,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-10-31T00:36:21Z",
               "type": "injury",
               "expectedReturn": "Mid December 2026"
             },
             "firstName": "Matt",
-            "lastName": "Targett"
+            "lastName": "Targett",
+            "nationalTeamId": 8491
           },
           {
             "id": 1515977,
+            "age": 22,
             "name": "Ilyas Ansah",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "marketValue": 20457698,
             "unavailability": {
               "injuryId": 45,
-              "lastUpdated": "2026-11-12T11:35:06Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Ilyas",
-            "lastName": "Ansah"
+            "lastName": "Ansah",
+            "nationalTeamId": 8570
           },
           {
             "id": 1331703,
+            "age": 23,
             "name": "Charlie Hughes",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 14086245,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-31T00:35:15Z",
               "type": "injury",
               "expectedReturn": "Late November 2026"
             },
             "firstName": "Charlie",
-            "lastName": "Hughes"
+            "lastName": "Hughes",
+            "nationalTeamId": 8491
           },
           {
             "id": 1178514,
+            "age": 24,
             "name": "Eliot Matazo",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 1714795,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-10-31T00:35:51Z",
               "type": "injury",
               "expectedReturn": "Early February 2027"
             },
             "firstName": "Eliot",
-            "lastName": "Matazo"
+            "lastName": "Matazo",
+            "nationalTeamId": 8263
           }
         ]
       }
