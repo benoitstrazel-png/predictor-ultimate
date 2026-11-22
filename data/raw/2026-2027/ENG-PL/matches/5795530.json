@@ -439,10 +439,12 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't won a match in their last {2} attempts, and {1} in their last {3}.",
+              "TextTemplateId": "not_won_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "5",
                 "5"
               ],
               "DefaultLabels": [
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 5 attempts."
+              "defaultText": "Ipswich Town haven't won a match in their last 5 attempts, and Aston Villa in their last 5."
             },
             {
               "OddsType": "bts",
@@ -483,14 +485,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "4",
-                "4"
+                "1",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Ipswich Town have scored 4 goals in their last 3 matches, while Aston Villa have scored 4."
+              "defaultText": "Ipswich Town have an average of 1 goals in their last three matches and Aston Villa have an average of 1.33."
             },
             {
               "OddsType": "dc",
@@ -511,7 +512,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -524,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Ipswich Town haven't won a match in 4 attempts."
+              "defaultText": "Ipswich Town haven't won a match in 5 attempts."
             }
           ]
         },

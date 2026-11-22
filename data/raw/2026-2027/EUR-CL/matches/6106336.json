@@ -468,35 +468,10 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "1",
-                "9"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Shakhtar Donetsk have scored 1 goals in their last 3 matches, while Fenerbahçe have scored 9."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "9",
                 "3"
               ],
               "DefaultLabels": [
@@ -508,17 +483,45 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fenerbahçe have scored 9 goals in their last 3 matches."
+              "defaultText": "Fenerbahçe have scored in their last 3 away matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "away_team",
+                "10",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Fenerbahçe have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "4"
+                "2",
+                "1",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Fenerbahçe haven't drawn in their last 4 matches."
+              "defaultText": "Shakhtar Donetsk have 2W, 2D, 1L in five matches while Fenerbahçe have 2W, 1D, 2L."
             }
           ]
         },
@@ -603,13 +606,13 @@
       "windDirectionCardinal": "NE",
       "iconCode": 26,
       "relativeHumidity": 84,
-      "precipChance": 22,
+      "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 84,
+      "cloudCover": 86,
       "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-21T08:00:40Z",
+      "lastUpdated": "2026-11-21T20:00:28Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },

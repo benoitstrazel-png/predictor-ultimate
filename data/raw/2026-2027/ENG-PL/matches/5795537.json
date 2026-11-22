@@ -276,36 +276,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
-            "linkToMatch": "/matches/everton-vs-arsenal/2ttfpg#5795485",
-            "date": {
-              "utcTime": "2026-10-24T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8668/overview/everton",
-            "tooltipText": {
-              "utcTime": "2026-10-24T14:00:00.000Z",
-              "homeTeam": "Arsenal",
-              "homeTeamId": 9825,
-              "homeScore": "2",
-              "awayTeam": "Everton",
-              "awayTeamId": 8668,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9825",
-              "name": "Arsenal",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/45723.png",
@@ -424,6 +394,36 @@
               "name": "Hull City",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
+            "linkToMatch": "/matches/arsenal-vs-newcastle-united/3c42by#5795523",
+            "date": {
+              "utcTime": "2026-11-21T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10261/overview/newcastle-united",
+            "tooltipText": {
+              "utcTime": "2026-11-21T17:30:00.000Z",
+              "homeTeam": "Newcastle United",
+              "homeTeamId": 10261,
+              "homeScore": "2",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "10261",
+              "name": "Newcastle United",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -494,7 +494,7 @@
                 "away_team",
                 "3",
                 "4",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,17 +505,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brentford have scored 4 goals in their last 3 matches, while Arsenal have scored 4."
+              "defaultText": "Brentford have scored 4 goals in their last 3 matches, while Arsenal have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
                 "away_team",
-                "5"
+                "home_team",
+                "8",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Arsenal haven't drawn in their last 5 matches."
+              "defaultText": "Arsenal haven't lost to Brentford in their last 8 meetings (5W, 3D)."
             }
           ]
         },
@@ -580,15 +583,15 @@
         },
         {
           "type": "player",
-          "playerId": 650616,
+          "playerId": 1083796,
           "teamId": 9937,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 650616,
-              "name": "Mathias Jensen",
+              "value": 1083796,
+              "name": "Kevin Schade",
               "type": "player"
             },
             {
@@ -597,12 +600,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 0.8,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Mathias Jensen has created the most big chances for Brentford (3)",
+          "text": "Kevin Schade has the most shots on target per match for Brentford (0.8)",
           "color": "#C00808"
         },
         {
@@ -625,23 +628,6 @@
             }
           ],
           "text": "Have scored 7 goals in their last 5 matches",
-          "color": "#bd0510"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9825,
-          "priority": 10,
-          "defaultText": "Have kept the most clean sheets in the competition ({0})",
-          "localizedTextId": "insights_clean_sheets",
-          "statValues": [
-            {
-              "value": 7,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Have kept the most clean sheets in the competition (7)",
           "color": "#bd0510"
         },
         {
@@ -680,6 +666,23 @@
           ],
           "text": "Arsenal haven't lost to Brentford in their last 10 meetings (7W, 3D).",
           "color": "#bd0510"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9825,
+          "priority": 8,
+          "defaultText": "Ranked {0} away from home this season",
+          "localizedTextId": "insights_best_away",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "ordinal"
+            }
+          ],
+          "text": "Ranked 2 away from home this season",
+          "color": "#bd0510"
         }
       ],
       "countryCode": "ENG",
@@ -702,18 +705,18 @@
     "weather": {
       "temperature": 6,
       "windSpeed": 3,
-      "windDirectionCardinal": "E",
-      "iconCode": 29,
-      "relativeHumidity": 89,
-      "precipChance": 20,
-      "precipitation": 0,
+      "windDirectionCardinal": "SSE",
+      "iconCode": 11,
+      "relativeHumidity": 88,
+      "precipChance": 43,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 46,
-      "description": "Partly Cloudy",
+      "cloudCover": 56,
+      "description": "Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-21T09:00:03Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-11-21T21:00:03Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5795537,

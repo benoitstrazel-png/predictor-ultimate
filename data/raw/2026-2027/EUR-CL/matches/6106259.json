@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -122,36 +122,6 @@
       },
       "teamForm": [
         [
-          {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png",
-            "linkToMatch": "/matches/everton-vs-arsenal/2ttfpg#5795485",
-            "date": {
-              "utcTime": "2026-10-24T14:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8668/overview/everton",
-            "tooltipText": {
-              "utcTime": "2026-10-24T14:00:00.000Z",
-              "homeTeam": "Arsenal",
-              "homeTeamId": 9825,
-              "homeScore": "2",
-              "awayTeam": "Everton",
-              "awayTeamId": 8668,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "9825",
-              "name": "Arsenal",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8668",
-              "name": "Everton",
-              "isOurTeam": false
-            }
-          },
           {
             "result": 0,
             "resultString": "D",
@@ -270,6 +240,36 @@
               "id": "8667",
               "name": "Hull City",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png",
+            "linkToMatch": "/matches/arsenal-vs-newcastle-united/3c42by#5795523",
+            "date": {
+              "utcTime": "2026-11-21T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/10261/overview/newcastle-united",
+            "tooltipText": {
+              "utcTime": "2026-11-21T17:30:00.000Z",
+              "homeTeam": "Newcastle United",
+              "homeTeamId": 10261,
+              "homeScore": "2",
+              "awayTeam": "Arsenal",
+              "awayTeamId": 9825,
+              "awayScore": "2"
+            },
+            "score": "2 - 2",
+            "home": {
+              "id": "10261",
+              "name": "Newcastle United",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9825",
+              "name": "Arsenal",
+              "isOurTeam": true
             }
           }
         ],
@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "7"
+                "4",
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Borussia Dortmund haven't lost in 7 matches."
+              "defaultText": "Arsenal haven't lost in their last 4 matches, and Borussia Dortmund in their last 8."
             },
             {
               "OddsType": "bts",
@@ -466,9 +468,9 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "9",
+                "10",
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +481,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Arsenal have scored in their last 9 matches and Borussia Dortmund have scored in their last 6 matches."
+              "defaultText": "Arsenal have scored in their last 10 matches and Borussia Dortmund have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
@@ -491,8 +493,8 @@
                 "home_team",
                 "away_team",
                 "3",
-                "4",
-                "6"
+                "5",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,17 +505,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Arsenal have scored 4 goals in their last 3 matches, while Borussia Dortmund have scored 6."
+              "defaultText": "Arsenal have scored 5 goals in their last 3 matches, while Borussia Dortmund have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "3",
+                "1",
+                "1",
+                "away_team",
+                "4",
+                "1",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -526,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Arsenal haven't drawn in their last 5 matches."
+              "defaultText": "Arsenal have 3W, 1D, 1L in five matches while Borussia Dortmund have 4W, 1D, 0L."
             }
           ]
         },
@@ -573,12 +581,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 7 matches",
+          "text": "Haven't lost in 8 matches",
           "color": "#d8a000"
         }
       ],
@@ -690,31 +698,347 @@
       }
     },
     "weather": {
-      "temperature": 5,
+      "temperature": 6,
       "windSpeed": 4,
       "windDirectionCardinal": "ESE",
-      "iconCode": 26,
-      "relativeHumidity": 76,
-      "precipChance": 24,
-      "precipitation": 0,
+      "iconCode": 11,
+      "relativeHumidity": 87,
+      "precipChance": 35,
+      "precipitation": 0.2,
       "snow": 0,
-      "cloudCover": 90,
-      "description": "Cloudy",
+      "cloudCover": 97,
+      "description": "Light Rain",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-21T08:00:40Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-11-21T20:00:27Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 6106259,
-      "lineupType": "unavailable",
+      "lineupType": "predicted",
       "source": "enetpulse",
-      "availableFilters": [],
+      "availableFilters": [
+        "marketValue",
+        "age",
+        "country"
+      ],
       "homeTeam": {
         "id": 9825,
         "name": "Arsenal",
-        "formation": "",
-        "starters": [],
+        "formation": "4-2-3-1",
+        "starters": [
+          {
+            "id": 562727,
+            "age": 31,
+            "name": "David Raya",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 23534518,
+            "firstName": "David",
+            "lastName": "Raya",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 776151,
+            "age": 29,
+            "name": "Ben White",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 39197548,
+            "firstName": "Ben",
+            "lastName": "White",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 710159,
+            "age": 29,
+            "name": "Ezri Konsa",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "15",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 57143662,
+            "firstName": "Ezri",
+            "lastName": "Konsa",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 795179,
+            "age": 28,
+            "name": "Gabriel",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 77698411,
+            "firstName": "",
+            "lastName": "Gabriel",
+            "nationalTeamId": 8256,
+            "rankings": null
+          },
+          {
+            "id": 1137667,
+            "age": 24,
+            "name": "Piero Hincapié",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 61515652,
+            "firstName": "Piero",
+            "lastName": "Hincapié",
+            "nationalTeamId": 6707,
+            "rankings": null
+          },
+          {
+            "id": 850354,
+            "age": 29,
+            "name": "Bruno Guimarães",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "39",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 65587017,
+            "firstName": "Bruno",
+            "lastName": "Guimarães",
+            "nationalTeamId": 8256,
+            "rankings": null
+          },
+          {
+            "id": 654096,
+            "age": 27,
+            "name": "Declan Rice",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "41",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 109566248,
+            "firstName": "Declan",
+            "lastName": "Rice",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1084981,
+            "age": 24,
+            "name": "Noni Madueke",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "20",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 53859252,
+            "firstName": "Noni",
+            "lastName": "Madueke",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 574645,
+            "age": 30,
+            "name": "Mikel Merino",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "23",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 20636272,
+            "firstName": "Mikel",
+            "lastName": "Merino",
+            "nationalTeamId": 6720,
+            "rankings": null
+          },
+          {
+            "id": 818975,
+            "age": 28,
+            "name": "Eberechi Eze",
+            "positionId": 87,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "10",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 58385994,
+            "firstName": "Eberechi",
+            "lastName": "Eze",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 664500,
+            "age": 28,
+            "name": "Viktor Gyökeres",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "14",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 59665200,
+            "firstName": "Viktor",
+            "lastName": "Gyökeres",
+            "nationalTeamId": 8520,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 24011,
+          "age": 44,
+          "name": "Mikel Arteta",
+          "countryName": "Spain",
+          "countryCode": "ESP",
+          "firstName": "Mikel",
+          "lastName": "Arteta",
+          "nationalTeamId": 6720,
+          "primaryTeamId": 9825,
+          "primaryTeamName": "Arsenal",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
           {
             "id": 1031325,
@@ -748,13 +1072,327 @@
             "lastName": "Saka",
             "nationalTeamId": 8491
           }
-        ]
+        ],
+        "averageStarterAge": 28.4,
+        "totalStarterMarketValue": 626789774
       },
       "awayTeam": {
         "id": 9789,
         "name": "Borussia Dortmund",
-        "formation": "",
-        "starters": [],
+        "formation": "3-4-2-1",
+        "starters": [
+          {
+            "id": 764018,
+            "age": 28,
+            "name": "Gregor Kobel",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Switzerland",
+            "countryCode": "SUI",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 34596271,
+            "firstName": "Gregor",
+            "lastName": "Kobel",
+            "nationalTeamId": 6717,
+            "rankings": null
+          },
+          {
+            "id": 664970,
+            "age": 30,
+            "name": "Waldemar Anton",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "3",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 13373511,
+            "firstName": "Waldemar",
+            "lastName": "Anton",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1002058,
+            "age": 26,
+            "name": "Nico Schlotterbeck",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 54421235,
+            "firstName": "Nico",
+            "lastName": "Schlotterbeck",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 559065,
+            "age": 31,
+            "name": "Ramy Bensebaini",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "5",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 3101854,
+            "firstName": "Ramy",
+            "lastName": "Bensebaini",
+            "nationalTeamId": 6317,
+            "rankings": null
+          },
+          {
+            "id": 659272,
+            "age": 29,
+            "name": "Julian Ryerson",
+            "positionId": 62,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "26",
+            "countryName": "Norway",
+            "countryCode": "NOR",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 19941942,
+            "firstName": "Julian",
+            "lastName": "Ryerson",
+            "nationalTeamId": 8492,
+            "rankings": null
+          },
+          {
+            "id": 792429,
+            "age": 28,
+            "name": "Joey Veerman",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "25",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 24991328,
+            "firstName": "Joey",
+            "lastName": "Veerman",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 966019,
+            "age": 26,
+            "name": "Felix Nmecha",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Germany",
+            "countryCode": "GER",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 64192102,
+            "firstName": "Felix",
+            "lastName": "Nmecha",
+            "nationalTeamId": 8570,
+            "rankings": null
+          },
+          {
+            "id": 1209228,
+            "age": 24,
+            "name": "Daniel Svensson",
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "24",
+            "countryName": "Sweden",
+            "countryCode": "SWE",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 23109471,
+            "firstName": "Daniel",
+            "lastName": "Svensson",
+            "nationalTeamId": 8520,
+            "rankings": null
+          },
+          {
+            "id": 1287373,
+            "age": 21,
+            "name": "Jobe Bellingham",
+            "positionId": 84,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 47149230,
+            "firstName": "Jobe",
+            "lastName": "Bellingham",
+            "nationalTeamId": 8491,
+            "rankings": null
+          },
+          {
+            "id": 1050158,
+            "age": 24,
+            "name": "Fábio Silva",
+            "positionId": 86,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "21",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 23838871,
+            "firstName": "Fábio",
+            "lastName": "Silva",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 448540,
+            "age": 30,
+            "name": "Serhou Guirassy",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "Guinea",
+            "countryCode": "GUI",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 29675505,
+            "firstName": "Serhou",
+            "lastName": "Guirassy",
+            "nationalTeamId": 6289,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 33072,
+          "age": 55,
+          "name": "Niko Kovač",
+          "countryName": "Croatia",
+          "countryCode": "CRO",
+          "firstName": "Niko",
+          "lastName": "Kovač",
+          "nationalTeamId": 10155,
+          "primaryTeamId": 9789,
+          "primaryTeamName": "Borussia Dortmund",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
         "unavailable": [
           {
             "id": 1761151,
@@ -787,22 +1425,6 @@
             "firstName": "Carney",
             "lastName": "Chukwuemeka",
             "nationalTeamId": 8255
-          },
-          {
-            "id": 448540,
-            "age": 30,
-            "name": "Serhou Guirassy",
-            "countryName": "Guinea",
-            "countryCode": "GUI",
-            "marketValue": 29675505,
-            "unavailability": {
-              "injuryId": 43,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Serhou",
-            "lastName": "Guirassy",
-            "nationalTeamId": 6289
           },
           {
             "id": 1636870,
@@ -852,7 +1474,9 @@
             "lastName": "Can",
             "nationalTeamId": 8570
           }
-        ]
+        ],
+        "averageStarterAge": 27.5,
+        "totalStarterMarketValue": 338391320
       }
     },
     "hasPlayoff": true,
