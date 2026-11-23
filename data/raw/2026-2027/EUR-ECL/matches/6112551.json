@@ -274,36 +274,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8315.png",
-            "linkToMatch": "/matches/getafe-vs-athletic-club/2a8kvt#5868102",
-            "date": {
-              "utcTime": "2026-10-25T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8315/overview/athletic-club",
-            "tooltipText": {
-              "utcTime": "2026-10-25T13:00:00.000Z",
-              "homeTeam": "Athletic Club",
-              "homeTeamId": 8315,
-              "homeScore": "4",
-              "awayTeam": "Getafe",
-              "awayTeamId": 8305,
-              "awayScore": "0"
-            },
-            "score": "4 - 0",
-            "home": {
-              "id": "8315",
-              "name": "Athletic Club",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/477697.png",
@@ -422,6 +392,36 @@
               "name": "Getafe",
               "isOurTeam": true
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png",
+            "linkToMatch": "/matches/getafe-vs-atletico-madrid/2qqieg#5868134",
+            "date": {
+              "utcTime": "2026-11-22T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9906/overview/atletico-madrid",
+            "tooltipText": {
+              "utcTime": "2026-11-22T20:00:00.000Z",
+              "homeTeam": "Getafe",
+              "homeTeamId": 8305,
+              "homeScore": "0",
+              "awayTeam": "Atlético Madrid",
+              "awayTeamId": 9906,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9906",
+              "name": "Atlético Madrid",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -488,13 +488,11 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,8 +502,8 @@
                 "label_yes",
                 "label_no"
               ],
-              "Icon": "poll_goal",
-              "defaultText": "Iberia 1999 have an average of 1.33 goals in their last three matches and Getafe have an average of 1."
+              "Icon": "poll_glove",
+              "defaultText": "Getafe haven't scored in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -515,7 +513,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "6"
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Getafe haven't drawn in their last 6 matches."
+              "defaultText": "Getafe haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -543,17 +541,17 @@
           "type": "team",
           "playerId": null,
           "teamId": 8305,
-          "priority": 1345,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "priority": 1344,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 9,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 9 matches",
+          "text": "Have lost their last 3 matches",
           "color": "#084888"
         },
         {
@@ -565,15 +563,83 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 2 matches",
+          "text": "Haven't scored in their last 3 matches",
+          "color": "#084888"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8305,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 10,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 10 matches",
           "color": "#084888"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 1065639,
+          "position": 1,
+          "matchesWithRating": 3,
+          "lastName": "Jinjolava",
+          "fullName": "Jemali-Giorgi Jinjolava",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 1,
+            "gamesPlayed": 3,
+            "minsPlayed": 270,
+            "minsPlayedGoal": 270,
+            "expectedGoals": 0.8791999816894531,
+            "playerRating": 7.56
+          }
+        },
+        "awayPlayer": {
+          "playerId": 178753,
+          "position": 1,
+          "matchesWithRating": 3,
+          "lastName": "Gudelj",
+          "fullName": "Nemanja Gudelj",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 225,
+            "minsPlayedGoal": 225,
+            "expectedGoals": 0.1703999936580658,
+            "playerRating": 6.7
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -624,6 +690,22 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 282674,
+            "age": 34,
+            "name": "Daniel Carvajal",
+            "countryName": "Spain",
+            "countryCode": "ESP",
+            "marketValue": 1969241,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "Daniel",
+            "lastName": "Carvajal",
+            "nationalTeamId": 6720
+          },
           {
             "id": 1414777,
             "age": 22,

@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
-            "linkToMatch": "/matches/real-sociedad-vs-malaga/2t24ys#5868096",
-            "date": {
-              "utcTime": "2026-10-18T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8560/overview/real-sociedad",
-            "tooltipText": {
-              "utcTime": "2026-10-18T16:30:00.000Z",
-              "homeTeam": "Málaga",
-              "homeTeamId": 9864,
-              "homeScore": "2",
-              "awayTeam": "Real Sociedad",
-              "awayTeamId": 8560,
-              "awayScore": "5"
-            },
-            "score": "2 - 5",
-            "home": {
-              "id": "9864",
-              "name": "Málaga",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8560",
-              "name": "Real Sociedad",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9866.png",
@@ -270,6 +240,36 @@
               "id": "8696",
               "name": "Racing Santander",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8371.png",
+            "linkToMatch": "/matches/osasuna-vs-malaga/2qzvua#5868136",
+            "date": {
+              "utcTime": "2026-11-22T17:30:00.000Z"
+            },
+            "teamPageUrl": "/teams/8371/overview/osasuna",
+            "tooltipText": {
+              "utcTime": "2026-11-22T17:30:00.000Z",
+              "homeTeam": "Osasuna",
+              "homeTeamId": 8371,
+              "homeScore": "1",
+              "awayTeam": "Málaga",
+              "awayTeamId": 9864,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "8371",
+              "name": "Osasuna",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9864",
+              "name": "Málaga",
+              "isOurTeam": true
             }
           }
         ],
@@ -489,14 +489,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "3"
+                "0.67",
+                "1"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,23 +506,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Málaga have scored 5 goals in their last 3 matches, while Athletic Club have scored 3."
+              "defaultText": "Málaga have an average of 0.67 goals in their last three matches and Athletic Club have an average of 1."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "1",
-                "3",
-                "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -536,7 +529,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Málaga have 1W, 1D, 3L in five matches while Athletic Club have 3W, 1D, 1L."
+              "defaultText": "Málaga haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -556,7 +549,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -566,34 +559,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
           "color": "#518EC7"
         },
         {
-          "type": "player",
-          "playerId": 1082957,
+          "type": "team",
+          "playerId": null,
           "teamId": 9864,
-          "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "priority": 7,
+          "defaultText": "Have lost their last {0} matches",
+          "localizedTextId": "insights_bad_form_team",
           "statValues": [
             {
-              "value": 1082957,
-              "name": "Ramón Enríquez",
-              "type": "player"
-            },
-            {
-              "value": 9864,
-              "name": "Málaga",
-              "type": "team"
-            },
-            {
-              "value": 2,
+              "value": 3,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Ramón Enríquez has created the most big chances for Málaga (2)",
+          "text": "Have lost their last 3 matches",
           "color": "#518EC7"
         },
         {
@@ -615,12 +598,12 @@
               "type": "team"
             },
             {
-              "value": 2.5,
+              "value": 2.1,
               "name": null,
               "type": "double"
             }
           ],
-          "text": "Adrián Niño has the most shots on target per match for Málaga (2.5)",
+          "text": "Adrián Niño has the most shots on target per match for Málaga (2.1)",
           "color": "#518EC7"
         },
         {

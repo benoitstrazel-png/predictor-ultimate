@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4",
+                "3",
                 "0",
-                "1",
+                "2",
                 "away_team",
                 "3",
                 "0",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Salzburg have 4W, 0D, 1L in five matches while Ararat Armenia have 3W, 0D, 2L."
+              "defaultText": "Salzburg have 3W, 0D, 2L in five matches while Ararat Armenia have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -489,12 +489,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "9",
-                "3"
+                "away_team",
+                "3",
+                "4",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -505,7 +507,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Salzburg have scored 9 goals in their last 3 matches."
+              "defaultText": "Salzburg have scored 4 goals in their last 3 matches, while Ararat Armenia have scored 7."
             },
             {
               "OddsType": "dc",
@@ -516,7 +518,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "5",
+                "6",
                 "7"
               ],
               "DefaultLabels": [
@@ -530,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Salzburg haven't drawn in their last 5 matches and Ararat Armenia in their last 7."
+              "defaultText": "Salzburg haven't drawn in their last 6 matches and Ararat Armenia in their last 7."
             }
           ]
         },
@@ -559,6 +561,57 @@
           "color": "#F13032"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 388903,
+          "position": 3,
+          "matchesWithRating": 4,
+          "lastName": "Tabaković",
+          "fullName": "Haris Tabaković",
+          "stats": {
+            "goals": 1,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.5,
+            "motm": 0,
+            "gamesPlayed": 4,
+            "minsPlayed": 343,
+            "minsPlayedGoal": 343,
+            "expectedGoals": 1.4002000093460083,
+            "playerRating": 6.76
+          }
+        },
+        "awayPlayer": {
+          "playerId": 540414,
+          "position": 1,
+          "matchesWithRating": 4,
+          "lastName": "Wilson",
+          "fullName": "Bruno Wilson",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1,
+            "motm": 0,
+            "gamesPlayed": 4,
+            "minsPlayed": 360,
+            "minsPlayedGoal": 180,
+            "expectedGoals": 1.155900001525879,
+            "playerRating": 6.09
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": [],
       "matchInsightsConfig": {
@@ -657,22 +710,6 @@
             "firstName": "Damir",
             "lastName": "Redzic",
             "nationalTeamId": 8565
-          },
-          {
-            "id": 1366006,
-            "age": 22,
-            "name": "Umut Tohumcu",
-            "countryName": "Germany",
-            "countryCode": "GER",
-            "marketValue": 3494305,
-            "unavailability": {
-              "injuryId": 31,
-              "type": "injury",
-              "expectedReturn": "Unknown"
-            },
-            "firstName": "Umut",
-            "lastName": "Tohumcu",
-            "nationalTeamId": 8570
           },
           {
             "id": 388903,

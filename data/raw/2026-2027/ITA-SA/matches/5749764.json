@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
-            "linkToMatch": "/matches/fiorentina-vs-inter/2fs4je#5749714",
-            "date": {
-              "utcTime": "2026-10-25T11:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8535/overview/fiorentina",
-            "tooltipText": {
-              "utcTime": "2026-10-25T11:30:00.000Z",
-              "homeTeam": "Inter",
-              "homeTeamId": 8636,
-              "homeScore": "2",
-              "awayTeam": "Fiorentina",
-              "awayTeamId": 8535,
-              "awayScore": "1"
-            },
-            "score": "2 - 1",
-            "home": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
             "linkToMatch": "/matches/venezia-vs-inter/2980az#5749729",
             "date": {
@@ -270,6 +240,36 @@
               "id": "10171",
               "name": "Como",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8524.png",
+            "linkToMatch": "/matches/atalanta-vs-inter/2fo2u8#5749751",
+            "date": {
+              "utcTime": "2026-11-22T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8524/overview/atalanta",
+            "tooltipText": {
+              "utcTime": "2026-11-22T19:45:00.000Z",
+              "homeTeam": "Atalanta",
+              "homeTeamId": 8524,
+              "homeScore": "4",
+              "awayTeam": "Inter",
+              "awayTeamId": 8636,
+              "awayScore": "4"
+            },
+            "score": "4 - 4",
+            "home": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8636",
+              "name": "Inter",
+              "isOurTeam": true
             }
           }
         ],
@@ -486,14 +486,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "6",
-                "5"
+                "9",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,18 +502,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Inter have scored 6 goals in their last 3 matches, while Genoa have scored 5."
+              "defaultText": "Inter have scored 9 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "9",
                 "9"
               ],
               "DefaultLabels": [
@@ -529,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Inter haven't drawn in their last 9 matches and Genoa in their last 9."
+              "defaultText": "Genoa haven't drawn in their last 9 matches."
             }
           ]
         },
@@ -549,7 +545,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 12,
               "name": null,
               "type": "integer"
             },
@@ -559,7 +555,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 12 goals in their last 5 matches",
+          "color": "#010E80"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8636,
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
+          "statValues": [
+            {
+              "value": 3,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have been awarded the most penalties this season (3)",
           "color": "#010E80"
         },
         {
@@ -597,33 +610,6 @@
             }
           ],
           "text": "Inter haven't lost to Genoa in their last 14 meetings (11W, 3D).",
-          "color": "#010E80"
-        },
-        {
-          "type": "player",
-          "playerId": 541820,
-          "teamId": 8636,
-          "priority": 9,
-          "defaultText": "{0} is ranked {1} in big chances created in the competition ({2})",
-          "localizedTextId": "insights_player_chances_created_rank_in_competition",
-          "statValues": [
-            {
-              "value": 541820,
-              "name": "Nicolò Barella",
-              "type": "player"
-            },
-            {
-              "value": 1,
-              "name": null,
-              "type": "ordinal"
-            },
-            {
-              "value": 9,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Nicolò Barella is ranked 1 in big chances created in the competition (9)",
           "color": "#010E80"
         },
         {
@@ -723,16 +709,16 @@
     "weather": {
       "temperature": 4,
       "windSpeed": 1,
-      "windDirectionCardinal": "NNE",
+      "windDirectionCardinal": "NE",
       "iconCode": 29,
-      "relativeHumidity": 94,
-      "precipChance": 6,
+      "relativeHumidity": 95,
+      "precipChance": 5,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 41,
+      "cloudCover": 33,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-22T08:00:22Z",
+      "lastUpdated": "2026-11-22T20:00:18Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -747,6 +733,22 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 304733,
+            "age": 32,
+            "name": "Hakan Çalhanoğlu",
+            "countryName": "Turkiye",
+            "countryCode": "TUR",
+            "marketValue": 7405656,
+            "unavailability": {
+              "injuryId": 69,
+              "type": "injury",
+              "expectedReturn": "Mid December 2026"
+            },
+            "firstName": "Hakan",
+            "lastName": "Çalhanoğlu",
+            "nationalTeamId": 6595
+          },
           {
             "id": 362212,
             "age": 32,
@@ -785,7 +787,25 @@
         "id": 10233,
         "name": "Genoa",
         "formation": "",
-        "starters": []
+        "starters": [],
+        "unavailable": [
+          {
+            "id": 1050163,
+            "age": 24,
+            "name": "Lorenzo Colombo",
+            "countryName": "Italy",
+            "countryCode": "ITA",
+            "marketValue": 11696530,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Lorenzo",
+            "lastName": "Colombo",
+            "nationalTeamId": 8204
+          }
+        ]
       }
     },
     "hasPlayoff": false,

@@ -482,13 +482,12 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,7 +498,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brighton & Hove Albion have an average of 1 goals in their last three matches and Universitatea Craiova have an average of 1.33."
+              "defaultText": "Universitatea Craiova have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -551,6 +550,57 @@
           "color": "#1080C8"
         }
       ],
+      "topScorers": {
+        "section": "Top scorers",
+        "sectionId": 6,
+        "homePlayer": {
+          "playerId": 956925,
+          "position": 3,
+          "matchesWithRating": 3,
+          "lastName": "Rutter",
+          "fullName": "Georginio Rutter",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 1,
+            "ontargetScoringAtt": 2.5,
+            "motm": 1,
+            "gamesPlayed": 3,
+            "minsPlayed": 269,
+            "minsPlayedGoal": 135,
+            "expectedGoals": 1.6073999404907227,
+            "playerRating": 7.53
+          }
+        },
+        "awayPlayer": {
+          "playerId": 1134292,
+          "position": 3,
+          "matchesWithRating": 3,
+          "lastName": "Al Hamlawi",
+          "fullName": "Assad Al Hamlawi",
+          "stats": {
+            "goals": 2,
+            "goalAssist": 0,
+            "ontargetScoringAtt": 1.67,
+            "motm": 0,
+            "gamesPlayed": 3,
+            "minsPlayed": 200,
+            "minsPlayedGoal": 100,
+            "expectedGoals": 1.0185999870300293,
+            "playerRating": 7.54
+          }
+        },
+        "statsOrder": [
+          "playerRating",
+          "goals",
+          "expectedGoals",
+          "goalAssist",
+          "minsPlayedGoal",
+          "ontargetScoringAtt",
+          "motm",
+          "gamesPlayed",
+          "minsPlayed"
+        ]
+      },
       "countryCode": "INT-2",
       "QAData": []
     },
