@@ -133,14 +133,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} have lost their last {1} matches.",
+              "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "6",
-                "4",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -152,8 +149,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Mainz 05 haven't lost to Augsburg in their last 6 meetings (4W, 2D)."
+              "Icon": "poll_stat_down",
+              "defaultText": "Mainz 05 have lost their last 4 matches."
             },
             {
               "OddsType": "bts",
@@ -331,18 +328,6 @@
             "lastName": "Matsima"
           },
           {
-            "id": 1327150,
-            "name": "Arijon Ibrahimović",
-            "unavailability": {
-              "injuryId": 101,
-              "lastUpdated": "2026-11-10T14:18:52Z",
-              "type": "injury",
-              "expectedReturn": "Late November 2026"
-            },
-            "firstName": "Arijon",
-            "lastName": "Ibrahimović"
-          },
-          {
             "id": 1300329,
             "name": "Calvin Brackelmann",
             "unavailability": {
@@ -353,18 +338,6 @@
             },
             "firstName": "Calvin",
             "lastName": "Brackelmann"
-          },
-          {
-            "id": 1561984,
-            "name": "Sima Suso",
-            "unavailability": {
-              "injuryId": 6,
-              "lastUpdated": "2026-11-21T10:04:12Z",
-              "type": "injury",
-              "expectedReturn": "Early December 2026"
-            },
-            "firstName": "Sima",
-            "lastName": "Suso"
           },
           {
             "id": 478527,
@@ -421,7 +394,7 @@
       "summary": [
         15,
         3,
-        13
+        14
       ],
       "matches": [
         {
@@ -440,9 +413,17 @@
           },
           "status": {
             "utcTime": "2026-11-22T14:30:00.000Z",
-            "started": false,
+            "finished": true,
+            "started": true,
             "cancelled": false,
-            "finished": false
+            "awarded": false,
+            "scoreStr": "3 - 1",
+            "reason": {
+              "short": "FT",
+              "shortKey": "fulltime_short",
+              "long": "Full-Time",
+              "longKey": "finished"
+            }
           },
           "finished": false,
           "away": {

@@ -132,12 +132,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} and {1} have drawn their last {2} matches against each other.",
-              "TextTemplateId": "h2h_draw_streak_v2",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "2"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -149,8 +148,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Angers and Paris FC have drawn their last 2 matches against each other."
+              "Icon": "poll_stat_down",
+              "defaultText": "Angers haven't won a match in 5 attempts."
             },
             {
               "OddsType": "bts",
@@ -265,18 +264,6 @@
             },
             "firstName": "Bané",
             "lastName": "Diatta"
-          },
-          {
-            "id": 1123505,
-            "name": "Amine El Ouazzani",
-            "unavailability": {
-              "injuryId": 47,
-              "lastUpdated": "2026-11-19T20:49:37Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Amine",
-            "lastName": "El Ouazzani"
           }
         ]
       },
@@ -284,18 +271,6 @@
         "id": 6379,
         "name": "Paris FC",
         "unavailable": [
-          {
-            "id": 637745,
-            "name": "Jonathan Ikoné",
-            "unavailability": {
-              "injuryId": 69,
-              "lastUpdated": "2026-11-11T14:41:31Z",
-              "type": "injury",
-              "expectedReturn": "Late November 2026"
-            },
-            "firstName": "Jonathan",
-            "lastName": "Ikoné"
-          },
           {
             "id": 1487894,
             "name": "Nhoa Sangui",
@@ -327,7 +302,7 @@
       "summary": [
         2,
         1,
-        1
+        2
       ],
       "matches": [
         {
@@ -346,9 +321,17 @@
           },
           "status": {
             "utcTime": "2026-11-22T14:00:00.000Z",
-            "started": false,
+            "finished": true,
+            "started": true,
             "cancelled": false,
-            "finished": false
+            "awarded": false,
+            "scoreStr": "4 - 0",
+            "reason": {
+              "short": "FT",
+              "shortKey": "fulltime_short",
+              "long": "Full-Time",
+              "longKey": "finished"
+            }
           },
           "finished": false,
           "away": {
