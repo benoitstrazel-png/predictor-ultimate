@@ -177,13 +177,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -194,17 +195,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have an average of 1.67 goals in their last three matches and Lens have an average of 0.67."
+              "defaultText": "Brest have scored 5 goals in their last 3 matches, while Lens have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "9"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -216,8 +217,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Lens haven't drawn in their last 9 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Lens haven't won a match in 4 attempts."
             }
           ]
         },
@@ -255,6 +256,30 @@
         "name": "Brest",
         "unavailable": [
           {
+            "id": 1310270,
+            "name": "Kamory Doumbia",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-11-23T12:24:29Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Kamory",
+            "lastName": "Doumbia"
+          },
+          {
+            "id": 279461,
+            "name": "Kenny Lala",
+            "unavailability": {
+              "injuryId": 14,
+              "lastUpdated": "2026-11-23T12:24:02Z",
+              "type": "injury",
+              "expectedReturn": "Late December 2026"
+            },
+            "firstName": "Kenny",
+            "lastName": "Lala"
+          },
+          {
             "id": 1699556,
             "name": "Raphaël Le Guen",
             "unavailability": {
@@ -285,16 +310,28 @@
         "name": "Lens",
         "unavailable": [
           {
-            "id": 1634789,
-            "name": "Andrija Bulatović",
+            "id": 861445,
+            "name": "Michaël Cuisance",
             "unavailability": {
-              "injuryId": 85,
-              "lastUpdated": "2026-11-19T20:34:30Z",
+              "injuryId": 92,
+              "lastUpdated": "2026-11-23T20:13:54Z",
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "About a week"
             },
-            "firstName": "Andrija",
-            "lastName": "Bulatović"
+            "firstName": "Michaël",
+            "lastName": "Cuisance"
+          },
+          {
+            "id": 561046,
+            "name": "Ruben Aguilar",
+            "unavailability": {
+              "injuryId": 42,
+              "lastUpdated": "2026-11-23T20:13:30Z",
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "firstName": "Ruben",
+            "lastName": "Aguilar"
           },
           {
             "id": 637746,

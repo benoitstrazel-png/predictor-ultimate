@@ -87,7 +87,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -466,7 +467,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "6"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +478,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored in their last 6 home matches."
+              "defaultText": "Hoffenheim have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
@@ -490,7 +491,7 @@
                 "away_team",
                 "3",
                 "3",
-                "7"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,20 +502,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hoffenheim have scored 3 goals in their last 3 matches, while Augsburg have scored 7."
+              "defaultText": "Hoffenheim have scored 3 goals in their last 3 matches, while Augsburg have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "5",
-                "2",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hoffenheim haven't lost to Augsburg in their last 5 meetings (2W, 3D)."
+              "defaultText": "Augsburg haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -538,7 +536,46 @@
         "awayTopPlayers": []
       },
       "countryCode": "GER",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/54/5881237/matchinsights_{lang}.json"
+      }
     },
     "liveticker": {
       "langs": "de",
@@ -561,20 +598,20 @@
       }
     },
     "weather": {
-      "temperature": 2,
-      "windSpeed": 3,
-      "windDirectionCardinal": "E",
-      "iconCode": 27,
-      "relativeHumidity": 72,
-      "precipChance": 16,
-      "precipitation": 0,
+      "temperature": 1,
+      "windSpeed": 2,
+      "windDirectionCardinal": "ESE",
+      "iconCode": 11,
+      "relativeHumidity": 77,
+      "precipChance": 34,
+      "precipitation": 0.16,
       "snow": 0,
-      "cloudCover": 61,
-      "description": "Mostly Cloudy",
+      "cloudCover": 77,
+      "description": "Few Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T05:00:09Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-11-24T05:00:21Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5881237,
@@ -586,6 +623,16 @@
         "id": 8226,
         "name": "Hoffenheim",
         "unavailable": [
+          {
+            "id": 845990,
+            "name": "Ozan Kabak",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Ozan",
+            "lastName": "Kabak"
+          },
           {
             "id": 1225995,
             "name": "Robin Hranác",
@@ -640,6 +687,28 @@
         "id": 8406,
         "name": "Augsburg",
         "unavailable": [
+          {
+            "id": 816800,
+            "name": "Manuel Baum",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Manuel",
+            "lastName": "Baum"
+          },
+          {
+            "id": 245315,
+            "name": "Jeffrey Gouweleeuw",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-11-23T13:15:03Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Jeffrey",
+            "lastName": "Gouweleeuw"
+          },
           {
             "id": 978680,
             "name": "Han-Noah Massengo",

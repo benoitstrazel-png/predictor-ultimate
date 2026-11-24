@@ -163,30 +163,6 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored in their last 4 home matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -198,18 +174,39 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored 4 goals in their last 3 matches, while VfB Stuttgart have scored 5."
+              "defaultText": "Werder Bremen have scored in their last 5 home matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
+              "StatValues": [
+                "home_team",
+                "away_team",
+                "2",
+                "0.33"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Werder Bremen have an average of 2 goals in their last three matches and VfB Stuttgart have an average of 0.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "4",
                 "5"
               ],
               "DefaultLabels": [
@@ -223,7 +220,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Werder Bremen haven't drawn in their last 4 matches and VfB Stuttgart in their last 5."
+              "defaultText": "Werder Bremen haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -266,6 +263,18 @@
         "id": 8697,
         "name": "Werder Bremen",
         "unavailable": [
+          {
+            "id": 1024292,
+            "name": "Marco Grüll",
+            "unavailability": {
+              "injuryId": 101,
+              "lastUpdated": "2026-11-23T13:09:58Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Marco",
+            "lastName": "Grüll"
+          },
           {
             "id": 298823,
             "name": "Mitchell Weiser",

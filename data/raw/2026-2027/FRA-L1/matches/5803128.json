@@ -179,13 +179,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -196,20 +197,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have an average of 1.67 goals in their last three matches and Lorient have an average of 0.67."
+              "defaultText": "Brest have scored 5 goals in their last 3 matches, while Lorient have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
-              "TextTemplateId": "h2h_undefeated",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "6",
-                "4",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -222,7 +220,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brest haven't lost to Lorient in their last 6 meetings (4W, 2D)."
+              "defaultText": "Brest haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -259,6 +257,30 @@
         "id": 8521,
         "name": "Brest",
         "unavailable": [
+          {
+            "id": 1310270,
+            "name": "Kamory Doumbia",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-11-23T12:24:29Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Kamory",
+            "lastName": "Doumbia"
+          },
+          {
+            "id": 279461,
+            "name": "Kenny Lala",
+            "unavailability": {
+              "injuryId": 14,
+              "lastUpdated": "2026-11-23T12:24:02Z",
+              "type": "injury",
+              "expectedReturn": "Late December 2026"
+            },
+            "firstName": "Kenny",
+            "lastName": "Lala"
+          },
           {
             "id": 1699556,
             "name": "Raphaël Le Guen",

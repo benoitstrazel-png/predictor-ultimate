@@ -138,8 +138,8 @@
               "StatValues": [
                 "home_team",
                 "3",
-                "0",
-                "2",
+                "1",
+                "1",
                 "away_team",
                 "1",
                 "1",
@@ -156,7 +156,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart have 3W, 0D, 2L in five matches while Hamburger SV have 1W, 1D, 3L."
+              "defaultText": "VfB Stuttgart have 3W, 1D, 1L in five matches while Hamburger SV have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
@@ -183,14 +183,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "5"
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -201,16 +200,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored 5 goals in their last 3 matches, while Hamburger SV have scored 5."
+              "defaultText": "VfB Stuttgart have an average of 0.33 goals in their last three matches and Hamburger SV have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+              "TextTemplateId": "h2h_no_draws_v2",
               "StatValues": [
                 "home_team",
+                "away_team",
                 "5"
               ],
               "DefaultLabels": [
@@ -224,7 +224,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 5 matches."
+              "defaultText": "VfB Stuttgart and Hamburger SV have not drawn any of their last 5 matches against each other."
             }
           ]
         },
@@ -321,6 +321,18 @@
         "id": 9790,
         "name": "Hamburger SV",
         "unavailable": [
+          {
+            "id": 759817,
+            "name": "Miro Muheim",
+            "unavailability": {
+              "injuryId": 74,
+              "lastUpdated": "2026-11-23T13:08:40Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Miro",
+            "lastName": "Muheim"
+          },
           {
             "id": 700074,
             "name": "Jordan Torunarigha",

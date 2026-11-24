@@ -136,7 +136,7 @@
               "TextTemplateId": "bad_form_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -149,7 +149,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Mainz 05 have lost their last 4 matches."
+              "defaultText": "Mainz 05 have lost their last 5 matches."
             },
             {
               "OddsType": "bts",
@@ -159,7 +159,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -170,19 +170,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have scored in their last 4 home matches."
+              "defaultText": "Werder Bremen have scored in their last 5 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "0.67"
+                "3",
+                "6",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -193,7 +194,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Werder Bremen have an average of 1.33 goals in their last three matches and Mainz 05 have an average of 0.67."
+              "defaultText": "Werder Bremen have scored 6 goals in their last 3 matches, while Mainz 05 have scored 3."
             },
             {
               "OddsType": "dc",
@@ -203,7 +204,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -216,7 +217,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Mainz 05 haven't won a match in 4 attempts."
+              "defaultText": "Mainz 05 haven't won a match in 5 attempts."
             }
           ]
         },
@@ -253,6 +254,18 @@
         "id": 8697,
         "name": "Werder Bremen",
         "unavailable": [
+          {
+            "id": 1024292,
+            "name": "Marco Grüll",
+            "unavailability": {
+              "injuryId": 101,
+              "lastUpdated": "2026-11-23T13:09:58Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Marco",
+            "lastName": "Grüll"
+          },
           {
             "id": 298823,
             "name": "Mitchell Weiser",

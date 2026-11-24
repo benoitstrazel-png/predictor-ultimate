@@ -468,7 +468,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,20 +479,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have scored in their last 5 away matches."
+              "defaultText": "Brest have scored in their last 6 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "3",
-                "5"
+                "0.67",
+                "1.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,23 +502,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rennes have scored 3 goals in their last 3 matches, while Brest have scored 5."
+              "defaultText": "Rennes have an average of 0.67 goals in their last three matches and Brest have an average of 1.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "1",
-                "2",
-                "2",
-                "away_team",
-                "3",
-                "1",
-                "1"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -531,8 +524,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Rennes have 1W, 2D, 2L in five matches while Brest have 3W, 1D, 1L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Rennes haven't won a match in 4 attempts."
             }
           ]
         },
@@ -560,20 +553,20 @@
       }
     },
     "weather": {
-      "temperature": 9,
-      "windSpeed": 5,
-      "windDirectionCardinal": "SW",
-      "iconCode": 11,
-      "relativeHumidity": 80,
-      "precipChance": 34,
-      "precipitation": 0.2,
+      "temperature": 8,
+      "windSpeed": 4,
+      "windDirectionCardinal": "W",
+      "iconCode": 30,
+      "relativeHumidity": 81,
+      "precipChance": 16,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 71,
-      "description": "Few Showers",
+      "cloudCover": 58,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T05:00:18Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-11-24T05:00:26Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5803014,
@@ -585,6 +578,30 @@
         "id": 9851,
         "name": "Rennes",
         "unavailable": [
+          {
+            "id": 1391052,
+            "name": "Eliezer Mayenda",
+            "unavailability": {
+              "injuryId": 101,
+              "lastUpdated": "2026-11-23T11:00:59Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Eliezer",
+            "lastName": "Mayenda"
+          },
+          {
+            "id": 562719,
+            "name": "Valentin Rongier",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-11-23T11:01:19Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Valentin",
+            "lastName": "Rongier"
+          },
           {
             "id": 402419,
             "name": "Przemysław Frankowski",
@@ -603,6 +620,30 @@
         "id": 8521,
         "name": "Brest",
         "unavailable": [
+          {
+            "id": 1310270,
+            "name": "Kamory Doumbia",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-11-23T12:24:29Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Kamory",
+            "lastName": "Doumbia"
+          },
+          {
+            "id": 279461,
+            "name": "Kenny Lala",
+            "unavailability": {
+              "injuryId": 14,
+              "lastUpdated": "2026-11-23T12:24:02Z",
+              "type": "injury",
+              "expectedReturn": "Late December 2026"
+            },
+            "firstName": "Kenny",
+            "lastName": "Lala"
+          },
           {
             "id": 1699556,
             "name": "Raphaël Le Guen",

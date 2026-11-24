@@ -436,17 +436,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "3",
-                "1",
-                "1",
-                "away_team",
-                "2",
-                "1",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -458,8 +452,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Eintracht Frankfurt have 3W, 1D, 1L in five matches while Werder Bremen have 2W, 1D, 2L."
+              "Icon": "poll_stat_up",
+              "defaultText": "Eintracht Frankfurt haven't lost in 4 matches."
             },
             {
               "OddsType": "bts",
@@ -469,7 +463,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,18 +474,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Eintracht Frankfurt have scored in their last 5 home matches."
+              "defaultText": "Eintracht Frankfurt have scored in their last 6 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "8",
-                "3"
+                "away_team",
+                "3",
+                "6",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +498,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Eintracht Frankfurt have scored 8 goals in their last 3 matches."
+              "defaultText": "Eintracht Frankfurt have scored 6 goals in their last 3 matches, while Werder Bremen have scored 6."
             },
             {
               "OddsType": "dc",
@@ -512,7 +508,7 @@
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +521,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Werder Bremen haven't drawn in their last 4 matches."
+              "defaultText": "Werder Bremen haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -559,18 +555,18 @@
       }
     },
     "weather": {
-      "temperature": 3,
+      "temperature": 2,
       "windSpeed": 3,
-      "windDirectionCardinal": "ESE",
+      "windDirectionCardinal": "NNW",
       "iconCode": 27,
-      "relativeHumidity": 79,
-      "precipChance": 14,
+      "relativeHumidity": 83,
+      "precipChance": 12,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 72,
+      "cloudCover": 69,
       "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T06:00:08Z",
+      "lastUpdated": "2026-11-24T06:00:13Z",
       "localizedKey": "weather_condition_cloudy",
       "defaultTitle": "Cloudy"
     },
@@ -602,6 +598,18 @@
         "id": 8697,
         "name": "Werder Bremen",
         "unavailable": [
+          {
+            "id": 1024292,
+            "name": "Marco Grüll",
+            "unavailability": {
+              "injuryId": 101,
+              "lastUpdated": "2026-11-23T13:09:58Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Marco",
+            "lastName": "Grüll"
+          },
           {
             "id": 298823,
             "name": "Mitchell Weiser",

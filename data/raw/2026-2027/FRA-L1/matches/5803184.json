@@ -132,11 +132,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "4",
+                "0",
+                "1",
+                "away_team",
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1",
@@ -148,20 +154,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Marseille have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Marseille have 4W, 0D, 1L in five matches while Lens have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "1.67",
-                "0.67"
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -172,19 +176,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Marseille have an average of 1.67 goals in their last three matches and Lens have an average of 0.67."
+              "defaultText": "Marseille have scored in their last 3 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.67",
-                "0.67"
+                "3",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -195,19 +200,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Marseille have an average of 1.67 goals in their last three matches and Lens have an average of 0.67."
+              "defaultText": "Marseille have scored 5 goals in their last 3 matches, while Lens have scored 3."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "12",
-                "9"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -219,8 +222,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Marseille haven't drawn in their last 12 matches and Lens in their last 9."
+              "Icon": "poll_stat_down",
+              "defaultText": "Lens haven't won a match in 4 attempts."
             }
           ]
         },
@@ -288,16 +291,28 @@
         "name": "Lens",
         "unavailable": [
           {
-            "id": 1634789,
-            "name": "Andrija Bulatović",
+            "id": 861445,
+            "name": "Michaël Cuisance",
             "unavailability": {
-              "injuryId": 85,
-              "lastUpdated": "2026-11-19T20:34:30Z",
+              "injuryId": 92,
+              "lastUpdated": "2026-11-23T20:13:54Z",
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "About a week"
             },
-            "firstName": "Andrija",
-            "lastName": "Bulatović"
+            "firstName": "Michaël",
+            "lastName": "Cuisance"
+          },
+          {
+            "id": 561046,
+            "name": "Ruben Aguilar",
+            "unavailability": {
+              "injuryId": 42,
+              "lastUpdated": "2026-11-23T20:13:30Z",
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "firstName": "Ruben",
+            "lastName": "Aguilar"
           },
           {
             "id": 637746,

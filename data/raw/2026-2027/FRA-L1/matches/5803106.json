@@ -132,11 +132,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "5"
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -148,20 +154,21 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Le Mans haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Toulouse have 2W, 2D, 1L in five matches while Le Mans have 1W, 2D, 2L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -172,19 +179,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have an average of 1 goals in their last three matches and Le Mans have an average of 0.67."
+              "defaultText": "Toulouse have scored 4 goals in their last 3 matches, while Le Mans have scored 4."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "0.67"
+                "3",
+                "4",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -195,17 +203,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have an average of 1 goals in their last three matches and Le Mans have an average of 0.67."
+              "defaultText": "Toulouse have scored 4 goals in their last 3 matches, while Le Mans have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "2",
+                "1",
                 "away_team",
-                "5"
+                "1",
+                "2",
+                "2"
               ],
               "DefaultLabels": [
                 "1x",
@@ -217,8 +231,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Le Mans haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Toulouse have 2W, 2D, 1L in five matches while Le Mans have 1W, 2D, 2L."
             }
           ]
         },

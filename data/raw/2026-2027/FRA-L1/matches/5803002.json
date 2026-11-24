@@ -113,7 +113,57 @@
           "capacity": 15931,
           "surface": "grass"
         },
-        "Referee": null,
+        "Referee": {
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/fra.png",
+          "text": "Ruddy Buquet",
+          "countryCode": "FRA",
+          "country": "France",
+          "id": 1001071045,
+          "leagueId": 53,
+          "leagueName": "Ligue 1",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 23,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 3.09,
+              "valueType": "perMatch",
+              "average": 3.69,
+              "total": 71,
+              "averageType": "below",
+              "fillPercentage": 26.54,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 2,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 1,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 5,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 23.17,
+              "valueType": "perMatch",
+              "average": 24.28,
+              "total": 533,
+              "averageType": "below",
+              "fillPercentage": 33.11,
+              "averagePercentage": 50
+            }
+          ]
+        },
         "Attendance": null
       },
       "teamForm": [
@@ -443,9 +493,9 @@
                 "1",
                 "1",
                 "away_team",
-                "3",
+                "4",
                 "0",
-                "2"
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -458,7 +508,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Brest have 3W, 1D, 1L in five matches while Paris FC have 3W, 0D, 2L."
+              "defaultText": "Brest have 3W, 1D, 1L in five matches while Paris FC have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -468,32 +518,8 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "7",
+                "8",
                 "away_team",
-                "4"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Brest have scored in their last 7 matches and Paris FC have scored in their last 4 matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "3",
-                "5",
                 "5"
               ],
               "DefaultLabels": [
@@ -505,17 +531,41 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have scored 5 goals in their last 3 matches, while Paris FC have scored 5."
+              "defaultText": "Brest have scored in their last 8 matches and Paris FC have scored in their last 5 matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
+              "StatValues": [
+                "away_team",
+                "8",
+                "3"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_goal",
+              "defaultText": "Paris FC have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "6"
+                "4",
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +578,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris FC haven't drawn in their last 6 matches."
+              "defaultText": "Brest haven't drawn in their last 4 matches and Paris FC in their last 7."
             }
           ]
         },
@@ -539,7 +589,46 @@
         "awayTopPlayers": []
       },
       "countryCode": "FRA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/53/5803002/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -557,19 +646,19 @@
     },
     "weather": {
       "temperature": 10,
-      "windSpeed": 4,
-      "windDirectionCardinal": "SE",
-      "iconCode": 11,
+      "windSpeed": 3,
+      "windDirectionCardinal": "SSE",
+      "iconCode": 26,
       "relativeHumidity": 95,
-      "precipChance": 43,
-      "precipitation": 0.2,
+      "precipChance": 24,
+      "precipitation": 0,
       "snow": 0,
-      "cloudCover": 86,
-      "description": "Showers",
+      "cloudCover": 88,
+      "description": "Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-22T20:00:21Z",
-      "localizedKey": "weather_condition_light_rain",
-      "defaultTitle": "Light Rain"
+      "lastUpdated": "2026-11-24T08:00:26Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5803002,
@@ -994,6 +1083,7 @@
             "shirtNumber": "21",
             "countryName": "France",
             "countryCode": "FRA",
+            "marketValue": 309181,
             "firstName": "Ibrahim",
             "lastName": "Kanté",
             "nationalTeamId": 6723,
@@ -1046,6 +1136,38 @@
           }
         ],
         "unavailable": [
+          {
+            "id": 1310270,
+            "age": 23,
+            "name": "Kamory Doumbia",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "marketValue": 15124151,
+            "unavailability": {
+              "injuryId": 30,
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Kamory",
+            "lastName": "Doumbia",
+            "nationalTeamId": 5815
+          },
+          {
+            "id": 279461,
+            "age": 35,
+            "name": "Kenny Lala",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 951623,
+            "unavailability": {
+              "injuryId": 14,
+              "type": "injury",
+              "expectedReturn": "Late December 2026"
+            },
+            "firstName": "Kenny",
+            "lastName": "Lala",
+            "nationalTeamId": 6723
+          },
           {
             "id": 1699556,
             "age": 20,

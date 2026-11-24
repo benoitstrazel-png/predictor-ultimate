@@ -86,7 +86,8 @@
         "ongoing": true,
         "events": [],
         "eventTypes": [
-          "Injuries"
+          "Injuries",
+          "InternationalDuty"
         ],
         "penaltyShootoutEvents": null
       },
@@ -113,7 +114,57 @@
           "capacity": 33150,
           "surface": "grass"
         },
-        "Referee": null,
+        "Referee": {
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/fra.png",
+          "text": "Guillaume Paradis",
+          "countryCode": "FRA",
+          "country": "France",
+          "id": 1001074964,
+          "leagueId": 53,
+          "leagueName": "Ligue 1",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 22,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 4,
+              "valueType": "perMatch",
+              "average": 3.69,
+              "total": 88,
+              "averageType": "above",
+              "fillPercentage": 61.81,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 2,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 0,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 4,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 26.05,
+              "valueType": "perMatch",
+              "average": 24.28,
+              "total": 573,
+              "averageType": "above",
+              "fillPercentage": 76.85,
+              "averagePercentage": 50
+            }
+          ]
+        },
         "Attendance": null
       },
       "teamForm": [
@@ -468,7 +519,7 @@
               "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
                 "away_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,7 +530,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Rennes have scored in their last 3 away matches."
+              "defaultText": "Rennes have scored in their last 4 away matches."
             },
             {
               "OddsType": "ou",
@@ -490,8 +541,8 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1"
+                "1.33",
+                "0.67"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,23 +553,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Toulouse have an average of 1 goals in their last three matches and Rennes have an average of 1."
+              "defaultText": "Toulouse have an average of 1.33 goals in their last three matches and Rennes have an average of 0.67."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "home_team",
-                "2",
-                "2",
-                "1",
                 "away_team",
-                "1",
-                "2",
-                "2"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -530,8 +575,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Toulouse have 2W, 2D, 1L in five matches while Rennes have 1W, 2D, 2L."
+              "Icon": "poll_stat_down",
+              "defaultText": "Rennes haven't won a match in 4 attempts."
             }
           ]
         },
@@ -542,7 +587,46 @@
         "awayTopPlayers": []
       },
       "countryCode": "FRA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": false,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/53/5803008/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -561,18 +645,18 @@
     "weather": {
       "temperature": 11,
       "windSpeed": 3,
-      "windDirectionCardinal": "SSW",
-      "iconCode": 28,
+      "windDirectionCardinal": "WSW",
+      "iconCode": 11,
       "relativeHumidity": 76,
-      "precipChance": 24,
-      "precipitation": 0,
+      "precipChance": 33,
+      "precipitation": 0.1,
       "snow": 0,
-      "cloudCover": 79,
-      "description": "Mostly Cloudy",
+      "cloudCover": 78,
+      "description": "Few Showers",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T05:00:17Z",
-      "localizedKey": "weather_condition_cloudy",
-      "defaultTitle": "Cloudy"
+      "lastUpdated": "2026-11-24T05:00:26Z",
+      "localizedKey": "weather_condition_light_rain",
+      "defaultTitle": "Light Rain"
     },
     "lineup": {
       "matchId": 5803008,
@@ -602,6 +686,40 @@
         "id": 9851,
         "name": "Rennes",
         "unavailable": [
+          {
+            "id": 317062,
+            "name": "Adrien Thomasson",
+            "unavailability": {
+              "lastUpdated": "0001-01-01T00:00:00",
+              "type": "suspension"
+            },
+            "firstName": "Adrien",
+            "lastName": "Thomasson"
+          },
+          {
+            "id": 1391052,
+            "name": "Eliezer Mayenda",
+            "unavailability": {
+              "injuryId": 101,
+              "lastUpdated": "2026-11-23T11:00:59Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Eliezer",
+            "lastName": "Mayenda"
+          },
+          {
+            "id": 562719,
+            "name": "Valentin Rongier",
+            "unavailability": {
+              "injuryId": 69,
+              "lastUpdated": "2026-11-23T11:01:19Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Valentin",
+            "lastName": "Rongier"
+          },
           {
             "id": 402419,
             "name": "Przemysław Frankowski",

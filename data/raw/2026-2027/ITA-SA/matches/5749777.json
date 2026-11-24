@@ -124,36 +124,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8529.png",
-            "linkToMatch": "/matches/monza-vs-cagliari/1va8au#5749706",
-            "date": {
-              "utcTime": "2026-10-19T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8529/overview/cagliari",
-            "tooltipText": {
-              "utcTime": "2026-10-19T16:30:00.000Z",
-              "homeTeam": "Monza",
-              "homeTeamId": 6504,
-              "homeScore": "4",
-              "awayTeam": "Cagliari",
-              "awayTeamId": 8529,
-              "awayScore": "0"
-            },
-            "score": "4 - 0",
-            "home": {
-              "id": "6504",
-              "name": "Monza",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8529",
-              "name": "Cagliari",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9804.png",
@@ -270,6 +240,36 @@
             "away": {
               "id": "8524",
               "name": "Atalanta",
+              "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
+            "linkToMatch": "/matches/monza-vs-fiorentina/1vc5x3#5749756",
+            "date": {
+              "utcTime": "2026-11-23T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/8535/overview/fiorentina",
+            "tooltipText": {
+              "utcTime": "2026-11-23T19:45:00.000Z",
+              "homeTeam": "Monza",
+              "homeTeamId": 6504,
+              "homeScore": "3",
+              "awayTeam": "Fiorentina",
+              "awayTeamId": 8535,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8535",
+              "name": "Fiorentina",
               "isOurTeam": false
             }
           }
@@ -440,11 +440,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "1",
+                "0",
+                "4",
+                "away_team",
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,8 +462,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Monza have lost their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Monza have 1W, 0D, 4L in five matches while Como have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -469,7 +475,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "2",
+                "4",
                 "11"
               ],
               "DefaultLabels": [
@@ -481,7 +487,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Monza have scored 2 goals in their last 3 matches, while Como have scored 11."
+              "defaultText": "Monza have scored 4 goals in their last 3 matches, while Como have scored 11."
             },
             {
               "OddsType": "ou",
@@ -509,11 +515,13 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "away_team",
+                "7",
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,8 +533,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Monza haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Monza haven't drawn in their last 7 matches and Como in their last 9."
             }
           ]
         },
@@ -546,7 +554,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -556,16 +564,16 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#e10032"
         },
         {
           "type": "team",
           "playerId": null,
           "teamId": 6504,
-          "priority": 7,
-          "defaultText": "Have lost their last {0} matches",
-          "localizedTextId": "insights_bad_form_team",
+          "priority": 10,
+          "defaultText": "Have been awarded the most penalties this season ({0})",
+          "localizedTextId": "insights_penalties_awarded",
           "statValues": [
             {
               "value": 4,
@@ -573,7 +581,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have lost their last 4 matches",
+          "text": "Have been awarded the most penalties this season (4)",
           "color": "#e10032"
         },
         {
@@ -688,18 +696,18 @@
       }
     },
     "weather": {
-      "temperature": 7,
+      "temperature": 6,
       "windSpeed": 2,
-      "windDirectionCardinal": "SW",
+      "windDirectionCardinal": "S",
       "iconCode": 30,
-      "relativeHumidity": 74,
-      "precipChance": 17,
+      "relativeHumidity": 73,
+      "precipChance": 21,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 53,
+      "cloudCover": 45,
       "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T14:00:08Z",
+      "lastUpdated": "2026-11-24T14:00:12Z",
       "localizedKey": "weather_condition_partly_cloudy",
       "defaultTitle": "Partly Cloudy"
     },
@@ -713,6 +721,18 @@
         "id": 6504,
         "name": "Monza",
         "unavailable": [
+          {
+            "id": 994403,
+            "name": "Cyril Ngonge",
+            "unavailability": {
+              "injuryId": 121,
+              "lastUpdated": "2026-11-24T12:52:25Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Cyril",
+            "lastName": "Ngonge"
+          },
           {
             "id": 822440,
             "name": "Michael Folorunsho",

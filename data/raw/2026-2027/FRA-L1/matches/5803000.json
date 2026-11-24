@@ -71,9 +71,9 @@
   },
   "nav": [
     "matchfacts",
+    "lineup",
     "table",
-    "head to head",
-    "injured"
+    "head to head"
   ],
   "ongoing": false,
   "hasPendingVAR": false,
@@ -113,7 +113,57 @@
           "capacity": 19000,
           "surface": "grass"
         },
-        "Referee": null,
+        "Referee": {
+          "imgUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/fra.png",
+          "text": "Romain Lissorgue",
+          "countryCode": "FRA",
+          "country": "France",
+          "id": 1001082058,
+          "leagueId": 53,
+          "leagueName": "Ligue 1",
+          "stats": [
+            {
+              "type": "matches",
+              "value": 23,
+              "valueType": "total"
+            },
+            {
+              "type": "yellowCards",
+              "value": 4.17,
+              "valueType": "perMatch",
+              "average": 3.69,
+              "total": 96,
+              "averageType": "above",
+              "fillPercentage": 68.53,
+              "averagePercentage": 50
+            },
+            {
+              "type": "redCards",
+              "value": 4,
+              "valueType": "total"
+            },
+            {
+              "type": "unknown",
+              "value": 3,
+              "valueType": "total"
+            },
+            {
+              "type": "penalties",
+              "value": 12,
+              "valueType": "total"
+            },
+            {
+              "type": "fouls",
+              "value": 27,
+              "valueType": "perMatch",
+              "average": 24.28,
+              "total": 621,
+              "averageType": "above",
+              "fillPercentage": 91.39,
+              "averagePercentage": 50
+            }
+          ]
+        },
         "Attendance": null
       },
       "teamForm": [
@@ -459,34 +509,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
-              "StatValues": [
-                "home_team",
-                "away_team",
-                "0",
-                "0.67"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Angers have an average of 0 goals in their last three matches and Lens have an average of 0.67."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
               "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
               "TextTemplateId": "goalless_team",
               "StatValues": [
                 "home_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -497,7 +524,28 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Angers haven't scored in their last 3 matches."
+              "defaultText": "Angers haven't scored in their last 4 matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
+              "StatValues": [
+                "home_team",
+                "4"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_glove",
+              "defaultText": "Angers haven't scored in their last 4 matches."
             },
             {
               "OddsType": "dc",
@@ -507,7 +555,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -520,7 +568,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Angers haven't won a match in 5 attempts."
+              "defaultText": "Angers haven't won a match in 6 attempts."
             }
           ]
         },
@@ -531,7 +579,46 @@
         "awayTopPlayers": []
       },
       "countryCode": "FRA",
-      "QAData": []
+      "QAData": [],
+      "matchInsightsConfig": {
+        "hasBettingInsight": true,
+        "languages": [
+          "en",
+          "nb",
+          "no",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ar",
+          "pt-BR",
+          "ku",
+          "da",
+          "el",
+          "fa",
+          "fi",
+          "hi",
+          "id",
+          "in",
+          "ja",
+          "ko",
+          "my",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "sw",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-Hans",
+          "zh"
+        ],
+        "urlTemplate": "https://data.fotmob.com/generated-match-insights/53/5803000/matchinsights_{lang}.json"
+      }
     },
     "liveticker": false,
     "superlive": {
@@ -548,86 +635,1068 @@
       }
     },
     "weather": {
-      "temperature": 8,
+      "temperature": 7,
       "windSpeed": 3,
       "windDirectionCardinal": "SE",
-      "iconCode": 30,
-      "relativeHumidity": 81,
+      "iconCode": 28,
+      "relativeHumidity": 80,
       "precipChance": 16,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 54,
-      "description": "Partly Cloudy",
+      "cloudCover": 78,
+      "description": "Mostly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T05:00:17Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-11-24T05:00:26Z",
+      "localizedKey": "weather_condition_cloudy",
+      "defaultTitle": "Cloudy"
     },
     "lineup": {
       "matchId": 5803000,
-      "lineupType": "standard",
+      "lineupType": "lastStarting11",
+      "source": "lastStartingLineups",
       "availableFilters": [
-        "match"
+        "marketValue",
+        "age",
+        "country"
       ],
       "homeTeam": {
         "id": 8121,
         "name": "Angers",
+        "formation": "4-2-3-1",
+        "starters": [
+          {
+            "id": 167035,
+            "age": 36,
+            "optaId": "59957",
+            "name": "Anthony Lopes",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "1",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 984128,
+            "firstName": "Anthony",
+            "lastName": "Lopes",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 634110,
+            "age": 30,
+            "optaId": "209171",
+            "name": "Carlens Arcus",
+            "positionId": 32,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "2",
+            "countryName": "Haiti",
+            "countryCode": "HAI",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 921681,
+            "firstName": "Carlens",
+            "lastName": "Arcus",
+            "nationalTeamId": 5934,
+            "rankings": null
+          },
+          {
+            "id": 1178325,
+            "age": 23,
+            "optaId": "512126",
+            "name": "Ousmane Camara",
+            "positionId": 34,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "4",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 10177327,
+            "firstName": "Ousmane",
+            "lastName": "Camara",
+            "nationalTeamId": 5815,
+            "rankings": null
+          },
+          {
+            "id": 1946407,
+            "age": 17,
+            "optaId": "672283",
+            "name": "Maël Gernigon",
+            "positionId": 36,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "34",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "firstName": "Maël",
+            "lastName": "Gernigon",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1610106,
+            "age": 21,
+            "optaId": "633077",
+            "name": "Joseph Kalulu",
+            "positionId": 38,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "17",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "firstName": "Joseph",
+            "lastName": "Kalulu",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 561869,
+            "age": 32,
+            "optaId": "193411",
+            "name": "Haris Belkebla",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "93",
+            "isCaptain": true,
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1254803,
+            "firstName": "Haris",
+            "lastName": "Belkebla",
+            "nationalTeamId": 6317,
+            "rankings": null
+          },
+          {
+            "id": 505059,
+            "age": 31,
+            "optaId": "174969",
+            "name": "Branco van den Boomen",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Netherlands",
+            "countryCode": "NED",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 1683832,
+            "firstName": "Branco",
+            "lastName": "van den Boomen",
+            "nationalTeamId": 6708,
+            "rankings": null
+          },
+          {
+            "id": 1573544,
+            "age": 21,
+            "optaId": "634346",
+            "name": "Anthony Bermont",
+            "positionId": 83,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "26",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.837,
+              "height": 0.25,
+              "width": 0.385
+            },
+            "verticalLayout": {
+              "x": 0.162,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 4268450,
+            "firstName": "Anthony",
+            "lastName": "Bermont",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1347791,
+            "age": 24,
+            "optaId": "574193",
+            "name": "Yassin Belkhdim",
+            "positionId": 85,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.337
+            },
+            "marketValue": 6647630,
+            "firstName": "Yassin",
+            "lastName": "Belkhdim",
+            "nationalTeamId": 6262,
+            "rankings": null
+          },
+          {
+            "id": 1242587,
+            "age": 26,
+            "optaId": "532112",
+            "name": "Amine Sbaï",
+            "positionId": 87,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.163,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.837,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.325
+            },
+            "marketValue": 3614114,
+            "firstName": "Amine",
+            "lastName": "Sbaï",
+            "nationalTeamId": 6262,
+            "rankings": null
+          },
+          {
+            "id": 1169692,
+            "age": 24,
+            "optaId": "523895",
+            "name": "Usman Simbakoli",
+            "positionId": 115,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "7",
+            "countryName": "Central African Republic",
+            "countryCode": "CTA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 734159,
+            "firstName": "Usman",
+            "lastName": "Simbakoli",
+            "nationalTeamId": 230693,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 1141972,
+          "age": 52,
+          "optaId": "32",
+          "name": "Stéphane Gilli",
+          "countryName": "France",
+          "countryCode": "FRA",
+          "firstName": "Stéphane",
+          "lastName": "Gilli",
+          "nationalTeamId": 6723,
+          "primaryTeamId": 8121,
+          "primaryTeamName": "Angers",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 2472425,
+            "age": 17,
+            "optaId": "693397",
+            "name": "Ianis Sacko",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "50",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "firstName": "Ianis",
+            "lastName": "Sacko",
+            "nationalTeamId": 5815,
+            "rankings": null
+          },
+          {
+            "id": 1688980,
+            "age": 19,
+            "optaId": "658062",
+            "name": "Marius Louër",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 2122965,
+            "firstName": "Marius",
+            "lastName": "Louër",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1431818,
+            "age": 26,
+            "optaId": "608246",
+            "name": "Lilian Rao-Lisoa",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "27",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 2554281,
+            "firstName": "Lilian",
+            "lastName": "Rao-Lisoa",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 2173845,
+            "age": 17,
+            "optaId": "749741",
+            "name": "Jules Bouffandeau",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "37",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "firstName": "Jules",
+            "lastName": "Bouffandeau",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1329255,
+            "age": 24,
+            "optaId": "565877",
+            "name": "Louis Mouton",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "6",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 3786851,
+            "firstName": "Louis",
+            "lastName": "Mouton",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1428420,
+            "age": 21,
+            "optaId": "606929",
+            "name": "Emmanuel Biumla",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "24",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 2213269,
+            "firstName": "Emmanuel",
+            "lastName": "Biumla",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1123505,
+            "age": 25,
+            "optaId": "501332",
+            "name": "Amine El Ouazzani",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Morocco",
+            "countryCode": "MAR",
+            "marketValue": 2012195,
+            "firstName": "Amine",
+            "lastName": "El Ouazzani",
+            "nationalTeamId": 6262,
+            "rankings": null
+          },
+          {
+            "id": 1748405,
+            "age": 19,
+            "optaId": "695695",
+            "name": "Prosper Peter",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "9",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 15090244,
+            "firstName": "Prosper",
+            "lastName": "Peter",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1011026,
+            "age": 31,
+            "optaId": "473389",
+            "name": "Jim Allevinah",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "18",
+            "countryName": "Gabon",
+            "countryCode": "GAB",
+            "marketValue": 661094,
+            "firstName": "Jim",
+            "lastName": "Allevinah",
+            "nationalTeamId": 5889,
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
             "id": 1958964,
+            "age": 18,
             "name": "Bané Diatta",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1416144,
             "unavailability": {
               "injuryId": 30,
-              "lastUpdated": "2026-11-06T16:32:54Z",
               "type": "injury",
               "expectedReturn": "Early December 2026"
             },
             "firstName": "Bané",
-            "lastName": "Diatta"
+            "lastName": "Diatta",
+            "nationalTeamId": 6723
           }
-        ]
+        ],
+        "averageStarterAge": 26.5,
+        "totalStarterMarketValue": 30286124,
+        "lastMatch": {
+          "matchId": 5802997,
+          "homeTeamId": 6379,
+          "awayTeamId": 8121,
+          "homeTeamName": "Paris FC",
+          "awayTeamName": "Angers",
+          "homeScore": 4,
+          "awayScore": 0,
+          "matchDate": "2026-11-22T15:00:00"
+        }
       },
       "awayTeam": {
         "id": 8588,
         "name": "Lens",
+        "formation": "3-4-2-1",
+        "starters": [
+          {
+            "id": 1390336,
+            "age": 21,
+            "optaId": "584845",
+            "name": "Robin Risser",
+            "positionId": 11,
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "40",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.1,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.1,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 34514649,
+            "firstName": "Robin",
+            "lastName": "Risser",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 955214,
+            "age": 26,
+            "optaId": "462116",
+            "name": "Jean-Clair Todibo",
+            "positionId": 33,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "20",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.79,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.21,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 22575354,
+            "firstName": "Jean-Clair",
+            "lastName": "Todibo",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1276626,
+            "age": 22,
+            "optaId": "503543",
+            "name": "Samson Baidoo",
+            "positionId": 35,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "6",
+            "countryName": "Austria",
+            "countryCode": "AUT",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 26236572,
+            "firstName": "Samson",
+            "lastName": "Baidoo",
+            "nationalTeamId": 8255,
+            "rankings": null
+          },
+          {
+            "id": 1191194,
+            "age": 24,
+            "optaId": "448114",
+            "name": "Jhoanner Chávez",
+            "positionId": 37,
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "13",
+            "countryName": "Ecuador",
+            "countryCode": "ECU",
+            "horizontalLayout": {
+              "x": 0.292,
+              "y": 0.21,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.79,
+              "y": 0.292,
+              "height": 0.192,
+              "width": 0.29
+            },
+            "marketValue": 1830773,
+            "firstName": "Jhoanner",
+            "lastName": "Chávez",
+            "nationalTeamId": 6707,
+            "rankings": null
+          },
+          {
+            "id": 561046,
+            "age": 33,
+            "optaId": "115327",
+            "name": "Ruben Aguilar",
+            "positionId": 62,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "2",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.875,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.125,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 1774838,
+            "firstName": "Ruben",
+            "lastName": "Aguilar",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1288907,
+            "age": 23,
+            "optaId": "562049",
+            "name": "Yacine Titraoui",
+            "positionId": 64,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "8",
+            "countryName": "Algeria",
+            "countryCode": "ALG",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.625,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.375,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 11247212,
+            "firstName": "Yacine",
+            "lastName": "Titraoui",
+            "nationalTeamId": 6317,
+            "rankings": null
+          },
+          {
+            "id": 861445,
+            "age": 27,
+            "optaId": "204730",
+            "name": "Michaël Cuisance",
+            "positionId": 66,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "27",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.375,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.625,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 5959369,
+            "firstName": "Michaël",
+            "lastName": "Cuisance",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 660326,
+            "age": 30,
+            "optaId": "221987",
+            "name": "Matthieu Udol",
+            "positionId": 68,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "14",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.485,
+              "y": 0.125,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.875,
+              "y": 0.485,
+              "height": 0.192,
+              "width": 0.25
+            },
+            "marketValue": 5928994,
+            "firstName": "Matthieu",
+            "lastName": "Udol",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1980586,
+            "age": 17,
+            "optaId": "713719",
+            "name": "Mezian Mesloub",
+            "positionId": 84,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "38",
+            "countryName": "Portugal",
+            "countryCode": "POR",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.7,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.3,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "firstName": "Mezian",
+            "lastName": "Mesloub",
+            "nationalTeamId": 8361,
+            "rankings": null
+          },
+          {
+            "id": 612699,
+            "age": 36,
+            "optaId": "204188",
+            "name": "Florian Sotoca",
+            "positionId": 86,
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "7",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.678,
+              "y": 0.3,
+              "height": 0.25,
+              "width": 0.193
+            },
+            "verticalLayout": {
+              "x": 0.7,
+              "y": 0.678,
+              "height": 0.192,
+              "width": 0.4
+            },
+            "marketValue": 663077,
+            "firstName": "Florian",
+            "lastName": "Sotoca",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 254308,
+            "age": 33,
+            "optaId": "95434",
+            "name": "Florian Thauvin",
+            "positionId": 105,
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "10",
+            "isCaptain": true,
+            "countryName": "France",
+            "countryCode": "FRA",
+            "horizontalLayout": {
+              "x": 0.87,
+              "y": 0.5,
+              "height": 0.25,
+              "width": 0.192
+            },
+            "verticalLayout": {
+              "x": 0.5,
+              "y": 0.87,
+              "height": 0.192,
+              "width": 1
+            },
+            "marketValue": 3583900,
+            "firstName": "Florian",
+            "lastName": "Thauvin",
+            "nationalTeamId": 6723,
+            "rankings": null
+          }
+        ],
+        "coach": {
+          "id": 33128,
+          "age": 40,
+          "optaId": "37",
+          "name": "Didier Digard",
+          "countryName": "France",
+          "countryCode": "FRA",
+          "firstName": "Didier",
+          "lastName": "Digard",
+          "nationalTeamId": 6723,
+          "primaryTeamId": 8588,
+          "primaryTeamName": "Lens",
+          "usualPlayingPositionId": null,
+          "isCoach": true
+        },
+        "subs": [
+          {
+            "id": 186811,
+            "age": 36,
+            "optaId": "59956",
+            "name": "Mathieu Gorgelin",
+            "usualPlayingPositionId": 0,
+            "shirtNumber": "16",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 268517,
+            "firstName": "Mathieu",
+            "lastName": "Gorgelin",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1685514,
+            "age": 18,
+            "optaId": "634871",
+            "name": "Kyllian Antonio",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "32",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 13122573,
+            "firstName": "Kyllian",
+            "lastName": "Antonio",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1406645,
+            "age": 21,
+            "optaId": "596121",
+            "name": "Ismaëlo Ganiou",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "25",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 36426378,
+            "firstName": "Ismaëlo",
+            "lastName": "Ganiou",
+            "nationalTeamId": 6723,
+            "rankings": null
+          },
+          {
+            "id": 1002617,
+            "age": 27,
+            "optaId": "468266",
+            "name": "Saud Abdulhamid",
+            "usualPlayingPositionId": 1,
+            "shirtNumber": "23",
+            "countryName": "Saudi Arabia",
+            "countryCode": "KSA",
+            "marketValue": 10522345,
+            "firstName": "Saud",
+            "lastName": "Abdulhamid",
+            "nationalTeamId": 7795,
+            "rankings": null
+          },
+          {
+            "id": 264190,
+            "age": 33,
+            "optaId": "97471",
+            "name": "Thorgan Hazard",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "9",
+            "countryName": "Belgium",
+            "countryCode": "BEL",
+            "marketValue": 1467073,
+            "firstName": "Thorgan",
+            "lastName": "Hazard",
+            "nationalTeamId": 8263,
+            "rankings": null
+          },
+          {
+            "id": 688830,
+            "age": 28,
+            "optaId": "218244",
+            "name": "Amadou Haidara",
+            "usualPlayingPositionId": 2,
+            "shirtNumber": "21",
+            "countryName": "Mali",
+            "countryCode": "MLI",
+            "marketValue": 4296144,
+            "firstName": "Amadou",
+            "lastName": "Haidara",
+            "nationalTeamId": 5815,
+            "rankings": null
+          },
+          {
+            "id": 1189856,
+            "age": 25,
+            "optaId": "516211",
+            "name": "Abdallah Sima",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "19",
+            "countryName": "Senegal",
+            "countryCode": "SEN",
+            "marketValue": 8245071,
+            "firstName": "Abdallah",
+            "lastName": "Sima",
+            "nationalTeamId": 6395,
+            "rankings": null
+          },
+          {
+            "id": 1334534,
+            "age": 23,
+            "optaId": "503721",
+            "name": "Junior Kadile",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "28",
+            "countryName": "Congo DR",
+            "countryCode": "COD",
+            "marketValue": 6205706,
+            "firstName": "Junior",
+            "lastName": "Kadile",
+            "nationalTeamId": 6321,
+            "rankings": null
+          },
+          {
+            "id": 954190,
+            "age": 26,
+            "optaId": "484672",
+            "name": "Michał Skóras",
+            "usualPlayingPositionId": 3,
+            "shirtNumber": "22",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 6257460,
+            "firstName": "Michał",
+            "lastName": "Skóras",
+            "nationalTeamId": 8568,
+            "rankings": null
+          }
+        ],
         "unavailable": [
           {
-            "id": 1634789,
-            "name": "Andrija Bulatović",
+            "id": 861445,
+            "age": 27,
+            "name": "Michaël Cuisance",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 5959369,
             "unavailability": {
-              "injuryId": 85,
-              "lastUpdated": "2026-11-19T20:34:30Z",
+              "injuryId": 92,
               "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
+              "expectedReturn": "About a week"
             },
-            "firstName": "Andrija",
-            "lastName": "Bulatović"
+            "firstName": "Michaël",
+            "lastName": "Cuisance",
+            "nationalTeamId": 6723
+          },
+          {
+            "id": 561046,
+            "age": 33,
+            "name": "Ruben Aguilar",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 1774838,
+            "unavailability": {
+              "injuryId": 42,
+              "type": "injury",
+              "expectedReturn": "Early December 2026"
+            },
+            "firstName": "Ruben",
+            "lastName": "Aguilar",
+            "nationalTeamId": 6723
           },
           {
             "id": 637746,
+            "age": 28,
             "name": "Odsonne Édouard",
+            "countryName": "France",
+            "countryCode": "FRA",
+            "marketValue": 11559369,
             "unavailability": {
               "injuryId": 47,
-              "lastUpdated": "2026-10-28T20:06:21Z",
               "type": "injury",
               "expectedReturn": "Early January 2027"
             },
             "firstName": "Odsonne",
-            "lastName": "Édouard"
+            "lastName": "Édouard",
+            "nationalTeamId": 6723
           },
           {
             "id": 1053713,
+            "age": 25,
             "name": "Maik Nawrocki",
+            "countryName": "Poland",
+            "countryCode": "POL",
+            "marketValue": 1919336,
             "unavailability": {
               "injuryId": 76,
-              "lastUpdated": "2026-09-03T13:05:38Z",
               "type": "injury",
               "expectedReturn": "Mid May 2027"
             },
             "firstName": "Maik",
-            "lastName": "Nawrocki"
+            "lastName": "Nawrocki",
+            "nationalTeamId": 8568
           }
-        ]
+        ],
+        "averageStarterAge": 27.1,
+        "totalStarterMarketValue": 114314738,
+        "lastMatch": {
+          "matchId": 5802991,
+          "homeTeamId": 8588,
+          "awayTeamId": 9941,
+          "homeTeamName": "Lens",
+          "awayTeamName": "Toulouse",
+          "homeScore": 1,
+          "awayScore": 1,
+          "matchDate": "2026-11-21T20:45:00"
+        }
       }
     },
     "hasPlayoff": false,

@@ -176,14 +176,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "7"
+                "0.33",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -194,7 +193,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored 5 goals in their last 3 matches, while Augsburg have scored 7."
+              "defaultText": "VfB Stuttgart have an average of 0.33 goals in their last three matches and Augsburg have an average of 2."
             },
             {
               "OddsType": "dc",
@@ -203,8 +202,8 @@
               "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "5"
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -217,7 +216,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 5 matches."
+              "defaultText": "Augsburg haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -314,6 +313,18 @@
         "id": 8406,
         "name": "Augsburg",
         "unavailable": [
+          {
+            "id": 245315,
+            "name": "Jeffrey Gouweleeuw",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-11-23T13:15:03Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Jeffrey",
+            "lastName": "Gouweleeuw"
+          },
           {
             "id": 978680,
             "name": "Han-Noah Massengo",

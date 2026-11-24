@@ -130,11 +130,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "4"
+                "4",
+                "0",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -146,8 +152,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Marseille have won their last 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Brest have 3W, 1D, 1L in five matches while Marseille have 4W, 0D, 1L."
             },
             {
               "OddsType": "bts",
@@ -157,9 +163,9 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "7",
+                "8",
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -170,7 +176,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Brest have scored in their last 7 matches and Marseille have scored in their last 4 matches."
+              "defaultText": "Brest have scored in their last 8 matches and Marseille have scored in their last 5 matches."
             },
             {
               "OddsType": "ou",
@@ -200,10 +206,12 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
+                "4",
                 "12"
               ],
               "DefaultLabels": [
@@ -217,7 +225,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Marseille haven't drawn in their last 12 matches."
+              "defaultText": "Brest haven't drawn in their last 4 matches and Marseille in their last 12."
             }
           ]
         },
@@ -254,6 +262,30 @@
         "id": 8521,
         "name": "Brest",
         "unavailable": [
+          {
+            "id": 1310270,
+            "name": "Kamory Doumbia",
+            "unavailability": {
+              "injuryId": 30,
+              "lastUpdated": "2026-11-23T12:24:29Z",
+              "type": "injury",
+              "expectedReturn": "Doubtful"
+            },
+            "firstName": "Kamory",
+            "lastName": "Doumbia"
+          },
+          {
+            "id": 279461,
+            "name": "Kenny Lala",
+            "unavailability": {
+              "injuryId": 14,
+              "lastUpdated": "2026-11-23T12:24:02Z",
+              "type": "injury",
+              "expectedReturn": "Late December 2026"
+            },
+            "firstName": "Kenny",
+            "lastName": "Lala"
+          },
           {
             "id": 1699556,
             "name": "Raphaël Le Guen",

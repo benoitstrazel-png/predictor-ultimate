@@ -278,36 +278,6 @@
           {
             "result": -1,
             "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png",
-            "linkToMatch": "/matches/fiorentina-vs-como/2w6bnm#5749703",
-            "date": {
-              "utcTime": "2026-10-18T13:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/10171/overview/como",
-            "tooltipText": {
-              "utcTime": "2026-10-18T13:00:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "1",
-              "awayTeam": "Como",
-              "awayTeamId": 10171,
-              "awayScore": "3"
-            },
-            "score": "1 - 3",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "10171",
-              "name": "Como",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": -1,
-            "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
             "linkToMatch": "/matches/fiorentina-vs-inter/2fs4je#5749714",
             "date": {
@@ -424,6 +394,36 @@
               "name": "Juventus",
               "isOurTeam": false
             }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/6504.png",
+            "linkToMatch": "/matches/monza-vs-fiorentina/1vc5x3#5749756",
+            "date": {
+              "utcTime": "2026-11-23T19:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/6504/overview/monza",
+            "tooltipText": {
+              "utcTime": "2026-11-23T19:45:00.000Z",
+              "homeTeam": "Monza",
+              "homeTeamId": 6504,
+              "homeScore": "3",
+              "awayTeam": "Fiorentina",
+              "awayTeamId": 8535,
+              "awayScore": "0"
+            },
+            "score": "3 - 0",
+            "home": {
+              "id": "6504",
+              "name": "Monza",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8535",
+              "name": "Fiorentina",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -463,11 +463,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "4"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,18 +481,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have scored in their last 4 away matches."
+              "defaultText": "Udinese have scored 4 goals in their last 3 matches, while Fiorentina have scored 6."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "8",
-                "3"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +505,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Fiorentina have scored 8 goals in their last 3 matches."
+              "defaultText": "Udinese have scored 4 goals in their last 3 matches, while Fiorentina have scored 6."
             },
             {
               "OddsType": "dc",
@@ -609,7 +614,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -619,7 +624,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#5F259F"
         },
         {
@@ -631,25 +636,25 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 7 matches",
+          "text": "Haven't kept a clean sheet in 8 matches",
           "color": "#5F259F"
         },
         {
           "type": "player",
-          "playerId": 1607566,
+          "playerId": 1526689,
           "teamId": 8535,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 1607566,
-              "name": "Franco Mastantuono",
+              "value": 1526689,
+              "name": "Álex Jiménez",
               "type": "player"
             },
             {
@@ -658,12 +663,12 @@
               "type": "team"
             },
             {
-              "value": 1.3,
+              "value": 4,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Franco Mastantuono has the most shots on target per match for Fiorentina (1.3)",
+          "text": "Álex Jiménez has created the most big chances for Fiorentina (4)",
           "color": "#5F259F"
         }
       ],
@@ -685,18 +690,18 @@
       }
     },
     "weather": {
-      "temperature": 6,
+      "temperature": 7,
       "windSpeed": 2,
       "windDirectionCardinal": "ENE",
-      "iconCode": 32,
-      "relativeHumidity": 66,
+      "iconCode": 34,
+      "relativeHumidity": 68,
       "precipChance": 2,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 15,
-      "description": "Sunny",
+      "cloudCover": 21,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-23T12:00:03Z",
+      "lastUpdated": "2026-11-24T12:00:23Z",
       "localizedKey": "weather_condition_sunny",
       "defaultTitle": "Sunny"
     },
@@ -781,6 +786,22 @@
             "firstName": "Federico",
             "lastName": "Croci",
             "nationalTeamId": 8204
+          },
+          {
+            "id": 1501917,
+            "age": 21,
+            "name": "Viery",
+            "countryName": "Brazil",
+            "countryCode": "BRA",
+            "marketValue": 15474987,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "",
+            "lastName": "Viery",
+            "nationalTeamId": 8256
           },
           {
             "id": 831474,
