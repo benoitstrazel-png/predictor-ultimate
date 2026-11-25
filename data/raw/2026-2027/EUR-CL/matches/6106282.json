@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have lost their last {1} matches.",
-              "TextTemplateId": "bad_form_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,20 +455,18 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa have lost their last 4 matches."
+              "Icon": "poll_stat_up",
+              "defaultText": "Paris Saint-Germain have won their last 12 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "0.67",
-                "1.33"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -479,19 +477,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have an average of 0.67 goals in their last three matches and Paris Saint-Germain have an average of 1.33."
+              "defaultText": "Paris Saint-Germain have scored in their last 7 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "0.67",
-                "1.33"
+                "10",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,7 +499,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Aston Villa have an average of 0.67 goals in their last three matches and Paris Saint-Germain have an average of 1.33."
+              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -512,7 +509,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "4"
+                "6"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +522,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Aston Villa haven't won a match in 4 attempts."
+              "defaultText": "Aston Villa haven't won a match in 6 attempts."
             }
           ]
         },
@@ -566,18 +563,52 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 9847,
-          "priority": 1345,
-          "defaultText": "Haven't kept a clean sheet in {0} matches",
-          "localizedTextId": "insights_not_clean_sheet",
+          "teamId": 10252,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 2,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#7D1142"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9847,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 12,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 12 matches",
+          "color": "#273F6D"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9847,
+          "priority": 7,
+          "defaultText": "Have won their last {0} matches",
+          "localizedTextId": "insights_good_form_team",
+          "statValues": [
+            {
+              "value": 12,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Have won their last 12 matches",
           "color": "#273F6D"
         }
       ],
@@ -624,18 +655,6 @@
         "id": 10252,
         "name": "Aston Villa",
         "unavailable": [
-          {
-            "id": 258269,
-            "name": "Victor Nilsson Lindelöf",
-            "unavailability": {
-              "injuryId": 92,
-              "lastUpdated": "2026-11-24T17:34:12Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Victor Nilsson",
-            "lastName": "Lindelöf"
-          },
           {
             "id": 729731,
             "name": "Matty Cash",

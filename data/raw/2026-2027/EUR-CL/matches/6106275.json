@@ -439,11 +439,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have won their last {1} matches.",
+              "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "8"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,17 +456,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Sporting CP haven't lost in 8 matches."
+              "defaultText": "Sporting CP have won their last 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "9",
+                "away_team",
+                "12"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,7 +479,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Roma have scored in their last 4 home matches."
+              "defaultText": "Roma have scored in their last 9 matches and Sporting CP have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
@@ -486,7 +488,7 @@
               "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
               "TextTemplateId": "goals_team",
               "StatValues": [
-                "away_team",
+                "home_team",
                 "10",
                 "3"
               ],
@@ -499,23 +501,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Sporting CP have scored 10 goals in their last 3 matches."
+              "defaultText": "Roma have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
                 "home_team",
-                "2",
-                "1",
-                "2",
                 "away_team",
-                "4",
-                "1",
-                "0"
+                "5",
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -528,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Roma have 2W, 1D, 2L in five matches while Sporting CP have 4W, 1D, 0L."
+              "defaultText": "Roma haven't drawn in their last 5 matches and Sporting CP in their last 9."
             }
           ]
         },
@@ -548,12 +546,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 8 matches",
+          "text": "Haven't lost in 5 matches",
           "color": "#106840"
         },
         {
@@ -627,18 +625,6 @@
         "id": 8686,
         "name": "Roma",
         "unavailable": [
-          {
-            "id": 958464,
-            "name": "Leonardo Balerdi",
-            "unavailability": {
-              "injuryId": 30,
-              "lastUpdated": "2026-11-24T17:12:38Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Leonardo",
-            "lastName": "Balerdi"
-          },
           {
             "id": 1180321,
             "name": "Devyne Rensch",

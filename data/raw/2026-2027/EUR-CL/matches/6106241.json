@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "7"
+                "12"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bayern München have won their last 7 matches."
+              "defaultText": "Bayern München haven't lost in 12 matches."
             },
             {
               "OddsType": "bts",
@@ -467,7 +467,7 @@
                 "home_team",
                 "12",
                 "away_team",
-                "8"
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -478,18 +478,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayern München have scored in their last 12 matches and Slavia Prague have scored in their last 8 matches."
+              "defaultText": "Bayern München have scored in their last 12 matches and Slavia Prague have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "11",
-                "3"
+                "away_team",
+                "3",
+                "5",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,7 +502,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayern München have scored 11 goals in their last 3 matches."
+              "defaultText": "Bayern München have scored 5 goals in their last 3 matches, while Slavia Prague have scored 7."
             },
             {
               "OddsType": "dc",
@@ -509,8 +511,8 @@
               "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
               "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "11"
+                "away_team",
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +525,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Bayern München haven't drawn in their last 11 matches."
+              "defaultText": "Slavia Prague haven't drawn in their last 5 matches."
             }
           ]
         },
@@ -538,35 +540,18 @@
           "type": "team",
           "playerId": null,
           "teamId": 9823,
-          "priority": 1343,
+          "priority": 6,
           "defaultText": "Haven't lost in {0} matches",
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 22,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 7 matches",
+          "text": "Haven't lost in 22 matches",
           "color": "#C60428"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 7787,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 6,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 6 matches",
-          "color": "#D82333"
         }
       ],
       "countryCode": "INT-2",
@@ -683,18 +668,6 @@
             },
             "firstName": "Ismael",
             "lastName": "Saibari"
-          },
-          {
-            "id": 860914,
-            "name": "Luis Díaz",
-            "unavailability": {
-              "injuryId": 42,
-              "lastUpdated": "2026-11-24T16:41:14Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Luis",
-            "lastName": "Díaz"
           }
         ]
       },
