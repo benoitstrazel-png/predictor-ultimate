@@ -132,11 +132,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "1",
+                "2",
+                "2",
+                "away_team",
+                "1",
+                "0",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -148,8 +154,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Le Mans haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Le Mans have 1W, 2D, 2L in five matches while Strasbourg have 1W, 0D, 4L."
             },
             {
               "OddsType": "bts",
@@ -161,7 +167,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "2",
+                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -173,7 +179,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Le Mans have scored 2 goals in their last 3 matches, while Strasbourg have scored 6."
+              "defaultText": "Le Mans have scored 4 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "ou",
@@ -185,7 +191,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "2",
+                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -197,17 +203,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Le Mans have scored 2 goals in their last 3 matches, while Strasbourg have scored 6."
+              "defaultText": "Le Mans have scored 4 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "5"
+                "away_team",
+                "7"
               ],
               "DefaultLabels": [
                 "1x",
@@ -219,8 +225,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Le Mans haven't won a match in 5 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Strasbourg haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -311,6 +317,30 @@
         "id": 9848,
         "name": "Strasbourg",
         "unavailable": [
+          {
+            "id": 1575945,
+            "name": "Oso",
+            "unavailability": {
+              "injuryId": 130,
+              "lastUpdated": "2026-11-24T10:58:57Z",
+              "type": "injury",
+              "expectedReturn": "About a week"
+            },
+            "firstName": "",
+            "lastName": "Oso"
+          },
+          {
+            "id": 1071179,
+            "name": "Giovanni Reyna",
+            "unavailability": {
+              "injuryId": 87,
+              "lastUpdated": "2026-11-24T10:58:35Z",
+              "type": "injury",
+              "expectedReturn": "About a week"
+            },
+            "firstName": "Giovanni",
+            "lastName": "Reyna"
+          },
           {
             "id": 1666019,
             "name": "Fabio Baldé",
