@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/477697.png",
-            "linkToMatch": "/matches/getafe-vs-ub-lebrijana/1i9587ws#6386062",
-            "date": {
-              "utcTime": "2026-10-29T18:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/477697/overview/ub-lebrijana",
-            "tooltipText": {
-              "utcTime": "2026-10-29T18:00:00.000Z",
-              "homeTeam": "UB Lebrijana",
-              "homeTeamId": 477697,
-              "homeScore": "2",
-              "awayTeam": "Getafe",
-              "awayTeamId": 8305,
-              "awayScore": "3"
-            },
-            "score": "2 - 3",
-            "home": {
-              "id": "477697",
-              "name": "UB Lebrijana",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8305",
-              "name": "Getafe",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8302.png",
             "linkToMatch": "/matches/sevilla-vs-getafe/2a3y81#5868116",
             "date": {
@@ -270,6 +240,36 @@
               "id": "9906",
               "name": "Atlético Madrid",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/480291.png",
+            "linkToMatch": "/matches/getafe-vs-iberia-1999/1iu1tawz#6112551",
+            "date": {
+              "utcTime": "2026-11-26T17:45:00.000Z"
+            },
+            "teamPageUrl": "/teams/480291/overview/iberia-1999",
+            "tooltipText": {
+              "utcTime": "2026-11-26T17:45:00.000Z",
+              "homeTeam": "Iberia 1999",
+              "homeTeamId": 480291,
+              "homeScore": "1",
+              "awayTeam": "Getafe",
+              "awayTeamId": 8305,
+              "awayScore": "0"
+            },
+            "score": "1 - 0",
+            "home": {
+              "id": "480291",
+              "name": "Iberia 1999",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8305",
+              "name": "Getafe",
+              "isOurTeam": true
             }
           }
         ],
@@ -463,32 +463,11 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
-              "StatValues": [
-                "away_team",
-                "5"
-              ],
-              "DefaultLabels": [
-                "yes",
-                "no"
-              ],
-              "LabelTemplates": [
-                "label_yes",
-                "label_no"
-              ],
-              "Icon": "poll_goal",
-              "defaultText": "Valencia have scored in their last 5 away matches."
-            },
-            {
-              "OddsType": "ou",
-              "DefaultLabel": "Will there be more than 2.5 goals?",
-              "TextLabelId": "over_under",
               "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
               "TextTemplateId": "goalless_team",
               "StatValues": [
                 "home_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -499,19 +478,38 @@
                 "label_no"
               ],
               "Icon": "poll_glove",
-              "defaultText": "Getafe haven't scored in their last 3 matches."
+              "defaultText": "Getafe haven't scored in their last 4 matches."
+            },
+            {
+              "OddsType": "ou",
+              "DefaultLabel": "Will there be more than 2.5 goals?",
+              "TextLabelId": "over_under",
+              "DefaultTemplate": "{0} haven't scored in their last {1} matches.",
+              "TextTemplateId": "goalless_team",
+              "StatValues": [
+                "home_team",
+                "4"
+              ],
+              "DefaultLabels": [
+                "yes",
+                "no"
+              ],
+              "LabelTemplates": [
+                "label_yes",
+                "label_no"
+              ],
+              "Icon": "poll_glove",
+              "defaultText": "Getafe haven't scored in their last 4 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "7",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,8 +521,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Getafe haven't drawn in their last 7 matches and Valencia in their last 5."
+              "Icon": "poll_stat_down",
+              "defaultText": "Getafe haven't won a match in 4 attempts."
             }
           ]
         },
@@ -544,7 +542,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 6,
+              "value": 3,
               "name": null,
               "type": "integer"
             },
@@ -554,7 +552,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 6 goals in their last 5 matches",
+          "text": "Have scored 3 goals in their last 5 matches",
           "color": "#084888"
         },
         {
@@ -566,12 +564,12 @@
           "localizedTextId": "insights_goalless_team",
           "statValues": [
             {
-              "value": 3,
+              "value": 4,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't scored in their last 3 matches",
+          "text": "Haven't scored in their last 4 matches",
           "color": "#084888"
         },
         {
@@ -583,12 +581,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 10,
+              "value": 11,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 10 matches",
+          "text": "Haven't kept a clean sheet in 11 matches",
           "color": "#084888"
         },
         {
@@ -652,15 +650,15 @@
         },
         {
           "type": "player",
-          "playerId": 1284429,
+          "playerId": 590494,
           "teamId": 10267,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1284429,
-              "name": "Javier Guerra",
+              "value": 590494,
+              "name": "Umar Sadiq",
               "type": "player"
             },
             {
@@ -669,12 +667,12 @@
               "type": "team"
             },
             {
-              "value": 3,
+              "value": 1.6,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Javier Guerra has created the most big chances for Valencia (3)",
+          "text": "Umar Sadiq has the most shots on target per match for Valencia (1.6)",
           "color": "#ff671f"
         }
       ],
@@ -696,20 +694,20 @@
       }
     },
     "weather": {
-      "temperature": 9,
+      "temperature": 10,
       "windSpeed": 2,
-      "windDirectionCardinal": "NW",
-      "iconCode": 33,
-      "relativeHumidity": 66,
-      "precipChance": 3,
+      "windDirectionCardinal": "W",
+      "iconCode": 29,
+      "relativeHumidity": 68,
+      "precipChance": 4,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 23,
-      "description": "Mostly Clear",
+      "cloudCover": 40,
+      "description": "Partly Cloudy",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-26T06:00:17Z",
-      "localizedKey": "weather_condition_clear",
-      "defaultTitle": "Clear"
+      "lastUpdated": "2026-11-26T18:00:15Z",
+      "localizedKey": "weather_condition_partly_cloudy",
+      "defaultTitle": "Partly Cloudy"
     },
     "lineup": {
       "matchId": 5868155,
