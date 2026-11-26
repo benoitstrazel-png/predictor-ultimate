@@ -438,8 +438,8 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
                 "5"
@@ -455,17 +455,17 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Bodø/Glimt have won their last 5 matches."
+              "defaultText": "Bodø/Glimt haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
-              "TextTemplateId": "goalstreak_team_away",
+              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
+              "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
-                "away_team",
-                "6"
+                "home_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,18 +476,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bodø/Glimt have scored in their last 6 away matches."
+              "defaultText": "Lens have scored in their last 4 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "11",
-                "3"
+                "3",
+                "3",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -498,16 +500,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bodø/Glimt have scored 11 goals in their last 3 matches."
+              "defaultText": "Lens have scored 3 goals in their last 3 matches, while Bodø/Glimt have scored 7."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
+              "TextTemplateId": "not_won_team",
               "StatValues": [
-                "away_team",
+                "home_team",
                 "5"
               ],
               "DefaultLabels": [
@@ -520,8 +522,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_teams",
-              "defaultText": "Bodø/Glimt haven't drawn in their last 5 matches."
+              "Icon": "poll_stat_down",
+              "defaultText": "Lens haven't won a match in 5 attempts."
             }
           ]
         },
@@ -535,18 +537,35 @@
         {
           "type": "team",
           "playerId": null,
-          "teamId": 8402,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
+          "teamId": 8588,
+          "priority": 1345,
+          "defaultText": "Haven't won a match in {0} attempts",
+          "localizedTextId": "insights_not_won_team",
           "statValues": [
             {
-              "value": 18,
+              "value": 5,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 18 matches",
+          "text": "Haven't won a match in 5 attempts",
+          "color": "#d89f00"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8402,
+          "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 5 matches",
           "color": "#e09d00"
         }
       ],

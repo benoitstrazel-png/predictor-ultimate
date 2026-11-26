@@ -123,36 +123,6 @@
       "teamForm": [
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png",
-            "linkToMatch": "/matches/chelsea-vs-liverpool/2f3vr7#6275371",
-            "date": {
-              "utcTime": "2026-10-28T20:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8455/overview/chelsea",
-            "tooltipText": {
-              "utcTime": "2026-10-28T20:00:00.000Z",
-              "homeTeam": "Liverpool",
-              "homeTeamId": 8650,
-              "homeScore": "1",
-              "awayTeam": "Chelsea",
-              "awayTeamId": 8455,
-              "awayScore": "1"
-            },
-            "score": "1 - 1",
-            "home": {
-              "id": "8650",
-              "name": "Liverpool",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8455",
-              "name": "Chelsea",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
@@ -270,6 +240,36 @@
               "id": "10260",
               "name": "Manchester United",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8342.png",
+            "linkToMatch": "/matches/club-brugge-vs-liverpool/2dyl8a#6106294",
+            "date": {
+              "utcTime": "2026-11-25T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8342/overview/club-brugge",
+            "tooltipText": {
+              "utcTime": "2026-11-25T20:00:00.000Z",
+              "homeTeam": "Club Brugge",
+              "homeTeamId": 8342,
+              "homeScore": "0",
+              "awayTeam": "Liverpool",
+              "awayTeamId": 8650,
+              "awayScore": "3"
+            },
+            "score": "0 - 3",
+            "home": {
+              "id": "8342",
+              "name": "Club Brugge",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8650",
+              "name": "Liverpool",
+              "isOurTeam": true
             }
           }
         ],
@@ -443,7 +443,7 @@
               "TextTemplateId": "good_form_team",
               "StatValues": [
                 "away_team",
-                "5"
+                "7"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,20 +456,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "FC Porto have won their last 5 matches."
+              "defaultText": "FC Porto have won their last 7 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
                 "4",
-                "6"
+                "away_team",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -480,20 +479,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while FC Porto have scored 6."
+              "defaultText": "Liverpool have scored in their last 4 matches and FC Porto have scored in their last 7 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
                 "home_team",
-                "away_team",
-                "3",
-                "4",
-                "6"
+                "10",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -504,17 +501,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Liverpool have scored 4 goals in their last 3 matches, while FC Porto have scored 6."
+              "defaultText": "Liverpool have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
+              "TextTemplateId": "draw_streak_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10"
+                "12",
+                "12"
               ],
               "DefaultLabels": [
                 "1x",
@@ -527,7 +526,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC Porto haven't drawn in their last 10 matches."
+              "defaultText": "Liverpool haven't drawn in their last 12 matches and FC Porto in their last 12."
             }
           ]
         },
@@ -584,12 +583,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 7,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 5 matches",
+          "text": "Haven't lost in 7 matches",
           "color": "#005898"
         }
       ],

@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/7881.png",
-            "linkToMatch": "/matches/venezia-vs-inter/2980az#5749729",
-            "date": {
-              "utcTime": "2026-10-28T17:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/7881/overview/venezia",
-            "tooltipText": {
-              "utcTime": "2026-10-28T17:30:00.000Z",
-              "homeTeam": "Venezia",
-              "homeTeamId": 7881,
-              "homeScore": "0",
-              "awayTeam": "Inter",
-              "awayTeamId": 8636,
-              "awayScore": "2"
-            },
-            "score": "0 - 2",
-            "home": {
-              "id": "7881",
-              "name": "Venezia",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8636",
-              "name": "Inter",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8564.png",
@@ -423,6 +393,36 @@
               "name": "Inter",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png",
+            "linkToMatch": "/matches/inter-vs-vfb-stuttgart/2yejdt#6106253",
+            "date": {
+              "utcTime": "2026-11-25T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10269/overview/vfb-stuttgart",
+            "tooltipText": {
+              "utcTime": "2026-11-25T20:00:00.000Z",
+              "homeTeam": "Inter",
+              "homeTeamId": 8636,
+              "homeScore": "2",
+              "awayTeam": "VfB Stuttgart",
+              "awayTeamId": 10269,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "8636",
+              "name": "Inter",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "10269",
+              "name": "VfB Stuttgart",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "12"
+                "9",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,7 +458,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Inter haven't lost in 12 matches."
+              "defaultText": "Borussia Dortmund haven't lost in their last 9 matches, and Inter in their last 4."
             },
             {
               "OddsType": "bts",
@@ -466,7 +468,7 @@
               "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "4",
+                "8",
                 "away_team",
                 "12"
               ],
@@ -479,20 +481,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Dortmund have scored in their last 4 matches and Inter have scored in their last 12 matches."
+              "defaultText": "Borussia Dortmund have scored in their last 8 matches and Inter have scored in their last 12 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "6",
-                "7"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -503,7 +503,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Borussia Dortmund have scored 6 goals in their last 3 matches, while Inter have scored 7."
+              "defaultText": "Inter have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -513,13 +513,13 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "1",
-                "1",
                 "3",
+                "2",
+                "0",
                 "away_team",
-                "4",
+                "3",
                 "1",
-                "0"
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -532,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Borussia Dortmund have 1W, 1D, 3L in five matches while Inter have 4W, 1D, 0L."
+              "defaultText": "Borussia Dortmund have 3W, 2D, 0L in five matches while Inter have 3W, 1D, 1L."
             }
           ]
         },
@@ -548,6 +548,23 @@
           "playerId": null,
           "teamId": 9789,
           "priority": 1343,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
+          "statValues": [
+            {
+              "value": 9,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't lost in 9 matches",
+          "color": "#d8a000"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9789,
+          "priority": 6,
           "defaultText": "{0} and {1} have not drawn any of their last {2} matches against each other.",
           "localizedTextId": "h2h_no_draws_v2",
           "statValues": [
@@ -569,23 +586,6 @@
           ],
           "text": "Borussia Dortmund and Inter have not drawn any of their last 3 matches against each other.",
           "color": "#d8a000"
-        },
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 8636,
-          "priority": 1343,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 18,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 18 matches",
-          "color": "#010E80"
         }
       ],
       "countryCode": "INT-2",

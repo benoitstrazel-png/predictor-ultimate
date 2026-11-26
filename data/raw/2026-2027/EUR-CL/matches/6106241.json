@@ -122,36 +122,6 @@
       "teamForm": [
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8188.png",
-            "linkToMatch": "/matches/magdeburg-vs-bayern-munchen/2okvcp#6162738",
-            "date": {
-              "utcTime": "2026-10-28T19:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8188/overview/magdeburg",
-            "tooltipText": {
-              "utcTime": "2026-10-28T19:45:00.000Z",
-              "homeTeam": "Bayern München",
-              "homeTeamId": 9823,
-              "homeScore": "6",
-              "awayTeam": "Magdeburg",
-              "awayTeamId": 8188,
-              "awayScore": "1"
-            },
-            "score": "6 - 1",
-            "home": {
-              "id": "9823",
-              "name": "Bayern München",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "8188",
-              "name": "Magdeburg",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png",
@@ -269,6 +239,36 @@
               "id": "8722",
               "name": "1. FC Köln",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
+            "linkToMatch": "/matches/lille-vs-bayern-munchen/2th5ps#6106310",
+            "date": {
+              "utcTime": "2026-11-25T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8639/overview/lille",
+            "tooltipText": {
+              "utcTime": "2026-11-25T20:00:00.000Z",
+              "homeTeam": "Lille",
+              "homeTeamId": 8639,
+              "homeScore": "2",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8639",
+              "name": "Lille",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": true
             }
           }
         ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "12"
+                "2",
+                "2",
+                "1",
+                "away_team",
+                "3",
+                "0",
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Bayern München haven't lost in 12 matches."
+              "Icon": "poll_teams",
+              "defaultText": "Bayern München have 2W, 2D, 1L in five matches while Slavia Prague have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -488,7 +494,7 @@
                 "home_team",
                 "away_team",
                 "3",
-                "5",
+                "4",
                 "6"
               ],
               "DefaultLabels": [
@@ -500,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Bayern München have scored 5 goals in their last 3 matches, while Slavia Prague have scored 6."
+              "defaultText": "Bayern München have scored 4 goals in their last 3 matches, while Slavia Prague have scored 6."
             },
             {
               "OddsType": "dc",
@@ -533,25 +539,6 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
-      "insights": [
-        {
-          "type": "team",
-          "playerId": null,
-          "teamId": 9823,
-          "priority": 6,
-          "defaultText": "Haven't lost in {0} matches",
-          "localizedTextId": "insights_undefeated_team",
-          "statValues": [
-            {
-              "value": 22,
-              "name": null,
-              "type": "integer"
-            }
-          ],
-          "text": "Haven't lost in 22 matches",
-          "color": "#C60428"
-        }
-      ],
       "countryCode": "INT-2",
       "QAData": []
     },

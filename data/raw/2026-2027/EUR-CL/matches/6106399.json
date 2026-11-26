@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8460.png",
-            "linkToMatch": "/matches/paderborn-vs-vfb-stuttgart/2wfjs9#6162749",
-            "date": {
-              "utcTime": "2026-10-28T17:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8460/overview/paderborn",
-            "tooltipText": {
-              "utcTime": "2026-10-28T17:00:00.000Z",
-              "homeTeam": "Paderborn",
-              "homeTeamId": 8460,
-              "homeScore": "0",
-              "awayTeam": "VfB Stuttgart",
-              "awayTeamId": 10269,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8460",
-              "name": "Paderborn",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "10269",
-              "name": "VfB Stuttgart",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8178.png",
             "linkToMatch": "/matches/bayer-leverkusen-vs-vfb-stuttgart/2tb6ui#5881207",
             "date": {
@@ -270,39 +240,39 @@
               "name": "VfB Stuttgart",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9829.png",
-            "linkToMatch": "/matches/lille-vs-monaco/2tjj7j#5802969",
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
+            "linkToMatch": "/matches/inter-vs-vfb-stuttgart/2yejdt#6106253",
             "date": {
-              "utcTime": "2026-10-25T14:00:00.000Z"
+              "utcTime": "2026-11-25T20:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9829/overview/monaco",
+            "teamPageUrl": "/teams/8636/overview/inter",
             "tooltipText": {
-              "utcTime": "2026-10-25T14:00:00.000Z",
-              "homeTeam": "Monaco",
-              "homeTeamId": 9829,
-              "homeScore": "1",
-              "awayTeam": "Lille",
-              "awayTeamId": 8639,
-              "awayScore": "1"
+              "utcTime": "2026-11-25T20:00:00.000Z",
+              "homeTeam": "Inter",
+              "homeTeamId": 8636,
+              "homeScore": "2",
+              "awayTeam": "VfB Stuttgart",
+              "awayTeamId": 10269,
+              "awayScore": "0"
             },
-            "score": "1 - 1",
+            "score": "2 - 0",
             "home": {
-              "id": "9829",
-              "name": "Monaco",
+              "id": "8636",
+              "name": "Inter",
               "isOurTeam": false
             },
             "away": {
-              "id": "8639",
-              "name": "Lille",
+              "id": "10269",
+              "name": "VfB Stuttgart",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": 1,
             "resultString": "W",
@@ -422,6 +392,36 @@
               "name": "Lyon",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
+            "linkToMatch": "/matches/lille-vs-bayern-munchen/2th5ps#6106310",
+            "date": {
+              "utcTime": "2026-11-25T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9823/overview/bayern-munchen",
+            "tooltipText": {
+              "utcTime": "2026-11-25T20:00:00.000Z",
+              "homeTeam": "Lille",
+              "homeTeamId": 8639,
+              "homeScore": "2",
+              "awayTeam": "Bayern München",
+              "awayTeamId": 9823,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "8639",
+              "name": "Lille",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "9823",
+              "name": "Bayern München",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -438,11 +438,17 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "1",
+                "2",
                 "away_team",
-                "4"
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1",
@@ -454,8 +460,8 @@
                 "label_x",
                 "label_2"
               ],
-              "Icon": "poll_stat_up",
-              "defaultText": "Lille haven't lost in 4 matches."
+              "Icon": "poll_teams",
+              "defaultText": "VfB Stuttgart have 2W, 1D, 2L in five matches while Lille have 3W, 1D, 1L."
             },
             {
               "OddsType": "bts",
@@ -465,7 +471,7 @@
               "TextTemplateId": "goalstreak_team_home",
               "StatValues": [
                 "home_team",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -476,20 +482,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored in their last 3 home matches."
+              "defaultText": "VfB Stuttgart have scored in their last 4 home matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "3",
-                "5",
-                "5"
+                "0.33",
+                "1.33"
               ],
               "DefaultLabels": [
                 "yes",
@@ -500,17 +505,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "VfB Stuttgart have scored 5 goals in their last 3 matches, while Lille have scored 5."
+              "defaultText": "VfB Stuttgart have an average of 0.33 goals in their last three matches and Lille have an average of 1.33."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4"
+                "2",
+                "1",
+                "2",
+                "away_team",
+                "3",
+                "1",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -523,7 +534,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "VfB Stuttgart haven't drawn in their last 4 matches."
+              "defaultText": "VfB Stuttgart have 2W, 1D, 2L in five matches while Lille have 3W, 1D, 1L."
             }
           ]
         },
@@ -533,6 +544,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 10269,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
+          "color": "#D30029"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -576,18 +606,6 @@
         "id": 10269,
         "name": "VfB Stuttgart",
         "unavailable": [
-          {
-            "id": 1425998,
-            "name": "Leo Sauer",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-11-25T20:05:22Z",
-              "type": "injury",
-              "expectedReturn": "About 1-2 weeks"
-            },
-            "firstName": "Leo",
-            "lastName": "Sauer"
-          },
           {
             "id": 1434478,
             "name": "Justin Diehl",
