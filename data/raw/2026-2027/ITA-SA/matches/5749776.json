@@ -275,36 +275,6 @@
         ],
         [
           {
-            "result": 0,
-            "resultString": "D",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8535.png",
-            "linkToMatch": "/matches/atalanta-vs-fiorentina/2en1cd#5749722",
-            "date": {
-              "utcTime": "2026-10-29T19:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/8535/overview/fiorentina",
-            "tooltipText": {
-              "utcTime": "2026-10-29T19:45:00.000Z",
-              "homeTeam": "Fiorentina",
-              "homeTeamId": 8535,
-              "homeScore": "2",
-              "awayTeam": "Atalanta",
-              "awayTeamId": 8524,
-              "awayScore": "2"
-            },
-            "score": "2 - 2",
-            "home": {
-              "id": "8535",
-              "name": "Fiorentina",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8524",
-              "name": "Atalanta",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10167.png",
@@ -423,6 +393,36 @@
               "name": "Inter",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10116.png",
+            "linkToMatch": "/matches/atalanta-vs-borac-banja-luka/2vfwok#6112486",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10116/overview/borac-banja-luka",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Borac Banja Luka",
+              "homeTeamId": 10116,
+              "homeScore": "2",
+              "awayTeam": "Atalanta",
+              "awayTeamId": 8524,
+              "awayScore": "3"
+            },
+            "score": "2 - 3",
+            "home": {
+              "id": "10116",
+              "name": "Borac Banja Luka",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8524",
+              "name": "Atalanta",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -439,11 +439,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} haven't lost in {1} matches.",
-              "TextTemplateId": "undefeated_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "12",
+                "4"
               ],
               "DefaultLabels": [
                 "1",
@@ -456,17 +458,19 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Lazio haven't lost in 12 matches."
+              "defaultText": "Lazio haven't lost in their last 12 matches, and Atalanta in their last 4."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} matches and {2} have scored in their last {3} matches.",
+              "TextTemplateId": "goalstreak_team_both",
               "StatValues": [
                 "home_team",
-                "7"
+                "12",
+                "away_team",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -477,20 +481,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lazio have scored in their last 7 home matches."
+              "defaultText": "Lazio have scored in their last 12 matches and Atalanta have scored in their last 4 matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
-              "TextTemplateId": "goals_total_last_3_both",
+              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
+              "TextTemplateId": "goals_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "3",
-                "6",
-                "6"
+                "8",
+                "3"
               ],
               "DefaultLabels": [
                 "yes",
@@ -501,7 +503,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lazio have scored 6 goals in their last 3 matches, while Atalanta have scored 6."
+              "defaultText": "Atalanta have scored 8 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -515,8 +517,8 @@
                 "1",
                 "0",
                 "away_team",
-                "1",
-                "3",
+                "2",
+                "2",
                 "1"
               ],
               "DefaultLabels": [
@@ -530,7 +532,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Lazio have 4W, 1D, 0L in five matches while Atalanta have 1W, 3D, 1L."
+              "defaultText": "Lazio have 4W, 1D, 0L in five matches while Atalanta have 2W, 2D, 1L."
             }
           ]
         },
@@ -606,7 +608,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             },
@@ -616,7 +618,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 8 goals in their last 5 matches",
+          "text": "Have scored 9 goals in their last 5 matches",
           "color": "#004ca6"
         },
         {
@@ -684,18 +686,18 @@
     "weather": {
       "temperature": 12,
       "windSpeed": 4,
-      "windDirectionCardinal": "WSW",
-      "iconCode": 30,
-      "relativeHumidity": 64,
-      "precipChance": 21,
+      "windDirectionCardinal": "W",
+      "iconCode": 34,
+      "relativeHumidity": 59,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 57,
-      "description": "Partly Cloudy",
+      "cloudCover": 29,
+      "description": "Mostly Sunny",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-26T14:00:03Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-11-27T02:00:06Z",
+      "localizedKey": "weather_condition_sunny",
+      "defaultTitle": "Sunny"
     },
     "lineup": {
       "matchId": 5749776,
@@ -754,18 +756,6 @@
             },
             "firstName": "Josip",
             "lastName": "Šutalo"
-          },
-          {
-            "id": 541555,
-            "name": "Mattia Zaccagni",
-            "unavailability": {
-              "injuryId": 69,
-              "lastUpdated": "2026-11-26T15:51:58Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Mattia",
-            "lastName": "Zaccagni"
           }
         ]
       },

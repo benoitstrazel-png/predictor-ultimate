@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/2420.png",
-            "linkToMatch": "/matches/nafta-vs-nk-celje/erm4x#5833599",
-            "date": {
-              "utcTime": "2026-11-01T16:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/2420/overview/nafta",
-            "tooltipText": {
-              "utcTime": "2026-11-01T16:30:00.000Z",
-              "homeTeam": "NK Celje",
-              "homeTeamId": 4622,
-              "homeScore": "4",
-              "awayTeam": "Nafta",
-              "awayTeamId": 2420,
-              "awayScore": "0"
-            },
-            "score": "4 - 0",
-            "home": {
-              "id": "4622",
-              "name": "NK Celje",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "2420",
-              "name": "Nafta",
-              "isOurTeam": false
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10014.png",
             "linkToMatch": "/matches/nk-celje-vs-sturm-graz/1rrwx8#6112316",
             "date": {
@@ -269,6 +239,36 @@
               "id": "1153473",
               "name": "Nk Brinje Grosuplje",
               "isOurTeam": false
+            }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8222.png",
+            "linkToMatch": "/matches/nk-celje-vs-ferencvaros/1d48ho#6112280",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8222/overview/ferencvaros",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Ferencváros",
+              "homeTeamId": 8222,
+              "homeScore": "0",
+              "awayTeam": "NK Celje",
+              "awayTeamId": 4622,
+              "awayScore": "0"
+            },
+            "score": "0 - 0",
+            "home": {
+              "id": "8222",
+              "name": "Ferencváros",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "4622",
+              "name": "NK Celje",
+              "isOurTeam": true
             }
           }
         ],
@@ -438,11 +438,11 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
-                "5"
+                "9"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +455,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "NK Celje have won their last 5 matches."
+              "defaultText": "NK Celje haven't lost in 9 matches."
             },
             {
               "OddsType": "bts",
@@ -504,11 +504,17 @@
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "5"
+                "4",
+                "1",
+                "0",
+                "away_team",
+                "2",
+                "2",
+                "1"
               ],
               "DefaultLabels": [
                 "1x",
@@ -521,7 +527,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "NK Celje haven't drawn in their last 5 matches."
+              "defaultText": "NK Celje have 4W, 1D, 0L in five matches while Olympiacos have 2W, 2D, 1L."
             }
           ]
         },
@@ -541,12 +547,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 8 matches",
+          "text": "Haven't lost in 9 matches",
           "color": "#021B5C"
         }
       ],

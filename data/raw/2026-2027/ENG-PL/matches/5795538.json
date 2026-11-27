@@ -131,10 +131,10 @@
               "type": "yellowCards",
               "value": 4.39,
               "valueType": "perMatch",
-              "average": 3.79,
+              "average": 3.8,
               "total": 145,
               "averageType": "above",
-              "fillPercentage": 66.81,
+              "fillPercentage": 66.43,
               "averagePercentage": 50
             },
             {
@@ -156,10 +156,10 @@
               "type": "fouls",
               "value": 21.88,
               "valueType": "perMatch",
-              "average": 21.95,
+              "average": 21.98,
               "total": 722,
               "averageType": "average",
-              "fillPercentage": 49.46,
+              "fillPercentage": 49.3,
               "averagePercentage": 50
             }
           ]
@@ -321,36 +321,6 @@
         ],
         [
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
-            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#6275373",
-            "date": {
-              "utcTime": "2026-10-28T19:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/9879/overview/fulham",
-            "tooltipText": {
-              "utcTime": "2026-10-28T19:45:00.000Z",
-              "homeTeam": "Fulham",
-              "homeTeamId": 9879,
-              "homeScore": "0",
-              "awayTeam": "Crystal Palace",
-              "awayTeamId": 9826,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "9879",
-              "name": "Fulham",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9826",
-              "name": "Crystal Palace",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": -1,
             "resultString": "L",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png",
@@ -469,6 +439,36 @@
               "name": "Crystal Palace",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
+            "linkToMatch": "/matches/real-sociedad-vs-crystal-palace/2sn59p#6112322",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8560/overview/real-sociedad",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Crystal Palace",
+              "homeTeamId": 9826,
+              "homeScore": "2",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -511,13 +511,14 @@
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -528,19 +529,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have an average of 1 goals in their last three matches and Crystal Palace have an average of 1.33."
+              "defaultText": "Chelsea have scored 3 goals in their last 3 matches, while Crystal Palace have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -551,17 +553,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Chelsea have an average of 1 goals in their last three matches and Crystal Palace have an average of 1.33."
+              "defaultText": "Chelsea have scored 3 goals in their last 3 matches, while Crystal Palace have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "away_team",
-                "4"
+                "home_team",
+                "8"
               ],
               "DefaultLabels": [
                 "1x",
@@ -573,8 +575,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Chelsea haven't drawn in their last 8 matches."
             }
           ]
         },
@@ -680,7 +682,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 5,
+              "value": 6,
               "name": null,
               "type": "integer"
             },
@@ -690,7 +692,24 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 5 goals in their last 5 matches",
+          "text": "Have scored 6 goals in their last 5 matches",
+          "color": "#0055A5"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9826,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
           "color": "#0055A5"
         },
         {
@@ -718,33 +737,6 @@
             }
           ],
           "text": "Dean Henderson is ranked 1 in saves per match in the competition (4.7)",
-          "color": "#0055A5"
-        },
-        {
-          "type": "player",
-          "playerId": 821100,
-          "teamId": 9826,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
-          "statValues": [
-            {
-              "value": 821100,
-              "name": "Jørgen Strand Larsen",
-              "type": "player"
-            },
-            {
-              "value": 9826,
-              "name": "Crystal Palace",
-              "type": "team"
-            },
-            {
-              "value": 1.2,
-              "name": null,
-              "type": "double"
-            }
-          ],
-          "text": "Jørgen Strand Larsen has the most shots on target per match for Crystal Palace (1.2)",
           "color": "#0055A5"
         }
       ],
@@ -792,22 +784,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 1137668,
-            "age": 25,
-            "name": "Moisés Caicedo",
-            "countryName": "Ecuador",
-            "countryCode": "ECU",
-            "marketValue": 104764533,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Early December 2026"
-            },
-            "firstName": "Moisés",
-            "lastName": "Caicedo",
-            "nationalTeamId": 6707
-          },
           {
             "id": 1413846,
             "age": 20,
@@ -896,22 +872,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 952095,
-            "age": 27,
-            "name": "Óscar Mingueza",
-            "countryName": "Spain",
-            "countryCode": "ESP",
-            "marketValue": 18516120,
-            "unavailability": {
-              "injuryId": 130,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Óscar",
-            "lastName": "Mingueza",
-            "nationalTeamId": 6720
-          },
           {
             "id": 771294,
             "age": 28,

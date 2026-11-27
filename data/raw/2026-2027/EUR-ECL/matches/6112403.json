@@ -125,36 +125,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8109.png",
-            "linkToMatch": "/matches/aarhus-fremad-vs-fc-kobenhavn/291zk9#6298364",
-            "date": {
-              "utcTime": "2026-10-29T12:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8109/overview/aarhus-fremad",
-            "tooltipText": {
-              "utcTime": "2026-10-29T12:30:00.000Z",
-              "homeTeam": "Aarhus Fremad",
-              "homeTeamId": 8109,
-              "homeScore": "0",
-              "awayTeam": "FC København",
-              "awayTeamId": 8391,
-              "awayScore": "3"
-            },
-            "score": "0 - 3",
-            "home": {
-              "id": "8109",
-              "name": "Aarhus Fremad",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8391",
-              "name": "FC København",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8487.png",
             "linkToMatch": "/matches/fc-kobenhavn-vs-sonderjyske/2ct7eo#5739537",
             "date": {
@@ -264,6 +234,36 @@
             "home": {
               "id": "10202",
               "name": "Nordsjælland",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8391",
+              "name": "FC København",
+              "isOurTeam": true
+            }
+          },
+          {
+            "result": -1,
+            "resultString": "L",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10050.png",
+            "linkToMatch": "/matches/fc-kobenhavn-vs-inter-club-descaldes/2t8tmc#6112535",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/10050/overview/inter-club-descaldes",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Inter Club d'Escaldes",
+              "homeTeamId": 10050,
+              "homeScore": "2",
+              "awayTeam": "FC København",
+              "awayTeamId": 8391,
+              "awayScore": "0"
+            },
+            "score": "2 - 0",
+            "home": {
+              "id": "10050",
+              "name": "Inter Club d'Escaldes",
               "isOurTeam": false
             },
             "away": {
@@ -443,9 +443,9 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "4",
+                "3",
                 "0",
-                "1",
+                "2",
                 "away_team",
                 "3",
                 "0",
@@ -462,7 +462,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC København have 4W, 0D, 1L in five matches while Lugano have 3W, 0D, 2L."
+              "defaultText": "FC København have 3W, 0D, 2L in five matches while Lugano have 3W, 0D, 2L."
             },
             {
               "OddsType": "bts",
@@ -494,7 +494,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1",
+                "0.33",
                 "0.67"
               ],
               "DefaultLabels": [
@@ -506,7 +506,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "FC København have an average of 1 goals in their last three matches and Lugano have an average of 0.67."
+              "defaultText": "FC København have an average of 0.33 goals in their last three matches and Lugano have an average of 0.67."
             },
             {
               "OddsType": "dc",
@@ -517,7 +517,7 @@
               "StatValues": [
                 "home_team",
                 "away_team",
-                "5",
+                "6",
                 "12"
               ],
               "DefaultLabels": [
@@ -531,7 +531,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FC København haven't drawn in their last 5 matches and Lugano in their last 12."
+              "defaultText": "FC København haven't drawn in their last 6 matches and Lugano in their last 12."
             }
           ]
         },
@@ -546,7 +546,7 @@
           "type": "team",
           "playerId": null,
           "teamId": 8391,
-          "priority": 8,
+          "priority": 1345,
           "defaultText": "{0} have won the previous {2} matches against {1}.",
           "localizedTextId": "h2h_winstreak",
           "statValues": [
@@ -567,6 +567,23 @@
             }
           ],
           "text": "FC København have won the previous 2 matches against Lugano.",
+          "color": "#375196"
+        },
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 8391,
+          "priority": 9,
+          "defaultText": "Haven't scored in their last {0} matches",
+          "localizedTextId": "insights_goalless_team",
+          "statValues": [
+            {
+              "value": 2,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't scored in their last 2 matches",
           "color": "#375196"
         }
       ],
@@ -624,18 +641,6 @@
             },
             "firstName": "Diant",
             "lastName": "Ramaj"
-          },
-          {
-            "id": 1394951,
-            "name": "Thapelo Maseko",
-            "unavailability": {
-              "injuryId": 42,
-              "lastUpdated": "2026-11-26T09:59:23Z",
-              "type": "injury",
-              "expectedReturn": "Day to day"
-            },
-            "firstName": "Thapelo",
-            "lastName": "Maseko"
           },
           {
             "id": 875306,

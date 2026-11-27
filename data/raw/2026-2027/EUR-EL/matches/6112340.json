@@ -124,36 +124,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8030.png",
-            "linkToMatch": "/matches/jagiellonia-biaystok-vs-lechia-gdansk/tp61w#6280513",
-            "date": {
-              "utcTime": "2026-10-28T19:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/8030/overview/lechia-gdansk",
-            "tooltipText": {
-              "utcTime": "2026-10-28T19:30:00.000Z",
-              "homeTeam": "Lechia Gdańsk",
-              "homeTeamId": 8030,
-              "homeScore": "0",
-              "awayTeam": "Jagiellonia Białystok",
-              "awayTeamId": 1957,
-              "awayScore": "6"
-            },
-            "score": "0 - 6",
-            "home": {
-              "id": "8030",
-              "name": "Lechia Gdańsk",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "1957",
-              "name": "Jagiellonia Białystok",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/1286895.png",
             "linkToMatch": "/matches/jagiellonia-biaystok-vs-wieczysta-krakow/alk45uwn#5804028",
             "date": {
@@ -270,39 +240,39 @@
               "name": "Jagiellonia Białystok",
               "isOurTeam": true
             }
-          }
-        ],
-        [
+          },
           {
-            "result": 1,
-            "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png",
-            "linkToMatch": "/matches/crystal-palace-vs-fulham/37llbg#6275373",
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8472.png",
+            "linkToMatch": "/matches/jagiellonia-biaystok-vs-sunderland/wdvzv#6112332",
             "date": {
-              "utcTime": "2026-10-28T19:45:00.000Z"
+              "utcTime": "2026-11-26T20:00:00.000Z"
             },
-            "teamPageUrl": "/teams/9879/overview/fulham",
+            "teamPageUrl": "/teams/8472/overview/sunderland",
             "tooltipText": {
-              "utcTime": "2026-10-28T19:45:00.000Z",
-              "homeTeam": "Fulham",
-              "homeTeamId": 9879,
-              "homeScore": "0",
-              "awayTeam": "Crystal Palace",
-              "awayTeamId": 9826,
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Sunderland",
+              "homeTeamId": 8472,
+              "homeScore": "1",
+              "awayTeam": "Jagiellonia Białystok",
+              "awayTeamId": 1957,
               "awayScore": "1"
             },
-            "score": "0 - 1",
+            "score": "1 - 1",
             "home": {
-              "id": "9879",
-              "name": "Fulham",
+              "id": "8472",
+              "name": "Sunderland",
               "isOurTeam": false
             },
             "away": {
-              "id": "9826",
-              "name": "Crystal Palace",
+              "id": "1957",
+              "name": "Jagiellonia Białystok",
               "isOurTeam": true
             }
-          },
+          }
+        ],
+        [
           {
             "result": -1,
             "resultString": "L",
@@ -422,6 +392,36 @@
               "name": "Crystal Palace",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8560.png",
+            "linkToMatch": "/matches/real-sociedad-vs-crystal-palace/2sn59p#6112322",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8560/overview/real-sociedad",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Crystal Palace",
+              "homeTeamId": 9826,
+              "homeScore": "2",
+              "awayTeam": "Real Sociedad",
+              "awayTeamId": 8560,
+              "awayScore": "1"
+            },
+            "score": "2 - 1",
+            "home": {
+              "id": "9826",
+              "name": "Crystal Palace",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8560",
+              "name": "Real Sociedad",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -442,8 +442,8 @@
               "TextTemplateId": "team_form_both",
               "StatValues": [
                 "home_team",
-                "3",
-                "0",
+                "2",
+                "1",
                 "2",
                 "away_team",
                 "1",
@@ -461,19 +461,20 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Jagiellonia Białystok have 3W, 0D, 2L in five matches while Crystal Palace have 1W, 1D, 3L."
+              "defaultText": "Jagiellonia Białystok have 2W, 1D, 2L in five matches while Crystal Palace have 1W, 1D, 3L."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -484,19 +485,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have an average of 0.67 goals in their last three matches and Crystal Palace have an average of 1.33."
+              "defaultText": "Jagiellonia Białystok have scored 3 goals in their last 3 matches, while Crystal Palace have scored 5."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "0.67",
-                "1.33"
+                "3",
+                "3",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -507,17 +509,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Jagiellonia Białystok have an average of 0.67 goals in their last three matches and Crystal Palace have an average of 1.33."
+              "defaultText": "Jagiellonia Białystok have scored 3 goals in their last 3 matches, while Crystal Palace have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't won a match in {1} attempts.",
-              "TextTemplateId": "not_won_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "1",
+                "2",
                 "away_team",
-                "4"
+                "1",
+                "1",
+                "3"
               ],
               "DefaultLabels": [
                 "1x",
@@ -529,8 +537,8 @@
                 "label_12",
                 "label_x2"
               ],
-              "Icon": "poll_stat_down",
-              "defaultText": "Crystal Palace haven't won a match in 4 attempts."
+              "Icon": "poll_teams",
+              "defaultText": "Jagiellonia Białystok have 2W, 1D, 2L in five matches while Crystal Palace have 1W, 1D, 3L."
             }
           ]
         },
@@ -540,6 +548,25 @@
         "homeTopPlayers": [],
         "awayTopPlayers": []
       },
+      "insights": [
+        {
+          "type": "team",
+          "playerId": null,
+          "teamId": 9826,
+          "priority": 8,
+          "defaultText": "Haven't kept a clean sheet in {0} matches",
+          "localizedTextId": "insights_not_clean_sheet",
+          "statValues": [
+            {
+              "value": 5,
+              "name": null,
+              "type": "integer"
+            }
+          ],
+          "text": "Haven't kept a clean sheet in 5 matches",
+          "color": "#0055A5"
+        }
+      ],
       "countryCode": "INT-2",
       "QAData": []
     },
@@ -582,37 +609,12 @@
       "homeTeam": {
         "id": 1957,
         "name": "Jagiellonia Białystok",
-        "unavailable": [
-          {
-            "id": 1224181,
-            "name": "Youssuf Sylla",
-            "unavailability": {
-              "injuryId": 121,
-              "lastUpdated": "2026-11-26T19:53:21Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Youssuf",
-            "lastName": "Sylla"
-          }
-        ]
+        "unavailable": []
       },
       "awayTeam": {
         "id": 9826,
         "name": "Crystal Palace",
         "unavailable": [
-          {
-            "id": 952095,
-            "name": "Óscar Mingueza",
-            "unavailability": {
-              "injuryId": 130,
-              "lastUpdated": "2026-11-26T20:05:00Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Óscar",
-            "lastName": "Mingueza"
-          },
           {
             "id": 771294,
             "name": "Ismaïla Sarr",

@@ -322,36 +322,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/10233.png",
-            "linkToMatch": "/matches/juventus-vs-genoa/3chuqi#5749724",
-            "date": {
-              "utcTime": "2026-10-28T19:45:00.000Z"
-            },
-            "teamPageUrl": "/teams/10233/overview/genoa",
-            "tooltipText": {
-              "utcTime": "2026-10-28T19:45:00.000Z",
-              "homeTeam": "Genoa",
-              "homeTeamId": 10233,
-              "homeScore": "2",
-              "awayTeam": "Juventus",
-              "awayTeamId": 9885,
-              "awayScore": "0"
-            },
-            "score": "2 - 0",
-            "home": {
-              "id": "10233",
-              "name": "Genoa",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "9885",
-              "name": "Juventus",
-              "isOurTeam": true
-            }
-          },
-          {
             "result": 1,
             "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png",
@@ -470,6 +440,36 @@
               "name": "Venezia",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8044.png",
+            "linkToMatch": "/matches/omonia-nicosia-vs-juventus/2npadm#6112252",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8044/overview/omonia-nicosia",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Juventus",
+              "homeTeamId": 9885,
+              "homeScore": "4",
+              "awayTeam": "Omonia Nicosia",
+              "awayTeamId": 8044,
+              "awayScore": "1"
+            },
+            "score": "4 - 1",
+            "home": {
+              "id": "9885",
+              "name": "Juventus",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8044",
+              "name": "Omonia Nicosia",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -490,7 +490,7 @@
               "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1",
@@ -503,7 +503,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Juventus haven't lost in 4 matches."
+              "defaultText": "Juventus haven't lost in 5 matches."
             },
             {
               "OddsType": "bts",
@@ -534,7 +534,7 @@
               "TextTemplateId": "goals_team",
               "StatValues": [
                 "away_team",
-                "8",
+                "10",
                 "3"
               ],
               "DefaultLabels": [
@@ -546,7 +546,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Juventus have scored 8 goals in their last 3 matches."
+              "defaultText": "Juventus have scored 10 goals in their last 3 matches."
             },
             {
               "OddsType": "dc",
@@ -631,15 +631,15 @@
         },
         {
           "type": "player",
-          "playerId": 1109171,
+          "playerId": 873270,
           "teamId": 10171,
           "priority": 1,
-          "defaultText": "{0} has created the most big chances for {1} ({2})",
-          "localizedTextId": "insights_player_most_chances_for_team",
+          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
+          "localizedTextId": "insights_player_most_shots_on_target_for_team",
           "statValues": [
             {
-              "value": 1109171,
-              "name": "Yan Couto",
+              "value": 873270,
+              "name": "Anastasios Douvikas",
               "type": "player"
             },
             {
@@ -648,12 +648,12 @@
               "type": "team"
             },
             {
-              "value": 5,
+              "value": 1.4,
               "name": null,
-              "type": "integer"
+              "type": "double"
             }
           ],
-          "text": "Yan Couto has created the most big chances for Como (5)",
+          "text": "Anastasios Douvikas has the most shots on target per match for Como (1.4)",
           "color": "#005ea9"
         },
         {
@@ -665,7 +665,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 10,
+              "value": 14,
               "name": null,
               "type": "integer"
             },
@@ -675,7 +675,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 10 goals in their last 5 matches",
+          "text": "Have scored 14 goals in their last 5 matches",
           "color": "#000001"
         },
         {
@@ -696,30 +696,20 @@
           "color": "#000001"
         },
         {
-          "type": "player",
-          "playerId": 862616,
+          "type": "team",
+          "playerId": null,
           "teamId": 9885,
-          "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "priority": 6,
+          "defaultText": "Haven't lost in {0} matches",
+          "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 862616,
-              "name": "Edon Zhegrova",
-              "type": "player"
-            },
-            {
-              "value": 9885,
-              "name": "Juventus",
-              "type": "team"
-            },
-            {
-              "value": 2.7,
+              "value": 5,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Edon Zhegrova has the most shots on target per match for Juventus (2.7)",
+          "text": "Haven't lost in 5 matches",
           "color": "#000001"
         }
       ],

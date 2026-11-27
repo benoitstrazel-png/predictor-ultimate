@@ -276,36 +276,6 @@
           {
             "result": 1,
             "resultString": "W",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8692.png",
-            "linkToMatch": "/matches/fk-crvena-zvezda-vs-ofk-beograd/2hx56y#1000015161",
-            "date": {
-              "utcTime": "2026-10-25T15:00:00.000Z"
-            },
-            "teamPageUrl": "/teams/8692/overview/ofk-beograd",
-            "tooltipText": {
-              "utcTime": "2026-10-25T15:00:00.000Z",
-              "homeTeam": "OFK Beograd",
-              "homeTeamId": 8692,
-              "homeScore": "0",
-              "awayTeam": "FK Crvena Zvezda",
-              "awayTeamId": 8687,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "8692",
-              "name": "OFK Beograd",
-              "isOurTeam": false
-            },
-            "away": {
-              "id": "8687",
-              "name": "FK Crvena Zvezda",
-              "isOurTeam": true
-            }
-          },
-          {
-            "result": 1,
-            "resultString": "W",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/563180.png",
             "linkToMatch": "/matches/fk-crvena-zvezda-vs-macva-sabac/2349c8ll#1000015162",
             "date": {
@@ -422,6 +392,36 @@
               "name": "FK Radnik Surdulica",
               "isOurTeam": false
             }
+          },
+          {
+            "result": 0,
+            "resultString": "D",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9991.png",
+            "linkToMatch": "/matches/fk-crvena-zvezda-vs-gent/2vv4xg#6112411",
+            "date": {
+              "utcTime": "2026-11-26T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/9991/overview/gent",
+            "tooltipText": {
+              "utcTime": "2026-11-26T20:00:00.000Z",
+              "homeTeam": "Gent",
+              "homeTeamId": 9991,
+              "homeScore": "1",
+              "awayTeam": "FK Crvena Zvezda",
+              "awayTeamId": 8687,
+              "awayScore": "1"
+            },
+            "score": "1 - 1",
+            "home": {
+              "id": "9991",
+              "name": "Gent",
+              "isOurTeam": false
+            },
+            "away": {
+              "id": "8687",
+              "name": "FK Crvena Zvezda",
+              "isOurTeam": true
+            }
           }
         ]
       ],
@@ -438,11 +438,13 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in their last {2} matches, and {1} in their last {3}.",
+              "TextTemplateId": "undefeated_both_unequal",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "5"
+                "4",
+                "8"
               ],
               "DefaultLabels": [
                 "1",
@@ -455,7 +457,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "FK Crvena Zvezda have won their last 5 matches."
+              "defaultText": "Iberia 1999 haven't lost in their last 4 matches, and FK Crvena Zvezda in their last 8."
             },
             {
               "OddsType": "bts",
@@ -491,7 +493,7 @@
                 "away_team",
                 "3",
                 "4",
-                "5"
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -502,17 +504,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Iberia 1999 have scored 4 goals in their last 3 matches, while FK Crvena Zvezda have scored 5."
+              "defaultText": "Iberia 1999 have scored 4 goals in their last 3 matches, while FK Crvena Zvezda have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "3",
+                "1",
+                "1",
                 "away_team",
-                "5"
+                "4",
+                "1",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -525,7 +533,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "FK Crvena Zvezda haven't drawn in their last 5 matches."
+              "defaultText": "Iberia 1999 have 3W, 1D, 1L in five matches while FK Crvena Zvezda have 4W, 1D, 0L."
             }
           ]
         },
@@ -545,12 +553,12 @@
           "localizedTextId": "insights_undefeated_team",
           "statValues": [
             {
-              "value": 7,
+              "value": 8,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't lost in 7 matches",
+          "text": "Haven't lost in 8 matches",
           "color": "#D80017"
         }
       ],
