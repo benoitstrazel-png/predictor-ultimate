@@ -179,12 +179,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "10",
-                "3"
+                "away_team",
+                "3",
+                "6",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -195,18 +197,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Paris Saint-Germain have scored 6 goals in their last 3 matches, while Strasbourg have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "12",
                 "7"
               ],
               "DefaultLabels": [
@@ -220,7 +220,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 12 matches and Strasbourg in their last 7."
+              "defaultText": "Strasbourg haven't drawn in their last 7 matches."
             }
           ]
         },
@@ -288,6 +288,18 @@
         "name": "Strasbourg",
         "unavailable": [
           {
+            "id": 1239595,
+            "name": "Dário Essugo",
+            "unavailability": {
+              "injuryId": 6,
+              "lastUpdated": "2026-11-26T15:37:00Z",
+              "type": "injury",
+              "expectedReturn": "About 1-2 weeks"
+            },
+            "firstName": "Dário",
+            "lastName": "Essugo"
+          },
+          {
             "id": 1575945,
             "name": "Oso",
             "unavailability": {
@@ -298,18 +310,6 @@
             },
             "firstName": "",
             "lastName": "Oso"
-          },
-          {
-            "id": 1071179,
-            "name": "Giovanni Reyna",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-11-24T10:58:35Z",
-              "type": "injury",
-              "expectedReturn": "About a week"
-            },
-            "firstName": "Giovanni",
-            "lastName": "Reyna"
           },
           {
             "id": 1666019,

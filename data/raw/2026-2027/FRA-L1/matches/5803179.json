@@ -131,8 +131,8 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
                 "12"
@@ -148,17 +148,17 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Paris Saint-Germain have won their last 12 matches."
+              "defaultText": "Paris Saint-Germain haven't lost in 12 matches."
             },
             {
               "OddsType": "bts",
               "DefaultLabel": "Will both teams score?",
               "TextLabelId": "both_score",
-              "DefaultTemplate": "{0} have scored in their last {1} home matches.",
-              "TextTemplateId": "goalstreak_team_home",
+              "DefaultTemplate": "{0} have scored in their last {1} away matches.",
+              "TextTemplateId": "goalstreak_team_away",
               "StatValues": [
-                "home_team",
-                "4"
+                "away_team",
+                "7"
               ],
               "DefaultLabels": [
                 "yes",
@@ -169,18 +169,19 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Lyon have scored in their last 4 home matches."
+              "defaultText": "Paris Saint-Germain have scored in their last 7 away matches."
             },
             {
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
+              "TextTemplateId": "average_goals_last3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10",
-                "3"
+                "0.33",
+                "2"
               ],
               "DefaultLabels": [
                 "yes",
@@ -191,17 +192,18 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Lyon have an average of 0.33 goals in their last three matches and Paris Saint-Germain have an average of 2."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} and {1} have not drawn any of their last {2} matches against each other.",
+              "TextTemplateId": "h2h_no_draws_v2",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "12"
+                "9"
               ],
               "DefaultLabels": [
                 "1x",
@@ -214,7 +216,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 12 matches."
+              "defaultText": "Lyon and Paris Saint-Germain have not drawn any of their last 9 matches against each other."
             }
           ]
         },

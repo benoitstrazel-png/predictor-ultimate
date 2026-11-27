@@ -179,12 +179,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "10",
-                "3"
+                "away_team",
+                "3",
+                "6",
+                "4"
               ],
               "DefaultLabels": [
                 "yes",
@@ -195,17 +197,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Paris Saint-Germain have scored 6 goals in their last 3 matches, while Lille have scored 4."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
                 "home_team",
-                "12"
+                "away_team",
+                "8",
+                "5",
+                "3"
               ],
               "DefaultLabels": [
                 "1x",
@@ -218,7 +223,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 12 matches."
+              "defaultText": "Paris Saint-Germain haven't lost to Lille in their last 8 meetings (5W, 3D)."
             }
           ]
         },

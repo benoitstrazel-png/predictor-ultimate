@@ -480,12 +480,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10",
-                "3"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -496,17 +498,20 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Toulouse have scored 4 goals in their last 3 matches, while Paris Saint-Germain have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} haven't lost to {1} in their last {2} meetings ({3}W, {4}D).",
+              "TextTemplateId": "h2h_undefeated",
               "StatValues": [
                 "away_team",
-                "12"
+                "home_team",
+                "4",
+                "4",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -519,7 +524,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 12 matches."
+              "defaultText": "Paris Saint-Germain haven't lost to Toulouse in their last 4 meetings (4W, 0D)."
             }
           ]
         },
@@ -547,20 +552,20 @@
       }
     },
     "weather": {
-      "temperature": 7,
+      "temperature": 5,
       "windSpeed": 2,
       "windDirectionCardinal": "W",
-      "iconCode": 29,
+      "iconCode": 33,
       "relativeHumidity": 87,
-      "precipChance": 10,
+      "precipChance": 8,
       "precipitation": 0,
       "snow": 0,
-      "cloudCover": 56,
-      "description": "Partly Cloudy",
+      "cloudCover": 29,
+      "description": "Mostly Clear",
       "apiUsed": "forecast",
-      "lastUpdated": "2026-11-25T20:00:23Z",
-      "localizedKey": "weather_condition_partly_cloudy",
-      "defaultTitle": "Partly Cloudy"
+      "lastUpdated": "2026-11-26T20:00:41Z",
+      "localizedKey": "weather_condition_clear",
+      "defaultTitle": "Clear"
     },
     "lineup": {
       "matchId": 5803016,

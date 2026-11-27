@@ -179,12 +179,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "10",
-                "3"
+                "away_team",
+                "3",
+                "6",
+                "5"
               ],
               "DefaultLabels": [
                 "yes",
@@ -195,18 +197,16 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Paris Saint-Germain have scored 6 goals in their last 3 matches, while Brest have scored 5."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {2} matches and {1} in their last {3}.",
-              "TextTemplateId": "draw_streak_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
                 "away_team",
-                "12",
                 "4"
               ],
               "DefaultLabels": [
@@ -220,7 +220,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 12 matches and Brest in their last 4."
+              "defaultText": "Brest haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -304,9 +304,9 @@
             "name": "Kenny Lala",
             "unavailability": {
               "injuryId": 14,
-              "lastUpdated": "2026-11-23T12:24:02Z",
+              "lastUpdated": "2026-11-26T22:09:31Z",
               "type": "injury",
-              "expectedReturn": "Late December 2026"
+              "expectedReturn": "Doubtful"
             },
             "firstName": "Kenny",
             "lastName": "Lala"

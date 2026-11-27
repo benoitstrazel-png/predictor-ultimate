@@ -133,8 +133,8 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "home_team",
                 "12"
@@ -150,7 +150,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Paris Saint-Germain have won their last 12 matches."
+              "defaultText": "Paris Saint-Germain haven't lost in 12 matches."
             },
             {
               "OddsType": "bts",
@@ -177,11 +177,13 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
-                "10",
+                "away_team",
+                "3",
+                "6",
                 "3"
               ],
               "DefaultLabels": [
@@ -193,7 +195,7 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Paris Saint-Germain have scored 6 goals in their last 3 matches, while Rennes have scored 3."
             },
             {
               "OddsType": "dc",
@@ -203,7 +205,7 @@
               "TextTemplateId": "not_won_team",
               "StatValues": [
                 "away_team",
-                "4"
+                "5"
               ],
               "DefaultLabels": [
                 "1x",
@@ -216,7 +218,7 @@
                 "label_x2"
               ],
               "Icon": "poll_stat_down",
-              "defaultText": "Rennes haven't won a match in 4 attempts."
+              "defaultText": "Rennes haven't won a match in 5 attempts."
             }
           ]
         },
@@ -636,18 +638,6 @@
             "lastName": "Camara"
           },
           {
-            "id": 1391052,
-            "name": "Eliezer Mayenda",
-            "unavailability": {
-              "injuryId": 101,
-              "lastUpdated": "2026-11-23T11:00:59Z",
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Eliezer",
-            "lastName": "Mayenda"
-          },
-          {
             "id": 562719,
             "name": "Valentin Rongier",
             "unavailability": {
@@ -658,18 +648,6 @@
             },
             "firstName": "Valentin",
             "lastName": "Rongier"
-          },
-          {
-            "id": 402419,
-            "name": "Przemysław Frankowski",
-            "unavailability": {
-              "injuryId": 87,
-              "lastUpdated": "2026-11-13T08:43:58Z",
-              "type": "injury",
-              "expectedReturn": "A few weeks"
-            },
-            "firstName": "Przemysław",
-            "lastName": "Frankowski"
           }
         ]
       }

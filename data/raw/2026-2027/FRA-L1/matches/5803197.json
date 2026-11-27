@@ -132,8 +132,8 @@
               "OddsType": "1x2",
               "DefaultLabel": "Who will win?",
               "TextLabelId": "who_will_win",
-              "DefaultTemplate": "{0} have won their last {1} matches.",
-              "TextTemplateId": "good_form_team",
+              "DefaultTemplate": "{0} haven't lost in {1} matches.",
+              "TextTemplateId": "undefeated_team",
               "StatValues": [
                 "away_team",
                 "12"
@@ -149,7 +149,7 @@
                 "label_2"
               ],
               "Icon": "poll_stat_up",
-              "defaultText": "Paris Saint-Germain have won their last 12 matches."
+              "defaultText": "Paris Saint-Germain haven't lost in 12 matches."
             },
             {
               "OddsType": "bts",
@@ -176,12 +176,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have scored {1} goals in their last {2} matches.",
-              "TextTemplateId": "goals_team",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
+                "home_team",
                 "away_team",
-                "10",
-                "3"
+                "3",
+                "5",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -192,17 +194,23 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Paris Saint-Germain have scored 10 goals in their last 3 matches."
+              "defaultText": "Troyes have scored 5 goals in their last 3 matches, while Paris Saint-Germain have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
-              "TextTemplateId": "draw_streak_team",
+              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
+              "TextTemplateId": "team_form_both",
               "StatValues": [
+                "home_team",
+                "2",
+                "1",
+                "2",
                 "away_team",
-                "12"
+                "4",
+                "1",
+                "0"
               ],
               "DefaultLabels": [
                 "1x",
@@ -215,7 +223,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Paris Saint-Germain haven't drawn in their last 12 matches."
+              "defaultText": "Troyes have 2W, 1D, 2L in five matches while Paris Saint-Germain have 4W, 1D, 0L."
             }
           ]
         },
