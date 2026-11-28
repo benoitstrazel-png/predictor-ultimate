@@ -134,7 +134,7 @@
               "average": 3.87,
               "total": 149,
               "averageType": "below",
-              "fillPercentage": 28.84,
+              "fillPercentage": 28.78,
               "averagePercentage": 50
             },
             {
@@ -159,7 +159,7 @@
               "average": 21.96,
               "total": 934,
               "averageType": "average",
-              "fillPercentage": 53.13,
+              "fillPercentage": 53.07,
               "averagePercentage": 50
             }
           ]
@@ -321,36 +321,6 @@
         ],
         [
           {
-            "result": -1,
-            "resultString": "L",
-            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
-            "linkToMatch": "/matches/arsenal-vs-nottingham-forest/3bf4p3#5795483",
-            "date": {
-              "utcTime": "2026-10-18T15:30:00.000Z"
-            },
-            "teamPageUrl": "/teams/9825/overview/arsenal",
-            "tooltipText": {
-              "utcTime": "2026-10-18T15:30:00.000Z",
-              "homeTeam": "Nottingham Forest",
-              "homeTeamId": 10203,
-              "homeScore": "0",
-              "awayTeam": "Arsenal",
-              "awayTeamId": 9825,
-              "awayScore": "1"
-            },
-            "score": "0 - 1",
-            "home": {
-              "id": "10203",
-              "name": "Nottingham Forest",
-              "isOurTeam": true
-            },
-            "away": {
-              "id": "9825",
-              "name": "Arsenal",
-              "isOurTeam": false
-            }
-          },
-          {
             "result": 0,
             "resultString": "D",
             "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png",
@@ -469,6 +439,36 @@
               "name": "Nottingham Forest",
               "isOurTeam": true
             }
+          },
+          {
+            "result": 1,
+            "resultString": "W",
+            "imageUrl": "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png",
+            "linkToMatch": "/matches/chelsea-vs-nottingham-forest/2vn3ne#5795533",
+            "date": {
+              "utcTime": "2026-11-27T20:00:00.000Z"
+            },
+            "teamPageUrl": "/teams/8455/overview/chelsea",
+            "tooltipText": {
+              "utcTime": "2026-11-27T20:00:00.000Z",
+              "homeTeam": "Nottingham Forest",
+              "homeTeamId": 10203,
+              "homeScore": "3",
+              "awayTeam": "Chelsea",
+              "awayTeamId": 8455,
+              "awayScore": "2"
+            },
+            "score": "3 - 2",
+            "home": {
+              "id": "10203",
+              "name": "Nottingham Forest",
+              "isOurTeam": true
+            },
+            "away": {
+              "id": "8455",
+              "name": "Chelsea",
+              "isOurTeam": false
+            }
           }
         ]
       ],
@@ -493,9 +493,9 @@
                 "2",
                 "2",
                 "away_team",
+                "2",
                 "1",
-                "1",
-                "3"
+                "2"
               ],
               "DefaultLabels": [
                 "1",
@@ -508,7 +508,7 @@
                 "label_2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hull City have 1W, 2D, 2L in five matches while Nottingham Forest have 1W, 1D, 3L."
+              "defaultText": "Hull City have 1W, 2D, 2L in five matches while Nottingham Forest have 2W, 1D, 2L."
             },
             {
               "OddsType": "bts",
@@ -535,13 +535,14 @@
               "OddsType": "ou",
               "DefaultLabel": "Will there be more than 2.5 goals?",
               "TextLabelId": "over_under",
-              "DefaultTemplate": "{0} have an average of {2} goals in their last three matches and {1} have an average of {3}.",
-              "TextTemplateId": "average_goals_last3_both",
+              "DefaultTemplate": "{0} have scored {3} goals in their last {2} matches, while {1} have scored {4}.",
+              "TextTemplateId": "goals_total_last_3_both",
               "StatValues": [
                 "home_team",
                 "away_team",
-                "1.33",
-                "1"
+                "3",
+                "4",
+                "6"
               ],
               "DefaultLabels": [
                 "yes",
@@ -552,23 +553,17 @@
                 "label_no"
               ],
               "Icon": "poll_goal",
-              "defaultText": "Hull City have an average of 1.33 goals in their last three matches and Nottingham Forest have an average of 1."
+              "defaultText": "Hull City have scored 4 goals in their last 3 matches, while Nottingham Forest have scored 6."
             },
             {
               "OddsType": "dc",
               "DefaultLabel": "Double chance",
               "TextLabelId": "double_chance",
-              "DefaultTemplate": "{0} have {1}W, {2}D, {3}L in five matches while {4} have {5}W, {6}D, {7}L.",
-              "TextTemplateId": "team_form_both",
+              "DefaultTemplate": "{0} haven't drawn in their last {1} matches.",
+              "TextTemplateId": "draw_streak_team",
               "StatValues": [
-                "home_team",
-                "1",
-                "2",
-                "2",
                 "away_team",
-                "1",
-                "1",
-                "3"
+                "4"
               ],
               "DefaultLabels": [
                 "1x",
@@ -581,7 +576,7 @@
                 "label_x2"
               ],
               "Icon": "poll_teams",
-              "defaultText": "Hull City have 1W, 2D, 2L in five matches while Nottingham Forest have 1W, 1D, 3L."
+              "defaultText": "Nottingham Forest haven't drawn in their last 4 matches."
             }
           ]
         },
@@ -616,15 +611,15 @@
         },
         {
           "type": "player",
-          "playerId": 956161,
+          "playerId": 807930,
           "teamId": 8667,
           "priority": 1,
-          "defaultText": "{0} has the most shots on target per match for {1} ({2})",
-          "localizedTextId": "insights_player_most_shots_on_target_for_team",
+          "defaultText": "{0} has created the most big chances for {1} ({2})",
+          "localizedTextId": "insights_player_most_chances_for_team",
           "statValues": [
             {
-              "value": 956161,
-              "name": "Joe Gelhardt",
+              "value": 807930,
+              "name": "Regan Slater",
               "type": "player"
             },
             {
@@ -633,12 +628,12 @@
               "type": "team"
             },
             {
-              "value": 2.8,
+              "value": 3,
               "name": null,
-              "type": "double"
+              "type": "integer"
             }
           ],
-          "text": "Joe Gelhardt has the most shots on target per match for Hull City (2.8)",
+          "text": "Regan Slater has created the most big chances for Hull City (3)",
           "color": "#ED8B00"
         },
         {
@@ -677,7 +672,7 @@
           "localizedTextId": "insights_goals_team",
           "statValues": [
             {
-              "value": 4,
+              "value": 7,
               "name": null,
               "type": "integer"
             },
@@ -687,7 +682,7 @@
               "type": "integer"
             }
           ],
-          "text": "Have scored 4 goals in their last 5 matches",
+          "text": "Have scored 7 goals in their last 5 matches",
           "color": "#C8102E"
         },
         {
@@ -699,12 +694,12 @@
           "localizedTextId": "insights_not_clean_sheet",
           "statValues": [
             {
-              "value": 8,
+              "value": 9,
               "name": null,
               "type": "integer"
             }
           ],
-          "text": "Haven't kept a clean sheet in 8 matches",
+          "text": "Haven't kept a clean sheet in 9 matches",
           "color": "#C8102E"
         },
         {
@@ -779,6 +774,22 @@
         "formation": "",
         "starters": [],
         "unavailable": [
+          {
+            "id": 956161,
+            "age": 24,
+            "name": "Joe Gelhardt",
+            "countryName": "England",
+            "countryCode": "ENG",
+            "marketValue": 17660800,
+            "unavailability": {
+              "injuryId": 87,
+              "type": "injury",
+              "expectedReturn": "Mid December 2026"
+            },
+            "firstName": "Joe",
+            "lastName": "Gelhardt",
+            "nationalTeamId": 8491
+          },
           {
             "id": 1203512,
             "age": 23,
@@ -883,22 +894,6 @@
         "formation": "",
         "starters": [],
         "unavailable": [
-          {
-            "id": 846383,
-            "age": 26,
-            "name": "Callum Hudson-Odoi",
-            "countryName": "England",
-            "countryCode": "ENG",
-            "marketValue": 23053301,
-            "unavailability": {
-              "injuryId": 47,
-              "type": "injury",
-              "expectedReturn": "Doubtful"
-            },
-            "firstName": "Callum",
-            "lastName": "Hudson-Odoi",
-            "nationalTeamId": 8491
-          },
           {
             "id": 827315,
             "age": 28,
